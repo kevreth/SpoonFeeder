@@ -11,7 +11,7 @@ import { Mc } from './mc';
 export type vocabTuplesType = [txt:string,ans: string, options: Array<string>][];
 export class Vocab extends Slide<Array<string>> {
 	list: Map<string,string>;
-  res= new Array<string>();
+  res= new Array<string>(); 
 	processJson(json:vocab):void {
 			//JSON provides no distinction for
 			//associative arrays, so create a map.
