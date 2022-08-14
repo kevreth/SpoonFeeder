@@ -1,0 +1,6 @@
+debug
+dist
+.history
+geckodriver.log
+tests_output
+node_modules

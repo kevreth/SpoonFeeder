@@ -1,0 +1,5 @@
+Input JSON file requirements
+- All "txt" fields must be unique to the file.
+- All "opt" fields must be unique to the exercise.
+- The structure is: course -> unit -> lesson -> module -> {inst->{pre,infos, ccqs}, exercises}
+- 
