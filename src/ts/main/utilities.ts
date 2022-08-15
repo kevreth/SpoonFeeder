@@ -20,7 +20,7 @@ export function isRandom():boolean {
     return retval;
 }
 export function shuffleMap<K,V>(map:Map<K,V>):Map<K,V> {
-    let keys = [];
+    let keys: K[] = [];
     map.forEach((value, key) => { keys.push(key); });
     keys = shuffle(keys);
     const newmap: Map<K, V> = new Map;
