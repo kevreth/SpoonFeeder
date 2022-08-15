@@ -40,7 +40,7 @@ export class Vocab extends Slide<Array<string>> {
       if(!options.includes(key))
       options[0] = key;
       if(isRandom()) options = shuffle(options);
-      const quest = map.get(key);
+      const quest = map.get(key) as string;
       vocabTuples.push([quest, key, options]);
     }
     return vocabTuples;
@@ -67,7 +67,7 @@ export class Vocab extends Slide<Array<string>> {
     // let maxWidth = 0;
     options.forEach((option, j)=> {
       const buttonId = "btn" + j.toString()
-      const button = doc.getElementById(buttonId);
+      const button = doc.getElementById(buttonId) as HTMLElement;
       // const width = button.offsetWidth;
       // if(width>maxWidth) maxWidth=width;
       button.addEventListener('click',  () => {
@@ -76,8 +76,10 @@ export class Vocab extends Slide<Array<string>> {
         let color = 'red';
         if (option===answer) color = 'green';
           button.style.backgroundColor = color;
-        for (let i = 0; i < options.length; i++)
-          removeListener(doc.getElementById("btn" + i));
+        for (let i = 0; i < options.length; i++) {
+          const button = doc.getElementById("btn" + i) as HTMLElement;
+          removeListener(button);
+        }
         const id = doc.getElementsByTagName('body')[0];
         if(questionCtr+1<html_list.length)
           this.showButton2(id,doc,html_list,vocabTuples, questionCtr);
@@ -100,7 +102,7 @@ export class Vocab extends Slide<Array<string>> {
       vocabTuples: vocabTuplesType,
       questionCtr: number
     ):void {
-    const element = continueButton(doc);
+    const element = continueButton(doc) as HTMLElement;
     element.addEventListener('click', ():void => {
       this.paging(doc,html_list,vocabTuples, questionCtr+1);
     });

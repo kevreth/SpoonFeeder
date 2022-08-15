@@ -64,30 +64,32 @@ export function processJson(data:Array<SlideType>):Array<SlideInterface> {
 export function showSlides(doc:Document):void {
     const slide = Globals.JSON.getSlide();
     const data = localStorage.getItem("savedata");
-    const data1 = JSON.parse(data);
-    const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
-    if (typeof slide === 'undefined') {//end of quiz
-        doc.body.innerHTML = evaluate(); //EXECUTION ENDS
-    }
-    else if (arr.some(x => x.txt === slide.txt))
-        showSlides(doc);
-    else slide.makeSlides(doc);
+    // if(data != null) {
+        const data1 = JSON.parse(data);
+        const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
+        if (typeof slide === 'undefined') {//end of quiz
+            doc.body.innerHTML = evaluate(); //EXECUTION ENDS
+        }
+        else if (arr.some(x => x.txt === slide.txt))
+            showSlides(doc);
+        else slide.makeSlides(doc);
+    // }
 }
 export function showButton(doc:Document):void {
     const continue_btn = continueButton(doc);
     // continue_btn.style.visibility = "hidden";
     // continue_btn.style.transform = "translate(-50%, 0)";
     // continue_btn.style.visibility = "visible";
-    continue_btn.addEventListener('click', ():void => {showSlides(doc)});
+    continue_btn?.addEventListener('click', ():void => {showSlides(doc)});
 }
 export function continueButton(doc: Document) {
     const button = makeButton("btn", "continue-button", "continue");
     doc.body.insertAdjacentHTML('beforeend', "<br>" + button);
     const continue_btn = doc.getElementById("btn");
     const elem = doc.getElementById('content');
-    //necessary null check because sort.ts does not have #content
+    //necessary null check on "elem" because sort.ts does not have #content
     //until refactoring.
-    if(elem !=null) {
+    if(elem !=null && continue_btn != null) {
         const rect = elem.getBoundingClientRect();
         const bottom = rect.bottom;
         continue_btn.style.position = "relative";
