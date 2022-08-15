@@ -48,7 +48,7 @@ export class Select extends Slide<Array<number>> {
     evaluate2(element: Element, numWords: number, ans:Array<number>, doc:Document):Array<number> {
         let found = true;
         let ctr = 1;
-        const responses = [];
+        const responses: number[] = [];
         while(found) {
             const id = 'w'+ctr.toString();
             const element = doc.getElementById(id);
