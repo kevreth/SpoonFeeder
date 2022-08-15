@@ -53,7 +53,7 @@ export function addNewInfoSlide(text,type:InfoType, slides) {
 export function processJson(data:Array<SlideType>):Array<SlideInterface> {
     const outJson:Array<SlideInterface> = new Array<SlideInterface>();
     Array.prototype.forEach.call(data, currentQuestion => {
-        const slide = getInstance(currentQuestion.type);
+        const slide = getInstance(currentQuestion.type) as SlideInterface;
         slide.processJson(currentQuestion);
         outJson.push(slide);
     })
@@ -63,7 +63,7 @@ export function processJson(data:Array<SlideType>):Array<SlideInterface> {
 ///////////////// PHASE 2: make slides
 export function showSlides(doc:Document):void {
     const slide = Globals.JSON.getSlide();
-    const data = localStorage.getItem("savedata");
+    const data = localStorage.getItem("savedata") as string;
     // if(data != null) {
         const data1 = JSON.parse(data);
         const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);

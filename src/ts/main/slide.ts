@@ -47,7 +47,8 @@ export abstract class Slide<T extends AnswerType>
 				svg.setAttribute("transform", "scale(.1)");
 			}
 		});
-		doc.getElementById("content").innerHTML = html;
+		const content = doc.getElementById("content") as HTMLElement;
+		content.innerHTML = html;
 	}
 	getSaveData():SaveData {
 		return new SaveData(this.txt, this.subtype, this.result(this.ans,this.res));
@@ -55,7 +56,7 @@ export abstract class Slide<T extends AnswerType>
 	saveData() {
 		const save = this.getSaveData();
 		if(save.txt==="") return;
-		const data = localStorage.getItem("savedata");
+		const data = localStorage.getItem("savedata") as string;
 		const data1 = JSON.parse(data);
 		const arr:Array<SaveData> =
 			extend <Array<SaveData>> (new Array<SaveData>(), data1);

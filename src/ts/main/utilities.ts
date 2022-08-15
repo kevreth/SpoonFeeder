@@ -6,8 +6,9 @@ export function makeButton(id:string, clazz:string, content:string):string {
     return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
 export function removeListener(element:Node):void {
-    const elClone = element.cloneNode(true);
-    element.parentNode.replaceChild(elClone, element);
+    const elClone = element.cloneNode(true) as Node;
+    const parent = element.parentNode as Node;
+    parent.replaceChild(elClone, element);
     element.addEventListener('click', event => {
         event.stopImmediatePropagation();
     }, true)

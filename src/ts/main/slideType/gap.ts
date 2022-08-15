@@ -67,7 +67,7 @@ export class Gap extends Slide<Array<string>> {
     return gaps_accum + gaps;
   }
   setfills(ctr: number, currentFills: string, doc:Document):void {
-    const id = doc.getElementById('fill' + ctr);
+    const id = doc.getElementById('fill' + ctr) as HTMLElement;
     id.dataset.number = ctr.toString();
     id.dataset.text = currentFills;
     id.ondragstart = (e) => {
@@ -112,19 +112,22 @@ export class Gap extends Slide<Array<string>> {
   getMaxWidth(num:number, doc:Document):number {
     let maxWidth = 0;
     for(let i=0;i<num;i++) {
-      const width = doc.getElementById('fill' + i).offsetWidth;
+      const fill = doc.getElementById('fill' + i) as HTMLElement;
+      const width = fill.offsetWidth;
       if (width > maxWidth) { maxWidth = width; }
     }
     return maxWidth;
   }
   drop(fillNumber:string,fillText:string, gapNumber:string, doc:Document):void {
-    doc.getElementById("gap" + gapNumber).innerHTML =
+    const gap = doc.getElementById("gap" + gapNumber) as HTMLElement;
+    gap.innerHTML =
       `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
-    const fill = doc.getElementById("fill" + fillNumber);
+    const fill = doc.getElementById("fill" + fillNumber) as HTMLElement;
     fill.innerHTML = '&nbsp;';
     fill.removeAttribute("class");
     const fillsRemaining = doc.getElementsByClassName("fills").length;
-    doc.getElementById("remaining").innerHTML = fillsRemaining.toString();
+    const remaining = doc.getElementById("remaining") as HTMLElement;
+    remaining.innerHTML = fillsRemaining.toString();
     if (fillsRemaining === 0) {
        this.res = this.evaluateA(doc);
        this.saveData();
@@ -148,13 +151,15 @@ export class Gap extends Slide<Array<string>> {
         correct++;
       }
       const id = 'ans' + (ctr);
-      doc.getElementById(id).style.backgroundColor = color;
-      doc.getElementById(id).style.color = 'white';
+      const ans = doc.getElementById(id) as HTMLElement;
+      ans.style.backgroundColor = color;
+      ans.style.color = 'white';
     }
     const pctCorrect = ((correct / this.ans.length) * 100).toFixed(0);
     const response = `Number correct: ${correct} <br>\nNumber questions: `+
       `${this.ans.length} <br>\n${pctCorrect}%`;
-      doc.getElementById('response').innerHTML = response;
+    const responseElem = doc.getElementById('response') as HTMLElement;
+    responseElem.innerHTML = response;
     return responses;
   }
 	evaluate():Evaluation{
