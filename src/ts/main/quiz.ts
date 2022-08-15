@@ -64,16 +64,14 @@ export function processJson(data:Array<SlideType>):Array<SlideInterface> {
 export function showSlides(doc:Document):void {
     const slide = Globals.JSON.getSlide();
     const data = localStorage.getItem("savedata") as string;
-    // if(data != null) {
-        const data1 = JSON.parse(data);
-        const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
-        if (typeof slide === 'undefined') {//end of quiz
-            doc.body.innerHTML = evaluate(); //EXECUTION ENDS
-        }
-        else if (arr.some(x => x.txt === slide.txt))
-            showSlides(doc);
-        else slide.makeSlides(doc);
-    // }
+    const data1 = JSON.parse(data);
+    const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
+    if (typeof slide === 'undefined') {//end of quiz
+        doc.body.innerHTML = evaluate(); //EXECUTION ENDS
+    }
+    else if (arr.some(x => x.txt === slide.txt))
+        showSlides(doc);
+    else slide.makeSlides(doc);
 }
 export function showButton(doc:Document):void {
     const continue_btn = continueButton(doc);
