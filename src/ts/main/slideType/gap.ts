@@ -71,10 +71,10 @@ export class Gap extends Slide<Array<string>> {
     id.dataset.number = ctr.toString();
     id.dataset.text = currentFills;
     id.ondragstart = (e) => {
-      const number = (e.target as HTMLElement).dataset.number;
-      const text = (e.target as HTMLElement).dataset.text;
-      e.dataTransfer.setData("number", number);
-      e.dataTransfer.setData("text", text);
+      const number = (e.target as HTMLElement).dataset.number as string;
+      const text = (e.target as HTMLElement).dataset.text as string;
+      (e.dataTransfer as DataTransfer).setData("number", number);
+      (e.dataTransfer as DataTransfer).setData("text", text);
     };
   }
   setgap(ctr:number, doc:Document):void {
@@ -93,7 +93,7 @@ export class Gap extends Slide<Array<string>> {
     id.ondragover = (e) => {
       e.preventDefault();
       (e.target as HTMLElement).style.backgroundColor = 'grey';
-      e.dataTransfer.dropEffect = "move";
+      (e.dataTransfer as DataTransfer).dropEffect = "move";
     }
     id.ondragleave = (e) => {
       e.preventDefault();
@@ -101,8 +101,8 @@ export class Gap extends Slide<Array<string>> {
     }
     id.ondrop = (e) => {
       e.preventDefault();
-      const fillNumber = e.dataTransfer.getData("number")
-      const fillText = e.dataTransfer.getData("text")
+      const fillNumber = (e.dataTransfer as DataTransfer).getData("number")
+      const fillText = (e.dataTransfer as DataTransfer).getData("text")
       const gapNumber = (e.target as HTMLElement).dataset.number as string;
       this.drop(fillNumber, fillText, gapNumber, document);
       id.ondrop = null;
