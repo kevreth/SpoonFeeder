@@ -83,11 +83,11 @@ export function showButton(doc:Document):void {
 export function continueButton(doc: Document) {
     const button = makeButton("btn", "continue-button", "continue");
     doc.body.insertAdjacentHTML('beforeend', "<br>" + button);
-    const continue_btn = doc.getElementById("btn");
-    const elem = doc.getElementById('content');
+    const continue_btn = doc.getElementById("btn") as HTMLElement;
+    const elem = doc.getElementById('content') as HTMLElement|null;
     //necessary null check on "elem" because sort.ts does not have #content
     //until refactoring.
-    if(elem !=null && continue_btn != null) {
+    if(elem !=null) {
         const rect = elem.getBoundingClientRect();
         const bottom = rect.bottom;
         continue_btn.style.position = "relative";
