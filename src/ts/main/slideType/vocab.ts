@@ -13,7 +13,7 @@ export class Vocab extends Slide<Array<string>> {
 	list: Map<string,string>;
   res= new Array<string>();
 	processJson(json:vocab):void {
-			//JSON provides no distinction for <test>
+			//JSON provides no distinction for
 			//associative arrays, so create a map.
 			this.list=new Map(Object.entries(json.list));
       this.txt = Array.from(this.list.keys()).join();
