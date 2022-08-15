@@ -79,7 +79,7 @@ export class Gap extends Slide<Array<string>> {
   }
   setgap(ctr:number, doc:Document):void {
     const maxWidth = this.getMaxWidth(this.ans.length, doc);
-    const id = doc.getElementById('gap' + ctr);
+    const id = doc.getElementById('gap' + ctr) as HTMLElement;
     id.style.display = "inline-block";
     id.style.borderBottom = "2px solid";
     id.style.width = `${maxWidth}px`;
@@ -103,7 +103,7 @@ export class Gap extends Slide<Array<string>> {
       e.preventDefault();
       const fillNumber = e.dataTransfer.getData("number")
       const fillText = e.dataTransfer.getData("text")
-      const gapNumber = (e.target as HTMLElement).dataset.number;
+      const gapNumber = (e.target as HTMLElement).dataset.number as string;
       this.drop(fillNumber, fillText, gapNumber, document);
       id.ondrop = null;
       (e.target as HTMLElement).style.removeProperty('background-color');

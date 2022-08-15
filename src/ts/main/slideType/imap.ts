@@ -20,16 +20,16 @@ export class Imap extends Slide1 {
 			afterAll() {
 				const ids = getChildIds(doc, "content");
 				ids.forEach((id) => {
-					const element = doc.getElementById(id);
+					const element = doc.getElementById(id) as HTMLElement;
 					element.addEventListener("click", ()=> {
 						ids.forEach((id) => {
-							const element = doc.getElementById(id);
+							const element = doc.getElementById(id) as HTMLElement;
 							element.classList.remove("shape");	
 							removeListener(element);
 						});
 						imap.res=id;
 						const response = imap.res;
-						const element = doc.getElementById(response);
+						const element = doc.getElementById(response) as HTMLElement;
 						let classname = "shape_incorrect";
 						if (imap.result(imap.ans,response)) classname = "shape_correct";
 						element.classList.add(classname);

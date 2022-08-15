@@ -13,7 +13,7 @@ export class Select extends Slide<Array<number>> {
         this.createPageContent(this.createHtml(this.inst,this.txt.split(" ")),doc);
         const res = this.txt.split(" ");
         for(let ctr = 0; ctr<res.length; ctr++ ) this.iter2(ctr+1, doc);
-        const element = doc.getElementById("btn");
+        const element = doc.getElementById("btn") as HTMLElement;
         const numWords = res.length;
         element.addEventListener('click', () => {
             this.res=this.evaluate2(element, numWords, this.ans, doc)
@@ -31,12 +31,12 @@ export class Select extends Slide<Array<number>> {
         return accum.join('\n');
     }
     iter2(ctr:number, doc:Document):void {
-        const element = doc.getElementById('w'+ctr);
+        const element = doc.getElementById('w'+ctr) as HTMLElement;
         element.addEventListener('click', event => {
             this.selected((event.target as Element).id, doc)});
     }
     selected(id:string, doc:Document):void {
-        const element = doc.getElementById(id);
+        const element = doc.getElementById(id) as HTMLElement;
         let color = "white";
         if(element.style.backgroundColor === "blue") {
             element.style.removeProperty('background-color');
@@ -61,7 +61,7 @@ export class Select extends Slide<Array<number>> {
         }
         //remove event listeners from words to prevent selection after submission
         for(let i=1; i<= numWords; i++) {
-            const element = doc.getElementById('w'+i.toString());
+            const element = doc.getElementById('w'+i.toString()) as HTMLElement;
             //disable word selection
             removeListener(element);
             element.style.removeProperty('background-color');
@@ -83,7 +83,7 @@ export class Select extends Slide<Array<number>> {
         length = diff.length;
         for(let i=0; i< length; i++) {
             const id = diff[i];
-            const element = doc.getElementById('w'+id.toString());
+            const element = doc.getElementById('w'+id.toString()) as HTMLElement;
             element.style.textDecoration = decoration;
             element.style.textDecorationColor = color;
             element.style.removeProperty('background-color');
