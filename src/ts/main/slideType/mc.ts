@@ -4,9 +4,9 @@ import {mc} from '../course';
 import {Evaluation} from '../evaluation';
 import { Slide1 } from '../slide';
 export class Mc extends Slide1 {
-	o=[];
+	o: string[]=[];
 	processJson(json:mc):void {
-		({txt:this.txt,	o:this.o,	ans:this.ans, isExercise:this.isExercise}=json);
+		({txt:this.txt,	o:this.o, ans:this.ans, isExercise:this.isExercise}=json);
 		this.ans=this.o[0];
 	}
 	makeSlides(doc:Document):void {
