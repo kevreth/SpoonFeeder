@@ -99,7 +99,7 @@ button:hover{
   word-wrap:normal
 }
 .container {
-  position: relative;  
+  position: relative;
   top: 50%;
   left: 50%;
   width: 500px;
@@ -114,14 +114,9 @@ button:hover{
 }
 #inject-hamburger {
   text-align: right;
-  /* position: static;
-  right:auto;
-  top:auto; */
-
   top: -500px;
   right: -300px;
   position: fixed;
-
 }
 #content {
   top:50%;
