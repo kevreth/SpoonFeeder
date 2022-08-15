@@ -138,7 +138,7 @@ export class Gap extends Slide<Array<string>> {
     const responses = [];
     const ansId = doc.getElementsByClassName("ans");
     Array.prototype.forEach.call(ansId, (slide) => {
-      const response = slide.innerText;
+      const response = slide.innerText as never;
       responses.push(response);
     });
     let correct = 0;
