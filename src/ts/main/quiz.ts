@@ -90,7 +90,6 @@ export function continueButton(doc: Document) {
     if(elem !=null) {
         const rect = elem.getBoundingClientRect();
         const bottom = rect.bottom;
-        // continue_btn.style.position = "absolute";
         continue_btn.style.position = "relative";
         continue_btn.style.top = bottom + 15 + "px";
         continue_btn.style.right = "auto";
