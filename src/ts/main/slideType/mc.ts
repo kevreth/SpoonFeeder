@@ -25,12 +25,12 @@ export class Mc extends Slide1 {
 		//Similar behavior exists in gap.ts. Possible refactor opportunity.
 		let maxWidth = 0;
     options.forEach((option, optionCtr) => {
-			const element = doc.getElementById('btn' + optionCtr);
+			const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
 			const width = element.offsetWidth;
 			if(width>maxWidth) maxWidth=width;
 		});	
 		options.forEach((option, optionCtr) => {
-			const element = doc.getElementById('btn' + optionCtr);
+			const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
 			element.style.width = `${maxWidth}px`;
 		});	
 	}
@@ -41,11 +41,11 @@ export class Mc extends Slide1 {
 		optionCtr: number,
 		ans: string
 	):void {
-			const element = doc.getElementById('btn' + optionCtr);
+			const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
 			element.addEventListener('click', () => {
 					for (let i = 0; i < length; i++)
-							removeListener(doc.getElementById("btn" + i));
-					const optionButton = doc.getElementById("btn" + optionCtr);
+							removeListener(doc.getElementById("btn" + i) as HTMLElement);
+					const optionButton = doc.getElementById("btn" + optionCtr) as HTMLElement;
 					let color = 'red';
 					if (this.result(option, ans)) color = 'green';
 					optionButton.style.backgroundColor = color;
