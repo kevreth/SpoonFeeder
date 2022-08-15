@@ -24,7 +24,10 @@ export function shuffleMap<K,V>(map:Map<K,V>):Map<K,V> {
     map.forEach((value, key) => { keys.push(key); });
     keys = shuffle(keys);
     const newmap: Map<K, V> = new Map;
-    for (const key of keys) newmap.set(key, map.get(key));
+    for (const key of keys) {
+        const value = map.get(key) as V;
+        newmap.set(key, value);
+    }
     return newmap;
 }
 export function getChildIds(doc:Document, parent:string):Array<string> {
