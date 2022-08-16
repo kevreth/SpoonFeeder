@@ -43,7 +43,7 @@ export class Sort extends Slide<Array<string>> {
 		const sortables = listItems.map(Sortable); // Array of sortables
 		const total = sortables.length;
 		gsap.to(container, { duration: 0.5, autoAlpha: 1 });
-		const done = doc.getElementById("btn");
+		const done = doc.getElementById("btn") as HTMLElement;
 		done.addEventListener('click', () => {
 			this.res = sortables.map((x) => x.element.innerHTML);
 			let msg = "incorrect";

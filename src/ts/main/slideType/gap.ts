@@ -67,19 +67,19 @@ export class Gap extends Slide<Array<string>> {
     return gaps_accum + gaps;
   }
   setfills(ctr: number, currentFills: string, doc:Document):void {
-    const id = doc.getElementById('fill' + ctr);
+    const id = doc.getElementById('fill' + ctr) as HTMLElement;
     id.dataset.number = ctr.toString();
     id.dataset.text = currentFills;
     id.ondragstart = (e) => {
-      const number = (e.target as HTMLElement).dataset.number;
-      const text = (e.target as HTMLElement).dataset.text;
-      e.dataTransfer.setData("number", number);
-      e.dataTransfer.setData("text", text);
+      const number = (e.target as HTMLElement).dataset.number as string;
+      const text = (e.target as HTMLElement).dataset.text as string;
+      (e.dataTransfer as DataTransfer).setData("number", number);
+      (e.dataTransfer as DataTransfer).setData("text", text);
     };
   }
   setgap(ctr:number, doc:Document):void {
     const maxWidth = this.getMaxWidth(this.ans.length, doc);
-    const id = doc.getElementById('gap' + ctr);
+    const id = doc.getElementById('gap' + ctr) as HTMLElement;
     id.style.display = "inline-block";
     id.style.borderBottom = "2px solid";
     id.style.width = `${maxWidth}px`;
@@ -93,7 +93,7 @@ export class Gap extends Slide<Array<string>> {
     id.ondragover = (e) => {
       e.preventDefault();
       (e.target as HTMLElement).style.backgroundColor = 'grey';
-      e.dataTransfer.dropEffect = "move";
+      (e.dataTransfer as DataTransfer).dropEffect = "move";
     }
     id.ondragleave = (e) => {
       e.preventDefault();
@@ -101,9 +101,9 @@ export class Gap extends Slide<Array<string>> {
     }
     id.ondrop = (e) => {
       e.preventDefault();
-      const fillNumber = e.dataTransfer.getData("number")
-      const fillText = e.dataTransfer.getData("text")
-      const gapNumber = (e.target as HTMLElement).dataset.number;
+      const fillNumber = (e.dataTransfer as DataTransfer).getData("number")
+      const fillText = (e.dataTransfer as DataTransfer).getData("text")
+      const gapNumber = (e.target as HTMLElement).dataset.number as string;
       this.drop(fillNumber, fillText, gapNumber, document);
       id.ondrop = null;
       (e.target as HTMLElement).style.removeProperty('background-color');
@@ -112,19 +112,22 @@ export class Gap extends Slide<Array<string>> {
   getMaxWidth(num:number, doc:Document):number {
     let maxWidth = 0;
     for(let i=0;i<num;i++) {
-      const width = doc.getElementById('fill' + i).offsetWidth;
+      const fill = doc.getElementById('fill' + i) as HTMLElement;
+      const width = fill.offsetWidth;
       if (width > maxWidth) { maxWidth = width; }
     }
     return maxWidth;
   }
   drop(fillNumber:string,fillText:string, gapNumber:string, doc:Document):void {
-    doc.getElementById("gap" + gapNumber).innerHTML =
+    const gap = doc.getElementById("gap" + gapNumber) as HTMLElement;
+    gap.innerHTML =
       `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
-    const fill = doc.getElementById("fill" + fillNumber);
+    const fill = doc.getElementById("fill" + fillNumber) as HTMLElement;
     fill.innerHTML = '&nbsp;';
     fill.removeAttribute("class");
     const fillsRemaining = doc.getElementsByClassName("fills").length;
-    doc.getElementById("remaining").innerHTML = fillsRemaining.toString();
+    const remaining = doc.getElementById("remaining") as HTMLElement;
+    remaining.innerHTML = fillsRemaining.toString();
     if (fillsRemaining === 0) {
        this.res = this.evaluateA(doc);
        this.saveData();
@@ -135,7 +138,7 @@ export class Gap extends Slide<Array<string>> {
     const responses = [];
     const ansId = doc.getElementsByClassName("ans");
     Array.prototype.forEach.call(ansId, (slide) => {
-      const response = slide.innerText;
+      const response = slide.innerText as never;
       responses.push(response);
     });
     let correct = 0;
@@ -148,13 +151,15 @@ export class Gap extends Slide<Array<string>> {
         correct++;
       }
       const id = 'ans' + (ctr);
-      doc.getElementById(id).style.backgroundColor = color;
-      doc.getElementById(id).style.color = 'white';
+      const ans = doc.getElementById(id) as HTMLElement;
+      ans.style.backgroundColor = color;
+      ans.style.color = 'white';
     }
     const pctCorrect = ((correct / this.ans.length) * 100).toFixed(0);
     const response = `Number correct: ${correct} <br>\nNumber questions: `+
       `${this.ans.length} <br>\n${pctCorrect}%`;
-      doc.getElementById('response').innerHTML = response;
+    const responseElem = doc.getElementById('response') as HTMLElement;
+    responseElem.innerHTML = response;
     return responses;
   }
 	evaluate():Evaluation{

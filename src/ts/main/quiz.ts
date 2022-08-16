@@ -53,7 +53,7 @@ export function addNewInfoSlide(text,type:InfoType, slides) {
 export function processJson(data:Array<SlideType>):Array<SlideInterface> {
     const outJson:Array<SlideInterface> = new Array<SlideInterface>();
     Array.prototype.forEach.call(data, currentQuestion => {
-        const slide = getInstance(currentQuestion.type);
+        const slide = getInstance(currentQuestion.type) as SlideInterface;
         slide.processJson(currentQuestion);
         outJson.push(slide);
     })
@@ -63,7 +63,7 @@ export function processJson(data:Array<SlideType>):Array<SlideInterface> {
 ///////////////// PHASE 2: make slides
 export function showSlides(doc:Document):void {
     const slide = Globals.JSON.getSlide();
-    const data = localStorage.getItem("savedata");
+    const data = localStorage.getItem("savedata") as string;
     const data1 = JSON.parse(data);
     const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
     if (typeof slide === 'undefined') {//end of quiz
@@ -78,14 +78,14 @@ export function showButton(doc:Document):void {
     // continue_btn.style.visibility = "hidden";
     // continue_btn.style.transform = "translate(-50%, 0)";
     // continue_btn.style.visibility = "visible";
-    continue_btn.addEventListener('click', ():void => {showSlides(doc)});
+    continue_btn?.addEventListener('click', ():void => {showSlides(doc)});
 }
 export function continueButton(doc: Document) {
     const button = makeButton("btn", "continue-button", "continue");
     doc.body.insertAdjacentHTML('beforeend', "<br>" + button);
-    const continue_btn = doc.getElementById("btn");
-    const elem = doc.getElementById('content');
-    //necessary null check because sort.ts does not have #content
+    const continue_btn = doc.getElementById("btn") as HTMLElement;
+    const elem = doc.getElementById('content') as HTMLElement|null;
+    //necessary null check on "elem" because sort.ts does not have #content
     //until refactoring.
     if(elem !=null) {
         const rect = elem.getBoundingClientRect();

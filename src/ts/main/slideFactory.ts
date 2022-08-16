@@ -31,7 +31,7 @@ export class SlideFactory {
   private constructor(public readonly name: string) {
     this.name=name;
   }
-  public static instance(instanceType:string): SlideInterface|null {
+  public static instance(instanceType:string): SlideInterface|undefined {
     for(let i=0; i< SlideFactory.values.length; i++) {
       if(SlideFactory.values[i].name===instanceType) {
         switch(SlideFactory.values[i]) {
@@ -46,9 +46,8 @@ export class SlideFactory {
         }
       }
     }
-    return null;
   }
 }
-export function getInstance(instanceType:string):SlideInterface {
+export function getInstance(instanceType:string):SlideInterface|undefined {
     return SlideFactory.instance(instanceType);
 }

@@ -6,8 +6,9 @@ export function makeButton(id:string, clazz:string, content:string):string {
     return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
 export function removeListener(element:Node):void {
-    const elClone = element.cloneNode(true);
-    element.parentNode.replaceChild(elClone, element);
+    const elClone = element.cloneNode(true) as Node;
+    const parent = element.parentNode as Node;
+    parent.replaceChild(elClone, element);
     element.addEventListener('click', event => {
         event.stopImmediatePropagation();
     }, true)
@@ -19,11 +20,14 @@ export function isRandom():boolean {
     return retval;
 }
 export function shuffleMap<K,V>(map:Map<K,V>):Map<K,V> {
-    let keys = [];
+    let keys: K[] = [];
     map.forEach((value, key) => { keys.push(key); });
     keys = shuffle(keys);
     const newmap: Map<K, V> = new Map;
-    for (const key of keys) newmap.set(key, map.get(key));
+    for (const key of keys) {
+        const value = map.get(key) as V;
+        newmap.set(key, value);
+    }
     return newmap;
 }
 export function getChildIds(doc:Document, parent:string):Array<string> {
