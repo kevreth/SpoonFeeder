@@ -18,14 +18,14 @@ export class SlideFactory {
     static readonly VOCAB = new SlideFactory('vocab');
     static get values(): SlideFactory[] {
         return [
-                this.BOOL,
-                this.GAP,
-                this.IMAP,
-                this.INFO,
-                this.MC,
-                this.SELECT,
-                this.SORT,
-                this.VOCAB
+            this.BOOL,
+            this.GAP,
+            this.IMAP,
+            this.INFO,
+            this.MC,
+            this.SELECT,
+            this.SORT,
+            this.VOCAB
         ];
     }
     private constructor(public readonly name: string) {
@@ -49,5 +49,5 @@ export class SlideFactory {
     }
 }
 export function getInstance(instanceType:string):SlideInterface|undefined {
-        return SlideFactory.instance(instanceType);
+    return SlideFactory.instance(instanceType);
 }

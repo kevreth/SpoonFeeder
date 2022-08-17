@@ -17,10 +17,10 @@ import { Slide } from '../slide';
 import {gap} from '../course';
 import { shuffle, isRandom } from '../utilities';
 export class Gap extends Slide<Array<string>> {
-	processJson(json:gap):void {
+    processJson(json:gap):void {
         ({txt:this.txt, ans:this.ans, isExercise:this.isExercise} = json);
-	}
-	makeSlides(doc:Document):void {
+    }
+    makeSlides(doc:Document):void {
         let ans = this.ans;
         if(isRandom()) ans = shuffle(ans);
         this.createPageContent(this.createHtml(ans, this.txt),doc);
@@ -28,7 +28,7 @@ export class Gap extends Slide<Array<string>> {
             this.setfills(ctr, currentFills, doc);
             this.setgap(ctr, doc);
         });
-	}
+    }
     createHtml(ans:string[], text:string):string {
         const fills_accum = this.fills(ans);
         const gaps_accum = this.gaps(ans.length,text);
@@ -57,7 +57,7 @@ export class Gap extends Slide<Array<string>> {
             const gap_number = ctr+1;
             const str = '(' + gap_number.toString() + ')';
             const pos = gaps.search(str);
-            const text = gaps.substr(0, pos - 1);
+            const text = gaps.substring(0, pos - 1);
             gaps = gaps.replace(text, '');
             const gap_html =
                 `\n    <span id="gap${ctr}" draggable="false">&nbsp;</span>\n`;
@@ -162,7 +162,7 @@ export class Gap extends Slide<Array<string>> {
         responseElem.innerHTML = response;
         return responses;
     }
-	evaluate():Evaluation{
+    evaluate():Evaluation{
         const rows = new Array<string>();
         for (let i = 0; i < this.ans.length; i++) {
             const answer = this.ans[i];
@@ -172,7 +172,7 @@ export class Gap extends Slide<Array<string>> {
         }
         const correctCtr = this.result(this.ans,this.res).filter(Boolean).length;
         return new Evaluation(this.ans.length, correctCtr, rows.join('\n'));
-	}
+    }
     gapQuest(response:string, answer:string, i:number, ans:Array<string>, text:string):string {
         let replaceValue = '';
         if (i === 0) replaceValue = `<td rowspan="${ans.length}">${text}</td>`;
@@ -181,6 +181,6 @@ export class Gap extends Slide<Array<string>> {
         return row_a;
     }
     result(ans: Array<string>, res: Array<string>): Array<boolean> {
-		return new Result().result4(ans,res);
-	}
+        return new Result().result4(ans,res);
+    }
 }

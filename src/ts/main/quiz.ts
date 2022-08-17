@@ -127,7 +127,7 @@ function evaluate():string {
     }
     return text;
 }
-export 	function makeRow(question:string, response: string, answer:string) {
+export function makeRow(question:string, response: string, answer:string) {
     let text = ROW;
     text = text.replace('%Q%', question);
     text = text.replace('%A%', response);
