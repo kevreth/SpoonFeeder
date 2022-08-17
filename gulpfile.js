@@ -72,7 +72,7 @@ function copySrcNonJs(cb) {
   cb();
 }
 function vue(cb) {
-  return gulp.src('src/main/components/*.vue')
+  return gulp.src('src/ts/main/components/*.vue')
       .pipe(vueComponent({ /* options */ }))
       .pipe(gulp.dest('debug'))
       .pipe(gulp.dest("dist"));
