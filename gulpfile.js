@@ -2,6 +2,7 @@ const rename = require("gulp-rename");
 const inlineSource = require('gulp-inline-source-html')
 const { series, src, dest } = require('gulp');
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const flatten = require('gulp-flatten');
 const clean = require('gulp-clean');
 const nightwatch = require('gulp-nightwatch');
@@ -73,7 +74,9 @@ function copySrcNonJs(cb) {
 }
 function vue(cb) {
   return gulp.src('src/ts/main/components/*.vue')
-      .pipe(vueComponent({ /* options */ }))
+      .pipe(vueComponent({ debug: true, loadCssMethod: 'loadCss' }))
+      .pipe(babel({ plugins: ['@babel/plugin-transform-modules-amd'] }))
+      .pipe(rename({ extname: '.js' }))
       .pipe(gulp.dest('debug'))
       .pipe(gulp.dest("dist"));
       cb();
