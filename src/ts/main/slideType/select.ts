@@ -5,11 +5,11 @@ import {Evaluation} from '../evaluation';
 import { Slide } from '../slide';
 import {Result} from '../result';
 export class Select extends Slide<Array<number>> {
-	inst: string;
-	processJson(json:select):void {
-		({inst:this.inst, txt:this.txt, ans:this.ans, isExercise:this.isExercise}=json);
-	}
-	makeSlides(doc:Document):void {
+    inst: string;
+    processJson(json:select):void {
+        ({inst:this.inst, txt:this.txt, ans:this.ans, isExercise:this.isExercise}=json);
+    }
+    makeSlides(doc:Document):void {
         this.createPageContent(this.createHtml(this.inst,this.txt.split(" ")),doc);
         const res = this.txt.split(" ");
         for(let ctr = 0; ctr<res.length; ctr++ ) this.iter2(ctr+1, doc);
@@ -20,8 +20,8 @@ export class Select extends Slide<Array<number>> {
             this.saveData();
             showButton(doc);
         });
-	}
-	public createHtml(instructions:string, res:string[]):string {
+    }
+    public createHtml(instructions:string, res:string[]):string {
         const accum = new Array<string>(`${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`);
         res.forEach((item,idx) => {
             accum.push(`<span id="w${idx + 1}">${item}</span> `);

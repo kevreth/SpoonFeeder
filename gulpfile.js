@@ -52,19 +52,19 @@ function copySrcNonJs(cb) {
   .pipe(gulp.dest("debug"));
   gulp
   .src("lib/*.js")
-  .pipe(gulp.dest("debug"));    
+  .pipe(gulp.dest("debug"));
   gulp
   .src("lib/*.js")
-  .pipe(gulp.dest("dist"));  
+  .pipe(gulp.dest("dist"));
   gulp
   .src("src/svg/*.svg")
   .pipe(gulp.dest("dist"));
   gulp
   .src("src/html/*.html")
-  .pipe(gulp.dest("debug"));  
+  .pipe(gulp.dest("debug"));
   gulp
   .src("src/html/*.html")
-  .pipe(gulp.dest("dist"));  
+  .pipe(gulp.dest("dist"));
   return gulp
   .src("src/courses/*.json")
   .pipe(gulp.dest("dist"));

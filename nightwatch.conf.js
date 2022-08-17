@@ -18,7 +18,7 @@ module.exports = {
 
   // See https://nightwatchjs.org/guide/extending-nightwatch/adding-plugins.html
   // plugins: [],
-  
+
   // See https://nightwatchjs.org/guide/concepts/test-globals.html
   globals_path: '',
 
@@ -38,14 +38,14 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome'
       },
-      
+
       webdriver: {
         start_process: true,
         server_path: ''
       },
-      
+
     },
-    
+
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome',
@@ -72,6 +72,6 @@ module.exports = {
         ]
       }
     },
-    
+
   }
 };
