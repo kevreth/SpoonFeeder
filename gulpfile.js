@@ -13,6 +13,7 @@ const buffer = require("vinyl-buffer");
 const source = require("vinyl-source-stream");
 const tsify = require('tsify');
 const preprocess = require("gulp-preprocess");
+const vueComponent = require('gulp-vue-single-file-component');
 const paths = {
   TEST_ROOT_DIR: 'src/ts/test/unit',
   TYPESCRIPT: 'src/ts/main/**/*.ts',
@@ -69,6 +70,13 @@ function copySrcNonJs(cb) {
   .src("src/courses/*.json")
   .pipe(gulp.dest("dist"));
   cb();
+}
+function vue(cb) {
+  return gulp.src('src/main/components/*.vue')
+      .pipe(vueComponent({ /* options */ }))
+      .pipe(gulp.dest('debug'))
+      .pipe(gulp.dest("dist"));
+      cb();
 }
 function browserify1(cb) {
   return browserify({
