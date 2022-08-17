@@ -120,4 +120,4 @@ function clean2(cb) {
   cb();
 }
 exports.clean = clean1;
-exports.default = series(lint, jesta, copySrcNonJs, browserify1, /*nightwatchr,*/ inlineSource1, clean2);
+exports.default = series(lint, jesta, copySrcNonJs, vue, browserify1, /*nightwatchr,*/ inlineSource1, clean2);
