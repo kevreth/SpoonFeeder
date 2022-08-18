@@ -7,7 +7,7 @@ global.TextDecoder = TextDecoder
 import { JSDOM, VirtualConsole } from 'jsdom';
 const virtualConsole = new VirtualConsole();
 virtualConsole.sendTo(console);
-const DOC = new JSDOM(`<!DOCTYPE html><body></body>`,virtualConsole).window.document;
+const DOC = new JSDOM(`<!DOCTYPE html><body></body>`,{virtualConsole}).window.document;
 const question = "text (1) text (2) text (3)";
 const ans=["ans1", "ans2", "ans3"]
 const json1:gap = {
