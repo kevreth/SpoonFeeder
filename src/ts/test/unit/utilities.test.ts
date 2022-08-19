@@ -1,24 +1,17 @@
 import { expect, it } from 'vitest'
-// import 'jest-chain';
-// import 'jest-extended/all';
-import { TextEncoder, TextDecoder } from 'util'
 import {isEqual, difference, intersection, makeButton, getChildIds, getNumberedProperties}
 from '../../main/utilities';
-import {shuffle} from 'lodash'
-global.TextEncoder = TextEncoder
-global.TextDecoder = TextDecoder
 import { JSDOM } from 'jsdom';
 const testArr1 = [1,2];
 const testArr2 = [2,3];
 it('makeButton', () => {
   let str = makeButton('ABC', 'DEF', 'HIJ');
-  expect(str)
-  .toContain('id="ABC"')
-  .toContain('class="DEF"')
-  .toContain('>HIJ<')
-  .toBeDefined()
-  .not.to.be.empty
-  .to.be.string;
+  expect(str).toContain('id="ABC"');
+  expect(str).toContain('class="DEF"')
+  expect(str).toContain('>HIJ<')
+  expect(str).toBeDefined()
+  expect(str).not.to.be.empty
+  expect(str).to.be.string;
 });
 it('difference', () => {
   let result = difference(testArr1,testArr2);
@@ -36,7 +29,7 @@ it('isEqual1', () => {
   let result = isEqual(testArr1,testArr1);
   expect(result).toEqual(true);
 });
-it('init',() => {
+it('getChildIds',() => {
 	const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
 	const html = `
   <div id="parent-div">

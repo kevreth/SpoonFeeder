@@ -2,9 +2,6 @@ import { expect, it } from 'vitest'
 import {Gap} from '../../main/slideType/gap';
 import type {gap} from '../../main/course';
 // import "html-validate/jest";
-import { TextEncoder, TextDecoder } from 'util'
-global.TextEncoder = TextEncoder
-global.TextDecoder = TextDecoder
 import { JSDOM, VirtualConsole } from 'jsdom';
 const virtualConsole = new VirtualConsole();
 virtualConsole.sendTo(console);
@@ -53,7 +50,6 @@ it('setfills', () => {
 it('getMaxWidth', () => {
 	let gap = new Gap();
 	DOC.body.innerHTML = gap.createHtml(ans, question);
-	console.log(DOC.body.innerHTML);
 	const result = gap.getMaxWidth(1,DOC);
 	// expect(result).toEqual(3);
 });

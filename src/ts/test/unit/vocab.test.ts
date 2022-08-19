@@ -1,12 +1,7 @@
 import { expect, it } from 'vitest'
-// import 'jest-chain';
-// import 'jest-extended/all';
-import { TextEncoder, TextDecoder } from 'util'
 import type {vocab} from '../../main/course'
 import { JSDOM } from 'jsdom';
 import {Vocab} from '../../main/slideType/vocab'
-global.TextEncoder = TextEncoder
-global.TextDecoder = TextDecoder
 sessionStorage.setItem("random","false");
 const DOC = new JSDOM(`<!DOCTYPE html><body></body>`).window.document;
 const MAP:Map<string,string> = new Map([
@@ -53,7 +48,7 @@ it('includesEverything', () => {
 	//it's set by style sheet and is not in the DOM
 it('correctAnswerGreen', () => {
 	new Vocab().proc(MAP,DOC);
-	const button = DOC.getElementById('btn0');
+	const button = DOC.getElementById('btn0') as HTMLElement;
 	expect(button.style.backgroundColor).to.be.empty;
 	button.click();
 	expect(button.style.backgroundColor).toBe("green");
@@ -63,7 +58,7 @@ it('correctAnswerGreen', () => {
 //it's set by style sheet and is not in the DOM
 it('wrongAnswerRed', () => {
 	new Vocab().proc(MAP,DOC);
-	const button = DOC.getElementById('btn2');
+	const button = DOC.getElementById('btn2') as HTMLElement;
 	expect(button.style.backgroundColor).to.be.empty;
 	button.click();
 	expect(button.style.backgroundColor).toBe("red");
@@ -71,9 +66,9 @@ it('wrongAnswerRed', () => {
 //test that event listeners have been removed
 it('eventListenersRemoved', () => {
 	new Vocab().proc(MAP,DOC);
-	const btn0Id = DOC.getElementById('btn0');
+	const btn0Id = DOC.getElementById('btn0') as HTMLElement;
 	btn0Id.click();
-	const btn3Id = DOC.getElementById('btn3');
+	const btn3Id = DOC.getElementById('btn3') as HTMLElement;
 	expect(btn3Id.style.backgroundColor).to.be.empty;
 	btn3Id.click();
 	expect(btn3Id.style.backgroundColor).to.be.empty;
@@ -82,9 +77,9 @@ it('eventListenersRemoved', () => {
 //an option button
 it('checkContinueButton', () => {
 	new Vocab().proc(MAP,DOC);
-	const btn0 = DOC.getElementById('btn0');
+	const btn0 = DOC.getElementById('btn0') as HTMLElement;
 	btn0.click();
-	const btn = DOC.getElementById('btn');
+	const btn = DOC.getElementById('btn') as HTMLElement;
 	expect(btn).not.toBeNull()
 });
 it('response', () => {
