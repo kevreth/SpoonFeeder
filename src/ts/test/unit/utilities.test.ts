@@ -1,5 +1,6 @@
-import 'jest-chain';
-import 'jest-extended/all';
+import { expect, it } from 'vitest'
+// import 'jest-chain';
+// import 'jest-extended/all';
 import { TextEncoder, TextDecoder } from 'util'
 import {isEqual, difference, intersection, makeButton, getChildIds, getNumberedProperties}
 from '../../main/utilities';
@@ -9,34 +10,33 @@ global.TextDecoder = TextDecoder
 import { JSDOM } from 'jsdom';
 const testArr1 = [1,2];
 const testArr2 = [2,3];
-test('makeButton', () => {
+it('makeButton', () => {
   let str = makeButton('ABC', 'DEF', 'HIJ');
   expect(str)
   .toContain('id="ABC"')
   .toContain('class="DEF"')
   .toContain('>HIJ<')
   .toBeDefined()
-  .not.toBeEmpty()
-  .toBeString()
-  .toContain('>HIJ<');
+  .not.to.be.empty
+  .to.be.string;
 });
-test('difference', () => {
+it('difference', () => {
   let result = difference(testArr1,testArr2);
   expect(result).toEqual([1]);
 });
-test('intersection', () => {
+it('intersection', () => {
   let result = intersection(testArr1,testArr2);
   expect(result).toEqual([2]);
 });
-test('isEqual0', () => {
+it('isEqual0', () => {
   let result = isEqual(testArr1,testArr2);
   expect(result).toEqual(false);
 });
-test('isEqual1', () => {
+it('isEqual1', () => {
   let result = isEqual(testArr1,testArr1);
   expect(result).toEqual(true);
 });
-test('init',() => {
+it('init',() => {
 	const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
 	const html = `
   <div id="parent-div">
@@ -49,11 +49,12 @@ test('init',() => {
 	dom.window.document.body.innerHTML = html;
   const doc = dom.window.document;
 	const ids = getChildIds(doc, "parent-div");
-  expect(ids).not.toBeNull().not.toBeEmpty();
+  expect(ids).not.toBeNull()
+  expect(ids).not.to.be.empty;
   expect(ids.length).toBe(4);
   expect(ids[2]).toBe("div-no-3");
 })
-test('getNumberedProperties',() => {
+it('getNumberedProperties',() => {
   const obj = {
     typeA_2: "b",
     typeB_2: "2",

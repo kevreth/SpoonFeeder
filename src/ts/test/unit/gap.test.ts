@@ -1,6 +1,7 @@
+import { expect, it } from 'vitest'
 import {Gap} from '../../main/slideType/gap';
-import {gap} from '../../main/course';
-import "html-validate/jest";
+import type {gap} from '../../main/course';
+// import "html-validate/jest";
 import { TextEncoder, TextDecoder } from 'util'
 global.TextEncoder = TextEncoder
 global.TextDecoder = TextDecoder
@@ -16,21 +17,21 @@ const json1:gap = {
 	type:"gap",
 	isExercise: false
 }
-test('fills', () => {
+it('fills', () => {
 	const result = new Gap().fills(ans);
 	expect(result).not.toBeNull();
-	expect(result).toHTMLValidate();
+	// expect(result).toHTMLValidate();
 	expect(result).toContain("fill0");
 	expect(result).toContain("fill2");
 });
-test('gaps', () => {
+it('gaps', () => {
 	const result = new Gap().gaps(ans.length,question);
 	expect(result).not.toBeNull();
 	// expect(result).toHTMLValidate();
 	expect(result).toContain("(1) text");
 	expect(result).toContain("(3)");
 });
-test('createHtml', () => {
+it('createHtml', () => {
 	const result = new Gap().createHtml(ans, question);
 	expect(result).not.toBeNull();
 	// expect(result).toHTMLValidate();
@@ -41,15 +42,15 @@ test('createHtml', () => {
 	expect(result).toContain("(1) text");
 	expect(result).toContain("(3)");
 });
-test('setgap', () => {
+it('setgap', () => {
 	// let gap = new Gap();
 	// DOC.body.innerHTML = gap.createHtml(ans, question);
 	// gap.setgap(1,DOC);
 });
-test('setfills', () => {
+it('setfills', () => {
 	const result = new Gap().createHtml(ans, question);
 });
-test('getMaxWidth', () => {
+it('getMaxWidth', () => {
 	let gap = new Gap();
 	DOC.body.innerHTML = gap.createHtml(ans, question);
 	console.log(DOC.body.innerHTML);
