@@ -1,11 +1,11 @@
 import {Evaluation} from '../evaluation';
 import { Slide1 } from '../slide';
 import {showButton,makeRow} from '../quiz';
-import {imap} from '../course';
+import type {imap} from '../course';
 import { SVGInjector } from '@tanem/svg-injector'
 import { getChildIds, removeListener } from '../utilities';
 export class Imap extends Slide1 {
-    img: string;
+    img: string = "";
     processJson(json: imap): void {
         ({txt:this.txt, img:this.img, ans:this.ans, isExercise:this.isExercise} = json);
     }

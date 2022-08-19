@@ -1,11 +1,11 @@
 import {difference, intersection, makeButton, removeListener} from '../utilities';
 import {showButton, makeRow} from '../quiz';
-import {select} from '../course';
+import type {select} from '../course';
 import {Evaluation} from '../evaluation';
 import { Slide } from '../slide';
 import {Result} from '../result';
 export class Select extends Slide<Array<number>> {
-    inst: string;
+    inst: string="";
     processJson(json:select):void {
         ({inst:this.inst, txt:this.txt, ans:this.ans, isExercise:this.isExercise}=json);
     }

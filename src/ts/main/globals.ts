@@ -1,8 +1,8 @@
-import {SlideInterface} from './slide'
+import type {SlideInterface} from './slide'
 export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
 class Json {
     private counter = 0;
-    private json:Array<SlideInterface>;
+    private json:Array<SlideInterface>=new Array;
     get() {
         return this.json;
     }

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import $ from 'jquery';
-import {Course} from './course';
+import type {Course} from './course';
 
 export function makeButton(id:string, clazz:string, content:string):string {
     return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;

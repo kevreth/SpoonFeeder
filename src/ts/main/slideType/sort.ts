@@ -1,7 +1,7 @@
 import {Evaluation} from '../evaluation';
 import { Slide } from '../slide';
 import {showButton, makeRow} from '../quiz';
-import {sort} from '../course';
+import type {sort} from '../course';
 import {gsap} from 'gsap';
 import {Draggable} from "gsap/dist/Draggable";
 import { makeButton, shuffle, isRandom } from '../utilities';

@@ -14,7 +14,7 @@ polyfill({dragImageTranslateOverride:
 //response: grading after the last drop
 import {Evaluation} from '../evaluation';
 import { Slide } from '../slide';
-import {gap} from '../course';
+import type {gap} from '../course';
 import { shuffle, isRandom } from '../utilities';
 export class Gap extends Slide<Array<string>> {
     processJson(json:gap):void {
@@ -135,7 +135,7 @@ export class Gap extends Slide<Array<string>> {
         }
     }
     evaluateA(doc:Document):Array<string> {
-        const responses = [];
+        const responses:string[] = [];
         const ansId = doc.getElementsByClassName("ans");
         Array.prototype.forEach.call(ansId, (slide) => {
             const response = slide.innerText as never;
