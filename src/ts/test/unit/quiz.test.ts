@@ -6,7 +6,7 @@ import {processJson, percentCorrect} from '../../main/quiz';
 const testjson = '[{"type":"mc","q":"a\'a","o":[{"o":"hadn\'t","a":"C "},{"o":"couldn\'t","a":"wrong"}]},{"type":"gap","text":"text (1) text (2)","ans":["ans1","ans2"]}]';
 sessionStorage.setItem("random","false");
 it('check for HTML encoding', () => {
-    let json = processJson(JSON.parse(testjson));
+    const json = processJson(JSON.parse(testjson));
     expect(json).toBeDefined()
     expect(json).not.to.be.empty;
     assert.containsAllKeys(json, ["0","1"]);
@@ -17,6 +17,6 @@ it('check for HTML encoding', () => {
     // expect(json[0].q).toBe('a\'a');
 })
 it('percentCorrect', () => {
-    let actual = percentCorrect(5,8);
+    const actual = percentCorrect(5,8);
     expect(actual).toBe("63");
 })

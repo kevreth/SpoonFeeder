@@ -48,7 +48,7 @@ it('setfills', () => {
 	const result = new Gap().createHtml(ans, question);
 });
 it('getMaxWidth', () => {
-	let gap = new Gap();
+	const gap = new Gap();
 	DOC.body.innerHTML = gap.createHtml(ans, question);
 	const result = gap.getMaxWidth(1,DOC);
 	// expect(result).toEqual(3);

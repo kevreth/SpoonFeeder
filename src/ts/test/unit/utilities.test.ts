@@ -5,7 +5,7 @@ import { JSDOM } from 'jsdom';
 const testArr1 = [1,2];
 const testArr2 = [2,3];
 it('makeButton', () => {
-  let str = makeButton('ABC', 'DEF', 'HIJ');
+  const str = makeButton('ABC', 'DEF', 'HIJ');
   expect(str).toContain('id="ABC"');
   expect(str).toContain('class="DEF"')
   expect(str).toContain('>HIJ<')
@@ -14,19 +14,19 @@ it('makeButton', () => {
   expect(str).to.be.string;
 });
 it('difference', () => {
-  let result = difference(testArr1,testArr2);
+  const result = difference(testArr1,testArr2);
   expect(result).toEqual([1]);
 });
 it('intersection', () => {
-  let result = intersection(testArr1,testArr2);
+  const result = intersection(testArr1,testArr2);
   expect(result).toEqual([2]);
 });
 it('isEqual0', () => {
-  let result = isEqual(testArr1,testArr2);
+  const result = isEqual(testArr1,testArr2);
   expect(result).toEqual(false);
 });
 it('isEqual1', () => {
-  let result = isEqual(testArr1,testArr1);
+  const result = isEqual(testArr1,testArr1);
   expect(result).toEqual(true);
 });
 it('getChildIds',() => {
