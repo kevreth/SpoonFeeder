@@ -1,10 +1,11 @@
-import {SaveData} from './saveData';
+import type {SaveData} from './saveData';
 import {getInstance} from './slideFactory';
-import {SlideInterface} from './slide';
+import type {SlideInterface} from './slide';
 import {ajax, extend, makeButton, shuffle, isRandom} from "./utilities";
-import {info,Course,SlideType} from './course';
+import {info,Course} from './course';
+import type {SlideType} from './course';
 import {Globals, ROW} from './globals';
-import {Evaluation} from './evaluation';
+import type {Evaluation} from './evaluation';
 export enum InfoType {COURSE, UNIT, LESSON, MODULE}
 const TABLE_HEADER = '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
 export function slides(file:string, doc:Document): void {
@@ -43,7 +44,7 @@ export function slides(file:string, doc:Document): void {
         showSlides(doc);
     });
 }
-export function addNewInfoSlide(text,type:InfoType, slides) {
+export function addNewInfoSlide(text: string,type:InfoType, slides: SlideType[]) {
     const slide = new info();
     slide.txt=text;
     slide.subtype=InfoType[type].toString();

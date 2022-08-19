@@ -45,7 +45,7 @@
 							},{
 								"type":"imap",
 								"txt":"choose blue",
-								"img":"test.svg",
+								"img":"../../../src/svg/test.svg",
 								"ans":"blue"
 							},{
 									"type":"gap",

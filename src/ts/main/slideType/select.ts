@@ -1,6 +1,6 @@
 import {difference, intersection, makeButton, removeListener} from '../utilities';
 import {showButton, makeRow} from '../quiz';
-import {select} from '../course';
+import type {select} from '../course';
 import {Evaluation} from '../evaluation';
 import { Slide } from '../slide';
 import {Result} from '../result';

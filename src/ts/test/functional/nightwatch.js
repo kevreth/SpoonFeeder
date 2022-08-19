@@ -1,7 +1,7 @@
 var dragAndDrop = require('html-dnd').codeForSelectors;
 module.exports = {
   'Demo of Quiz' : function(browser) {browser
-    .url('http://localhost:8000/')
+    .url('http://localhost:5173/')
     .waitForElementVisible('body')
     .assert.titleContains('Quiz')
 

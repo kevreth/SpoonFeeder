@@ -1,4 +1,4 @@
-import {vocab} from '../course';
+import type {vocab} from '../course';
 import {Evaluation} from '../evaluation';
 import { Slide } from '../slide';
 import {continueButton, showButton,makeRow} from '../quiz';

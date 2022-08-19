@@ -1,7 +1,7 @@
-import { Evaluation } from './evaluation';
-import {SlideType} from './course';
+import type { Evaluation } from './evaluation';
+import type {SlideType} from './course';
 import { extend } from './utilities';
-import { ResultReturnType, AnswerType } from './result';
+import type { ResultReturnType, AnswerType } from './result';
 import {SaveData} from './saveData';
 import { SVGInjector } from '@tanem/svg-injector'
 export interface SlideInterface {
@@ -27,7 +27,7 @@ export abstract class Slide<T extends AnswerType>
     res: T;
     pageTemplate = `
         <div id="header">
-            <div id="inject-hamburger" data-src="hamburger.svg"></div>
+            <div id="inject-hamburger" data-src="../../../src/svg/hamburger.svg"></div>
         </div>
         <div id="slide">
             <div id="content">
