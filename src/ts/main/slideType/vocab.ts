@@ -10,7 +10,7 @@ import { SaveData } from '../saveData';
 import { Mc } from './mc';
 export type vocabTuplesType = [txt:string,ans: string, options: Array<string>][];
 export class Vocab extends Slide<Array<string>> {
-    list: Map<string,string>;
+    list: Map<string,string>= new Map;
     res= new Array<string>();
     processJson(json:vocab):void {
             //JSON provides no distinction for

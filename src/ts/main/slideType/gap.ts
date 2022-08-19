@@ -135,7 +135,7 @@ export class Gap extends Slide<Array<string>> {
         }
     }
     evaluateA(doc:Document):Array<string> {
-        const responses = [];
+        const responses:string[] = [];
         const ansId = doc.getElementsByClassName("ans");
         Array.prototype.forEach.call(ansId, (slide) => {
             const response = slide.innerText as never;

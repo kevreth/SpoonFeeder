@@ -21,10 +21,10 @@ export interface SlideInterface {
 }
 export abstract class Slide<T extends AnswerType>
     implements SlideInterface {
-        txt: string;
-        subtype: string;
-    ans: T;
-    res: T;
+    txt: string="";
+    subtype: string="";
+    ans!: T;
+    res!: T;
     pageTemplate = `
         <div id="header">
             <div id="inject-hamburger" data-src="../../../src/svg/hamburger.svg"></div>
@@ -34,7 +34,7 @@ export abstract class Slide<T extends AnswerType>
             </div>
         </div>
     `;
-    isExercise:boolean;
+    isExercise:boolean=false;
     abstract processJson(json: SlideType): void;
     abstract makeSlides(doc:Document): void;
     abstract evaluate(): Evaluation;
