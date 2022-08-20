@@ -9,6 +9,7 @@ import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
+import hljs from "highlight.js"
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface {
     txt: string;
@@ -58,6 +59,7 @@ export abstract class Slide<T extends AnswerType>
         this.postRendering(document);
     }
     postRendering(doc:Document) {
+        hljs.highlightAll();
         const html = mathjax.document(doc, {
             InputJax: new TeX({
               inlineMath: [['$', '$'], ['\\(', '\\)']],
