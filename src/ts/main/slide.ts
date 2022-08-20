@@ -4,6 +4,12 @@ import { extend } from './utilities';
 import type { ResultReturnType, AnswerType } from './result';
 import {SaveData} from './saveData';
 import { SVGInjector } from '@tanem/svg-injector'
+import { mathjax } from 'mathjax-full/ts/mathjax';
+import { TeX } from 'mathjax-full/ts/input/tex';
+import { CHTML } from 'mathjax-full/ts/output/chtml';
+import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
+import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
+RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface {
     txt: string;
     isExercise:boolean;
@@ -49,6 +55,23 @@ export abstract class Slide<T extends AnswerType>
         });
         const content = doc.getElementById("content") as HTMLElement;
         content.innerHTML = html;
+        this.postRendering(document);
+    }
+    postRendering(doc:Document) {
+        const html = mathjax.document(doc, {
+            InputJax: new TeX({
+              inlineMath: [['$', '$'], ['\\(', '\\)']],
+              packages: ['base', 'ams', 'noundefined', 'newcommand', 'boldsymbol']
+            }),
+            OutputJax: new CHTML({
+            //   fontURL: 'https://cdn.rawgit.com/mathjax/mathjax-v3/3.0.0-beta.1/mathjax2/css'
+            })
+          });
+          html.findMath()
+            .compile()
+            .getMetrics()
+            .typeset()
+            .updateDocument();
     }
     getSaveData():SaveData {
         return new SaveData(this.txt, this.subtype, this.result(this.ans,this.res));
