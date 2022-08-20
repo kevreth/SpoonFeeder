@@ -1,6 +1,4 @@
-import { expect, it, assert } from 'vitest'
-// import 'jest-chain';
-// import 'jest-extended/all';
+import { expect, it, assert } from 'vitest';
 import {Mc} from '../../main/slideType/mc';
 import {processJson, percentCorrect} from '../../main/quiz';
 const testjson = '[{"type":"mc","q":"a\'a","o":[{"o":"hadn\'t","a":"C "},{"o":"couldn\'t","a":"wrong"}]},{"type":"gap","text":"text (1) text (2)","ans":["ans1","ans2"]}]';

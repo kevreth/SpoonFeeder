@@ -109,6 +109,9 @@ export class Gap extends Slide<Array<string>> {
             (e.target as HTMLElement).style.removeProperty('background-color');
         }
     }
+    //REFACTOR: 2 methods: 1 returns an array of strings, the other
+    //takes a list of strings and uses reduce() to find the length
+    //of the longest
     getMaxWidth(num:number, doc:Document):number {
         let maxWidth = 0;
         for(let i=0;i<num;i++) {

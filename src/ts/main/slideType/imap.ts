@@ -5,7 +5,7 @@ import type {imap} from '../course';
 import { SVGInjector } from '@tanem/svg-injector'
 import { getChildIds, removeListener } from '../utilities';
 export class Imap extends Slide1 {
-    img: string = "";
+    img = "";
     processJson(json: imap): void {
         ({txt:this.txt, img:this.img, ans:this.ans, isExercise:this.isExercise} = json);
     }

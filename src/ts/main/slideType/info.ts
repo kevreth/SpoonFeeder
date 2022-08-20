@@ -5,8 +5,8 @@ import {showButton} from '../quiz';
 import type { ResultReturnType } from '../result';
 import { SaveData } from '../saveData';
 export class Info extends Slide<string> {
-    txt:string="";
-    subtype:string="";
+    txt="";
+    subtype="";
     processJson(json: info): void {
         this.txt = json.txt;
         this.subtype = json.subtype;
