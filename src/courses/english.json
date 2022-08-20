@@ -15,7 +15,7 @@
                                     "txt": "$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$$"
                                 },{
                                     "type": "info",
-                                    "txt": "slide 2"
+                                    "txt": "  <pre><code>\r\n    class MyClass {\r\n      public static myValue: string;\r\n      constructor(init: string) {\r\n        this.myValue = init;\r\n      }\r\n    }\r\n    import fs = require(\"fs\");\r\n    module MyModule {\r\n      export interface MyInterface extends Other {\r\n        myProperty: any;\r\n      }\r\n    }\r\n    declare magicNumber number;\r\n    myArray.forEach(() => { }); \/\/ fat arrow syntax\r\n  <\/code><\/pre>"
                                 },{
                                     "type": "info",
                                     "txt": "slide 3"

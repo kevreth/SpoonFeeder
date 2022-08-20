@@ -168,3 +168,6 @@ iframe {
   margin-left: auto;
   margin-right: auto;
 }
+pre {
+  text-align: left;
+}
