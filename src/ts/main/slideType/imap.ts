@@ -14,13 +14,13 @@ export class Imap extends Slide1 {
         const imap = this;
         /* eslint-enable  @typescript-eslint/no-this-alias */
         const  html = this.createHtml(this.txt,this.img);
-        doc.body.innerHTML = html;
-        // this.createPageContent(html,doc);
-        const picture = doc.getElementById('content');
+        // doc.body.innerHTML = html;
+        this.createPageContent(html,doc);
+        const picture = doc.getElementById('imagemap');
         //inject SVG into page so it is part of DOM
         SVGInjector(picture, {
             afterAll() {
-                const ids = getChildIds(doc, "content");
+                const ids = getChildIds(doc, "imagemap");
                 ids.forEach((id) => {
                     const element = doc.getElementById(id) as HTMLElement;
                     element.addEventListener("click", ()=> {
@@ -43,7 +43,7 @@ export class Imap extends Slide1 {
         });
     }
     createHtml(inst: string, img:string):string {
-        return `${inst}<br><div id="content" data-src="${img}"></div>`;
+        return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
     }
     evaluate(): Evaluation {
         let correctCtr=0;
