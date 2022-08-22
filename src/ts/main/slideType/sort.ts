@@ -49,7 +49,8 @@ export class Sort extends Slide<Array<string>> {
             this.res = sortables.map((x) => x.element.innerHTML);
             let msg = "incorrect";
             if (this.result(this.ans, this.res)) msg = "correct";
-            doc.body.insertAdjacentHTML('beforeend', msg);
+            const content = doc.getElementById("content") as HTMLElement;
+            content.insertAdjacentHTML('beforeend', msg);
             done.remove();
             this.saveData();
             showButton(doc);

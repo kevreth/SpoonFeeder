@@ -48,7 +48,9 @@ export abstract class Slide<T extends AnswerType>
     abstract evaluate(): Evaluation;
     abstract result(ans: T, res: T):ResultReturnType;
     createPageContent(html: string, doc:Document): void {
-        doc.body.innerHTML = this.pageTemplate;
+        const element = document.getElementById('btn') as HTMLElement|null;
+        if(element != null)
+            element.remove(); // Removes the div with the 'div-02' id
         const hamburger = document.getElementById('inject-hamburger');
         SVGInjector(hamburger, {
             beforeEach(svg) {
