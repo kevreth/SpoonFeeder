@@ -10,7 +10,8 @@ export class Select extends Slide<Array<number>> {
         ({inst:this.inst, txt:this.txt, ans:this.ans, isExercise:this.isExercise}=json);
     }
     makeSlides(doc:Document):void {
-        this.createPageContent(this.createHtml(this.inst,this.txt.split(" ")),doc);
+        const html = this.createHtml(this.inst, this.txt.split(" "));
+        this.createPageContent(html,doc);
         const res = this.txt.split(" ");
         for(let ctr = 0; ctr<res.length; ctr++ ) this.iter2(ctr+1, doc);
         const element = doc.getElementById("btn") as HTMLElement;
