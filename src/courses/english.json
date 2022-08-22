@@ -15,7 +15,7 @@
                                     "txt": "$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$$"
                                 },{
                                     "type": "info",
-                                    "txt": "  <pre><code>\r\n    class MyClass {\r\n      public static myValue: string;\r\n      constructor(init: string) {\r\n        this.myValue = init;\r\n      }\r\n    }\r\n    import fs = require(\"fs\");\r\n    module MyModule {\r\n      export interface MyInterface extends Other {\r\n        myProperty: any;\r\n      }\r\n    }\r\n    declare magicNumber number;\r\n    myArray.forEach(() => { }); \/\/ fat arrow syntax\r\n  <\/code><\/pre>"
+                                    "txt": "  <pre><code>class MyClass {\r\n    public static myValue: string;\r\n    constructor(init: string) {\r\n        this.myValue = init;\r\n    }\r\n}\r\nimport fs = require(\"fs\");\r\nmodule MyModule {\r\n    export interface MyInterface extends Other {\r\n        myProperty: any;\r\n    }\r\n}\r\ndeclare magicNumber number;\r\nmyArray.forEach(() => { }); \/\/ fat arrow syntax<\/code><\/pre>"
                                 },{
                                     "type": "info",
                                     "txt": "slide 3"
@@ -71,7 +71,7 @@
                                     "ans":[5,6]
                                 },{
                                     "type":"mc",
-                                    "txt":"If only we ____ have to learn have to learn the periodic table of the elements by tomorrow!",
+                                    "txt":"If only we ____ have to learn the periodic table of the elements by tomorrow!",
                                     "o":["didn't","don't"]
                                 }
                             ]

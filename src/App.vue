@@ -1,6 +1,9 @@
 <template>
-  <h1>{{ title }}</h1>
     <HamburgerIcon />
+    <div id="slide">
+        <div id="content">
+        </div>
+    </div>    
 </template>
 
 <script>
