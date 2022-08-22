@@ -12,7 +12,8 @@ export class Info extends Slide<string> {
         this.subtype = json.subtype;
     }
     makeSlides(doc:Document): void {
-        this.createPageContent(`\n${this.txt}`,doc);
+        const html = `\n${this.txt}`;
+        this.createPageContent(html,doc);
         this.saveData();
         showButton(doc);
     }

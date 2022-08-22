@@ -9,6 +9,7 @@ import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
+import Hamburger from "../../components/HamburgerIcon.vue";
 import hljs from "highlight.js"
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface {

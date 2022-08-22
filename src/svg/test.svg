@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<rect id="blue" class="shape" x="32.7%" y="45" width="50" height="50" fill="blue"/>
-	<rect id="yellow" class="shape" x="50%" y="45" width="50" height="50" fill="yellow"/>
+<svg xmlns="http://www.w3.org/2000/svg" 
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	width="100"
+	height="50">
+	<rect id="blue" class="shape" x="0" y="0" width="50" height="50" fill="blue"/>
+	<rect id="yellow" class="shape" x="50" y="0" width="50" height="50" fill="yellow"/>
 </svg>

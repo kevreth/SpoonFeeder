@@ -23,7 +23,8 @@ export class Gap extends Slide<Array<string>> {
     makeSlides(doc:Document):void {
         let ans = this.ans;
         if(isRandom()) ans = shuffle(ans);
-        this.createPageContent(this.createHtml(ans, this.txt),doc);
+        const html = this.createHtml(ans, this.txt);
+        this.createPageContent(html,doc);
         ans.forEach((currentFills,ctr) => {
             this.setfills(ctr, currentFills, doc);
             this.setgap(ctr, doc);

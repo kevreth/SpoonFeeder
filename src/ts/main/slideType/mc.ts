@@ -14,7 +14,8 @@ export class Mc extends Slide1 {
         let options = this.o;
         if(shuffleFlag)
             options = shuffle(options);
-        this.createPageContent(this.createHtml(this.txt, options),doc);
+        const html = this.createHtml(this.txt, options);
+        this.createPageContent(html,doc);
         this.createHtml(this.txt, options);
         options.forEach((option, optionCtr) => {
             this.addBehavior(doc, option, options.length, optionCtr, this.ans);
