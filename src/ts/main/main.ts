@@ -16,4 +16,3 @@ sessionStorage.setItem("random","false");
 const file = '../../../src/courses/english.json';
 slides(file, document);
 
-
