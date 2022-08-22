@@ -13,7 +13,9 @@ export class Imap extends Slide1 {
         /* eslint-disable  @typescript-eslint/no-this-alias */
         const imap = this;
         /* eslint-enable  @typescript-eslint/no-this-alias */
-        doc.body.innerHTML = this.createHtml(this.txt,this.img);
+        const  html = this.createHtml(this.txt,this.img);
+        doc.body.innerHTML = html;
+        // this.createPageContent(html,doc);
         const picture = doc.getElementById('content');
         //inject SVG into page so it is part of DOM
         SVGInjector(picture, {
