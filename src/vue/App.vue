@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import HamburgerIcon from "./components/HamburgerIcon.vue";
+    import HamburgerIcon from "../components/HamburgerIcon.vue";
 export default {
   name: "App",
   components: { HamburgerIcon },

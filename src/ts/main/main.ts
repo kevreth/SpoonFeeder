@@ -2,7 +2,7 @@ import {slides} from './quiz';
 import '../../../src/css/style1.css'
 sessionStorage.clear();
 
-import App from "../../../src/App.vue";
+import '../../vue/App.vue';
 
 //===========================================================================
 // un-comment for TESTING
