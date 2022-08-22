@@ -124,10 +124,6 @@ button:hover{
   transform: translate(-50%, -50%);
   position: absolute;
 }
-#blue, #yellow{
-  position: absolute;
-  transform: translate(33%, 0);
-}
 .list-item {
   position: absolute;
   top: 0;
