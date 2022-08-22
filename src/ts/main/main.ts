@@ -1,7 +1,12 @@
 import {slides} from './quiz';
 import '../../../src/css/style1.css'
-import router from "../../router";
 sessionStorage.clear();
+
+import { createApp } from "vue";
+import App from "../../App.vue";
+
+const app = createApp(App);
+app.mount("#app");
 
 //===========================================================================
 // un-comment for TESTING
@@ -11,18 +16,4 @@ sessionStorage.setItem("random","false");
 const file = '../../../src/courses/english.json';
 slides(file, document);
 
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-
-import App from "../../App.vue";
-import Hamburger from "../../components/HamburgerIcon.vue";
-
-// import "./assets/main.css";
-
-const app = createApp(App);
-
-app.use(createPinia());
-app.use(router);
-
-app.mount("#app");
 
