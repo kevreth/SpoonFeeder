@@ -11,7 +11,8 @@ export class Sort extends Slide<Array<string>> {
         ({txt:this.txt,ans:this.ans, isExercise:this.isExercise} = json);
     }
     makeSlides(doc:Document): void {
-        this.createPageContent(this.createHtml(this.txt,this.ans),doc);
+        const html = this.createHtml(this.txt, this.ans);
+        this.createPageContent(html,doc);
         this.addBehavior(doc);
     }
     createHtml(inst: string, ans: string[]):string {
