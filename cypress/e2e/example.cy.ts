@@ -7,78 +7,81 @@ describe("My First Test", () => {
 
     //course title
     //TODO: test for empty body then body content
-    cy.get('#btn').click();
+    click('#btn');
 
     //unit title
     //TODO: test for empty body then body content
-    cy.get('#btn').click();
+    click('#btn');
 
     //lesson title
     //TODO: test for empty body then body content
-    cy.get('#btn').click();
+    click('#btn');
 
     //module title
     //TODO: test for empty body then body content
-    cy.get('#btn').click();
+    click('#btn');
 
     //info slides
     //TODO: test for empty body then body content
-    cy.get('#btn').click();
-    cy.get('#btn').click();
-    cy.get('#btn').click();
+    click('#btn');
+    click('#btn');
+    click('#btn');
 
-    cy.get('#btn0').click();
+    click('#btn0');
 
     //info slides
     //TODO: test for green
-    cy.get('#btn').click();
-    cy.get('#btn0').click();
+    click('#btn');
+    click('#btn0');
     //TODO: test for red
-    cy.get('#btn').click();
-    cy.get('#btn0').click();
+    click('#btn');
+    click('#btn0');
 
     //TODO: test for red
-    cy.get('#btn').click();
+    click('#btn');
 
     //vocab
     //TODO: test for empty body then body content
-    cy.get('#btn0').click();
+    click('#btn0');
     //TODO: test for red
-    cy.get('#btn').click();
-    cy.get('#btn0').click();
+    click('#btn');
+    click('#btn0');
     //TODO: test for green
-    cy.get('#btn').click();
-    cy.get('#btn2').click();
-    cy.get('#btn').click();
-    cy.get('#btn3').click();
-    cy.get('#btn').click();
-    cy.get('#btn0').click();
-    cy.get('#btn').click();
+    click('#btn');
+    click('#btn2');
+    click('#btn');
+    click('#btn3');
+    click('#btn');
+    click('#btn0');
+    click('#btn');
 
     //sort
-    cy.get('#btn').click();
-    cy.get('#btn').click();
+    click('#btn');
+    click('#btn');
 
     //imap
-    cy.get('#blue').click();
-    cy.get('#btn').click();
+    click('#blue');
+    click('#btn');
 
     //mc 1
     //TODO: test for empty body then body content "lecture is so boring"
     //TODO: test for button visibilty
-    cy.get('#btn1').click();
+    click('#btn1');
     //TODO: test for button visibilty
-    cy.get('#btn').click();
+    click('#btn');
 
     //gap 1
     //TODO: test for empty body
     //TODO: test for visibility of 3 fills and 3 gaps
     //TODO: "remaining" = 3
-    cy.get('#fill0').drag('#gap0')
+    // const dataTransfer = new DataTransfer();
+    // cy.get('#fill0').trigger('dragstart', {dataTransfer});
+    // cy.get('#gap0').trigger('drop',{dataTransfer});
+    dragDrop('#fill0','#gap0');
     //TODO: "remaining" = 2
-    cy.get('#fill1').drag('#gap1')
+    dragDrop('#fill1','#gap1');
     //TODO: "remaining" = 1
-    cy.get('#fill2').drag('#gap2')
+    dragDrop('#fill2','#gap2');
     //TODO: "remaining" = 0
     //TODO: #ans0 green, #ans1 red, #ans2 red
     //TODO: btn visibile
@@ -88,17 +91,17 @@ describe("My First Test", () => {
     .assert.textContains("body", "100%")
     .assert.visible('button[id=btn]')
     */
-    cy.get('#btn').click()
+    click('#btn');
 
-    //gap 1
+    //gap 2
     //TODO: test for empty body
     //TODO: test for visibility of 3 fills and 3 gaps
     //TODO: "remaining" = 3
-    cy.get('#fill2').drag('#gap1')
+    dragDrop('#fill2','#gap1');
     //TODO: "remaining" = 2
-    cy.get('#fill0').drag('#gap0')
+    dragDrop('#fill0','#gap0');
     //TODO: "remaining" = 1
-    cy.get('#fill1').drag('#gap2')
+    dragDrop('#fill1','#gap2');
     //TODO: "remaining" = 0
     //TODO: #ans0 green, #ans1 red, #ans2 red
     //TODO: btn visibile
@@ -108,6 +111,45 @@ describe("My First Test", () => {
     .assert.textContains("body", "33%")
     .assert.visible('button[id=btn]')
     */
-    cy.get('#btn').click()
+    click('#btn');
+
+    //select
+    click('#w4');
+    click('#w6');
+    //test 4 and 5 red, 6 green
+    click('#btn'); //done
+        //TODO: btn visibile
+    click('#btn'); //continue
+
+    //mc2
+    //test body not empty
+    //test for  "learn the periodic table"
+    //test btn0 visible
+    click('#btn0');
+    //test btn visible
+    click('#btn');
+
+    //results
+    // .assert.not.textContains("body", "undefined")
+    // .assert.textContains("body", "b,a,c,d")
+    // .assert.textContains("body", "blue")
+    // .assert.textContains("body", "hadn't")
+    // .assert.textContains("body", "NUMBER OF QUESTIONS: 16")
+    // .assert.textContains("body", "NUMBER CORRECT: 10")
+    // .assert.textContains("body", "PERCENT CORRECT: 63%")
+    // .assert.textContains("body", "15.")
+    // .assert.textContains("body", "ans")
+
+    click('#startOver');
+
+    //test body contains "course 1"
   });
 });
+function click(e1:string) {
+  cy.get(e1).click();
+}
+function dragDrop (e1:string, e2:string)  {
+  const dataTransfer = new DataTransfer();
+  cy.get(e1).trigger('dragstart', {dataTransfer});
+  cy.get(e2).trigger('drop',{dataTransfer});
+}

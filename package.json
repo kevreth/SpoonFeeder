@@ -16,6 +16,7 @@
     "@datastructures-js/queue": "^4.2.2",
     "@iconfu/svg-inject": "^1.2.3",
     "@tanem/svg-injector": "^10.1.31",
+    "@types/jquery": "^3.5.14",
     "@types/mathjax": "^0.0.37",
     "gsap": "^3.11.0",
     "highlight.js": "^11.6.0",
