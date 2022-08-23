@@ -81,8 +81,10 @@ export class Vocab extends Slide<Array<string>> {
                     removeListener(button);
                 }
                 const id = doc.getElementsByTagName('body')[0];
-                if(questionCtr+1<html_list.length)
-                    this.showButton2(id,doc,html_list,vocabTuples, questionCtr);
+                if(questionCtr+1<html_list.length) {
+                    const element = continueButton(doc) as HTMLElement;
+                    this.addContinueEventListener(element, doc,html_list,vocabTuples, questionCtr);
+                }
                 else {
                     this.saveData();
                     showButton(doc);
@@ -94,15 +96,13 @@ export class Vocab extends Slide<Array<string>> {
     createHtml(question: string, options: string[]):string {
         return new Mc().createHtml(question,options);
     }
-    //copy-paste from quiz.ts. NEED TO REFACTOR
-    showButton2 (
-            id:Element,
+    addContinueEventListener (
+            element:HTMLElement,
             doc:Document,
             html_list: string[],
             vocabTuples: vocabTuplesType,
             questionCtr: number
         ):void {
-        const element = continueButton(doc) as HTMLElement;
         element.addEventListener('click', ():void => {
             this.paging(doc,html_list,vocabTuples, questionCtr+1);
         });
