@@ -111,8 +111,7 @@ export function continueButton(doc: Document) {
 //////////////// Phase 3: evaluate
 function summary(responseCtr:number, correctCtr:number) {
     const pctCorrect = percentCorrect(correctCtr, responseCtr);
-    return `
-    NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
+    return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
 }
 
 export function percentCorrect(correctCtr:number, responseCtr:number):string {
