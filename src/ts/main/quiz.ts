@@ -106,7 +106,12 @@ function summary(responseCtr:number, correctCtr:number) {
     <br>\n<button id="startBtn" onclick="location.reload()">Start Over</button>
     `;
 }
-localStorage.clear();
+// localStorage.clear(); simplest way to reload to first page, it worked well
+const startOver = document.getElementById('startBtn') as HTMLElement;
+startOver.addEventListener('click', () => {
+    localStorage.clear();
+});
+
 export function percentCorrect(correctCtr:number, responseCtr:number):string {
     return ((correctCtr / responseCtr) * 100).toFixed(0);
 }
