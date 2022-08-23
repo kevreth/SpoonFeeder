@@ -113,7 +113,6 @@ function summary(responseCtr:number, correctCtr:number) {
     const pctCorrect = percentCorrect(correctCtr, responseCtr);
     return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
 }
-
 export function percentCorrect(correctCtr:number, responseCtr:number):string {
     return ((correctCtr / responseCtr) * 100).toFixed(0);
 }
