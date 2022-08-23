@@ -69,10 +69,20 @@ export function showSlides(doc:Document):void {
     const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
     if (typeof slide === 'undefined') {//end of quiz
         doc.body.innerHTML = evaluate(); //EXECUTION ENDS
+        startOverButton(doc);
     }
     else if (arr.some(x => x.txt === slide.txt))
         showSlides(doc);
     else slide.makeSlides(doc);
+}
+function startOverButton(doc: Document) {
+    const startOverText = makeButton("startOver", "startOver", "Start Over");
+    doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);
+    const startOver = document.getElementById('startOver') as HTMLElement;
+    startOver.addEventListener('click', () => {
+        localStorage.clear();
+        location.reload();
+    });
 }
 export function showButton(doc:Document):void {
     const continue_btn = continueButton(doc);
@@ -102,15 +112,8 @@ export function continueButton(doc: Document) {
 function summary(responseCtr:number, correctCtr:number) {
     const pctCorrect = percentCorrect(correctCtr, responseCtr);
     return `
-    NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%
-    <br>\n<button id="startBtn" onclick="location.reload()">Start Over</button>
-    `;
+    NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
 }
-// localStorage.clear(); simplest way to reload to first page, it worked well
-const startOver = document.getElementById('startBtn') as HTMLElement;
-startOver.addEventListener('click', () => {
-    localStorage.clear();
-});
 
 export function percentCorrect(correctCtr:number, responseCtr:number):string {
     return ((correctCtr / responseCtr) * 100).toFixed(0);
