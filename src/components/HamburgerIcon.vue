@@ -1,18 +1,17 @@
 <template>
-    <button>☰</button>
+    <img src="../svg/hamburger.svg" class="hamburgerIcon" alt="Hamburger Icon"/>
 </template>
 
 <script></script>
 
 <style scoped>
-button {
-  font-size: 5rem;
+.hamburgerIcon {
   border: none;
   padding: 5px 15px;
   position: fixed;
   top: 20px;
   right: 25px;
   transition: transform 0.3s ease-in-out;
-  width: 60px;
+  width: 120px;
 }
 </style>

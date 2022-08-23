@@ -69,10 +69,20 @@ export function showSlides(doc:Document):void {
     const arr:Array<SaveData> = extend <Array<SaveData>> (new Array<SaveData>(), data1);
     if (typeof slide === 'undefined') {//end of quiz
         doc.body.innerHTML = evaluate(); //EXECUTION ENDS
+        startOverButton(doc);
     }
     else if (arr.some(x => x.txt === slide.txt))
         showSlides(doc);
     else slide.makeSlides(doc);
+}
+function startOverButton(doc: Document) {
+    const startOverText = makeButton("startOver", "startOver", "Start Over");
+    doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);
+    const startOver = document.getElementById('startOver') as HTMLElement;
+    startOver.addEventListener('click', () => {
+        localStorage.clear();
+        location.reload();
+    });
 }
 export function showButton(doc:Document):void {
     const continue_btn = continueButton(doc);
