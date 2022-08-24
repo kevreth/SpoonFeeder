@@ -54,8 +54,13 @@
                                     "ans":"blue"
                                 },{
                                     "type":"mc",
-                                    "txt":"This lecture is so boring! I wish we ____ come and had gone to a café instead!",
-                                    "o": ["hadn't","couldn't","wouldn't","shouldn't"]
+                                    "txt":"Choose the bus.",
+                                    "o": [
+                                            "<img src=\"src/courses/english/bus.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
+                                            "<img src=\"src/courses/english/car.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
+                                            "<img src=\"src/courses/english/plane.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
+                                            "<img src=\"src/courses/english/train.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>"
+                                        ]
                                 },{
                                     "type":"gap",
                                     "txt":"text (1) text (2) text (3)",
