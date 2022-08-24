@@ -68,3 +68,10 @@ export function ajax(file:string, f:(data:Course)=>void):object {
 export function extend<T>(obj1: T, obj2:object) {
     return $.extend(obj1, obj2);
 }
+//Required only for JQuery load() methods in course data files, usually for tables.
+export function append(elem:string, content:string) {
+    $(elem).append(content);
+}
+export function empty(elem:string) {
+    $(elem).empty();
+}

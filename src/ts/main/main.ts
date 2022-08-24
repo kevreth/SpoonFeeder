@@ -12,8 +12,8 @@ app.mount("#app");
 // un-comment for TESTING
 sessionStorage.setItem("random","false");
 //===========================================================================
-// const file = './history.json';
-const file = '../../../src/courses/english.json';
+// const file = '../../../src/courses/history/history.json';
+const file = '../../../src/courses/english/english.json';
 slides(file, document);
 
 
