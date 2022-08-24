@@ -1,6 +1,6 @@
 import type { Evaluation } from './evaluation';
 import type {SlideType} from './course';
-import { extend } from './utilities';
+import { extend, append, empty } from './utilities';
 import type { ResultReturnType, AnswerType } from './result';
 import {SaveData} from './saveData';
 import { SVGInjector } from '@tanem/svg-injector'
@@ -9,7 +9,6 @@ import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
-import Hamburger from "../../components/HamburgerIcon.vue";
 import hljs from "highlight.js"
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface {
@@ -57,8 +56,8 @@ export abstract class Slide<T extends AnswerType>
                 svg.setAttribute("transform", "scale(.1)");
             }
         });
-        const content = doc.getElementById("content") as HTMLElement;
-        content.innerHTML = html;
+        empty("#content");
+        append('#content', html);
         this.postRendering(document);
     }
     postRendering(doc:Document) {

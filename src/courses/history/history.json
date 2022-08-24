@@ -124,11 +124,11 @@
 							"inst":[
 								{
 									"type":"mc",
-									"txt":"This table summarizes the four major eras of big history and adds a column for the duration of each era.<div id=\"table0\"></div>What do you notice about the third column? As we get closer to the present, the time periods<script>$('#table0').load(\"./big.history.timeline.html\")</script>",
+									"txt":"This table summarizes the four major eras of big history and adds a column for the duration of each era.<div id=\"table0\"></div>What do you notice about the third column? As we get closer to the present, the time periods<script>$('#table0').load(\"src/courses/history/big.history.timeline.html\")</script>",
 									"o":["get shorter.","get longer.","stay about the same."]
 								},{
 									"type":"info",
-									"txt":"<div id=\"table0\"></div>Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present.<script>$('#table0').load(\"./big.history.timeline.html\")</script>"
+									"txt":"<div id=\"table0\"></div>Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present.<script>$('#table0').load(\"src/courses/history/big.history.timeline.html\")</script>"
 								},{
 									"type":"mc",
 									"txt":"As we go <b>further back</b> in time, the eras",
@@ -158,13 +158,13 @@
 							"inst":[
 								{
 									"type":"info",
-									"txt":"Recall in the last unit we divided all of history into four eras:<div id=\"table0\"></div><script>$('#table0').load(\"./big.history.timeline.html\")</script>"
+									"txt":"Recall in the last unit we divided all of history into four eras:<div id=\"table0\"></div><script>$('#table0').load(\"src/courses/history/big.history.timeline.html\")</script>"
 								},{
 									"type":"info",
 									"txt":"This lesson is about the <b>cosmological</b> era. The cosmological era, lasting from the beginning of the Universe 13.7 Ga to the formation of the solar system 4.6 Ga, is also divided into four eras:<ul><li>the <b>promordial</b> era, beginning with the Big Bang, when the Universe contained only radiation and atomic nuclei;</li><li>the <b>atomic</b> era, when the Universe cooled enough for atoms to form, 380 ka;</li><li>the <b>stellar era</b>, when stars began to form 200 Ma after the Big Bang; and</li><li>the <b>galactic</b> era, when galaxies formed, 1 Ga after the Big Bang.</ul>"
 								},{
 									"type": "info",
-									"txt": "<div id=\"table0\"></div><script>$('#table0').load(\"./cosmological.era.timeline.html\")</script>"
+									"txt": "<div id=\"table0\"></div><script>$('#table0').load(\"src/courses/history/cosmological.era.timeline.html\")</script>"
 								}
 							],
 							"exercises":[

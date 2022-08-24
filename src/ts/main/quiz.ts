@@ -103,7 +103,6 @@ export function continueButton(doc: Document) {
     continue_btn.style.right = "auto";
     return continue_btn;
 }
-
 //////////////// Phase 3: evaluate
 function summary(responseCtr:number, correctCtr:number) {
     const pctCorrect = percentCorrect(correctCtr, responseCtr);

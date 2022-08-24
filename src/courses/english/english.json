@@ -18,7 +18,7 @@
                                     "txt": "  <pre><code>class MyClass {\r\n    public static myValue: string;\r\n    constructor(init: string) {\r\n        this.myValue = init;\r\n    }\r\n}\r\nimport fs = require(\"fs\");\r\nmodule MyModule {\r\n    export interface MyInterface extends Other {\r\n        myProperty: any;\r\n    }\r\n}\r\ndeclare magicNumber number;\r\nmyArray.forEach(() => { }); \/\/ fat arrow syntax<\/code><\/pre>"
                                 },{
                                     "type": "info",
-                                    "txt": "slide 3"
+                                    "txt": "Sample table <div id=\"table0\"></div><script>$('#table0').load(\"src/courses/english/english.html\")</script>"
                                 },{
                                     "type":"bool",
                                     "txt": "yes",
