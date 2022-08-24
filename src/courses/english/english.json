@@ -54,7 +54,7 @@
                                     "ans":"blue"
                                 },{
                                     "type":"mc",
-                                    "txt":"This lecture is so boring! I wish we ____ come and had gone to a café instead!",
+                                    "txt":"Choose the airplane.",
                                     "o": ["hadn't","couldn't","wouldn't","shouldn't"]
                                 },{
                                     "type":"gap",

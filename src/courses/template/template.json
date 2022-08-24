@@ -11,29 +11,12 @@
 							"name": "",
 							"inst":[
 								{
-									"pre": [
-
-									],
-									"infos": [
-										"",
-										"",
-										""
-									],
-									"ccqs": [
-										{
-											"q":"",
-											"o":["",""],
-											"ans":""
-										},{
-											"q":"",
-											"o":["",""],
-											"ans":""
-										},{
-											"q":"",
-											"o":["",""],
-											"ans":""
-										}
-									]
+									"type": "info",
+									"txt": "<div id=\"table0\"></div><script>$('#table0').load(\"src/courses/english/english.html\")</script>"
+								},{
+									"type":"bool",
+									"txt": "yes",
+									"ans": "yes"
 								}
 							],
 							"exercises": [
@@ -44,30 +27,30 @@
 								"ans":""
 							},{
 								"type":"imap",
-								"txt":"choose blue",
-								"img":"../../../src/svg/test.svg",
-								"ans":"blue"
+								"txt":"",
+								"img":"src/svg/test.svg",
+								"ans":""
 							},{
-									"type":"gap",
-									"text":" (1)  (2)  (3)",
-									"ans":["", "", ""]
+								"type":"gap",
+								"text":" (1)  (2)  (3)",
+								"ans":["", "", ""]
 							},{
-									"type":"select",
-									"inst":"",
-									"text":"",
-									"ans":[]
+								"type":"select",
+								"inst":"",
+								"text":"",
+								"ans":[]
 							},{
 								"type":"sort",
-								"txt":"sort",
+								"txt":"",
 								"ans":["a","b","c","d"]
 							},{
-									"type":"vocab",
-									"list": {
-											"1": "",
-											"2": "",
-											"3": ""
-									}
+								"type":"vocab",
+								"list": {
+									"1": "",
+									"2": "",
+									"3": ""
 								}
+							}
 					  	]
 						}
 					]
