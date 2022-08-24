@@ -8,6 +8,8 @@ import {Globals, ROW} from './globals';
 import type {Evaluation} from './evaluation';
 export enum InfoType {COURSE, UNIT, LESSON, MODULE}
 const TABLE_HEADER = '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
+const PREFIX_COURSE_FILE = '../../../src/courses/';
+const COURSE_FILE = "/course.json";
 export function slides(courseName:string, doc:Document): void {
     const file = coursePath(courseName);
     //TODO: add test for file existence
@@ -47,9 +49,7 @@ export function slides(courseName:string, doc:Document): void {
     });
 }
 function coursePath(courseName:string) {
-    const PREFIX = '../../../src/courses/';
-    const COURSE_FILE = "/course.json";
-    const file = PREFIX.concat(courseName, COURSE_FILE);
+    const file = PREFIX_COURSE_FILE.concat(courseName, COURSE_FILE);
     console.log(file);
     return file;
 }
