@@ -3,7 +3,6 @@ import type {SlideType} from './course';
 import { extend, append, empty } from './utilities';
 import type { ResultReturnType, AnswerType } from './result';
 import {SaveData} from './saveData';
-import { SVGInjector } from '@tanem/svg-injector'
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
@@ -33,9 +32,6 @@ export abstract class Slide<T extends AnswerType>
     ans!: T;
     res!: T;
     pageTemplate = `
-        <div id="header">
-            <div id="inject-hamburger" data-src="../../../src/svg/hamburger.svg"></div>
-        </div>
         <div id="slide">
             <div id="content">
             </div>
@@ -50,12 +46,6 @@ export abstract class Slide<T extends AnswerType>
         const element = document.getElementById('btn') as HTMLElement|null;
         if(element != null)
             element.remove(); // Removes the div with the 'div-02' id
-        const hamburger = document.getElementById('inject-hamburger');
-        SVGInjector(hamburger, {
-            beforeEach(svg) {
-                svg.setAttribute("transform", "scale(.1)");
-            }
-        });
         empty("#content");
         append('#content', html);
         this.postRendering(document);

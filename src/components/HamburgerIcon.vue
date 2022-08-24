@@ -1,5 +1,5 @@
 <template>
-    <img src="../svg/hamburger.svg" class="hamburgerIcon" alt="Hamburger Icon"/>
+    <img src="../svg/hamburger.svg" id="hamburger" class="hamburgerIcon" alt="Hamburger Icon"/>
 </template>
 
 <script></script>

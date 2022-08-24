@@ -1,5 +1,4 @@
 // https://docs.cypress.io/api/introduction/api.html
-import '@4tw/cypress-drag-drop'
 describe("My First Test", () => {
   it("visits the app root url", () => {
     cy.visit("/");

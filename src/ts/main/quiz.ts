@@ -8,7 +8,9 @@ import {Globals, ROW} from './globals';
 import type {Evaluation} from './evaluation';
 export enum InfoType {COURSE, UNIT, LESSON, MODULE}
 const TABLE_HEADER = '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
-export function slides(file:string, doc:Document): void {
+export function slides(courseName:string, doc:Document): void {
+    const file = coursePath(courseName);
+    //TODO: add test for file existence
     ajax(file, (course:Course) => {
         let slides = new Array<SlideType>();
         addNewInfoSlide(course.name,InfoType.COURSE,slides);
@@ -43,6 +45,13 @@ export function slides(file:string, doc:Document): void {
         Globals.JSON.set(processJson(slides));
         showSlides(doc);
     });
+}
+function coursePath(courseName:string) {
+    const PREFIX = '../../../src/courses/';
+    const COURSE_FILE = "/course.json";
+    const file = PREFIX.concat(courseName, COURSE_FILE);
+    console.log(file);
+    return file;
 }
 export function addNewInfoSlide(text: string,type:InfoType, slides: SlideType[]) {
     const slide = new info();

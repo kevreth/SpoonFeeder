@@ -34,7 +34,7 @@ export class Info extends Slide<string> {
     //to overlap. It gets placed before the dynamic content loads.
 
     //The continue button is placed inside #content here, unlike 
-    //other slide types where doing causes the content to re-center
+    //other slide types where doing so causes the content to re-center
     //vertically.
     showButton(doc:Document):void {
         const button = makeButton("btn", "continue-button", "continue");
