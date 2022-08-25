@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import $ from 'jquery';
+import $, { data } from 'jquery';
 import type {Course} from './course';
+import * as yaml from 'js-yaml';
 
 export function makeButton(id:string, clazz:string, content:string):string {
     return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
@@ -74,4 +75,15 @@ export function append(elem:string, content:string) {
 }
 export function empty(elem:string) {
     $(elem).empty();
+}
+export function getYaml(filename:string) {
+    fetch(filename)
+        .then(res => res.blob())
+        .then(blob => blob.text())
+        .then(yamlAsString => {
+            // console.log('yaml res:', yamlAsString)
+            return yamlAsString;
+            // return yaml.load(yamlAsString);
+        })
+        .catch(err => console.log('yaml err:', err))
 }

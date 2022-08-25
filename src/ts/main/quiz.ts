@@ -1,7 +1,7 @@
 import type {SaveData} from './saveData';
 import {getInstance} from './slideFactory';
 import type {SlideInterface} from './slide';
-import {ajax, extend, makeButton, shuffle, isRandom} from "./utilities";
+import {ajax, extend, makeButton, shuffle, isRandom, getYaml} from "./utilities";
 import {info,Course} from './course';
 import type {SlideType} from './course';
 import {Globals, ROW} from './globals';
@@ -13,6 +13,9 @@ const COURSE_FILE = "/course.json";
 export function slides(courseName:string, doc:Document): void {
     const file = coursePath(courseName);
     //TODO: add test for file existence
+    const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
+    const yamlContent = getYaml(yaml);
+    console.log(yamlContent);
     ajax(file, (course:Course) => {
         let slides = new Array<SlideType>();
         addNewInfoSlide(course.name,InfoType.COURSE,slides);
@@ -49,9 +52,7 @@ export function slides(courseName:string, doc:Document): void {
     });
 }
 function coursePath(courseName:string) {
-    const file = PREFIX_COURSE_FILE.concat(courseName, COURSE_FILE);
-    console.log(file);
-    return file;
+    return PREFIX_COURSE_FILE.concat(courseName, COURSE_FILE);
 }
 export function addNewInfoSlide(text: string,type:InfoType, slides: SlideType[]) {
     const slide = new info();
