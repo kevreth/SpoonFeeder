@@ -1,21 +1,32 @@
 <template>
-    <HamburgerIcon />
+    <!-- <HamburgerIcon /> -->
+    <!-- <HamburgerOverlay /> -->
+    <HamburgerIcon @click="toggleIcon"></HamburgerIcon>
+    <teleport to=".overlays" v-if="showOverlay">
+      <HamburgerOverlay @close="toggleIcon"/>      
+      </teleport>
     <div id="slide">
         <div id="content">
         </div>
-    </div>    
+    </div> 
 </template>
 
 <script>
 import HamburgerIcon from "./components/HamburgerIcon.vue";
+import HamburgerOverlay from "./components/HamburgerOverlay.vue"
 export default {
   name: "App",
-  components: { HamburgerIcon },
+  components: { HamburgerIcon, HamburgerOverlay },
   data() {
     return {
-      title: "You did it",
-    };
+      showOverlay: false
+    }
   },
+  methods: {
+    toggleIcon() {
+      this.showOverlay = !this.showOverlay
+    }
+  }
 };
 </script>
 
