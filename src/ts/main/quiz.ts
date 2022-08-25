@@ -49,9 +49,7 @@ export function slides(courseName:string, doc:Document): void {
     });
 }
 function coursePath(courseName:string) {
-    const file = PREFIX_COURSE_FILE.concat(courseName, COURSE_FILE);
-    console.log(file);
-    return file;
+    return PREFIX_COURSE_FILE.concat(courseName, COURSE_FILE);
 }
 export function addNewInfoSlide(text: string,type:InfoType, slides: SlideType[]) {
     const slide = new info();
