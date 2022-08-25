@@ -13,5 +13,6 @@
   right: 25px;
   transition: transform 0.3s ease-in-out;
   width: 120px;
+  cursor: pointer;
 }
 </style>
