@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import $ from 'jquery';
 import type {Course} from './course';
+import * as yaml from 'js-yaml';
 
 export function makeButton(id:string, clazz:string, content:string):string {
     return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
@@ -62,9 +63,6 @@ export function escape(data:string):string {
     return _.escape(data);
 }
 // =========================== Jquery wrappers ================================
-export function ajax(file:string, f:(data:Course)=>void):object {
-    return $.getJSON(file,f);
-}
 export function extend<T>(obj1: T, obj2:object) {
     return $.extend(obj1, obj2);
 }
@@ -74,4 +72,14 @@ export function append(elem:string, content:string) {
 }
 export function empty(elem:string) {
     $(elem).empty();
+}
+export function getYaml(filename:string, f:(data:Course)=>void) {
+    fetch(filename)
+        .then(res => res.blob())
+        .then(blob => blob.text())
+        .then(yamlAsString => {
+            let yml = yaml.load(yamlAsString) as Course;
+            f(yml);
+        })
+        .catch(err => console.log('yaml err:', err))
 }
