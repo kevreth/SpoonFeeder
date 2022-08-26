@@ -1,5 +1,5 @@
 <template>
-    <div class="backdrop" @click.self="closeOverlay">
+    <div class="backdrop">
         <div class="overlay">
             <button @click="startOver" class="startOver">Start Over</button>
             <a href="#" @click="closeOverlay">X</a>
@@ -9,14 +9,13 @@
 
 <script>
 export default {
-    // props: [ startOver ],
     methods: {
         closeOverlay() {
             this.$emit('close');
         },
         startOver() {
-        localStorage.clear();
-        location.reload();
+            localStorage.clear();
+            location.reload();
         }
     }
 }
@@ -32,15 +31,12 @@ export default {
         /* opacity: 0.2; */
     }
     .overlay {
-        /* color: red; */
-        /* background: none; */
         width: 200px;
         padding: 25px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         position: relative;
-        background: rgba(47, 47, 47, 0.2);
         border-radius: 10px;
     }
     a {
