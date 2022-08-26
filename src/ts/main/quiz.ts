@@ -1,7 +1,7 @@
 import type {SaveData} from './saveData';
 import {getInstance} from './slideFactory';
 import type {SlideInterface} from './slide';
-import {ajax, extend, makeButton, shuffle, isRandom, getYaml} from "./utilities";
+import {extend, makeButton, shuffle, isRandom, getYaml} from "./utilities";
 import {info,Course} from './course';
 import type {SlideType} from './course';
 import {Globals, ROW} from './globals';
@@ -9,14 +9,10 @@ import type {Evaluation} from './evaluation';
 export enum InfoType {COURSE, UNIT, LESSON, MODULE}
 const TABLE_HEADER = '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
-const COURSE_FILE = "/course.json";
 export function slides(courseName:string, doc:Document): void {
-    const file = coursePath(courseName);
     //TODO: add test for file existence
     const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
-    // const yamlContent = getYaml(yaml);
-    // console.log(yamlContent);
-    ajax(file, (course:Course) => {
+    getYaml(yaml, (course:Course) => {
         let slides = new Array<SlideType>();
         addNewInfoSlide(course.name,InfoType.COURSE,slides);
         const units = course.units;
@@ -50,9 +46,6 @@ export function slides(courseName:string, doc:Document): void {
         Globals.JSON.set(processJson(slides));
         showSlides(doc);
     });
-}
-function coursePath(courseName:string) {
-    return PREFIX_COURSE_FILE.concat(courseName, COURSE_FILE);
 }
 export function addNewInfoSlide(text: string,type:InfoType, slides: SlideType[]) {
     const slide = new info();
