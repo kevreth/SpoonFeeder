@@ -18,7 +18,7 @@
                                     "txt": "  <pre><code>class MyClass {\r\n    public static myValue: string;\r\n    constructor(init: string) {\r\n        this.myValue = init;\r\n    }\r\n}\r\nimport fs = require(\"fs\");\r\nmodule MyModule {\r\n    export interface MyInterface extends Other {\r\n        myProperty: any;\r\n    }\r\n}\r\ndeclare magicNumber number;\r\nmyArray.forEach(() => { }); \/\/ fat arrow syntax<\/code><\/pre>"
                                 },{
                                     "type": "info",
-                                    "txt": "Sample table <div id=\"table0\"></div><script>$('#table0').load(\"src/courses/english/english.html\")</script>"
+                                    "txt": "Sample table <div id=\"table0\"></div><script>$('#table0').load(\"src/courses/test/english.html\")</script>"
                                 },{
                                     "type":"bool",
                                     "txt": "yes",
@@ -56,10 +56,10 @@
                                     "type":"mc",
                                     "txt":"Choose the bus.",
                                     "o": [
-                                            "<img src=\"src/courses/english/bus.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
-                                            "<img src=\"src/courses/english/car.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
-                                            "<img src=\"src/courses/english/plane.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
-                                            "<img src=\"src/courses/english/train.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>"
+                                            "<img src=\"src/courses/test/bus.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
+                                            "<img src=\"src/courses/test/car.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
+                                            "<img src=\"src/courses/test/plane.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>",
+                                            "<img src=\"src/courses/test/train.svg\" class=\"mcButton\" width = \"100\" height=\"auto\"/>"
                                         ]
                                 },{
                                     "type":"gap",

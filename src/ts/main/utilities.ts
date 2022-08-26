@@ -76,6 +76,7 @@ export function append(elem:string, content:string) {
 export function empty(elem:string) {
     $(elem).empty();
 }
+<<<<<<< HEAD
 export function getYaml(filename:string) {
     fetch(filename)
         .then(res => res.blob())
@@ -87,3 +88,5 @@ export function getYaml(filename:string) {
         })
         .catch(err => console.log('yaml err:', err))
 }
+=======
+>>>>>>> main
