@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import $, { data } from 'jquery';
+import $ from 'jquery';
 import type {Course} from './course';
 import * as yaml from 'js-yaml';
 
@@ -63,9 +63,6 @@ export function escape(data:string):string {
     return _.escape(data);
 }
 // =========================== Jquery wrappers ================================
-// export function ajax(file:string, f:(data:Course)=>void) {
-//     $.getJSON(file,f);
-// }
 export function extend<T>(obj1: T, obj2:object) {
     return $.extend(obj1, obj2);
 }
