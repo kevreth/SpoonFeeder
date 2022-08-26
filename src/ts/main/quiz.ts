@@ -14,8 +14,8 @@ export function slides(courseName:string, doc:Document): void {
     const file = coursePath(courseName);
     //TODO: add test for file existence
     const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
-    const yamlContent = getYaml(yaml);
-    console.log(yamlContent);
+    // const yamlContent = getYaml(yaml);
+    // console.log(yamlContent);
     ajax(file, (course:Course) => {
         let slides = new Array<SlideType>();
         addNewInfoSlide(course.name,InfoType.COURSE,slides);

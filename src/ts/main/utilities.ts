@@ -63,8 +63,8 @@ export function escape(data:string):string {
     return _.escape(data);
 }
 // =========================== Jquery wrappers ================================
-export function ajax(file:string, f:(data:Course)=>void):object {
-    return $.getJSON(file,f);
+export function ajax(file:string, f:(data:Course)=>void) {
+    $.getJSON(file,f);
 }
 export function extend<T>(obj1: T, obj2:object) {
     return $.extend(obj1, obj2);
@@ -76,8 +76,7 @@ export function append(elem:string, content:string) {
 export function empty(elem:string) {
     $(elem).empty();
 }
-<<<<<<< HEAD
-export function getYaml(filename:string) {
+export function getYaml(filename:string, f:(data:Course)=>void):object {
     fetch(filename)
         .then(res => res.blob())
         .then(blob => blob.text())
@@ -88,5 +87,3 @@ export function getYaml(filename:string) {
         })
         .catch(err => console.log('yaml err:', err))
 }
-=======
->>>>>>> main
