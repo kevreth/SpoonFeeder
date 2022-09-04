@@ -11,8 +11,9 @@
   position: fixed;
   top: 20px;
   right: 25px;
-  transition: transform 0.3s ease-in-out;
-  width: 120px;
+  /* transition: transform 0.3s ease-in-out; */
+  width: 5em;
   cursor: pointer;
+  /* max-height: 100vh; */
 }
 </style>

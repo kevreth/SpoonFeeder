@@ -1,10 +1,8 @@
 <template>
-    <!-- <HamburgerIcon /> -->
-    <!-- <HamburgerOverlay /> -->
-    <HamburgerIcon @click="toggleIcon"></HamburgerIcon>
+    <HamburgerIcon @click="toggleIcon"/>
     <teleport to=".overlays" v-if="showOverlay">
       <HamburgerOverlay @close="toggleIcon"/>      
-      </teleport>
+    </teleport>
     <div id="slide">
         <div id="content">
         </div>

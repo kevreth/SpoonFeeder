@@ -96,14 +96,12 @@ export function showButton(doc:Document):void {
 }
 export function continueButton(doc: Document) {
     const button = makeButton("btn", "continue-button", "continue");
-    doc.body.insertAdjacentHTML('beforeend', button);
+    // doc.body.insertAdjacentHTML('beforeend', button);
+    content.insertAdjacentHTML('beforeend', button);
     const continue_btn = doc.getElementById("btn") as HTMLElement;
     const elem = doc.getElementById('content') as HTMLElement;
     const rect = elem.getBoundingClientRect();
-    const bottom = rect.bottom;
-    continue_btn.style.position = "relative";
-    continue_btn.style.top = bottom + 15 + "px";
-    continue_btn.style.right = "auto";
+    continue_btn.style.marginTop = 25 + "px";
     return continue_btn;
 }
 //////////////// Phase 3: evaluate

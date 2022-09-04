@@ -1,7 +1,6 @@
 <template>
   <div class="overlay">
     <button @click="startOver" class="startOver">Start Over</button>
-    <a href="#" @click="closeOverlay">X</a>
   </div>
 </template>
 
@@ -10,9 +9,6 @@ import startOver from "../composables/startOver";
 
 export default {
   methods: {
-    closeOverlay() {
-      this.$emit("close");
-    },
     startOver() {
       const { reloadPage } = startOver();
       return { reloadPage }
@@ -33,12 +29,5 @@ export default {
     }
   .startOver {
         cursor: pointer;
-    }
-  a {
-        text-decoration: none;
-        position: absolute;
-        right: 0;
-        top: 0;
-        color: rgb(238, 123, 123);
     }
 </style>

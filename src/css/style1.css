@@ -14,7 +14,7 @@
   }
 }
 
-@media (orientation: portrait) {
+/* @media (orientation: portrait) {
   body {
     font-size: 4vw;
   }
@@ -27,7 +27,7 @@
   .incorrect {
     font-size: 14vw;
   }
-}
+} */
 body {
 	font-family: 'Work Sans', sans-serif;
 	color: white;
@@ -62,9 +62,9 @@ ol,ul {
   margin-bottom: 10px;
 }
 button {
-  display: inline-block;
+  /* display: inline-block; */
   padding:0.1em 0.3em;
-  margin:0 0.1em 0.1em 0;
+  margin:0 0 0.1em 0;
   border: 2px solid white;
   box-sizing: border-box;
   text-decoration:none;
@@ -73,10 +73,14 @@ button {
   background-color: black;
   text-align:center;
   transition: all 0.2s;
+
+  /* position: absolute; */
+  font-size: 1.2rem;
+  width: 100px;
 }
 button:hover{
   border-color: blue;
-  }
+}
 @media all and (max-width:10em){
   button{
     display:block;
@@ -123,6 +127,7 @@ button:hover{
   left:50%;
   transform: translate(-50%, -50%);
   position: absolute;
+  font-size: 1.2rem;
 }
 .list-item {
   position: absolute;

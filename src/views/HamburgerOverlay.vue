@@ -1,6 +1,7 @@
 <template>
     <div class="backdrop">
         <StartOver />
+        <a href="#" @click="closeOverlay">X</a>
     </div>
 </template>
 
@@ -9,7 +10,12 @@ import StartOver from "../components/StartOver.vue"
 
 export default {
     name: "HamburgerOverlay",
-    components: { StartOver }
+    components: { StartOver },
+    methods: {
+        closeOverlay() {
+            this.$emit("close");
+        },
+    }
 }
 </script>
 
@@ -21,5 +27,12 @@ export default {
         position: fixed;
         background: #1f1b24;
         /* opacity: 0.2; */
+    }
+    a {
+        text-decoration: none;
+        position: relative;
+        right: 0;
+        top: 0;
+        color: rgb(238, 123, 123);
     }
 </style>
