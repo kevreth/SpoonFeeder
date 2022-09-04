@@ -13,7 +13,7 @@
 
 <script>
 import HamburgerIcon from "./components/HamburgerIcon.vue";
-import HamburgerOverlay from "./components/HamburgerOverlay.vue"
+import HamburgerOverlay from "./views/HamburgerOverlay.vue"
 export default {
   name: "App",
   components: { HamburgerIcon, HamburgerOverlay },

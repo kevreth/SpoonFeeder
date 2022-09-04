@@ -6,6 +6,7 @@ import {info,Course} from './course';
 import type {SlideType} from './course';
 import {Globals, ROW} from './globals';
 import type {Evaluation} from './evaluation';
+import reloadPage from '../../composables/startOver';
 export enum InfoType {COURSE, UNIT, LESSON, MODULE}
 const TABLE_HEADER = '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
@@ -87,8 +88,7 @@ function startOverButton(doc: Document) {
     doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);
     const startOver = document.getElementById('startOver') as HTMLElement;
     startOver.addEventListener('click', () => {
-        localStorage.clear();
-        location.reload();
+        reloadPage();
     });
 }
 export function showButton(doc:Document):void {
