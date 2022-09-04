@@ -21,4 +21,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style>  
+  .overlay {
+        width: 200px;
+        padding: 25px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: relative;
+        border-radius: 10px;
+    }
+  .startOver {
+        cursor: pointer;
+    }
+  a {
+        text-decoration: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: rgb(238, 123, 123);
+    }
+</style>
