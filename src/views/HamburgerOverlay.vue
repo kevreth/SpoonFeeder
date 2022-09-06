@@ -12,6 +12,7 @@ import StartOver from "../components/StartOver.vue"
 export default {
     name: "HamburgerOverlay",
     components: { StartOver },
+    emits: ["close"],
     methods: {
         closeOverlay() {
         this.$emit("close");
