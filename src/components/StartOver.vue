@@ -6,7 +6,6 @@
 
 <script>
 import startOver from "../composables/startOver";
-import overlay from "../css/overlay.css"
 
 export default {
   data() {
@@ -23,4 +22,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.startOver {
+  line-height: 1px;
+}
+.startOverBtn {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 15px;
+}
+</style>
