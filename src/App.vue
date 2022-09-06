@@ -1,12 +1,10 @@
 <template>
-    <!-- <HamburgerIcon /> -->
-    <!-- <HamburgerOverlay /> -->
     <HamburgerIcon @click="toggleIcon"></HamburgerIcon>
     <teleport to=".overlays" v-if="showOverlay">
       <HamburgerOverlay @close="toggleIcon"/>      
       </teleport>
     <div id="slide">
-        <div id="content">
+        <div id="content" :class="{'blury': showOverlay}">
         </div>
     </div> 
 </template>

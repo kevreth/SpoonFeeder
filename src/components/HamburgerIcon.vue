@@ -4,7 +4,7 @@
 
 <script></script>
 
-<style scoped>
+<style>
 .hamburgerIcon {
   border: none;
   padding: 5px 15px;
@@ -12,7 +12,13 @@
   top: 20px;
   right: 25px;
   transition: transform 0.3s ease-in-out;
-  width: 120px;
+  max-width: 150px;
+  width: 15%;
   cursor: pointer;
+}
+@-moz-document url-prefix() {
+  .hamburgerIcon {
+    max-width: 250px;
+  }
 }
 </style>

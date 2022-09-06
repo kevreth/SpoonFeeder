@@ -1,25 +1,23 @@
 <template>
-    <div class="backdrop">
-        <StartOver />
+    <div class="overlay">
+        <a href="#" @click="closeOverlay" class="closeOverlay">X</a>
     </div>
+    <StartOver />
+
 </template>
 
 <script>
 import StartOver from "../components/StartOver.vue"
+import overlay from "../css/overlay.css"
 
 export default {
     name: "HamburgerOverlay",
-    components: { StartOver }
+    components: { StartOver },
+    methods: {
+        closeOverlay() {
+        this.$emit("close");
+    }}
 }
 </script>
 
-<style scoped>
-    .backdrop {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        position: fixed;
-        background: #1f1b24;
-        /* opacity: 0.2; */
-    }
-</style>
+<style></style>
