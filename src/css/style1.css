@@ -112,18 +112,6 @@ button:hover{
   right:auto;
   top:auto;
 }
-#inject-hamburger {
-  text-align: right;
-  top: -500px;
-  right: -300px;
-  position: fixed;
-}
-#content {
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
 .list-item {
   position: absolute;
   top: 0;
