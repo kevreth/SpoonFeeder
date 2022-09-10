@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>MathJax example</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MathJax example</title>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="lib/tex-mml-chtml.js"></script>
   <script src="lib/CSSRulePlugin.min.js"></script>
   <script src="lib/CustomEase.min.js"></script>
@@ -22,37 +22,46 @@
   <script src="lib/vara.js"></script>
   <script src="lib/typed.js"></script>
   <script src="lib/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-  <link rel="stylesheet" href="highlight.min.css">
-  <style>
-    .ball {
-      background: #DB8A74;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-    }
-  </style>
-</head>
-<body>
-  <div class="ball"></div>
-  <p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]</p>
-  <div id="vara-js"></div>
-  <div id="typed-js"></div>
-  <script>
-    var vara = new Vara("#vara-js","./shadows-into-light.json",[{
-      text:"VARA: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et elit elit.",duration:8000
-    }]);
-    var typed = new Typed('#typed-js', {
-      strings: ["TYPED: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et elit elit."],typeSpeed: .01
-    });
-    gsap.to('.ball', {
-      duration: 1,
-      x: 200,
-      scale: 2
-    })
-  </script>
-  <br>
-  <pre><code>
+  <script>hljs.highlightAll();</script> -->
+    <link rel="stylesheet" href="highlight.min.css" />
+    <style>
+      .ball {
+        background: #db8a74;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <p>
+      When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and
+      they are \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+    </p>
+    <div id="vara-js"></div>
+    <div id="typed-js"></div>
+    <script>
+      var vara = new Vara('#vara-js', './shadows-into-light.json', [
+        {
+          text: 'VARA: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et elit elit.',
+          duration: 8000,
+        },
+      ]);
+      var typed = new Typed('#typed-js', {
+        strings: [
+          'TYPED: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et elit elit.',
+        ],
+        typeSpeed: 0.01,
+      });
+      gsap.to('.ball', {
+        duration: 1,
+        x: 200,
+        scale: 2,
+      });
+    </script>
+    <br />
+    <pre><code>
     class MyClass {
       public static myValue: string;
       constructor(init: string) {
@@ -68,5 +77,5 @@
     declare magicNumber number;
     myArray.forEach(() => { }); // fat arrow syntax
   </code></pre>
-</body>
+  </body>
 </html>

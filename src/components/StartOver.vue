@@ -5,20 +5,20 @@
 </template>
 
 <script>
-import startOver from "../composables/startOver";
+import startOver from '../composables/startOver';
 
 export default {
   data() {
     return {
-      showOverlay: false
-    }
+      showOverlay: false,
+    };
   },
   methods: {
     startOver() {
       const { reloadPage } = startOver();
-      return { reloadPage }
+      return { reloadPage };
     },
-  }
+  },
 };
 </script>
 

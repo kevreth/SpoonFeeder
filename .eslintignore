@@ -1,0 +1,11 @@
+/dist
+/src-capacitor
+/src-cordova
+/.quasar
+/node_modules
+.eslintrc.js
+/src-ssr
+/lib
+/.vscode
+/cypress
+/public

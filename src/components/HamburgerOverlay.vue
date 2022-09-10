@@ -1,23 +1,23 @@
 <template>
-    <div class="overlay">
-        <a href="#" @click="closeOverlay" class="closeOverlay">X</a>
-    </div>
-    <StartOver />
-
+  <div class="overlay">
+    <a href="#" @click="closeOverlay" class="closeOverlay">X</a>
+  </div>
+  <StartOver />
 </template>
 
 <script>
-import StartOver from "../components/StartOver.vue"
+import StartOver from '../components/StartOver.vue';
 
 export default {
-    name: "HamburgerOverlay",
-    components: { StartOver },
-    emits: ["close"],
-    methods: {
-        closeOverlay() {
-        this.$emit("close");
-    }}
-}
+  name: 'HamburgerOverlay',
+  components: { StartOver },
+  emits: ['close'],
+  methods: {
+    closeOverlay() {
+      this.$emit('close');
+    },
+  },
+};
 </script>
 
 <style>
@@ -49,7 +49,8 @@ a {
   transition: 0.3s;
   font-size: 56px;
 }
-.overlay a:hover, .overlay a:focus {
+.overlay a:hover,
+.overlay a:focus {
   color: red;
 }
 </style>
