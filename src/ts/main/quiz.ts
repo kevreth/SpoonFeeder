@@ -113,16 +113,12 @@ function startOverButton(doc: Document) {
 }
 export function showButton(doc: Document): void {
   const continue_btn = continueButton(doc);
-  // continue_btn.style.visibility = "hidden";
-  // continue_btn.style.transform = "translate(-50%, 0)";
-  // continue_btn.style.visibility = "visible";
   continue_btn?.addEventListener('click', (): void => {
     showSlides(doc);
   });
 }
 export function continueButton(doc: Document) {
   const button = makeButton('btn', 'continue-button', 'continue');
-  // doc.body.insertAdjacentHTML('beforeend', button);
   slide.insertAdjacentHTML('beforeend', button);
   const continue_btn = doc.getElementById('btn') as HTMLElement;
   const elem = doc.getElementById('content') as HTMLElement;
@@ -151,8 +147,6 @@ function evaluate(): string {
   let responseCtr = 0;
   for (let i = 0; i < Globals.JSON.getNumSlides(); i++) {
     const slide = Globals.JSON.getSlide();
-    //this should be negated, unsure why works this way.
-    //want to continue for non-exercises
     if (!slide.isExercise) continue;
     const evaluation: Evaluation = slide.evaluate();
     responseCtr += evaluation.responses;
