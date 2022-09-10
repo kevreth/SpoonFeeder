@@ -1,20 +1,20 @@
-export type SlideType = ccq|mc|gap|info|select|vocab|imap|sort;
+export type SlideType = ccq | mc | gap | info | select | vocab | imap | sort;
 export class Course {
-    name="";
-    units:Array<Unit>= [];
+  name = '';
+  units: Array<Unit> = [];
 }
 export class Unit {
-    name="";
-    lessons:Array<Lesson>= [];
+  name = '';
+  lessons: Array<Lesson> = [];
 }
 export class Lesson {
-    name="";
-    modules:Array<Module>= [];
+  name = '';
+  modules: Array<Module> = [];
 }
 export class Module {
-    name="";
-    inst:Array<SlideType>= [];
-    exercises:Array<SlideType>= [];
+  name = '';
+  inst: Array<SlideType> = [];
+  exercises: Array<SlideType> = [];
 }
 // export abstract class inst {
 //     pre:Array<SlideType>;
@@ -22,54 +22,54 @@ export class Module {
 //     ccqs:Array<ccq>;
 // }
 export abstract class Slides {
-    slides: Array<SlideType>= [];
+  slides: Array<SlideType> = [];
 }
 export abstract class slide {
-    type="";
-    isExercise = false;
+  type = '';
+  isExercise = false;
 }
 export class bool extends slide {
-    txt="";
-    ans="";
+  txt = '';
+  ans = '';
 }
 export class gap extends slide {
-    txt="";
-    ans:     Array<string>= [];
+  txt = '';
+  ans: Array<string> = [];
 }
 export class imap extends slide {
-    txt="";
-    img="";
-    ans="";
+  txt = '';
+  img = '';
+  ans = '';
 }
 export class mc extends slide {
-    txt="";
-    o:    Array<string>= [];
-    ans="";
+  txt = '';
+  o: Array<string> = [];
+  ans = '';
 }
 export class select extends slide {
-    inst="";
-    txt="";
-    ans:     Array<number>= [];
+  inst = '';
+  txt = '';
+  ans: Array<number> = [];
 }
 export class sort extends slide {
-    txt="";
-    ans:Array<string>= [];
+  txt = '';
+  ans: Array<string> = [];
 }
 export class vocab extends slide {
-    list: Map<string,string>= new Map;
+  list: Map<string, string> = new Map();
 }
 //this is not the format in the course file,
 //where info is just a string.
 export class info extends slide {
-    txt="";
-    subtype="";
-    constructor() {
-        super();
-        this.type="info";
-    }
+  txt = '';
+  subtype = '';
+  constructor() {
+    super();
+    this.type = 'info';
+  }
 }
 export class ccq extends slide {
-    txt="";
-    o:    Array<string>= [];
-    ans="";
+  txt = '';
+  o: Array<string> = [];
+  ans = '';
 }
