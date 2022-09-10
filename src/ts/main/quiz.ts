@@ -119,6 +119,7 @@ export function showButton(doc: Document): void {
 }
 export function continueButton(doc: Document) {
   const button = makeButton('btn', 'continue-button', 'continue');
+  const slide = doc.getElementById('slide') as HTMLElement;
   slide.insertAdjacentHTML('beforeend', button);
   const continue_btn = doc.getElementById('btn') as HTMLElement;
   const elem = doc.getElementById('content') as HTMLElement;
