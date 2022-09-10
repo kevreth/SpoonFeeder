@@ -22,7 +22,7 @@
 
 <script>
 import HamburgerIcon from "../components/HamburgerIcon.vue";
-import HamburgerOverlay from "./HamburgerOverlay.vue"
+import HamburgerOverlay from "../components/HamburgerOverlay.vue"
 
 export default {
   components: { HamburgerOverlay, HamburgerIcon  },
