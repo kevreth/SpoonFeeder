@@ -19,13 +19,6 @@ import { slides } from '../ts/main/quiz';
 import '../css/style1.css';
 sessionStorage.clear();
 
-// import { createApp } from "vue";
-// import App from "../../App.vue";
-// import router from '@/router';
-
-// const app = createApp(App).use(router);
-// app.mount("#app");
-
 //===========================================================================
 // un-comment for TESTING
 sessionStorage.setItem('random', 'false');
