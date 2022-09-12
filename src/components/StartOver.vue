@@ -28,10 +28,11 @@ export default {
 }
 .startOverBtn {
   cursor: pointer;
+  margin: auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 8px 15px;
+  padding: 2.5rem;
 }
 </style>

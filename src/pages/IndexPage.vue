@@ -1,14 +1,14 @@
 <template>
   <!-- <q-page class="row items-center justify-evenly"> -->
-  <HamburgerIcon @click="toggleIcon" :class="{ blury: showOverlay }" />
-
-  <teleport to=".overlays" v-if="showOverlay">
-    <HamburgerOverlay @close="toggleIcon" />
-  </teleport>
-
-  <div id="slide" :class="{ blury: showOverlay }">
-    <div id="content"></div>
-  </div>
+    <HamburgerIcon @click="toggleIcon" :class="{ blury: showOverlay }" />
+  
+    <teleport to=".overlays" v-if="showOverlay">
+      <HamburgerOverlay @close="toggleIcon" />
+    </teleport>
+  
+    <div id="slide" :class="{ blury: showOverlay }">
+      <div id="content"></div>
+    </div>
   <!-- </q-page> -->
 </template>
 
@@ -43,10 +43,14 @@ export default {
 </script>
 
 <style>
-#content {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+#q-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* margin-left: -7px;
+  margin-top: -6px; */
+  min-height: 50vh;
+  overflow: hidden;
 }
 </style>
