@@ -43,10 +43,12 @@ export default {
 </script>
 
 <style>
-#content {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+#q-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 50vh;
+  overflow: hidden;
 }
 </style>

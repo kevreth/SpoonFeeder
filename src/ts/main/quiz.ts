@@ -122,12 +122,9 @@ export function continueButton(doc: Document) {
   const slide = doc.getElementById('slide') as HTMLElement;
   slide.insertAdjacentHTML('beforeend', button);
   const continue_btn = doc.getElementById('btn') as HTMLElement;
-  const elem = doc.getElementById('content') as HTMLElement;
-  const rect = elem.getBoundingClientRect();
-  const bottom = rect.bottom;
-  continue_btn.style.position = 'relative';
-  continue_btn.style.top = bottom + 15 + 'px';
-  continue_btn.style.right = 'auto';
+  continue_btn.style.position = 'absolute';
+  continue_btn.style.marginTop = 10 + 'px';
+  continue_btn.style.marginLeft = -2.3 + 'em';
   return continue_btn;
 }
 //////////////// Phase 3: evaluate
