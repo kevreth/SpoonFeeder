@@ -1,0 +1,126 @@
+= Vue
+
+== Global API
+
+=== Application
+
+  - createApp:
+  - createSSRApp:
+  - app.mount:
+  - app.unmount:
+  - app.provide:
+  - app.component:
+  - app.directive:
+  - app.use:
+  - app.mixin:
+  - app.version:
+  - app.config:
+  - app.config.errorHandler:
+  - app.config.warnHandler:
+  - app.config.performance:
+  - app.config.compilerOptions:
+  - app.config.globalProperties:
+  - app.config.optionMergeStrategies:
+
+=== General
+
+  - version:
+  - nextTick:
+  - defineComponent:
+  - defineAsyncComponent:
+  - defineCustomElement:
+
+== Composition API
+
+=== Core
+
+  - ref:
+  - computed:
+  - reactive:
+  - readonly:
+  - watchEffect:
+  - watchPostEffect:
+  - watchSyncEffect:
+  - watch:
+
+=== Utilities
+
+  - isRef:
+  - unref:
+  - toRef:
+  - toRefs:
+  - isProxy:
+  - isReactive:
+  - isReadonly:
+
+=== Advanced
+
+  - shallowRef:
+  - triggerRef:
+  - customRef:
+  - shallowReactive:
+  - shallowReadonly:
+  - toRaw:
+  - markRaw:
+  - effectScope:
+  - getCurrentScope:
+  - onScopeDispose:
+
+=== Lifecycle Hooks
+
+  - onMounted:
+  - onUpdated:
+  - onUnmounted:
+  - onBeforeMount:
+  - onBeforeUpdate:
+  - onBeforeUnmount:
+  - onErrorCaptured:
+  - onRenderTracked:
+  - onRenderTriggered:
+  - onActivated:
+  - onDeactivated:
+  - onServerPrefetch:
+
+=== Dependency Injection
+
+  - provide:
+  - inject:
+
+== Built-ins
+
+=== Directives
+
+  - text:
+  - html:
+  - show:
+  - if:
+  - else:
+  - else-if:
+  - for:
+  - on:
+  - bind:
+  - model:
+  - slot:
+  - pre:
+  - once:
+  - memo:
+  - cloak:
+
+=== Components
+
+  - Transition:
+  - TransitionGroup:
+  - KeepAlive:
+  - Teleport:
+  - Suspense:
+
+=== Elements
+
+  - component:
+  - slot:
+
+=== Attributes
+
+  - key:
+  - ref:
+  - is:
