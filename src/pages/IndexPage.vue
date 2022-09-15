@@ -49,6 +49,5 @@ export default {
   align-items: center;
   height: 100%;
   min-height: 50vh;
-  overflow: hidden;
 }
 </style>
