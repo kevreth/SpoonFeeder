@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<!-- <script setup>
+  import startOver from '../composables/startOver';
+
+  function startOver() {
+      const { reloadPage } = startOver();
+      return { reloadPage };
+    }
+
+</script> -->
+
 <script>
 import startOver from '../composables/startOver';
 

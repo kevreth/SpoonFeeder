@@ -1,11 +1,11 @@
 <template>
-  <!-- <q-page class="row items-center justify-evenly"> -->
+  <q-page class="row items-center justify-evenly">
 
   <div id="slide">
     <div id="content"></div>
   </div>
 
-  <!-- </q-page> -->
+  </q-page>
 </template>
 
 <script lang="ts">
@@ -22,13 +22,3 @@ const courseName = 'test';
 slides(courseName, document);
 
 </script>
-
-<style>
-#q-app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  min-height: 50vh;
-}
-</style>

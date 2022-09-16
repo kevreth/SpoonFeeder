@@ -1,30 +1,34 @@
 <template>
   <q-layout view="hHh Lpr lFf">
-
-    <q-header class="bg-black">
+    <q-header class="bg-none">
       <q-toolbar>
         <q-toolbar-title />
-        <q-btn
+        <q-icon
           size="250%"
-          icon="menu"
-          @click="toggleIcon"/>
+          name="menu"
+          @click="toggleIcon"
+          style="cursor: pointer"       
+          :class="{ blury: showOverlay }"/>
       </q-toolbar>
     </q-header>
 
     <q-item-section>
       <teleport to=".overlays" v-if="showOverlay">
-        <HamburgerOverlay @close="toggleIcon" />
+        <HamburgerOverlay @close="toggleIcon"
+         />
       </teleport>
     </q-item-section>     
 
-    <q-page-container :class="{ blury: showOverlay }">
+    <q-page-container
+      :class="{ blury: showOverlay }">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <!-- <script setup>
-  import HamburgerOverlay from 'src/components/HamburgerOverlay.vue';
+  import ref from 'vue'
+  // import HamburgerOverlay from 'src/components/HamburgerOverlay.vue';
 
   let showOverlay = ref(false);
 
@@ -54,6 +58,9 @@ export default defineComponent ({
 </script>
 
 <style>
+.q-page-container {
+  padding-top: calc(50px + env(safe-area-inset-top, 0)) !important;
+}
 .blury {
   filter: blur(10px);
 }
