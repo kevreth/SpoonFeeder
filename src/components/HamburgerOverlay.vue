@@ -1,8 +1,34 @@
 <template>
-  <div class="overlay">
+  <!-- <div class="overlay">
     <a href="#" @click="closeOverlay" class="closeOverlay">X</a>
-  </div>
+  </div> -->
+<div>
+  <q-btn class="overlay z-top">
+    <q-icon
+      name="close"
+      color="negative"
+      style="position:absolute; top:0; right:0"
+      class="q-mr-xs q-mt-xs q-p-none"
+      size="42px"
+      @click="closeOverlay" 
+    />
+  </q-btn>
   <StartOver />
+
+</div>
+  
+  <!-- <q-btn class="overlay z-top">
+    <q-btn
+      text-color="negative"
+      style="position:absolute;top:0;right:0"
+      @click="closeOverlay"
+      flat
+      class="closeOverlay q-mr-xs q-mt-xs q-p-none"
+      size="36px"
+      expand-icon="0"
+      icon="close"/>
+  </q-btn> -->
+
 </template>
 
 <script>
@@ -33,7 +59,7 @@ export default {
   border-radius: 20px;
   box-shadow: 2px 5px 10px rgba(241, 225, 225, 0.3);
 }
-.blury {
+/* .blury {
   filter: blur(10px);
 }
 a {
@@ -52,5 +78,8 @@ a {
 .overlay a:hover,
 .overlay a:focus {
   color: red;
+} */
+q-btn:hover {
+  display:block;
 }
 </style>
