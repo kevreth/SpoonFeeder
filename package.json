@@ -8,19 +8,20 @@
   "scripts": {
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test:unit": "vitest --environment jsdom",
-    "test:e2e": "start-server-and-test preview http://localhost:4173/ 'cypress open --e2e'",
-    "test:e2e:ci": "start-server-and-test preview http://localhost:4173/ 'cypress run --e2e'",
+    "test:e2e": "start-server-and-test http://localhost:9000/ 'cypress open --e2e'",
+    "test:e2e:ci": "start-server-and-test preview http://localhost:9000/ 'cypress run --e2e'",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "@datastructures-js/queue": "^4.2.2",
     "@iconfu/svg-inject": "^1.2.3",
+    "@quasar/extras": "^1.0.0",
     "@tanem/svg-injector": "^10.1.31",
     "@types/jquery": "^3.5.14",
     "@types/mathjax": "^0.0.37",
+    "axios": "^0.21.1",
     "fs": "^0.0.1-security",
     "gsap": "^3.11.0",
     "highlight.js": "^11.6.0",
@@ -33,14 +34,13 @@
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.17",
     "polyfill-library": "^4.4.0",
-    "@quasar/extras": "^1.0.0",
     "quasar": "^2.6.0",
     "typed.js": "^2.0.12",
     "typescript-eslint": "^0.0.1-alpha.0",
     "vara": "^1.4.1",
     "vue": "^3.2.37",
-    "vue-router": "^4.1.5",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",

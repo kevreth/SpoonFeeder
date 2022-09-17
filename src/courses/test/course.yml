@@ -43,7 +43,7 @@ units:
         - d
       - type: imap
         txt: choose blue
-        img: "../../../src/svg/test.svg"
+        img: "src/courses/test/imap.svg"
         ans: blue
       - type: mc
         txt: Choose the bus.
