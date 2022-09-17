@@ -22,3 +22,7 @@ const courseName = 'test';
 slides(courseName, document);
 
 </script>
+
+<style>
+
+</style>
