@@ -15,7 +15,7 @@
 </script> -->
 
 <script>
-import startOver from '../composables/startOver';
+import getStartOver from '../composables/startOver';
 
 export default {
   data() {
@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     startOver() {
-      const { reloadPage } = startOver();
-      return { reloadPage };
+      const { clear, reload } = getStartOver();
+      return { clear, reload };
     },
   },
 };
