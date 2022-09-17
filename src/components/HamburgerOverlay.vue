@@ -1,46 +1,30 @@
 <template>
-  <!-- <div class="overlay">
-    <a href="#" @click="closeOverlay" class="closeOverlay">X</a>
-  </div> -->
+  <q-list>
+    <q-list-item  class="overlay z-top bg-secondary">
+      <q-icon
+        name="close"
+        color="negative"
+        class="closeOverlay q-p-none"
+        size="2.5em"
+        @click="closeOverlay" 
+      />
+    </q-list-item>
 
-  <!-- <q-btn class="overlay z-top">
-    <q-icon
-      name="close"
-      color="negative"
-      style="position:absolute; top:0; right:0"
-      class="q-mr-xs q-mt-xs q-p-none"
-      size="42px"
-      @click="closeOverlay" 
-    />
-  </q-btn> -->
-
-  <q-list class="overlay z-top bg-secondary">
-    <q-icon
-      name="close"
-      color="negative"
-      class="closeOverlay q-mr-xs q-mt-xs q-p-none"
-      size="42px"
-      @click="closeOverlay" 
-    />
-    <StartOver />
+    <q-list-item>
+      <StartOver class="z-top"/>
+    </q-list-item>
   </q-list>
-
 
 </template>
 
-<script>
+<script setup>
 import StartOver from '../components/StartOver.vue';
 
-export default {
-  name: 'HamburgerOverlay',
-  components: { StartOver },
-  emits: ['close'],
-  methods: {
-    closeOverlay() {
-      this.$emit('close');
-    },
-  },
-};
+const emits = defineEmits(['close'])
+function closeOverlay () {
+  emits('close');
+}
+
 </script>
 
 <style>
@@ -53,7 +37,7 @@ export default {
   bottom: 10%; 
   left: 15%;
 }
-.closeOverlay {
+.q-icon {
   position:absolute; 
   top:0; 
   right:0; 

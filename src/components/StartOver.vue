@@ -1,48 +1,32 @@
 <template>
-  <div class="startOver">
-    <button @click="startOver" class="startOverBtn">Start Over</button>
-  </div>
+  <q-btn
+    @click="startOver"
+    size="1em"
+    class="bg-primary"
+    label="Start Over"
+  />
 </template>
 
-<!-- <script setup>
-  import startOver from '../composables/startOver';
+<script setup>
+  import getStartOver from '../composables/startOver';
 
   function startOver() {
-      const { reloadPage } = startOver();
-      return { reloadPage };
+    const { clear, reload } = getStartOver();
+    return { clear, reload };
     }
 
-</script> -->
-
-<script>
-import getStartOver from '../composables/startOver';
-
-export default {
-  data() {
-    return {
-      showOverlay: false,
-    };
-  },
-  methods: {
-    startOver() {
-      const { clear, reload } = getStartOver();
-      return { clear, reload };
-    },
-  },
-};
 </script>
 
-<style scoped>
-.startOver {
-  line-height: 1px;
-}
-.startOverBtn {
-  cursor: pointer;
-  margin: auto;
+<style>
+.q-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 2.5rem;
+  border: 2px solid white;
+  font-weight: bold;
+}
+.q-btn:hover {
+  border-color: blue;
 }
 </style>

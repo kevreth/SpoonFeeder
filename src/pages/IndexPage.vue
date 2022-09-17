@@ -8,7 +8,7 @@
   </q-page>
 </template>
 
-<script lang="ts">
+<script setup>
 import { slides } from '../ts/main/quiz';
 import '../css/style1.css';
 sessionStorage.clear();
