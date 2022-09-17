@@ -1,6 +1,8 @@
+import { ref } from 'vue'
+
 const getStartOver = () => {
-  const clear = localStorage.clear();
-  const reload = location.reload();
+  const clear = ref(localStorage.clear());
+  const reload = ref(location.reload());
 
   return { clear, reload };
 }
