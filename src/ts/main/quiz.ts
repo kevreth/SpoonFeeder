@@ -90,6 +90,9 @@ export function showSlides(doc: Document): void {
     doc.body.innerHTML = evaluate(); //EXECUTION ENDS
     startOverButton(doc);
   }
+  //If the slide has already been presented to the user,
+  //call this method again.
+  //"txt" identifies slides, which may be in random order.
   else if (arr.some((x) => x.txt === slide.txt)) showSlides(doc);
   else slide.makeSlides(doc);
 }
