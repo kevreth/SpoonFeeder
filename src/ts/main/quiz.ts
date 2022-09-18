@@ -79,7 +79,7 @@ export function addNewInfoSlide(
 //////////////// Phase 1: process Json
 export function processJson(data: Array<SlideType>): Array<SlideInterface> {
   const outJson: Array<SlideInterface> = new Array<SlideInterface>();
-  Array.prototype.forEach.call(data, (currentQuestion) => {
+  Array.prototype.forEach.call(data, (currentQuestion: SlideType) => {
     const slide = getInstance(currentQuestion.type) as SlideInterface;
     slide.processJson(currentQuestion);
     outJson.push(slide);
