@@ -1,7 +1,7 @@
 import type { Evaluation } from './evaluation';
 import type { SlideType } from './course';
-import { extend, append, empty } from './utilities';
 import type { ResultReturnType, AnswerType } from './result';
+import { extend, append, empty } from './utilities';
 import { SaveData } from './saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';

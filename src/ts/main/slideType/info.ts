@@ -1,8 +1,8 @@
+import type { info } from '../course';
+import type { ResultReturnType } from '../result';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
-import type { info } from '../course';
 import { showSlides } from '../quiz';
-import type { ResultReturnType } from '../result';
 import { SaveData } from '../saveData';
 import { makeButton } from '../utilities';
 export class Info extends Slide<string> {
