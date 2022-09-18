@@ -85,7 +85,6 @@ export function processJson(data: Array<SlideType>): Array<SlideInterface> {
 ///////////////// PHASE 2: make slides
 export function showSlides(doc: Document): void {
   const slide = Globals.JSON.getSlide();
-
   if (typeof slide === 'undefined') {
     //end of quiz
     doc.body.innerHTML = evaluate(); //EXECUTION ENDS
