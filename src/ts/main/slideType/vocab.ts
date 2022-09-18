@@ -2,8 +2,7 @@ import type { vocab } from '../course';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { continueButton, showButton, makeRow } from '../quiz';
-import { shuffle } from 'lodash';
-import { removeListener, isRandom, shuffleMap } from '../utilities';
+import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
 import { Result } from '../result';
 import { ResponseB } from '../response';
 import { SaveData } from '../saveData';
@@ -137,6 +136,6 @@ export class Vocab extends Slide<Array<string>> {
   getSaveData(): SaveData {
     const ans = Array.from(this.list.keys());
     const res = this.result(ans, this.res);
-    return new SaveData(this.txt, null, res);
+    return new SaveData(this.txt, res);
   }
 }
