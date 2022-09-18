@@ -7,10 +7,8 @@ import { SaveData } from '../saveData';
 import { makeButton } from '../utilities';
 export class Info extends Slide<string> {
   txt = '';
-  subtype = '';
   processJson(json: info): void {
     this.txt = json.txt;
-    this.subtype = json.subtype;
   }
   makeSlides(doc: Document): void {
     const html = `\n${this.txt}`;
@@ -26,7 +24,7 @@ export class Info extends Slide<string> {
   }
   //don't record CCQ results
   getSaveData(): SaveData {
-    return new SaveData(this.txt, this.subtype, null);
+    return new SaveData(this.txt, null);
   }
   //info has it's own showButton because the continue button
   //appears immediately upon page load and can be in the wrong

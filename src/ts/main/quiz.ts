@@ -1,11 +1,11 @@
 import type { SaveData } from './saveData';
-import { getInstance } from './slideFactory';
 import type { SlideInterface } from './slide';
+import type { SlideType } from './course';
+import type { Evaluation } from './evaluation';
+import { getInstance } from './slideFactory';
 import { extend, makeButton, shuffle, isRandom, getYaml } from './utilities';
 import { info, Course } from './course';
-import type { SlideType } from './course';
 import { Globals, ROW } from './globals';
-import type { Evaluation } from './evaluation';
 import reloadPage from '../../composables/startOver';
 export enum InfoType {
   COURSE,
@@ -73,13 +73,12 @@ export function addNewInfoSlide(
 ) {
   const slide = new info();
   slide.txt = text;
-  slide.subtype = InfoType[type].toString();
   slides.push(slide);
 }
 //////////////// Phase 1: process Json
 export function processJson(data: Array<SlideType>): Array<SlideInterface> {
   const outJson: Array<SlideInterface> = new Array<SlideInterface>();
-  Array.prototype.forEach.call(data, (currentQuestion) => {
+  Array.prototype.forEach.call(data, (currentQuestion: SlideType) => {
     const slide = getInstance(currentQuestion.type) as SlideInterface;
     slide.processJson(currentQuestion);
     outJson.push(slide);
