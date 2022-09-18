@@ -93,7 +93,11 @@ export function showSlides(doc: Document): void {
   //If the slide has already been presented to the user,
   //call this method again.
   //"txt" identifies slides, which may be in random order.
-  else if (arr.some((x) => x.txt === slide.txt)) showSlides(doc);
+  else if (arr.some((x) => x.txt === slide.txt)) {
+    const idx = arr.findIndex((x) => x.txt === slide.txt);
+    slide.setResults(arr[idx].result);
+    showSlides(doc);
+  }
   else slide.makeSlides(doc);
 }
 function startOverButton(doc: Document) {

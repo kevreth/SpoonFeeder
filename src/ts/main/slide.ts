@@ -24,6 +24,7 @@ export interface SlideInterface {
   //evaluation during quiz is NOT here
   evaluate(): Evaluation;
   createPageContent(html: string, doc: Document): void;
+  setResults(res:AnswerType):void;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
   txt = '';
@@ -40,6 +41,10 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   abstract makeSlides(doc: Document): void;
   abstract evaluate(): Evaluation;
   abstract result(ans: T, res: T): ResultReturnType;
+  //necessary to load results from save file
+  setResults(res: T): void {
+    this.res=res;
+  }
   createPageContent(html: string, doc: Document): void {
     const element = doc.getElementById('btn') as HTMLElement | null;
     if (element != null) element.remove(); // Removes the div with the 'div-02' id
@@ -63,15 +68,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     });
     html.findMath().compile().getMetrics().typeset().updateDocument();
   }
-  getSaveData(): SaveData {
-    return new SaveData(
-      this.txt,
-      this.res
-    );
-  }
   saveData() {
-    const save = this.getSaveData();
-    if (save.txt === '') return;
+    if (this.txt === '') return;
+    const save = new SaveData(this.txt, this.res);
     const arr = getSavedDataArray();
     arr.push(save);
     localStorage.setItem('savedata', JSON.stringify(arr));
