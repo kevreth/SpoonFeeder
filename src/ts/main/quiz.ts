@@ -21,26 +21,23 @@ export function slides(courseName: string, doc: Document): void {
   const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
   getYaml(yaml, (course: Course) => {
     let slides = new Array<SlideType>();
-    addNewInfoSlide(course.name, InfoType.COURSE, slides);
+    addNewInfoSlide(course.name, slides);
     const units = course.units;
     units.forEach((unit, unit_ctr) => {
       addNewInfoSlide(
         `Unit ${unit_ctr + 1}:<br>${unit.name}`,
-        InfoType.UNIT,
         slides
       );
       const lessons = unit.lessons;
       lessons.forEach((lesson, lesson_ctr) => {
         addNewInfoSlide(
           `Lesson ${lesson_ctr + 1}:<br>${lesson.name}`,
-          InfoType.LESSON,
           slides
         );
         const modules = lesson.modules;
         modules.forEach((module, module_ctr) => {
           addNewInfoSlide(
             `Module ${module_ctr + 1}:<br>${module.name}`,
-            InfoType.MODULE,
             slides
           );
           const inst: Array<SlideType> = module.inst;
@@ -68,7 +65,6 @@ export function slides(courseName: string, doc: Document): void {
 }
 export function addNewInfoSlide(
   text: string,
-  type: InfoType,
   slides: SlideType[]
 ) {
   const slide = new info();
