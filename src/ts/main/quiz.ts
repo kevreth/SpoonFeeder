@@ -1,11 +1,11 @@
 import type { SaveData } from './saveData';
-import { getInstance } from './slideFactory';
 import type { SlideInterface } from './slide';
+import type { SlideType } from './course';
+import type { Evaluation } from './evaluation';
+import { getInstance } from './slideFactory';
 import { extend, makeButton, shuffle, isRandom, getYaml } from './utilities';
 import { info, Course } from './course';
-import type { SlideType } from './course';
 import { Globals, ROW } from './globals';
-import type { Evaluation } from './evaluation';
 import reloadPage from '../../composables/startOver';
 export enum InfoType {
   COURSE,
