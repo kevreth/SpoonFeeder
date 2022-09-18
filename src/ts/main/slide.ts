@@ -66,7 +66,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   getSaveData(): SaveData {
     return new SaveData(
       this.txt,
-      this.result(this.ans, this.res)
+      this.res
     );
   }
   saveData() {
