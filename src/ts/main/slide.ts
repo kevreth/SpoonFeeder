@@ -27,7 +27,6 @@ export interface SlideInterface {
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
   txt = '';
-  subtype = '';
   ans!: T;
   res!: T;
   pageTemplate = `
@@ -67,7 +66,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   getSaveData(): SaveData {
     return new SaveData(
       this.txt,
-      this.subtype,
       this.result(this.ans, this.res)
     );
   }

@@ -73,7 +73,6 @@ export function addNewInfoSlide(
 ) {
   const slide = new info();
   slide.txt = text;
-  slide.subtype = InfoType[type].toString();
   slides.push(slide);
 }
 //////////////// Phase 1: process Json

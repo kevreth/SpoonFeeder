@@ -62,7 +62,6 @@ export class vocab extends slide {
 //where info is just a string.
 export class info extends slide {
   txt = '';
-  subtype = '';
   constructor() {
     super();
     this.type = 'info';
