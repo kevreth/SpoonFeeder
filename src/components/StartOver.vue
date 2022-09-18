@@ -17,7 +17,7 @@
 
 </script>
 
-<style>
+<style scoped>
 .q-btn {
   position: absolute;
   top: 50%;

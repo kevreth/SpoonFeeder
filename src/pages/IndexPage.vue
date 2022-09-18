@@ -23,6 +23,3 @@ slides(courseName, document);
 
 </script>
 
-<style>
-
-</style>
