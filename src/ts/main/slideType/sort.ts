@@ -1,7 +1,7 @@
+import type { sort } from '../course';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { showButton, makeRow } from '../quiz';
-import type { sort } from '../course';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../utilities';
@@ -83,11 +83,11 @@ export class Sort extends Slide<Array<string>> {
         // Don't layout while dragging
         if (!dragger.isDragging) layout();
       }
-      function downAction() {
+      function downAction(this:Draggable) {
         animation.play();
         this.update();
       }
-      function dragAction() {
+      function dragAction(this:Draggable) {
         // Calculate the current index based on element's position
         const index = clamp(Math.round(this.y / rowSize), 0, total - 1);
         if (index !== sortable.index) changeIndex(sortable, index);

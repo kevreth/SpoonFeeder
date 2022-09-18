@@ -1,3 +1,4 @@
+import type { select } from '../course';
 import {
   difference,
   intersection,
@@ -5,7 +6,6 @@ import {
   removeListener,
 } from '../utilities';
 import { showButton, makeRow } from '../quiz';
-import type { select } from '../course';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { Result } from '../result';

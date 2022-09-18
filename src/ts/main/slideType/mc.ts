@@ -1,6 +1,6 @@
+import type { mc } from '../course';
 import { makeButton, removeListener, isRandom, shuffle } from '../utilities';
 import { showButton, makeRow } from '../quiz';
-import type { mc } from '../course';
 import { Evaluation } from '../evaluation';
 import { Slide1 } from '../slide';
 export class Mc extends Slide1 {
