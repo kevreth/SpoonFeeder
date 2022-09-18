@@ -1,9 +1,8 @@
-import type { SaveData } from './saveData';
 import type { SlideInterface } from './slide';
 import type { SlideType } from './course';
 import type { Evaluation } from './evaluation';
 import { getInstance } from './slideFactory';
-import { extend, makeButton, shuffle, isRandom, getYaml } from './utilities';
+import { makeButton, shuffle, isRandom, getYaml, getSavedDataArray } from './utilities';
 import { info, Course } from './course';
 import { Globals, ROW } from './globals';
 import reloadPage from '../../composables/startOver';
@@ -85,21 +84,14 @@ export function processJson(data: Array<SlideType>): Array<SlideInterface> {
 ///////////////// PHASE 2: make slides
 export function showSlides(doc: Document): void {
   const slide = Globals.JSON.getSlide();
+  const arr = getSavedDataArray();
   if (typeof slide === 'undefined') {
     //end of quiz
     doc.body.innerHTML = evaluate(); //EXECUTION ENDS
     startOverButton(doc);
-  } else if (slideProcessed(slide.txt)) showSlides(doc);
+  }
+  else if (arr.some((x) => x.txt === slide.txt)) showSlides(doc);
   else slide.makeSlides(doc);
-}
-function slideProcessed(txt:string):boolean {
-  const data = localStorage.getItem('savedata') as string;
-  const data1 = JSON.parse(data);
-  const arr: Array<SaveData> = extend<Array<SaveData>>(
-    new Array<SaveData>(),
-    data1
-  );
-  return arr.some((x) => x.txt === txt);
 }
 function startOverButton(doc: Document) {
   const startOverText = makeButton('startOver', 'startOver', 'Start Over');

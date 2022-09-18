@@ -1,7 +1,7 @@
 import type { Evaluation } from './evaluation';
 import type { SlideType } from './course';
 import type { ResultReturnType, AnswerType } from './result';
-import { extend, append, empty } from './utilities';
+import { extend, append, empty, getSavedDataArray } from './utilities';
 import { SaveData } from './saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';
@@ -72,12 +72,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   saveData() {
     const save = this.getSaveData();
     if (save.txt === '') return;
-    const data = localStorage.getItem('savedata') as string;
-    const data1 = JSON.parse(data);
-    const arr: Array<SaveData> = extend<Array<SaveData>>(
-      new Array<SaveData>(),
-      data1
-    );
+    const arr = getSavedDataArray();
     arr.push(save);
     localStorage.setItem('savedata', JSON.stringify(arr));
   }
