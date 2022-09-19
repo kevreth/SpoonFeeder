@@ -1,6 +1,10 @@
+import type { gap } from '../course';
 import { showButton, makeRow } from '../quiz';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../result';
+import { Evaluation } from '../evaluation';
+import { Slide } from '../slide';
+import { shuffle, isRandom } from '../utilities';
 //Despite the documentation, "scroll behaviour" is required
 //for basic mobile drag-and-drop ality.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
@@ -12,10 +16,6 @@ polyfill({
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
-import { Evaluation } from '../evaluation';
-import { Slide } from '../slide';
-import type { gap } from '../course';
-import { shuffle, isRandom } from '../utilities';
 export class Gap extends Slide<Array<string>> {
   resultType = Result.CORRELATED;
   processJson(json: gap): void {
