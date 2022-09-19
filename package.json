@@ -45,6 +45,7 @@
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
     "@quasar/app-vite": "^1.0.0",
+    "@quasar/quasar-app-extension-qoverlay": "^2.0.1",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/js-yaml": "^4.0.5",
     "@types/jsdom": "^20.0.0",

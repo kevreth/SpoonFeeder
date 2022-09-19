@@ -1,46 +1,56 @@
 <template>
-  <q-list>
-    <q-list-item  class="overlay z-top bg-secondary">
-      <q-icon
-        name="close"
-        color="negative"
-        class="closeOverlay q-p-none"
-        size="2.5em"
-        @click="closeOverlay" 
-      />
-    </q-list-item>
-
-    <q-list-item>
-      <StartOver class="z-top"/>
-    </q-list-item>
-  </q-list>
-
+  <q-btn
+    size="200%"
+    icon="menu"
+    @click="overlay = true"
+  />
+  
+  <q-overlay v-model="overlay">
+    <template #body>
+      <div class="fullscreen row justify-evenly items-center" >
+        <div class="overlayColor">
+          <q-icon
+          class="closeBtn z-top text-red"
+          size="2em"
+          v-if="overlay === true"
+          name="close"
+          @click="overlay = !overlay" />
+        </div>
+      </div>
+      
+      <div>
+        <StartOver class="z-top"/>
+      </div>
+    </template>
+  </q-overlay>
 </template>
 
 <script setup>
 import StartOver from '../components/StartOver.vue';
+import { QOverlay } from '@quasar/quasar-ui-qoverlay'
+import { ref } from 'vue'
 
-const emits = defineEmits(['close'])
-function closeOverlay () {
-  emits('close');
-}
-
+const overlay = ref(false)
 </script>
 
 <style>
-.overlay {
-  position:fixed; 
-  width:70%;
-  border-radius:20px;
-  opacity: 0.5; 
-  top: 10%;
-  bottom: 10%; 
-  left: 15%;
-}
-.q-icon {
+.closeBtn {
   position:absolute; 
   top:0; 
   right:0; 
   cursor:pointer;
+}
+.q-overlay {
+  backdrop-filter: blur(5px);
+}
+.overlayColor {
+  position: fixed;
+  background-color: #3a3a3a;
+  opacity: 0.6;
+  width: 70%;
+  top: 10%;
+  bottom: 10%; 
+  left: 15%;
+  border-radius: 20px;
 }
 </style>
