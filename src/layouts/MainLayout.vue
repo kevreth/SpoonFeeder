@@ -1,14 +1,9 @@
 <template>
   <q-layout>
-    <q-header class="bg-none q-m-none q-pt-md">
-      <q-toolbar>
-        <q-icon></q-icon>
-        <q-toolbar-title></q-toolbar-title>
-        <q-icon>
-          <HamburgerOverlay />
-        </q-icon>
-      </q-toolbar>
-    </q-header>
+      
+    <q-card class="iconHamburger z-top">
+      <HamburgerOverlay />
+    </q-card>             
 
     <q-page-container>
       <router-view />
@@ -28,4 +23,9 @@
 /* .blury {
   filter: blur(10px);
 } */
+.iconHamburger{
+  max-height: 0px;
+  display: flex;
+  float: right;
+}
 </style>

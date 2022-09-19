@@ -8,7 +8,12 @@
   <q-overlay v-model="model">
     <template #body>
       <div class="fullscreen row justify-evenly items-center">
-        <q-btn v-if="model === true" color="blue" icon="close" @click="model = !model" />
+        <q-icon
+        class="closeBtn z-top text-red"
+        size="2em"
+        v-if="model === true"
+        name="close"
+        @click="model = !model" />
       </div>
       <div>
         <StartOver class="z-top"/>
@@ -37,10 +42,10 @@ const model = ref(false)
   /* bottom: 10%;  */
   /* left: 15%; */
 /* } */
-/* .q-icon {
+.closeBtn {
   position:absolute; 
-  top:0; 
-  right:0; 
+  top:25%; 
+  right:25%; 
   cursor:pointer;
-} */
+}
 </style>
