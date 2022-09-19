@@ -1,5 +1,4 @@
 import type { info } from '../course';
-import { Result, ResultReturnType } from '../result';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { showSlides } from '../quiz';
@@ -18,9 +17,6 @@ export class Info extends Slide<string> {
   }
   evaluate(): Evaluation {
     return new Evaluation(0, 0, '');
-  }
-  result(ans: string, res: string): ResultReturnType {
-    return new Result().result1(ans, res);
   }
   //don't record CCQ results
   getSaveData(): SaveData {

@@ -4,9 +4,10 @@ import { Slide } from '../slide';
 import { showButton, makeRow } from '../quiz';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../utilities';
-import { Result, ResultReturnType } from '../result';
+import { Result } from '../result';
 export class Imap extends Slide<string> {
   img = '';
+  resultType = Result.SIMPLE;
   processJson(json: imap): void {
     ({
       txt: this.txt,
@@ -55,8 +56,5 @@ export class Imap extends Slide<string> {
     const text = makeRow(this.txt, this.res, this.ans);
     if (this.result(this.ans, this.res)) correctCtr++;
     return new Evaluation(1, correctCtr, text);
-  }
-  result(ans: string, res: string): ResultReturnType {
-    return new Result().result(ans, res);
   }
 }

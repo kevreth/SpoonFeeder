@@ -3,7 +3,7 @@ import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { continueButton, showButton, makeRow } from '../quiz';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
-import { Result, ResultReturnType } from '../result';
+import { Result } from '../result';
 import { ResponseB } from '../response';
 import { Mc } from './mc';
 export type vocabTuplesType = [
@@ -14,6 +14,7 @@ export type vocabTuplesType = [
 export class Vocab extends Slide<Array<string>> {
   list: Map<string, string> = new Map();
   res = new Array<string>();
+  resultType = Result.CORRELATED;
   processJson(json: vocab): void {
     //JSON provides no distinction for
     //associative arrays, so create a map.
@@ -125,8 +126,5 @@ export class Vocab extends Slide<Array<string>> {
     const row_accum = rows.join('\n');
     const correctCtr = (this.result(ans, this.res) as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.list.size, correctCtr, row_accum);
-  }
-  result(ans: Array<string>, res: Array<string>): ResultReturnType {
-    return new Result().result4(ans, res);
   }
 }

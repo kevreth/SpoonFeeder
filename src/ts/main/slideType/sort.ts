@@ -5,8 +5,9 @@ import { showButton, makeRow } from '../quiz';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../utilities';
-import { Result, ResultReturnType } from '../result';
+import { Result } from '../result';
 export class Sort extends Slide<Array<string>> {
+  resultType = Result.LIST;
   processJson(json: sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -121,8 +122,5 @@ export class Sort extends Slide<Array<string>> {
       }
       return sortable;
     }
-  }
-  result(ans: Array<string>, res: Array<string>): ResultReturnType {
-    return new Result().result2(ans, res);
   }
 }

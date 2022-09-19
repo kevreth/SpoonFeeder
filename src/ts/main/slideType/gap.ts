@@ -1,6 +1,6 @@
 import { showButton, makeRow } from '../quiz';
 import { polyfill } from 'mobile-drag-drop';
-import { Result, ResultReturnType } from '../result';
+import { Result } from '../result';
 //Despite the documentation, "scroll behaviour" is required
 //for basic mobile drag-and-drop ality.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
@@ -17,6 +17,7 @@ import { Slide } from '../slide';
 import type { gap } from '../course';
 import { shuffle, isRandom } from '../utilities';
 export class Gap extends Slide<Array<string>> {
+  resultType = Result.CORRELATED;
   processJson(json: gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -195,8 +196,5 @@ export class Gap extends Slide<Array<string>> {
     let row_a = makeRow(replaceValue, response, answer);
     row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
     return row_a;
-  }
-  result(ans: Array<string>, res: Array<string>): ResultReturnType {
-    return new Result().result4(ans, res);
   }
 }

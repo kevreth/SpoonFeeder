@@ -3,9 +3,10 @@ import { makeButton, removeListener, isRandom, shuffle } from '../utilities';
 import { showButton, makeRow } from '../quiz';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
-import { Result, ResultReturnType } from '../result';
+import { Result } from '../result';
 export class Mc extends Slide<string> {
   o: string[] = [];
+  resultType = Result.SIMPLE;
   processJson(json: mc): void {
     ({
       txt: this.txt,
@@ -74,9 +75,6 @@ export class Mc extends Slide<string> {
     const text = makeRow(this.txt, this.res, this.ans);
     if (this.result(this.ans, this.res)) correctCtr++;
     return new Evaluation(1, correctCtr, text);
-  }
-  result(ans: string, res: string): ResultReturnType {
-    return new Result().result(ans, res);
   }
 }
 export class Bool extends Mc {
