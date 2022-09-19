@@ -23,37 +23,15 @@ export function slides(courseName: string, doc: Document): void {
     addNewInfoSlide(course.name, slides);
     const units = course.units;
     units.forEach((unit, unit_ctr) => {
-      addNewInfoSlide(
-        `Unit ${unit_ctr + 1}:<br>${unit.name}`,
-        slides
-      );
+      addNewInfoSlide(titleSlideText('Module',unit_ctr,unit.name),slides);
       const lessons = unit.lessons;
       lessons.forEach((lesson, lesson_ctr) => {
-        addNewInfoSlide(
-          `Lesson ${lesson_ctr + 1}:<br>${lesson.name}`,
-          slides
-        );
+        addNewInfoSlide(titleSlideText('Lesson',lesson_ctr,lesson.name),slides);
         const modules = lesson.modules;
         modules.forEach((module, module_ctr) => {
-          addNewInfoSlide(
-            `Module ${module_ctr + 1}:<br>${module.name}`,
-            slides
-          );
-          const inst: Array<SlideType> = module.inst;
-          if (typeof inst !== 'undefined') {
-            inst.forEach((item) => {
-              item.isExercise = false;
-            });
-            slides = slides.concat(inst);
-          }
-          let exercises: SlideType[] = module.exercises;
-          if (typeof exercises !== 'undefined') {
-            exercises.forEach((item) => {
-              item.isExercise = true;
-            });
-            if (isRandom()) exercises = shuffle(exercises);
-            slides = slides.concat(exercises);
-          }
+          addNewInfoSlide(titleSlideText('Module',module_ctr,module.name),slides);
+          slides = loadQuestions(slides,module.inst,false);
+          slides = loadQuestions(slides,module.exercises,true);
           slides.filter((item) => item !== null);
         });
       });
@@ -61,6 +39,20 @@ export function slides(courseName: string, doc: Document): void {
     Globals.JSON.set(processJson(slides));
     showSlides(doc);
   });
+}
+function titleSlideText(type: string, counter: number, name:string) {
+  counter++;
+  return `${type} ${counter}:<br>${name}`;
+}
+function loadQuestions(slides: Array<SlideType>, questions: Array<SlideType>, isExercise: boolean): Array<SlideType> {
+  if (typeof questions !== 'undefined') {
+    questions.forEach((item) => {
+      item.isExercise = isExercise;
+    });
+    if (isRandom() && isExercise) questions = shuffle(questions);
+    slides = slides.concat(questions);
+  }
+  return slides;
 }
 export function addNewInfoSlide(
   text: string,
@@ -94,6 +86,7 @@ export function showSlides(doc: Document): void {
   //call this method again.
   //"txt" identifies slides, which may be in random order.
   else if (arr.some((x) => x.txt === slide.txt)) {
+    //load the results from the save file
     const idx = arr.findIndex((x) => x.txt === slide.txt);
     slide.setResults(arr[idx].result);
     showSlides(doc);
