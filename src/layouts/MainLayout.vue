@@ -20,12 +20,12 @@
 .q-page-container {
   padding-top: calc(0px + env(safe-area-inset-top, 0)) !important;
 }
-/* .blury {
-  filter: blur(10px);
-} */
 .iconHamburger{
   max-height: 0px;
   display: flex;
   float: right;
+}
+.blury {
+  filter: blur(10px);
 }
 </style>

@@ -3,17 +3,17 @@
     size="200%"
     class="overlay"
     icon="menu"
-    @click="model = true"
+    @click="overlay = true"
   />
-  <q-overlay v-model="model">
+  <q-overlay v-model="overlay">
     <template #body>
       <div class="fullscreen row justify-evenly items-center">
         <q-icon
         class="closeBtn z-top text-red"
         size="2em"
-        v-if="model === true"
+        v-if="overlay === true"
         name="close"
-        @click="model = !model" />
+        @click="overlay = !overlay" />
       </div>
       <div>
         <StartOver class="z-top"/>
@@ -28,7 +28,7 @@ import StartOver from '../components/StartOver.vue';
 import { QOverlay } from '@quasar/quasar-ui-qoverlay'
 import { ref } from 'vue'
 
-const model = ref(false)
+const overlay = ref(false)
 
 </script>
 
@@ -42,6 +42,7 @@ const model = ref(false)
   /* bottom: 10%;  */
   /* left: 15%; */
 /* } */
+
 .closeBtn {
   position:absolute; 
   top:25%; 
