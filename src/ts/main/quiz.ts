@@ -29,7 +29,6 @@ function processSlides(course: Course) {
         addNewInfoSlide(titleSlideText('Module', module_ctr, module.name), slides);
         slides = loadQuestions(slides, module.inst, false);
         slides = loadQuestions(slides, module.exercises, true);
-        slides.filter((item) => item !== null);
       });
     });
   });
