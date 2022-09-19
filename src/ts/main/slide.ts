@@ -1,6 +1,6 @@
 import type { Evaluation } from './evaluation';
 import type { SlideType } from './course';
-import { ResultReturnType, AnswerType, Result } from './result';
+import { ResultReturnType, AnswerType, Result, ResultType } from './result';
 import { append, empty, getSavedDataArray } from './utilities';
 import { SaveData } from './saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
@@ -30,7 +30,7 @@ export interface SlideInterface {
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
   //reset in every child class
-  resultType: (ans: AnswerType, res: AnswerType) => ResultReturnType = Result.UNSUPPORTED;
+  resultType: ResultType = Result.UNSUPPORTED;
   txt = '';
   ans!: T;
   res!: T;
