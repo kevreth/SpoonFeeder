@@ -6,12 +6,6 @@ import { makeButton, shuffle, isRandom, getYaml, getSavedDataArray } from './uti
 import { info, Course } from './course';
 import { Globals, ROW } from './globals';
 import reloadPage from '../../composables/startOver';
-export enum InfoType {
-  COURSE,
-  UNIT,
-  LESSON,
-  MODULE,
-}
 const TABLE_HEADER =
   '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
@@ -19,27 +13,29 @@ export function slides(courseName: string, doc: Document): void {
   //TODO: add test for file existence
   const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
   getYaml(yaml, (course: Course) => {
-    let slides = new Array<SlideType>();
-    addNewInfoSlide(course.name, slides);
-    const units = course.units;
-    units.forEach((unit, unit_ctr) => {
-      addNewInfoSlide(titleSlideText('Module',unit_ctr,unit.name),slides);
-      const lessons = unit.lessons;
-      lessons.forEach((lesson, lesson_ctr) => {
-        addNewInfoSlide(titleSlideText('Lesson',lesson_ctr,lesson.name),slides);
-        const modules = lesson.modules;
-        modules.forEach((module, module_ctr) => {
-          addNewInfoSlide(titleSlideText('Module',module_ctr,module.name),slides);
-          slides = loadQuestions(slides,module.inst,false);
-          slides = loadQuestions(slides,module.exercises,true);
-          slides.filter((item) => item !== null);
-        });
-      });
-    });
+    const slides = processSlides(course);
     Globals.JSON.set(processJson(slides));
     showSlides(doc);
   });
 }
+function processSlides(course: Course) {
+  let slides = new Array<SlideType>();
+  addNewInfoSlide(course.name, slides);
+  course.units.forEach((unit, unit_ctr) => {
+    addNewInfoSlide(titleSlideText('Unit', unit_ctr, unit.name), slides);
+    unit.lessons.forEach((lesson, lesson_ctr) => {
+      addNewInfoSlide(titleSlideText('Lesson', lesson_ctr, lesson.name), slides);
+      lesson.modules.forEach((module, module_ctr) => {
+        addNewInfoSlide(titleSlideText('Module', module_ctr, module.name), slides);
+        slides = loadQuestions(slides, module.inst, false);
+        slides = loadQuestions(slides, module.exercises, true);
+        slides.filter((item) => item !== null);
+      });
+    });
+  });
+  return slides;
+}
+
 function titleSlideText(type: string, counter: number, name:string) {
   counter++;
   return `${type} ${counter}:<br>${name}`;
