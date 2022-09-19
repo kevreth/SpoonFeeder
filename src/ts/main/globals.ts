@@ -1,4 +1,4 @@
-import type {SlideInterface} from './slide'
+import type {SlideInterface} from './quiz/slide'
 export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
 class Json {
     private counter = 0;

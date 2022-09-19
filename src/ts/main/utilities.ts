@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import $ from 'jquery';
-import type { Course } from './course';
+import type { Course } from './quiz/course';
 import * as yaml from 'js-yaml';
+import { SaveData } from './quiz/slide/saveData';
 
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
@@ -51,6 +52,15 @@ export function getNumberedProperties(
     if (key.startsWith(propName)) retval.push([key, value]);
   }
   return retval.sort();
+}
+export function getSavedDataArray(): Array<SaveData> {
+  const data = localStorage.getItem('savedata') as string;
+  const data1 = JSON.parse(data);
+  const arr: Array<SaveData> = extend<Array<SaveData>>(
+    new Array<SaveData>(),
+    data1
+  );
+  return arr;
 }
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {

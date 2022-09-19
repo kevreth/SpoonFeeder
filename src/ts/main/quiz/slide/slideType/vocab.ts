@@ -1,11 +1,10 @@
-import type { vocab } from '../course';
-import { Evaluation } from '../evaluation';
-import { Slide } from '../slide';
-import { continueButton, showButton, makeRow } from '../quiz';
-import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
-import { Result } from '../result';
-import { ResponseB } from '../response';
-import { SaveData } from '../saveData';
+import type { vocab } from '../../course';
+import { Evaluation } from '../../evaluate';
+import { Slide } from '../../slide';
+import { continueButton, showButton } from '../../makeSlides';
+import { makeRow } from '../../evaluate';
+import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
+import { Result } from '../../slide/result';
 import { Mc } from './mc';
 export type vocabTuplesType = [
   txt: string,
@@ -15,6 +14,7 @@ export type vocabTuplesType = [
 export class Vocab extends Slide<Array<string>> {
   list: Map<string, string> = new Map();
   res = new Array<string>();
+  resultType = Result.CORRELATED;
   processJson(json: vocab): void {
     //JSON provides no distinction for
     //associative arrays, so create a map.
@@ -124,18 +124,49 @@ export class Vocab extends Slide<Array<string>> {
       rows.push(row);
     }
     const row_accum = rows.join('\n');
-    const correctCtr = this.result(resp.getAns(), resp.getRes()).filter(
-      Boolean
-    ).length;
+    const correctCtr = (this.result(ans, this.res) as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.list.size, correctCtr, row_accum);
   }
-  result(ans: Array<string>, res: Array<string>): Array<boolean> {
-    return new Result().result4(ans, res);
+}
+class ResponseA {
+  txt:string;
+  ans:string;
+  res:string;
+  constructor(txt:string, ans:string, res:string) {
+      this.txt=txt;
+      this.ans=ans;
+      this.res=res;
   }
-  //overridden from Slide
-  getSaveData(): SaveData {
-    const ans = Array.from(this.list.keys());
-    const res = this.result(ans, this.res);
-    return new SaveData(this.txt, res);
+}
+class ResponseB {
+  resp:Array<ResponseA>=new Array<ResponseA>();
+  init(txt:Array<string>,ans:Array<string>, res:Array<string>) {
+      txt.forEach((txt1,idx) => {
+          const ans1=ans[idx];
+          const res1=res[idx];
+          this.resp.push(new ResponseA(txt1,ans1,res1));
+      })
+  }
+  [Symbol.iterator]():IterableIterator<ResponseA> {
+      return this.resp.values();
+  }
+  push(txt:string, ans:string, res:string):void {
+      const resp = new ResponseA(txt,ans,res);
+      this.resp.push(resp);
+  }
+  getAns():Array<string> {
+      return this.resp.map(a => a.ans);
+  }
+  getTxt():Array<string> {
+      return this.resp.map(a => a.txt);
+  }
+  getRes():Array<string> {
+      return this.resp.map(a => a.res);
+  }
+  itor() {
+      return this.resp.entries();
+  }
+  get():Array<ResponseA>{
+      return this.resp;
   }
 }

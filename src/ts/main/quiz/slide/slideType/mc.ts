@@ -1,10 +1,13 @@
-import type { mc } from '../course';
-import { makeButton, removeListener, isRandom, shuffle } from '../utilities';
-import { showButton, makeRow } from '../quiz';
-import { Evaluation } from '../evaluation';
-import { Slide1 } from '../slide';
-export class Mc extends Slide1 {
+import type { mc } from '../../course';
+import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
+import { showButton } from '../../makeSlides';
+import { makeRow } from '../../evaluate';
+import { Evaluation } from '../../evaluate';
+import { Slide } from '../../slide';
+import { Result } from '../../slide/result';
+export class Mc extends Slide<string> {
   o: string[] = [];
+  resultType = Result.SIMPLE;
   processJson(json: mc): void {
     ({
       txt: this.txt,

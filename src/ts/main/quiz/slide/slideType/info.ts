@@ -1,10 +1,8 @@
-import type { info } from '../course';
-import type { ResultReturnType } from '../result';
-import { Evaluation } from '../evaluation';
-import { Slide } from '../slide';
-import { showSlides } from '../quiz';
-import { SaveData } from '../saveData';
-import { makeButton } from '../utilities';
+import type { info } from '../../course';
+import { Evaluation } from '../../evaluate';
+import { Slide } from '../../slide';
+import { showSlides } from '../../makeSlides';
+import { makeButton } from '../../../utilities';
 export class Info extends Slide<string> {
   txt = '';
   processJson(json: info): void {
@@ -18,13 +16,6 @@ export class Info extends Slide<string> {
   }
   evaluate(): Evaluation {
     return new Evaluation(0, 0, '');
-  }
-  result(ans: string, res: string): ResultReturnType {
-    throw new Error(`Method not implemented. +${ans} ${res}`);
-  }
-  //don't record CCQ results
-  getSaveData(): SaveData {
-    return new SaveData(this.txt, null);
   }
   //info has it's own showButton because the continue button
   //appears immediately upon page load and can be in the wrong

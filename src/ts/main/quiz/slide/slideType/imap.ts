@@ -1,11 +1,14 @@
-import type { imap } from '../course';
-import { Evaluation } from '../evaluation';
-import { Slide1 } from '../slide';
-import { showButton, makeRow } from '../quiz';
+import type { imap } from '../../course';
+import { Evaluation } from '../../evaluate';
+import { Slide } from '../../slide';
+import { showButton } from '../../makeSlides';
+import { makeRow } from '../../evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds, removeListener } from '../utilities';
-export class Imap extends Slide1 {
+import { getChildIds, removeListener } from '../../../utilities';
+import { Result } from '../../slide/result';
+export class Imap extends Slide<string> {
   img = '';
+  resultType = Result.SIMPLE;
   processJson(json: imap): void {
     ({
       txt: this.txt,

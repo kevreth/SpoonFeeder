@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import {Sort} from '../../main/slideType/sort';
+import {Sort} from '../../main/slide/slideType/sort';
 const inst = "instructions";
 const ans = ['alpha','bravo','charlie','delta'];
 // const object = {

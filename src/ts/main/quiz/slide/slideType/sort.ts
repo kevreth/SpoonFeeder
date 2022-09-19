@@ -1,12 +1,14 @@
-import type { sort } from '../course';
-import { Evaluation } from '../evaluation';
-import { Slide } from '../slide';
-import { showButton, makeRow } from '../quiz';
+import type { sort } from '../../course';
+import { Evaluation } from '../../evaluate';
+import { Slide } from '../../slide';
+import { showButton } from '../../makeSlides';
+import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { makeButton, shuffle, isRandom } from '../utilities';
-import { Result } from '../result';
+import { makeButton, shuffle, isRandom } from '../../../utilities';
+import { Result } from '../../slide/result';
 export class Sort extends Slide<Array<string>> {
+  resultType = Result.LIST;
   processJson(json: sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -121,8 +123,5 @@ export class Sort extends Slide<Array<string>> {
       }
       return sortable;
     }
-  }
-  result(ans: Array<string>, res: Array<string>): boolean {
-    return new Result().result2(ans, res);
   }
 }

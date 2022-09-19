@@ -138,7 +138,7 @@ describe("My First Test", () => {
     // .assert.textContains("body", "PERCENT CORRECT: 63%")
     // .assert.textContains("body", "15.")
     // .assert.textContains("body", "ans")
-
+    cy.wait(20000);
     click('#startOver');
 
     //test body contains "course 1"
