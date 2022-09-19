@@ -1,7 +1,7 @@
 import type { Evaluation } from './evaluation';
 import type { SlideType } from './course';
-import { extend, append, empty } from './utilities';
 import type { ResultReturnType, AnswerType } from './result';
+import { extend, append, empty } from './utilities';
 import { SaveData } from './saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';
@@ -27,7 +27,6 @@ export interface SlideInterface {
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
   txt = '';
-  subtype = '';
   ans!: T;
   res!: T;
   pageTemplate = `
@@ -67,7 +66,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   getSaveData(): SaveData {
     return new SaveData(
       this.txt,
-      this.subtype,
       this.result(this.ans, this.res)
     );
   }

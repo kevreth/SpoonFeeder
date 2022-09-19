@@ -1,11 +1,11 @@
 import type { SaveData } from './saveData';
-import { getInstance } from './slideFactory';
 import type { SlideInterface } from './slide';
+import type { SlideType } from './course';
+import type { Evaluation } from './evaluation';
+import { getInstance } from './slideFactory';
 import { extend, makeButton, shuffle, isRandom, getYaml } from './utilities';
 import { info, Course } from './course';
-import type { SlideType } from './course';
 import { Globals, ROW } from './globals';
-import type { Evaluation } from './evaluation';
 import reloadPage from '../../composables/startOver';
 export enum InfoType {
   COURSE,
@@ -21,26 +21,23 @@ export function slides(courseName: string, doc: Document): void {
   const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
   getYaml(yaml, (course: Course) => {
     let slides = new Array<SlideType>();
-    addNewInfoSlide(course.name, InfoType.COURSE, slides);
+    addNewInfoSlide(course.name, slides);
     const units = course.units;
     units.forEach((unit, unit_ctr) => {
       addNewInfoSlide(
         `Unit ${unit_ctr + 1}:<br>${unit.name}`,
-        InfoType.UNIT,
         slides
       );
       const lessons = unit.lessons;
       lessons.forEach((lesson, lesson_ctr) => {
         addNewInfoSlide(
           `Lesson ${lesson_ctr + 1}:<br>${lesson.name}`,
-          InfoType.LESSON,
           slides
         );
         const modules = lesson.modules;
         modules.forEach((module, module_ctr) => {
           addNewInfoSlide(
             `Module ${module_ctr + 1}:<br>${module.name}`,
-            InfoType.MODULE,
             slides
           );
           const inst: Array<SlideType> = module.inst;
@@ -68,18 +65,16 @@ export function slides(courseName: string, doc: Document): void {
 }
 export function addNewInfoSlide(
   text: string,
-  type: InfoType,
   slides: SlideType[]
 ) {
   const slide = new info();
   slide.txt = text;
-  slide.subtype = InfoType[type].toString();
   slides.push(slide);
 }
 //////////////// Phase 1: process Json
 export function processJson(data: Array<SlideType>): Array<SlideInterface> {
   const outJson: Array<SlideInterface> = new Array<SlideInterface>();
-  Array.prototype.forEach.call(data, (currentQuestion) => {
+  Array.prototype.forEach.call(data, (currentQuestion: SlideType) => {
     const slide = getInstance(currentQuestion.type) as SlideInterface;
     slide.processJson(currentQuestion);
     outJson.push(slide);
@@ -90,18 +85,21 @@ export function processJson(data: Array<SlideType>): Array<SlideInterface> {
 ///////////////// PHASE 2: make slides
 export function showSlides(doc: Document): void {
   const slide = Globals.JSON.getSlide();
+  if (typeof slide === 'undefined') {
+    //end of quiz
+    doc.body.innerHTML = evaluate(); //EXECUTION ENDS
+    startOverButton(doc);
+  } else if (slideProcessed(slide.txt)) showSlides(doc);
+  else slide.makeSlides(doc);
+}
+function slideProcessed(txt:string):boolean {
   const data = localStorage.getItem('savedata') as string;
   const data1 = JSON.parse(data);
   const arr: Array<SaveData> = extend<Array<SaveData>>(
     new Array<SaveData>(),
     data1
   );
-  if (typeof slide === 'undefined') {
-    //end of quiz
-    doc.body.innerHTML = evaluate(); //EXECUTION ENDS
-    startOverButton(doc);
-  } else if (arr.some((x) => x.txt === slide.txt)) showSlides(doc);
-  else slide.makeSlides(doc);
+  return arr.some((x) => x.txt === txt);
 }
 function startOverButton(doc: Document) {
   const startOverText = makeButton('startOver', 'startOver', 'Start Over');
