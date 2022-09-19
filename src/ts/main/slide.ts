@@ -15,7 +15,7 @@ export interface SlideInterface {
   txt: string;
   isExercise: boolean;
   pageTemplate: string;
-  //Transform human-created JSON into computer-friendly form
+  //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
   processJson(json: SlideType): void;
   //Create slide HTML during quiz
