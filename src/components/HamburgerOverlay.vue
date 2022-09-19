@@ -4,16 +4,18 @@
     icon="menu"
     @click="overlay = true"
   />
-
+  
   <q-overlay v-model="overlay">
     <template #body>
-      <div class="fullscreen row justify-evenly items-center overlay">
-        <q-icon
-        class="closeBtn z-top text-red"
-        size="2em"
-        v-if="overlay === true"
-        name="close"
-        @click="overlay = !overlay" />
+      <div class="fullscreen row justify-evenly items-center" >
+        <div class="overlayColor">
+          <q-icon
+          class="closeBtn z-top text-red"
+          size="2em"
+          v-if="overlay === true"
+          name="close"
+          @click="overlay = !overlay" />
+        </div>
       </div>
       
       <div>
@@ -41,13 +43,14 @@ const overlay = ref(false)
 .q-overlay {
   backdrop-filter: blur(5px);
 }
-.overlay {
+.overlayColor {
   position: fixed;
   background-color: #3a3a3a;
-  opacity: 0.5;
+  opacity: 0.6;
   width: 70%;
   top: 10%;
   bottom: 10%; 
   left: 15%;
+  border-radius: 20px;
 }
 </style>
