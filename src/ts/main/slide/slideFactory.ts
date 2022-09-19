@@ -1,12 +1,12 @@
-import type {SlideInterface} from '../slide';
-import {Mc} from '../slideType/mc';
-import {Gap} from '../slideType/gap';
-import {Bool} from '../slideType/mc';
-import {Imap} from '../slideType/imap';
-import {Info} from '../slideType/info';
-import {Select} from '../slideType/select';
-import {Sort} from '../slideType/sort';
-import {Vocab} from '../slideType/vocab';
+import type {SlideInterface} from '../quiz/slide';
+import {Mc} from './slideType/mc';
+import {Gap} from './slideType/gap';
+import {Bool} from './slideType/mc';
+import {Imap} from './slideType/imap';
+import {Info} from './slideType/info';
+import {Select} from './slideType/select';
+import {Sort} from './slideType/sort';
+import {Vocab} from './slideType/vocab';
 export class SlideFactory {
   static readonly BOOL = new SlideFactory('bool');
   static readonly GAP = new SlideFactory('gap');

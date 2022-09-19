@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
-import type {vocab} from '../../main/course'
+import type {vocab} from '../../main/quiz/course'
 import { JSDOM } from 'jsdom';
-import {Vocab} from '../../main/slideType/vocab'
+import {Vocab} from '../../main/slide/slideType/vocab'
 sessionStorage.setItem("random","false");
 const DOC = new JSDOM(`<!DOCTYPE html><body></body>`).window.document;
 const MAP:Map<string,string> = new Map([

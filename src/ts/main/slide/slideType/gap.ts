@@ -1,11 +1,11 @@
-import type { gap } from '../course';
-import { showButton } from '../quiz/makeSlides';
+import type { gap } from '../../quiz/course';
+import { showButton } from '../../quiz/makeSlides';
 import { polyfill } from 'mobile-drag-drop';
-import { Result } from '../slide/result';
-import { Evaluation } from '../quiz/evaluate';
-import { makeRow } from '../quiz/evaluate';
-import { Slide } from '../slide';
-import { shuffle, isRandom } from '../utilities';
+import { Result } from '../../slide/result';
+import { Evaluation } from '../../quiz/evaluate';
+import { makeRow } from '../../quiz/evaluate';
+import { Slide } from '../../quiz/slide';
+import { shuffle, isRandom } from '../../utilities';
 //Despite the documentation, "scroll behaviour" is required
 //for basic mobile drag-and-drop ality.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';

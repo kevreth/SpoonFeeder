@@ -1,11 +1,11 @@
-import type { imap } from '../course';
-import { Evaluation } from '../quiz/evaluate';
-import { Slide } from '../slide';
-import { showButton } from '../quiz/makeSlides';
-import { makeRow } from '../quiz/evaluate';
+import type { imap } from '../../quiz/course';
+import { Evaluation } from '../../quiz/evaluate';
+import { Slide } from '../../quiz/slide';
+import { showButton } from '../../quiz/makeSlides';
+import { makeRow } from '../../quiz/evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds, removeListener } from '../utilities';
-import { Result } from '../slide/result';
+import { getChildIds, removeListener } from '../../utilities';
+import { Result } from '../../slide/result';
 export class Imap extends Slide<string> {
   img = '';
   resultType = Result.SIMPLE;

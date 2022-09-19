@@ -1,8 +1,8 @@
-import type { SlideInterface } from './slide';
-import type { SlideType } from './course';
+import type { SlideInterface } from './quiz/slide';
+import type { SlideType } from './quiz/course';
 import { getInstance } from './slide/slideFactory';
 import { getYaml } from './utilities';
-import { Course } from './course';
+import { Course } from './quiz/course';
 import { Globals } from './globals';
 import { showSlides } from './quiz/makeSlides';
 import { processJson } from './quiz/processJson';

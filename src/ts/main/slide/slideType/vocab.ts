@@ -1,10 +1,10 @@
-import type { vocab } from '../course';
-import { Evaluation } from '../quiz/evaluate';
-import { Slide } from '../slide';
-import { continueButton, showButton } from '../quiz/makeSlides';
-import { makeRow } from '../quiz/evaluate';
-import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
-import { Result } from '../slide/result';
+import type { vocab } from '../../quiz/course';
+import { Evaluation } from '../../quiz/evaluate';
+import { Slide } from '../../quiz/slide';
+import { continueButton, showButton } from '../../quiz/makeSlides';
+import { makeRow } from '../../quiz/evaluate';
+import { removeListener, isRandom, shuffle, shuffleMap } from '../../utilities';
+import { Result } from '../result';
 import { Mc } from './mc';
 export type vocabTuplesType = [
   txt: string,

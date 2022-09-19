@@ -1,4 +1,4 @@
-import {Mc} from '../../main/slideType/mc';
+import {Mc} from '../../main/slide/slideType/mc';
 import { expect, it } from 'vitest'
 const options = ["opt1","opt2","opt3"];
 const question = "question";

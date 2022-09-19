@@ -1,15 +1,15 @@
-import type { select } from '../course';
+import type { select } from '../../quiz/course';
 import {
   difference,
   intersection,
   makeButton,
   removeListener,
-} from '../utilities';
-import { showButton } from '../quiz/makeSlides';
-import { makeRow } from '../quiz/evaluate';
-import { Evaluation } from '../quiz/evaluate';
-import { Slide } from '../slide';
-import { Result } from '../slide/result';
+} from '../../utilities';
+import { showButton } from '../../quiz/makeSlides';
+import { makeRow } from '../../quiz/evaluate';
+import { Evaluation } from '../../quiz/evaluate';
+import { Slide } from '../../quiz/slide';
+import { Result } from '../../slide/result';
 export class Select extends Slide<Array<number>> {
   inst = '';
   resultType = Result.LIST;

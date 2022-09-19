@@ -1,6 +1,6 @@
-import { SlideType } from '../course';
+import { SlideType } from './course';
 import { shuffle, isRandom } from '../utilities';
-import { info, Course } from '../course';
+import { info, Course } from './course';
 
 //////////////// Phase 1: process Json
 export function processJson(course: Course) {

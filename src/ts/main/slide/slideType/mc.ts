@@ -1,10 +1,10 @@
-import type { mc } from '../course';
-import { makeButton, removeListener, isRandom, shuffle } from '../utilities';
-import { showButton } from '../quiz/makeSlides';
-import { makeRow } from '../quiz/evaluate';
-import { Evaluation } from '../quiz/evaluate';
-import { Slide } from '../slide';
-import { Result } from '../slide/result';
+import type { mc } from '../../quiz/course';
+import { makeButton, removeListener, isRandom, shuffle } from '../../utilities';
+import { showButton } from '../../quiz/makeSlides';
+import { makeRow } from '../../quiz/evaluate';
+import { Evaluation } from '../../quiz/evaluate';
+import { Slide } from '../../quiz/slide';
+import { Result } from '../../slide/result';
 export class Mc extends Slide<string> {
   o: string[] = [];
   resultType = Result.SIMPLE;

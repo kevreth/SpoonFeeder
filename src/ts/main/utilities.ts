@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import $ from 'jquery';
-import type { Course } from './course';
+import type { Course } from './quiz/course';
 import * as yaml from 'js-yaml';
 import { SaveData } from './slide/saveData';
 

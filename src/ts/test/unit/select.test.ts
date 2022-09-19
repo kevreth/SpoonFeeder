@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import {Select} from '../../main/slideType/select';
+import {Select} from '../../main/slide/slideType/select';
 const options = ["opt1","opt2","opt3"];
 const instructions = "instructions";
 it('createHtml', () => {
