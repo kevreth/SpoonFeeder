@@ -1,9 +1,12 @@
 import { isEqual } from './utilities';
 export type AnswerType = string | Array<string> | Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
+//Implments the strategy pattern but doesn't need explicit classes
+//since functions are first-class objects in Typescript.
 export class Result {
   //throws error for slides without responses
   //used with: INFO
+  //used as default in Slides abstract class
   static readonly UNSUPPORTED = function(ans: AnswerType, res: AnswerType): ResultReturnType {
     throw new Error(`Method not implemented. +${ans} ${res}`);
   };
