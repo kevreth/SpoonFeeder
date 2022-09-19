@@ -15,8 +15,9 @@ export class Result {
   static readonly SIMPLE: ResultType = function(ans, res) {
     return ans === res;
   };
-  //array comparison where the two arrays must be equal,
-  //using numbers {1,2,3},{1,3,3} -> {false}
+  //array comparison where the two lists must be equal for true result
+  //example: {1,2,3},{1,2,3} -> true
+  //example: {4,5,6},{4,0,6} -> false
   //used with: SELECT, SORT
   static readonly LIST: ResultType = function(ans, res) {
     return isEqual(ans, res);
