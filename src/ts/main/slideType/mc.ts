@@ -1,6 +1,6 @@
 import type { mc } from '../course';
 import { makeButton, removeListener, isRandom, shuffle } from '../utilities';
-import { showButton } from '../quiz';
+import { showButton } from '../quiz/makeSlides';
 import { makeRow } from '../quiz/evaluate';
 import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';

@@ -1,7 +1,7 @@
 import type { imap } from '../course';
 import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';
-import { showButton } from '../quiz';
+import { showButton } from '../quiz/makeSlides';
 import { makeRow } from '../quiz/evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../utilities';

@@ -1,7 +1,7 @@
 import type { vocab } from '../course';
 import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';
-import { continueButton, showButton } from '../quiz';
+import { continueButton, showButton } from '../quiz/makeSlides';
 import { makeRow } from '../quiz/evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
 import { Result } from '../result';

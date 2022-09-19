@@ -1,7 +1,7 @@
 import type { info } from '../course';
 import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';
-import { showSlides } from '../quiz';
+import { showSlides } from '../quiz/makeSlides';
 import { makeButton } from '../utilities';
 export class Info extends Slide<string> {
   txt = '';

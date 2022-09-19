@@ -1,5 +1,5 @@
 import type { gap } from '../course';
-import { showButton } from '../quiz';
+import { showButton } from '../quiz/makeSlides';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../result';
 import { Evaluation } from '../quiz/evaluate';
