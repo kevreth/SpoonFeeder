@@ -1,6 +1,5 @@
 <template>
-  <q-layout>
-      
+  <q-layout>      
     <q-card class="iconHamburger z-top">
       <HamburgerOverlay />
     </q-card>             
@@ -9,7 +8,6 @@
       <router-view />
     </q-page-container>
   </q-layout>
-
 </template>
 
 <script setup>
@@ -25,7 +23,7 @@
   display: flex;
   float: right;
 }
-.blury {
+/* .blury {
   filter: blur(10px);
-}
+} */
 </style>

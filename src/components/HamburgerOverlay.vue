@@ -5,6 +5,7 @@
     icon="menu"
     @click="overlay = true"
   />
+
   <q-overlay v-model="overlay">
     <template #body>
       <div class="fullscreen row justify-evenly items-center">
@@ -15,12 +16,12 @@
         name="close"
         @click="overlay = !overlay" />
       </div>
+      
       <div>
         <StartOver class="z-top"/>
       </div>
     </template>
   </q-overlay>
-
 </template>
 
 <script setup>
@@ -29,20 +30,9 @@ import { QOverlay } from '@quasar/quasar-ui-qoverlay'
 import { ref } from 'vue'
 
 const overlay = ref(false)
-
 </script>
 
 <style>
-/* .overlay { */
-  /* position:fixed;  */
-  /* width:70%; */
-  /* border-radius:20px; */
-  /* opacity: 0.5;  */
-  /* top: 10%; */
-  /* bottom: 10%;  */
-  /* left: 15%; */
-/* } */
-
 .closeBtn {
   position:absolute; 
   top:25%; 

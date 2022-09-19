@@ -1,10 +1,8 @@
 <template>
   <q-page class="row items-center justify-evenly">
-
-  <div id="slide">
-    <div id="content"></div>
-  </div>
-
+    <div id="slide">
+      <div id="content"></div>
+    </div>
   </q-page>
 </template>
 
