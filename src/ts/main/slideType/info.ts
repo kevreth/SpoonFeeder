@@ -2,7 +2,6 @@ import type { info } from '../course';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { showSlides } from '../quiz';
-import { SaveData } from '../saveData';
 import { makeButton } from '../utilities';
 export class Info extends Slide<string> {
   txt = '';
@@ -17,10 +16,6 @@ export class Info extends Slide<string> {
   }
   evaluate(): Evaluation {
     return new Evaluation(0, 0, '');
-  }
-  //don't record CCQ results
-  getSaveData(): SaveData {
-    return new SaveData(this.txt, 'null');
   }
   //info has it's own showButton because the continue button
   //appears immediately upon page load and can be in the wrong
