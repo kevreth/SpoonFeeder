@@ -10,7 +10,7 @@ const PREFIX_COURSE_FILE = '../../../src/courses/';
 export function slides(courseName: string, doc: Document): void {
   // Phase 1: process Json
   // Phase 2: process Slides
-  // PHASE 3: make slides
+  // Phase 3: make slides
   // Phase 4: evaluate
   //TODO: add test for file existence
   const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
