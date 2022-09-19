@@ -5,7 +5,6 @@ import { continueButton, showButton, makeRow } from '../quiz';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
 import { Result } from '../result';
 import { ResponseB } from '../response';
-import { SaveData } from '../saveData';
 import { Mc } from './mc';
 export type vocabTuplesType = [
   txt: string,
@@ -131,11 +130,5 @@ export class Vocab extends Slide<Array<string>> {
   }
   result(ans: Array<string>, res: Array<string>): Array<boolean> {
     return new Result().result4(ans, res);
-  }
-  //overridden from Slide
-  getSaveData(): SaveData {
-    const ans = Array.from(this.list.keys());
-    const res = this.result(ans, this.res);
-    return new SaveData(this.txt, res);
   }
 }
