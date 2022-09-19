@@ -1,6 +1,6 @@
 import type { SlideInterface } from './slide';
 import type { SlideType } from './course';
-import { getInstance } from './slideFactory';
+import { getInstance } from './slide/slideFactory';
 import { getYaml } from './utilities';
 import { Course } from './course';
 import { Globals } from './globals';

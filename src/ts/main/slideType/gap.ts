@@ -1,7 +1,7 @@
 import type { gap } from '../course';
 import { showButton } from '../quiz/makeSlides';
 import { polyfill } from 'mobile-drag-drop';
-import { Result } from '../result';
+import { Result } from '../slide/result';
 import { Evaluation } from '../quiz/evaluate';
 import { makeRow } from '../quiz/evaluate';
 import { Slide } from '../slide';

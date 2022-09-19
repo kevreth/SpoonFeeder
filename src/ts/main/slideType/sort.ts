@@ -6,7 +6,7 @@ import { makeRow } from '../quiz/evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../utilities';
-import { Result } from '../result';
+import { Result } from '../slide/result';
 export class Sort extends Slide<Array<string>> {
   resultType = Result.LIST;
   processJson(json: sort): void {

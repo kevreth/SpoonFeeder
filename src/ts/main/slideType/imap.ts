@@ -5,7 +5,7 @@ import { showButton } from '../quiz/makeSlides';
 import { makeRow } from '../quiz/evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../utilities';
-import { Result } from '../result';
+import { Result } from '../slide/result';
 export class Imap extends Slide<string> {
   img = '';
   resultType = Result.SIMPLE;

@@ -9,7 +9,7 @@ import { showButton } from '../quiz/makeSlides';
 import { makeRow } from '../quiz/evaluate';
 import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';
-import { Result } from '../result';
+import { Result } from '../slide/result';
 export class Select extends Slide<Array<number>> {
   inst = '';
   resultType = Result.LIST;

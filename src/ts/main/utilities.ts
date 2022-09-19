@@ -2,7 +2,7 @@ import _ from 'lodash';
 import $ from 'jquery';
 import type { Course } from './course';
 import * as yaml from 'js-yaml';
-import { SaveData } from './saveData';
+import { SaveData } from './slide/saveData';
 
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;

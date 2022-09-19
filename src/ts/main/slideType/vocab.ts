@@ -4,7 +4,7 @@ import { Slide } from '../slide';
 import { continueButton, showButton } from '../quiz/makeSlides';
 import { makeRow } from '../quiz/evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../utilities';
-import { Result } from '../result';
+import { Result } from '../slide/result';
 import { Mc } from './mc';
 export type vocabTuplesType = [
   txt: string,
