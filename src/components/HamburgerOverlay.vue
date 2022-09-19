@@ -8,7 +8,7 @@
 
   <q-overlay v-model="overlay">
     <template #body>
-      <div class="fullscreen row justify-evenly items-center">
+      <div class="fullscreen row justify-evenly items-center overlay">
         <q-icon
         class="closeBtn z-top text-red"
         size="2em"
@@ -38,5 +38,9 @@ const overlay = ref(false)
   top:25%; 
   right:25%; 
   cursor:pointer;
+}
+.q-overlay {
+  backdrop-filter: blur(10px);
+
 }
 </style>
