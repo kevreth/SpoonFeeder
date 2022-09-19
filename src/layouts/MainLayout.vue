@@ -23,7 +23,4 @@
   display: flex;
   float: right;
 }
-/* .blury {
-  filter: blur(10px);
-} */
 </style>

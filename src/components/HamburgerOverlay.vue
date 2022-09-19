@@ -1,7 +1,6 @@
 <template>
   <q-btn
     size="200%"
-    class="overlay"
     icon="menu"
     @click="overlay = true"
   />
@@ -35,12 +34,20 @@ const overlay = ref(false)
 <style>
 .closeBtn {
   position:absolute; 
-  top:25%; 
-  right:25%; 
+  top:0; 
+  right:0; 
   cursor:pointer;
 }
 .q-overlay {
-  backdrop-filter: blur(10px);
-
+  backdrop-filter: blur(5px);
+}
+.overlay {
+  position: fixed;
+  background-color: #3a3a3a;
+  opacity: 0.5;
+  width: 70%;
+  top: 10%;
+  bottom: 10%; 
+  left: 15%;
 }
 </style>
