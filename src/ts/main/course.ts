@@ -16,11 +16,6 @@ export class Module {
   inst: Array<SlideType> = [];
   exercises: Array<SlideType> = [];
 }
-// export abstract class inst {
-//     pre:Array<SlideType>;
-//     infos:Array<string>;
-//     ccqs:Array<ccq>;
-// }
 export abstract class Slides {
   slides: Array<SlideType> = [];
 }
