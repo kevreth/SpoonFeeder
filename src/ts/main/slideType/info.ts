@@ -1,5 +1,5 @@
 import type { info } from '../course';
-import { Evaluation } from '../evaluation';
+import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';
 import { showSlides } from '../quiz';
 import { makeButton } from '../utilities';

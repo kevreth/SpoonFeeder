@@ -1,8 +1,9 @@
 import type { gap } from '../course';
-import { showButton, makeRow } from '../quiz';
+import { showButton } from '../quiz';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../result';
-import { Evaluation } from '../evaluation';
+import { Evaluation } from '../quiz/evaluate';
+import { makeRow } from '../quiz/evaluate';
 import { Slide } from '../slide';
 import { shuffle, isRandom } from '../utilities';
 //Despite the documentation, "scroll behaviour" is required

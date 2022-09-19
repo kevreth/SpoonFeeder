@@ -1,4 +1,4 @@
-import type { Evaluation } from './evaluation';
+import type { Evaluation } from './quiz/evaluate';
 import type { SlideType } from './course';
 import { ResultReturnType, AnswerType, Result, ResultType } from './result';
 import { append, empty, getSavedDataArray } from './utilities';

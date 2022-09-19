@@ -5,8 +5,9 @@ import {
   makeButton,
   removeListener,
 } from '../utilities';
-import { showButton, makeRow } from '../quiz';
-import { Evaluation } from '../evaluation';
+import { showButton } from '../quiz';
+import { makeRow } from '../quiz/evaluate';
+import { Evaluation } from '../quiz/evaluate';
 import { Slide } from '../slide';
 import { Result } from '../result';
 export class Select extends Slide<Array<number>> {

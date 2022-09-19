@@ -1,13 +1,11 @@
 import type { SlideInterface } from './slide';
 import type { SlideType } from './course';
-import type { Evaluation } from './evaluation';
 import { getInstance } from './slideFactory';
 import { makeButton, shuffle, isRandom, getYaml, getSavedDataArray } from './utilities';
 import { info, Course } from './course';
-import { Globals, ROW } from './globals';
+import { Globals } from './globals';
 import reloadPage from '../../composables/startOver';
-const TABLE_HEADER =
-  '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
+import { evaluate } from './quiz/evaluate';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
 export function slides(courseName: string, doc: Document): void {
   //TODO: add test for file existence
@@ -18,6 +16,7 @@ export function slides(courseName: string, doc: Document): void {
     showSlides(doc);
   });
 }
+//////////////// Phase 1: process Json
 function processSlides(course: Course) {
   let slides = new Array<SlideType>();
   addNewInfoSlide(course.name, slides);
@@ -54,7 +53,7 @@ export function addNewInfoSlide(text: string, slides: SlideType[]) {
   slide.txt = text;
   slides.push(slide);
 }
-//////////////// Phase 1: process Json
+//////////////// Phase 2: process Json
 export function processJson(data: Array<SlideType>): Array<SlideInterface> {
   const outJson: Array<SlideInterface> = new Array<SlideInterface>();
   Array.prototype.forEach.call(data, (currentQuestion: SlideType) => {
@@ -65,7 +64,7 @@ export function processJson(data: Array<SlideType>): Array<SlideInterface> {
   Globals.JSON.reset();
   return outJson;
 }
-///////////////// PHASE 2: make slides
+///////////////// PHASE 3: make slides
 export function showSlides(doc: Document): void {
   const slide = Globals.JSON.getSlide();
   const arr = getSavedDataArray();
@@ -109,41 +108,5 @@ export function continueButton(doc: Document) {
   continue_btn.style.marginLeft = -2.3 + 'em';
   return continue_btn;
 }
-//////////////// Phase 3: evaluate
-function summary(responseCtr: number, correctCtr: number) {
-  const pctCorrect = percentCorrect(correctCtr, responseCtr);
-  return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
-}
-export function percentCorrect(
-  correctCtr: number,
-  responseCtr: number
-): string {
-  return ((correctCtr / responseCtr) * 100).toFixed(0);
-}
-function evaluate(): string {
-  Globals.JSON.reset();
-  let text = TABLE_HEADER;
-  let correctCtr = 0;
-  let responseCtr = 0;
-  for (let i = 0; i < Globals.JSON.getNumSlides(); i++) {
-    const slide = Globals.JSON.getSlide();
-    if (!slide.isExercise) continue;
-    const evaluation: Evaluation = slide.evaluate();
-    responseCtr += evaluation.responses;
-    correctCtr += evaluation.correct;
-    text = text.concat(evaluation.text);
-  }
-  text = text.concat('</table>');
-  text = text.concat(summary(responseCtr, correctCtr));
-  for (let i = 1; i < responseCtr + 1; i++) {
-    text = text.replace('%N%', i.toString());
-  }
-  return text;
-}
-export function makeRow(question: string, response: string, answer: string) {
-  let text = ROW;
-  text = text.replace('%Q%', question);
-  text = text.replace('%A%', response);
-  text = text.replace('%C%', answer);
-  return text;
-}
+//////////////// Phase 4: evaluate
+
