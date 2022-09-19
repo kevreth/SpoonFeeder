@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import {Gap} from '../../main/slide/slideType/gap';
+import {Gap} from '../../main/quiz/slide/slideType/gap';
 // import "html-validate/jest";
 const question = "text (1) text (2) text (3)";
 const ans=["ans1", "ans2", "ans3"]
