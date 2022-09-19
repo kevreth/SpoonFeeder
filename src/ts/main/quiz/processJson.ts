@@ -34,7 +34,7 @@ function loadQuestions(slides: Array<SlideType>, questions: Array<SlideType>, is
   }
   return slides;
 }
-export function addNewInfoSlide(text: string, slides: SlideType[]) {
+function addNewInfoSlide(text: string, slides: SlideType[]) {
   const slide = new info();
   slide.txt = text;
   slides.push(slide);
