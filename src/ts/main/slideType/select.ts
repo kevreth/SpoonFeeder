@@ -8,7 +8,7 @@ import {
 import { showButton, makeRow } from '../quiz';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
-import { Result } from '../result';
+import { Result, ResultReturnType } from '../result';
 export class Select extends Slide<Array<number>> {
   inst = '';
   processJson(json: select): void {
@@ -117,7 +117,7 @@ export class Select extends Slide<Array<number>> {
     if (this.result(this.ans, this.res)) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
-  result(ans: Array<number>, res: Array<number>): boolean {
+  result(ans: Array<number>, res: Array<number>): ResultReturnType {
     return new Result().result2(ans, res);
   }
 }

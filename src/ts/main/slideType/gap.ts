@@ -1,6 +1,6 @@
 import { showButton, makeRow } from '../quiz';
 import { polyfill } from 'mobile-drag-drop';
-import { Result } from '../result';
+import { Result, ResultReturnType } from '../result';
 //Despite the documentation, "scroll behaviour" is required
 //for basic mobile drag-and-drop ality.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
@@ -180,7 +180,7 @@ export class Gap extends Slide<Array<string>> {
       const row_a = this.gapQuest(response_, answer, i, this.ans, this.txt);
       rows.push(row_a);
     }
-    const correctCtr = this.result(this.ans, this.res).filter(Boolean).length;
+    const correctCtr = (this.result(this.ans, this.res) as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.ans.length, correctCtr, rows.join('\n'));
   }
   gapQuest(
@@ -196,7 +196,7 @@ export class Gap extends Slide<Array<string>> {
     row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
     return row_a;
   }
-  result(ans: Array<string>, res: Array<string>): Array<boolean> {
+  result(ans: Array<string>, res: Array<string>): ResultReturnType {
     return new Result().result4(ans, res);
   }
 }

@@ -1,10 +1,11 @@
 import type { imap } from '../course';
 import { Evaluation } from '../evaluation';
-import { Slide1 } from '../slide';
+import { Slide } from '../slide';
 import { showButton, makeRow } from '../quiz';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../utilities';
-export class Imap extends Slide1 {
+import { Result, ResultReturnType } from '../result';
+export class Imap extends Slide<string> {
   img = '';
   processJson(json: imap): void {
     ({
@@ -54,5 +55,8 @@ export class Imap extends Slide1 {
     const text = makeRow(this.txt, this.res, this.ans);
     if (this.result(this.ans, this.res)) correctCtr++;
     return new Evaluation(1, correctCtr, text);
+  }
+  result(ans: string, res: string): ResultReturnType {
+    return new Result().result(ans, res);
   }
 }

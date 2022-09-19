@@ -1,5 +1,5 @@
 import type { info } from '../course';
-import type { ResultReturnType } from '../result';
+import { Result, ResultReturnType } from '../result';
 import { Evaluation } from '../evaluation';
 import { Slide } from '../slide';
 import { showSlides } from '../quiz';
@@ -20,11 +20,11 @@ export class Info extends Slide<string> {
     return new Evaluation(0, 0, '');
   }
   result(ans: string, res: string): ResultReturnType {
-    throw new Error(`Method not implemented. +${ans} ${res}`);
+    return new Result().result1(ans, res);
   }
   //don't record CCQ results
   getSaveData(): SaveData {
-    return new SaveData(this.txt, null);
+    return new SaveData(this.txt, 'null');
   }
   //info has it's own showButton because the continue button
   //appears immediately upon page load and can be in the wrong
