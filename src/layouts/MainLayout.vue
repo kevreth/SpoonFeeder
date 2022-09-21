@@ -1,7 +1,7 @@
 <template>
   <q-layout>      
     <q-card class="iconHamburger z-top">
-      <HamburgerOverlay />
+      <MenuOverlay />
     </q-card>             
 
     <q-page-container>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-  import HamburgerOverlay from 'src/components/HamburgerOverlay.vue';
+import MenuOverlay from 'src/components/MenuOverlay.vue';
 </script>
 
 <style>
