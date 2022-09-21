@@ -1,24 +1,25 @@
 <template>
-  <q-overlay :overlay="overlayValue">
+  <MenuBtn @click="handleOverlay"/>
+  
+  <q-overlay v-model="overlay"> 
     <template #body>
-      <OverlayCloseBtn @click="closeOverlay"/>
+      <OverlayCloseBtn @click="handleOverlay"/>
       
-      <div>
-        <StartOver class="z-top"/>
-      </div>
+      <StartOver class="z-top"/>
     </template>
   </q-overlay>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import StartOver from './StartOver.vue'
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
+import MenuBtn from './MenuBtn.vue';
 
-defineProps({ overlayValue: Boolean });
+const overlay = ref(false)
 
-const emit = defineEmits(['close'])
-function closeOverlay () {
-  emit('close')
+function handleOverlay() {
+  overlay.value = !overlay.value
 }
 </script>
 
