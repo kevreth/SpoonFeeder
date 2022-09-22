@@ -130,14 +130,14 @@ describe("My First Test", () => {
 
     //results
     // .assert.not.textContains("body", "undefined")
-    // .assert.textContains("body", "b,a,c,d")
-    // .assert.textContains("body", "blue")
-    // .assert.textContains("body", "hadn't")
-    // .assert.textContains("body", "NUMBER OF QUESTIONS: 16")
-    // .assert.textContains("body", "NUMBER CORRECT: 10")
-    // .assert.textContains("body", "PERCENT CORRECT: 63%")
-    // .assert.textContains("body", "15.")
-    // .assert.textContains("body", "ans")
+    cy.contains("b,a,c,d");
+    cy.contains("blue");
+    cy.contains("NUMBER OF QUESTIONS: 16");
+    cy.contains("NUMBER CORRECT: 10");
+    cy.contains("PERCENT CORRECT: 63%");
+
+    cy.contains("15.");
+    cy.contains("ans");
     cy.wait(20000);
     click('#startOver');
 
