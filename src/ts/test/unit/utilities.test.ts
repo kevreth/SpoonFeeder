@@ -30,7 +30,7 @@ it('isEqual1', () => {
   expect(result).toEqual(true);
 });
 it('getChildIds',() => {
-	const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
+	const dom = new JSDOM('<!DOCTYPE html><body></body>');
 	const html = `
   <div id="parent-div">
     <div id="div-no-1"></div>
@@ -41,23 +41,23 @@ it('getChildIds',() => {
   `;
 	dom.window.document.body.innerHTML = html;
   const doc = dom.window.document;
-	const ids = getChildIds(doc, "parent-div");
+	const ids = getChildIds(doc, 'parent-div');
   expect(ids).not.toBeNull()
   expect(ids).not.to.be.empty;
   expect(ids.length).toBe(4);
-  expect(ids[2]).toBe("div-no-3");
+  expect(ids[2]).toBe('div-no-3');
 })
 it('getNumberedProperties',() => {
   const obj = {
-    typeA_2: "b",
-    typeB_2: "2",
-    typeB_1: "1",
-    typeA_1: "a"
+    typeA_2: 'b',
+    typeB_2: '2',
+    typeB_1: '1',
+    typeA_1: 'a'
   }
-  const actual:Array<object> = getNumberedProperties(obj,"typeA");
+  const actual:Array<object> = getNumberedProperties(obj,'typeA');
   expect(actual.length).toBe(2);
-  expect(actual[0][0]).toBe("typeA_1");
-  expect(actual[0][1]).toBe("a");
-  expect(actual[1][0]).toBe("typeA_2");
-  expect(actual[1][1]).toBe("b");
+  expect(actual[0][0]).toBe('typeA_1');
+  expect(actual[0][1]).toBe('a');
+  expect(actual[1][0]).toBe('typeA_2');
+  expect(actual[1][1]).toBe('b');
 })

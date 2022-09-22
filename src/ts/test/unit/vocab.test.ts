@@ -1,18 +1,18 @@
 import { expect, it } from 'vitest'
 import type {vocab} from '../../main/quiz/course'
 import { JSDOM } from 'jsdom';
-import {Vocab} from '../../main/slide/slideType/vocab'
-sessionStorage.setItem("random","false");
-const DOC = new JSDOM(`<!DOCTYPE html><body></body>`).window.document;
+import {Vocab} from '../../main/quiz/slide/slideType/vocab'
+sessionStorage.setItem('random','false');
+const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 const MAP:Map<string,string> = new Map([
-	["term1","def1"],
-	["term2","def2"],
-	["term3","def3"],
-	["term4","def4"],
-	["term5","def5"]
+	['term1','def1'],
+	['term2','def2'],
+	['term3','def3'],
+	['term4','def4'],
+	['term5','def5']
 ]);
 const json:vocab = {
-	type:"vocab",
+	type:'vocab',
 	list: MAP,
 	isExercise: false
 }
@@ -38,7 +38,7 @@ it('createHtmlLoop', () => {
 //test that the question and 4 buttons appear
 it('includesEverything', () => {
 	new Vocab().proc(MAP,DOC);
-	const buttons = DOC.getElementsByTagName("button");
+	const buttons = DOC.getElementsByTagName('button');
 	expect(buttons.length).toBe(4);
 	const questionId = DOC.getElementById('content');
 	expect(questionId).not.toBeNull();
@@ -51,7 +51,7 @@ it('correctAnswerGreen', () => {
 	const button = DOC.getElementById('btn0') as HTMLElement;
 	expect(button.style.backgroundColor).to.be.empty;
 	button.click();
-	expect(button.style.backgroundColor).toBe("green");
+	expect(button.style.backgroundColor).toBe('green');
 });
 //test that click changes button color
 //we can't easily test for initial color because
@@ -61,7 +61,7 @@ it('wrongAnswerRed', () => {
 	const button = DOC.getElementById('btn2') as HTMLElement;
 	expect(button.style.backgroundColor).to.be.empty;
 	button.click();
-	expect(button.style.backgroundColor).toBe("red");
+	expect(button.style.backgroundColor).toBe('red');
 });
 //test that event listeners have been removed
 it('eventListenersRemoved', () => {
