@@ -1,13 +1,17 @@
-import type { sort } from '../../course';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { Slide, SlideInterface } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../../../utilities';
 import { Result } from '../../slide/result';
-export class Sort extends Slide<Array<string>> {
+export interface sort extends SlideInterface {
+  txt: string;
+  ans: Array<string>;
+}
+export class Sort extends Slide<Array<string>> implements SlideInterface {
+  type = 'sort';
   resultType = Result.LIST;
   processJson(json: sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
@@ -35,7 +39,7 @@ export class Sort extends Slide<Array<string>> {
   evaluate(): Evaluation {
     let correctCtr = 0;
     const text = makeRow(this.txt, this.res.toString(), this.ans.toString());
-    if (this.result(this.ans, this.res)) correctCtr++;
+    if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
   addBehavior(doc: Document): void {
@@ -50,7 +54,7 @@ export class Sort extends Slide<Array<string>> {
     done.addEventListener('click', () => {
       this.res = sortables.map((x) => x.element.innerHTML);
       let msg = 'incorrect';
-      if (this.result(this.ans, this.res)) msg = 'correct';
+      if (this.result()) msg = 'correct';
       const content = doc.getElementById('content') as HTMLElement;
       content.insertAdjacentHTML('beforeend', msg);
       done.remove();

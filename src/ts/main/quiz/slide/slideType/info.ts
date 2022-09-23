@@ -1,9 +1,12 @@
-import type { info } from '../../course';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { Slide, SlideInterface} from '../../slide';
 import { showSlides } from '../../makeSlides';
 import { makeButton } from '../../../utilities';
-export class Info extends Slide<string> {
+export interface info extends SlideInterface {
+  txt: string;
+}
+export class Info extends Slide<string> implements info {
+  type = 'info';
   txt = '';
   processJson(json: info): void {
     this.txt = json.txt;

@@ -1,4 +1,3 @@
-import type { select } from '../../course';
 import {
   difference,
   intersection,
@@ -8,9 +7,17 @@ import {
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { Slide, SlideInterface } from '../../slide';
 import { Result } from '../../slide/result';
-export class Select extends Slide<Array<number>> {
+
+export interface select extends SlideInterface {
+  inst: string;
+  txt: string;
+  ans: Array<number>;
+}
+
+export class Select extends Slide<Array<number>> implements select {
+  type = 'select';
   inst = '';
   resultType = Result.LIST;
   processJson(json: select): void {
@@ -116,7 +123,7 @@ export class Select extends Slide<Array<number>> {
   evaluate(): Evaluation {
     const text = makeRow(this.txt, this.res.toString(), this.ans.toString());
     let correctCtr = 0;
-    if (this.result(this.ans, this.res)) correctCtr++;
+    if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
 }

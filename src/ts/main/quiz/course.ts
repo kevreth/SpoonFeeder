@@ -1,69 +1,57 @@
-export type SlideType = ccq | mc | gap | info | select | vocab | imap | sort;
-export class Course {
+import { SlideInterface } from './slide';
+
+// export type SlideType = /*ccq |*/ mc | gap | info | select | vocab | imap | sort;
+export interface GetScore {
+  get score(): number;
+  addToScore(value: number): void;
+  get questions(): number;
+  addToQuestions(value:number): void;
+}
+export abstract class Division implements GetScore {
   name = '';
-  units: Array<Unit> = [];
-}
-export class Unit {
-  name = '';
-  lessons: Array<Lesson> = [];
-}
-export class Lesson {
-  name = '';
-  modules: Array<Module> = [];
-}
-export class Module {
-  name = '';
-  inst: Array<SlideType> = [];
-  exercises: Array<SlideType> = [];
-}
-export abstract class Slides {
-  slides: Array<SlideType> = [];
-}
-export abstract class slide {
-  type = '';
-  isExercise = false;
-}
-export class bool extends slide {
-  txt = '';
-  ans = '';
-}
-export class gap extends slide {
-  txt = '';
-  ans: Array<string> = [];
-}
-export class imap extends slide {
-  txt = '';
-  img = '';
-  ans = '';
-}
-export class mc extends slide {
-  txt = '';
-  o: Array<string> = [];
-  ans = '';
-}
-export class select extends slide {
-  inst = '';
-  txt = '';
-  ans: Array<number> = [];
-}
-export class sort extends slide {
-  txt = '';
-  ans: Array<string> = [];
-}
-export class vocab extends slide {
-  list: Map<string, string> = new Map();
-}
-//this is not the format in the course file,
-//where info is just a string.
-export class info extends slide {
-  txt = '';
-  constructor() {
-    super();
-    this.type = 'info';
+
+  private _score = 0;
+  private _questions = 0;
+  public get questions(): number {
+    return this._questions;
+  }
+  public addToQuestions(value:number): void {
+    this._questions += value;
+  }
+  public addToScore(score:number): void {
+    this._score += score;
+  }
+  public get score(): number {
+    return this._score;
   }
 }
-export class ccq extends slide {
-  txt = '';
-  o: Array<string> = [];
-  ans = '';
+export class Course extends Division {
+  units: Array<Unit> = [];
 }
+export class Unit extends Division {
+  lessons: Array<Lesson> = [];
+}
+export class Lesson extends Division {
+  modules: Array<Module> = [];
+}
+export class Module extends Division {
+  inst: Array<SlideInterface> = [];
+  exercises: Array<SlideInterface> = [];
+}
+// export abstract class Slides {
+//   slides: Array<SlideType> = [];
+// }
+// //this is not the format in the course file,
+// //where info is just a string.
+// export interface info extends slide {
+//   txt: string;
+//   // constructor() {
+//   //   super();
+//   //   this.type = 'info';
+//   // }
+// }
+// export class ccq extends slide {
+//   txt: string;
+//   o: Array<string> = [];
+//   ans: string;
+// }

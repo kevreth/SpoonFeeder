@@ -1,5 +1,4 @@
 import type { SlideInterface } from './quiz/slide';
-import type { SlideType } from './quiz/course';
 import { getInstance } from './quiz/slide/slideFactory';
 import { getYaml } from './utilities';
 import { Course } from './quiz/course';
@@ -21,9 +20,9 @@ export function slides(courseName: string, doc: Document): void {
   });
 }
 //////////////// Phase 2: process Json
-export function processSlides(data: Array<SlideType>): Array<SlideInterface> {
+export function processSlides(data: Array<SlideInterface>): Array<SlideInterface> {
   const outJson: Array<SlideInterface> = new Array<SlideInterface>();
-  Array.prototype.forEach.call(data, (currentQuestion: SlideType) => {
+  Array.prototype.forEach.call(data, (currentQuestion: SlideInterface) => {
     const slide = getInstance(currentQuestion.type) as SlideInterface;
     slide.processJson(currentQuestion);
     outJson.push(slide);

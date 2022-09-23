@@ -1,12 +1,17 @@
-import type { imap } from '../../course';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { Slide, SlideInterface } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../utilities';
 import { Result } from '../../slide/result';
-export class Imap extends Slide<string> {
+export interface imap extends SlideInterface {
+  txt: string;
+  img: string;
+  ans: string;
+}
+export class Imap extends Slide<string> implements imap {
+  type = 'imap';
   img = '';
   resultType = Result.SIMPLE;
   processJson(json: imap): void {
@@ -40,7 +45,7 @@ export class Imap extends Slide<string> {
             const response = imap.res;
             const element = doc.getElementById(response) as HTMLElement;
             let classname = 'shape_incorrect';
-            if (imap.result(imap.ans, response)) classname = 'shape_correct';
+            if (imap.result()) classname = 'shape_correct';
             element.classList.add(classname);
             imap.saveData();
             showButton(doc);
@@ -55,7 +60,7 @@ export class Imap extends Slide<string> {
   evaluate(): Evaluation {
     let correctCtr = 0;
     const text = makeRow(this.txt, this.res, this.ans);
-    if (this.result(this.ans, this.res)) correctCtr++;
+    if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
 }

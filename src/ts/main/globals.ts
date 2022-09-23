@@ -14,6 +14,9 @@ class Json {
         this.counter++;
         return retval;
     }
+    getSlideByTxt(txt: string):SlideInterface|undefined {
+      return this.json.find(x => x.txt === txt);
+    }
     getNumSlides():number {
         return this.json.length;
     }

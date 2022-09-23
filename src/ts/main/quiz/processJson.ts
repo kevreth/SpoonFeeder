@@ -1,10 +1,10 @@
-import { SlideType } from './course';
 import { shuffle, isRandom } from '../utilities';
-import { info, Course } from './course';
-
+import { Course } from './course';
+import { SlideInterface } from './slide';
+import { Info } from './slide/slideType/info';
 //////////////// Phase 1: process Json
 export function processJson(course: Course) {
-  let slides = new Array<SlideType>();
+  let slides = new Array<SlideInterface>();
   addNewInfoSlide(course.name, slides);
   course.units.forEach((unit, unit_ctr) => {
     addNewInfoSlide(titleSlideText('Unit', unit_ctr, unit.name), slides);
@@ -23,19 +23,43 @@ function titleSlideText(type: string, counter: number, name: string) {
   counter++;
   return `${type} ${counter}:<br>${name}`;
 }
-function loadQuestions(slides: Array<SlideType>, questions: Array<SlideType>, isExercise: boolean): Array<SlideType> {
+function loadQuestions(slides: Array<SlideInterface>, questions: Array<SlideInterface>, isExercise: boolean): Array<SlideInterface> {
   if (typeof questions !== 'undefined') {
     questions.forEach((item) => {
       item.isExercise = isExercise;
     });
     if (isRandom() && isExercise)
       questions = shuffle(questions);
-    slides = slides.concat(questions);
+      slides = slides.concat(questions);
   }
   return slides;
 }
-function addNewInfoSlide(text: string, slides: SlideType[]) {
-  const slide = new info();
+function addNewInfoSlide(text: string, slides: SlideInterface[]) {
+  const slide = new Info();
   slide.txt = text;
   slides.push(slide);
 }
+// export function summary(course: Course):Array<string> {
+//   const lines = new Array<string>();
+//   course.children.forEach((unit) => {
+//     unit.children.forEach((lesson) => {
+//       lesson.children.forEach((module) => {
+//         module.children.forEach((exercise) => {
+//           const txt = exercise.txt;
+//           const slide = Globals.JSON.getSlideByTxt(txt);
+//           const answer = slide?.result();
+//           let count = 0;
+//           if(Array.isArray(answer))
+//             count = answer.filter(value => value === true).length;
+//           else
+//             count = answer ? 1 : 0;
+//           module.addToScore(count);
+//           lesson.addToScore(count);
+//           unit.addToScore(count);
+//           course.addToScore(count);
+//         }); //exercise
+//       }); //lesson
+//     }); //unit
+//   }); //course
+//   return lines;
+// }

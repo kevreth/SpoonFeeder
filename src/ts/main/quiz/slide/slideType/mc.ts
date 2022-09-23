@@ -1,11 +1,16 @@
-import type { mc } from '../../course';
 import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { Slide, SlideInterface } from '../../slide';
 import { Result } from '../../slide/result';
-export class Mc extends Slide<string> {
+export interface mc extends SlideInterface {
+  txt: string;
+  o: Array<string>;
+  ans: string;
+}
+export class Mc extends Slide<string> implements SlideInterface {
+  type = 'mc'
   o: string[] = [];
   resultType = Result.SIMPLE;
   processJson(json: mc): void {
@@ -25,7 +30,7 @@ export class Mc extends Slide<string> {
     this.createPageContent(html, doc);
     this.createHtml(this.txt, options);
     options.forEach((option, optionCtr) => {
-      this.addBehavior(doc, option, options.length, optionCtr, this.ans);
+      this.addBehavior(doc, option, options.length, optionCtr);
     });
     this.setWidths(options, doc);
   }
@@ -46,8 +51,7 @@ export class Mc extends Slide<string> {
     doc: Document,
     option: string,
     length: number,
-    optionCtr: number,
-    ans: string
+    optionCtr: number
   ): void {
     const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
     element.addEventListener('click', () => {
@@ -55,7 +59,8 @@ export class Mc extends Slide<string> {
         removeListener(doc.getElementById('btn' + i) as HTMLElement);
       const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
       let color = 'red';
-      if (this.result(option, ans)) color = 'green';
+      this.res = option;
+      if (this.result()) color = 'green';
       optionButton.style.backgroundColor = color;
       this.res = option;
       this.saveData();
@@ -74,11 +79,15 @@ export class Mc extends Slide<string> {
   public evaluate(): Evaluation {
     let correctCtr = 0;
     const text = makeRow(this.txt, this.res, this.ans);
-    if (this.result(this.ans, this.res)) correctCtr++;
+    if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
 }
-export class Bool extends Mc {
+export interface bool extends SlideInterface {
+  txt: string;
+  ans: string;
+}
+export class Bool extends Mc implements bool {
   o = ['yes', 'no'];
   processJson(json: mc): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);

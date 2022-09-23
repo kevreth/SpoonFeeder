@@ -1,18 +1,21 @@
-import type { vocab } from '../../course';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { Slide, SlideInterface } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../../slide/result';
 import { Mc } from './mc';
+export interface vocab extends SlideInterface {
+  list: Map<string, string>;
+}
 export type vocabTuplesType = [
   txt: string,
   ans: string,
   options: Array<string>
 ][];
-export class Vocab extends Slide<Array<string>> {
-  list: Map<string, string> = new Map();
+export class Vocab extends Slide<Array<string>> implements vocab {
+  type = 'vocab';
+  list = new Map();
   res = new Array<string>();
   resultType = Result.CORRELATED;
   processJson(json: vocab): void {
@@ -124,7 +127,8 @@ export class Vocab extends Slide<Array<string>> {
       rows.push(row);
     }
     const row_accum = rows.join('\n');
-    const correctCtr = (this.result(ans, this.res) as Array<boolean>).filter(Boolean).length;
+    this.ans = ans;
+    const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.list.size, correctCtr, row_accum);
   }
 }

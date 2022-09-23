@@ -1,5 +1,5 @@
 import type { Evaluation } from './evaluate';
-import type { SlideType } from './course';
+import type { GetScore } from './course';
 import { ResultReturnType, AnswerType, Result, ResultType } from './slide/result';
 import { append, empty, getSavedDataArray } from '../utilities';
 import { SaveData } from '../quiz/slide/saveData';
@@ -9,15 +9,15 @@ import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 import hljs from 'highlight.js';
-
 RegisterHTMLHandler(browserAdaptor());
-export interface SlideInterface {
+export interface SlideInterface extends GetScore {
+  type: string;
   txt: string;
   isExercise: boolean;
   pageTemplate: string;
   //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
-  processJson(json: SlideType): void;
+  processJson(json: SlideInterface): void;
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;
   // response():Responses;
@@ -26,10 +26,27 @@ export interface SlideInterface {
   evaluate(): Evaluation;
   createPageContent(html: string, doc: Document): void;
   setResults(res:AnswerType):void;
-  result(ans: AnswerType, res: AnswerType): ResultReturnType;
+  result(): ResultReturnType;
+  get questions(): number;
+  get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
+  type='';
   //reset in every child class
+  private _score = 0;
+  private _questions = 0;
+  public get questions(): number {
+    return this._questions;
+  }
+  public addToQuestions(value:number): void {
+    this._questions += value;
+  }
+  public addToScore(score:number): void {
+    this._score += score;
+  }
+  public get score(): number {
+    return this._score;
+  }
   resultType: ResultType = Result.UNSUPPORTED;
   txt = '';
   ans!: T;
@@ -41,7 +58,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
         </div>
     `;
   isExercise = false;
-  abstract processJson(json: SlideType): void;
+  abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   abstract evaluate(): Evaluation;
   //necessary to load results from save file
@@ -78,7 +95,16 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     arr.push(save);
     localStorage.setItem('savedata', JSON.stringify(arr));
   }
-  result(ans: T, res: T): ResultReturnType {
-    return this.resultType(ans,res);
+  result(): ResultReturnType {
+    return this.resultType(this.ans,this.res);
+  }
+  getScore(): number {
+    const result = this.result();
+    let count = 0;
+    if(Array.isArray(result))
+      count = result.filter(value => value === true).length;
+    else
+      count = result ? 1 : 0;
+    return count;
   }
 }

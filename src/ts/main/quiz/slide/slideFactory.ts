@@ -1,4 +1,4 @@
-import type {SlideInterface} from '../quiz/slide';
+import type {SlideInterface} from '../slide';
 import {Mc} from './slideType/mc';
 import {Gap} from './slideType/gap';
 import {Bool} from './slideType/mc';
