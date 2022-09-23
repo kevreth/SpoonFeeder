@@ -1,6 +1,5 @@
 import { SlideInterface } from './slide';
 
-// export type SlideType = /*ccq |*/ mc | gap | info | select | vocab | imap | sort;
 export interface GetScore {
   get score(): number;
   addToScore(value: number): void;
@@ -38,20 +37,3 @@ export class Module extends Division {
   inst: Array<SlideInterface> = [];
   exercises: Array<SlideInterface> = [];
 }
-// export abstract class Slides {
-//   slides: Array<SlideType> = [];
-// }
-// //this is not the format in the course file,
-// //where info is just a string.
-// export interface info extends slide {
-//   txt: string;
-//   // constructor() {
-//   //   super();
-//   //   this.type = 'info';
-//   // }
-// }
-// export class ccq extends slide {
-//   txt: string;
-//   o: Array<string> = [];
-//   ans: string;
-// }
