@@ -1,19 +1,17 @@
 <template>
   <MenuBtn @click="handleOverlay"/>
-  
-  <q-overlay v-model="overlay"> 
+
+  <q-overlay v-model="overlay">
     <template #body>
       <ProgressTable style="cursor:auto"/>
       <TrashBtn />
       <OverlayCloseBtn @click="handleOverlay"/>
-      <!-- <StartOver class="z-top"/> -->
     </template>
   </q-overlay>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-// import StartOver from './StartOver.vue'
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
