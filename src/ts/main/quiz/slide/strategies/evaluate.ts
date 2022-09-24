@@ -2,8 +2,8 @@ import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { AnswerType, ResultReturnType } from './result';
 type SimpleType = (txt: string, res: AnswerType, ans: AnswerType, result: ResultReturnType) => Evaluation;
-type VocabType = (txt: string[], ans: string[], res: string[], result: boolean | boolean[]) => Evaluation;
-type GapType = (ans: string[], res: string[], txt: string, result: boolean | boolean[]) => Evaluation;
+type VocabType = (txt: string[], ans: string[], res: string[], result: ResultReturnType) => Evaluation;
+type GapType = (ans: string[], res: string[], txt: string, result: ResultReturnType) => Evaluation;
 export class Evaluate {
   static readonly DEFAULT = function evaluate() {
     return new Evaluation(0, 0, '');
@@ -38,7 +38,7 @@ export class Evaluate {
     const correctCtr = (result as Array<boolean>).filter(Boolean).length;
     return new Evaluation(length, correctCtr, rows.join('\n'));
   }
-  static gapQuest(
+  private static gapQuest(
     response: string,
     answer: string,
     i: number,
