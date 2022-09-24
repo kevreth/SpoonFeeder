@@ -113,39 +113,17 @@ export class Vocab extends Slide<Array<string>> {
   evaluate(): Evaluation {
     const ans = Array.from(this.list.keys());
     const txt = Array.from(this.list.values());
-    const resp = new ResponseB();
-    resp.init(txt, ans, this.res);
+    const res = this.res;
     const rows = new Array<string>();
-    for (const item of resp.get()) {
-      const row = makeRow(item.txt, item.res, item.ans);
+    txt.forEach((txt1,idx) => {
+      const ans1=ans[idx];
+      const res1=res[idx];
+      const row = makeRow(txt1, ans1, res1);
       rows.push(row);
-    }
+  })
     const row_accum = rows.join('\n');
     this.ans = ans;
     const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.list.size, correctCtr, row_accum);
-  }
-}
-class ResponseA {
-  txt:string;
-  ans:string;
-  res:string;
-  constructor(txt:string, ans:string, res:string) {
-      this.txt=txt;
-      this.ans=ans;
-      this.res=res;
-  }
-}
-class ResponseB {
-  resp:Array<ResponseA>=new Array<ResponseA>();
-  init(txt:Array<string>,ans:Array<string>, res:Array<string>) {
-      txt.forEach((txt1,idx) => {
-          const ans1=ans[idx];
-          const res1=res[idx];
-          this.resp.push(new ResponseA(txt1,ans1,res1));
-      })
-  }
-  get():Array<ResponseA>{
-      return this.resp;
   }
 }
