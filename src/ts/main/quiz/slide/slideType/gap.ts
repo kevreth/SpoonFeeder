@@ -20,7 +20,7 @@ export interface gap extends SlideInterface {
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
-export class Gap extends Slide<Array<string>> implements gap {
+export class Gap extends Slide<Array<string>> {
   type = 'gap';
   resultType = Result.CORRELATED;
   processJson(json: gap): void {

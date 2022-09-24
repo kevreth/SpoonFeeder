@@ -10,7 +10,7 @@ export interface sort extends SlideInterface {
   txt: string;
   ans: Array<string>;
 }
-export class Sort extends Slide<Array<string>> implements SlideInterface {
+export class Sort extends Slide<Array<string>> {
   type = 'sort';
   resultType = Result.LIST;
   processJson(json: sort): void {

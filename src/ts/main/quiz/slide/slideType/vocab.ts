@@ -13,7 +13,7 @@ export type vocabTuplesType = [
   ans: string,
   options: Array<string>
 ][];
-export class Vocab extends Slide<Array<string>> implements vocab {
+export class Vocab extends Slide<Array<string>> {
   type = 'vocab';
   list = new Map();
   res = new Array<string>();
@@ -100,10 +100,10 @@ export class Vocab extends Slide<Array<string>> implements vocab {
         }
       });
     });
-    new Mc().setWidths(options, doc);
+    new Mc('mc').setWidths(options, doc);
   }
   createHtml(question: string, options: string[]): string {
-    return new Mc().createHtml(question, options);
+    return new Mc('mc').createHtml(question, options);
   }
   addContinueEventListener(
     element: HTMLElement,

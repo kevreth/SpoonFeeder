@@ -9,7 +9,7 @@ export interface mc extends SlideInterface {
   o: Array<string>;
   ans: string;
 }
-export class Mc extends Slide<string> implements SlideInterface {
+export class Mc extends Slide<string> {
   type = 'mc'
   o: string[] = [];
   resultType = Result.SIMPLE;

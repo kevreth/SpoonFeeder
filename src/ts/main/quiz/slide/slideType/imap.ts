@@ -10,7 +10,7 @@ export interface imap extends SlideInterface {
   img: string;
   ans: string;
 }
-export class Imap extends Slide<string> implements imap {
+export class Imap extends Slide<string> {
   type = 'imap';
   img = '';
   resultType = Result.SIMPLE;

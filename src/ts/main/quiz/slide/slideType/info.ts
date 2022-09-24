@@ -5,7 +5,7 @@ import { makeButton } from '../../../utilities';
 export interface info extends SlideInterface {
   txt: string;
 }
-export class Info extends Slide<string> implements info {
+export class Info extends Slide<string> {
   type = 'info';
   txt = '';
   processJson(json: info): void {

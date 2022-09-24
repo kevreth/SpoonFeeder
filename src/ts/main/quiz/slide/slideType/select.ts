@@ -16,7 +16,7 @@ export interface select extends SlideInterface {
   ans: Array<number>;
 }
 
-export class Select extends Slide<Array<number>> implements select {
+export class Select extends Slide<Array<number>> {
   type = 'select';
   inst = '';
   resultType = Result.LIST;
