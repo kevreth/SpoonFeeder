@@ -1,6 +1,4 @@
-// https://docs.cypress.io/api/introduction/api.html
-export {} //to stop lint warning
-describe("My First Test", () => {
+describe("Cyberlearning", () => {
   it("visits the app root url", () => {
     cy.visit("/");
     cy.title().should('eq', ("CyberLearning"));
@@ -65,46 +63,41 @@ describe("My First Test", () => {
 
     //mc 1
     cy.contains("bus");
-    //TODO: test for button visibilty
     testButton('#btn1');
-    //TODO: test for button visibilty
     testButton('#btn');
 
     //gap 1
     //TODO: test for empty body
     //TODO: test for visibility of 3 fills and 3 gaps
-    cy.contains("3");
-    // const dataTransfer = new DataTransfer();
-    // cy.get('#fill0').trigger('dragstart', {dataTransfer});
-    // cy.get('#gap0').trigger('drop',{dataTransfer});
+    elementContains('#remaining','3');
     dragDrop('#fill0','#gap0');
-    //TODO: "remaining" = 2
+    elementContains('#remaining','2');
     dragDrop('#fill1','#gap1');
-    //TODO: "remaining" = 1
+    elementContains('#remaining','1');
     dragDrop('#fill2','#gap2');
-    cy.contains("0");
+    elementContains('#remaining','0');
     //TODO: #ans0 green, #ans1 red, #ans2 red
-    //TODO: btn visibile
     cy.contains("Number correct: 3");
     cy.contains("Number questions: 3");
     cy.contains("100%");
-    /*
-    .assert.visible('button[id=btn]')
-    */
     testButton('#btn');
 
     //gap 2
     //TODO: test for empty body
-    //TODO: test for visibility of 3 fills and 3 gaps
-    //TODO: "remaining" = 3
+    existAndVisible('#fill0')
+    existAndVisible('#fill1')
+    existAndVisible('#fill2')
+    existAndVisible('#gap0')
+    existAndVisible('#gap1')
+    existAndVisible('#gap2')
+    elementContains('#remaining','3');
     dragDrop('#fill2','#gap1');
-    //TODO: "remaining" = 2
+    elementContains('#remaining','2');
     dragDrop('#fill0','#gap0');
-    //TODO: "remaining" = 1
+    elementContains('#remaining','1');
     dragDrop('#fill1','#gap2');
-    //TODO: "remaining" = 0
+    elementContains('#remaining','0');
     //TODO: #ans0 green, #ans1 red, #ans2 red
-    //TODO: btn visibile
     cy.contains("Number correct: 1");
     cy.contains("Number questions: 3");
     cy.contains("33%");
@@ -153,3 +146,7 @@ function testButton(e1: string) {
   existAndVisible(e1);
   click(e1);
 }
+function elementContains(e1:string, txt:string) {
+  cy.get(e1).should('have.text', txt)
+}
+export {} //stops lint warning
