@@ -5,6 +5,7 @@ import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../../slide/result';
 import { Mc } from './mc';
+const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
   ans: string,
@@ -18,8 +19,6 @@ export class Vocab extends Slide<Array<string>> {
   res = new Array<string>();
   resultType = Result.CORRELATED;
   processJson(json: Vocab): void {
-    //JSON provides no distinction for
-    //associative arrays, so create a map.
     this.list = new Map(Object.entries(json.list));
     this.txt = Array.from(this.list.keys()).join();
     this.isExercise = json.isExercise;
@@ -38,8 +37,7 @@ export class Vocab extends Slide<Array<string>> {
     const keys = Array.from(map.keys());
     const vocabTuples: vocabTuplesType = [];
     for (const key of keys) {
-      //the max value is non-inclusive
-      let options = keys.slice(0, 4);
+      let options = keys.slice(0, CHOICES);
       //if correct answer is not in "options",
       //replace the first entry with it.
       if (!options.includes(key)) options[0] = key;
@@ -68,12 +66,9 @@ export class Vocab extends Slide<Array<string>> {
     this.createPageContent(html_list[questionCtr], doc);
     const tuple = vocabTuples[questionCtr];
     const options = tuple[2];
-    // let maxWidth = 0;
     options.forEach((option, j) => {
       const buttonId = 'btn' + j.toString();
       const button = doc.getElementById(buttonId) as HTMLElement;
-      // const width = button.offsetWidth;
-      // if(width>maxWidth) maxWidth=width;
       button.addEventListener('click', () => {
         const answer = tuple[1];
         this.res.push(option);

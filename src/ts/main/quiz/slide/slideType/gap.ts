@@ -6,7 +6,7 @@ import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required
-//for basic mobile drag-and-drop ality.
+//for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,

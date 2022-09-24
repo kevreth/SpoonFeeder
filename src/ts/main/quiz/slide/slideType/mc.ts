@@ -34,12 +34,12 @@ export class Mc extends Slide<string> {
   public setWidths(options: string[], doc: Document): void {
     //Similar behavior exists in gap.ts. Possible refactor opportunity.
     let maxWidth = 0;
-    options.forEach((option, optionCtr) => {
+    options.forEach((_option, optionCtr) => {
       const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
       const width = element.offsetWidth;
       if (width > maxWidth) maxWidth = width;
     });
-    options.forEach((option, optionCtr) => {
+    options.forEach((_option, optionCtr) => {
       const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
       element.style.width = `${maxWidth}px`;
     });
