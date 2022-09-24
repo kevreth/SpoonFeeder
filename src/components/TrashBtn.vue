@@ -2,14 +2,14 @@
   <q-icon
     name="delete"
     max-size="2em"
-    class="trash text-red-5 z-top"
+    class="trash text-red-9"
 />
 </template>
 
 <style>
 .trash {
-  position: inline-block;
-  right: 10px;
+  top: 10%;
+  padding: 5px;
   cursor:pointer;
 }
 </style>

@@ -3,7 +3,7 @@
   
   <q-overlay v-model="overlay"> 
     <template #body>
-      <HierarchyPage style="cursor:auto"/>
+      <ProgressTable style="cursor:auto"/>
       <TrashBtn />
       <OverlayCloseBtn @click="handleOverlay"/>
       <!-- <StartOver class="z-top"/> -->
@@ -16,7 +16,7 @@ import { ref } from 'vue'
 // import StartOver from './StartOver.vue'
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import MenuBtn from './MenuBtn.vue';
-import HierarchyPage from './HierarchyPage.vue';
+import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 
 const overlay = ref(false)

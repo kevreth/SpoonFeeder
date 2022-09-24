@@ -1,5 +1,5 @@
 <template>
-  <div class="q-ma-md progressTable">
+  <div class="progressTable">
 
     <q-hierarchy
       class="row items-center hierarchy"
@@ -117,32 +117,23 @@ const dark = ref(true)
 </script>
 
 <style>
-  /* .progressTable {
-    padding-top: 50px;
-  } */
   .hierarchy {
     position: fixed;
     top: 20%;
     left: 50%; 
     margin-left: -250px;
     max-height: 100vh; 
-    /* height: 70%; */
     overflow:auto;
     --scrollbarBG: #CFD8DC;
     --thumbBG: #686a6c;
 }
-.hierarchy::-webkit-scrollbar {
-  width: 11px
-}
-.hierarchy {
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
-.hierarchy::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-.hierarchy::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG) ;
-  border-radius: 6px;
-  border: 3px solid var(--scrollbarBG);
-}
+  .hierarchy {
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  .hierarchy::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  .hierarchy::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+  }
 </style>
