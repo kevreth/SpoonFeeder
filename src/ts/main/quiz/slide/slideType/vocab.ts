@@ -5,7 +5,7 @@ import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
-import { Mc } from './mc';
+import { Mc, createHtml } from './mc';
 const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -99,7 +99,7 @@ export class Vocab extends Slide<Array<string>> {
     this.maxWidthStrategy(options.length,'btn', doc);
   }
   createHtml(question: string, options: string[]): string {
-    return new Mc().createHtml(question, options);
+    return createHtml(question, options);
   }
   addContinueEventListener(
     element: HTMLElement,
