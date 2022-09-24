@@ -54,7 +54,7 @@ export class Vocab extends Slide<Array<string>> {
     for (const tuple of vocabTuples) {
       const question = tuple[0];
       const options = tuple[2];
-      const html = this.createHtml(question, options);
+      const html = createHtml(question, options);
       retval.push(html);
     }
     return retval;
@@ -97,9 +97,6 @@ export class Vocab extends Slide<Array<string>> {
       });
     });
     this.maxWidthStrategy(options.length,'btn', doc);
-  }
-  createHtml(question: string, options: string[]): string {
-    return createHtml(question, options);
   }
   addContinueEventListener(
     element: HTMLElement,

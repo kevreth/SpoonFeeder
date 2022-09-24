@@ -29,24 +29,16 @@ export class Gap extends Slide<Array<string>> {
   makeSlides(doc: Document): void {
     let ans = this.ans;
     if (isRandom()) ans = shuffle(ans);
-    const html = this.createHtml(ans, this.txt);
+    const fills = this.fills(ans);
+    const gaps = this.gaps(ans.length, this.txt);
+    const remaining = ans.length.toString();
+    const html = createHtml(remaining, fills, gaps);
     this.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
       this.setfills(ctr, currentFills, doc);
       this.setgap(ctr, doc);
     });
     this.maxWidthStrategy(this.ans.length, 'fill', 'gap', doc);
-  }
-  createHtml(ans: string[], text: string): string {
-    const fills_accum = this.fills(ans);
-    const gaps_accum = this.gaps(ans.length, text);
-    const remaining = ans.length.toString();
-    const html =
-      `\n<div id="fills">${fills_accum}\n</div>` +
-      `\n<div id="gaps">${gaps_accum}\n</div>` +
-      `\n<div id="remaining">${remaining}</div>` +
-      '\n<div id="response"></div>';
-    return html;
   }
   fills(ans: string[]): string {
     let fill_accum = '';
@@ -188,4 +180,11 @@ export class Gap extends Slide<Array<string>> {
     return row_a;
   }
 }
-
+export function createHtml(remaining: string, fills:string, gaps:string): string {
+  const html =
+    `\n<div id="fills">${fills}\n</div>` +
+    `\n<div id="gaps">${gaps}\n</div>` +
+    `\n<div id="remaining">${remaining}</div>` +
+    '\n<div id="response"></div>';
+  return html;
+}

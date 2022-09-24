@@ -15,24 +15,9 @@ export class Sort extends Slide<Array<string>> {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
-    const html = this.createHtml(this.txt, this.ans);
+    const html = createHtml(this.txt, this.ans);
     this.createPageContent(html, doc);
     this.addBehavior(doc);
-  }
-  createHtml(inst: string, ans: string[]): string {
-    const retval = inst + '<br>\n';
-    let rev = '<div id="selection"></div>\n<section class="container">\n';
-    let list = ans;
-    /////////  for testing
-    if (isRandom()) list = shuffle(list);
-    else list = ['b', 'a', 'c', 'd'];
-    //////////////////////////////////
-    list.forEach((item) => {
-      rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
-    });
-    rev = rev.trimRight();
-    rev = rev.concat('\n</section>');
-    return retval + rev + '\n</div><br>\n' + makeButton('btn', 'done', 'done');
   }
   evaluate(): Evaluation {
     let correctCtr = 0;
@@ -126,4 +111,19 @@ export class Sort extends Slide<Array<string>> {
       return sortable;
     }
   }
+}
+export function createHtml(inst: string, ans: string[]): string {
+  const retval = inst + '<br>\n';
+  let rev = '<div id="selection"></div>\n<section class="container">\n';
+  let list = ans;
+  /////////  for testing
+  if (isRandom()) list = shuffle(list);
+  else list = ['b', 'a', 'c', 'd'];
+  //////////////////////////////////
+  list.forEach((item) => {
+    rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
+  });
+  rev = rev.trimRight();
+  rev = rev.concat('\n</section>');
+  return retval + rev + '\n</div><br>\n' + makeButton('btn', 'done', 'done');
 }

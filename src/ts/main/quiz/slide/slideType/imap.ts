@@ -23,7 +23,7 @@ export class Imap extends Slide<string> {
     /* eslint-disable  @typescript-eslint/no-this-alias */
     const imap = this;
     /* eslint-enable  @typescript-eslint/no-this-alias */
-    const html = this.createHtml(this.txt, this.img);
+    const html = createHtml(this.txt, this.img);
     this.createPageContent(html, doc);
     const picture = doc.getElementById('imagemap');
     //inject SVG into page so it is part of DOM
@@ -51,13 +51,13 @@ export class Imap extends Slide<string> {
       },
     });
   }
-  createHtml(inst: string, img: string): string {
-    return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
-  }
   evaluate(): Evaluation {
     let correctCtr = 0;
     const text = makeRow(this.txt, this.res, this.ans);
     if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
+}
+export function createHtml(inst: string, img: string): string {
+  return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
 }

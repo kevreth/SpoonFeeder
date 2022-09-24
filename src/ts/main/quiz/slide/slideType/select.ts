@@ -24,7 +24,7 @@ export class Select extends Slide<Array<number>> {
     } = json);
   }
   makeSlides(doc: Document): void {
-    const html = this.createHtml(this.inst, this.txt.split(' '));
+    const html = createHtml(this.inst, this.txt.split(' '));
     this.createPageContent(html, doc);
     const res = this.txt.split(' ');
     for (let ctr = 0; ctr < res.length; ctr++) this.iter2(ctr + 1, doc);
@@ -35,17 +35,6 @@ export class Select extends Slide<Array<number>> {
       this.saveData();
       showButton(doc);
     });
-  }
-  public createHtml(instructions: string, res: string[]): string {
-    const accum = new Array<string>(
-      `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
-    );
-    res.forEach((item, idx) => {
-      accum.push(`<span id="w${idx + 1}">${item}</span> `);
-    });
-    const button = makeButton('btn', 'done', 'done');
-    accum.push(`</div><br>\n${button}\n`);
-    return accum.join('\n');
   }
   iter2(ctr: number, doc: Document): void {
     const element = doc.getElementById('w' + ctr) as HTMLElement;
@@ -121,4 +110,15 @@ export class Select extends Slide<Array<number>> {
     if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
+}
+export function createHtml(instructions: string, res: string[]): string {
+  const accum = new Array<string>(
+    `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
+  );
+  res.forEach((item, idx) => {
+    accum.push(`<span id="w${idx + 1}">${item}</span> `);
+  });
+  const button = makeButton('btn', 'done', 'done');
+  accum.push(`</div><br>\n${button}\n`);
+  return accum.join('\n');
 }
