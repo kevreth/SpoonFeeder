@@ -9,6 +9,7 @@ import { shuffle, isRandom } from '../../../utilities';
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import { SetWidths } from '../strategies/setWidths';
+import { createHtml } from '../strategies/createHtml';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -180,11 +181,4 @@ export class Gap extends Slide<Array<string>> {
     return row_a;
   }
 }
-export function createHtml(remaining: string, fills:string, gaps:string): string {
-  const html =
-    `\n<div id="fills">${fills}\n</div>` +
-    `\n<div id="gaps">${gaps}\n</div>` +
-    `\n<div id="remaining">${remaining}</div>` +
-    '\n<div id="response"></div>';
-  return html;
-}
+
