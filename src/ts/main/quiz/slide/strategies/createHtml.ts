@@ -5,6 +5,7 @@ type McType = (question: string, options: string[]) => string
 type SelectType = (instructions: string, res: string[]) => string;
 type SortType = (inst: string, ans: string[]) => string;
 export class CreateHtml {
+  static readonly DEFAULT = function() {return '';}
   static readonly GAP: GapType = function(remaining, fills, gaps) {
     const html = `\n<div id="fills">${fills}\n</div>` +
       `\n<div id="gaps">${gaps}\n</div>` +
