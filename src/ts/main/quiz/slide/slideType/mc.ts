@@ -2,18 +2,15 @@ import { makeButton, removeListener, isRandom, shuffle } from '../../../utilitie
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { Result } from '../../slide/result';
-export interface mc extends SlideInterface {
-  txt: string;
-  o: Array<string>;
-  ans: string;
-}
 export class Mc extends Slide<string> {
-  type = 'mc'
+  constructor() {
+    super('mc');
+  }
   o: string[] = [];
   resultType = Result.SIMPLE;
-  processJson(json: mc): void {
+  processJson(json: Mc): void {
     ({
       txt: this.txt,
       o: this.o,

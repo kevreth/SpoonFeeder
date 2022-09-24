@@ -1,19 +1,17 @@
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../../../utilities';
 import { Result } from '../../slide/result';
-export interface sort extends SlideInterface {
-  txt: string;
-  ans: Array<string>;
-}
 export class Sort extends Slide<Array<string>> {
-  type = 'sort';
+  constructor() {
+    super('sort');
+  }
   resultType = Result.LIST;
-  processJson(json: sort): void {
+  processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {

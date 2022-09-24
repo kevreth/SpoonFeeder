@@ -1,24 +1,23 @@
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../../slide/result';
 import { Mc } from './mc';
-export interface vocab extends SlideInterface {
-  list: Map<string, string>;
-}
 export type vocabTuplesType = [
   txt: string,
   ans: string,
   options: Array<string>
 ][];
 export class Vocab extends Slide<Array<string>> {
-  type = 'vocab';
+  constructor() {
+    super('vocab');
+  }
   list = new Map();
   res = new Array<string>();
   resultType = Result.CORRELATED;
-  processJson(json: vocab): void {
+  processJson(json: Vocab): void {
     //JSON provides no distinction for
     //associative arrays, so create a map.
     this.list = new Map(Object.entries(json.list));
@@ -100,10 +99,10 @@ export class Vocab extends Slide<Array<string>> {
         }
       });
     });
-    new Mc('mc').setWidths(options, doc);
+    new Mc().setWidths(options, doc);
   }
   createHtml(question: string, options: string[]): string {
-    return new Mc('mc').createHtml(question, options);
+    return new Mc().createHtml(question, options);
   }
   addContinueEventListener(
     element: HTMLElement,

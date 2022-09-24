@@ -1,20 +1,17 @@
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../utilities';
 import { Result } from '../../slide/result';
-export interface imap extends SlideInterface {
-  txt: string;
-  img: string;
-  ans: string;
-}
 export class Imap extends Slide<string> {
-  type = 'imap';
+  constructor() {
+    super('imap');
+  }
   img = '';
   resultType = Result.SIMPLE;
-  processJson(json: imap): void {
+  processJson(json: Imap): void {
     ({
       txt: this.txt,
       img: this.img,

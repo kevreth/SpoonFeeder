@@ -7,20 +7,15 @@ import {
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { Result } from '../../slide/result';
-
-export interface select extends SlideInterface {
-  inst: string;
-  txt: string;
-  ans: Array<number>;
-}
-
 export class Select extends Slide<Array<number>> {
-  type = 'select';
+  constructor() {
+    super('select');
+  }
   inst = '';
   resultType = Result.LIST;
-  processJson(json: select): void {
+  processJson(json: Select): void {
     ({
       inst: this.inst,
       txt: this.txt,

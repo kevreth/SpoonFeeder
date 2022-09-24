@@ -3,7 +3,7 @@ import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../result';
 import { Evaluation } from '../../evaluate';
 import { makeRow } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required
 //for basic mobile drag-and-drop ality.
@@ -11,19 +11,17 @@ import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scro
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
-export interface gap extends SlideInterface {
-  txt: string;
-  ans: Array<string>;
-}
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
 export class Gap extends Slide<Array<string>> {
-  type = 'gap';
+  constructor() {
+    super('gap');
+  }
   resultType = Result.CORRELATED;
-  processJson(json: gap): void {
+  processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {

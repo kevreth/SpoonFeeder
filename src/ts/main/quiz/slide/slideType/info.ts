@@ -6,9 +6,11 @@ export interface info extends SlideInterface {
   txt: string;
 }
 export class Info extends Slide<string> {
-  type = 'info';
+  constructor() {
+    super('info');
+  }
   txt = '';
-  processJson(json: info): void {
+  processJson(json: Info): void {
     this.txt = json.txt;
   }
   makeSlides(doc: Document): void {
