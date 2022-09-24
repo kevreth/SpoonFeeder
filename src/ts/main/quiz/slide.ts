@@ -1,6 +1,6 @@
 import type { Evaluation } from './evaluate';
 import type { GetScore } from './course';
-import { ResultReturnType, AnswerType, Result, ResultType } from './slide/result';
+import { ResultReturnType, AnswerType, Result, ResultType } from './slide/strategies/result';
 import { append, empty, getSavedDataArray } from '../utilities';
 import { SaveData } from '../quiz/slide/saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
@@ -31,7 +31,13 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  type='';
+  constructor(type:string/*, createHtml: CreateHtmlType, result: ResultType, evaluate:EvaluateType */) {
+    // this.resultType = result;
+    // this.evaluateStrategy = evaluate;
+    // this.createHtml = createHtml;
+    this.type=type;
+  }
+  type: string;
   //reset in every child class
   private _score = 0;
   private _questions = 0;

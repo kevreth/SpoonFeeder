@@ -1,20 +1,20 @@
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../utilities';
-import { Result } from '../../slide/result';
-export interface imap extends SlideInterface {
-  txt: string;
-  img: string;
-  ans: string;
-}
-export class Imap extends Slide<string> implements imap {
-  type = 'imap';
+import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
+export class Imap extends Slide<string> {
+  constructor() {
+    super('imap');
+  }
   img = '';
   resultType = Result.SIMPLE;
-  processJson(json: imap): void {
+  createHtml = CreateHtml.IMAP;
+  evaluateStrategy = Evaluate.SIMPLE;
+  processJson(json: Imap): void {
     ({
       txt: this.txt,
       img: this.img,
@@ -54,13 +54,11 @@ export class Imap extends Slide<string> implements imap {
       },
     });
   }
-  createHtml(inst: string, img: string): string {
-    return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
-  }
-  evaluate(): Evaluation {
-    let correctCtr = 0;
-    const text = makeRow(this.txt, this.res, this.ans);
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
+  public evaluate(): Evaluation {
+    const txt = this.txt;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
 }

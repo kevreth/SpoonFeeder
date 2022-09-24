@@ -2,13 +2,17 @@ import { Evaluation } from '../../evaluate';
 import { Slide, SlideInterface} from '../../slide';
 import { showSlides } from '../../makeSlides';
 import { makeButton } from '../../../utilities';
+import { Evaluate } from '../strategies/evaluate';
 export interface info extends SlideInterface {
   txt: string;
 }
-export class Info extends Slide<string> implements info {
-  type = 'info';
+export class Info extends Slide<string> {
+  constructor() {
+    super('info');
+  }
   txt = '';
-  processJson(json: info): void {
+  evaluateStrategy = Evaluate.DEFAULT;
+  processJson(json: Info): void {
     this.txt = json.txt;
   }
   makeSlides(doc: Document): void {
@@ -18,7 +22,7 @@ export class Info extends Slide<string> implements info {
     this.showButton(doc);
   }
   evaluate(): Evaluation {
-    return new Evaluation(0, 0, '');
+    return this.evaluateStrategy();
   }
   //info has it's own showButton because the continue button
   //appears immediately upon page load and can be in the wrong

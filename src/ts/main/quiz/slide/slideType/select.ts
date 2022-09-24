@@ -1,26 +1,19 @@
-import {
-  difference,
-  intersection,
-  makeButton,
-  removeListener,
-} from '../../../utilities';
+import { difference, intersection, removeListener } from '../../../utilities';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
-import { Result } from '../../slide/result';
-
-export interface select extends SlideInterface {
-  inst: string;
-  txt: string;
-  ans: Array<number>;
-}
-
-export class Select extends Slide<Array<number>> implements select {
-  type = 'select';
+import { Slide } from '../../slide';
+import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
+export class Select extends Slide<Array<number>> {
+  constructor() {
+    super('select');
+  }
   inst = '';
   resultType = Result.LIST;
-  processJson(json: select): void {
+  createHtml = CreateHtml.SELECT;
+  evaluateStrategy = Evaluate.SIMPLE;
+  processJson(json: Select): void {
     ({
       inst: this.inst,
       txt: this.txt,
@@ -40,17 +33,6 @@ export class Select extends Slide<Array<number>> implements select {
       this.saveData();
       showButton(doc);
     });
-  }
-  public createHtml(instructions: string, res: string[]): string {
-    const accum = new Array<string>(
-      `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
-    );
-    res.forEach((item, idx) => {
-      accum.push(`<span id="w${idx + 1}">${item}</span> `);
-    });
-    const button = makeButton('btn', 'done', 'done');
-    accum.push(`</div><br>\n${button}\n`);
-    return accum.join('\n');
   }
   iter2(ctr: number, doc: Document): void {
     const element = doc.getElementById('w' + ctr) as HTMLElement;
@@ -121,9 +103,11 @@ export class Select extends Slide<Array<number>> implements select {
     }
   }
   evaluate(): Evaluation {
-    const text = makeRow(this.txt, this.res.toString(), this.ans.toString());
-    let correctCtr = 0;
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
+    const txt = this.txt;
+    const res = this.res.toString();
+    const ans = this.ans.toString();
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
+

@@ -1,4 +1,5 @@
 // https://docs.cypress.io/api/introduction/api.html
+export {} //to stop lint warning
 describe("My First Test", () => {
   it("visits the app root url", () => {
     cy.visit("/");
@@ -138,7 +139,7 @@ describe("My First Test", () => {
 
     cy.contains("15.");
     cy.contains("ans");
-    cy.wait(20000);
+    // cy.wait(20000);
     click('#startOver');
 
     //test body contains "course 1"

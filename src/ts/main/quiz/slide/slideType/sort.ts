@@ -1,19 +1,19 @@
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { makeButton, shuffle, isRandom } from '../../../utilities';
-import { Result } from '../../slide/result';
-export interface sort extends SlideInterface {
-  txt: string;
-  ans: Array<string>;
-}
-export class Sort extends Slide<Array<string>> implements SlideInterface {
-  type = 'sort';
+import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
+export class Sort extends Slide<Array<string>> {
+  constructor() {
+    super('sort');
+  }
   resultType = Result.LIST;
-  processJson(json: sort): void {
+  createHtml = CreateHtml.SORT;
+  evaluateStrategy = Evaluate.SIMPLE;
+  processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
@@ -21,26 +21,12 @@ export class Sort extends Slide<Array<string>> implements SlideInterface {
     this.createPageContent(html, doc);
     this.addBehavior(doc);
   }
-  createHtml(inst: string, ans: string[]): string {
-    const retval = inst + '<br>\n';
-    let rev = '<div id="selection"></div>\n<section class="container">\n';
-    let list = ans;
-    /////////  for testing
-    if (isRandom()) list = shuffle(list);
-    else list = ['b', 'a', 'c', 'd'];
-    //////////////////////////////////
-    list.forEach((item) => {
-      rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
-    });
-    rev = rev.trimRight();
-    rev = rev.concat('\n</section>');
-    return retval + rev + '\n</div><br>\n' + makeButton('btn', 'done', 'done');
-  }
   evaluate(): Evaluation {
-    let correctCtr = 0;
-    const text = makeRow(this.txt, this.res.toString(), this.ans.toString());
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
+    const txt = this.txt;
+    const res = this.res.toString();
+    const ans = this.ans.toString();
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
   addBehavior(doc: Document): void {
     gsap.registerPlugin(Draggable);
@@ -129,3 +115,4 @@ export class Sort extends Slide<Array<string>> implements SlideInterface {
     }
   }
 }
+

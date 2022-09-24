@@ -1,4 +1,4 @@
-import { isEqual } from '../../utilities';
+import { isEqual } from '../../../utilities';
 export type AnswerType = string | Array<string> | Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
 export type ResultType = (ans: AnswerType, res: AnswerType) => ResultReturnType

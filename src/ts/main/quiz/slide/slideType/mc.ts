@@ -1,19 +1,21 @@
-import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
+import { removeListener, isRandom, shuffle } from '../../../utilities';
+import { SetWidths } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
-import { Result } from '../../slide/result';
-export interface mc extends SlideInterface {
-  txt: string;
-  o: Array<string>;
-  ans: string;
-}
-export class Mc extends Slide<string> implements SlideInterface {
-  type = 'mc'
+import { Slide } from '../../slide';
+import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
+export class Mc extends Slide<string> {
+  constructor() {
+    super('mc');
+  }
   o: string[] = [];
   resultType = Result.SIMPLE;
-  processJson(json: mc): void {
+  maxWidthStrategy = SetWidths.SIMPLE;
+  createHtml = CreateHtml.MC;
+  evaluateStrategy = Evaluate.SIMPLE;
+  processJson(json: Mc): void {
     ({
       txt: this.txt,
       o: this.o,
@@ -28,25 +30,12 @@ export class Mc extends Slide<string> implements SlideInterface {
     if (shuffleFlag) options = shuffle(options);
     const html = this.createHtml(this.txt, options);
     this.createPageContent(html, doc);
-    this.createHtml(this.txt, options);
     options.forEach((option, optionCtr) => {
       this.addBehavior(doc, option, options.length, optionCtr);
     });
-    this.setWidths(options, doc);
+    this.maxWidthStrategy(options.length,'btn', doc);
   }
-  public setWidths(options: string[], doc: Document): void {
-    //Similar behavior exists in gap.ts. Possible refactor opportunity.
-    let maxWidth = 0;
-    options.forEach((option, optionCtr) => {
-      const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-      const width = element.offsetWidth;
-      if (width > maxWidth) maxWidth = width;
-    });
-    options.forEach((option, optionCtr) => {
-      const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-      element.style.width = `${maxWidth}px`;
-    });
-  }
+
   addBehavior(
     doc: Document,
     option: string,
@@ -67,29 +56,11 @@ export class Mc extends Slide<string> implements SlideInterface {
       showButton(doc);
     });
   }
-  public createHtml(question: string, options: string[]): string {
-    const accum = new Array<string>(
-      `\n${question}<span style="display: block; margin-bottom: .5em;"></span>\n`
-    );
-    options.forEach((option, i) => {
-      accum.push(makeButton('btn' + i, 'questionBtn', option) + '<br/>\n');
-    });
-    return accum.join('\n');
-  }
   public evaluate(): Evaluation {
-    let correctCtr = 0;
-    const text = makeRow(this.txt, this.res, this.ans);
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
-  }
-}
-export interface bool extends SlideInterface {
-  txt: string;
-  ans: string;
-}
-export class Bool extends Mc implements bool {
-  o = ['yes', 'no'];
-  processJson(json: mc): void {
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+    const txt = this.txt;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
 }

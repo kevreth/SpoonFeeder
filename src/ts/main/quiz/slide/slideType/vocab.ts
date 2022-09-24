@@ -1,28 +1,30 @@
 import { Evaluation } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { SetWidths } from '../strategies/setWidths';
+import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
-import { Result } from '../../slide/result';
-import { Mc } from './mc';
-export interface vocab extends SlideInterface {
-  list: Map<string, string>;
-}
+import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
+const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
   ans: string,
   options: Array<string>
 ][];
-export class Vocab extends Slide<Array<string>> implements vocab {
-  type = 'vocab';
-  list = new Map();
+export class Vocab extends Slide<Array<string>> {
+  constructor() {
+    super('vocab');
+  }
+  list = new Map<string,string>();
   res = new Array<string>();
   resultType = Result.CORRELATED;
-  processJson(json: vocab): void {
-    //JSON provides no distinction for
-    //associative arrays, so create a map.
+  maxWidthStrategy = SetWidths.SIMPLE;
+  createHtml = CreateHtml.MC;
+  evaluateStrategy = Evaluate.VOCAB;
+  processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
-    this.txt = Array.from(this.list.keys()).join();
+    this.ans = Array.from(this.list.keys());
     this.isExercise = json.isExercise;
   }
   makeSlides(doc: Document): void {
@@ -39,8 +41,7 @@ export class Vocab extends Slide<Array<string>> implements vocab {
     const keys = Array.from(map.keys());
     const vocabTuples: vocabTuplesType = [];
     for (const key of keys) {
-      //the max value is non-inclusive
-      let options = keys.slice(0, 4);
+      let options = keys.slice(0, CHOICES);
       //if correct answer is not in "options",
       //replace the first entry with it.
       if (!options.includes(key)) options[0] = key;
@@ -69,12 +70,9 @@ export class Vocab extends Slide<Array<string>> implements vocab {
     this.createPageContent(html_list[questionCtr], doc);
     const tuple = vocabTuples[questionCtr];
     const options = tuple[2];
-    // let maxWidth = 0;
     options.forEach((option, j) => {
       const buttonId = 'btn' + j.toString();
       const button = doc.getElementById(buttonId) as HTMLElement;
-      // const width = button.offsetWidth;
-      // if(width>maxWidth) maxWidth=width;
       button.addEventListener('click', () => {
         const answer = tuple[1];
         this.res.push(option);
@@ -100,10 +98,7 @@ export class Vocab extends Slide<Array<string>> implements vocab {
         }
       });
     });
-    new Mc().setWidths(options, doc);
-  }
-  createHtml(question: string, options: string[]): string {
-    return new Mc().createHtml(question, options);
+    this.maxWidthStrategy(options.length,'btn', doc);
   }
   addContinueEventListener(
     element: HTMLElement,
@@ -117,60 +112,10 @@ export class Vocab extends Slide<Array<string>> implements vocab {
     });
   }
   evaluate(): Evaluation {
-    const ans = Array.from(this.list.keys());
     const txt = Array.from(this.list.values());
-    const resp = new ResponseB();
-    resp.init(txt, ans, this.res);
-    const rows = new Array<string>();
-    for (const item of resp.get()) {
-      const row = makeRow(item.txt, item.res, item.ans);
-      rows.push(row);
-    }
-    const row_accum = rows.join('\n');
-    this.ans = ans;
-    const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
-    return new Evaluation(this.list.size, correctCtr, row_accum);
-  }
-}
-class ResponseA {
-  txt:string;
-  ans:string;
-  res:string;
-  constructor(txt:string, ans:string, res:string) {
-      this.txt=txt;
-      this.ans=ans;
-      this.res=res;
-  }
-}
-class ResponseB {
-  resp:Array<ResponseA>=new Array<ResponseA>();
-  init(txt:Array<string>,ans:Array<string>, res:Array<string>) {
-      txt.forEach((txt1,idx) => {
-          const ans1=ans[idx];
-          const res1=res[idx];
-          this.resp.push(new ResponseA(txt1,ans1,res1));
-      })
-  }
-  [Symbol.iterator]():IterableIterator<ResponseA> {
-      return this.resp.values();
-  }
-  push(txt:string, ans:string, res:string):void {
-      const resp = new ResponseA(txt,ans,res);
-      this.resp.push(resp);
-  }
-  getAns():Array<string> {
-      return this.resp.map(a => a.ans);
-  }
-  getTxt():Array<string> {
-      return this.resp.map(a => a.txt);
-  }
-  getRes():Array<string> {
-      return this.resp.map(a => a.res);
-  }
-  itor() {
-      return this.resp.entries();
-  }
-  get():Array<ResponseA>{
-      return this.resp;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(txt, ans, res, result);
   }
 }

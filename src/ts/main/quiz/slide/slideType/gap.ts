@@ -1,51 +1,47 @@
 import { showButton } from '../../makeSlides';
 import { polyfill } from 'mobile-drag-drop';
-import { Result } from '../result';
+import { Result } from '../strategies/result';
 import { Evaluation } from '../../evaluate';
-import { makeRow } from '../../evaluate';
-import { Slide, SlideInterface } from '../../slide';
+import { Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
-//Despite the documentation, "scroll behaviour" is required
-//for basic mobile drag-and-drop ality.
+//Despite the documentation, "scroll behaviour" is required, not optional,
+//for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
+import { SetWidths } from '../strategies/setWidths';
+import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
-export interface gap extends SlideInterface {
-  txt: string;
-  ans: Array<string>;
-}
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
-export class Gap extends Slide<Array<string>> implements gap {
-  type = 'gap';
+export class Gap extends Slide<Array<string>> {
+  constructor() {
+    super('gap');
+  }
   resultType = Result.CORRELATED;
-  processJson(json: gap): void {
+  maxWidthStrategy = SetWidths.TARGETED;
+  createHtml = CreateHtml.GAP;
+  evaluateStrategy = Evaluate.GAP;
+  processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
     let ans = this.ans;
     if (isRandom()) ans = shuffle(ans);
-    const html = this.createHtml(ans, this.txt);
+    const fills = this.fills(ans);
+    const gaps = this.gaps(ans.length, this.txt);
+    const remaining = ans.length.toString();
+    const html = this.createHtml(remaining, fills, gaps);
     this.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
       this.setfills(ctr, currentFills, doc);
       this.setgap(ctr, doc);
     });
-  }
-  createHtml(ans: string[], text: string): string {
-    const fills_accum = this.fills(ans);
-    const gaps_accum = this.gaps(ans.length, text);
-    const remaining = ans.length.toString();
-    const html =
-      `\n<div id="fills">${fills_accum}\n</div>` +
-      `\n<div id="gaps">${gaps_accum}\n</div>` +
-      `\n<div id="remaining">${remaining}</div>` +
-      '\n<div id="response"></div>';
-    return html;
+    this.maxWidthStrategy(this.ans.length, 'fill', 'gap', doc);
   }
   fills(ans: string[]): string {
     let fill_accum = '';
@@ -84,11 +80,9 @@ export class Gap extends Slide<Array<string>> implements gap {
     };
   }
   setgap(ctr: number, doc: Document): void {
-    const maxWidth = this.getMaxWidth(this.ans.length, doc);
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
     id.style.display = 'inline-block';
     id.style.borderBottom = '2px solid';
-    id.style.width = `${maxWidth}px`;
     id.dataset.number = ctr.toString();
     id.ondragstart = (e) => {
       e.preventDefault();
@@ -114,20 +108,6 @@ export class Gap extends Slide<Array<string>> implements gap {
       id.ondrop = null;
       (e.target as HTMLElement).style.removeProperty('background-color');
     };
-  }
-  //REFACTOR: 2 methods: 1 returns an array of strings, the other
-  //takes a list of strings and uses reduce() to find the length
-  //of the longest
-  getMaxWidth(num: number, doc: Document): number {
-    let maxWidth = 0;
-    for (let i = 0; i < num; i++) {
-      const fill = doc.getElementById('fill' + i) as HTMLElement;
-      const width = fill.offsetWidth;
-      if (width > maxWidth) {
-        maxWidth = width;
-      }
-    }
-    return maxWidth;
   }
   drop(
     fillNumber: string,
@@ -179,27 +159,12 @@ export class Gap extends Slide<Array<string>> implements gap {
     return responses;
   }
   evaluate(): Evaluation {
-    const rows = new Array<string>();
-    for (let i = 0; i < this.ans.length; i++) {
-      const answer = this.ans[i];
-      const response_ = this.res[i];
-      const row_a = this.gapQuest(response_, answer, i, this.ans, this.txt);
-      rows.push(row_a);
-    }
-    const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
-    return new Evaluation(this.ans.length, correctCtr, rows.join('\n'));
-  }
-  gapQuest(
-    response: string,
-    answer: string,
-    i: number,
-    ans: Array<string>,
-    text: string
-  ): string {
-    let replaceValue = '';
-    if (i === 0) replaceValue = `<td rowspan="${ans.length}">${text}</td>`;
-    let row_a = makeRow(replaceValue, response, answer);
-    row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
-    return row_a;
+    const txt = this.txt;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(ans, res, txt, result);
   }
 }
+
+
