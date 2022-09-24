@@ -121,7 +121,7 @@ describe("My First Test", () => {
 
     //mc2
     //test body not empty
-    //test for  "learn the periodic table"
+    cy.contains("learn the periodic table");
     //test btn0 visible
     click('#btn0');
     //test btn visible
