@@ -31,7 +31,10 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  constructor(type:string) {
+  constructor(type:string/*, createHtml: CreateHtmlType, result: ResultType, evaluate:EvaluateType */) {
+    // this.resultType = result;
+    // this.evaluateStrategy = evaluate;
+    // this.createHtml = createHtml;
     this.type=type;
   }
   type: string;

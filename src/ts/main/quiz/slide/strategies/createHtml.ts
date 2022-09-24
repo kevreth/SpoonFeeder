@@ -4,6 +4,7 @@ type ImapType = (inst: string, img: string) => string;
 type McType = (question: string, options: string[]) => string
 type SelectType = (instructions: string, res: string[]) => string;
 type SortType = (inst: string, ans: string[]) => string;
+export type CreateHtmlType = GapType | ImapType | McType | SelectType | SortType;
 export class CreateHtml {
   static readonly DEFAULT = function() {return '';}
   static readonly GAP: GapType = function(remaining, fills, gaps) {

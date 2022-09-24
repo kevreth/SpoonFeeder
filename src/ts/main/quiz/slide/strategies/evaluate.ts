@@ -4,6 +4,7 @@ import { AnswerType, ResultReturnType } from './result';
 type SimpleType = (txt: string, res: AnswerType, ans: AnswerType, result: ResultReturnType) => Evaluation;
 type VocabType = (txt: string[], ans: string[], res: string[], result: ResultReturnType) => Evaluation;
 type GapType = (ans: string[], res: string[], txt: string, result: ResultReturnType) => Evaluation;
+export type EvaluateType = SimpleType | VocabType | GapType;
 export class Evaluate {
   static readonly DEFAULT = function evaluate() {
     return new Evaluation(0, 0, '');
