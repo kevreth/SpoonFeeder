@@ -105,12 +105,10 @@ describe("My First Test", () => {
     //TODO: "remaining" = 0
     //TODO: #ans0 green, #ans1 red, #ans2 red
     //TODO: btn visibile
-    /*
-    .assert.textContains("body", "Number correct: 1")
-    .assert.textContains("body", "Number questions: 3")
-    .assert.textContains("body", "33%")
-    .assert.visible('button[id=btn]')
-    */
+    cy.contains("Number correct: 1");
+    cy.contains("Number questions: 3");
+    cy.contains("33%");
+    // .assert.visible('button[id=btn]')
     click('#btn');
 
     //select
