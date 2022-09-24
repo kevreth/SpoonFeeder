@@ -1,10 +1,10 @@
 import { difference, intersection, removeListener } from '../../../utilities';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
 export class Select extends Slide<Array<number>> {
   constructor() {
     super('select');
@@ -12,6 +12,7 @@ export class Select extends Slide<Array<number>> {
   inst = '';
   resultType = Result.LIST;
   createHtml = CreateHtml.SELECT;
+  evaluateStrategy = Evaluate.SIMPLE;
   processJson(json: Select): void {
     ({
       inst: this.inst,
@@ -102,9 +103,11 @@ export class Select extends Slide<Array<number>> {
     }
   }
   evaluate(): Evaluation {
-    const text = makeRow(this.txt, this.res.toString(), this.ans.toString());
-    let correctCtr = 0;
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
+    const txt = this.txt;
+    const res = this.res.toString();
+    const ans = this.ans.toString();
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
+

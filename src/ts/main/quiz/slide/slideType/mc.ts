@@ -1,11 +1,11 @@
 import { removeListener, isRandom, shuffle } from '../../../utilities';
 import { SetWidths } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
 export class Mc extends Slide<string> {
   constructor() {
     super('mc');
@@ -14,6 +14,7 @@ export class Mc extends Slide<string> {
   resultType = Result.SIMPLE;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
+  evaluateStrategy = Evaluate.SIMPLE;
   processJson(json: Mc): void {
     ({
       txt: this.txt,
@@ -56,9 +57,17 @@ export class Mc extends Slide<string> {
     });
   }
   public evaluate(): Evaluation {
-    let correctCtr = 0;
-    const text = makeRow(this.txt, this.res, this.ans);
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
+    const txt = this.txt;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
+// function evaluate(txt: string, res: AnswerType, ans: AnswerType, result: ResultReturnType) {
+//   let correctCtr = 0;
+//   const text = makeRow(txt, (res as string) , (ans as string));
+//   if (result) correctCtr++;
+//   return new Evaluation(1, correctCtr, text);
+// }
+
