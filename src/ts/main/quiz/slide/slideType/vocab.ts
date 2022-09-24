@@ -16,7 +16,7 @@ export class Vocab extends Slide<Array<string>> {
   constructor() {
     super('vocab');
   }
-  list = new Map();
+  list = new Map<string,string>();
   res = new Array<string>();
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
@@ -115,15 +115,19 @@ export class Vocab extends Slide<Array<string>> {
     const txt = Array.from(this.list.values());
     const res = this.res;
     const result = this.result();
-    const rows = new Array<string>();
-    txt.forEach((txt1,idx) => {
-      const ans1=ans[idx];
-      const res1=res[idx];
-      const row = makeRow(txt1, ans1, res1);
-      rows.push(row);
-    })
-    const row_accum = rows.join('\n');
-    const correctCtr = (result as Array<boolean>).filter(Boolean).length;
-    return new Evaluation(ans.length, correctCtr, row_accum);
+    return evaluate(txt, ans, res, result);
   }
 }
+function evaluate(txt: string[], ans: string[], res: string[], result: boolean | boolean[]) {
+  const rows = new Array<string>();
+  txt.forEach((txt1, idx) => {
+    const ans1 = ans[idx];
+    const res1 = res[idx];
+    const row = makeRow(txt1, ans1, res1);
+    rows.push(row);
+  });
+  const row_accum = rows.join('\n');
+  const correctCtr = (result as Array<boolean>).filter(Boolean).length;
+  return new Evaluation(ans.length, correctCtr, row_accum);
+}
+
