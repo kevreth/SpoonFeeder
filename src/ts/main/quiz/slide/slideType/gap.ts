@@ -2,7 +2,6 @@ import { showButton } from '../../makeSlides';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../strategies/result';
 import { Evaluation } from '../../evaluate';
-import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
