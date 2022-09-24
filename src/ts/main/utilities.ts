@@ -62,6 +62,14 @@ export function getSavedDataArray(): Array<SaveData> {
   );
   return arr;
 }
+export function getMaxWidth(elements: HTMLElement[]) {
+  let maxWidth = 0;
+  elements.forEach((element) => {
+    const width = element.offsetWidth;
+    if (width > maxWidth) maxWidth = width;
+  });
+  return maxWidth;
+}
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {
   return _.random(min, max);
