@@ -36,7 +36,7 @@ export class Gap extends Slide<Array<string>> {
     });
     this.setWidths(this.ans.length, 'fill', 'gap', doc);
   }
-  private setWidths(num:number, str1:string, str2:string, doc: Document) {
+  setWidths(num:number, str1:string, str2:string, doc: Document) {
     const fills: Array<string> = getIdsAsArray(num, str1);
     const elements: Array<HTMLElement> = getNumberedElementsAsList(fills, doc);
     const maxWidth = getMaxWidth(elements);
