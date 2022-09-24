@@ -5,6 +5,7 @@ import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
 export class Mc extends Slide<string> {
   constructor() {
     super('mc');

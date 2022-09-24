@@ -6,6 +6,7 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../../../utilities';
 import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
 export class Sort extends Slide<Array<string>> {
   constructor() {
     super('sort');

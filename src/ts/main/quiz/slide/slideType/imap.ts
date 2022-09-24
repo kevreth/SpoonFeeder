@@ -5,12 +5,14 @@ import { makeRow } from '../../evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../utilities';
 import { Result } from '../strategies/result';
+import { CreateHtml } from '../strategies/createHtml';
 export class Imap extends Slide<string> {
   constructor() {
     super('imap');
   }
   img = '';
   resultType = Result.SIMPLE;
+  createHtml = CreateHtml.IMAP;
   processJson(json: Imap): void {
     ({
       txt: this.txt,
@@ -23,7 +25,7 @@ export class Imap extends Slide<string> {
     /* eslint-disable  @typescript-eslint/no-this-alias */
     const imap = this;
     /* eslint-enable  @typescript-eslint/no-this-alias */
-    const html = createHtml(this.txt, this.img);
+    const html = this.createHtml(this.txt, this.img);
     this.createPageContent(html, doc);
     const picture = doc.getElementById('imagemap');
     //inject SVG into page so it is part of DOM
@@ -57,7 +59,4 @@ export class Imap extends Slide<string> {
     if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
-}
-export function createHtml(inst: string, img: string): string {
-  return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
 }
