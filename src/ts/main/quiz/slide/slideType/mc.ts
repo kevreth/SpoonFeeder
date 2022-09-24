@@ -1,5 +1,5 @@
 import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
-import { getNumberedElementsAsList, getMaxWidth, setWidths, getIdsAsArray } from '../maxWidth';
+import { SetWidths } from '../setWidths';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
@@ -11,6 +11,7 @@ export class Mc extends Slide<string> {
   }
   o: string[] = [];
   resultType = Result.SIMPLE;
+  maxWidthStrategy = SetWidths.SIMPLE;
   processJson(json: Mc): void {
     ({
       txt: this.txt,
@@ -30,14 +31,9 @@ export class Mc extends Slide<string> {
     options.forEach((option, optionCtr) => {
       this.addBehavior(doc, option, options.length, optionCtr);
     });
-    this.setWidths(options.length,'btn', doc);
+    this.maxWidthStrategy(options.length,'btn', doc);
   }
-  public setWidths(num:number, str:string, doc: Document): void {
-    const ids:Array<string> = getIdsAsArray(num,str);
-    const elements:Array<HTMLElement> = getNumberedElementsAsList(ids,doc);
-    const maxWidth = getMaxWidth(elements);
-    setWidths(ids, doc, maxWidth);
-  }
+
   addBehavior(
     doc: Document,
     option: string,
@@ -74,4 +70,3 @@ export class Mc extends Slide<string> {
     return new Evaluation(1, correctCtr, text);
   }
 }
-

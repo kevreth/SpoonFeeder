@@ -1,4 +1,5 @@
 import { Evaluation } from '../../evaluate';
+import { SetWidths } from '../setWidths';
 import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
@@ -18,6 +19,7 @@ export class Vocab extends Slide<Array<string>> {
   list = new Map();
   res = new Array<string>();
   resultType = Result.CORRELATED;
+  maxWidthStrategy = SetWidths.SIMPLE;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.txt = Array.from(this.list.keys()).join();
@@ -94,7 +96,7 @@ export class Vocab extends Slide<Array<string>> {
         }
       });
     });
-    new Mc().setWidths(options.length, 'btn', doc);
+    this.maxWidthStrategy(options.length,'btn', doc);
   }
   createHtml(question: string, options: string[]): string {
     return new Mc().createHtml(question, options);

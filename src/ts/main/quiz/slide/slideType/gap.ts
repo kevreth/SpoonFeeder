@@ -5,10 +5,10 @@ import { Evaluation } from '../../evaluate';
 import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
-import { getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } from '../maxWidth';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
+import { SetWidths } from '../setWidths';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -22,6 +22,7 @@ export class Gap extends Slide<Array<string>> {
     super('gap');
   }
   resultType = Result.CORRELATED;
+  maxWidthStrategy = SetWidths.TARGETED;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -34,14 +35,7 @@ export class Gap extends Slide<Array<string>> {
       this.setfills(ctr, currentFills, doc);
       this.setgap(ctr, doc);
     });
-    this.setWidths(this.ans.length, 'fill', 'gap', doc);
-  }
-  setWidths(num:number, str1:string, str2:string, doc: Document) {
-    const fills: Array<string> = getIdsAsArray(num, str1);
-    const elements: Array<HTMLElement> = getNumberedElementsAsList(fills, doc);
-    const maxWidth = getMaxWidth(elements);
-    const gaps: Array<string> = getIdsAsArray(num, str2);
-    setWidths(gaps, doc, maxWidth);
+    this.maxWidthStrategy(this.ans.length, 'fill', 'gap', doc);
   }
   createHtml(ans: string[], text: string): string {
     const fills_accum = this.fills(ans);
@@ -194,3 +188,4 @@ export class Gap extends Slide<Array<string>> {
     return row_a;
   }
 }
+
