@@ -1,3 +1,10 @@
+export function getIdsAsArray(num: number, str: string): Array<string> {
+  const ids: Array<string> = new Array<string>();
+  for (let i = 0; i < num; i++) {
+    ids.push(str + i);
+  }
+  return ids;
+}
 export function getNumberedElementsAsList(ids: Array<string>, doc: Document) {
   const elements: Array<HTMLElement> = new Array<HTMLElement>();
   ids.forEach((id) => {
@@ -21,10 +28,4 @@ export function setWidths(ids: string[], doc: Document, maxWidth: number) {
     element.style.width = `${maxWidth}px`;
   });
 }
-export function getIdsAsArray(num: number, str: string): Array<string> {
-  const ids: Array<string> = new Array<string>();
-  for (let i = 0; i < num; i++) {
-    ids.push(str + i);
-  }
-  return ids;
-}
+

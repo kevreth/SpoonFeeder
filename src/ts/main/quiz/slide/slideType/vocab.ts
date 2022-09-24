@@ -23,7 +23,7 @@ export class Vocab extends Slide<Array<string>> {
   createHtml = CreateHtml.MC;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
-    this.txt = Array.from(this.list.keys()).join();
+    this.ans = Array.from(this.list.keys());
     this.isExercise = json.isExercise;
   }
   makeSlides(doc: Document): void {
@@ -111,7 +111,7 @@ export class Vocab extends Slide<Array<string>> {
     });
   }
   evaluate(): Evaluation {
-    const ans = Array.from(this.list.keys());
+    const ans = this.ans;
     const txt = Array.from(this.list.values());
     const res = this.res;
     const rows = new Array<string>();
@@ -120,9 +120,8 @@ export class Vocab extends Slide<Array<string>> {
       const res1=res[idx];
       const row = makeRow(txt1, ans1, res1);
       rows.push(row);
-  })
+    })
     const row_accum = rows.join('\n');
-    this.ans = ans;
     const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.list.size, correctCtr, row_accum);
   }
