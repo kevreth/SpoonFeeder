@@ -158,14 +158,18 @@ export class Gap extends Slide<Array<string>> {
     return responses;
   }
   evaluate(): Evaluation {
+    const ans = this.ans;
+    const res = this.res;
+    const txt = this.txt;
+    const response = this.result();
     const rows = new Array<string>();
     for (let i = 0; i < this.ans.length; i++) {
-      const answer = this.ans[i];
-      const response_ = this.res[i];
-      const row_a = this.gapQuest(response_, answer, i, this.ans, this.txt);
+      const answer = ans[i];
+      const response_ = res[i];
+      const row_a = this.gapQuest(response_, answer, i, ans, txt);
       rows.push(row_a);
     }
-    const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
+    const correctCtr = (response as Array<boolean>).filter(Boolean).length;
     return new Evaluation(this.ans.length, correctCtr, rows.join('\n'));
   }
   gapQuest(
