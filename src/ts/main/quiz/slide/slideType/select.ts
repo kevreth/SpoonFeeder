@@ -1,9 +1,4 @@
-import {
-  difference,
-  intersection,
-  makeButton,
-  removeListener,
-} from '../../../utilities';
+import { difference, intersection, removeListener } from '../../../utilities';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
@@ -16,6 +11,7 @@ export class Select extends Slide<Array<number>> {
   }
   inst = '';
   resultType = Result.LIST;
+  createHtml = CreateHtml.SELECT;
   processJson(json: Select): void {
     ({
       inst: this.inst,
@@ -25,7 +21,7 @@ export class Select extends Slide<Array<number>> {
     } = json);
   }
   makeSlides(doc: Document): void {
-    const html = createHtml(this.inst, this.txt.split(' '));
+    const html = this.createHtml(this.inst, this.txt.split(' '));
     this.createPageContent(html, doc);
     const res = this.txt.split(' ');
     for (let ctr = 0; ctr < res.length; ctr++) this.iter2(ctr + 1, doc);
@@ -111,15 +107,4 @@ export class Select extends Slide<Array<number>> {
     if (this.result()) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
-}
-export function createHtml(instructions: string, res: string[]): string {
-  const accum = new Array<string>(
-    `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
-  );
-  res.forEach((item, idx) => {
-    accum.push(`<span id="w${idx + 1}">${item}</span> `);
-  });
-  const button = makeButton('btn', 'done', 'done');
-  accum.push(`</div><br>\n${button}\n`);
-  return accum.join('\n');
 }

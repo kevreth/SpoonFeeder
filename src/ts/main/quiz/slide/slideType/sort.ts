@@ -4,7 +4,6 @@ import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { makeButton, shuffle, isRandom } from '../../../utilities';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 export class Sort extends Slide<Array<string>> {
@@ -12,11 +11,12 @@ export class Sort extends Slide<Array<string>> {
     super('sort');
   }
   resultType = Result.LIST;
+  createHtml = CreateHtml.SORT;
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
-    const html = createHtml(this.txt, this.ans);
+    const html = this.createHtml(this.txt, this.ans);
     this.createPageContent(html, doc);
     this.addBehavior(doc);
   }
@@ -113,18 +113,4 @@ export class Sort extends Slide<Array<string>> {
     }
   }
 }
-export function createHtml(inst: string, ans: string[]): string {
-  const retval = inst + '<br>\n';
-  let rev = '<div id="selection"></div>\n<section class="container">\n';
-  let list = ans;
-  /////////  for testing
-  if (isRandom()) list = shuffle(list);
-  else list = ['b', 'a', 'c', 'd'];
-  //////////////////////////////////
-  list.forEach((item) => {
-    rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
-  });
-  rev = rev.trimRight();
-  rev = rev.concat('\n</section>');
-  return retval + rev + '\n</div><br>\n' + makeButton('btn', 'done', 'done');
-}
+

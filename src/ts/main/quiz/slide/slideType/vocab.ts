@@ -5,7 +5,7 @@ import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
-import { createHtml } from './mc';
+import { CreateHtml } from '../strategies/createHtml';
 const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -20,6 +20,7 @@ export class Vocab extends Slide<Array<string>> {
   res = new Array<string>();
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
+  createHtml = CreateHtml.MC;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.txt = Array.from(this.list.keys()).join();
@@ -54,7 +55,7 @@ export class Vocab extends Slide<Array<string>> {
     for (const tuple of vocabTuples) {
       const question = tuple[0];
       const options = tuple[2];
-      const html = createHtml(question, options);
+      const html = this.createHtml(question, options);
       retval.push(html);
     }
     return retval;
