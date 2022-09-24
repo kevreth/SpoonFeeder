@@ -1,4 +1,4 @@
-import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
+import { makeButton, removeListener, isRandom, shuffle, getMaxWidth } from '../../../utilities';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
@@ -32,15 +32,18 @@ export class Mc extends Slide<string> {
     this.setWidths(options, doc);
   }
   public setWidths(options: string[], doc: Document): void {
-    //Similar behavior exists in gap.ts. Possible refactor opportunity.
-    let maxWidth = 0;
+    const ids:Array<string> = new Array<string>();
     options.forEach((_option, optionCtr) => {
-      const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-      const width = element.offsetWidth;
-      if (width > maxWidth) maxWidth = width;
+      ids.push('btn' + optionCtr);
     });
-    options.forEach((_option, optionCtr) => {
-      const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
+    const elements:Array<HTMLElement> = new Array<HTMLElement>();
+    ids.forEach((id) => {
+      const element = doc.getElementById(id) as HTMLElement;
+      elements.push(element);
+    });
+    const maxWidth = getMaxWidth(elements);
+    ids.forEach((id) => {
+      const element = doc.getElementById(id) as HTMLElement;
       element.style.width = `${maxWidth}px`;
     });
   }

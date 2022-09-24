@@ -4,7 +4,7 @@ import { Result } from '../result';
 import { Evaluation } from '../../evaluate';
 import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
-import { shuffle, isRandom, getMaxWidth } from '../../../utilities';
+import { shuffle, isRandom, getMaxWidth, getNumberedElementsAsList } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
@@ -82,8 +82,9 @@ export class Gap extends Slide<Array<string>> {
     };
   }
   setgap(ctr: number, doc: Document): void {
-    const fills:Array<HTMLElement> = this.getFillsAsArray(this.ans.length, doc);
-    const maxWidth = getMaxWidth(fills);
+    const fills:Array<string> = this.getFillsAsArray(this.ans.length);
+    const elements:Array<HTMLElement> = getNumberedElementsAsList(fills,doc);
+    const maxWidth = getMaxWidth(elements);
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
     id.style.display = 'inline-block';
     id.style.borderBottom = '2px solid';
@@ -117,13 +118,12 @@ export class Gap extends Slide<Array<string>> {
   //REFACTOR: 2 methods: 1 returns an array of strings, the other
   //takes a list of strings and uses reduce() to find the length
   //of the longest
-  getFillsAsArray(num: number, doc: Document): Array<HTMLElement> {
-    const elements:Array<HTMLElement> = new Array<HTMLElement>();
+  getFillsAsArray(num: number): Array<string> {
+    const ids:Array<string> = new Array<string>();
     for (let i = 0; i < num; i++) {
-      const fill = doc.getElementById('fill' + i) as HTMLElement;
-      elements.push(fill);
+      ids.push('fill' + i);
     }
-    return elements;
+    return ids;
   }
   drop(
     fillNumber: string,

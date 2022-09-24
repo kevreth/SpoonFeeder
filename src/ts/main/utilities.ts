@@ -62,6 +62,14 @@ export function getSavedDataArray(): Array<SaveData> {
   );
   return arr;
 }
+export function getNumberedElementsAsList(ids: Array<string>, doc: Document) {
+  const elements:Array<HTMLElement> = new Array<HTMLElement>();
+  ids.forEach((id) => {
+    const fill = doc.getElementById(id) as HTMLElement;
+    elements.push(fill);
+  });
+  return elements;
+}
 export function getMaxWidth(elements: HTMLElement[]) {
   let maxWidth = 0;
   elements.forEach((element) => {
