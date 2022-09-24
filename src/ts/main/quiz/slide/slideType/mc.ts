@@ -1,4 +1,5 @@
-import { makeButton, removeListener, isRandom, shuffle, getNumberedElementsAsList, getMaxWidth, setWidths, getIdsAsArray } from '../../../utilities';
+import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
+import { getNumberedElementsAsList, getMaxWidth, setWidths, getIdsAsArray } from '../maxWidth';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';

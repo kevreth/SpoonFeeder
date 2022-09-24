@@ -4,7 +4,8 @@ import { Result } from '../result';
 import { Evaluation } from '../../evaluate';
 import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
-import { shuffle, isRandom, getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } from '../../../utilities';
+import { shuffle, isRandom } from '../../../utilities';
+import { getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } from '../maxWidth';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
