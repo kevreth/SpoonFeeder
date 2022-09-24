@@ -5,7 +5,7 @@ import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { makeButton, shuffle, isRandom } from '../../../utilities';
-import { Result } from '../../slide/result';
+import { Result } from '../strategies/result';
 export class Sort extends Slide<Array<string>> {
   constructor() {
     super('sort');

@@ -4,7 +4,7 @@ import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../utilities';
-import { Result } from '../../slide/result';
+import { Result } from '../strategies/result';
 export class Imap extends Slide<string> {
   constructor() {
     super('imap');

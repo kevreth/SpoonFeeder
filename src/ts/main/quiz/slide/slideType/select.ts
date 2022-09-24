@@ -8,7 +8,7 @@ import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
-import { Result } from '../../slide/result';
+import { Result } from '../strategies/result';
 export class Select extends Slide<Array<number>> {
   constructor() {
     super('select');

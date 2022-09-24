@@ -1,6 +1,6 @@
 import { showButton } from '../../makeSlides';
 import { polyfill } from 'mobile-drag-drop';
-import { Result } from '../result';
+import { Result } from '../strategies/result';
 import { Evaluation } from '../../evaluate';
 import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
@@ -8,7 +8,7 @@ import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import { SetWidths } from '../setWidths';
+import { SetWidths } from '../strategies/setWidths';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });

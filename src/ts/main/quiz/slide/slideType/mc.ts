@@ -1,10 +1,10 @@
 import { makeButton, removeListener, isRandom, shuffle } from '../../../utilities';
-import { SetWidths } from '../setWidths';
+import { SetWidths } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
-import { Result } from '../../slide/result';
+import { Result } from '../strategies/result';
 export class Mc extends Slide<string> {
   constructor() {
     super('mc');

@@ -1,4 +1,4 @@
-import { AnswerType } from './result';
+import { AnswerType } from './strategies/result';
 
 export class SaveData {
     txt:string;

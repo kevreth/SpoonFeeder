@@ -1,10 +1,10 @@
 import { Evaluation } from '../../evaluate';
-import { SetWidths } from '../setWidths';
+import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
-import { Result } from '../../slide/result';
+import { Result } from '../strategies/result';
 import { Mc } from './mc';
 const CHOICES = 4;
 export type vocabTuplesType = [
