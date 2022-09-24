@@ -108,8 +108,7 @@ describe("My First Test", () => {
     cy.contains("Number correct: 1");
     cy.contains("Number questions: 3");
     cy.contains("33%");
-    cy.get('#btn').should('be.visible')
-    // .assert.visible('button[id=btn]')
+    cy.get('#btn').should('exist').should('be.visible');
     click('#btn');
 
     //select
