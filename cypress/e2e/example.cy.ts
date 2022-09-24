@@ -64,7 +64,7 @@ describe("My First Test", () => {
     click('#btn');
 
     //mc 1
-    //TODO: test for empty body then body content "lecture is so boring"
+    cy.contains("bus");
     //TODO: test for button visibilty
     click('#btn1');
     //TODO: test for button visibilty
@@ -86,6 +86,7 @@ describe("My First Test", () => {
     //TODO: #ans0 green, #ans1 red, #ans2 red
     //TODO: btn visibile
     /*
+
     .assert.textContains("body", "Number correct: 3")
     .assert.textContains("body", "Number questions: 3")
     .assert.textContains("body", "100%")
