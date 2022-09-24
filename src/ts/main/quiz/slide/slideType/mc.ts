@@ -64,10 +64,3 @@ export class Mc extends Slide<string> {
     return this.evaluateStrategy(txt, res, ans, result);
   }
 }
-// function evaluate(txt: string, res: AnswerType, ans: AnswerType, result: ResultReturnType) {
-//   let correctCtr = 0;
-//   const text = makeRow(txt, (res as string) , (ans as string));
-//   if (result) correctCtr++;
-//   return new Evaluation(1, correctCtr, text);
-// }
-

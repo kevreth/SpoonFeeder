@@ -6,12 +6,14 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
 export class Sort extends Slide<Array<string>> {
   constructor() {
     super('sort');
   }
   resultType = Result.LIST;
   createHtml = CreateHtml.SORT;
+  evaluateStrategy = Evaluate.SIMPLE;
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -21,10 +23,11 @@ export class Sort extends Slide<Array<string>> {
     this.addBehavior(doc);
   }
   evaluate(): Evaluation {
-    let correctCtr = 0;
-    const text = makeRow(this.txt, this.res.toString(), this.ans.toString());
-    if (this.result()) correctCtr++;
-    return new Evaluation(1, correctCtr, text);
+    const txt = this.txt;
+    const res = this.res.toString();
+    const ans = this.ans.toString();
+    const result = this.result();
+    return this.evaluateStrategy(txt, res, ans, result);
   }
   addBehavior(doc: Document): void {
     gsap.registerPlugin(Draggable);

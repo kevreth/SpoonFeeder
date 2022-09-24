@@ -9,4 +9,10 @@ export class Evaluate {
     if (result) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
+  // static readonly LIST: SimpleType = function evaluate(txt, res, ans, result) {
+  //   let correctCtr = 0;
+  //   const text = makeRow(txt, (res as string[]), (ans as string[]));
+  //   if (result) correctCtr++;
+  //   return new Evaluation(1, correctCtr, text);
+  // }
 }
