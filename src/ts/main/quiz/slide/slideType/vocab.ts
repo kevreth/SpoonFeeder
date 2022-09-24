@@ -114,6 +114,7 @@ export class Vocab extends Slide<Array<string>> {
     const ans = this.ans;
     const txt = Array.from(this.list.values());
     const res = this.res;
+    const result = this.result();
     const rows = new Array<string>();
     txt.forEach((txt1,idx) => {
       const ans1=ans[idx];
@@ -122,7 +123,7 @@ export class Vocab extends Slide<Array<string>> {
       rows.push(row);
     })
     const row_accum = rows.join('\n');
-    const correctCtr = (this.result() as Array<boolean>).filter(Boolean).length;
-    return new Evaluation(this.list.size, correctCtr, row_accum);
+    const correctCtr = (result as Array<boolean>).filter(Boolean).length;
+    return new Evaluation(ans.length, correctCtr, row_accum);
   }
 }
