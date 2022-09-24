@@ -78,6 +78,19 @@ export function getMaxWidth(elements: HTMLElement[]) {
   });
   return maxWidth;
 }
+export function setWidths(ids: string[], doc: Document, maxWidth: number) {
+  ids.forEach((id) => {
+    const element = doc.getElementById(id) as HTMLElement;
+    element.style.width = `${maxWidth}px`;
+  });
+}
+export function getIdsAsArray(num: number, str:string): Array<string> {
+  const ids:Array<string> = new Array<string>();
+  for (let i = 0; i < num; i++) {
+    ids.push(str + i);
+  }
+  return ids;
+}
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {
   return _.random(min, max);

@@ -94,7 +94,7 @@ export class Vocab extends Slide<Array<string>> {
         }
       });
     });
-    new Mc().setWidths(options, doc);
+    new Mc().setWidths(options.length, 'btn', doc);
   }
   createHtml(question: string, options: string[]): string {
     return new Mc().createHtml(question, options);

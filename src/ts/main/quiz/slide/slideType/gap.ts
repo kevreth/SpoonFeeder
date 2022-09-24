@@ -4,8 +4,8 @@ import { Result } from '../result';
 import { Evaluation } from '../../evaluate';
 import { makeRow } from '../../evaluate';
 import { Slide } from '../../slide';
-import { shuffle, isRandom, getMaxWidth, getNumberedElementsAsList } from '../../../utilities';
-//Despite the documentation, "scroll behaviour" is required
+import { shuffle, isRandom, getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } from '../../../utilities';
+//Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 polyfill({
@@ -33,6 +33,14 @@ export class Gap extends Slide<Array<string>> {
       this.setfills(ctr, currentFills, doc);
       this.setgap(ctr, doc);
     });
+    this.setWidths(this.ans.length, 'fill', 'gap', doc);
+  }
+  private setWidths(num:number, str1:string, str2:string, doc: Document) {
+    const fills: Array<string> = getIdsAsArray(num, str1);
+    const elements: Array<HTMLElement> = getNumberedElementsAsList(fills, doc);
+    const maxWidth = getMaxWidth(elements);
+    const gaps: Array<string> = getIdsAsArray(num, str2);
+    setWidths(gaps, doc, maxWidth);
   }
   createHtml(ans: string[], text: string): string {
     const fills_accum = this.fills(ans);
@@ -82,13 +90,9 @@ export class Gap extends Slide<Array<string>> {
     };
   }
   setgap(ctr: number, doc: Document): void {
-    const fills:Array<string> = this.getFillsAsArray(this.ans.length);
-    const elements:Array<HTMLElement> = getNumberedElementsAsList(fills,doc);
-    const maxWidth = getMaxWidth(elements);
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
     id.style.display = 'inline-block';
     id.style.borderBottom = '2px solid';
-    id.style.width = `${maxWidth}px`;
     id.dataset.number = ctr.toString();
     id.ondragstart = (e) => {
       e.preventDefault();
@@ -114,16 +118,6 @@ export class Gap extends Slide<Array<string>> {
       id.ondrop = null;
       (e.target as HTMLElement).style.removeProperty('background-color');
     };
-  }
-  //REFACTOR: 2 methods: 1 returns an array of strings, the other
-  //takes a list of strings and uses reduce() to find the length
-  //of the longest
-  getFillsAsArray(num: number): Array<string> {
-    const ids:Array<string> = new Array<string>();
-    for (let i = 0; i < num; i++) {
-      ids.push('fill' + i);
-    }
-    return ids;
   }
   drop(
     fillNumber: string,

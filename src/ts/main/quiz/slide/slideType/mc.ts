@@ -1,4 +1,4 @@
-import { makeButton, removeListener, isRandom, shuffle, getMaxWidth } from '../../../utilities';
+import { makeButton, removeListener, isRandom, shuffle, getNumberedElementsAsList, getMaxWidth, setWidths, getIdsAsArray } from '../../../utilities';
 import { showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
@@ -29,23 +29,13 @@ export class Mc extends Slide<string> {
     options.forEach((option, optionCtr) => {
       this.addBehavior(doc, option, options.length, optionCtr);
     });
-    this.setWidths(options, doc);
+    this.setWidths(options.length,'btn', doc);
   }
-  public setWidths(options: string[], doc: Document): void {
-    const ids:Array<string> = new Array<string>();
-    options.forEach((_option, optionCtr) => {
-      ids.push('btn' + optionCtr);
-    });
-    const elements:Array<HTMLElement> = new Array<HTMLElement>();
-    ids.forEach((id) => {
-      const element = doc.getElementById(id) as HTMLElement;
-      elements.push(element);
-    });
+  public setWidths(num:number, str:string, doc: Document): void {
+    const ids:Array<string> = getIdsAsArray(num,str);
+    const elements:Array<HTMLElement> = getNumberedElementsAsList(ids,doc);
     const maxWidth = getMaxWidth(elements);
-    ids.forEach((id) => {
-      const element = doc.getElementById(id) as HTMLElement;
-      element.style.width = `${maxWidth}px`;
-    });
+    setWidths(ids, doc, maxWidth);
   }
   addBehavior(
     doc: Document,
