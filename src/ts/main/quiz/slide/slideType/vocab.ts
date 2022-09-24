@@ -5,7 +5,7 @@ import { continueButton, showButton } from '../../makeSlides';
 import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
-import { Mc, createHtml } from './mc';
+import { createHtml } from './mc';
 const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
