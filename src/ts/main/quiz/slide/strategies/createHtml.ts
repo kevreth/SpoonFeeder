@@ -46,7 +46,7 @@ export class CreateHtml {
     list.forEach((item) => {
       rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
     });
-    rev = rev.trimRight();
+    rev = rev.trimEnd();
     rev = rev.concat('\n</section>');
     return retval + rev + '\n</div><br>\n' + makeButton('btn', 'done', 'done');
   }
