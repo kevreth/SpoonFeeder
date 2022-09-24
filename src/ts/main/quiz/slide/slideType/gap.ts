@@ -9,7 +9,7 @@ import { shuffle, isRandom } from '../../../utilities';
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import { SetWidths } from '../strategies/setWidths';
-import { createHtml } from '../strategies/createHtml';
+import { CreateHtml } from '../strategies/createHtml';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -24,6 +24,7 @@ export class Gap extends Slide<Array<string>> {
   }
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.TARGETED;
+  createHtml = CreateHtml.GAP;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -33,7 +34,7 @@ export class Gap extends Slide<Array<string>> {
     const fills = this.fills(ans);
     const gaps = this.gaps(ans.length, this.txt);
     const remaining = ans.length.toString();
-    const html = createHtml(remaining, fills, gaps);
+    const html = this.createHtml(remaining, fills, gaps);
     this.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
       this.setfills(ctr, currentFills, doc);
