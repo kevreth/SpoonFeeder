@@ -10,6 +10,7 @@ import { shuffle, isRandom } from '../../../utilities';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import { SetWidths } from '../strategies/setWidths';
 import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -25,6 +26,7 @@ export class Gap extends Slide<Array<string>> {
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.TARGETED;
   createHtml = CreateHtml.GAP;
+  evaluateStrategy = Evaluate.GAP;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -158,32 +160,12 @@ export class Gap extends Slide<Array<string>> {
     return responses;
   }
   evaluate(): Evaluation {
-    const ans = this.ans;
-    const res = this.res;
     const txt = this.txt;
-    const response = this.result();
-    const rows = new Array<string>();
-    for (let i = 0; i < this.ans.length; i++) {
-      const answer = ans[i];
-      const response_ = res[i];
-      const row_a = this.gapQuest(response_, answer, i, ans, txt);
-      rows.push(row_a);
-    }
-    const correctCtr = (response as Array<boolean>).filter(Boolean).length;
-    return new Evaluation(this.ans.length, correctCtr, rows.join('\n'));
-  }
-  gapQuest(
-    response: string,
-    answer: string,
-    i: number,
-    ans: Array<string>,
-    text: string
-  ): string {
-    let replaceValue = '';
-    if (i === 0) replaceValue = `<td rowspan="${ans.length}">${text}</td>`;
-    let row_a = makeRow(replaceValue, response, answer);
-    row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
-    return row_a;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(ans, res, txt, result);
   }
 }
+
 

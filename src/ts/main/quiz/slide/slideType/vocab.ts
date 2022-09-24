@@ -21,7 +21,7 @@ export class Vocab extends Slide<Array<string>> {
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
-  evaluateStrategy = Evaluate.CORRELATED;
+  evaluateStrategy = Evaluate.VOCAB;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.ans = Array.from(this.list.keys());
@@ -112,9 +112,9 @@ export class Vocab extends Slide<Array<string>> {
     });
   }
   evaluate(): Evaluation {
-    const ans = this.ans;
     const txt = Array.from(this.list.values());
     const res = this.res;
+    const ans = this.ans;
     const result = this.result();
     return this.evaluateStrategy(txt, ans, res, result);
   }
