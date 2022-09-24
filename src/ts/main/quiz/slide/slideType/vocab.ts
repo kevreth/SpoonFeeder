@@ -145,25 +145,6 @@ class ResponseB {
           this.resp.push(new ResponseA(txt1,ans1,res1));
       })
   }
-  [Symbol.iterator]():IterableIterator<ResponseA> {
-      return this.resp.values();
-  }
-  push(txt:string, ans:string, res:string):void {
-      const resp = new ResponseA(txt,ans,res);
-      this.resp.push(resp);
-  }
-  getAns():Array<string> {
-      return this.resp.map(a => a.ans);
-  }
-  getTxt():Array<string> {
-      return this.resp.map(a => a.txt);
-  }
-  getRes():Array<string> {
-      return this.resp.map(a => a.res);
-  }
-  itor() {
-      return this.resp.entries();
-  }
   get():Array<ResponseA>{
       return this.resp;
   }
