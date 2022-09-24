@@ -73,7 +73,7 @@ describe("My First Test", () => {
     //gap 1
     //TODO: test for empty body
     //TODO: test for visibility of 3 fills and 3 gaps
-    //TODO: "remaining" = 3
+    cy.contains("3");
     // const dataTransfer = new DataTransfer();
     // cy.get('#fill0').trigger('dragstart', {dataTransfer});
     // cy.get('#gap0').trigger('drop',{dataTransfer});
@@ -82,14 +82,13 @@ describe("My First Test", () => {
     dragDrop('#fill1','#gap1');
     //TODO: "remaining" = 1
     dragDrop('#fill2','#gap2');
-    //TODO: "remaining" = 0
+    cy.contains("0");
     //TODO: #ans0 green, #ans1 red, #ans2 red
     //TODO: btn visibile
+    cy.contains("Number correct: 3");
+    cy.contains("Number questions: 3");
+    cy.contains("100%");
     /*
-
-    .assert.textContains("body", "Number correct: 3")
-    .assert.textContains("body", "Number questions: 3")
-    .assert.textContains("body", "100%")
     .assert.visible('button[id=btn]')
     */
     click('#btn');
