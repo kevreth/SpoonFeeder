@@ -3,6 +3,9 @@ import { Evaluation } from '../../evaluate';
 import { AnswerType, ResultReturnType } from './result';
 type SimpleType = (txt: string, res: AnswerType, ans: AnswerType, result: ResultReturnType) => Evaluation;
 export class Evaluate {
+  static readonly DEFAULT = function evaluate() {
+    return new Evaluation(0, 0, '');
+  }
   static readonly SIMPLE: SimpleType = function evaluate(txt, res, ans, result) {
     let correctCtr = 0;
     const text = makeRow(txt, (res as string), (ans as string));

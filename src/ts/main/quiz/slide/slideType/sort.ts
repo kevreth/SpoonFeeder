@@ -1,7 +1,6 @@
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { Result } from '../strategies/result';
