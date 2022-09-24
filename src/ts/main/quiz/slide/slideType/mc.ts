@@ -83,13 +83,4 @@ export class Mc extends Slide<string> implements SlideInterface {
     return new Evaluation(1, correctCtr, text);
   }
 }
-export interface bool extends SlideInterface {
-  txt: string;
-  ans: string;
-}
-export class Bool extends Mc implements bool {
-  o = ['yes', 'no'];
-  processJson(json: mc): void {
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
-  }
-}
+
