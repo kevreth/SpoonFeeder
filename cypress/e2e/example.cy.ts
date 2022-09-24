@@ -68,7 +68,12 @@ describe("Cyberlearning", () => {
 
     //gap 1
     //TODO: test for empty body
-    //TODO: test for visibility of 3 fills and 3 gaps
+    existAndVisible('#fill0')
+    existAndVisible('#fill1')
+    existAndVisible('#fill2')
+    existAndVisible('#gap0')
+    existAndVisible('#gap1')
+    existAndVisible('#gap2')
     elementContains('#remaining','3');
     dragDrop('#fill0','#gap0');
     elementContains('#remaining','2');
