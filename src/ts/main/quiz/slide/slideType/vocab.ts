@@ -2,10 +2,10 @@ import { Evaluation } from '../../evaluate';
 import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
-import { makeRow } from '../../evaluate';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
+import { Evaluate } from '../strategies/evaluate';
 const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -21,6 +21,7 @@ export class Vocab extends Slide<Array<string>> {
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
+  evaluateStrategy = Evaluate.CORRELATED;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.ans = Array.from(this.list.keys());
@@ -115,19 +116,6 @@ export class Vocab extends Slide<Array<string>> {
     const txt = Array.from(this.list.values());
     const res = this.res;
     const result = this.result();
-    return evaluate(txt, ans, res, result);
+    return this.evaluateStrategy(txt, ans, res, result);
   }
 }
-function evaluate(txt: string[], ans: string[], res: string[], result: boolean | boolean[]) {
-  const rows = new Array<string>();
-  txt.forEach((txt1, idx) => {
-    const ans1 = ans[idx];
-    const res1 = res[idx];
-    const row = makeRow(txt1, ans1, res1);
-    rows.push(row);
-  });
-  const row_accum = rows.join('\n');
-  const correctCtr = (result as Array<boolean>).filter(Boolean).length;
-  return new Evaluation(ans.length, correctCtr, row_accum);
-}
-
