@@ -136,24 +136,25 @@ export class Gap extends Slide<Array<string>> {
       const response = slide.innerText as never;
       responses.push(response);
     });
+    const ans = this.ans;
     let correct = 0;
     for (let ctr = 0; ctr < responses.length; ctr++) {
       const response = responses[ctr];
       let color = 'red';
-      const answer = this.ans[ctr];
+      const answer = ans[ctr];
       if (answer === response) {
         color = 'green';
         correct++;
       }
       const id = 'ans' + ctr;
-      const ans = doc.getElementById(id) as HTMLElement;
-      ans.style.backgroundColor = color;
-      ans.style.color = 'white';
+      const eAns = doc.getElementById(id) as HTMLElement;
+      eAns.style.backgroundColor = color;
+      eAns.style.color = 'white';
     }
-    const pctCorrect = ((correct / this.ans.length) * 100).toFixed(0);
+    const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
     const response =
       `Number correct: ${correct} <br>\nNumber questions: ` +
-      `${this.ans.length} <br>\n${pctCorrect}%`;
+      `${ans.length} <br>\n${pctCorrect}%`;
     const responseElem = doc.getElementById('response') as HTMLElement;
     responseElem.innerHTML = response;
     return responses;
