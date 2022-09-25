@@ -7,7 +7,6 @@ describe("Cyberlearning", () => {
 
     //course title
     elementContains('body','course 1');
-    //TODO: test for empty body then body content
     testButton('#btn');
 
     //unit title
@@ -24,26 +23,33 @@ describe("Cyberlearning", () => {
 
     //info slides
     //TODO: test for empty body then body content
+    //Mathjax
     testButton('#btn');
+    //code
     testButton('#btn');
+    //table
     testButton('#btn');
 
     testButton('#btn0');
 
     //info slides
+    elementContains('body','yes');
     //TODO: test for green
     testButton('#btn');
     testButton('#btn0');
+
     //TODO: test for red
+    elementContains('body','yes');
     testButton('#btn');
     testButton('#btn0');
 
     //TODO: test for red
+    elementContains('body','yes');
     testButton('#btn');
+    testButton('#btn0');
 
     //vocab
     //TODO: test for empty body then body content
-    testButton('#btn0');
     //TODO: test for red
     testButton('#btn');
     testButton('#btn0');
