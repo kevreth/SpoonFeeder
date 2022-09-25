@@ -25,7 +25,7 @@ export class Mc extends Slide<string> {
     this.ans = this.o[0];
   }
   makeSlides(doc: Document): void {
-    const saveData = this.getSaveDataFunction();
+    const saveData = () => this.saveData();
     const shuffleFlag = this.isExercise && isRandom();
     let options = this.o;
     if (shuffleFlag) options = shuffle(options);
