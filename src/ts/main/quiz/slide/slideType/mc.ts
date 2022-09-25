@@ -3,7 +3,7 @@ import { SetWidths } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';
 import { Evaluation } from '../../evaluate';
 import { SetValues, Slide } from '../../slide';
-import { Result, ResultReturnType } from '../strategies/result';
+import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Mc extends Slide<string> {
@@ -26,16 +26,13 @@ export class Mc extends Slide<string> {
   }
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
-    // const saveData = () => this.saveData();
-    // const result = (): ResultReturnType => this.result();
-    // const setRes = (res:string): void => this.setRes(res);
     const shuffleFlag = this.isExercise && isRandom();
     let options = this.o;
     if (shuffleFlag) options = shuffle(options);
     const html = this.createHtml(this.txt, options);
     this.createPageContent(html, doc);
     options.forEach((option, optionCtr) => {
-      addBehavior(doc, option, options.length, optionCtr, setValues/*saveData, result, setRes*/);
+      addBehavior(doc, option, options.length, optionCtr, setValues);
     });
     this.maxWidthStrategy(options.length,'btn', doc);
   }
@@ -54,9 +51,6 @@ function addBehavior(
   length: number,
   optionCtr: number,
   setValues: SetValues<string>
-  // saveData: ()=>void,
-  // result: ()=>ResultReturnType,
-  // setRes: (res:string)=>void
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
