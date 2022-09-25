@@ -81,24 +81,7 @@ export class Gap extends Slide<Array<string>> {
   }
   setgap(ctr: number, doc: Document, ans:string[]): void {
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
-    id.style.display = 'inline-block';
-    id.style.borderBottom = '2px solid';
-    id.dataset.number = ctr.toString();
-    id.ondragstart = (e) => {
-      e.preventDefault();
-    };
-    id.ondragenter = (e) => {
-      e.preventDefault();
-    };
-    id.ondragover = (e) => {
-      e.preventDefault();
-      (e.target as HTMLElement).style.backgroundColor = 'grey';
-      (e.dataTransfer as DataTransfer).dropEffect = 'move';
-    };
-    id.ondragleave = (e) => {
-      e.preventDefault();
-      (e.target as HTMLElement).style.removeProperty('background-color');
-    };
+    setgap2(id, ctr);
     id.ondrop = (e) => {
       e.preventDefault();
       const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
@@ -121,6 +104,26 @@ export class Gap extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(ans, res, txt, result);
   }
+}
+function setgap2(id: HTMLElement, ctr: number) {
+  id.style.display = 'inline-block';
+  id.style.borderBottom = '2px solid';
+  id.dataset.number = ctr.toString();
+  id.ondragstart = (e) => {
+    e.preventDefault();
+  };
+  id.ondragenter = (e) => {
+    e.preventDefault();
+  };
+  id.ondragover = (e) => {
+    e.preventDefault();
+    (e.target as HTMLElement).style.backgroundColor = 'grey';
+    (e.dataTransfer as DataTransfer).dropEffect = 'move';
+  };
+  id.ondragleave = (e) => {
+    e.preventDefault();
+    (e.target as HTMLElement).style.removeProperty('background-color');
+  };
 }
 function evaluateA(doc: Document, ans:string[]): Array<string> {
   const responses: string[] = [];
