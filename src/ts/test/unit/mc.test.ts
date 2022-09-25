@@ -1,5 +1,5 @@
 import {Mc} from '../../main/quiz/slide/slideType/mc';
-import { describe, expect, it } from 'vitest'
+import { expect, it } from 'vitest'
 const options = ['opt1','opt2','opt3'];
 const question = 'question';
 it('createHtml', () => {
