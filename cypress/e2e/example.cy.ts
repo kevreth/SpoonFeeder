@@ -49,26 +49,26 @@ describe("Cyberlearning", () => {
     testButton('#btn');
     testButton('#btn0');
     //TODO: test for green
-    testButton('#btn');
+    testButton('#btn'); //continue
     testButton('#btn2');
-    testButton('#btn');
+    testButton('#btn'); //continue
     testButton('#btn3');
-    testButton('#btn');
+    testButton('#btn'); //continue
     testButton('#btn0');
-    testButton('#btn');
+    testButton('#btn'); //continue
 
     //sort
-    testButton('#btn');
-    testButton('#btn');
+    testButton('#btn'); //continue
+    testButton('#btn'); //continue
 
     //imap
     testButton('#blue');
-    testButton('#btn');
+    testButton('#btn'); //continue
 
     //mc 1
     cy.contains("bus");
     testButton('#btn1');
-    testButton('#btn');
+    testButton('#btn'); //continue
 
     //gap 1
     //TODO: test for empty body
@@ -89,7 +89,7 @@ describe("Cyberlearning", () => {
     cy.contains("Number correct: 3");
     cy.contains("Number questions: 3");
     cy.contains("100%");
-    testButton('#btn');
+    testButton('#btn'); //continue
 
     //gap 2
     //TODO: test for empty body
@@ -110,7 +110,7 @@ describe("Cyberlearning", () => {
     cy.contains("Number correct: 1");
     cy.contains("Number questions: 3");
     cy.contains("33%");
-    testButton('#btn');
+    testButton('#btn'); //continue
 
     //select
     testButton('#w4');
@@ -123,7 +123,7 @@ describe("Cyberlearning", () => {
     //test body not empty
     cy.contains("learn the periodic table");
     testButton('#btn0');
-    testButton('#btn');
+    testButton('#btn'); //continue
 
     //results
     // .assert.not.textContains("body", "undefined")
