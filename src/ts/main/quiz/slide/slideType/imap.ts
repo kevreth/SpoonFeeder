@@ -32,29 +32,9 @@ export class Imap extends Slide<string> {
     this.createPageContent(html, doc);
     const picture = doc.getElementById('imagemap');
     //inject SVG into page so it is part of DOM
-    SVGInjector(picture, {afterAll() {imap.afterAll(imap,doc);}});
+    SVGInjector(picture,  {afterAll() {afterAll(imap,doc);}});
   }
-  afterAll(imap: Imap, doc: Document) {
-    const ids = getChildIds(doc, 'imagemap');
-    ids.forEach((id) => {
-      const element = doc.getElementById(id) as HTMLElement;
-      element.addEventListener('click', () => {
-        ids.forEach((id) => {
-          const element = doc.getElementById(id) as HTMLElement;
-          element.classList.remove('shape');
-          removeListener(element);
-        });
-        imap.res = id;
-        const response = imap.res;
-        const element = doc.getElementById(response) as HTMLElement;
-        let classname = 'shape_incorrect';
-        if (imap.result()) classname = 'shape_correct';
-        element.classList.add(classname);
-        imap.saveData();
-        showButton(doc);
-      });
-    });
-  }
+
   public evaluate(): Evaluation {
     const txt = this.txt;
     const res = this.res;
@@ -62,4 +42,25 @@ export class Imap extends Slide<string> {
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
   }
+}
+function afterAll(imap: Imap, doc: Document) {
+  const ids = getChildIds(doc, 'imagemap');
+  ids.forEach((id) => {
+    const element = doc.getElementById(id) as HTMLElement;
+    element.addEventListener('click', () => {
+      ids.forEach((id) => {
+        const element = doc.getElementById(id) as HTMLElement;
+        element.classList.remove('shape');
+        removeListener(element);
+      });
+      imap.res = id;
+      const response = imap.res;
+      const element = doc.getElementById(response) as HTMLElement;
+      let classname = 'shape_incorrect';
+      if (imap.result()) classname = 'shape_correct';
+      element.classList.add(classname);
+      imap.saveData();
+      showButton(doc);
+    });
+  });
 }

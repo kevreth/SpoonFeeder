@@ -113,4 +113,15 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
       count = result ? 1 : 0;
     return count;
   }
+  createMultiplier(x: number) {
+    return (y:number) => {
+        return x * y;
+    };
+  }
+  getSaveDataFunction() {
+    return () => {
+      this.saveData();
+    }
+  }
 }
+
