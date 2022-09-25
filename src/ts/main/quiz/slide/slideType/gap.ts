@@ -38,20 +38,13 @@ export class Gap extends Slide<Array<string>> {
     const html = this.createHtml(remaining, fills, gaps);
     this.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
-      this.setfills(ctr, currentFills, doc);
+      setfills(ctr, currentFills, doc);
       this.setgap(ctr, doc,this.ans);
     });
     this.maxWidthStrategy(this.ans.length, 'fill', 'gap', doc);
   }
   fills(ans: string[]): string {
-    let fill_accum = '';
-    ans.forEach((currentFills, ctr) => {
-      const fill_html =
-        `\n    <span id="fill${ctr}" ` +
-        `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
-      fill_accum = fill_accum.concat(fill_html);
-    });
-    return fill_accum;
+    return fills2(ans);
   }
   gaps(length: number, gaps: string): string {
     let gaps_accum = '';
@@ -67,17 +60,6 @@ export class Gap extends Slide<Array<string>> {
     }
     //a remaining part of gaps is leftover, so we add it here.
     return gaps_accum + gaps;
-  }
-  setfills(ctr: number, currentFills: string, doc: Document): void {
-    const id = doc.getElementById('fill' + ctr) as HTMLElement;
-    id.dataset.number = ctr.toString();
-    id.dataset.text = currentFills;
-    id.ondragstart = (e) => {
-      const number = (e.target as HTMLElement).dataset.number as string;
-      const text = (e.target as HTMLElement).dataset.text as string;
-      (e.dataTransfer as DataTransfer).setData('number', number);
-      (e.dataTransfer as DataTransfer).setData('text', text);
-    };
   }
   setgap(ctr: number, doc: Document, ans:string[]): void {
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
@@ -104,6 +86,15 @@ export class Gap extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(ans, res, txt, result);
   }
+}
+function fills2(ans: string[]) {
+  let fill_accum = '';
+  ans.forEach((currentFills, ctr) => {
+    const fill_html = `\n    <span id="fill${ctr}" ` +
+      `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
+    fill_accum = fill_accum.concat(fill_html);
+  });
+  return fill_accum;
 }
 function setgap2(id: HTMLElement, ctr: number) {
   id.style.display = 'inline-block';
@@ -164,4 +155,15 @@ function drop2(doc: Document, gapNumber: string, fillText: string, fillNumber: s
   const remaining = doc.getElementById('remaining') as HTMLElement;
   remaining.innerHTML = fillsRemaining.toString();
   return fillsRemaining;
+}
+function setfills(ctr: number, currentFills: string, doc: Document): void {
+  const id = doc.getElementById('fill' + ctr) as HTMLElement;
+  id.dataset.number = ctr.toString();
+  id.dataset.text = currentFills;
+  id.ondragstart = (e) => {
+    const number = (e.target as HTMLElement).dataset.number as string;
+    const text = (e.target as HTMLElement).dataset.text as string;
+    (e.dataTransfer as DataTransfer).setData('number', number);
+    (e.dataTransfer as DataTransfer).setData('text', text);
+  };
 }
