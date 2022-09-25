@@ -39,7 +39,7 @@ export class Gap extends Slide<Array<string>> {
     this.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
       this.setfills(ctr, currentFills, doc);
-      this.setgap(ctr, doc);
+      this.setgap(ctr, doc,this.ans);
     });
     this.maxWidthStrategy(this.ans.length, 'fill', 'gap', doc);
   }
@@ -79,7 +79,7 @@ export class Gap extends Slide<Array<string>> {
       (e.dataTransfer as DataTransfer).setData('text', text);
     };
   }
-  setgap(ctr: number, doc: Document): void {
+  setgap(ctr: number, doc: Document, ans:string[]): void {
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
     id.style.display = 'inline-block';
     id.style.borderBottom = '2px solid';
@@ -104,7 +104,7 @@ export class Gap extends Slide<Array<string>> {
       const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
       const fillText = (e.dataTransfer as DataTransfer).getData('text');
       const gapNumber = (e.target as HTMLElement).dataset.number as string;
-      this.drop(fillNumber, fillText, gapNumber, document);
+      this.drop(fillNumber, fillText, gapNumber, document,ans);
       id.ondrop = null;
       (e.target as HTMLElement).style.removeProperty('background-color');
     };
@@ -113,7 +113,8 @@ export class Gap extends Slide<Array<string>> {
     fillNumber: string,
     fillText: string,
     gapNumber: string,
-    doc: Document
+    doc: Document,
+    ans:string[]
   ): void {
     const gap = doc.getElementById('gap' + gapNumber) as HTMLElement;
     gap.innerHTML = `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
@@ -124,19 +125,18 @@ export class Gap extends Slide<Array<string>> {
     const remaining = doc.getElementById('remaining') as HTMLElement;
     remaining.innerHTML = fillsRemaining.toString();
     if (fillsRemaining === 0) {
-      this.res = this.evaluateA(doc);
+      this.res = this.evaluateA(doc,ans);
       this.saveData();
       showButton(doc);
     }
   }
-  evaluateA(doc: Document): Array<string> {
+  evaluateA(doc: Document, ans:string[]): Array<string> {
     const responses: string[] = [];
     const ansId = doc.getElementsByClassName('ans');
     Array.prototype.forEach.call(ansId, (slide) => {
       const response = slide.innerText as never;
       responses.push(response);
     });
-    const ans = this.ans;
     let correct = 0;
     for (let ctr = 0; ctr < responses.length; ctr++) {
       const response = responses[ctr];
