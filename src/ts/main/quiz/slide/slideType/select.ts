@@ -67,40 +67,10 @@ export class Select extends Slide<Array<number>> {
       ctr++;
     }
     //remove event listeners from words to prevent selection after submission
-    for (let i = 1; i <= numWords; i++) {
-      const element = doc.getElementById('w' + i.toString()) as HTMLElement;
-      //disable word selection
-      removeListener(element);
-      element.style.removeProperty('background-color');
-      element.style.color = 'white';
-    }
-    //items that were not selected but should have been
-    let diff = difference(ans, responses);
-    this.style(diff, 'underline', 'red', doc);
-    //items that should not have been selected but were
-    diff = difference(responses, ans);
-    this.style(diff, 'line-through', 'red', doc);
-    //correctly selected items
-    diff = intersection(responses, ans);
-    this.style(diff, 'underline', 'green', doc);
+    removeEventListeners(numWords, doc);
+    decorate(ans, responses, doc);
     element.remove();
     return responses;
-  }
-  style(
-    diff: Array<number>,
-    decoration: string,
-    color: string,
-    doc: Document
-  ): void {
-    length = diff.length;
-    for (let i = 0; i < length; i++) {
-      const id = diff[i];
-      const element = doc.getElementById('w' + id.toString()) as HTMLElement;
-      element.style.textDecoration = decoration;
-      element.style.textDecorationColor = color;
-      element.style.removeProperty('background-color');
-      element.style.color = 'white';
-    }
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -108,6 +78,42 @@ export class Select extends Slide<Array<number>> {
     const ans = this.ans.toString();
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
+  }
+}
+function decorate(ans: number[], responses: number[], doc: Document) {
+  //items that were not selected but should have been
+  let diff = difference(ans, responses);
+  style(diff, 'underline', 'red', doc);
+  //items that should not have been selected but were
+  diff = difference(responses, ans);
+  style(diff, 'line-through', 'red', doc);
+  //correctly selected items
+  diff = intersection(responses, ans);
+  style(diff, 'underline', 'green', doc);
+}
+function style(
+  diff: Array<number>,
+  decoration: string,
+  color: string,
+  doc: Document
+): void {
+  length = diff.length;
+  for (let i = 0; i < length; i++) {
+    const id = diff[i];
+    const element = doc.getElementById('w' + id.toString()) as HTMLElement;
+    element.style.textDecoration = decoration;
+    element.style.textDecorationColor = color;
+    element.style.removeProperty('background-color');
+    element.style.color = 'white';
+  }
+}
+function removeEventListeners(numWords: number, doc: Document) {
+  for (let i = 1; i <= numWords; i++) {
+    const element = doc.getElementById('w' + i.toString()) as HTMLElement;
+    //disable word selection
+    removeListener(element);
+    element.style.removeProperty('background-color');
+    element.style.color = 'white';
   }
 }
 
