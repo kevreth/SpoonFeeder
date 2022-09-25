@@ -104,24 +104,15 @@ export class Gap extends Slide<Array<string>> {
       const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
       const fillText = (e.dataTransfer as DataTransfer).getData('text');
       const gapNumber = (e.target as HTMLElement).dataset.number as string;
-      this.drop(fillNumber, fillText, gapNumber, document,ans);
+      const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
+      if (fillsRemaining === 0) {
+        this.res = evaluateA(doc,ans);
+        this.saveData();
+        showButton(doc);
+      }
       id.ondrop = null;
       (e.target as HTMLElement).style.removeProperty('background-color');
     };
-  }
-  drop(
-    fillNumber: string,
-    fillText: string,
-    gapNumber: string,
-    doc: Document,
-    ans:string[]
-  ): void {
-    const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) {
-      this.res = evaluateA(doc,ans);
-      this.saveData();
-      showButton(doc);
-    }
   }
   evaluate(): Evaluation {
     const txt = this.txt;
