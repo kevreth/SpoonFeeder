@@ -40,13 +40,13 @@ describe("Cyberlearning", () => {
     existVisibleNotEmpty('body');
     elementContains('body','no');
     testButton('#btn0');
-    cy.get('#btn0').should('have.css', 'background-color', RED)
+    cy.get('#btn0').should('have.css', 'background-color', RED);
     testButton('#btn'); //continue
 
     existVisibleNotEmpty('body');
     elementContains('body','no1');
     testButton('#btn0');
-    cy.get('#btn0').should('have.css', 'background-color', RED)
+    cy.get('#btn0').should('have.css', 'background-color', RED);
     testButton('#btn'); //continue
 
     //vocab
@@ -54,7 +54,7 @@ describe("Cyberlearning", () => {
     existVisibleNotEmpty('body');
     testButton('#btn');
     testButton('#btn0');
-    cy.get('#btn0').should('have.css', 'background-color', RED)
+    cy.get('#btn0').should('have.css', 'background-color', RED);
     testButton('#btn'); //continue
     testButton('#btn2');
     testButton('#btn'); //continue
@@ -81,12 +81,12 @@ describe("Cyberlearning", () => {
 
     //gap 1
     existVisibleNotEmpty('body');
-    existAndVisible('#fill0')
-    existAndVisible('#fill1')
-    existAndVisible('#fill2')
-    existAndVisible('#gap0')
-    existAndVisible('#gap1')
-    existAndVisible('#gap2')
+    existAndVisible('#fill0');
+    existAndVisible('#fill1');
+    existAndVisible('#fill2');
+    existAndVisible('#gap0');
+    existAndVisible('#gap1');
+    existAndVisible('#gap2');
     elementContains('#remaining','3');
     dragDrop('#fill0','#gap0');
     elementContains('#remaining','2');
@@ -95,9 +95,9 @@ describe("Cyberlearning", () => {
     dragDrop('#fill2','#gap2');
     elementContains('#remaining','0');
     //TODO: #ans0 green, #ans1 red, #ans2 red
-    cy.get('#ans0').should('have.css', 'background-color', GREEN)
-    cy.get('#ans1').should('have.css', 'background-color', GREEN)
-    cy.get('#ans2').should('have.css', 'background-color', GREEN)
+    cy.get('#ans0').should('have.css', 'background-color', GREEN);
+    cy.get('#ans1').should('have.css', 'background-color', GREEN);
+    cy.get('#ans2').should('have.css', 'background-color', GREEN);
     cy.contains("Number correct: 3");
     cy.contains("Number questions: 3");
     cy.contains("100%");
@@ -105,12 +105,12 @@ describe("Cyberlearning", () => {
 
     //gap 2
     existVisibleNotEmpty('body');
-    existAndVisible('#fill0')
-    existAndVisible('#fill1')
-    existAndVisible('#fill2')
-    existAndVisible('#gap0')
-    existAndVisible('#gap1')
-    existAndVisible('#gap2')
+    existAndVisible('#fill0');
+    existAndVisible('#fill1');
+    existAndVisible('#fill2');
+    existAndVisible('#gap0');
+    existAndVisible('#gap1');
+    existAndVisible('#gap2');
     elementContains('#remaining','3');
     dragDrop('#fill2','#gap1');
     elementContains('#remaining','2');
@@ -119,9 +119,9 @@ describe("Cyberlearning", () => {
     dragDrop('#fill1','#gap2');
     elementContains('#remaining','0');
     //TODO: #ans0 green, #ans1 red, #ans2 red
-    cy.get('#ans0').should('have.css', 'background-color', GREEN)
-    cy.get('#ans1').should('have.css', 'background-color', RED)
-    cy.get('#ans2').should('have.css', 'background-color', RED)
+    cy.get('#ans0').should('have.css', 'background-color', GREEN);
+    cy.get('#ans1').should('have.css', 'background-color', RED);
+    cy.get('#ans2').should('have.css', 'background-color', RED);
     cy.contains("Number correct: 1");
     cy.contains("Number questions: 3");
     cy.contains("33%");
