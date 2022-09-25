@@ -157,6 +157,6 @@ function testButton(e1: string) {
 }
 function elementContains(e1:string, txt:string) {
   existAndVisible(e1);
-  cy.get(e1).should('not.empty').should('contain.text', txt)
+  cy.get(e1).should('contain.text', txt)
 }
 export {} //stops lint warning
