@@ -118,5 +118,8 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
         return x * y;
     };
   }
+  setRes(res:T):void {
+    this.res=res;
+  }
 }
 

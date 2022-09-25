@@ -27,13 +27,14 @@ export class Mc extends Slide<string> {
   makeSlides(doc: Document): void {
     const saveData = () => this.saveData();
     const result = (): ResultReturnType => this.result();
+    const setRes = (res:string): void => this.setRes(res);
     const shuffleFlag = this.isExercise && isRandom();
     let options = this.o;
     if (shuffleFlag) options = shuffle(options);
     const html = this.createHtml(this.txt, options);
     this.createPageContent(html, doc);
     options.forEach((option, optionCtr) => {
-      this.addBehavior(doc, option, options.length, optionCtr, saveData, result);
+      this.addBehavior(doc, option, options.length, optionCtr, saveData, result, setRes);
     });
     this.maxWidthStrategy(options.length,'btn', doc);
   }
@@ -43,7 +44,8 @@ export class Mc extends Slide<string> {
     length: number,
     optionCtr: number,
     saveData: ()=>void,
-    result: ()=>ResultReturnType
+    result: ()=>ResultReturnType,
+    setRes: (res:string)=>void
   ): void {
     const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
     element.addEventListener('click', () => {
@@ -51,7 +53,7 @@ export class Mc extends Slide<string> {
         removeListener(doc.getElementById('btn' + i) as HTMLElement);
       const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
       let color = 'red';
-      this.res = option;
+      setRes(option);
       if (result()) color = 'green';
       optionButton.style.backgroundColor = color;
       saveData();
