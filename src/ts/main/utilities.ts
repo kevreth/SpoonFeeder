@@ -3,7 +3,16 @@ import $ from 'jquery';
 import type { Course } from './quiz/course';
 import * as yaml from 'js-yaml';
 import { SaveData } from './quiz/slide/saveData';
-
+export function getYaml(filename: string, f: (data: Course) => void) {
+  fetch(filename)
+    .then((res) => res.blob())
+    .then((blob) => blob.text())
+    .then((yamlAsString) => {
+      const yml = yaml.load(yamlAsString) as Course;
+      f(yml);
+    })
+    .catch((err) => console.log('yaml err:', err));
+}
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
@@ -91,14 +100,4 @@ export function append(elem: string, content: string) {
 }
 export function empty(elem: string) {
   $(elem).empty();
-}
-export function getYaml(filename: string, f: (data: Course) => void) {
-  fetch(filename)
-    .then((res) => res.blob())
-    .then((blob) => blob.text())
-    .then((yamlAsString) => {
-      const yml = yaml.load(yamlAsString) as Course;
-      f(yml);
-    })
-    .catch((err) => console.log('yaml err:', err));
 }
