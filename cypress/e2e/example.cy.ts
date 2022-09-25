@@ -1,5 +1,5 @@
-import cypress from "cypress";
-
+const GREEN = 'rgb(0, 128, 0)';
+const RED = 'rgb(255, 0, 0)';
 describe("Cyberlearning", () => {
   it("visits the app root url", () => {
     cy.visit("/");
@@ -34,19 +34,19 @@ describe("Cyberlearning", () => {
     existVisibleNotEmpty('body');
     elementContains('body','yes');
     testButton('#btn0'); //continue
-    cy.get('#btn0').should('have.css', 'background-color', 'rgb(0, 128, 0)')
+    cy.get('#btn0').should('have.css', 'background-color', GREEN)
     testButton('#btn'); //continue
 
     existVisibleNotEmpty('body');
     elementContains('body','no');
     testButton('#btn0');
-    cy.get('#btn0').should('have.css', 'background-color', 'rgb(255, 0, 0)')
+    cy.get('#btn0').should('have.css', 'background-color', RED)
     testButton('#btn'); //continue
 
     existVisibleNotEmpty('body');
     elementContains('body','no1');
     testButton('#btn0');
-    cy.get('#btn0').should('have.css', 'background-color', 'rgb(255, 0, 0)')
+    cy.get('#btn0').should('have.css', 'background-color', RED)
     testButton('#btn'); //continue
 
     //vocab
@@ -54,7 +54,7 @@ describe("Cyberlearning", () => {
     existVisibleNotEmpty('body');
     testButton('#btn');
     testButton('#btn0');
-    cy.get('#btn0').should('have.css', 'background-color', 'rgb(255, 0, 0)')
+    cy.get('#btn0').should('have.css', 'background-color', RED)
     testButton('#btn'); //continue
     testButton('#btn2');
     testButton('#btn'); //continue
@@ -95,9 +95,9 @@ describe("Cyberlearning", () => {
     dragDrop('#fill2','#gap2');
     elementContains('#remaining','0');
     //TODO: #ans0 green, #ans1 red, #ans2 red
-    cy.get('#ans0').should('have.css', 'background-color', 'rgb(0, 128, 0)')
-    cy.get('#ans1').should('have.css', 'background-color', 'rgb(0, 128, 0)')
-    cy.get('#ans2').should('have.css', 'background-color', 'rgb(0, 128, 0)')
+    cy.get('#ans0').should('have.css', 'background-color', GREEN)
+    cy.get('#ans1').should('have.css', 'background-color', GREEN)
+    cy.get('#ans2').should('have.css', 'background-color', GREEN)
     cy.contains("Number correct: 3");
     cy.contains("Number questions: 3");
     cy.contains("100%");
@@ -119,9 +119,9 @@ describe("Cyberlearning", () => {
     dragDrop('#fill1','#gap2');
     elementContains('#remaining','0');
     //TODO: #ans0 green, #ans1 red, #ans2 red
-    cy.get('#ans0').should('have.css', 'background-color', 'rgb(0, 128, 0)')
-    cy.get('#ans1').should('have.css', 'background-color', 'rgb(255, 0, 0)')
-    cy.get('#ans2').should('have.css', 'background-color', 'rgb(255, 0, 0)')
+    cy.get('#ans0').should('have.css', 'background-color', GREEN)
+    cy.get('#ans1').should('have.css', 'background-color', RED)
+    cy.get('#ans2').should('have.css', 'background-color', RED)
     cy.contains("Number correct: 1");
     cy.contains("Number questions: 3");
     cy.contains("33%");
@@ -133,9 +133,9 @@ describe("Cyberlearning", () => {
     testButton('#w6');
     testButton('#btn'); //done
 
-    cy.get('#w4').should('have.css', 'text-decoration-color', 'rgb(255, 0, 0)');
-    cy.get('#w5').should('have.css', 'text-decoration-color', 'rgb(255, 0, 0)');
-    cy.get('#w6').should('have.css', 'text-decoration-color', 'rgb(0, 128, 0)');
+    cy.get('#w4').should('have.css', 'text-decoration-color', RED);
+    cy.get('#w5').should('have.css', 'text-decoration-color', RED);
+    cy.get('#w6').should('have.css', 'text-decoration-color', GREEN);
 
     testButton('#btn'); //continue
 
