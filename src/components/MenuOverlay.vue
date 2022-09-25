@@ -4,7 +4,7 @@
   <q-overlay v-model="overlay">
     <template #body>
       <ProgressTable style="cursor:auto"/>
-      <TrashBtn />
+      <TrashBtn @click="startOver"/>
       <OverlayCloseBtn @click="handleOverlay"/>
     </template>
   </q-overlay>
@@ -16,12 +16,18 @@ import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
+import getStartOver from '../composables/startOver';
 
 const overlay = ref(false)
 
 function handleOverlay() {
   overlay.value = !overlay.value
 }
+
+function startOver() {
+  const { clear, reload } = getStartOver();
+  return { clear, reload };
+  }
 </script>
 
 <style>

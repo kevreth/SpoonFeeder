@@ -30,8 +30,8 @@ it('isEqual1', () => {
   expect(result).toEqual(true);
 });
 it('getChildIds',() => {
-	const dom = new JSDOM('<!DOCTYPE html><body></body>');
-	const html = `
+  const dom = new JSDOM('<!DOCTYPE html><body></body>');
+  const html = `
   <div id="parent-div">
     <div id="div-no-1"></div>
     <div id="div-no-2"></div>
@@ -39,9 +39,9 @@ it('getChildIds',() => {
     <div id="div-no-4"></div>
   </div>
   `;
-	dom.window.document.body.innerHTML = html;
+  dom.window.document.body.innerHTML = html;
   const doc = dom.window.document;
-	const ids = getChildIds(doc, 'parent-div');
+  const ids = getChildIds(doc, 'parent-div');
   expect(ids).not.toBeNull()
   expect(ids).not.to.be.empty;
   expect(ids.length).toBe(4);

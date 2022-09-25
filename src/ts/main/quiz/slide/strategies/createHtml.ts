@@ -1,4 +1,4 @@
-import { isRandom, makeButton, shuffle } from 'src/ts/main/utilities';
+import { isRandom, makeButton, shuffle } from '../../../../main/utilities';
 type GapType = (remaining: string, fills: string, gaps: string) => string;
 type ImapType = (inst: string, img: string) => string;
 type McType = (question: string, options: string[]) => string
