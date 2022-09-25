@@ -1,5 +1,5 @@
 import { Evaluation } from '../../evaluate';
-import { SetWidths } from '../strategies/setWidths';
+import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
 import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
@@ -35,13 +35,14 @@ export class Vocab extends Slide<Array<string>> {
   proc(map: Map<string, string>, doc: Document): void {
     const vocabTuples = generateQuestions(map);
     const html_list = createHtmlLoop(vocabTuples, this.createHtml);
-    this.paging(doc, html_list, vocabTuples, 0);
+    this.paging(doc, html_list, vocabTuples, 0, this.maxWidthStrategy);
   }
   paging(
     doc: Document,
     html_list: string[],
     vocabTuples: vocabTuplesType,
-    questionCtr: number
+    questionCtr: number,
+    maxWidthStrategy: SetWidthTypeSimple
   ): void {
     this.createPageContent(html_list[questionCtr], doc);
     const tuple = vocabTuples[questionCtr];
@@ -66,7 +67,8 @@ export class Vocab extends Slide<Array<string>> {
             doc,
             html_list,
             vocabTuples,
-            questionCtr
+            questionCtr,
+            maxWidthStrategy
           );
         } else {
           this.saveData();
@@ -74,17 +76,18 @@ export class Vocab extends Slide<Array<string>> {
         }
       });
     });
-    this.maxWidthStrategy(options.length,'btn', doc);
+    maxWidthStrategy(options.length,'btn', doc);
   }
   addContinueEventListener(
     element: HTMLElement,
     doc: Document,
     html_list: string[],
     vocabTuples: vocabTuplesType,
-    questionCtr: number
+    questionCtr: number,
+    maxWidthStrategy: SetWidthTypeSimple
   ): void {
     element.addEventListener('click', (): void => {
-      this.paging(doc, html_list, vocabTuples, questionCtr + 1);
+      this.paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy);
     });
   }
   evaluate(): Evaluation {
