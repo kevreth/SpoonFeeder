@@ -42,8 +42,8 @@ export class Mc extends Slide<string> {
     option: string,
     length: number,
     optionCtr: number,
-    saveData: any,
-    result: any
+    saveData: ()=>void,
+    result: ()=>void
   ): void {
     const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
     element.addEventListener('click', () => {
