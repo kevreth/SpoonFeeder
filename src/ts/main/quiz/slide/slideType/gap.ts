@@ -116,48 +116,12 @@ export class Gap extends Slide<Array<string>> {
     doc: Document,
     ans:string[]
   ): void {
-    const gap = doc.getElementById('gap' + gapNumber) as HTMLElement;
-    gap.innerHTML = `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
-    const fill = doc.getElementById('fill' + fillNumber) as HTMLElement;
-    fill.innerHTML = '&nbsp;';
-    fill.removeAttribute('class');
-    const fillsRemaining = doc.getElementsByClassName('fills').length;
-    const remaining = doc.getElementById('remaining') as HTMLElement;
-    remaining.innerHTML = fillsRemaining.toString();
+    const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
     if (fillsRemaining === 0) {
-      this.res = this.evaluateA(doc,ans);
+      this.res = evaluateA(doc,ans);
       this.saveData();
       showButton(doc);
     }
-  }
-  evaluateA(doc: Document, ans:string[]): Array<string> {
-    const responses: string[] = [];
-    const ansId = doc.getElementsByClassName('ans');
-    Array.prototype.forEach.call(ansId, (slide) => {
-      const response = slide.innerText as never;
-      responses.push(response);
-    });
-    let correct = 0;
-    for (let ctr = 0; ctr < responses.length; ctr++) {
-      const response = responses[ctr];
-      let color = 'red';
-      const answer = ans[ctr];
-      if (answer === response) {
-        color = 'green';
-        correct++;
-      }
-      const id = 'ans' + ctr;
-      const eAns = doc.getElementById(id) as HTMLElement;
-      eAns.style.backgroundColor = color;
-      eAns.style.color = 'white';
-    }
-    const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
-    const response =
-      `Number correct: ${correct} <br>\nNumber questions: ` +
-      `${ans.length} <br>\n${pctCorrect}%`;
-    const responseElem = doc.getElementById('response') as HTMLElement;
-    responseElem.innerHTML = response;
-    return responses;
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -167,5 +131,43 @@ export class Gap extends Slide<Array<string>> {
     return this.evaluateStrategy(ans, res, txt, result);
   }
 }
-
-
+function evaluateA(doc: Document, ans:string[]): Array<string> {
+  const responses: string[] = [];
+  const ansId = doc.getElementsByClassName('ans');
+  Array.prototype.forEach.call(ansId, (slide) => {
+    const response = slide.innerText as never;
+    responses.push(response);
+  });
+  let correct = 0;
+  for (let ctr = 0; ctr < responses.length; ctr++) {
+    const response = responses[ctr];
+    let color = 'red';
+    const answer = ans[ctr];
+    if (answer === response) {
+      color = 'green';
+      correct++;
+    }
+    const id = 'ans' + ctr;
+    const eAns = doc.getElementById(id) as HTMLElement;
+    eAns.style.backgroundColor = color;
+    eAns.style.color = 'white';
+  }
+  const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
+  const response =
+    `Number correct: ${correct} <br>\nNumber questions: ` +
+    `${ans.length} <br>\n${pctCorrect}%`;
+  const responseElem = doc.getElementById('response') as HTMLElement;
+  responseElem.innerHTML = response;
+  return responses;
+}
+function drop2(doc: Document, gapNumber: string, fillText: string, fillNumber: string) {
+  const gap = doc.getElementById('gap' + gapNumber) as HTMLElement;
+  gap.innerHTML = `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
+  const fill = doc.getElementById('fill' + fillNumber) as HTMLElement;
+  fill.innerHTML = '&nbsp;';
+  fill.removeAttribute('class');
+  const fillsRemaining = doc.getElementsByClassName('fills').length;
+  const remaining = doc.getElementById('remaining') as HTMLElement;
+  remaining.innerHTML = fillsRemaining.toString();
+  return fillsRemaining;
+}
