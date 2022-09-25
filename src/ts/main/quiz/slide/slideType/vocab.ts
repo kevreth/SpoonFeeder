@@ -4,7 +4,8 @@ import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
-import { CreateHtml, McType } from '../strategies/createHtml';
+import { CreateHtml } from '../strategies/createHtml';
+import type { McType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 const CHOICES = 4;
 export type vocabTuplesType = [
