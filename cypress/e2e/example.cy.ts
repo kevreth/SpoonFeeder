@@ -1,22 +1,25 @@
+import cypress from "cypress";
+
 describe("Cyberlearning", () => {
   it("visits the app root url", () => {
     cy.visit("/");
     cy.title().should('eq', ("CyberLearning"));
 
     //course title
+    elementContains('body','course 1');
     //TODO: test for empty body then body content
     testButton('#btn');
 
     //unit title
-    //TODO: test for empty body then body content
+    elementContains('body','unit 1');
     testButton('#btn');
 
     //lesson title
-    //TODO: test for empty body then body content
+    elementContains('body','lesson 1');
     testButton('#btn');
 
     //module title
-    //TODO: test for empty body then body content
+    elementContains('body','module 1');
     testButton('#btn');
 
     //info slides
@@ -152,6 +155,6 @@ function testButton(e1: string) {
   click(e1);
 }
 function elementContains(e1:string, txt:string) {
-  cy.get(e1).should('have.text', txt)
+  cy.get(e1).should('not.empty').should('contain.text', txt)
 }
 export {} //stops lint warning
