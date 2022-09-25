@@ -6,18 +6,22 @@ describe("Cyberlearning", () => {
     cy.title().should('eq', ("CyberLearning"));
 
     //course title
+    existVisibleNotEmpty('body');
     elementContains('body','course 1');
     testButton('#btn');
 
     //unit title
+    existVisibleNotEmpty('body');
     elementContains('body','unit 1');
     testButton('#btn');
 
     //lesson title
+    existVisibleNotEmpty('body');
     elementContains('body','lesson 1');
     testButton('#btn');
 
     //module title
+    existVisibleNotEmpty('body');
     elementContains('body','module 1');
     testButton('#btn');
 
@@ -27,16 +31,19 @@ describe("Cyberlearning", () => {
     testButton('#btn'); //table
 
     //info slides
+    existVisibleNotEmpty('body');
     elementContains('body','yes');
     testButton('#btn0'); //continue
     //TODO: test for green
     testButton('#btn'); //continue
 
+    existVisibleNotEmpty('body');
     elementContains('body','no');
     testButton('#btn0');
     //TODO: test for red
     testButton('#btn'); //continue
 
+    existVisibleNotEmpty('body');
     elementContains('body','no1');
     testButton('#btn0');
     //TODO: test for red
@@ -58,20 +65,23 @@ describe("Cyberlearning", () => {
     testButton('#btn'); //continue
 
     //sort
+    existVisibleNotEmpty('body');
     testButton('#btn'); //continue
     testButton('#btn'); //continue
 
     //imap
+    existVisibleNotEmpty('body');
     testButton('#blue');
     testButton('#btn'); //continue
 
     //mc 1
+    existVisibleNotEmpty('body');
     cy.contains("bus");
     testButton('#btn1');
     testButton('#btn'); //continue
 
     //gap 1
-    //TODO: test for empty body
+    existVisibleNotEmpty('body');
     existAndVisible('#fill0')
     existAndVisible('#fill1')
     existAndVisible('#fill2')
@@ -92,7 +102,7 @@ describe("Cyberlearning", () => {
     testButton('#btn'); //continue
 
     //gap 2
-    //TODO: test for empty body
+    existVisibleNotEmpty('body');
     existAndVisible('#fill0')
     existAndVisible('#fill1')
     existAndVisible('#fill2')
@@ -113,6 +123,7 @@ describe("Cyberlearning", () => {
     testButton('#btn'); //continue
 
     //select
+    existVisibleNotEmpty('body');
     testButton('#w4');
     testButton('#w6');
     //test 4 and 5 red, 6 green
@@ -120,13 +131,13 @@ describe("Cyberlearning", () => {
     testButton('#btn'); //continue
 
     //mc2
-    //test body not empty
+    existVisibleNotEmpty('body');
     cy.contains("learn the periodic table");
     testButton('#btn0');
     testButton('#btn'); //continue
 
     //results
-    // .assert.not.textContains("body", "undefined")
+    existVisibleNotEmpty('body');
     cy.contains("b,a,c,d");
     cy.contains("blue");
     cy.contains("NUMBER OF QUESTIONS: 16");
@@ -158,5 +169,9 @@ function testButton(e1: string) {
 function elementContains(e1:string, txt:string) {
   existAndVisible(e1);
   cy.get(e1).should('contain.text', txt)
+}
+function existVisibleNotEmpty(e1:string) {
+  existAndVisible(e1);
+  cy.get(e1).should('not.be.empty');
 }
 export {} //stops lint warning
