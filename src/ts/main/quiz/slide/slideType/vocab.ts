@@ -29,20 +29,21 @@ export class Vocab extends Slide<Array<string>> {
   }
   makeSlides(doc: Document): void {
     if (isRandom()) this.list = shuffleMap(this.list);
-    this.proc(this.list, doc, this.maxWidthStrategy);
+    this.proc(this.list, doc, this.maxWidthStrategy,this.res);
   }
   //Pass in doc only for unit testing
-  proc(map: Map<string, string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple): void {
+  proc(map: Map<string, string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, res:string[]): void {
     const vocabTuples = generateQuestions(map);
     const html_list = createHtmlLoop(vocabTuples, this.createHtml);
-    this.paging(doc, html_list, vocabTuples, 0, maxWidthStrategy);
+    this.paging(doc, html_list, vocabTuples, 0, maxWidthStrategy,res);
   }
   paging(
     doc: Document,
     html_list: string[],
     vocabTuples: vocabTuplesType,
     questionCtr: number,
-    maxWidthStrategy: SetWidthTypeSimple
+    maxWidthStrategy: SetWidthTypeSimple,
+    res:string[]
   ): void {
     this.createPageContent(html_list[questionCtr], doc);
     const tuple = vocabTuples[questionCtr];
@@ -52,7 +53,7 @@ export class Vocab extends Slide<Array<string>> {
       const button = doc.getElementById(buttonId) as HTMLElement;
       button.addEventListener('click', () => {
         const answer = tuple[1];
-        this.res.push(option);
+        res.push(option);
         let color = 'red';
         if (option === answer) color = 'green';
         button.style.backgroundColor = color;
@@ -68,7 +69,8 @@ export class Vocab extends Slide<Array<string>> {
             html_list,
             vocabTuples,
             questionCtr,
-            maxWidthStrategy
+            maxWidthStrategy,
+            res
           );
         } else {
           this.saveData();
@@ -84,10 +86,11 @@ export class Vocab extends Slide<Array<string>> {
     html_list: string[],
     vocabTuples: vocabTuplesType,
     questionCtr: number,
-    maxWidthStrategy: SetWidthTypeSimple
+    maxWidthStrategy: SetWidthTypeSimple,
+    res:string[]
   ): void {
     element.addEventListener('click', (): void => {
-      this.paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy);
+      this.paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res);
     });
   }
   evaluate(): Evaluation {
