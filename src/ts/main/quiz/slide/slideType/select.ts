@@ -22,9 +22,9 @@ export class Select extends Slide<Array<number>> {
     } = json);
   }
   makeSlides(doc: Document): void {
-    const html = this.createHtml(this.inst, this.txt.split(' '));
-    this.createPageContent(html, doc);
     const res = this.txt.split(' ');
+    const html = this.createHtml(this.inst, res);
+    this.createPageContent(html, doc);
     for (let ctr = 0; ctr < res.length; ctr++) this.iter2(ctr + 1, doc);
     const element = doc.getElementById('btn') as HTMLElement;
     const numWords = res.length;
