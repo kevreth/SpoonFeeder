@@ -33,23 +33,9 @@ export class Vocab extends Slide<Array<string>> {
   }
   //Pass in doc only for unit testing
   proc(map: Map<string, string>, doc: Document): void {
-    const vocabTuples = this.generateQuestions(map);
+    const vocabTuples = generateQuestions(map);
     const html_list = this.createHtmlLoop(vocabTuples);
     this.paging(doc, html_list, vocabTuples, 0);
-  }
-  generateQuestions(map: Map<string, string>): vocabTuplesType {
-    const keys = Array.from(map.keys());
-    const vocabTuples: vocabTuplesType = [];
-    for (const key of keys) {
-      let options = keys.slice(0, CHOICES);
-      //if correct answer is not in "options",
-      //replace the first entry with it.
-      if (!options.includes(key)) options[0] = key;
-      if (isRandom()) options = shuffle(options);
-      const quest = map.get(key) as string;
-      vocabTuples.push([quest, key, options]);
-    }
-    return vocabTuples;
   }
   createHtmlLoop(vocabTuples: vocabTuplesType): string[] {
     const retval: string[] = [];
@@ -118,4 +104,18 @@ export class Vocab extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(txt, ans, res, result);
   }
+}
+function generateQuestions(map: Map<string, string>): vocabTuplesType {
+  const keys = Array.from(map.keys());
+  const vocabTuples: vocabTuplesType = [];
+  for (const key of keys) {
+    let options = keys.slice(0, CHOICES);
+    //if correct answer is not in "options",
+    //replace the first entry with it.
+    if (!options.includes(key)) options[0] = key;
+    if (isRandom()) options = shuffle(options);
+    const quest = map.get(key) as string;
+    vocabTuples.push([quest, key, options]);
+  }
+  return vocabTuples;
 }
