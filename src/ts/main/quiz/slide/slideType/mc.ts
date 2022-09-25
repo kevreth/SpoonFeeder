@@ -35,7 +35,6 @@ export class Mc extends Slide<string> {
     });
     this.maxWidthStrategy(options.length,'btn', doc);
   }
-
   addBehavior(
     doc: Document,
     option: string,
@@ -51,7 +50,7 @@ export class Mc extends Slide<string> {
       this.res = option;
       if (this.result()) color = 'green';
       optionButton.style.backgroundColor = color;
-      this.res = option;
+      // this.res = option;
       this.saveData();
       showButton(doc);
     });
