@@ -29,13 +29,13 @@ export class Vocab extends Slide<Array<string>> {
   }
   makeSlides(doc: Document): void {
     if (isRandom()) this.list = shuffleMap(this.list);
-    this.proc(this.list, doc);
+    this.proc(this.list, doc, this.maxWidthStrategy);
   }
   //Pass in doc only for unit testing
-  proc(map: Map<string, string>, doc: Document): void {
+  proc(map: Map<string, string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple): void {
     const vocabTuples = generateQuestions(map);
     const html_list = createHtmlLoop(vocabTuples, this.createHtml);
-    this.paging(doc, html_list, vocabTuples, 0, this.maxWidthStrategy);
+    this.paging(doc, html_list, vocabTuples, 0, maxWidthStrategy);
   }
   paging(
     doc: Document,
