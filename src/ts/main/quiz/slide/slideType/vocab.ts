@@ -34,18 +34,8 @@ export class Vocab extends Slide<Array<string>> {
   //Pass in doc only for unit testing
   proc(map: Map<string, string>, doc: Document): void {
     const vocabTuples = generateQuestions(map);
-    const html_list = this.createHtmlLoop(vocabTuples, this.createHtml);
+    const html_list = createHtmlLoop(vocabTuples, this.createHtml);
     this.paging(doc, html_list, vocabTuples, 0);
-  }
-  createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: McType): string[] {
-    const retval: string[] = [];
-    for (const tuple of vocabTuples) {
-      const question = tuple[0];
-      const options = tuple[2];
-      const html = createHtml(question, options);
-      retval.push(html);
-    }
-    return retval;
   }
   paging(
     doc: Document,
@@ -104,6 +94,16 @@ export class Vocab extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(txt, ans, res, result);
   }
+}
+function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: McType): string[] {
+  const retval: string[] = [];
+  for (const tuple of vocabTuples) {
+    const question = tuple[0];
+    const options = tuple[2];
+    const html = createHtml(question, options);
+    retval.push(html);
+  }
+  return retval;
 }
 function generateQuestions(map: Map<string, string>): vocabTuplesType {
   const keys = Array.from(map.keys());
