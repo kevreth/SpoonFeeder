@@ -4,7 +4,7 @@ import { Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
-import { CreateHtml } from '../strategies/createHtml';
+import { CreateHtml, McType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 const CHOICES = 4;
 export type vocabTuplesType = [
@@ -34,15 +34,15 @@ export class Vocab extends Slide<Array<string>> {
   //Pass in doc only for unit testing
   proc(map: Map<string, string>, doc: Document): void {
     const vocabTuples = generateQuestions(map);
-    const html_list = this.createHtmlLoop(vocabTuples);
+    const html_list = this.createHtmlLoop(vocabTuples, this.createHtml);
     this.paging(doc, html_list, vocabTuples, 0);
   }
-  createHtmlLoop(vocabTuples: vocabTuplesType): string[] {
+  createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: McType): string[] {
     const retval: string[] = [];
     for (const tuple of vocabTuples) {
       const question = tuple[0];
       const options = tuple[2];
-      const html = this.createHtml(question, options);
+      const html = createHtml(question, options);
       retval.push(html);
     }
     return retval;
