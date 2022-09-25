@@ -118,10 +118,5 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
         return x * y;
     };
   }
-  getSaveDataFunction() {
-    return () => {
-      this.saveData();
-    }
-  }
 }
 
