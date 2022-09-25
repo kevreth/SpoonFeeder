@@ -50,7 +50,6 @@ export class Mc extends Slide<string> {
       this.res = option;
       if (this.result()) color = 'green';
       optionButton.style.backgroundColor = color;
-      // this.res = option;
       this.saveData();
       showButton(doc);
     });
