@@ -22,33 +22,28 @@ describe("Cyberlearning", () => {
     testButton('#btn');
 
     //info slides
-    //TODO: test for empty body then body content
-    //Mathjax
-    testButton('#btn');
-    //code
-    testButton('#btn');
-    //table
-    testButton('#btn');
-
-    testButton('#btn0');
+    testButton('#btn'); //Mathjax
+    testButton('#btn'); //code
+    testButton('#btn'); //table
 
     //info slides
     elementContains('body','yes');
+    testButton('#btn0'); //continue
     //TODO: test for green
-    testButton('#btn');
-    testButton('#btn0');
+    testButton('#btn'); //continue
 
-    //TODO: test for red
-    elementContains('body','yes');
-    testButton('#btn');
+    elementContains('body','no');
     testButton('#btn0');
+    //TODO: test for red
+    testButton('#btn'); //continue
 
-    //TODO: test for red
-    elementContains('body','yes');
-    testButton('#btn');
+    elementContains('body','no1');
     testButton('#btn0');
+    //TODO: test for red
+    testButton('#btn'); //continue
 
     //vocab
+    testButton('#btn0');
     //TODO: test for empty body then body content
     //TODO: test for red
     testButton('#btn');
@@ -161,6 +156,7 @@ function testButton(e1: string) {
   click(e1);
 }
 function elementContains(e1:string, txt:string) {
+  existAndVisible(e1);
   cy.get(e1).should('not.empty').should('contain.text', txt)
 }
 export {} //stops lint warning
