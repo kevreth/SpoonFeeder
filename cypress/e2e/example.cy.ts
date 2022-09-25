@@ -51,7 +51,7 @@ describe("Cyberlearning", () => {
 
     //vocab
     testButton('#btn0');
-    //TODO: test for empty body then body content
+    existVisibleNotEmpty('body');
     //TODO: test for red
     testButton('#btn');
     testButton('#btn0');
