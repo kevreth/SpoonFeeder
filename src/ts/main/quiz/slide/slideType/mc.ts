@@ -3,7 +3,7 @@ import { SetWidths } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';
 import { Evaluation } from '../../evaluate';
 import { Slide } from '../../slide';
-import { Result } from '../strategies/result';
+import { Result, ResultReturnType } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Mc extends Slide<string> {
@@ -26,7 +26,7 @@ export class Mc extends Slide<string> {
   }
   makeSlides(doc: Document): void {
     const saveData = () => this.saveData();
-    const result = () => this.result();
+    const result = (): ResultReturnType => this.result();
     const shuffleFlag = this.isExercise && isRandom();
     let options = this.o;
     if (shuffleFlag) options = shuffle(options);
@@ -43,7 +43,7 @@ export class Mc extends Slide<string> {
     length: number,
     optionCtr: number,
     saveData: ()=>void,
-    result: ()=>boolean
+    result: ()=>ResultReturnType
   ): void {
     const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
     element.addEventListener('click', () => {
