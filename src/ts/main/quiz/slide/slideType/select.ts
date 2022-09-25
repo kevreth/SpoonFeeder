@@ -25,52 +25,14 @@ export class Select extends Slide<Array<number>> {
     const res = this.txt.split(' ');
     const html = this.createHtml(this.inst, res);
     this.createPageContent(html, doc);
-    for (let ctr = 0; ctr < res.length; ctr++) this.iter2(ctr + 1, doc);
+    for (let ctr = 0; ctr < res.length; ctr++) iter2(ctr + 1, doc);
     const element = doc.getElementById('btn') as HTMLElement;
     const numWords = res.length;
     element.addEventListener('click', () => {
-      this.res = this.evaluate2(element, numWords, this.ans, doc);
+      this.res = evaluate2(element, numWords, this.ans, doc);
       this.saveData();
       showButton(doc);
     });
-  }
-  iter2(ctr: number, doc: Document): void {
-    const element = doc.getElementById('w' + ctr) as HTMLElement;
-    element.addEventListener('click', (event) => {
-      this.selected((event.target as Element).id, doc);
-    });
-  }
-  selected(id: string, doc: Document): void {
-    const element = doc.getElementById(id) as HTMLElement;
-    let color = 'white';
-    if (element.style.backgroundColor === 'blue') {
-      element.style.removeProperty('background-color');
-      color = 'black';
-    } else element.style.backgroundColor = 'blue';
-    element.style.color = color;
-  }
-  evaluate2(
-    element: Element,
-    numWords: number,
-    ans: Array<number>,
-    doc: Document
-  ): Array<number> {
-    let found = true;
-    let ctr = 1;
-    const responses: number[] = [];
-    while (found) {
-      const id = 'w' + ctr.toString();
-      const element = doc.getElementById(id);
-      if (element !== null) {
-        if (element.style.backgroundColor === 'blue') responses.push(ctr);
-      } else found = false;
-      ctr++;
-    }
-    //remove event listeners from words to prevent selection after submission
-    removeEventListeners(numWords, doc);
-    decorate(ans, responses, doc);
-    element.remove();
-    return responses;
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -79,6 +41,50 @@ export class Select extends Slide<Array<number>> {
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
   }
+}
+function iter2(ctr: number, doc: Document): void {
+  const element = doc.getElementById('w' + ctr) as HTMLElement;
+  element.addEventListener('click', (event) => {
+    selected((event.target as Element).id, doc);
+  });
+}
+function selected(id: string, doc: Document): void {
+  const element = doc.getElementById(id) as HTMLElement;
+  let color = 'white';
+  if (element.style.backgroundColor === 'blue') {
+    element.style.removeProperty('background-color');
+    color = 'black';
+  } else element.style.backgroundColor = 'blue';
+  element.style.color = color;
+}
+function evaluate2(
+  element: Element,
+  numWords: number,
+  ans: Array<number>,
+  doc: Document
+): Array<number> {
+  const responses: number[] = mark(doc);
+  //remove event listeners from words to prevent selection after submission
+  removeEventListeners(numWords, doc);
+  decorate(ans, responses, doc);
+  element.remove();
+  return responses;
+}
+function mark(doc: Document) {
+  let found = true;
+  let ctr = 1;
+  const responses: number[] = [];
+  while (found) {
+    const id = 'w' + ctr.toString();
+    const element = doc.getElementById(id);
+    if (element !== null) {
+      if (element.style.backgroundColor === 'blue')
+        responses.push(ctr);
+    } else
+      found = false;
+    ctr++;
+  }
+  return responses;
 }
 function decorate(ans: number[], responses: number[], doc: Document) {
   //items that were not selected but should have been
