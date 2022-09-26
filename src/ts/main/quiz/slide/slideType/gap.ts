@@ -43,7 +43,7 @@ export class Gap extends Slide<Array<string>> {
     setValues.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
       setfills(ctr, currentFills, doc);
-      this.setgap(ctr, doc, ans, setValues);
+      setgap(ctr, doc, ans, setValues);
     });
     maxWidthStrategy(ans.length, 'fill', 'gap', doc);
   }
@@ -71,25 +71,6 @@ export class Gap extends Slide<Array<string>> {
     //a remaining part of gaps is leftover, so we add it here.
     return gaps_accum + gaps;
   }
-  setgap(ctr: number, doc: Document, ans:string[], setValues:SetValues<string[]>): void {
-    const id = doc.getElementById('gap' + ctr) as HTMLElement;
-    setgap2(id, ctr);
-    id.ondrop = (e) => {
-      e.preventDefault();
-      const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
-      const fillText = (e.dataTransfer as DataTransfer).getData('text');
-      const gapNumber = (e.target as HTMLElement).dataset.number as string;
-      const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
-      if (fillsRemaining === 0) {
-        const res = evaluateA(doc,ans);
-        setValues.setRes(res);
-        setValues.saveData();
-        showButton(doc);
-      }
-      id.ondrop = null;
-      (e.target as HTMLElement).style.removeProperty('background-color');
-    };
-  }
   evaluate(): Evaluation {
     const txt = this.txt;
     const res = this.res;
@@ -97,6 +78,25 @@ export class Gap extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(ans, res, txt, result);
   }
+}
+function setgap(ctr: number, doc: Document, ans:string[], setValues:SetValues<string[]>): void {
+  const id = doc.getElementById('gap' + ctr) as HTMLElement;
+  setgap2(id, ctr);
+  id.ondrop = (e) => {
+    e.preventDefault();
+    const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
+    const fillText = (e.dataTransfer as DataTransfer).getData('text');
+    const gapNumber = (e.target as HTMLElement).dataset.number as string;
+    const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
+    if (fillsRemaining === 0) {
+      const res = evaluateA(doc,ans);
+      setValues.setRes(res);
+      setValues.saveData();
+      showButton(doc);
+    }
+    id.ondrop = null;
+    (e.target as HTMLElement).style.removeProperty('background-color');
+  };
 }
 function setgap2(id: HTMLElement, ctr: number) {
   id.style.display = 'inline-block';
