@@ -81,24 +81,6 @@ export class Gap extends Slide<Array<string>> {
 }
 function setgap(ctr: number, doc: Document, ans:string[], setValues:SetValues<string[]>): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
-  setgap2(id, ctr);
-  id.ondrop = (e) => {
-    e.preventDefault();
-    const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
-    const fillText = (e.dataTransfer as DataTransfer).getData('text');
-    const gapNumber = (e.target as HTMLElement).dataset.number as string;
-    const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) {
-      const res = evaluateA(doc,ans);
-      setValues.setRes(res);
-      setValues.saveData();
-      showButton(doc);
-    }
-    id.ondrop = null;
-    (e.target as HTMLElement).style.removeProperty('background-color');
-  };
-}
-function setgap2(id: HTMLElement, ctr: number) {
   id.style.display = 'inline-block';
   id.style.borderBottom = '2px solid';
   id.dataset.number = ctr.toString();
@@ -115,6 +97,21 @@ function setgap2(id: HTMLElement, ctr: number) {
   };
   id.ondragleave = (e) => {
     e.preventDefault();
+    (e.target as HTMLElement).style.removeProperty('background-color');
+  };
+  id.ondrop = (e) => {
+    e.preventDefault();
+    const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
+    const fillText = (e.dataTransfer as DataTransfer).getData('text');
+    const gapNumber = (e.target as HTMLElement).dataset.number as string;
+    const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
+    if (fillsRemaining === 0) {
+      const res = evaluateA(doc,ans);
+      setValues.setRes(res);
+      setValues.saveData();
+      showButton(doc);
+    }
+    id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
 }
