@@ -30,10 +30,8 @@ export class Mc extends Slide<string> {
     const createHtml = this.createHtml;
     const maxWidthStrategy = this.maxWidthStrategy;
     const txt = this.txt;
-    const shuffleFlag = isExercise && isRandom();
-    let options = this.o;
-    if (shuffleFlag) options = shuffle(options);
-    makeSlides2(createHtml, txt, options, setValues, doc, maxWidthStrategy);
+    const options = this.o;
+    makeSlides2(createHtml, txt, options, setValues, doc, maxWidthStrategy, isExercise);
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -43,7 +41,9 @@ export class Mc extends Slide<string> {
     return this.evaluateStrategy(txt, res, ans, result);
   }
 }
-function makeSlides2(createHtml: McType, txt: string, options: string[], setValues: SetValues<string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple) {
+function makeSlides2(createHtml: McType, txt: string, options: string[], setValues: SetValues<string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, isExercise:boolean) {
+  const shuffleFlag = isExercise && isRandom();
+  if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);
   setValues.createPageContent(html, doc);
   options.forEach((option, optionCtr) => {
