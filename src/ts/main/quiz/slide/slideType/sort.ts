@@ -4,7 +4,7 @@ import { showButton } from '../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { Result } from '../strategies/result';
-import { CreateHtml } from '../strategies/createHtml';
+import { CreateHtml, SortType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Sort extends Slide<Array<string>> {
   constructor() {
@@ -17,10 +17,11 @@ export class Sort extends Slide<Array<string>> {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
-    const html = this.createHtml(this.txt, this.ans);
-    this.createPageContent(html, doc);
+    const txt = this.txt;
+    const ans = this.ans;
+    const createHtml = this.createHtml;
     const setValues = this.getSetValues();
-    addBehavior(doc, setValues);
+    makeSlides2(doc, setValues, ans, txt, createHtml);
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -30,7 +31,9 @@ export class Sort extends Slide<Array<string>> {
     return this.evaluateStrategy(txt, res, ans, result);
   }
 }
-function addBehavior(doc: Document, setValues: SetValues<string[]>): void {
+function makeSlides2(doc: Document, setValues: SetValues<string[]>, ans:string[], txt:string, createHtml:SortType): void {
+  const html = createHtml(txt, ans);
+  setValues.createPageContent(html, doc);
   gsap.registerPlugin(Draggable);
   const rowSize = 100; // => container height / number of items
   const container = doc.querySelector('.container');
