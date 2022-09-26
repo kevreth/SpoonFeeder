@@ -1,5 +1,5 @@
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { SetValues, Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
@@ -19,7 +19,8 @@ export class Sort extends Slide<Array<string>> {
   makeSlides(doc: Document): void {
     const html = this.createHtml(this.txt, this.ans);
     this.createPageContent(html, doc);
-    this.addBehavior(doc);
+    const setValues = this.getSetValues();
+    this.addBehavior(doc, setValues);
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -28,7 +29,7 @@ export class Sort extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
   }
-  addBehavior(doc: Document): void {
+  addBehavior(doc: Document, setValues: SetValues<string[]>): void {
     gsap.registerPlugin(Draggable);
     const rowSize = 100; // => container height / number of items
     const container = doc.querySelector('.container');
@@ -38,13 +39,14 @@ export class Sort extends Slide<Array<string>> {
     gsap.to(container, { duration: 0.5, autoAlpha: 1 });
     const done = doc.getElementById('btn') as HTMLElement;
     done.addEventListener('click', () => {
-      this.res = sortables.map((x) => x.element.innerHTML);
+      const res = sortables.map((x) => x.element.innerHTML);
+      setValues.setRes(res);
       let msg = 'incorrect';
-      if (this.result()) msg = 'correct';
+      if (setValues.result()) msg = 'correct';
       const content = doc.getElementById('content') as HTMLElement;
       content.insertAdjacentHTML('beforeend', msg);
       done.remove();
-      this.saveData();
+      setValues.saveData();
       showButton(doc);
     });
     function Sortable(element: Element, index: number) {
