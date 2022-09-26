@@ -2,7 +2,7 @@ import { showButton } from '../../makeSlides';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../strategies/result';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { SetValues, Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
@@ -30,21 +30,31 @@ export class Gap extends Slide<Array<string>> {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
+    const setValues = this.getSetValues();
     let ans = this.ans;
+    const txt = this.txt;
+    const maxWidthStrategy = this.maxWidthStrategy;
+    const createHtml = this.createHtml;
     if (isRandom()) ans = shuffle(ans);
     const fills = this.fills(ans);
-    const gaps = this.gaps(ans.length, this.txt);
+    const gaps = this.gaps(ans.length, txt);
     const remaining = ans.length.toString();
-    const html = this.createHtml(remaining, fills, gaps);
-    this.createPageContent(html, doc);
+    const html = createHtml(remaining, fills, gaps);
+    setValues.createPageContent(html, doc);
     ans.forEach((currentFills, ctr) => {
       setfills(ctr, currentFills, doc);
-      this.setgap(ctr, doc,this.ans);
+      this.setgap(ctr, doc, ans, setValues);
     });
-    this.maxWidthStrategy(this.ans.length, 'fill', 'gap', doc);
+    maxWidthStrategy(ans.length, 'fill', 'gap', doc);
   }
   fills(ans: string[]): string {
-    return fills2(ans);
+    let fill_accum = '';
+    ans.forEach((currentFills, ctr) => {
+      const fill_html = `\n    <span id="fill${ctr}" ` +
+        `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
+      fill_accum = fill_accum.concat(fill_html);
+    });
+    return fill_accum;
   }
   gaps(length: number, gaps: string): string {
     let gaps_accum = '';
@@ -61,7 +71,7 @@ export class Gap extends Slide<Array<string>> {
     //a remaining part of gaps is leftover, so we add it here.
     return gaps_accum + gaps;
   }
-  setgap(ctr: number, doc: Document, ans:string[]): void {
+  setgap(ctr: number, doc: Document, ans:string[], setValues:SetValues<string[]>): void {
     const id = doc.getElementById('gap' + ctr) as HTMLElement;
     setgap2(id, ctr);
     id.ondrop = (e) => {
@@ -71,8 +81,9 @@ export class Gap extends Slide<Array<string>> {
       const gapNumber = (e.target as HTMLElement).dataset.number as string;
       const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
       if (fillsRemaining === 0) {
-        this.res = evaluateA(doc,ans);
-        this.saveData();
+        const res = evaluateA(doc,ans);
+        setValues.setRes(res);
+        setValues.saveData();
         showButton(doc);
       }
       id.ondrop = null;
@@ -86,15 +97,6 @@ export class Gap extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(ans, res, txt, result);
   }
-}
-function fills2(ans: string[]) {
-  let fill_accum = '';
-  ans.forEach((currentFills, ctr) => {
-    const fill_html = `\n    <span id="fill${ctr}" ` +
-      `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
-    fill_accum = fill_accum.concat(fill_html);
-  });
-  return fill_accum;
 }
 function setgap2(id: HTMLElement, ctr: number) {
   id.style.display = 'inline-block';
