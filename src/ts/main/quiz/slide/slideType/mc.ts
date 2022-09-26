@@ -31,7 +31,7 @@ export class Mc extends Slide<string> {
     const shuffleFlag = isExercise && isRandom();
     if (shuffleFlag) options = shuffle(options);
     const html = this.createHtml(this.txt, options);
-    this.createPageContent(html, doc);
+    setValues.createPageContent(html, doc);
     options.forEach((option, optionCtr) => {
       addBehavior(doc, option, options.length, optionCtr, setValues);
     });
