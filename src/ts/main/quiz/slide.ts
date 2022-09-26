@@ -12,7 +12,7 @@ import hljs from 'highlight.js';
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface extends GetScore {
   type: string;
-  txt: string;
+  txt: string|string[];
   isExercise: boolean;
   pageTemplate: string;
   //Transform human-created YML into computer-friendly JSON
