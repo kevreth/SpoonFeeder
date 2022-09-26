@@ -15,7 +15,7 @@ export type vocabTuplesType = [
 ][];
 export class Vocab extends Slide<Array<string>> {
   constructor() {
-    super('vocab');
+    super('vocab',Evaluate.VOCAB);
   }
   list = new Map<string,string>();
   res = new Array<string>();
@@ -23,7 +23,6 @@ export class Vocab extends Slide<Array<string>> {
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
-  evaluateStrategy = Evaluate.VOCAB;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.txt = Array.from(this.list.values());

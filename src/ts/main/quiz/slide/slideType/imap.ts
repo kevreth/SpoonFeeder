@@ -8,7 +8,7 @@ import { CreateHtml, ImapType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Imap extends Slide<string> {
   constructor() {
-    super('imap');
+    super('imap',Evaluate.SIMPLE);
   }
   img = '';
   resultType = Result.SIMPLE;

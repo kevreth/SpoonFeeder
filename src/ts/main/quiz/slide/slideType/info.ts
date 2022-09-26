@@ -8,10 +8,9 @@ export interface info extends SlideInterface {
 }
 export class Info extends Slide<string> {
   constructor() {
-    super('info');
+    super('info',Evaluate.DEFAULT);
   }
   txt = '';
-  evaluateStrategy = Evaluate.DEFAULT;
   processJson(json: Info): void {
     this.txt = json.txt;
   }

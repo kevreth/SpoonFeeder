@@ -8,11 +8,10 @@ import { CreateHtml, SortType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Sort extends Slide<Array<string>> {
   constructor() {
-    super('sort');
+    super('sort',Evaluate.SIMPLE);
   }
   resultType = Result.LIST;
   createHtml = CreateHtml.SORT;
-  evaluateStrategy = Evaluate.SIMPLE;
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }

@@ -7,12 +7,11 @@ import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Select extends Slide<Array<number>> {
   constructor() {
-    super('select');
+    super('select',Evaluate.SIMPLE);
   }
   inst = '';
   resultType = Result.LIST;
   createHtml = CreateHtml.SELECT;
-  evaluateStrategy = Evaluate.SIMPLE;
   processJson(json: Select): void {
     ({
       inst: this.inst,

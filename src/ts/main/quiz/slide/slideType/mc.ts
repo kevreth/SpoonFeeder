@@ -8,13 +8,12 @@ import { CreateHtml, McType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Mc extends Slide<string> {
   constructor() {
-    super('mc');
+    super('mc',Evaluate.SIMPLE);
   }
   o: string[] = [];
   resultType = Result.SIMPLE;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
-  evaluateStrategy = Evaluate.SIMPLE;
   processJson(json: Mc): void {
     ({
       txt: this.txt,

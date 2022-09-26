@@ -9,6 +9,7 @@ import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 import hljs from 'highlight.js';
+import { EvaluateType } from './slide/strategies/evaluate';
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface extends GetScore {
   type: string;
@@ -30,9 +31,9 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  constructor(type:string/*, createHtml: CreateHtmlType, result: ResultType, evaluate:EvaluateType */) {
+  constructor(type:string,evaluateStrategy:EvaluateType/*, createHtml: CreateHtmlType, result: ResultType, evaluate:EvaluateType */) {
     // this.resultType = result;
-    // this.evaluateStrategy = evaluate;
+    this.evaluateStrategy = evaluateStrategy;
     // this.createHtml = createHtml;
     this.type=type;
   }
@@ -62,6 +63,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
             </div>
         </div>
     `;
+  evaluateStrategy:EvaluateType
   isExercise = false;
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;

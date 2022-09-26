@@ -20,12 +20,11 @@ polyfill({
 //response: grading after the last drop
 export class Gap extends Slide<Array<string>> {
   constructor() {
-    super('gap');
+    super('gap',Evaluate.GAP);
   }
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.TARGETED;
   createHtml = CreateHtml.GAP;
-  evaluateStrategy = Evaluate.GAP;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
