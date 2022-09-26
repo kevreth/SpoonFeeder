@@ -1,16 +1,12 @@
 <template>
-  <div class="progressTable">
-
-    <q-hierarchy
-      class="row items-center hierarchy"
-      dense
-      :columns="columns"
-      :data="data"
-      :classes="classes"
-      :dark="dark" :default-expand-all="default_expand_all = true">
-    </q-hierarchy>
-
-  </div>
+  <q-hierarchy
+    class="hierarchy fixed-center"      
+    dense
+    :columns="columns"
+    :data="data"
+    :classes="classes"
+    :dark="dark" :default-expand-all="default_expand_all = true">    
+  </q-hierarchy>
 </template>
 
 <script setup>
@@ -119,9 +115,6 @@ const dark = ref(true)
 <style>
   .hierarchy {
     position: fixed;
-    top: 20%;
-    left: 50%; 
-    margin-left: -250px;
     max-height: 100vh; 
     overflow:auto;
     --scrollbarBG: #CFD8DC;

@@ -2,11 +2,16 @@
   <MenuBtn @click="handleOverlay"/>
 
   <q-overlay v-model="overlay">
-    <template #body>
+  <template #body>
+    <div class="parent">
+      <div class="child1">
+          <TrashBtn @click="startOver"/>
+          <OverlayCloseBtn @click="handleOverlay"/>
+      </div>
+
       <ProgressTable style="cursor:auto"/>
-      <TrashBtn @click="startOver"/>
-      <OverlayCloseBtn @click="handleOverlay"/>
-    </template>
+    </div>
+  </template>
   </q-overlay>
 </template>
 
@@ -34,4 +39,18 @@ function startOver() {
 .q-overlay {
   backdrop-filter: blur(5px);
 }
+.parent {
+  position: absolute;
+  width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.child1 {
+  position: relative;
+  top: 10px;
+  left: 200px;
+  min-height: 100vh;
+}
+
 </style>

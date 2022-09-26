@@ -1,7 +1,7 @@
 <template>
       <q-icon
         round
-        class="closeBtn text-red-9 overlayColor"
+        class="closeBtn text-red-9 q-pa-none q-ma-none z-top"
         max-size="2em"
         name="close"
       />
@@ -11,6 +11,5 @@
   .closeBtn {
   position: inline-block;
   cursor:pointer; 
-  top: 10%;
 }
 </style>

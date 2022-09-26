@@ -1,5 +1,4 @@
 import { expect, it } from 'vitest'
-import type {vocab} from '../../main/quiz/course'
 import { JSDOM } from 'jsdom';
 import {Vocab} from '../../main/quiz/slide/slideType/vocab'
 sessionStorage.setItem('random','false');
@@ -11,7 +10,7 @@ const MAP:Map<string,string> = new Map([
 	['term4','def4'],
 	['term5','def5']
 ]);
-const json:vocab = {
+const json:any = {
 	type:'vocab',
 	list: MAP,
 	isExercise: false

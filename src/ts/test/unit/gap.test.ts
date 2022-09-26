@@ -1,6 +1,9 @@
 import { expect, it } from 'vitest'
 import {Gap} from '../../main/quiz/slide/slideType/gap';
+<<<<<<< HEAD
 // import 'html-validate/jest';
+=======
+>>>>>>> main
 const question = 'text (1) text (2) text (3)';
 const ans=['ans1', 'ans2', 'ans3']
 it('fills', () => {
@@ -16,6 +19,7 @@ it('gaps', () => {
 	// expect(result).toHTMLValidate();
 	expect(result).toContain('(1) text');
 	expect(result).toContain('(3)');
+<<<<<<< HEAD
 });
 it('createHtml', () => {
 	const result = new Gap().createHtml(ans, question);
@@ -27,4 +31,7 @@ it('createHtml', () => {
 	expect(result).toContain('ans3');
 	expect(result).toContain('(1) text');
 	expect(result).toContain('(3)');
+=======
+>>>>>>> main
 });
+
