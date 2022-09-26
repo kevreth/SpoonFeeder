@@ -23,14 +23,17 @@ export class Select extends Slide<Array<number>> {
   }
   makeSlides(doc: Document): void {
     const res = this.txt.split(' ');
+    const ans = this.ans;
+    const setValues = this.getSetValues();
     const html = this.createHtml(this.inst, res);
     this.createPageContent(html, doc);
     for (let ctr = 0; ctr < res.length; ctr++) iter2(ctr + 1, doc);
     const element = doc.getElementById('btn') as HTMLElement;
     const numWords = res.length;
     element.addEventListener('click', () => {
-      this.res = evaluate2(element, numWords, this.ans, doc);
-      this.saveData();
+      const res = evaluate2(element, numWords, ans, doc);
+      setValues.setRes(res);
+      setValues.saveData();
       showButton(doc);
     });
   }
