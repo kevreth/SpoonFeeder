@@ -25,8 +25,8 @@ export class Sort extends Slide<Array<string>> {
   }
   evaluate(): Evaluation {
     const txt = this.txt;
-    const res = this.res.toString();
-    const ans = this.ans.toString();
+    const res = this.res;
+    const ans = this.ans;
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
   }
