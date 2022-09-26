@@ -58,7 +58,6 @@ function makeSlides2(ans: string[], txt: string, createHtml: GapType, setValues:
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
-
 function fills(ans: string[]): string {
   let fill_accum = '';
   ans.forEach((currentFills, ctr) => {
