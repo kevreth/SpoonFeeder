@@ -19,12 +19,14 @@ export class Vocab extends Slide<Array<string>> {
   }
   list = new Map<string,string>();
   res = new Array<string>();
+  txt = new Array<string>();
   resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
   evaluateStrategy = Evaluate.VOCAB;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
+    this.txt = Array.from(this.list.values());
     this.ans = Array.from(this.list.keys());
     this.isExercise = json.isExercise;
   }
@@ -38,7 +40,7 @@ export class Vocab extends Slide<Array<string>> {
     makeSlides2(list, doc, maxWidthStrategy,res,setValues,createHtml);
   }
   evaluate(): Evaluation {
-    const txt = Array.from(this.list.values());
+    const txt = this.txt;
     const res = this.res;
     const ans = this.ans;
     const result = this.result();
