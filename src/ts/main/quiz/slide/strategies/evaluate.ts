@@ -1,7 +1,7 @@
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { AnswerType, ResultReturnType } from './result';
-export type SimpleType = (txt: string, res: AnswerType, ans: AnswerType, result: ResultReturnType) => Evaluation;
+export type SimpleType = (txt: AnswerType, res: AnswerType, ans: AnswerType, result: ResultReturnType) => Evaluation;
 export type VocabType = (txt: string[], ans: string[], res: string[], result: ResultReturnType) => Evaluation;
 export type GapType = (ans: string[], res: string[], txt: string, result: ResultReturnType) => Evaluation;
 export type EvaluateType = SimpleType | VocabType | GapType;
@@ -12,7 +12,7 @@ export class Evaluate {
   //Used by IMAP, MC, SELECT, SORT
   static readonly SIMPLE: SimpleType = function evaluate(txt, res, ans, result) {
     let correctCtr = 0;
-    const text = makeRow(txt, (res as string), (ans as string));
+    const text = makeRow((txt as string), (res as string), (ans as string));
     if (result) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }

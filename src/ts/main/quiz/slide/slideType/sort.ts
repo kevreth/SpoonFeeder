@@ -3,7 +3,7 @@ import { SetValues, Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { Result } from '../strategies/result';
+import { AnswerType, Result } from '../strategies/result';
 import { CreateHtml, SortType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 export class Sort extends Slide<Array<string>> {
@@ -31,8 +31,8 @@ export class Sort extends Slide<Array<string>> {
     return this.evaluateStrategy(txt, res, ans, result);
   }
 }
-function makeSlides2(doc: Document, setValues: SetValues<string[]>, ans:string[], txt:string, createHtml:SortType): void {
-  const html = createHtml(txt, ans);
+function makeSlides2(doc: Document, setValues: SetValues<string[]>, ans:string[], txt:AnswerType, createHtml:SortType): void {
+  const html = createHtml((txt as string), ans);
   setValues.createPageContent(html, doc);
   gsap.registerPlugin(Draggable);
   const rowSize = 100; // => container height / number of items

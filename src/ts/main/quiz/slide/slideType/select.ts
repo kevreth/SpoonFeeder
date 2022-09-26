@@ -22,7 +22,7 @@ export class Select extends Slide<Array<number>> {
     } = json);
   }
   makeSlides(doc: Document): void {
-    const res = this.txt.split(' ');
+    const res = (this.txt as string).split(' ');
     const ans = this.ans;
     const setValues = this.getSetValues();
     const html = this.createHtml(this.inst, res);

@@ -53,7 +53,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     return this._score;
   }
   resultType: ResultType = Result.UNSUPPORTED;
-  txt!: T;
+  txt!: AnswerType;
   ans!: T;
   res!: T;
   pageTemplate = `
