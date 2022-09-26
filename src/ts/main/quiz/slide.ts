@@ -128,18 +128,17 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     return new SetValues<T>(saveData, result, setRes);
   }
 }
-
 export class SetValues<T> {
   constructor (
-    saveData: () =>void,
-    result: () =>ResultReturnType,
+    saveData: () => void,
+    result: () => ResultReturnType,
     setRes: (res:T) => void
   ) {
     this.saveData = saveData;
     this.result = result;
     this.setRes = setRes;
   }
-  public saveData: ()=>void;
-  public result: ()=>ResultReturnType;
-  public setRes: (res:T)=>void;
+  public saveData: () => void;
+  public result: () => ResultReturnType;
+  public setRes: (res:T) => void;
 }
