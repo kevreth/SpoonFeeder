@@ -6,7 +6,6 @@ import { SetValues, Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml, McType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { stringify } from 'querystring';
 export class Mc extends Slide<string> {
   constructor() {
     super('mc');
@@ -28,15 +27,15 @@ export class Mc extends Slide<string> {
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
     const isExercise = this.isExercise;
-    const shuffleFlag = isExercise && isRandom();
     const createHtml = this.createHtml;
     const maxWidthStrategy = this.maxWidthStrategy;
     const txt = this.txt;
+    const shuffleFlag = isExercise && isRandom();
     let options = this.o;
     if (shuffleFlag) options = shuffle(options);
     makeSlides2(createHtml, txt, options, setValues, doc, maxWidthStrategy);
   }
-  public evaluate(): Evaluation {
+  evaluate(): Evaluation {
     const txt = this.txt;
     const res = this.res;
     const ans = this.ans;
