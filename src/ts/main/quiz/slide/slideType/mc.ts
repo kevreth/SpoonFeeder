@@ -1,11 +1,12 @@
 import { removeListener, isRandom, shuffle } from '../../../utilities';
-import { SetWidths } from '../strategies/setWidths';
+import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';
 import { Evaluation } from '../../evaluate';
 import { SetValues, Slide } from '../../slide';
 import { Result } from '../strategies/result';
-import { CreateHtml } from '../strategies/createHtml';
+import { CreateHtml, McType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
+import { stringify } from 'querystring';
 export class Mc extends Slide<string> {
   constructor() {
     super('mc');
@@ -27,17 +28,14 @@ export class Mc extends Slide<string> {
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
     const isExercise = this.isExercise;
-    let options = this.o;
     const shuffleFlag = isExercise && isRandom();
+    const createHtml = this.createHtml;
+    const maxWidthStrategy = this.maxWidthStrategy;
+    const txt = this.txt;
+    let options = this.o;
     if (shuffleFlag) options = shuffle(options);
-    const html = this.createHtml(this.txt, options);
-    setValues.createPageContent(html, doc);
-    options.forEach((option, optionCtr) => {
-      addBehavior(doc, option, options.length, optionCtr, setValues);
-    });
-    this.maxWidthStrategy(options.length,'btn', doc);
+    makeSlides2(createHtml, txt, options, setValues, doc, maxWidthStrategy);
   }
-
   public evaluate(): Evaluation {
     const txt = this.txt;
     const res = this.res;
@@ -45,6 +43,14 @@ export class Mc extends Slide<string> {
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
   }
+}
+function makeSlides2(createHtml: McType, txt: string, options: string[], setValues: SetValues<string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple) {
+  const html = createHtml(txt, options);
+  setValues.createPageContent(html, doc);
+  options.forEach((option, optionCtr) => {
+    addBehavior(doc, option, options.length, optionCtr, setValues);
+  });
+  maxWidthStrategy(options.length, 'btn', doc);
 }
 function addBehavior(
   doc: Document,
