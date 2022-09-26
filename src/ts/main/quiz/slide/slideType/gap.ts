@@ -7,8 +7,8 @@ import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import { SetWidths } from '../strategies/setWidths';
-import { CreateHtml } from '../strategies/createHtml';
+import { SetWidths, SetWidthTypeComplex } from '../strategies/setWidths';
+import { CreateHtml, GapType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
@@ -36,40 +36,7 @@ export class Gap extends Slide<Array<string>> {
     const maxWidthStrategy = this.maxWidthStrategy;
     const createHtml = this.createHtml;
     if (isRandom()) ans = shuffle(ans);
-    const fills = this.fills(ans);
-    const gaps = this.gaps(ans.length, txt);
-    const remaining = ans.length.toString();
-    const html = createHtml(remaining, fills, gaps);
-    setValues.createPageContent(html, doc);
-    ans.forEach((currentFills, ctr) => {
-      setfills(ctr, currentFills, doc);
-      setgap(ctr, doc, ans, setValues);
-    });
-    maxWidthStrategy(ans.length, 'fill', 'gap', doc);
-  }
-  fills(ans: string[]): string {
-    let fill_accum = '';
-    ans.forEach((currentFills, ctr) => {
-      const fill_html = `\n    <span id="fill${ctr}" ` +
-        `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
-      fill_accum = fill_accum.concat(fill_html);
-    });
-    return fill_accum;
-  }
-  gaps(length: number, gaps: string): string {
-    let gaps_accum = '';
-    for (let ctr = 0; ctr < length; ctr++) {
-      gaps = gaps.concat('\n'); //format generated code for easier debugging
-      const gap_number = ctr + 1;
-      const str = '(' + gap_number.toString() + ')';
-      const pos = gaps.search(str);
-      const text = gaps.substring(0, pos - 1);
-      gaps = gaps.replace(text, '');
-      const gap_html = `\n    <span id="gap${ctr}" draggable="false">&nbsp;</span>\n`;
-      gaps_accum = gaps_accum.concat(text + gap_html);
-    }
-    //a remaining part of gaps is leftover, so we add it here.
-    return gaps_accum + gaps;
+    makeSlides2(ans, txt, createHtml, setValues, doc, maxWidthStrategy);
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -78,6 +45,43 @@ export class Gap extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(ans, res, txt, result);
   }
+}
+function makeSlides2(ans: string[], txt: string, createHtml: GapType, setValues: SetValues<string[]>, doc: Document, maxWidthStrategy: SetWidthTypeComplex) {
+  const _fills = fills(ans);
+  const _gaps = gaps(ans.length, txt);
+  const remaining = ans.length.toString();
+  const html = createHtml(remaining, _fills, _gaps);
+  setValues.createPageContent(html, doc);
+  ans.forEach((currentFills, ctr) => {
+    setfills(ctr, currentFills, doc);
+    setgap(ctr, doc, ans, setValues);
+  });
+  maxWidthStrategy(ans.length, 'fill', 'gap', doc);
+}
+
+function fills(ans: string[]): string {
+  let fill_accum = '';
+  ans.forEach((currentFills, ctr) => {
+    const fill_html = `\n    <span id="fill${ctr}" ` +
+      `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
+    fill_accum = fill_accum.concat(fill_html);
+  });
+  return fill_accum;
+}
+function gaps(length: number, gaps: string): string {
+  let gaps_accum = '';
+  for (let ctr = 0; ctr < length; ctr++) {
+    gaps = gaps.concat('\n'); //format generated code for easier debugging
+    const gap_number = ctr + 1;
+    const str = '(' + gap_number.toString() + ')';
+    const pos = gaps.search(str);
+    const text = gaps.substring(0, pos - 1);
+    gaps = gaps.replace(text, '');
+    const gap_html = `\n    <span id="gap${ctr}" draggable="false">&nbsp;</span>\n`;
+    gaps_accum = gaps_accum.concat(text + gap_html);
+  }
+  //a remaining part of gaps is leftover, so we add it here.
+  return gaps_accum + gaps;
 }
 function setgap(ctr: number, doc: Document, ans:string[], setValues:SetValues<string[]>): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
