@@ -1,7 +1,7 @@
 import { difference, intersection, removeListener } from '../../../utilities';
 import { showButton } from '../../makeSlides';
 import { Evaluation } from '../../evaluate';
-import { Slide } from '../../slide';
+import { SetValues, Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
@@ -27,15 +27,7 @@ export class Select extends Slide<Array<number>> {
     const setValues = this.getSetValues();
     const html = this.createHtml(this.inst, res);
     this.createPageContent(html, doc);
-    for (let ctr = 0; ctr < res.length; ctr++) iter2(ctr + 1, doc);
-    const element = doc.getElementById('btn') as HTMLElement;
-    const numWords = res.length;
-    element.addEventListener('click', () => {
-      const res = evaluate2(element, numWords, ans, doc);
-      setValues.setRes(res);
-      setValues.saveData();
-      showButton(doc);
-    });
+    makeSlides2(res, doc, ans, setValues);
   }
   evaluate(): Evaluation {
     const txt = this.txt;
@@ -44,6 +36,18 @@ export class Select extends Slide<Array<number>> {
     const result = this.result();
     return this.evaluateStrategy(txt, res, ans, result);
   }
+}
+function makeSlides2(res: string[], doc: Document, ans: number[], setValues: SetValues<number[]>) {
+  for (let ctr = 0; ctr < res.length; ctr++)
+    iter2(ctr + 1, doc);
+  const element = doc.getElementById('btn') as HTMLElement;
+  const numWords = res.length;
+  element.addEventListener('click', () => {
+    const res = evaluate2(element, numWords, ans, doc);
+    setValues.setRes(res);
+    setValues.saveData();
+    showButton(doc);
+  });
 }
 function iter2(ctr: number, doc: Document): void {
   const element = doc.getElementById('w' + ctr) as HTMLElement;
