@@ -1,6 +1,6 @@
 import { Evaluation } from '../../evaluate';
 import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
-import { Slide } from '../../slide';
+import { SetValues, Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
@@ -30,69 +30,12 @@ export class Vocab extends Slide<Array<string>> {
   }
   makeSlides(doc: Document): void {
     if (isRandom()) this.list = shuffleMap(this.list);
-    this.proc(this.list, doc, this.maxWidthStrategy,this.res);
-  }
-  //Pass in doc only for unit testing
-  proc(map: Map<string, string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, res:string[]): void {
-    const vocabTuples = generateQuestions(map);
-    const html_list = createHtmlLoop(vocabTuples, this.createHtml);
-    this.paging(doc, html_list, vocabTuples, 0, maxWidthStrategy,res);
-  }
-  paging(
-    doc: Document,
-    html_list: string[],
-    vocabTuples: vocabTuplesType,
-    questionCtr: number,
-    maxWidthStrategy: SetWidthTypeSimple,
-    res:string[]
-  ): void {
-    this.createPageContent(html_list[questionCtr], doc);
-    const tuple = vocabTuples[questionCtr];
-    const options = tuple[2];
-    options.forEach((option, j) => {
-      const buttonId = 'btn' + j.toString();
-      const button = doc.getElementById(buttonId) as HTMLElement;
-      button.addEventListener('click', () => {
-        const answer = tuple[1];
-        res.push(option);
-        let color = 'red';
-        if (option === answer) color = 'green';
-        button.style.backgroundColor = color;
-        for (let i = 0; i < options.length; i++) {
-          const button = doc.getElementById('btn' + i) as HTMLElement;
-          removeListener(button);
-        }
-        if (questionCtr + 1 < html_list.length) {
-          const element = continueButton(doc) as HTMLElement;
-          this.addContinueEventListener(
-            element,
-            doc,
-            html_list,
-            vocabTuples,
-            questionCtr,
-            maxWidthStrategy,
-            res
-          );
-        } else {
-          this.saveData();
-          showButton(doc);
-        }
-      });
-    });
-    maxWidthStrategy(options.length,'btn', doc);
-  }
-  addContinueEventListener(
-    element: HTMLElement,
-    doc: Document,
-    html_list: string[],
-    vocabTuples: vocabTuplesType,
-    questionCtr: number,
-    maxWidthStrategy: SetWidthTypeSimple,
-    res:string[]
-  ): void {
-    element.addEventListener('click', (): void => {
-      this.paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res);
-    });
+    const list = this.list;
+    const maxWidthStrategy = this.maxWidthStrategy;
+    const res = this.res;
+    const setValues = this.getSetValues();
+    const createHtml = this.createHtml;
+    makeSlides2(list, doc, maxWidthStrategy,res,setValues,createHtml);
   }
   evaluate(): Evaluation {
     const txt = Array.from(this.list.values());
@@ -101,6 +44,72 @@ export class Vocab extends Slide<Array<string>> {
     const result = this.result();
     return this.evaluateStrategy(txt, ans, res, result);
   }
+}
+//Pass in doc only for unit testing
+function
+makeSlides2(map: Map<string, string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, res:string[], setValues:SetValues<string[]>, createHtml:McType): void {
+  const vocabTuples = generateQuestions(map);
+  const html_list = createHtmlLoop(vocabTuples, createHtml);
+  paging(doc, html_list, vocabTuples, 0, maxWidthStrategy,res,setValues);
+}
+function paging(
+  doc: Document,
+  html_list: string[],
+  vocabTuples: vocabTuplesType,
+  questionCtr: number,
+  maxWidthStrategy: SetWidthTypeSimple,
+  res:string[],
+  setValues:SetValues<string[]>
+): void {
+  setValues.createPageContent(html_list[questionCtr], doc);
+  const tuple = vocabTuples[questionCtr];
+  const options = tuple[2];
+  options.forEach((option, j) => {
+    const buttonId = 'btn' + j.toString();
+    const button = doc.getElementById(buttonId) as HTMLElement;
+    button.addEventListener('click', () => {
+      const answer = tuple[1];
+      res.push(option);
+      let color = 'red';
+      if (option === answer) color = 'green';
+      button.style.backgroundColor = color;
+      for (let i = 0; i < options.length; i++) {
+        const button = doc.getElementById('btn' + i) as HTMLElement;
+        removeListener(button);
+      }
+      if (questionCtr + 1 < html_list.length) {
+        const element = continueButton(doc) as HTMLElement;
+        addContinueEventListener(
+          element,
+          doc,
+          html_list,
+          vocabTuples,
+          questionCtr,
+          maxWidthStrategy,
+          res,
+          setValues
+        );
+      } else {
+        setValues.saveData();
+        showButton(doc);
+      }
+    });
+  });
+  maxWidthStrategy(options.length,'btn', doc);
+}
+function addContinueEventListener(
+  element: HTMLElement,
+  doc: Document,
+  html_list: string[],
+  vocabTuples: vocabTuplesType,
+  questionCtr: number,
+  maxWidthStrategy: SetWidthTypeSimple,
+  res:string[],
+  setValues:SetValues<string[]>
+): void {
+  element.addEventListener('click', (): void => {
+    paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res, setValues);
+  });
 }
 function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: McType): string[] {
   const retval: string[] = [];

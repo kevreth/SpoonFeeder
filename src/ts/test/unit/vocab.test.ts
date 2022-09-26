@@ -36,7 +36,7 @@ it('createHtmlLoop', () => {
 });
 //test that the question and 4 buttons appear
 it('includesEverything', () => {
-	new Vocab().proc(MAP,DOC);
+	new Vocab().makeSlides2(MAP,DOC);
 	const buttons = DOC.getElementsByTagName('button');
 	expect(buttons.length).toBe(4);
 	const questionId = DOC.getElementById('content');
@@ -46,7 +46,7 @@ it('includesEverything', () => {
 	//we can't easily test for initial color because
 	//it's set by style sheet and is not in the DOM
 it('correctAnswerGreen', () => {
-	new Vocab().proc(MAP,DOC);
+	new Vocab().makeSlides2(MAP,DOC);
 	const button = DOC.getElementById('btn0') as HTMLElement;
 	expect(button.style.backgroundColor).to.be.empty;
 	button.click();
@@ -56,7 +56,7 @@ it('correctAnswerGreen', () => {
 //we can't easily test for initial color because
 //it's set by style sheet and is not in the DOM
 it('wrongAnswerRed', () => {
-	new Vocab().proc(MAP,DOC);
+	new Vocab().makeSlides2(MAP,DOC);
 	const button = DOC.getElementById('btn2') as HTMLElement;
 	expect(button.style.backgroundColor).to.be.empty;
 	button.click();
@@ -64,7 +64,7 @@ it('wrongAnswerRed', () => {
 });
 //test that event listeners have been removed
 it('eventListenersRemoved', () => {
-	new Vocab().proc(MAP,DOC);
+	new Vocab().makeSlides2(MAP,DOC);
 	const btn0Id = DOC.getElementById('btn0') as HTMLElement;
 	btn0Id.click();
 	const btn3Id = DOC.getElementById('btn3') as HTMLElement;
@@ -75,12 +75,12 @@ it('eventListenersRemoved', () => {
 //test that continue button appears after clicking
 //an option button
 it('checkContinueButton', () => {
-	new Vocab().proc(MAP,DOC);
+	new Vocab().makeSlides2(MAP,DOC);
 	const btn0 = DOC.getElementById('btn0') as HTMLElement;
 	btn0.click();
 	const btn = DOC.getElementById('btn') as HTMLElement;
 	expect(btn).not.toBeNull()
 });
 it('response', () => {
-	new Vocab().proc(MAP,DOC);
+	new Vocab().makeSlides2(MAP,DOC);
 });
