@@ -1,6 +1,6 @@
 import type { Evaluation } from './evaluate';
 import type { GetScore } from './course';
-import { ResultReturnType, AnswerType, Result, ResultType } from './slide/strategies/result';
+import { ResultReturnType, AnswerType, ResultType } from './slide/strategies/result';
 import { append, empty } from '../utilities';
 import { saveData } from '../quiz/slide/saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
@@ -8,8 +8,9 @@ import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
-import hljs from 'highlight.js';
 import { EvaluateType } from './slide/strategies/evaluate';
+import { MakeSlidesType } from './slide/strategies/makeSlides';
+import hljs from 'highlight.js';
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface extends GetScore {
   type: string;
@@ -31,10 +32,10 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  constructor(type:string,evaluateStrategy:EvaluateType, result: ResultType/*, createHtml: CreateHtmlType, */) {
-    // this.resultType = result;
+  constructor(type:string,makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType/*, createHtml: CreateHtmlType, */) {
     this.evaluateStrategy = evaluateStrategy;
     this.resultType = result;
+    this.makeSlidesStrategy = makeSlidesStrategy;
     // this.createHtml = createHtml;
     this.type=type;
   }
@@ -55,6 +56,8 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     return this._score;
   }
   resultType: ResultType;
+  makeSlidesStrategy: MakeSlidesType;
+  evaluateStrategy:EvaluateType;
   txt!: AnswerType;
   ans!: T;
   res!: T;
@@ -64,7 +67,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
             </div>
         </div>
     `;
-  evaluateStrategy:EvaluateType
   isExercise = false;
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;

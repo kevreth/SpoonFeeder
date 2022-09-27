@@ -2,14 +2,13 @@ import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides } from '../strategies/makeSlides';
+import { MakeSlides, MakeSlidesImapType } from '../strategies/makeSlides';
 export class Imap extends Slide<string> {
   constructor() {
-    super('imap',Evaluate.SIMPLE, Result.SIMPLE);
+    super('imap', MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
   }
   img = '';
   createHtml = CreateHtml.IMAP;
-  makeSlidesStrategy = MakeSlides.IMAP;
   processJson(json: Imap): void {
     ({
       txt: this.txt,
@@ -20,10 +19,11 @@ export class Imap extends Slide<string> {
   }
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
-    const txt = this.txt;
+    const txt = (this.txt as string);
     const img = this.img;
     const createHtml = this.createHtml;
-    this.makeSlidesStrategy((txt as string), img, createHtml, doc, setValues);
+    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesImapType);
+    makeSlidesStrategy(txt, img, createHtml, doc, setValues);
   }
 }
 

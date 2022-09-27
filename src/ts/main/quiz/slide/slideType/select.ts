@@ -2,14 +2,13 @@ import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides } from '../strategies/makeSlides';
+import { MakeSlides, MakeSlidesSelectType } from '../strategies/makeSlides';
 export class Select extends Slide<Array<number>> {
   constructor() {
-    super('select',Evaluate.SIMPLE,Result.LIST);
+    super('select', MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
   }
   inst = '';
   createHtml = CreateHtml.SELECT;
-  makeSlidesStrategy = MakeSlides.SELECT;
   processJson(json: Select): void {
     ({
       inst: this.inst,
@@ -24,7 +23,8 @@ export class Select extends Slide<Array<number>> {
     const ans = this.ans;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    this.makeSlidesStrategy(inst, ans, res, createHtml, doc, setValues);
+    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesSelectType);
+    makeSlidesStrategy(inst, ans, res, createHtml, doc, setValues);
   }
 }
 

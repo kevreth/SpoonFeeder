@@ -1,18 +1,15 @@
 import { SetWidths } from '../strategies/setWidths';
-;
 import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides } from '../strategies/makeSlides';
+import { MakeSlides, MakeSlidesMcType } from '../strategies/makeSlides';
 export class Mc extends Slide<string> {
   constructor() {
-    super('mc',Evaluate.SIMPLE,Result.SIMPLE);
+    super('mc',MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE,);
   }
   o: string[] = [];
-  maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
-  makeSlidesStrategy = MakeSlides.MC;
   processJson(json: Mc): void {
     ({
       txt: this.txt,
@@ -26,10 +23,11 @@ export class Mc extends Slide<string> {
     const setValues = this.getSetValues();
     const isExercise = this.isExercise;
     const createHtml = this.createHtml;
-    const maxWidthStrategy = this.maxWidthStrategy;
-    const txt = this.txt;
+    const maxWidthStrategy = SetWidths.SIMPLE;
+    const txt = (this.txt as string);
     const options = this.o;
-    this.makeSlidesStrategy((txt as string), options, isExercise, createHtml, maxWidthStrategy, doc, setValues);
+    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesMcType);
+    makeSlidesStrategy (txt, options, isExercise, createHtml, maxWidthStrategy, doc, setValues);
   }
 }
 

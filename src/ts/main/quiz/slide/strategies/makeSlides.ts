@@ -10,11 +10,18 @@ import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
 import { AnswerType } from './result';
 import { SetWidthTypeComplex, SetWidthTypeSimple } from './setWidths';
 export type MakeSlidesGapType = (txt: string, ans: string[], createHtml: GapType, maxWidthStrategy: SetWidthTypeComplex, doc: Document, setValues: SetValues<string[]>) => void
+export type MakeSlidesImapType = (txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) => void;
+export type MakeSlidesInfoType = (txt: string, createHtml: InfoType, doc: Document, setValues: SetValues<string>)=>void;
+export type MakeSlidesMcType = (txt: string, options: string[], isExercise: boolean, createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>)=>void;
+export type MakeSlidesSelectType = (inst: string, ans: number[], res: string[], createHtml: SelectType, doc: Document, setValues: SetValues<number[]>)=>void;
+export type MakeSlidesSortType = (txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>)=>void;
+export type MakeSlidesVocabType = (list: Map<string, string>, res: string[], createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>)=>void;
+export type MakeSlidesType = MakeSlidesGapType|MakeSlidesImapType|MakeSlidesInfoType|MakeSlidesMcType|MakeSlidesSelectType|MakeSlidesSortType|MakeSlidesVocabType;
 export class MakeSlides {
   static readonly GAP:MakeSlidesGapType = function(txt, ans, createHtml, maxWidthStrategy, doc, setValues) {
     makeSlidesStrategyGap(txt, ans, createHtml, maxWidthStrategy, doc, setValues);
   }
-  static readonly IMAP = function(txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) {
+  static readonly IMAP:MakeSlidesImapType = function(txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) {
     makeSlidesStrategyImap((txt as string), img, createHtml, doc, setValues);
   }
   static readonly INFO = function (txt: string, createHtml: InfoType, doc: Document, setValues: SetValues<string>) {

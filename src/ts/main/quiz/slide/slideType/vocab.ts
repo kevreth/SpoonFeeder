@@ -4,7 +4,7 @@ import { isRandom, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides } from '../strategies/makeSlides';
+import { MakeSlides, MakeSlidesVocabType } from '../strategies/makeSlides';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -13,14 +13,12 @@ export type vocabTuplesType = [
 ][];
 export class Vocab extends Slide<Array<string>> {
   constructor() {
-    super('vocab',Evaluate.VOCAB,Result.CORRELATED);
+    super('vocab', MakeSlides.VOCAB, Evaluate.VOCAB,Result.CORRELATED);
   }
   list = new Map<string,string>();
   res = new Array<string>();
   txt = new Array<string>();
-  maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
-  makeSlidesStrategy = MakeSlides.VOCAB;
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.txt = Array.from(this.list.values());
@@ -30,10 +28,11 @@ export class Vocab extends Slide<Array<string>> {
   makeSlides(doc: Document): void {
     if (isRandom()) this.list = shuffleMap(this.list);
     const list = this.list;
-    const maxWidthStrategy = this.maxWidthStrategy;
+    const maxWidthStrategy = SetWidths.SIMPLE;
     const res = this.res;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    this.makeSlidesStrategy(list, res, createHtml, maxWidthStrategy, doc, setValues);
+    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesVocabType);
+    makeSlidesStrategy(list, res, createHtml, maxWidthStrategy, doc, setValues);
   }
 }

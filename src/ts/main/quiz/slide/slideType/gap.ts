@@ -8,28 +8,27 @@ import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scro
 import { SetWidths } from '../strategies/setWidths';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides } from '../strategies/makeSlides';
+import { MakeSlides, MakeSlidesGapType } from '../strategies/makeSlides';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide<Array<string>> {
   constructor() {
-    super('gap',Evaluate.GAP, Result.CORRELATED);
+    super('gap', MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
   }
-  maxWidthStrategy = SetWidths.TARGETED;
   createHtml = CreateHtml.GAP;
-  makeSlidesStrategy = MakeSlides.GAP;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
-    const txt = this.txt;
-    const maxWidthStrategy = this.maxWidthStrategy;
+    const txt = (this.txt as string);
+    const maxWidthStrategy = SetWidths.TARGETED;
     const createHtml = this.createHtml;
     let ans = this.ans;
     if (isRandom()) ans = shuffle(ans);
-    this.makeSlidesStrategy((txt as string), ans, createHtml, maxWidthStrategy, doc, setValues);
+    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesGapType);
+    makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, setValues);
   }
 }
 

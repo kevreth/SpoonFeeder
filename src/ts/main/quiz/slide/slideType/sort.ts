@@ -2,13 +2,12 @@ import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides } from '../strategies/makeSlides';
+import { MakeSlides, MakeSlidesSortType } from '../strategies/makeSlides';
 export class Sort extends Slide<Array<string>> {
   constructor() {
-    super('sort',Evaluate.SIMPLE,Result.LIST);
+    super('sort', MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);
   }
   createHtml = CreateHtml.SORT;
-  makeSlidesStrategy = MakeSlides.SORT;
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
@@ -17,7 +16,8 @@ export class Sort extends Slide<Array<string>> {
     const ans = this.ans;
     const createHtml = this.createHtml;
     const setValues = this.getSetValues();
-    this.makeSlidesStrategy(txt, ans, createHtml, doc, setValues);
+    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesSortType);
+    makeSlidesStrategy(txt, ans, createHtml, doc, setValues);
   }
 }
 
