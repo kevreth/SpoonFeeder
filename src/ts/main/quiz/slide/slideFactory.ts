@@ -7,6 +7,9 @@ import {Info} from './slideType/info';
 import {Select} from './slideType/select';
 import {Sort} from './slideType/sort';
 import {Vocab} from './slideType/vocab';
+import { MakeSlides } from './strategies/makeSlides';
+import { Evaluate } from './strategies/evaluate';
+import { Result } from './strategies/result';
 export class SlideFactory {
   static readonly BOOL = new SlideFactory('bool');
   static readonly GAP = new SlideFactory('gap');
@@ -37,7 +40,7 @@ export class SlideFactory {
         switch(SlideFactory.values[i]) {
           case SlideFactory.BOOL: return new Bool();
           case SlideFactory.GAP: return new Gap();
-          case SlideFactory.IMAP: return new Imap();
+          case SlideFactory.IMAP: return new Imap(instanceType, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
           case SlideFactory.INFO: return new Info();
           case SlideFactory.MC: return new Mc();
           case SlideFactory.SELECT: return new Select();
