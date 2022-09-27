@@ -1,7 +1,6 @@
 import { showButton } from '../../makeSlides';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../strategies/result';
-import { Evaluation } from '../../evaluate';
 import { SetValues, Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
@@ -36,13 +35,6 @@ export class Gap extends Slide<Array<string>> {
     const createHtml = this.createHtml;
     if (isRandom()) ans = shuffle(ans);
     makeSlides2(ans, (txt as string), createHtml, setValues, doc, maxWidthStrategy);
-  }
-  evaluate(): Evaluation {
-    const txt = this.txt;
-    const res = this.res;
-    const ans = this.ans;
-    const result = this.result();
-    return this.evaluateStrategy(ans, res, txt, result);
   }
 }
 function makeSlides2(ans: string[], txt: string, createHtml: GapType, setValues: SetValues<string[]>, doc: Document, maxWidthStrategy: SetWidthTypeComplex) {

@@ -1,4 +1,3 @@
-import { Evaluation } from '../../evaluate';
 import { SetValues, Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { gsap } from 'gsap';
@@ -21,13 +20,6 @@ export class Sort extends Slide<Array<string>> {
     const createHtml = this.createHtml;
     const setValues = this.getSetValues();
     makeSlides2(doc, setValues, ans, txt, createHtml);
-  }
-  evaluate(): Evaluation {
-    const txt = this.txt;
-    const res = this.res;
-    const ans = this.ans;
-    const result = this.result();
-    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
 function makeSlides2(doc: Document, setValues: SetValues<string[]>, ans:string[], txt:AnswerType, createHtml:SortType): void {

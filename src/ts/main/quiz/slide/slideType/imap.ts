@@ -1,4 +1,3 @@
-import { Evaluation } from '../../evaluate';
 import { SetValues, Slide } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { SVGInjector } from '@tanem/svg-injector';
@@ -28,13 +27,6 @@ export class Imap extends Slide<string> {
     const img = this.img;
     const createHtml = this.createHtml;
     makeSlides2(createHtml, (txt as string), img, setValues, doc);
-  }
-  public evaluate(): Evaluation {
-    const txt = this.txt;
-    const res = this.res;
-    const ans = this.ans;
-    const result = this.result();
-    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
 function makeSlides2(createHtml: ImapType, txt: string, img: string, setValues: SetValues<string>, doc: Document) {

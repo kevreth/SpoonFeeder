@@ -1,4 +1,3 @@
-import { Evaluation } from '../../evaluate';
 import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
 import { SetValues, Slide } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
@@ -37,13 +36,6 @@ export class Vocab extends Slide<Array<string>> {
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
     makeSlides2(list, doc, maxWidthStrategy,res,setValues,createHtml);
-  }
-  evaluate(): Evaluation {
-    const txt = this.txt;
-    const res = this.res;
-    const ans = this.ans;
-    const result = this.result();
-    return this.evaluateStrategy(txt, ans, res, result);
   }
 }
 //Pass in doc only for unit testing

@@ -1,7 +1,6 @@
 import { removeListener, isRandom, shuffle } from '../../../utilities';
 import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
-import { showButton } from '../../makeSlides';
-import { Evaluation } from '../../evaluate';
+import { showButton } from '../../makeSlides';;
 import { SetValues, Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml, McType } from '../strategies/createHtml';
@@ -31,13 +30,6 @@ export class Mc extends Slide<string> {
     const txt = this.txt;
     const options = this.o;
     makeSlides2(createHtml, (txt as string), options, setValues, doc, maxWidthStrategy, isExercise);
-  }
-  evaluate(): Evaluation {
-    const txt = this.txt;
-    const res = this.res;
-    const ans = this.ans;
-    const result = this.result();
-    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
 function makeSlides2(createHtml: McType, txt: string, options: string[], setValues: SetValues<string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, isExercise:boolean) {

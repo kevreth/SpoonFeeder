@@ -29,7 +29,7 @@ export class Evaluate {
     const correctCtr = (result as Array<boolean>).filter(Boolean).length;
     return new Evaluation(ans.length, correctCtr, row_accum);
   }
-  static readonly GAP: GapType = function evaluate(ans, res, txt, result) {
+  static readonly GAP: GapType = function evaluate(txt, res, ans, result) {
     const rows = new Array<string>();
     const length = ans.length;
     for (let i = 0; i < length; i++) {

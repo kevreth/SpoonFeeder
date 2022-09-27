@@ -1,6 +1,5 @@
 import { difference, intersection, removeListener } from '../../../utilities';
 import { showButton } from '../../makeSlides';
-import { Evaluation } from '../../evaluate';
 import { SetValues, Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
@@ -27,13 +26,6 @@ export class Select extends Slide<Array<number>> {
     const html = this.createHtml(this.inst, res);
     this.createPageContent(html, doc);
     makeSlides2(res, doc, ans, setValues);
-  }
-  evaluate(): Evaluation {
-    const txt = this.txt;
-    const res = this.res;
-    const ans = this.ans;
-    const result = this.result();
-    return this.evaluateStrategy(txt, res, ans, result);
   }
 }
 function makeSlides2(res: string[], doc: Document, ans: number[], setValues: SetValues<number[]>) {

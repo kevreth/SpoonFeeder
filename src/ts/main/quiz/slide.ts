@@ -67,10 +67,16 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   isExercise = false;
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
-  abstract evaluate(): Evaluation;
   //necessary to load results from save file
   setResults(res: T): void {
     this.res=res;
+  }
+  evaluate(): Evaluation {
+    const txt = this.txt;
+    const res = this.res;
+    const ans = this.ans;
+    const result = this.result();
+    return this.evaluateStrategy(txt, ans, res, result);
   }
   createPageContent(html: string, doc: Document): void {
     const element = doc.getElementById('btn') as HTMLElement | null;
