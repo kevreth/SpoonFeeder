@@ -1,10 +1,8 @@
 import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
 import { isRandom, shuffleMap } from '../../../utilities';
-import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
-import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides, MakeSlidesVocabType } from '../strategies/makeSlides';
+import { MakeSlidesVocabType } from '../strategies/makeSlides';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -12,9 +10,6 @@ export type vocabTuplesType = [
   options: Array<string>
 ][];
 export class Vocab extends Slide<Array<string>> {
-  constructor() {
-    super('vocab', MakeSlides.VOCAB, Evaluate.VOCAB,Result.CORRELATED);
-  }
   list = new Map<string,string>();
   res = new Array<string>();
   txt = new Array<string>();

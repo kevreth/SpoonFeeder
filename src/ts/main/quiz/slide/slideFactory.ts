@@ -46,7 +46,7 @@ export class SlideFactory {
           case SlideFactory.MC: return new Mc();
           case SlideFactory.SELECT: return new Select(type, MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
           case SlideFactory.SORT: return new Sort(type, MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);
-          case SlideFactory.VOCAB: return new Vocab();
+          case SlideFactory.VOCAB: return new Vocab(type, MakeSlides.VOCAB, Evaluate.VOCAB,Result.CORRELATED);
         }
       }
     }
