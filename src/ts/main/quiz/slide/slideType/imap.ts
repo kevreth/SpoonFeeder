@@ -10,7 +10,6 @@ export class Imap extends Slide<string> {
   img = '';
   resultType = Result.SIMPLE;
   createHtml = CreateHtml.IMAP;
-  evaluateStrategy = Evaluate.SIMPLE;
   makeSlidesStrategy = MakeSlides.IMAP;
   processJson(json: Imap): void {
     ({
