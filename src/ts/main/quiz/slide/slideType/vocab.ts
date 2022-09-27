@@ -38,4 +38,3 @@ export class Vocab extends Slide<Array<string>> {
     this.makeSlidesStrategy(list, res, createHtml, maxWidthStrategy, doc, setValues);
   }
 }
-

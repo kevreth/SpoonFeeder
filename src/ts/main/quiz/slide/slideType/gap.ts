@@ -12,11 +12,6 @@ import { MakeSlides } from '../strategies/makeSlides';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
-//===the main divs are
-//fills: the strings to drag into the gaps
-//gaps: the blanks to drag strings to
-//remaining: the number of remaining gaps
-//response: grading after the last drop
 export class Gap extends Slide<Array<string>> {
   constructor() {
     super('gap',Evaluate.GAP);
