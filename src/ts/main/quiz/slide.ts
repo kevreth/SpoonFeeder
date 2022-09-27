@@ -2,7 +2,7 @@ import type { Evaluation } from './evaluate';
 import type { GetScore } from './course';
 import { ResultReturnType, AnswerType, Result, ResultType } from './slide/strategies/result';
 import { append, empty } from '../utilities';
-import { SaveData, getSavedDataArray } from '../quiz/slide/saveData';
+import { saveData } from '../quiz/slide/saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
@@ -103,11 +103,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     html.findMath().compile().getMetrics().typeset().updateDocument();
   }
   saveData() {
-    if (this.txt === '') return;
-    const save = new SaveData(this.txt, this.res);
-    const arr = getSavedDataArray();
-    arr.push(save);
-    localStorage.setItem('savedata', JSON.stringify(arr));
+    const txt = this.txt;
+    const res = this.res;
+    saveData(txt, res);
   }
   result(): ResultReturnType {
     return this.resultType(this.ans,this.res);
@@ -154,3 +152,4 @@ export class SetValues<T> {
   public setRes: (res:T) => void;
   public createPageContent: (html: string, doc: Document) => void
 }
+
