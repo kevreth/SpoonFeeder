@@ -1,8 +1,8 @@
 import type { Evaluation } from './evaluate';
 import type { GetScore } from './course';
 import { ResultReturnType, AnswerType, Result, ResultType } from './slide/strategies/result';
-import { append, empty, getSavedDataArray } from '../utilities';
-import { SaveData } from '../quiz/slide/saveData';
+import { append, empty } from '../utilities';
+import { SaveData, getSavedDataArray } from '../quiz/slide/saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
