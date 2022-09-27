@@ -86,15 +86,16 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   result(): ResultReturnType {
     return this.resultType(this.ans,this.res);
   }
-  // getScore(): number {
-  //   const result = this.result();
-  //   let count = 0;
-  //   if(Array.isArray(result))
-  //     count = result.filter(value => value === true).length;
-  //   else
-  //     count = result ? 1 : 0;
-  //   return count;
-  // }
+  //not in use yet; used to calculate scores for divisions
+  getScore(): number {
+    const result = this.result();
+    let count = 0;
+    if(Array.isArray(result))
+      count = result.filter(value => value === true).length;
+    else
+      count = result ? 1 : 0;
+    return count;
+  }
   setRes(res:T):void {
     this.res=res;
   }
