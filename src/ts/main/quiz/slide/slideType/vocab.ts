@@ -13,12 +13,11 @@ export type vocabTuplesType = [
 ][];
 export class Vocab extends Slide<Array<string>> {
   constructor() {
-    super('vocab',Evaluate.VOCAB);
+    super('vocab',Evaluate.VOCAB,Result.CORRELATED);
   }
   list = new Map<string,string>();
   res = new Array<string>();
   txt = new Array<string>();
-  resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
   makeSlidesStrategy = MakeSlides.VOCAB;

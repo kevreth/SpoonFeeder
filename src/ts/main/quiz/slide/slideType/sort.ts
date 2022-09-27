@@ -5,9 +5,8 @@ import { Evaluate } from '../strategies/evaluate';
 import { MakeSlides } from '../strategies/makeSlides';
 export class Sort extends Slide<Array<string>> {
   constructor() {
-    super('sort',Evaluate.SIMPLE);
+    super('sort',Evaluate.SIMPLE,Result.LIST);
   }
-  resultType = Result.LIST;
   createHtml = CreateHtml.SORT;
   makeSlidesStrategy = MakeSlides.SORT;
   processJson(json: Sort): void {

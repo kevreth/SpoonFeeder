@@ -5,10 +5,9 @@ import { Evaluate } from '../strategies/evaluate';
 import { MakeSlides } from '../strategies/makeSlides';
 export class Imap extends Slide<string> {
   constructor() {
-    super('imap',Evaluate.SIMPLE);
+    super('imap',Evaluate.SIMPLE, Result.SIMPLE);
   }
   img = '';
-  resultType = Result.SIMPLE;
   createHtml = CreateHtml.IMAP;
   makeSlidesStrategy = MakeSlides.IMAP;
   processJson(json: Imap): void {

@@ -14,9 +14,8 @@ polyfill({
 });
 export class Gap extends Slide<Array<string>> {
   constructor() {
-    super('gap',Evaluate.GAP);
+    super('gap',Evaluate.GAP, Result.CORRELATED);
   }
-  resultType = Result.CORRELATED;
   maxWidthStrategy = SetWidths.TARGETED;
   createHtml = CreateHtml.GAP;
   makeSlidesStrategy = MakeSlides.GAP;

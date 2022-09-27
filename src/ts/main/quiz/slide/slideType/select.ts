@@ -1,14 +1,13 @@
-import { Slide, createPageContent } from '../../slide';
+import { Slide } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
 import { MakeSlides } from '../strategies/makeSlides';
 export class Select extends Slide<Array<number>> {
   constructor() {
-    super('select',Evaluate.SIMPLE);
+    super('select',Evaluate.SIMPLE,Result.LIST);
   }
   inst = '';
-  resultType = Result.LIST;
   createHtml = CreateHtml.SELECT;
   makeSlidesStrategy = MakeSlides.SELECT;
   processJson(json: Select): void {

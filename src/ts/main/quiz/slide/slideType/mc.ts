@@ -7,10 +7,9 @@ import { Evaluate } from '../strategies/evaluate';
 import { MakeSlides } from '../strategies/makeSlides';
 export class Mc extends Slide<string> {
   constructor() {
-    super('mc',Evaluate.SIMPLE);
+    super('mc',Evaluate.SIMPLE,Result.SIMPLE);
   }
   o: string[] = [];
-  resultType = Result.SIMPLE;
   maxWidthStrategy = SetWidths.SIMPLE;
   createHtml = CreateHtml.MC;
   makeSlidesStrategy = MakeSlides.MC;
