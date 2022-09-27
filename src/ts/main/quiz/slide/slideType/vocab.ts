@@ -3,7 +3,6 @@ import { Slide } from '../../slide';
 import { isRandom, shuffleMap } from '../../../utilities';
 import { CreateHtml } from '../strategies/createHtml';
 import { MakeSlidesVocabType } from '../strategies/makeSlides';
-export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
   ans: string,
