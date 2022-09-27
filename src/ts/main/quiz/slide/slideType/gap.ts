@@ -1,5 +1,4 @@
 import { polyfill } from 'mobile-drag-drop';
-import { Result } from '../strategies/result';
 import { Slide } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
@@ -7,15 +6,11 @@ import { shuffle, isRandom } from '../../../utilities';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import { SetWidths } from '../strategies/setWidths';
 import { CreateHtml } from '../strategies/createHtml';
-import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides, MakeSlidesGapType } from '../strategies/makeSlides';
+import { MakeSlidesGapType } from '../strategies/makeSlides';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide<Array<string>> {
-  constructor() {
-    super('gap', MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
-  }
   createHtml = CreateHtml.GAP;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);

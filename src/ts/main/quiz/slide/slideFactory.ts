@@ -39,7 +39,7 @@ export class SlideFactory {
       if(SlideFactory.values[i].name===instanceType) {
         switch(SlideFactory.values[i]) {
           case SlideFactory.BOOL: return new Bool();
-          case SlideFactory.GAP: return new Gap();
+          case SlideFactory.GAP: return new Gap(instanceType, MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
           case SlideFactory.IMAP: return new Imap(instanceType, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
           case SlideFactory.INFO: return new Info();
           case SlideFactory.MC: return new Mc();
