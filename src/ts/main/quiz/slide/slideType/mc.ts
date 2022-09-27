@@ -1,13 +1,8 @@
 import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
-import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
-import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides, MakeSlidesMcType } from '../strategies/makeSlides';
+import { MakeSlidesMcType } from '../strategies/makeSlides';
 export class Mc extends Slide<string> {
-  constructor() {
-    super('mc',MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE,);
-  }
   o: string[] = [];
   createHtml = CreateHtml.MC;
   processJson(json: Mc): void {
