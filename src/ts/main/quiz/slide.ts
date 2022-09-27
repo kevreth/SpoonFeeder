@@ -13,6 +13,7 @@ import { EvaluateType } from './slide/strategies/evaluate';
 RegisterHTMLHandler(browserAdaptor());
 export interface SlideInterface extends GetScore {
   type: string;
+  txt: AnswerType;
   isExercise: boolean;
   pageTemplate: string;
   //Transform human-created YML into computer-friendly JSON
