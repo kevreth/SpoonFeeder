@@ -44,7 +44,7 @@ export class SlideFactory {
           case SlideFactory.IMAP: return new Imap(type, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
           case SlideFactory.INFO: return new Info();
           case SlideFactory.MC: return new Mc();
-          case SlideFactory.SELECT: return new Select();
+          case SlideFactory.SELECT: return new Select(type, MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
           case SlideFactory.SORT: return new Sort();
           case SlideFactory.VOCAB: return new Vocab();
         }
