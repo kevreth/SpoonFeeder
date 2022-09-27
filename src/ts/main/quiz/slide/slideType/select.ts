@@ -21,7 +21,6 @@ export class Select extends Slide<Array<number>> {
   }
   makeSlides(doc: Document): void {
     const inst = this.inst;
-    //TODO: refactor: converts array to string to array
     const res = (this.txt as string).split(' ');
     const ans = this.ans;
     const setValues = this.getSetValues();
