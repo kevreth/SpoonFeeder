@@ -36,11 +36,12 @@ export class SlideFactory {
   }
   public static instance(instanceType:string): SlideInterface|undefined {
     for(let i=0; i< SlideFactory.values.length; i++) {
-      if(SlideFactory.values[i].name===instanceType) {
+      const type = SlideFactory.values[i].name;
+      if(type===instanceType) {
         switch(SlideFactory.values[i]) {
           case SlideFactory.BOOL: return new Bool();
-          case SlideFactory.GAP: return new Gap(instanceType, MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
-          case SlideFactory.IMAP: return new Imap(instanceType, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
+          case SlideFactory.GAP: return new Gap(type, MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
+          case SlideFactory.IMAP: return new Imap(type, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
           case SlideFactory.INFO: return new Info();
           case SlideFactory.MC: return new Mc();
           case SlideFactory.SELECT: return new Select();
