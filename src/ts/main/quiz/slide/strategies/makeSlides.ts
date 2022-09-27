@@ -1,5 +1,5 @@
 import { SetValues } from '../../slide';
-import { GapType, ImapType, InfoType, McType, SortType } from './createHtml';
+import {GapType, ImapType, InfoType, McType, SelectType, SortType} from './createHtml';
 import { makeSlidesStrategyGap } from './makeSlides/makeSlidesStrategyGap';
 import { makeSlidesStrategyImap } from './makeSlides/makeSlidesStrategyImap';
 import { makeSlidesStrategyInfo } from './makeSlides/makeSlidesStrategyInfo';
@@ -23,8 +23,8 @@ export class MakeSlides {
   static readonly MC = function (txt: string, options: string[], isExercise: boolean, createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>) {
     makeSlidesStrategyMc((txt as string), options, isExercise, createHtml, maxWidthStrategy, doc, setValues);
   }
-  static readonly SELECT = function (ans: number[], res: string[], doc: Document, setValues: SetValues<number[]>) {
-    makeSlidesStrategySelect(ans, res, doc, setValues);
+  static readonly SELECT = function (inst: string, ans: number[], res: string[], createHtml: SelectType, doc: Document, setValues: SetValues<number[]>) {
+    makeSlidesStrategySelect(inst, ans, res, createHtml, doc, setValues);
   }
   static readonly SORT = function (txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>) {
     makeSlidesStrategySort(txt, ans, createHtml, doc, setValues);

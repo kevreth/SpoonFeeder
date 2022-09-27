@@ -25,9 +25,8 @@ export class Select extends Slide<Array<number>> {
     const res = (this.txt as string).split(' ');
     const ans = this.ans;
     const setValues = this.getSetValues();
-    const html = this.createHtml(inst, res);
-    createPageContent(html, doc);
-    this.makeSlidesStrategy(ans, res, doc, setValues);
+    const createHtml = this.createHtml;
+    this.makeSlidesStrategy(inst, ans, res, createHtml, doc, setValues);
   }
 }
 
