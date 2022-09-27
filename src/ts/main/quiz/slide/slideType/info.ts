@@ -1,4 +1,3 @@
-import { Evaluation } from '../../evaluate';
 import { Slide, SlideInterface} from '../../slide';
 import { showSlides } from '../../makeSlides';
 import { makeButton } from '../../../utilities';
@@ -21,9 +20,6 @@ export class Info extends Slide<string> {
     this.createPageContent(html, doc);
     this.saveData();
     showButton(doc);
-  }
-  evaluate(): Evaluation {
-    return this.evaluateStrategy('','','','');
   }
 }
   //info has it's own showButton because the continue button
