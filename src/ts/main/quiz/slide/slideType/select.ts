@@ -20,10 +20,12 @@ export class Select extends Slide<Array<number>> {
     } = json);
   }
   makeSlides(doc: Document): void {
+    const inst = this.inst;
+    //TODO: refactor: converts array to string to array
     const res = (this.txt as string).split(' ');
     const ans = this.ans;
     const setValues = this.getSetValues();
-    const html = this.createHtml(this.inst, res);
+    const html = this.createHtml(inst, res);
     createPageContent(html, doc);
     this.makeSlidesStrategy(ans, res, doc, setValues);
   }
