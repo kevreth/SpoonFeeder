@@ -35,7 +35,8 @@ export class SlideFactory {
     this.name=name;
   }
   public static instance(instanceType:string): SlideInterface|undefined {
-    for(let i=0; i< SlideFactory.values.length; i++) {
+    const numTypes = SlideFactory.values.length;
+    for(let i=0; i< numTypes; i++) {
       const type = SlideFactory.values[i].name;
       if(type===instanceType) {
         switch(SlideFactory.values[i]) {
