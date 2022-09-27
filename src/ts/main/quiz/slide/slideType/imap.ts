@@ -27,7 +27,7 @@ export class Imap extends Slide<string> {
     const txt = this.txt;
     const img = this.img;
     const createHtml = this.createHtml;
-    makeSlides2(createHtml, txt, img, setValues, doc);
+    makeSlides2(createHtml, (txt as string), img, setValues, doc);
   }
   public evaluate(): Evaluation {
     const txt = this.txt;

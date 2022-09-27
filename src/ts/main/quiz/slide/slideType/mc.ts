@@ -30,7 +30,7 @@ export class Mc extends Slide<string> {
     const maxWidthStrategy = this.maxWidthStrategy;
     const txt = this.txt;
     const options = this.o;
-    makeSlides2(createHtml, txt, options, setValues, doc, maxWidthStrategy, isExercise);
+    makeSlides2(createHtml, (txt as string), options, setValues, doc, maxWidthStrategy, isExercise);
   }
   evaluate(): Evaluation {
     const txt = this.txt;

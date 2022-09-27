@@ -1,12 +1,13 @@
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 import { AnswerType, ResultReturnType } from './result';
+export type DefaultType = () => Evaluation;
 export type SimpleType = (txt: AnswerType, res: AnswerType, ans: AnswerType, result: ResultReturnType) => Evaluation;
-export type VocabType = (txt: string[], ans: string[], res: string[], result: ResultReturnType) => Evaluation;
-export type GapType = (ans: string[], res: string[], txt: string, result: ResultReturnType) => Evaluation;
+export type VocabType = (txt: AnswerType, ans: AnswerType, res: AnswerType, result: ResultReturnType) => Evaluation;
+export type GapType = (ans: AnswerType, res:AnswerType, txt: AnswerType, result: ResultReturnType) => Evaluation;
 export type EvaluateType = SimpleType | VocabType | GapType;
 export class Evaluate {
-  static readonly DEFAULT = function evaluate() {
+  static readonly DEFAULT: DefaultType = function evaluate() {
     return new Evaluation(0, 0, '');
   }
   //Used by IMAP, MC, SELECT, SORT
@@ -18,10 +19,10 @@ export class Evaluate {
   }
   static readonly VOCAB: VocabType = function evaluate(txt, ans, res, result) {
     const rows = new Array<string>();
-    txt.forEach((txt1, idx) => {
+    (txt as string[]).forEach((txt1, idx) => {
       const ans1 = ans[idx];
       const res1 = res[idx];
-      const row = makeRow(txt1, ans1, res1);
+      const row = makeRow(txt1, (ans1 as string), (res1 as string));
       rows.push(row);
     });
     const row_accum = rows.join('\n');
@@ -32,8 +33,8 @@ export class Evaluate {
     const rows = new Array<string>();
     const length = ans.length;
     for (let i = 0; i < length; i++) {
-      const answer = ans[i];
-      const response = res[i];
+      const answer:string = (ans[i] as string);
+      const response = (res[i] as string);
       const row = Evaluate.gapQuest(response, answer, i, ans, txt);
       rows.push(row);
     }
@@ -41,15 +42,15 @@ export class Evaluate {
     return new Evaluation(length, correctCtr, rows.join('\n'));
   }
   private static gapQuest(
-    response: string,
-    answer: string,
+    response: AnswerType,
+    answer: AnswerType,
     i: number,
-    ans: Array<string>,
-    text: string
+    ans: AnswerType,
+    text: AnswerType
   ): string {
     let replaceValue = '';
     if (i === 0) replaceValue = `<td rowspan="${ans.length}">${text}</td>`;
-    let row_a = makeRow(replaceValue, response, answer);
+    let row_a = makeRow(replaceValue, (response as string), (answer as string));
     row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
     return row_a;
   }

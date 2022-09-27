@@ -35,7 +35,7 @@ export class Gap extends Slide<Array<string>> {
     const maxWidthStrategy = this.maxWidthStrategy;
     const createHtml = this.createHtml;
     if (isRandom()) ans = shuffle(ans);
-    makeSlides2(ans, txt, createHtml, setValues, doc, maxWidthStrategy);
+    makeSlides2(ans, (txt as string), createHtml, setValues, doc, maxWidthStrategy);
   }
   evaluate(): Evaluation {
     const txt = this.txt;

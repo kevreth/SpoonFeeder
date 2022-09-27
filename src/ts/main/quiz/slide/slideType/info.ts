@@ -3,6 +3,7 @@ import { Slide, SlideInterface} from '../../slide';
 import { showSlides } from '../../makeSlides';
 import { makeButton } from '../../../utilities';
 import { Evaluate } from '../strategies/evaluate';
+import { CreateHtml } from '../strategies/createHtml';
 export interface info extends SlideInterface {
   txt: string;
 }
@@ -11,17 +12,18 @@ export class Info extends Slide<string> {
     super('info',Evaluate.DEFAULT);
   }
   txt = '';
+  createHtml = CreateHtml.INFO;
   processJson(json: Info): void {
     this.txt = json.txt;
   }
   makeSlides(doc: Document): void {
-    const html = `\n${this.txt}`;
+    const html = this.createHtml(this.txt);
     this.createPageContent(html, doc);
     this.saveData();
     showButton(doc);
   }
   evaluate(): Evaluation {
-    return this.evaluateStrategy();
+    return this.evaluateStrategy('','','','');
   }
 }
   //info has it's own showButton because the continue button

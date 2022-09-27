@@ -1,21 +1,16 @@
-//<<<<<<< HEAD
-import { isRandom, makeButton, shuffle } from '../../../../main/utilities';
-type GapType = (remaining: string, fills: string, gaps: string) => string;
-type ImapType = (inst: string, img: string) => string;
-type McType = (question: string, options: string[]) => string
-type SelectType = (instructions: string, res: string[]) => string;
-type SortType = (inst: string, ans: string[]) => string;
-//=======
 import { isRandom, makeButton, shuffle } from 'src/ts/main/utilities';
 export type GapType = (remaining: string, fills: string, gaps: string) => string;
+export type InfoType = (txt:string) => string;
 export type ImapType = (inst: string, img: string) => string;
 export type McType = (question: string, options: string[]) => string
 export type SelectType = (instructions: string, res: string[]) => string;
 export type SortType = (inst: string, ans: string[]) => string;
-//>>>>>>> main
 export type CreateHtmlType = GapType | ImapType | McType | SelectType | SortType;
 export class CreateHtml {
   static readonly DEFAULT = function() {return '';}
+  static readonly INFO: InfoType = function(txt:string) {
+    return `\n${txt}`;
+  }
   static readonly GAP: GapType = function(remaining, fills, gaps) {
     const html = `\n<div id="fills">${fills}\n</div>` +
       `\n<div id="gaps">${gaps}\n</div>` +
