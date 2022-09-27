@@ -1,5 +1,5 @@
 import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
-import { SetValues, Slide } from '../../slide';
+import { SetValues, Slide, createPageContent } from '../../slide';
 import { continueButton, showButton } from '../../makeSlides';
 import { removeListener, isRandom, shuffle, shuffleMap } from '../../../utilities';
 import { Result } from '../strategies/result';
@@ -53,7 +53,7 @@ function paging(
   res:string[],
   setValues:SetValues<string[]>
 ): void {
-  setValues.createPageContent(html_list[questionCtr], doc);
+  createPageContent(html_list[questionCtr], doc);
   const tuple = vocabTuples[questionCtr];
   const options = tuple[2];
   options.forEach((option, j) => {

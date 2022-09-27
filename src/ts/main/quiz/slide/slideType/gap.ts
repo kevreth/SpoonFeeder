@@ -1,7 +1,7 @@
 import { showButton } from '../../makeSlides';
 import { polyfill } from 'mobile-drag-drop';
 import { Result } from '../strategies/result';
-import { SetValues, Slide } from '../../slide';
+import { SetValues, Slide, createPageContent } from '../../slide';
 import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
@@ -42,7 +42,7 @@ function makeSlides2(txt: string, ans: string[], createHtml: GapType, maxWidthSt
   const _gaps = gaps(ans.length, txt);
   const remaining = ans.length.toString();
   const html = createHtml(remaining, _fills, _gaps);
-  setValues.createPageContent(html, doc);
+  createPageContent(html, doc);
   ans.forEach((currentFills, ctr) => {
     setfills(ctr, currentFills, doc);
     setgap(ctr, doc, ans, setValues);

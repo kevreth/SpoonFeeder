@@ -1,4 +1,4 @@
-import { SetValues, Slide } from '../../slide';
+import { SetValues, Slide, createPageContent } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../utilities';
@@ -31,7 +31,7 @@ export class Imap extends Slide<string> {
 }
 function makeSlides2(txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) {
   const html = createHtml(txt, img);
-  setValues.createPageContent(html, doc);
+  createPageContent(html, doc);
   const picture = doc.getElementById('imagemap');
   //inject SVG into page so it is part of DOM
   SVGInjector(picture, { afterAll() { afterAll(setValues, doc); } });

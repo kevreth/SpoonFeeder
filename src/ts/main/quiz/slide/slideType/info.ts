@@ -1,4 +1,4 @@
-import { Slide, SlideInterface} from '../../slide';
+import { Slide, SlideInterface, createPageContent} from '../../slide';
 import { showSlides } from '../../makeSlides';
 import { makeButton } from '../../../utilities';
 import { Evaluate } from '../strategies/evaluate';
@@ -17,7 +17,7 @@ export class Info extends Slide<string> {
   }
   makeSlides(doc: Document): void {
     const html = this.createHtml(this.txt);
-    this.createPageContent(html, doc);
+    createPageContent(html, doc);
     this.saveData();
     showButton(doc);
   }

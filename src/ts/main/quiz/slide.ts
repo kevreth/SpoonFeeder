@@ -25,7 +25,6 @@ export interface SlideInterface extends GetScore {
   //Evaluate user responses at the end of quiz
   //evaluation during quiz is NOT here
   evaluate(): Evaluation;
-  createPageContent(html: string, doc: Document): void;
   setResults(res:AnswerType):void;
   result(): ResultReturnType;
   get questions(): number;
@@ -79,29 +78,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     const result = this.result();
     return this.evaluateStrategy(txt, ans, res, result);
   }
-  createPageContent(html: string, doc: Document): void {
-    const element = doc.getElementById('btn') as HTMLElement | null;
-    if (element != null) element.remove(); // Removes the div with the 'div-02' id
-    empty('#content');
-    append('#content', html);
-    this.postRendering(document);
-  }
-  postRendering(doc: Document) {
-    hljs.highlightAll();
-    const html = mathjax.document(doc, {
-      InputJax: new TeX({
-        inlineMath: [
-          ['$', '$'],
-          ['\\(', '\\)'],
-        ],
-        packages: ['base', 'ams', 'noundefined', 'newcommand', 'boldsymbol'],
-      }),
-      OutputJax: new CHTML({
-        //   fontURL: 'https://cdn.rawgit.com/mathjax/mathjax-v3/3.0.0-beta.1/mathjax2/css'
-      }),
-    });
-    html.findMath().compile().getMetrics().typeset().updateDocument();
-  }
   saveData() {
     const txt = this.txt;
     const res = this.res;
@@ -126,8 +102,8 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     const saveData = () => this.saveData();
     const result = (): ResultReturnType => this.result();
     const setRes = (res:T): void => this.setRes(res);
-    const createPageContent = (html: string, doc: Document): void => this.createPageContent(html,doc);
-    return new SetValues<T>(saveData, result, setRes, createPageContent);
+    // const createPageContent = (html: string, doc: Document): void => createPageContent(html,doc);
+    return new SetValues<T>(saveData, result, setRes/*, createPageContent*/);
   }
 }
 export class SetValues<T> {
@@ -135,16 +111,38 @@ export class SetValues<T> {
     saveData: () => void,
     result: () => ResultReturnType,
     setRes: (res:T) => void,
-    createPageContent: (html: string, doc: Document) => void
+    // createPageContent: (html: string, doc: Document) => void
   ) {
     this.saveData = saveData;
     this.result = result;
     this.setRes = setRes;
-    this.createPageContent = createPageContent;
+    // this.createPageContent = createPageContent;
   }
   public saveData: () => void;
   public result: () => ResultReturnType;
   public setRes: (res:T) => void;
-  public createPageContent: (html: string, doc: Document) => void
+  // public createPageContent: (html: string, doc: Document) => void
 }
-
+export function createPageContent(html: string, doc: Document): void {
+  const element = doc.getElementById('btn') as HTMLElement | null;
+  if (element != null) element.remove(); // Removes the div with the 'div-02' id
+  empty('#content');
+  append('#content', html);
+  postRendering(document);
+}
+function postRendering(doc: Document) {
+  hljs.highlightAll();
+  const html = mathjax.document(doc, {
+    InputJax: new TeX({
+      inlineMath: [
+        ['$', '$'],
+        ['\\(', '\\)'],
+      ],
+      packages: ['base', 'ams', 'noundefined', 'newcommand', 'boldsymbol'],
+    }),
+    OutputJax: new CHTML({
+      //   fontURL: 'https://cdn.rawgit.com/mathjax/mathjax-v3/3.0.0-beta.1/mathjax2/css'
+    }),
+  });
+  html.findMath().compile().getMetrics().typeset().updateDocument();
+}

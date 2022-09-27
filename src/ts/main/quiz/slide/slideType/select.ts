@@ -1,6 +1,6 @@
 import { difference, intersection, removeListener } from '../../../utilities';
 import { showButton } from '../../makeSlides';
-import { SetValues, Slide } from '../../slide';
+import { SetValues, Slide, createPageContent } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
@@ -24,7 +24,7 @@ export class Select extends Slide<Array<number>> {
     const ans = this.ans;
     const setValues = this.getSetValues();
     const html = this.createHtml(this.inst, res);
-    this.createPageContent(html, doc);
+    createPageContent(html, doc);
     makeSlides2(ans, res, doc, setValues);
   }
 }

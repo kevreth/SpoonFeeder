@@ -1,4 +1,4 @@
-import { SetValues, Slide } from '../../slide';
+import { SetValues, Slide, createPageContent } from '../../slide';
 import { showButton } from '../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
@@ -24,7 +24,7 @@ export class Sort extends Slide<Array<string>> {
 }
 function makeSlides2(txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>): void {
   const html = createHtml((txt as string), ans);
-  setValues.createPageContent(html, doc);
+  createPageContent(html, doc);
   gsap.registerPlugin(Draggable);
   const rowSize = 100; // => container height / number of items
   const container = doc.querySelector('.container');

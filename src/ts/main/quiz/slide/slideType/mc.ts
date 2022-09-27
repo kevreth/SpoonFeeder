@@ -1,7 +1,7 @@
 import { removeListener, isRandom, shuffle } from '../../../utilities';
 import { SetWidths, SetWidthTypeSimple } from '../strategies/setWidths';
 import { showButton } from '../../makeSlides';;
-import { SetValues, Slide } from '../../slide';
+import { SetValues, Slide, createPageContent } from '../../slide';
 import { Result } from '../strategies/result';
 import { CreateHtml, McType } from '../strategies/createHtml';
 import { Evaluate } from '../strategies/evaluate';
@@ -36,7 +36,7 @@ function makeSlides2(txt: string, options: string[], isExercise: boolean, create
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);
-  setValues.createPageContent(html, doc);
+  createPageContent(html, doc);
   options.forEach((option, optionCtr) => {
     addBehavior(doc, option, options.length, optionCtr, setValues);
   });
