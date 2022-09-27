@@ -1,12 +1,7 @@
 import { Slide } from '../../slide';
-import { Result } from '../strategies/result';
 import { CreateHtml } from '../strategies/createHtml';
-import { Evaluate } from '../strategies/evaluate';
-import { MakeSlides, MakeSlidesSortType } from '../strategies/makeSlides';
+import { MakeSlidesSortType } from '../strategies/makeSlides';
 export class Sort extends Slide<Array<string>> {
-  constructor() {
-    super('sort', MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);
-  }
   createHtml = CreateHtml.SORT;
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
