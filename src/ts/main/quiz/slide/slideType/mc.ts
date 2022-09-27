@@ -29,10 +29,10 @@ export class Mc extends Slide<string> {
     const maxWidthStrategy = this.maxWidthStrategy;
     const txt = this.txt;
     const options = this.o;
-    makeSlides2(createHtml, (txt as string), options, setValues, doc, maxWidthStrategy, isExercise);
+    makeSlides2((txt as string), options, isExercise, createHtml, maxWidthStrategy, doc, setValues);
   }
 }
-function makeSlides2(createHtml: McType, txt: string, options: string[], setValues: SetValues<string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, isExercise:boolean) {
+function makeSlides2(txt: string, options: string[], isExercise: boolean, createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>) {
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);

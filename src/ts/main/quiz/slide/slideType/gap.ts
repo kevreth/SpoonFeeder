@@ -34,10 +34,10 @@ export class Gap extends Slide<Array<string>> {
     const maxWidthStrategy = this.maxWidthStrategy;
     const createHtml = this.createHtml;
     if (isRandom()) ans = shuffle(ans);
-    makeSlides2(ans, (txt as string), createHtml, setValues, doc, maxWidthStrategy);
+    makeSlides2((txt as string), ans, createHtml, maxWidthStrategy, doc, setValues);
   }
 }
-function makeSlides2(ans: string[], txt: string, createHtml: GapType, setValues: SetValues<string[]>, doc: Document, maxWidthStrategy: SetWidthTypeComplex) {
+function makeSlides2(txt: string, ans: string[], createHtml: GapType, maxWidthStrategy: SetWidthTypeComplex, doc: Document, setValues: SetValues<string[]>) {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
   const remaining = ans.length.toString();

@@ -26,10 +26,10 @@ export class Imap extends Slide<string> {
     const txt = this.txt;
     const img = this.img;
     const createHtml = this.createHtml;
-    makeSlides2(createHtml, (txt as string), img, setValues, doc);
+    makeSlides2((txt as string), img, createHtml, doc, setValues);
   }
 }
-function makeSlides2(createHtml: ImapType, txt: string, img: string, setValues: SetValues<string>, doc: Document) {
+function makeSlides2(txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) {
   const html = createHtml(txt, img);
   setValues.createPageContent(html, doc);
   const picture = doc.getElementById('imagemap');

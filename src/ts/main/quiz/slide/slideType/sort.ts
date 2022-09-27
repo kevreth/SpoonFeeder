@@ -19,10 +19,10 @@ export class Sort extends Slide<Array<string>> {
     const ans = this.ans;
     const createHtml = this.createHtml;
     const setValues = this.getSetValues();
-    makeSlides2(doc, setValues, ans, txt, createHtml);
+    makeSlides2(txt, ans, createHtml, doc, setValues);
   }
 }
-function makeSlides2(doc: Document, setValues: SetValues<string[]>, ans:string[], txt:AnswerType, createHtml:SortType): void {
+function makeSlides2(txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>): void {
   const html = createHtml((txt as string), ans);
   setValues.createPageContent(html, doc);
   gsap.registerPlugin(Draggable);

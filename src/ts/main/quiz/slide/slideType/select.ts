@@ -25,10 +25,10 @@ export class Select extends Slide<Array<number>> {
     const setValues = this.getSetValues();
     const html = this.createHtml(this.inst, res);
     this.createPageContent(html, doc);
-    makeSlides2(res, doc, ans, setValues);
+    makeSlides2(ans, res, doc, setValues);
   }
 }
-function makeSlides2(res: string[], doc: Document, ans: number[], setValues: SetValues<number[]>) {
+function makeSlides2(ans: number[], res: string[], doc: Document, setValues: SetValues<number[]>) {
   for (let ctr = 0; ctr < res.length; ctr++)
     iter2(ctr + 1, doc);
   const element = doc.getElementById('btn') as HTMLElement;

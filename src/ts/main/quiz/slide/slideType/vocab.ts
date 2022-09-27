@@ -35,11 +35,11 @@ export class Vocab extends Slide<Array<string>> {
     const res = this.res;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    makeSlides2(list, doc, maxWidthStrategy,res,setValues,createHtml);
+    makeSlides2(list, res, createHtml, maxWidthStrategy, doc, setValues);
   }
 }
 //Pass in doc only for unit testing
-function makeSlides2(map: Map<string, string>, doc: Document, maxWidthStrategy: SetWidthTypeSimple, res:string[], setValues:SetValues<string[]>, createHtml:McType): void {
+function makeSlides2(map: Map<string, string>, res: string[], createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>): void {
   const vocabTuples = generateQuestions(map);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
   paging(doc, html_list, vocabTuples, 0, maxWidthStrategy,res,setValues);
