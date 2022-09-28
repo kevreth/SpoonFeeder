@@ -1,8 +1,9 @@
 import { makeButton } from '../utilities';
 import { Json } from '../globals';
 import reloadPage from '../../../composables/startOver';
-import { evaluate } from './evaluate';
+import { Evaluation } from './evaluate';
 import { SaveData } from './slide/saveData';
+const {evaluate} = Evaluation;
 const {getSavedDataArray} = SaveData;
 ///////////////// PHASE 3: make slides
 export function showSlides(doc: Document): void {

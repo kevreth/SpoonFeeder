@@ -1,10 +1,10 @@
-import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 export type EvaluateTypeDefault = () => Evaluation;
 export type EvaluateTypeSimple = (txt: string, res: string, ans: string, result: boolean) => Evaluation;
 export type EvaluateTypeVocab = (txt: string[], res: string[], ans: string[], result: Array<boolean>) => Evaluation;
 export type EvaluateTypeGap = (txt: string, res:string[], ans: string[], result: Array<boolean>) => Evaluation;
 export type EvaluateType = EvaluateTypeSimple | EvaluateTypeVocab | EvaluateTypeGap;
+const { makeRow } = Evaluation;
 export class Evaluate {
   static readonly DEFAULT: EvaluateTypeDefault = function evaluate() {
     return new Evaluation(0, 0, '');
