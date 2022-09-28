@@ -27,22 +27,20 @@ function paging(
 ): void {
   createPageContent(html_list[questionCtr], doc);
   const tuple = vocabTuples[questionCtr];
+  const answer = tuple[1];
   const options = tuple[2];
   options.forEach((option, j) => {
-    addOptionButtonEventListener(j, doc, tuple, res, option, options, questionCtr, html_list, vocabTuples, maxWidthStrategy, setValues);
+    addOptionButtonEventListener(j, doc, answer, res, option, options, questionCtr, html_list, vocabTuples, maxWidthStrategy, setValues);
   });
   maxWidthStrategy(options.length, 'btn', doc);
 }
-function addOptionButtonEventListener(j: number, doc: Document, tuple: [txt: string, ans: string, options: string[]], res: string[], option: string, options: string[], questionCtr: number, html_list: string[], vocabTuples: vocabTuplesType, maxWidthStrategy: SetWidthTypeSimple, setValues: SetValues<string[]>) {
+function addOptionButtonEventListener(j: number, doc: Document, answer: string, res: string[], option: string, options: string[], questionCtr: number, html_list: string[], vocabTuples: vocabTuplesType, maxWidthStrategy: SetWidthTypeSimple, setValues: SetValues<string[]>) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
   button.addEventListener('click', () => {
-    const answer = tuple[1];
+
     res.push(option);
-    let color = 'red';
-    if (option === answer)
-      color = 'green';
-    button.style.backgroundColor = color;
+    setButtonColor(option, answer, button);
     for (let i = 0; i < options.length; i++) {
       const button = doc.getElementById('btn' + i) as HTMLElement;
       removeListener(button);
@@ -55,7 +53,12 @@ function addOptionButtonEventListener(j: number, doc: Document, tuple: [txt: str
     }
   });
 }
-
+function setButtonColor(option: string, answer: string, button: HTMLElement) {
+  let color = 'red';
+  if (option === answer)
+    color = 'green';
+  button.style.backgroundColor = color;
+}
 function addContinueButtonListener(doc: Document, html_list: string[], vocabTuples: vocabTuplesType, questionCtr: number, maxWidthStrategy: SetWidthTypeSimple, res: string[], setValues: SetValues<string[]>) {
   const element = continueButton(doc) as HTMLElement;
   addContinueEventListener(
