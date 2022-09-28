@@ -21,28 +21,6 @@ export function makeSlidesStrategyGap(txt: string, ans: string[], createHtml: Cr
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
-function setBounds() {
-  const id = document.getElementById("#content") as HTMLElement;
-  id.onmousemove = (e) => {
-    if (!this.state.dragging) return;
-    const dialogWidth = document.getElementById("node").clientWidth;
-    const dialogHeight = document.getElementById("node").clientHeight;
-    const x = Math.min(
-      Math.max(0, e.pageX - this.state.rel.x),
-      window.innerWidth - dialogWidth - 20
-    );
-    const y = Math.min(
-      Math.max(0, e.pageY - this.state.rel.y),
-      window.innerHeight - dialogHeight - 20
-    );
-    this.setState({
-      x: x,
-      y: y
-    });
-    e.stopPropagation();
-    e.preventDefault();
-  }
-}
 function fills(ans: string[]): string {
   let fill_accum = '';
   ans.forEach((currentFills, ctr) => {
