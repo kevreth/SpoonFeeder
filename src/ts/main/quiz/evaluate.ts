@@ -6,7 +6,14 @@ export class Evaluation {
     public readonly correct: number,
     public readonly text: string
   ) {}
-  static evaluate(): string {
+  public static makeRow(question: string, response: string, answer: string) {
+    let text = ROW;
+    text = text.replace('%Q%', question);
+    text = text.replace('%A%', response);
+    text = text.replace('%C%', answer);
+    return text;
+  }
+  public static evaluate(): string {
     const TABLE_HEADER =
       '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
       Json.reset();
@@ -28,21 +35,14 @@ export class Evaluation {
     }
     return text;
   }
-  static summary(responseCtr: number, correctCtr: number) {
+  private static summary(responseCtr: number, correctCtr: number) {
     const pctCorrect = Evaluation.percentCorrect(correctCtr, responseCtr);
     return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
   }
-  static percentCorrect(
+  private static percentCorrect(
     correctCtr: number,
     responseCtr: number
   ): string {
     return ((correctCtr / responseCtr) * 100).toFixed(0);
-  }
-  public static makeRow(question: string, response: string, answer: string) {
-    let text = ROW;
-    text = text.replace('%Q%', question);
-    text = text.replace('%A%', response);
-    text = text.replace('%C%', answer);
-    return text;
   }
 }
