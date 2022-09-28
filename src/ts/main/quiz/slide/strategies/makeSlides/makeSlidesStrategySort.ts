@@ -2,7 +2,6 @@ import { SetValues, createPageContent } from '../../../slide';
 import { showButton } from '../../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { AnswerType } from '../result';
 import { SortType } from '../createHtml';
 
 export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>): void {
