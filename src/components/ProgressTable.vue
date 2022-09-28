@@ -119,10 +119,8 @@ const dark = ref(true)
     overflow:auto;
     --scrollbarBG: #CFD8DC;
     --thumbBG: #686a6c;
-    /* width: 85%; */
-  /* height: 60%; */
-  border-radius: 20px;
-  margin: 0;
+    border-radius: 20px;
+    margin: 0;
 }
   .hierarchy {
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);

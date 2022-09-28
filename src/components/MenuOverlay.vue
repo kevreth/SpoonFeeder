@@ -8,7 +8,8 @@
         <TrashBtn @click="startOver"/>
         <OverlayCloseBtn @click="handleOverlay"/>
       </div>
-      <div class="overlayChild2 fixed-center">
+
+      <div class="hierarchyChild fixed-center">
         <ProgressTable style="cursor:auto"/>
       </div>
     </div>
@@ -42,7 +43,6 @@ function startOver() {
 }
 .overlayParent {
   position: absolute;
-  /* display: block; */
   width: 600px;
   top: 50%;
   left: 50%;
@@ -50,15 +50,13 @@ function startOver() {
 }
 .buttonChild {
   position: relative;
-  /* display: inline-block; */
-  /* top: 65px; */
   left: 220px;
   min-height: 100vh;
   padding-top: 10%;
   margin: 0;
   height: 100px;
 }
-.overlayChild2 {
+.hierarchyChild {
   background-color: #3a3a3a;
   height: 60%;
   border-radius: 20px;
