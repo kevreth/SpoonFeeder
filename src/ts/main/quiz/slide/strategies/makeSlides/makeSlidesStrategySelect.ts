@@ -3,13 +3,13 @@ import { showButton } from '../../../makeSlides';
 import {createPageContent, SetValues} from '../../../slide';
 import {CreateHtmlTypeSelect} from 'src/ts/main/quiz/slide/strategies/createHtml';
 
-export function makeSlidesStrategySelect(inst: string, ans: number[], res: string[], createHtml: CreateHtmlTypeSelect, doc: Document, setValues: SetValues<number[]>) {
-  const html = createHtml(inst, res);
+export function makeSlidesStrategySelect(inst: string, ans: number[], txt: string[], createHtml: CreateHtmlTypeSelect, doc: Document, setValues: SetValues<number[]>) {
+  const html = createHtml(inst, txt);
   createPageContent(html, doc);
-  for (let ctr = 0; ctr < res.length; ctr++)
+  for (let ctr = 0; ctr < txt.length; ctr++)
     iter2(ctr + 1, doc);
   const element = doc.getElementById('btn') as HTMLElement;
-  const numWords = res.length;
+  const numWords = txt.length;
   element.addEventListener('click', () => {
     const res = evaluate2(element, numWords, ans, doc);
     setValues.setRes(res);
