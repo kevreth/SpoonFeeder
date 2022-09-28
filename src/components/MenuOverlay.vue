@@ -52,7 +52,7 @@ function startOver() {
   position: relative;
   /* display: inline-block; */
   /* top: 65px; */
-  left: 200px;
+  left: 220px;
   min-height: 100vh;
   padding-top: 10%;
   margin: 0;
