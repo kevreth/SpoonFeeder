@@ -38,7 +38,6 @@ function addOptionButtonEventListener(j: number, doc: Document, answer: string, 
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
   button.addEventListener('click', () => {
-
     res.push(option);
     setButtonColor(option, answer, button);
     for (let i = 0; i < options.length; i++) {
