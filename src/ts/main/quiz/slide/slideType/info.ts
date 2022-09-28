@@ -1,9 +1,6 @@
-import { Slide, SlideInterface} from '../../slide';
+import { Slide } from '../../slide';
 import { CreateHtmlTypeInfo } from '../strategies/createHtml';
 import { MakeSlidesInfoType } from '../strategies/makeSlides';
-export interface info extends SlideInterface {
-  txt: string;
-}
 export class Info extends Slide<string> {
   processJson(json: Info): void {
     this.txt = json.txt;
