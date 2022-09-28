@@ -58,7 +58,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   resultType: ResultType;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy:EvaluateType;
-  txt!: T;
+  txt!: AnswerType;
   ans!: T;
   res!: T;
   pageTemplate = `
@@ -75,9 +75,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     this.res=res;
   }
   evaluate(): Evaluation {
-    const txt = (this.txt as string & string[]);
-    const res = (this.res as string & string[]);
-    const ans = (this.ans as string & string[]);
+    const txt = this.txt;
+    const res = this.res;
+    const ans = this.ans;
     const result = (this.result() as boolean & boolean[]);
     return this.evaluateStrategy(txt, ans, res, result);
   }
