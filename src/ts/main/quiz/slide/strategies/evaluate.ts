@@ -2,8 +2,8 @@ import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
 export type DefaultType = () => Evaluation;
 export type SimpleType = (txt: string, res: string, ans: string, result: boolean) => Evaluation;
-export type VocabType = (txt: string[], ans: string[], res: string[], result: Array<boolean>) => Evaluation;
-export type GapType = (ans: string, res:string[], txt: string[], result: Array<boolean>) => Evaluation;
+export type VocabType = (txt: string[], res: string[], ans: string[], result: Array<boolean>) => Evaluation;
+export type GapType = (txt: string, res:string[], ans: string[], result: Array<boolean>) => Evaluation;
 export type EvaluateType = SimpleType | VocabType | GapType;
 export class Evaluate {
   static readonly DEFAULT: DefaultType = function evaluate() {
