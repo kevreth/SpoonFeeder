@@ -1,13 +1,13 @@
 import { showButton } from '../../../makeSlides';
 import { SetValues, createPageContent } from '../../../slide';
 import { SetWidthTypeComplex } from '../setWidths';
-import { GapType } from '../createHtml';
+import { CreateHtmlTypeGap } from '../createHtml';
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
-export function makeSlidesStrategyGap(txt: string, ans: string[], createHtml: GapType, maxWidthStrategy: SetWidthTypeComplex, doc: Document, setValues: SetValues<string[]>): void {
+export function makeSlidesStrategyGap(txt: string, ans: string[], createHtml: CreateHtmlTypeGap, maxWidthStrategy: SetWidthTypeComplex, doc: Document, setValues: SetValues<string[]>): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
   const remaining = ans.length.toString();

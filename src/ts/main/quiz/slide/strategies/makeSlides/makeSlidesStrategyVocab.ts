@@ -2,10 +2,10 @@ import { SetWidthTypeSimple } from '../setWidths';
 import { SetValues, createPageContent } from '../../../slide';
 import { continueButton, showButton } from '../../../makeSlides';
 import { removeListener, isRandom, shuffle } from '../../../../utilities';
-import { McType } from '../createHtml';
+import { CreateHtmlTypeMc } from '../createHtml';
 import { vocabTuplesType } from '../../slideType/vocab';
 export const CHOICES = 4;
-export function makeSlidesStrategyVocab(map: Map<string, string>, res: string[], createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>): void {
+export function makeSlidesStrategyVocab(map: Map<string, string>, res: string[], createHtml: CreateHtmlTypeMc, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>): void {
   const vocabTuples = generateQuestions(map);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
   paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res, setValues);
@@ -70,7 +70,7 @@ function addContinueEventListener(
     paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res, setValues);
   });
 }
-function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: McType): string[] {
+function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: CreateHtmlTypeMc): string[] {
   const retval: string[] = [];
   for (const tuple of vocabTuples) {
     const question = tuple[0];

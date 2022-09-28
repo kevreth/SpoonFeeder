@@ -2,9 +2,9 @@ import { removeListener, isRandom, shuffle } from '../../../../utilities';
 import { SetWidthTypeSimple } from '../setWidths';
 import { showButton } from '../../../makeSlides';
 import { SetValues, createPageContent } from '../../../slide';
-import { McType } from '../createHtml';
+import { CreateHtmlTypeMc } from '../createHtml';
 
-export function makeSlidesStrategyMc(txt: string, options: string[], isExercise: boolean, createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>) {
+export function makeSlidesStrategyMc(txt: string, options: string[], isExercise: boolean, createHtml: CreateHtmlTypeMc, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>) {
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag)
     options = shuffle(options);

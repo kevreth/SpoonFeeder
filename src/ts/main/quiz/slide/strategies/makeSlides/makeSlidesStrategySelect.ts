@@ -1,9 +1,9 @@
 import { difference, intersection, removeListener } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import {createPageContent, SetValues} from '../../../slide';
-import {SelectType} from 'src/ts/main/quiz/slide/strategies/createHtml';
+import {CreateHtmlTypeSelect} from 'src/ts/main/quiz/slide/strategies/createHtml';
 
-export function makeSlidesStrategySelect(inst: string, ans: number[], res: string[], createHtml: SelectType, doc: Document, setValues: SetValues<number[]>) {
+export function makeSlidesStrategySelect(inst: string, ans: number[], res: string[], createHtml: CreateHtmlTypeSelect, doc: Document, setValues: SetValues<number[]>) {
   const html = createHtml(inst, res);
   createPageContent(html, doc);
   for (let ctr = 0; ctr < res.length; ctr++)

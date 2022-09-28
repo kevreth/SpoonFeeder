@@ -1,9 +1,9 @@
 import { createPageContent, SetValues } from '../../../slide';
 import { showSlides } from '../../../makeSlides';
 import { makeButton } from '../../../../utilities';
-import { InfoType } from '../createHtml';
+import { CreateHtmlTypeInfo } from '../createHtml';
 
-export function makeSlidesStrategyInfo(txt: string, createHtml: InfoType, doc: Document, setValues: SetValues<string>) {
+export function makeSlidesStrategyInfo(txt: string, createHtml: CreateHtmlTypeInfo, doc: Document, setValues: SetValues<string>) {
   const html = createHtml(txt);
   createPageContent(html, doc);
   setValues.saveData();

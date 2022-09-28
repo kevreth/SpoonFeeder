@@ -1,22 +1,22 @@
 import { makeRow } from '../../evaluate';
 import { Evaluation } from '../../evaluate';
-export type DefaultType = () => Evaluation;
-export type SimpleType = (txt: string, res: string, ans: string, result: boolean) => Evaluation;
-export type VocabType = (txt: string[], res: string[], ans: string[], result: Array<boolean>) => Evaluation;
-export type GapType = (txt: string, res:string[], ans: string[], result: Array<boolean>) => Evaluation;
-export type EvaluateType = SimpleType | VocabType | GapType;
+export type EvaluateTypeDefault = () => Evaluation;
+export type EvaluateTypeSimple = (txt: string, res: string, ans: string, result: boolean) => Evaluation;
+export type EvaluateTypeVocab = (txt: string[], res: string[], ans: string[], result: Array<boolean>) => Evaluation;
+export type EvaluateTypeGap = (txt: string, res:string[], ans: string[], result: Array<boolean>) => Evaluation;
+export type EvaluateType = EvaluateTypeSimple | EvaluateTypeVocab | EvaluateTypeGap;
 export class Evaluate {
-  static readonly DEFAULT: DefaultType = function evaluate() {
+  static readonly DEFAULT: EvaluateTypeDefault = function evaluate() {
     return new Evaluation(0, 0, '');
   }
   //Used by IMAP, MC, SELECT, SORT
-  static readonly SIMPLE: SimpleType = function evaluate(txt, res, ans, result) {
+  static readonly SIMPLE: EvaluateTypeSimple = function evaluate(txt, res, ans, result) {
     let correctCtr = 0;
     const text = makeRow(txt, res, ans);
     if (result) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
-  static readonly VOCAB: VocabType = function evaluate(txt, res, ans, result) {
+  static readonly VOCAB: EvaluateTypeVocab = function evaluate(txt, res, ans, result) {
     const rows = new Array<string>();
     txt.forEach((txt1, idx) => {
       const ans1 = ans[idx];
@@ -28,7 +28,7 @@ export class Evaluate {
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(ans.length, correctCtr, row_accum);
   }
-  static readonly GAP: GapType = function evaluate(txt, res, ans, result) {
+  static readonly GAP: EvaluateTypeGap = function evaluate(txt, res, ans, result) {
     const rows = new Array<string>();
     const length = ans.length;
     for (let i = 0; i < length; i++) {
