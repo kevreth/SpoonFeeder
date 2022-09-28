@@ -1,5 +1,5 @@
 import type { Evaluation } from './evaluate';
-import type { GetScore } from './course';
+
 import { ResultReturnType, AnswerType, ResultType } from './slide/strategies/result';
 import { append, empty } from '../utilities';
 import { saveData } from '../quiz/slide/saveData';
@@ -15,8 +15,7 @@ import { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
 RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
-export interface SlideInterface extends GetScore {
-  // type: string;
+export interface SlideInterface/* extends GetScore*/ {
   txt: AnswerType;
   isExercise: boolean;
   pageTemplate: string;
@@ -25,20 +24,13 @@ export interface SlideInterface extends GetScore {
   processJson(json: SlideInterface): void;
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;
-  // response():Responses;
   //Evaluate user responses at the end of quiz
   //evaluation during quiz is NOT here
   evaluate(): Evaluation;
   setResults(res:AnswerType):void;
   result(): ResultReturnType;
-  get questions(): number;
-  get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  // createHtml: CreateHtmlTypeIntersection;
-  // resultType: ResultType;
-  // makeSlidesStrategy: MakeSlidesType;
-  // evaluateStrategy:EvaluateType;
   txt!: AnswerType;
   ans!: T;
   res!: T;
@@ -55,29 +47,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly makeSlidesStrategy:MakeSlidesType,
     public readonly evaluateStrategy:EvaluateType,
     public readonly resultType: ResultType
-  ) {
-    // this.evaluateStrategy = evaluateStrategy;
-    // this.resultType = result;
-    // this.makeSlidesStrategy = makeSlidesStrategy;
-    // this.createHtml = createHtml;
-    // this.type=type;
-  }
-  // type: string;
-  //reset in every child class
-  private _score = 0;
-  private _questions = 0;
-  public get questions(): number {
-    return this._questions;
-  }
-  public addToQuestions(value:number): void {
-    this._questions += value;
-  }
-  public addToScore(score:number): void {
-    this._score += score;
-  }
-  public get score(): number {
-    return this._score;
-  }
+  ) {}
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file
@@ -99,16 +69,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   result(): ResultReturnType {
     return this.resultType(this.ans,this.res);
   }
-  //not in use yet; used to calculate scores for divisions
-  getScore(): number {
-    const result = this.result();
-    let count = 0;
-    if(Array.isArray(result))
-      count = result.filter(value => value === true).length;
-    else
-      count = result ? 1 : 0;
-    return count;
-  }
   setRes(res:T):void {
     this.res=res;
   }
@@ -116,7 +76,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     const saveData = () => this.saveData();
     const result = (): ResultReturnType => this.result();
     const setRes = (res:T): void => this.setRes(res);
-    // const createPageContent = (html: string, doc: Document): void => createPageContent(html,doc);
     return new SetValues<T>(saveData, result, setRes/*, createPageContent*/);
   }
 }
@@ -125,17 +84,14 @@ export class SetValues<T> {
     saveData: () => void,
     result: () => ResultReturnType,
     setRes: (res:T) => void,
-    // createPageContent: (html: string, doc: Document) => void
   ) {
     this.saveData = saveData;
     this.result = result;
     this.setRes = setRes;
-    // this.createPageContent = createPageContent;
   }
   public saveData: () => void;
   public result: () => ResultReturnType;
   public setRes: (res:T) => void;
-  // public createPageContent: (html: string, doc: Document) => void
 }
 export function createPageContent(html: string, doc: Document): void {
   const element = doc.getElementById('btn') as HTMLElement | null;

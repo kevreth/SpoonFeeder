@@ -39,27 +39,4 @@ function addNewInfoSlide(text: string, slides: SlideInterface[]) {
   slide.txt = text;
   slides.push(slide);
 }
-// export function summary(course: Course):Array<string> {
-//   const lines = new Array<string>();
-//   course.children.forEach((unit) => {
-//     unit.children.forEach((lesson) => {
-//       lesson.children.forEach((module) => {
-//         module.children.forEach((exercise) => {
-//           const txt = exercise.txt;
-//           const slide = Globals.JSON.getSlideByTxt(txt);
-//           const answer = slide?.result();
-//           let count = 0;
-//           if(Array.isArray(answer))
-//             count = answer.filter(value => value === true).length;
-//           else
-//             count = answer ? 1 : 0;
-//           module.addToScore(count);
-//           lesson.addToScore(count);
-//           unit.addToScore(count);
-//           course.addToScore(count);
-//         }); //exercise
-//       }); //lesson
-//     }); //unit
-//   }); //course
-//   return lines;
-// }
+
