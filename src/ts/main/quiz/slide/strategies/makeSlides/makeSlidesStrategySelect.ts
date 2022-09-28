@@ -1,7 +1,8 @@
 import { difference, intersection, removeListener } from '../../../../utilities';
-import { showButton } from '../../../makeSlides';
+import { MakeSlides } from '../../../makeSlides';
 import {createPageContent, SetValues} from '../../../slide';
 import {CreateHtmlTypeSelect} from 'src/ts/main/quiz/slide/strategies/createHtml';
+const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySelect(inst: string, ans: number[], txt: string[], createHtml: CreateHtmlTypeSelect, doc: Document, setValues: SetValues<number[]>) {
   const html = createHtml(inst, txt);

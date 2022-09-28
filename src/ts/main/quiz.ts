@@ -3,7 +3,7 @@ import { SlideFactory } from './quiz/slide/slideFactory';
 import { getYaml } from './utilities';
 import { Course } from './quiz/course';
 import { Json } from './globals';
-import { showSlides } from './quiz/makeSlides';
+import { MakeSlides } from './quiz/makeSlides';
 import { ProcessJson } from './quiz/processJson';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
@@ -19,7 +19,7 @@ export class Quiz {
     getYaml(yaml, (course: Course) => {
       const slides = processJson(course);
       Json.set(Quiz.processSlides(slides));
-      showSlides(doc);
+      MakeSlides.showSlides(doc);
     });
   }
   //////////////// Phase 2: process Json
