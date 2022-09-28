@@ -3,7 +3,7 @@ import { CreateHtmlTypeInfo } from '../strategies/createHtml';
 import { MakeSlidesInfoType } from '../strategies/makeSlides';
 export class Info extends Slide<string> {
   processJson(json: Info): void {
-    this.txt = json.txt;
+    ({txt:this.txt} = json);
   }
   makeSlides(doc: Document): void {
     const txt = (this.txt as string);

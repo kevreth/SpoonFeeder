@@ -7,7 +7,6 @@ export class Mc extends Slide<string> {
     ({
       txt: this.txt,
       o: this.o,
-      ans: this.ans,
       isExercise: this.isExercise,
     } = json);
     this.ans = this.o[0];

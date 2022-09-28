@@ -11,7 +11,11 @@ polyfill({
 });
 export class Gap extends Slide<Array<string>> {
   processJson(json: Gap): void {
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+    ({
+      txt: this.txt,
+      ans: this.ans,
+      isExercise: this.isExercise
+    } = json);
   }
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
