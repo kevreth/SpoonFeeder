@@ -1,6 +1,6 @@
 <template>
   <q-hierarchy
-    class="hierarchy fixed-center"      
+    class="hierarchy "      
     dense
     :columns="columns"
     :data="data"
@@ -114,11 +114,13 @@ const dark = ref(true)
 
 <style>
   .hierarchy {
-    position: fixed;
+    display: inline-block;
     max-height: 100vh; 
     overflow:auto;
     --scrollbarBG: #CFD8DC;
     --thumbBG: #686a6c;
+    border-radius: 20px;
+    margin: 0;
 }
   .hierarchy {
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
