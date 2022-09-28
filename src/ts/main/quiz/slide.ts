@@ -2,7 +2,7 @@ import type { Evaluation } from './evaluate';
 
 import { ResultReturnType, AnswerType, ResultType } from './slide/strategies/result';
 import { append, empty } from '../utilities';
-import { saveData } from '../quiz/slide/saveData';
+import { SaveData } from '../quiz/slide/saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
 import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
@@ -12,6 +12,7 @@ import { EvaluateType } from './slide/strategies/evaluate';
 import { MakeSlidesType } from './slide/strategies/makeSlides';
 import hljs from 'highlight.js';
 import { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
+const {saveData} = SaveData;
 RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
