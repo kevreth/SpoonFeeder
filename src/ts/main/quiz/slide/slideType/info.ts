@@ -5,12 +5,11 @@ export interface info extends SlideInterface {
   txt: string;
 }
 export class Info extends Slide<string> {
-  txt = '';
   processJson(json: Info): void {
     this.txt = json.txt;
   }
   makeSlides(doc: Document): void {
-    const txt = this.txt;
+    const txt = (this.txt as string);
     const setValues = this.getSetValues();
     const createHtml =(this.createHtml as CreateHtmlTypeInfo);
     const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesInfoType);
