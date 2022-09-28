@@ -2,11 +2,6 @@ import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
 import { isRandom, shuffleMap } from '../../../utilities';
 import { MakeSlidesVocabType } from '../strategies/makeSlides';
-export type vocabTuplesType = [
-  txt: string,
-  ans: string,
-  options: Array<string>
-][];
 export class Vocab extends Slide<Array<string>> {
   list = new Map<string,string>();
   res = new Array<string>();

@@ -3,8 +3,12 @@ import { SetValues, createPageContent } from '../../../slide';
 import { continueButton, showButton } from '../../../makeSlides';
 import { removeListener, isRandom, shuffle } from '../../../../utilities';
 import { CreateHtmlTypeMc } from '../createHtml';
-import { vocabTuplesType } from '../../slideType/vocab';
 export const CHOICES = 4;
+export type vocabTuplesType = [
+  txt: string,
+  ans: string,
+  options: Array<string>
+][];
 export function makeSlidesStrategyVocab(map: Map<string, string>, res: string[], createHtml: CreateHtmlTypeMc, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>): void {
   const vocabTuples = generateQuestions(map);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
