@@ -11,7 +11,7 @@ import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 import { EvaluateType } from './slide/strategies/evaluate';
 import { MakeSlidesType } from './slide/strategies/makeSlides';
 import hljs from 'highlight.js';
-import { CreateHtmlType } from './slide/strategies/createHtml';
+import { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
 RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
@@ -35,7 +35,7 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  createHtml: CreateHtmlType;
+  createHtml: CreateHtmlTypeIntersection;
   resultType: ResultType;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy:EvaluateType;
@@ -49,7 +49,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
         </div>
     `;
   isExercise = false;
-  constructor(type:string, createHtml: CreateHtmlType, makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType) {
+  constructor(type:string, createHtml: CreateHtmlTypeIntersection, makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType) {
     this.evaluateStrategy = evaluateStrategy;
     this.resultType = result;
     this.makeSlidesStrategy = makeSlidesStrategy;

@@ -1,9 +1,7 @@
 import { Slide } from '../../slide';
-import { CreateHtml } from '../strategies/createHtml';
 import { MakeSlidesImapType } from '../strategies/makeSlides';
 export class Imap extends Slide<string> {
   img = '';
-  createHtml = CreateHtml.IMAP;
   processJson(json: Imap): void {
     ({
       txt: this.txt,

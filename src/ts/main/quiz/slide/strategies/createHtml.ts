@@ -5,7 +5,9 @@ export type CreateHtmlTypeImap = (inst: string, img: string) => string;
 export type CreateHtmlTypeMc = (question: string, options: string[]) => string
 export type CreateHtmlTypeSelect = (instructions: string, res: string[]) => string;
 export type CreateHtmlTypeSort = (inst: string, ans: string[]) => string;
-export type CreateHtmlType = CreateHtmlTypeGap | CreateHtmlTypeImap | CreateHtmlTypeMc | CreateHtmlTypeSelect | CreateHtmlTypeSort;
+export type CreateHtmlTypeUnion = CreateHtmlTypeGap | CreateHtmlTypeImap | CreateHtmlTypeMc | CreateHtmlTypeSelect | CreateHtmlTypeSort;
+export type CreateHtmlTypeIntersection = CreateHtmlTypeGap & CreateHtmlTypeImap & CreateHtmlTypeMc & CreateHtmlTypeSelect & CreateHtmlTypeSort;
+
 export class CreateHtml {
   static readonly DEFAULT = function() {return '';}
   static readonly INFO: CreateHtmlTypeInfo = function(txt:string) {

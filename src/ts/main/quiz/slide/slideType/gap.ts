@@ -5,13 +5,11 @@ import { shuffle, isRandom } from '../../../utilities';
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import { SetWidths } from '../strategies/setWidths';
-import { CreateHtml } from '../strategies/createHtml';
 import { MakeSlidesGapType } from '../strategies/makeSlides';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide<Array<string>> {
-  createHtml = CreateHtml.GAP;
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }

@@ -1,10 +1,8 @@
 import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
-import { CreateHtml } from '../strategies/createHtml';
 import { MakeSlidesMcType } from '../strategies/makeSlides';
 export class Mc extends Slide<string> {
   o: string[] = [];
-  createHtml = CreateHtml.MC;
   processJson(json: Mc): void {
     ({
       txt: this.txt,
