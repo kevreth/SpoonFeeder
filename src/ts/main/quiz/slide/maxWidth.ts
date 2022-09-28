@@ -6,7 +6,7 @@ export class MaxWidth {
     }
     return ids;
   }
-  static getNumberedElementsAsList(ids: Array<string>, doc: Document) {
+  public static getNumberedElementsAsList(ids: Array<string>, doc: Document) {
     const elements: Array<HTMLElement> = new Array<HTMLElement>();
     ids.forEach((id) => {
       const fill = doc.getElementById(id) as HTMLElement;
@@ -14,7 +14,7 @@ export class MaxWidth {
     });
     return elements;
   }
-  static getMaxWidth(elements: HTMLElement[]) {
+  public static getMaxWidth(elements: HTMLElement[]) {
     let maxWidth = 0;
     elements.forEach((element) => {
       const width = element.offsetWidth;
@@ -23,7 +23,7 @@ export class MaxWidth {
     });
     return maxWidth;
   }
-  static setWidths(ids: string[], doc: Document, maxWidth: number) {
+  public static setWidths(ids: string[], doc: Document, maxWidth: number) {
     ids.forEach((id) => {
       const element = doc.getElementById(id) as HTMLElement;
       element.style.width = `${maxWidth}px`;

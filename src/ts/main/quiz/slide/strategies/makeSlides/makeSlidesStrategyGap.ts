@@ -1,7 +1,8 @@
 import { MakeSlides } from '../../../makeSlides';
-import { SetValues, createPageContent } from '../../../slide';
+import { SetValues, Slide } from '../../../slide';
 import { SetWidthTypeComplex } from '../setWidths';
 import { CreateHtmlTypeGap } from '../createHtml';
+const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 //===the main divs are
 //fills: the strings to drag into the gaps

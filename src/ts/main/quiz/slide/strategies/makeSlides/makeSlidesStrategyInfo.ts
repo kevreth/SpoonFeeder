@@ -1,7 +1,8 @@
-import { createPageContent, SetValues } from '../../../slide';
+import { SetValues, Slide } from '../../../slide';
 import { MakeSlides } from '../../../makeSlides';
 import { makeButton } from '../../../../utilities';
 import { CreateHtmlTypeInfo } from '../createHtml';
+const { createPageContent } = Slide;
 const { showSlides } = MakeSlides;
 
 export function makeSlidesStrategyInfo(txt: string, createHtml: CreateHtmlTypeInfo, doc: Document, setValues: SetValues<string>) {

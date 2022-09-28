@@ -1,12 +1,11 @@
 import { AnswerType } from './strategies/result';
 import {extend} from 'src/ts/main/utilities';
-
 export class SaveData {;
   constructor(
     public readonly txt:AnswerType,
     public readonly result:AnswerType
   ) {}
-  static getSavedDataArray(): Array<SaveData> {
+  public static getSavedDataArray(): Array<SaveData> {
     const data = localStorage.getItem('savedata') as string;
     const data1 = JSON.parse(data);
     const arr: Array<SaveData> = extend<Array<SaveData>>(
@@ -15,7 +14,7 @@ export class SaveData {;
     );
     return arr;
   }
-  static saveData(txt: AnswerType, res: AnswerType) {
+  public static saveData(txt: AnswerType, res: AnswerType) {
     if (txt !== '') {
       const save = new SaveData(txt, res);
       const arr = SaveData.getSavedDataArray();

@@ -4,14 +4,14 @@ export type SetWidthTypeComplex = (num: number, str1: string, str2: string, doc:
 const { getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } = MaxWidth;
 export class SetWidths {
   //sets the width on the same set of elements that whose width was measured
-  static readonly SIMPLE: SetWidthTypeSimple = function(num:number, str:string, doc: Document) {
+  public static readonly SIMPLE: SetWidthTypeSimple = function(num:number, str:string, doc: Document) {
     const ids:Array<string> = getIdsAsArray(num,str);
     const elements:Array<HTMLElement> = getNumberedElementsAsList(ids,doc);
     const maxWidth = getMaxWidth(elements);
     setWidths(ids, doc, maxWidth);
   }
   //sets the width on a different set of elements than whose width was measured
-  static readonly TARGETED: SetWidthTypeComplex = function(num: number, str: string, str2: string, doc: Document) {
+  public static readonly TARGETED: SetWidthTypeComplex = function(num: number, str: string, str2: string, doc: Document) {
     const ids: Array<string> = getIdsAsArray(num, str);
     const elements: Array<HTMLElement> = getNumberedElementsAsList(ids, doc);
     const maxWidth = getMaxWidth(elements);

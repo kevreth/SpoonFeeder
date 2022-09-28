@@ -1,8 +1,9 @@
-import { SetValues, createPageContent } from '../../../slide';
+import { SetValues, Slide } from '../../../slide';
 import { MakeSlides } from '../../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { CreateHtmlTypeSort } from '../createHtml';
+const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: CreateHtmlTypeSort, doc: Document, setValues: SetValues<string[]>): void {

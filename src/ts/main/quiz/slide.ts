@@ -80,6 +80,29 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     const setRes = (res:T): void => this.setRes(res);
     return new SetValues<T>(saveData, result, setRes);
   }
+  public static createPageContent(html: string, doc: Document): void {
+    const element = doc.getElementById('btn') as HTMLElement | null;
+    if (element != null) element.remove(); // Removes the div with the 'div-02' id
+    empty('#content');
+    append('#content', html);
+    Slide.postRendering(document);
+  }
+  private static postRendering(doc: Document) {
+    hljs.highlightAll();
+    const html = mathjax.document(doc, {
+      InputJax: new TeX({
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)'],
+        ],
+        packages: ['base', 'ams', 'noundefined', 'newcommand', 'boldsymbol'],
+      }),
+      OutputJax: new CHTML({
+        //   fontURL: 'https://cdn.rawgit.com/mathjax/mathjax-v3/3.0.0-beta.1/mathjax2/css'
+      }),
+    });
+    html.findMath().compile().getMetrics().typeset().updateDocument();
+  }
 }
 export class SetValues<T> {
   constructor (
@@ -88,26 +111,4 @@ export class SetValues<T> {
     public readonly setRes: (res:T) => void,
   ) {}
 }
-export function createPageContent(html: string, doc: Document): void {
-  const element = doc.getElementById('btn') as HTMLElement | null;
-  if (element != null) element.remove(); // Removes the div with the 'div-02' id
-  empty('#content');
-  append('#content', html);
-  postRendering(document);
-}
-function postRendering(doc: Document) {
-  hljs.highlightAll();
-  const html = mathjax.document(doc, {
-    InputJax: new TeX({
-      inlineMath: [
-        ['$', '$'],
-        ['\\(', '\\)'],
-      ],
-      packages: ['base', 'ams', 'noundefined', 'newcommand', 'boldsymbol'],
-    }),
-    OutputJax: new CHTML({
-      //   fontURL: 'https://cdn.rawgit.com/mathjax/mathjax-v3/3.0.0-beta.1/mathjax2/css'
-    }),
-  });
-  html.findMath().compile().getMetrics().typeset().updateDocument();
-}
+

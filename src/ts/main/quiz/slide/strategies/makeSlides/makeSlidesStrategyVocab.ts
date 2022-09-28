@@ -1,8 +1,9 @@
 import { SetWidthTypeSimple } from '../setWidths';
-import { SetValues, createPageContent } from '../../../slide';
+import { SetValues, Slide } from '../../../slide';
 import { removeListener, isRandom, shuffle } from '../../../../utilities';
 import { CreateHtmlTypeMc } from '../createHtml';
 import { MakeSlides } from '../../../makeSlides';
+const { createPageContent } = Slide;
 const { continueButton, showButton } = MakeSlides;
 export const CHOICES = 4;
 export type vocabTuplesType = [

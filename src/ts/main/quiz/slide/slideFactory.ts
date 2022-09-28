@@ -12,15 +12,15 @@ import { Evaluate } from './strategies/evaluate';
 import { Result } from './strategies/result';
 import { CreateHtml, CreateHtmlTypeIntersection } from './strategies/createHtml';
 export class SlideFactory {
-  static readonly BOOL = new SlideFactory('bool');
-  static readonly GAP = new SlideFactory('gap');
-  static readonly IMAP = new SlideFactory('imap');
-  static readonly INFO = new SlideFactory('info');
-  static readonly MC = new SlideFactory('mc');
-  static readonly SELECT = new SlideFactory('select');
-  static readonly SORT = new SlideFactory('sort');
-  static readonly VOCAB = new SlideFactory('vocab');
-  static get values(): SlideFactory[] {
+  public static readonly BOOL = new SlideFactory('bool');
+  public static readonly GAP = new SlideFactory('gap');
+  public static readonly IMAP = new SlideFactory('imap');
+  public static readonly INFO = new SlideFactory('info');
+  public static readonly MC = new SlideFactory('mc');
+  public static readonly SELECT = new SlideFactory('select');
+  public static readonly SORT = new SlideFactory('sort');
+  public static readonly VOCAB = new SlideFactory('vocab');
+  public static get values(): SlideFactory[] {
     return [
       this.BOOL,
       this.GAP,

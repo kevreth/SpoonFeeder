@@ -6,17 +6,17 @@ export type EvaluateTypeGap = (txt: string, res:string[], ans: string[], result:
 export type EvaluateType = EvaluateTypeSimple | EvaluateTypeVocab | EvaluateTypeGap;
 const { makeRow } = Evaluation;
 export class Evaluate {
-  static readonly DEFAULT: EvaluateTypeDefault = function evaluate() {
+  public static readonly DEFAULT: EvaluateTypeDefault = function evaluate() {
     return new Evaluation(0, 0, '');
   }
   //Used by IMAP, MC, SELECT, SORT
-  static readonly SIMPLE: EvaluateTypeSimple = function evaluate(txt, res, ans, result) {
+  public static readonly SIMPLE: EvaluateTypeSimple = function evaluate(txt, res, ans, result) {
     let correctCtr = 0;
     const text = makeRow(txt, res, ans);
     if (result) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
-  static readonly VOCAB: EvaluateTypeVocab = function evaluate(txt, res, ans, result) {
+  public static readonly VOCAB: EvaluateTypeVocab = function evaluate(txt, res, ans, result) {
     const rows = new Array<string>();
     txt.forEach((txt1, idx) => {
       const ans1 = ans[idx];
@@ -28,7 +28,7 @@ export class Evaluate {
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(ans.length, correctCtr, row_accum);
   }
-  static readonly GAP: EvaluateTypeGap = function evaluate(txt, res, ans, result) {
+  public static readonly GAP: EvaluateTypeGap = function evaluate(txt, res, ans, result) {
     const rows = new Array<string>();
     const length = ans.length;
     for (let i = 0; i < length; i++) {
