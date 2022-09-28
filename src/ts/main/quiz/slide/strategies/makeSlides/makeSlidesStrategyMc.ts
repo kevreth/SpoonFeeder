@@ -26,15 +26,22 @@ function addBehavior(
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
-    for (let i = 0; i < length; i++)
-      removeListener(doc.getElementById('btn' + i) as HTMLElement);
-    const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
-    let color = 'red';
-    setValues.setRes(option);
-    if (setValues.result())
-      color = 'green';
-    optionButton.style.backgroundColor = color;
-    setValues.saveData();
-    showButton(doc);
+    optionButtonEventListener(length, doc, setValues, option, optionCtr);
   });
 }
+function optionButtonEventListener(length: number, doc: Document, setValues: SetValues<string>, option: string, optionCtr: number) {
+  for (let i = 0; i < length; i++)
+    removeListener(doc.getElementById('btn' + i) as HTMLElement);
+  setValues.setRes(option);
+  setValues.saveData();
+  decorateOptionButton(setValues, doc, optionCtr);
+  showButton(doc);
+}
+function decorateOptionButton(setValues: SetValues<string>, doc: Document, optionCtr: number) {
+  const result = setValues.result();
+  const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
+  let color = 'red';
+  if (result) color = 'green';
+  optionButton.style.backgroundColor = color;
+}
+
