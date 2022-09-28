@@ -12,7 +12,8 @@ import { EvaluateType } from './slide/strategies/evaluate';
 import { MakeSlidesType } from './slide/strategies/makeSlides';
 import hljs from 'highlight.js';
 RegisterHTMLHandler(browserAdaptor());
-export type AnswerTypeIntersection = string & string[];
+type AnswerTypeIntersection = string & string[];
+type ResultTypeIntersection = boolean & boolean[];
 export interface SlideInterface extends GetScore {
   type: string;
   txt: AnswerType;
@@ -79,7 +80,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     const txt = (this.txt as AnswerTypeIntersection);
     const res = (this.res as AnswerTypeIntersection);
     const ans = (this.ans as AnswerTypeIntersection);
-    const result = (this.result() as boolean & boolean[]);
+      const result = (this.result() as ResultTypeIntersection);
     return this.evaluateStrategy(txt, ans, res, result);
   }
   saveData() {
