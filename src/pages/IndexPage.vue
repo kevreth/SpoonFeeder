@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { slides } from '../ts/main/quiz';
+import { Quiz } from '../ts/main/quiz';
 import '../css/style1.css';
 sessionStorage.clear();
 
@@ -17,7 +17,7 @@ sessionStorage.setItem('random', 'false');
 //===========================================================================
 // const courseName = 'history';
 const courseName = 'test';
-slides(courseName, document);
+Quiz.slides(courseName, document);
 
 </script>
 
