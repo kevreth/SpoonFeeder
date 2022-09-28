@@ -16,7 +16,7 @@ RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export interface SlideInterface extends GetScore {
-  type: string;
+  // type: string;
   txt: AnswerType;
   isExercise: boolean;
   pageTemplate: string;
@@ -35,10 +35,10 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  createHtml: CreateHtmlTypeIntersection;
-  resultType: ResultType;
-  makeSlidesStrategy: MakeSlidesType;
-  evaluateStrategy:EvaluateType;
+  // createHtml: CreateHtmlTypeIntersection;
+  // resultType: ResultType;
+  // makeSlidesStrategy: MakeSlidesType;
+  // evaluateStrategy:EvaluateType;
   txt!: AnswerType;
   ans!: T;
   res!: T;
@@ -49,14 +49,20 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
         </div>
     `;
   isExercise = false;
-  constructor(type:string, createHtml: CreateHtmlTypeIntersection, makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType) {
-    this.evaluateStrategy = evaluateStrategy;
-    this.resultType = result;
-    this.makeSlidesStrategy = makeSlidesStrategy;
-    this.createHtml = createHtml;
-    this.type=type;
+  constructor(
+    public readonly type: string,
+    public readonly createHtml: CreateHtmlTypeIntersection,
+    public readonly makeSlidesStrategy:MakeSlidesType,
+    public readonly evaluateStrategy:EvaluateType,
+    public readonly resultType: ResultType
+  ) {
+    // this.evaluateStrategy = evaluateStrategy;
+    // this.resultType = result;
+    // this.makeSlidesStrategy = makeSlidesStrategy;
+    // this.createHtml = createHtml;
+    // this.type=type;
   }
-  type: string;
+  // type: string;
   //reset in every child class
   private _score = 0;
   private _questions = 0;
