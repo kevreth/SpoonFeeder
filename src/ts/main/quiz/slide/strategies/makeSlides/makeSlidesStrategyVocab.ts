@@ -29,39 +29,47 @@ function paging(
   const tuple = vocabTuples[questionCtr];
   const options = tuple[2];
   options.forEach((option, j) => {
-    const buttonId = 'btn' + j.toString();
-    const button = doc.getElementById(buttonId) as HTMLElement;
-    button.addEventListener('click', () => {
-      const answer = tuple[1];
-      res.push(option);
-      let color = 'red';
-      if (option === answer)
-        color = 'green';
-      button.style.backgroundColor = color;
-      for (let i = 0; i < options.length; i++) {
-        const button = doc.getElementById('btn' + i) as HTMLElement;
-        removeListener(button);
-      }
-      if (questionCtr + 1 < html_list.length) {
-        const element = continueButton(doc) as HTMLElement;
-        addContinueEventListener(
-          element,
-          doc,
-          html_list,
-          vocabTuples,
-          questionCtr,
-          maxWidthStrategy,
-          res,
-          setValues
-        );
-      } else {
-        setValues.saveData();
-        showButton(doc);
-      }
-    });
+    addOptionButtonEventListener(j, doc, tuple, res, option, options, questionCtr, html_list, vocabTuples, maxWidthStrategy, setValues);
   });
   maxWidthStrategy(options.length, 'btn', doc);
 }
+function addOptionButtonEventListener(j: number, doc: Document, tuple: [txt: string, ans: string, options: string[]], res: string[], option: string, options: string[], questionCtr: number, html_list: string[], vocabTuples: vocabTuplesType, maxWidthStrategy: SetWidthTypeSimple, setValues: SetValues<string[]>) {
+  const buttonId = 'btn' + j.toString();
+  const button = doc.getElementById(buttonId) as HTMLElement;
+  button.addEventListener('click', () => {
+    const answer = tuple[1];
+    res.push(option);
+    let color = 'red';
+    if (option === answer)
+      color = 'green';
+    button.style.backgroundColor = color;
+    for (let i = 0; i < options.length; i++) {
+      const button = doc.getElementById('btn' + i) as HTMLElement;
+      removeListener(button);
+    }
+    if (questionCtr + 1 < html_list.length) {
+      addContinueButtonListener(doc, html_list, vocabTuples, questionCtr, maxWidthStrategy, res, setValues);
+    } else {
+      setValues.saveData();
+      showButton(doc);
+    }
+  });
+}
+
+function addContinueButtonListener(doc: Document, html_list: string[], vocabTuples: vocabTuplesType, questionCtr: number, maxWidthStrategy: SetWidthTypeSimple, res: string[], setValues: SetValues<string[]>) {
+  const element = continueButton(doc) as HTMLElement;
+  addContinueEventListener(
+    element,
+    doc,
+    html_list,
+    vocabTuples,
+    questionCtr,
+    maxWidthStrategy,
+    res,
+    setValues
+  );
+}
+
 function addContinueEventListener(
   element: HTMLElement,
   doc: Document,
