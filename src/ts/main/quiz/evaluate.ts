@@ -1,4 +1,5 @@
-import { Json, ROW } from '../globals';
+import { Json } from '../globals';
+export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
 export class Evaluation {
   constructor(
     public readonly responses: number,
