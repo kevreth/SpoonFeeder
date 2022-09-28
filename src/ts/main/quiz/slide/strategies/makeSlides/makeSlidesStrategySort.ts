@@ -5,8 +5,8 @@ import { Draggable } from 'gsap/dist/Draggable';
 import { AnswerType } from '../result';
 import { SortType } from '../createHtml';
 
-export function makeSlidesStrategySort(txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>): void {
-  const html = createHtml((txt as string), ans);
+export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>): void {
+  const html = createHtml(txt, ans);
   createPageContent(html, doc);
   gsap.registerPlugin(Draggable);
   const rowSize = 100; // => container height / number of items

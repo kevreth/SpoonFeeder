@@ -7,14 +7,13 @@ import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
 import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
-import { AnswerType } from './result';
 import { SetWidthTypeComplex, SetWidthTypeSimple } from './setWidths';
 export type MakeSlidesGapType = (txt: string, ans: string[], createHtml: GapType, maxWidthStrategy: SetWidthTypeComplex, doc: Document, setValues: SetValues<string[]>) => void
 export type MakeSlidesImapType = (txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) => void;
 export type MakeSlidesInfoType = (txt: string, createHtml: InfoType, doc: Document, setValues: SetValues<string>)=>void;
 export type MakeSlidesMcType = (txt: string, options: string[], isExercise: boolean, createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>)=>void;
 export type MakeSlidesSelectType = (inst: string, ans: number[], res: string[], createHtml: SelectType, doc: Document, setValues: SetValues<number[]>)=>void;
-export type MakeSlidesSortType = (txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>)=>void;
+export type MakeSlidesSortType = (txt: string, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>)=>void;
 export type MakeSlidesVocabType = (list: Map<string, string>, res: string[], createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>)=>void;
 export type MakeSlidesType = MakeSlidesGapType|MakeSlidesImapType|MakeSlidesInfoType|MakeSlidesMcType|MakeSlidesSelectType|MakeSlidesSortType|MakeSlidesVocabType;
 export class MakeSlides {
@@ -22,18 +21,18 @@ export class MakeSlides {
     makeSlidesStrategyGap(txt, ans, createHtml, maxWidthStrategy, doc, setValues);
   }
   static readonly IMAP:MakeSlidesImapType = function(txt: string, img: string, createHtml: ImapType, doc: Document, setValues: SetValues<string>) {
-    makeSlidesStrategyImap((txt as string), img, createHtml, doc, setValues);
+    makeSlidesStrategyImap(txt, img, createHtml, doc, setValues);
   }
   static readonly INFO = function (txt: string, createHtml: InfoType, doc: Document, setValues: SetValues<string>) {
     makeSlidesStrategyInfo(txt, createHtml, doc, setValues);
   }
   static readonly MC = function (txt: string, options: string[], isExercise: boolean, createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>) {
-    makeSlidesStrategyMc((txt as string), options, isExercise, createHtml, maxWidthStrategy, doc, setValues);
+    makeSlidesStrategyMc(txt, options, isExercise, createHtml, maxWidthStrategy, doc, setValues);
   }
   static readonly SELECT = function (inst: string, ans: number[], res: string[], createHtml: SelectType, doc: Document, setValues: SetValues<number[]>) {
     makeSlidesStrategySelect(inst, ans, res, createHtml, doc, setValues);
   }
-  static readonly SORT = function (txt: AnswerType, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>) {
+  static readonly SORT = function (txt: string, ans: string[], createHtml: SortType, doc: Document, setValues: SetValues<string[]>) {
     makeSlidesStrategySort(txt, ans, createHtml, doc, setValues);
   }
   static readonly VOCAB = function (list: Map<string, string>, res: string[], createHtml: McType, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>) {
