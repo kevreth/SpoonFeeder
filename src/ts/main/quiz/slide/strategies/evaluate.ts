@@ -16,7 +16,7 @@ export class Evaluate {
     if (result) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   }
-  static readonly VOCAB: VocabType = function evaluate(txt, ans, res, result) {
+  static readonly VOCAB: VocabType = function evaluate(txt, res, ans, result) {
     const rows = new Array<string>();
     txt.forEach((txt1, idx) => {
       const ans1 = ans[idx];
