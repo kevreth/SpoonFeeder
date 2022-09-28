@@ -7,6 +7,9 @@ import {Info} from './slideType/info';
 import {Select} from './slideType/select';
 import {Sort} from './slideType/sort';
 import {Vocab} from './slideType/vocab';
+import { MakeSlides } from './strategies/makeSlides';
+import { Evaluate } from './strategies/evaluate';
+import { Result } from './strategies/result';
 export class SlideFactory {
   static readonly BOOL = new SlideFactory('bool');
   static readonly GAP = new SlideFactory('gap');
@@ -32,17 +35,19 @@ export class SlideFactory {
     this.name=name;
   }
   public static instance(instanceType:string): SlideInterface|undefined {
-    for(let i=0; i< SlideFactory.values.length; i++) {
-      if(SlideFactory.values[i].name===instanceType) {
+    const numTypes = SlideFactory.values.length;
+    for(let i=0; i< numTypes; i++) {
+      const type = SlideFactory.values[i].name;
+      if(type===instanceType) {
         switch(SlideFactory.values[i]) {
-          case SlideFactory.BOOL: return new Bool();
-          case SlideFactory.GAP: return new Gap();
-          case SlideFactory.IMAP: return new Imap();
-          case SlideFactory.INFO: return new Info();
-          case SlideFactory.MC: return new Mc();
-          case SlideFactory.SELECT: return new Select();
-          case SlideFactory.SORT: return new Sort();
-          case SlideFactory.VOCAB: return new Vocab();
+          case SlideFactory.BOOL: return new Bool(type,MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
+          case SlideFactory.GAP: return new Gap(type, MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
+          case SlideFactory.IMAP: return new Imap(type, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
+          case SlideFactory.INFO: return new Info(); //TODO: can't get this one to work
+          case SlideFactory.MC: return new Mc(type,MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
+          case SlideFactory.SELECT: return new Select(type, MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
+          case SlideFactory.SORT: return new Sort(type, MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);
+          case SlideFactory.VOCAB: return new Vocab(type, MakeSlides.VOCAB, Evaluate.VOCAB,Result.CORRELATED);
         }
       }
     }

@@ -62,15 +62,6 @@ export function getNumberedProperties(
   }
   return retval.sort();
 }
-export function getSavedDataArray(): Array<SaveData> {
-  const data = localStorage.getItem('savedata') as string;
-  const data1 = JSON.parse(data);
-  const arr: Array<SaveData> = extend<Array<SaveData>>(
-    new Array<SaveData>(),
-    data1
-  );
-  return arr;
-}
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {
   return _.random(min, max);

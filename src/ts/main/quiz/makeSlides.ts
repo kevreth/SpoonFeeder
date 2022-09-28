@@ -1,4 +1,5 @@
-import { makeButton, getSavedDataArray } from '../utilities';
+import { makeButton } from '../utilities';
+import {getSavedDataArray} from './slide/saveData';
 import { Globals } from '../globals';
 import reloadPage from '../../../composables/startOver';
 import { evaluate } from './evaluate';
