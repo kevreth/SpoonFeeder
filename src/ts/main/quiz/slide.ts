@@ -11,6 +11,7 @@ import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 import { EvaluateType } from './slide/strategies/evaluate';
 import { MakeSlidesType } from './slide/strategies/makeSlides';
 import hljs from 'highlight.js';
+import { CreateHtmlType } from './slide/strategies/createHtml';
 RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
@@ -34,11 +35,25 @@ export interface SlideInterface extends GetScore {
   get score(): number;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
-  constructor(type:string,makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType/*, createHtml: CreateHtmlType, */) {
+  createHtml: CreateHtmlType;
+  resultType: ResultType;
+  makeSlidesStrategy: MakeSlidesType;
+  evaluateStrategy:EvaluateType;
+  txt!: AnswerType;
+  ans!: T;
+  res!: T;
+  pageTemplate = `
+        <div id="slide">
+            <div id="content">
+            </div>
+        </div>
+    `;
+  isExercise = false;
+  constructor(type:string, createHtml: CreateHtmlType, makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType) {
     this.evaluateStrategy = evaluateStrategy;
     this.resultType = result;
     this.makeSlidesStrategy = makeSlidesStrategy;
-    // this.createHtml = createHtml;
+    this.createHtml = createHtml;
     this.type=type;
   }
   type: string;
@@ -57,19 +72,6 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   public get score(): number {
     return this._score;
   }
-  resultType: ResultType;
-  makeSlidesStrategy: MakeSlidesType;
-  evaluateStrategy:EvaluateType;
-  txt!: AnswerType;
-  ans!: T;
-  res!: T;
-  pageTemplate = `
-        <div id="slide">
-            <div id="content">
-            </div>
-        </div>
-    `;
-  isExercise = false;
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file

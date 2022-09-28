@@ -8,7 +8,7 @@ export interface info extends SlideInterface {
 }
 export class Info extends Slide<string> {
   constructor() {
-    super('info', MakeSlides.INFO, Evaluate.DEFAULT, Result.UNSUPPORTED);
+    super('info', CreateHtml.INFO,MakeSlides.INFO, Evaluate.DEFAULT, Result.UNSUPPORTED);
   }
   txt = '';
   createHtml = CreateHtml.INFO;
