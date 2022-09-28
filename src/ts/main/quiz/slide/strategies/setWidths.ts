@@ -1,7 +1,7 @@
-import { getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } from '../maxWidth';
+import { MaxWidth } from '../maxWidth';
 export type SetWidthTypeSimple = (num: number, str: string, doc: Document) => void;
 export type SetWidthTypeComplex = (num: number, str1: string, str2: string, doc: Document) => void;
-
+const { getMaxWidth, getNumberedElementsAsList, setWidths, getIdsAsArray } = MaxWidth;
 export class SetWidths {
   //sets the width on the same set of elements that whose width was measured
   static readonly SIMPLE: SetWidthTypeSimple = function(num:number, str:string, doc: Document) {
