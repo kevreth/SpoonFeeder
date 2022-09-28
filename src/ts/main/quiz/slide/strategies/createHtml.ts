@@ -3,7 +3,7 @@ export type CreateHtmlTypeGap = (remaining: string, fills: string, gaps: string)
 export type CreateHtmlTypeInfo = (txt:string) => string;
 export type CreateHtmlTypeImap = (inst: string, img: string) => string;
 export type CreateHtmlTypeMc = (question: string, options: string[]) => string
-export type CreateHtmlTypeSelect = (instructions: string, res: string[]) => string;
+export type CreateHtmlTypeSelect = (instructions: string, txt: string[]) => string;
 export type CreateHtmlTypeSort = (inst: string, ans: string[]) => string;
 export type CreateHtmlTypeUnion = CreateHtmlTypeGap | CreateHtmlTypeImap | CreateHtmlTypeMc | CreateHtmlTypeSelect | CreateHtmlTypeSort;
 export type CreateHtmlTypeIntersection = CreateHtmlTypeGap & CreateHtmlTypeImap & CreateHtmlTypeMc & CreateHtmlTypeSelect & CreateHtmlTypeSort;
@@ -32,11 +32,11 @@ export class CreateHtml {
     });
     return accum.join('\n');
   }
-  static readonly SELECT: CreateHtmlTypeSelect =  function (instructions, res) {
+  static readonly SELECT: CreateHtmlTypeSelect =  function (instructions, txt) {
     const accum = new Array<string>(
       `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
     );
-    res.forEach((item, idx) => {
+    txt.forEach((item, idx) => {
       accum.push(`<span id="w${idx + 1}">${item}</span> `);
     });
     const button = makeButton('btn', 'done', 'done');
