@@ -5,7 +5,6 @@ import { MakeSlidesVocabType } from '../strategies/makeSlides';
 export class Vocab extends Slide<Array<string>> {
   list = new Map<string,string>();
   res = new Array<string>();
-  txt = new Array<string>();
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.txt = Array.from(this.list.values());
