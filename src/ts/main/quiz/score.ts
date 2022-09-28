@@ -17,7 +17,7 @@
   // public addToQuestions(value:number): void {
   //   this._questions += value;
 
-import { Globals } from '../globals';
+import { Json } from '../globals';
 import { Course } from './course';
 import { SetValues } from './slide';
   export class Score<T> {
@@ -51,7 +51,7 @@ import { SetValues } from './slide';
           lesson.modules.forEach((module) => {
             module.exercises.forEach((exercise) => {
               const txt = exercise.txt;
-              const slide = Globals.JSON.getSlideByTxt((txt as string));
+              const slide = Json.getSlideByTxt((txt as string));
               const answer = slide?.result();
               let count = 0;
               if(Array.isArray(answer))

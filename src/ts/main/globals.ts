@@ -1,35 +1,32 @@
 import type {SlideInterface} from './quiz/slide'
 export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
-class Json {
-    private counter = 0;
-    private json:Array<SlideInterface>=[];
-    get() {
-        return this.json;
+export class Json {
+    private static counter = 0;
+    private static json:Array<SlideInterface>=[];
+    public static get() {
+        return Json.json;
     }
-    set(json:Array<SlideInterface> ) {
-        this.json=json;
+    public static set(json:Array<SlideInterface> ) {
+        Json.json=json;
     }
-    getSlide() {
-        const retval = this.json[this.counter];
-        this.counter++;
+    public static getSlide() {
+        const retval = Json.json[Json.counter];
+        Json.counter++;
         return retval;
     }
-    getSlideByTxt(txt: string):SlideInterface|undefined {
-      return this.json.find(x => x.txt === txt);
+    public static getSlideByTxt(txt: string):SlideInterface|undefined {
+      return Json.json.find(x => x.txt === txt);
     }
-    getNumSlides():number {
-        return this.json.length;
+    public static getNumSlides():number {
+        return Json.json.length;
     }
-    push(slide:SlideInterface) {
-        this.json.push(slide);
+    public static push(slide:SlideInterface) {
+      Json.json.push(slide);
     }
-    reset():void {
-        this.counter=0;
+    public static reset():void {
+      Json.counter=0;
     }
-    count():number {
-        return this.counter;
+    public static count():number {
+        return Json.counter;
     }
-}
-export class Globals {
-    static readonly JSON = new Json();
 }

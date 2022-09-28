@@ -1,4 +1,4 @@
-import { Globals, ROW } from '../globals';
+import { Json, ROW } from '../globals';
 export class Evaluation {
   constructor(
     public readonly responses: number,
@@ -9,12 +9,12 @@ export class Evaluation {
 export function evaluate(): string {
   const TABLE_HEADER =
     '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
-  Globals.JSON.reset();
+    Json.reset();
   let text = TABLE_HEADER;
   let correctCtr = 0;
   let responseCtr = 0;
-  for (let i = 0; i < Globals.JSON.getNumSlides(); i++) {
-    const slide = Globals.JSON.getSlide();
+  for (let i = 0; i < Json.getNumSlides(); i++) {
+    const slide = Json.getSlide();
     if (!slide.isExercise) continue;
     const evaluation: Evaluation = slide.evaluate();
     responseCtr += evaluation.responses;

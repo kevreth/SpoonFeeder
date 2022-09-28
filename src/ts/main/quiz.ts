@@ -2,7 +2,7 @@ import type { SlideInterface } from './quiz/slide';
 import { getInstance } from './quiz/slide/slideFactory';
 import { getYaml } from './utilities';
 import { Course } from './quiz/course';
-import { Globals } from './globals';
+import { Json } from './globals';
 import { showSlides } from './quiz/makeSlides';
 import { processJson } from './quiz/processJson';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
@@ -15,7 +15,7 @@ export function slides(courseName: string, doc: Document): void {
   const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
   getYaml(yaml, (course: Course) => {
     const slides = processJson(course);
-    Globals.JSON.set(processSlides(slides));
+    Json.set(processSlides(slides));
     showSlides(doc);
   });
 }
@@ -27,6 +27,6 @@ export function processSlides(data: Array<SlideInterface>): Array<SlideInterface
     slide.processJson(currentQuestion);
     outJson.push(slide);
   });
-  Globals.JSON.reset();
+  Json.reset();
   return outJson;
 }

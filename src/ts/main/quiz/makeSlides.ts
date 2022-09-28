@@ -1,12 +1,12 @@
 import { makeButton } from '../utilities';
 import {getSavedDataArray} from './slide/saveData';
-import { Globals } from '../globals';
+import { Json } from '../globals';
 import reloadPage from '../../../composables/startOver';
 import { evaluate } from './evaluate';
 
 ///////////////// PHASE 3: make slides
 export function showSlides(doc: Document): void {
-  const slide = Globals.JSON.getSlide();
+  const slide = Json.getSlide();
   const arr = getSavedDataArray();
   if (typeof slide === 'undefined') {
     //end of quiz
