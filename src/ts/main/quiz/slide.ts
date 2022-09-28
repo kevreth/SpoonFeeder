@@ -17,6 +17,7 @@ type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export interface SlideInterface/* extends GetScore*/ {
   txt: AnswerType;
+  type: string;
   isExercise: boolean;
   pageTemplate: string;
   //Transform human-created YML into computer-friendly JSON
