@@ -1,5 +1,5 @@
 import { isEqual } from '../../../utilities';
-export type AnswerType = string & Array<string> & Array<number>;
+export type AnswerType = string | Array<string> | Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
 export type ResultType = (ans: AnswerType, res: AnswerType) => ResultReturnType
 //Implments the strategy pattern but doesn't need explicit classes
