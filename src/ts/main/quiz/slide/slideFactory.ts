@@ -44,7 +44,7 @@ export class SlideFactory {
           case SlideFactory.BOOL: return new Bool(type, (CreateHtml.MC as CreateHtmlTypeIntersection), MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
           case SlideFactory.GAP: return new Gap(type, (CreateHtml.GAP as CreateHtmlTypeIntersection), MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
           case SlideFactory.IMAP: return new Imap(type, (CreateHtml.IMAP as CreateHtmlTypeIntersection), MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
-          case SlideFactory.INFO: return new Info(); //TODO: can't get this one to work
+          case SlideFactory.INFO: return new Info(type, (CreateHtml.INFO as CreateHtmlTypeIntersection), MakeSlides.INFO, Evaluate.DEFAULT, Result.UNSUPPORTED);
           case SlideFactory.MC: return new Mc(type, (CreateHtml.MC as CreateHtmlTypeIntersection),  MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
           case SlideFactory.SELECT: return new Select(type, (CreateHtml.SELECT as CreateHtmlTypeIntersection), MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
           case SlideFactory.SORT: return new Sort(type, (CreateHtml.SORT as CreateHtmlTypeIntersection), MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);

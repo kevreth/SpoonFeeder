@@ -1,14 +1,14 @@
 import { Slide, SlideInterface} from '../../slide';
-import { Evaluate } from '../strategies/evaluate';
-import { CreateHtml, CreateHtmlTypeInfo } from '../strategies/createHtml';
-import { MakeSlides, MakeSlidesInfoType } from '../strategies/makeSlides';
-import { Result } from '../strategies/result';
+import { EvaluateType } from '../strategies/evaluate';
+import { CreateHtmlTypeInfo, CreateHtmlTypeIntersection } from '../strategies/createHtml';
+import { MakeSlidesInfoType, MakeSlidesType } from '../strategies/makeSlides';
+import { ResultType } from '../strategies/result';
 export interface info extends SlideInterface {
   txt: string;
 }
 export class Info extends Slide<string> {
-  constructor() {
-    super('info', CreateHtml.INFO, MakeSlides.INFO, Evaluate.DEFAULT, Result.UNSUPPORTED);
+  constructor(type:string, createHtml: CreateHtmlTypeIntersection, makeSlidesStrategy:MakeSlidesType, evaluateStrategy:EvaluateType, result: ResultType) {
+    super(type, createHtml, makeSlidesStrategy, evaluateStrategy, result);
   }
   txt = '';
   processJson(json: Info): void {

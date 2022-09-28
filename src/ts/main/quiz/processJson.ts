@@ -1,7 +1,7 @@
 import { shuffle, isRandom } from '../utilities';
 import { Course } from './course';
 import { SlideInterface } from './slide';
-import { Info } from './slide/slideType/info';
+import { getInstance } from './slide/slideFactory';
 //////////////// Phase 1: process Json
 export function processJson(course: Course) {
   let slides = new Array<SlideInterface>();
@@ -35,7 +35,7 @@ function loadQuestions(slides: Array<SlideInterface>, questions: Array<SlideInte
   return slides;
 }
 function addNewInfoSlide(text: string, slides: SlideInterface[]) {
-  const slide = new Info();
+  const slide = (getInstance('info') as SlideInterface);
   slide.txt = text;
   slides.push(slide);
 }
