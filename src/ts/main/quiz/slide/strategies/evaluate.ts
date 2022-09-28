@@ -32,7 +32,7 @@ export class Evaluate {
     const rows = new Array<string>();
     const length = ans.length;
     for (let i = 0; i < length; i++) {
-      const answer:string = ans[i];
+      const answer = ans[i];
       const response = res[i];
       const row = Evaluate.gapQuest(response, answer, i, answer, txt);
       rows.push(row);
