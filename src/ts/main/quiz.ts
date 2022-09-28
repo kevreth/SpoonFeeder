@@ -4,8 +4,9 @@ import { getYaml } from './utilities';
 import { Course } from './quiz/course';
 import { Json } from './globals';
 import { showSlides } from './quiz/makeSlides';
-import { processJson } from './quiz/processJson';
+import { ProcessJson } from './quiz/processJson';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
+const { processJson } = ProcessJson;
 const {getInstance} = SlideFactory;
 export function slides(courseName: string, doc: Document): void {
   // Phase 1: process Json
