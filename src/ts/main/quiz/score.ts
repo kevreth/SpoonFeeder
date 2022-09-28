@@ -1,13 +1,5 @@
-  //not in use yet; used to calculate scores for divisions
-  // getScore(): number {
-  //   const result = this.result();
-  //   let count = 0;
-  //   if(Array.isArray(result))
-  //     count = result.filter(value => value === true).length;
-  //   else
-  //     count = result ? 1 : 0;
-  //   return count;
-  // }
+  //not in use yet; calculates scores for divisions
+
     // public addToScore(score:number): void {
   //   this._score += score;
   // }
@@ -27,9 +19,8 @@
 
 import { Globals } from '../globals';
 import { Course } from './course';
-
-  // }
-  export class Score {
+import { SetValues } from './slide';
+  export class Score<T> {
     private _score = 0;
     private _questions = 0;
     public get questions(): number {
@@ -43,6 +34,15 @@ import { Course } from './course';
     }
     public get score(): number {
       return this._score;
+    }
+    getScore(sv:SetValues<T>): number {
+      const result = sv.result();
+      let count = 0;
+      if(Array.isArray(result))
+        count = result.filter(value => value === true).length;
+      else
+        count = result ? 1 : 0;
+      return count;
     }
     summary(course: Course):Array<string> {
       const lines = new Array<string>();
@@ -58,6 +58,7 @@ import { Course } from './course';
                 count = answer.filter(value => value === true).length;
               else
                 count = answer ? 1 : 0;
+                //just to stop unused variable warning
                 console.log(count);
               // module.addToScore(count);
               // lesson.addToScore(count);
