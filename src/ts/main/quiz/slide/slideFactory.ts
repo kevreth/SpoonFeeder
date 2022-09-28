@@ -51,7 +51,7 @@ export class SlideFactory {
       }
     }
   }
-}
-export function getInstance(instanceType:string):SlideInterface|undefined {
-  return SlideFactory.instance(instanceType);
+  public static getInstance(instanceType:string):SlideInterface|undefined {
+    return SlideFactory.instance(instanceType);
+  }
 }

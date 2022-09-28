@@ -1,7 +1,8 @@
 import { shuffle, isRandom } from '../utilities';
 import { Course } from './course';
 import { SlideInterface } from './slide';
-import { getInstance } from './slide/slideFactory';
+import { SlideFactory } from './slide/slideFactory';
+const {getInstance} = SlideFactory;
 //////////////// Phase 1: process Json
 export function processJson(course: Course) {
   let slides = new Array<SlideInterface>();

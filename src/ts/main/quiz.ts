@@ -1,11 +1,12 @@
 import type { SlideInterface } from './quiz/slide';
-import { getInstance } from './quiz/slide/slideFactory';
+import { SlideFactory } from './quiz/slide/slideFactory';
 import { getYaml } from './utilities';
 import { Course } from './quiz/course';
 import { Json } from './globals';
 import { showSlides } from './quiz/makeSlides';
 import { processJson } from './quiz/processJson';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
+const {getInstance} = SlideFactory;
 export function slides(courseName: string, doc: Document): void {
   // Phase 1: process Json
   // Phase 2: process Slides
