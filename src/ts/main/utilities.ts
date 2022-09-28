@@ -2,7 +2,6 @@ import _ from 'lodash';
 import $ from 'jquery';
 import type { Course } from './quiz/course';
 import * as yaml from 'js-yaml';
-import { SaveData } from './quiz/slide/saveData';
 export function getYaml(filename: string, f: (data: Course) => void) {
   fetch(filename)
     .then((res) => res.blob())
