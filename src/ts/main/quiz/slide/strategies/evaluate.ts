@@ -21,7 +21,7 @@ export class Evaluate {
     txt.forEach((txt1, idx) => {
       const ans1 = ans[idx];
       const res1 = res[idx];
-      const row = makeRow(txt1, ans1, res1);
+      const row = makeRow(txt1, res1, ans1);
       rows.push(row);
     });
     const row_accum = rows.join('\n');
