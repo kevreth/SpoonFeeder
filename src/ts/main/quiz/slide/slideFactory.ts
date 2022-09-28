@@ -10,7 +10,7 @@ import {Vocab} from './slideType/vocab';
 import { MakeSlides } from './strategies/makeSlides';
 import { Evaluate } from './strategies/evaluate';
 import { Result } from './strategies/result';
-import { CreateHtml } from './strategies/createHtml';
+import { CreateHtml, CreateHtmlTypeIntersection } from './strategies/createHtml';
 export class SlideFactory {
   static readonly BOOL = new SlideFactory('bool');
   static readonly GAP = new SlideFactory('gap');
@@ -41,14 +41,14 @@ export class SlideFactory {
       const type = SlideFactory.values[i].name;
       if(type===instanceType) {
         switch(SlideFactory.values[i]) {
-          case SlideFactory.BOOL: return new Bool(type, CreateHtml.MC, MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
-          case SlideFactory.GAP: return new Gap(type, CreateHtml.GAP, MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
-          case SlideFactory.IMAP: return new Imap(type, CreateHtml.IMAP, MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
+          case SlideFactory.BOOL: return new Bool(type, (CreateHtml.MC as CreateHtmlTypeIntersection), MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
+          case SlideFactory.GAP: return new Gap(type, (CreateHtml.GAP as CreateHtmlTypeIntersection), MakeSlides.GAP, Evaluate.GAP, Result.CORRELATED);
+          case SlideFactory.IMAP: return new Imap(type, (CreateHtml.IMAP as CreateHtmlTypeIntersection), MakeSlides.IMAP, Evaluate.SIMPLE, Result.SIMPLE);
           case SlideFactory.INFO: return new Info(); //TODO: can't get this one to work
-          case SlideFactory.MC: return new Mc(type, CreateHtml.MC,  MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
-          case SlideFactory.SELECT: return new Select(type, CreateHtml.SELECT, MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
-          case SlideFactory.SORT: return new Sort(type, CreateHtml.SORT, MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);
-          case SlideFactory.VOCAB: return new Vocab(type, CreateHtml.MC, MakeSlides.VOCAB, Evaluate.VOCAB,Result.CORRELATED);
+          case SlideFactory.MC: return new Mc(type, (CreateHtml.MC as CreateHtmlTypeIntersection),  MakeSlides.MC,Evaluate.SIMPLE,Result.SIMPLE);
+          case SlideFactory.SELECT: return new Select(type, (CreateHtml.SELECT as CreateHtmlTypeIntersection), MakeSlides.SELECT, Evaluate.SIMPLE,Result.LIST);
+          case SlideFactory.SORT: return new Sort(type, (CreateHtml.SORT as CreateHtmlTypeIntersection), MakeSlides.SORT, Evaluate.SIMPLE,Result.LIST);
+          case SlideFactory.VOCAB: return new Vocab(type, (CreateHtml.MC as CreateHtmlTypeIntersection), MakeSlides.VOCAB, Evaluate.VOCAB,Result.CORRELATED);
         }
       }
     }
