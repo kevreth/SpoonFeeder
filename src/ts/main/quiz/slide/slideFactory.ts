@@ -32,9 +32,7 @@ export class SlideFactory {
       this.VOCAB
     ];
   }
-  private constructor(public readonly name: string) {
-    this.name=name;
-  }
+  private constructor(public readonly name: string) {}
   public static instance(instanceType:string): SlideInterface|undefined {
     const numTypes = SlideFactory.values.length;
     for(let i=0; i< numTypes; i++) {
