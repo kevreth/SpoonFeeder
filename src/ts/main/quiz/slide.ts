@@ -7,17 +7,12 @@ import type {
 } from './slide/strategies/result';
 import { append, empty } from '../utilities';
 import { SaveData } from '../quiz/slide/saveData';
-import { mathjax } from 'mathjax-full/ts/mathjax';
-import { TeX } from 'mathjax-full/ts/input/tex';
-import { CHTML } from 'mathjax-full/ts/output/chtml';
-import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
-import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 import type { EvaluateType } from './slide/strategies/evaluate';
 import type { MakeSlidesType } from './slide/strategies/makeSlides';
-import hljs from 'highlight.js';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
+import { postRender } from './slide/postRender';
 const { saveData } = SaveData;
-RegisterHTMLHandler(browserAdaptor());
+
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export interface SlideInterface /* extends GetScore*/ {
@@ -89,23 +84,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     if (element != null) element.remove(); // Removes the div with the 'div-02' id
     empty('#content');
     append('#content', html);
-    Slide.postRendering(document);
-  }
-  private static postRendering(doc: Document) {
-    hljs.highlightAll();
-    const html = mathjax.document(doc, {
-      InputJax: new TeX({
-        inlineMath: [
-          ['$', '$'],
-          ['\\(', '\\)'],
-        ],
-        packages: ['base', 'ams', 'noundefined', 'newcommand', 'boldsymbol'],
-      }),
-      OutputJax: new CHTML({
-        //   fontURL: 'https://cdn.rawgit.com/mathjax/mathjax-v3/3.0.0-beta.1/mathjax2/css'
-      }),
-    });
-    html.findMath().compile().getMetrics().typeset().updateDocument();
+    postRender(document);
   }
 }
 export class SetValues<T> {
