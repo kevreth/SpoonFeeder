@@ -1,6 +1,6 @@
 import { shuffle, isRandom } from '../utilities';
-import { Course } from './course';
-import { SlideInterface } from './slide';
+import type { Course } from './course';
+import type { SlideInterface } from './slide';
 import { SlideFactory } from './slide/slideFactory';
 const { getInstance } = SlideFactory;
 //////////////// Phase 1: process Json

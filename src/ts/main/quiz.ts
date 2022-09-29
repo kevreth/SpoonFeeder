@@ -1,7 +1,7 @@
 import type { SlideInterface } from './quiz/slide';
 import { SlideFactory } from './quiz/slide/slideFactory';
 import { getYaml } from './utilities';
-import { Course } from './quiz/course';
+import type { Course } from './quiz/course';
 import { Json } from './globals';
 import { MakeSlides } from './quiz/makeSlides';
 import { ProcessJson } from './quiz/processJson';

@@ -1,4 +1,4 @@
-import { AnswerType } from './strategies/result';
+import type { AnswerType } from './strategies/result';
 import { extend } from '../../../main/utilities';
 export class SaveData {
   constructor(

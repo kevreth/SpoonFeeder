@@ -18,8 +18,8 @@
 //   this._questions += value;
 
 import { Json } from '../globals';
-import { Course } from './course';
-import { SetValues } from './slide';
+import type { Course } from './course';
+import type { SetValues } from './slide';
 export class Score<T> {
   private _score = 0;
   private _questions = 0;

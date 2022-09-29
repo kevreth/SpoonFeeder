@@ -1,7 +1,7 @@
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
 import type { SetWidthTypeComplex } from '../setWidths';
-import { CreateHtmlTypeGap } from '../createHtml';
+import type { CreateHtmlTypeGap } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 //===the main divs are
