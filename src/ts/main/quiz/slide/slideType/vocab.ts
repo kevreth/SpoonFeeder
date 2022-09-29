@@ -1,7 +1,7 @@
 import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
 import { isRandom, shuffleMap } from '../../../utilities';
-import { MakeSlidesVocabType } from '../strategies/makeSlides';
+import type { MakeSlidesVocabType } from '../strategies/makeSlides';
 export class Vocab extends Slide<Array<string>> {
   list = new Map<string, string>();
   res = new Array<string>();

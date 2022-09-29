@@ -1,5 +1,5 @@
-import { SetValues } from '../../slide';
-import {
+import type { SetValues } from '../../slide';
+import type {
   CreateHtmlTypeGap,
   CreateHtmlTypeImap,
   CreateHtmlTypeInfo,
@@ -14,7 +14,7 @@ import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
 import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
-import { SetWidthTypeComplex, SetWidthTypeSimple } from './setWidths';
+import type { SetWidthTypeComplex, SetWidthTypeSimple } from './setWidths';
 export type MakeSlidesGapType = (
   txt: string,
   ans: string[],

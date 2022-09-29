@@ -2,7 +2,7 @@ import { removeListener, isRandom, shuffle } from '../../../../utilities';
 import type { SetWidthTypeSimple } from '../setWidths';
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
-import { CreateHtmlTypeMc } from '../createHtml';
+import type { CreateHtmlTypeMc } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 

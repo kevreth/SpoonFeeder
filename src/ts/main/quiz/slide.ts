@@ -1,6 +1,6 @@
 import type { Evaluation } from './evaluate';
 
-import {
+import type {
   ResultReturnType,
   AnswerType,
   ResultType,
@@ -12,10 +12,10 @@ import { TeX } from 'mathjax-full/ts/input/tex';
 import { CHTML } from 'mathjax-full/ts/output/chtml';
 import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
-import { EvaluateType } from './slide/strategies/evaluate';
-import { MakeSlidesType } from './slide/strategies/makeSlides';
+import type { EvaluateType } from './slide/strategies/evaluate';
+import type { MakeSlidesType } from './slide/strategies/makeSlides';
 import hljs from 'highlight.js';
-import { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
+import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
 const { saveData } = SaveData;
 RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];

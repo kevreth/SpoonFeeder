@@ -1,5 +1,5 @@
 import { Slide } from '../../slide';
-import { MakeSlidesSortType } from '../strategies/makeSlides';
+import type { MakeSlidesSortType } from '../strategies/makeSlides';
 export class Sort extends Slide<Array<string>> {
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);

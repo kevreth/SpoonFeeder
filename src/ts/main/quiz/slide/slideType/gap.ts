@@ -5,7 +5,7 @@ import { shuffle, isRandom } from '../../../utilities';
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import { SetWidths } from '../strategies/setWidths';
-import { MakeSlidesGapType } from '../strategies/makeSlides';
+import type { MakeSlidesGapType } from '../strategies/makeSlides';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });

@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { JSDOM } from 'jsdom';
-import { Vocab } from '../../../../../main/quiz/slide/slideType/vocab';
+import type { Vocab } from '../../../../../main/quiz/slide/slideType/vocab';
 import { SlideFactory } from '../../../../../main/quiz/slide/slideFactory';
 import {
   generateQuestions,
