@@ -10,10 +10,8 @@ import { Vocab } from './slideType/vocab';
 import { MakeSlides } from './strategies/makeSlides';
 import { Evaluate } from './strategies/evaluate';
 import { Result } from './strategies/result';
-import {
-  CreateHtml,
-  CreateHtmlTypeIntersection,
-} from './strategies/createHtml';
+import type { CreateHtmlTypeIntersection } from './strategies/createHtml';
+import { CreateHtml } from './strategies/createHtml';
 export class SlideFactory {
   public static readonly BOOL = new SlideFactory('bool');
   public static readonly GAP = new SlideFactory('gap');

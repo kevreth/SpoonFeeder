@@ -1,7 +1,7 @@
-import { SetWidthTypeSimple } from '../setWidths';
+import type { SetWidthTypeSimple } from '../setWidths';
 import { SetValues, Slide } from '../../../slide';
 import { removeListener, isRandom, shuffle } from '../../../../utilities';
-import { CreateHtmlTypeMc } from '../createHtml';
+import type { CreateHtmlTypeMc } from '../createHtml';
 import { MakeSlides } from '../../../makeSlides';
 const { createPageContent } = Slide;
 const { continueButton, showButton } = MakeSlides;

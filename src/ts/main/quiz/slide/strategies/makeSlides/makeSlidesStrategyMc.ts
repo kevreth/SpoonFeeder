@@ -1,5 +1,5 @@
 import { removeListener, isRandom, shuffle } from '../../../../utilities';
-import { SetWidthTypeSimple } from '../setWidths';
+import type { SetWidthTypeSimple } from '../setWidths';
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
 import { CreateHtmlTypeMc } from '../createHtml';

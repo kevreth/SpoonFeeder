@@ -1,6 +1,6 @@
 import { SetWidths } from '../strategies/setWidths';
 import { Slide } from '../../slide';
-import { MakeSlidesMcType } from '../strategies/makeSlides';
+import type { MakeSlidesMcType } from '../strategies/makeSlides';
 export class Mc extends Slide<string> {
   o: string[] = [];
   processJson(json: Mc): void {

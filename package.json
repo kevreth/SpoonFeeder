@@ -6,7 +6,7 @@
   "author": "Kevin Rethwisch <rethwisch_kevin@va.gov>",
   "private": true,
   "scripts": {
-    "type-check": "vue-tsc src/ts/**/* --noEmit --composite false",
+    "type-check": "vue-tsc --allowJs --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --loglevel=warn --write --single-quote \"src/ts/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test:unit": "vitest --run --environment jsdom --reporter default",
@@ -37,7 +37,7 @@
     "typed.js": "^2.0.12",
     "typescript-eslint": "^0.0.1-alpha.0",
     "vara": "^1.4.1",
-    "vue": "^3.2.37",
+    "vue": "^3.2.40",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.5"
   },

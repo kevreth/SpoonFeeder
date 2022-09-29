@@ -5,7 +5,7 @@ import {
 } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
-import { CreateHtmlTypeSelect } from '../../../../../main/quiz/slide/strategies/createHtml';
+import type { CreateHtmlTypeSelect } from '../../../../../main/quiz/slide/strategies/createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
