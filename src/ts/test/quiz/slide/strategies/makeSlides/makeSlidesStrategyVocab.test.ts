@@ -52,6 +52,7 @@ function testSetButtonColer(option: string, color: string) {
   setButtonColor(option, answer, id);
   expect(id.style.backgroundColor).toBe(color);
 }
+
 // //test that the question and 4 buttons appear
 // it('includesEverything', () => {
 // 	new Vocab().makeSlides2(MAP,DOC);
