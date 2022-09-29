@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test:unit": "vitest --environment jsdom",
+    "test:unit": "vitest --run --environment jsdom",
     "test:e2e": "start-server-and-test http://localhost:9000/ 'cypress open --e2e'",
     "test:e2e:ci": "start-server-and-test preview http://localhost:9000/ 'cypress run --e2e'",
     "build-only": "vite build",

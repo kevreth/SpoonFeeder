@@ -21,7 +21,7 @@ export function makeSlidesStrategyGap(txt: string, ans: string[], createHtml: Cr
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
-function fills(ans: string[]): string {
+export function fills(ans: string[]): string {
   let fill_accum = '';
   ans.forEach((currentFills, ctr) => {
     const fill_html = `\n    <span id="fill${ctr}" ` +
@@ -30,7 +30,7 @@ function fills(ans: string[]): string {
   });
   return fill_accum;
 }
-function gaps(length: number, gaps: string): string {
+export function gaps(length: number, gaps: string): string {
   let gaps_accum = '';
   for (let ctr = 0; ctr < length; ctr++) {
     gaps = gaps.concat('\n'); //format generated code for easier debugging

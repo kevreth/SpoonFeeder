@@ -16,7 +16,7 @@ export function makeSlidesStrategyVocab(map: Map<string, string>, res: string[],
   const html_list = createHtmlLoop(vocabTuples, createHtml);
   paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res, setValues);
 }
-function paging(
+export function paging(
   doc: Document,
   html_list: string[],
   vocabTuples: vocabTuplesType,
@@ -34,7 +34,7 @@ function paging(
   });
   maxWidthStrategy(options.length, 'btn', doc);
 }
-function addOptionButtonEventListener(j: number, doc: Document, answer: string, res: string[], option: string, options: string[], questionCtr: number, html_list: string[], vocabTuples: vocabTuplesType, maxWidthStrategy: SetWidthTypeSimple, setValues: SetValues<string[]>) {
+export function addOptionButtonEventListener(j: number, doc: Document, answer: string, res: string[], option: string, options: string[], questionCtr: number, html_list: string[], vocabTuples: vocabTuplesType, maxWidthStrategy: SetWidthTypeSimple, setValues: SetValues<string[]>) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
   button.addEventListener('click', () => {
@@ -52,13 +52,13 @@ function addOptionButtonEventListener(j: number, doc: Document, answer: string, 
     }
   });
 }
-function setButtonColor(option: string, answer: string, button: HTMLElement) {
+export function setButtonColor(option: string, answer: string, button: HTMLElement) {
   let color = 'red';
   if (option === answer)
     color = 'green';
   button.style.backgroundColor = color;
 }
-function addContinueButtonListener(doc: Document, html_list: string[], vocabTuples: vocabTuplesType, questionCtr: number, maxWidthStrategy: SetWidthTypeSimple, res: string[], setValues: SetValues<string[]>) {
+export function addContinueButtonListener(doc: Document, html_list: string[], vocabTuples: vocabTuplesType, questionCtr: number, maxWidthStrategy: SetWidthTypeSimple, res: string[], setValues: SetValues<string[]>) {
   const element = continueButton(doc) as HTMLElement;
   addContinueEventListener(
     element,
@@ -72,7 +72,7 @@ function addContinueButtonListener(doc: Document, html_list: string[], vocabTupl
   );
 }
 
-function addContinueEventListener(
+export function addContinueEventListener(
   element: HTMLElement,
   doc: Document,
   html_list: string[],
@@ -86,7 +86,7 @@ function addContinueEventListener(
     paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res, setValues);
   });
 }
-function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: CreateHtmlTypeMc): string[] {
+export function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: CreateHtmlTypeMc): string[] {
   const retval: string[] = [];
   for (const tuple of vocabTuples) {
     const question = tuple[0];
@@ -96,7 +96,7 @@ function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: CreateHtmlType
   }
   return retval;
 }
-function generateQuestions(map: Map<string, string>): vocabTuplesType {
+export function generateQuestions(map: Map<string, string>): vocabTuplesType {
   const keys = Array.from(map.keys());
   const vocabTuples: vocabTuplesType = [];
   for (const key of keys) {

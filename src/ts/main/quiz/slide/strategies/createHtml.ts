@@ -1,4 +1,4 @@
-import { isRandom, makeButton, shuffle } from 'src/ts/main/utilities';
+import { isRandom, makeButton, shuffle } from '../../../../main/utilities';
 export type CreateHtmlTypeGap = (remaining: string, fills: string, gaps: string) => string;
 export type CreateHtmlTypeInfo = (txt:string) => string;
 export type CreateHtmlTypeImap = (inst: string, img: string) => string;

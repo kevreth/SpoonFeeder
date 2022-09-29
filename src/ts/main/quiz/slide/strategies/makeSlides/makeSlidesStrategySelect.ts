@@ -1,7 +1,7 @@
 import { difference, intersection, removeListener } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
-import {CreateHtmlTypeSelect} from 'src/ts/main/quiz/slide/strategies/createHtml';
+import {CreateHtmlTypeSelect} from '../../../../../main/quiz/slide/strategies/createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
