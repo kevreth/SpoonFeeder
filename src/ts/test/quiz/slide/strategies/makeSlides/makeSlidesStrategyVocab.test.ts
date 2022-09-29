@@ -14,6 +14,7 @@ const MAP:Map<string,string> = new Map([
 	['term4','def4'],
 	['term5','def5']
 ]);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const json:any = {
 	type:'vocab',
 	list: MAP,
