@@ -1,10 +1,6 @@
 {
   "name": "cyberlearning2",
   "version": "0.0.0",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
-  "author": "Kevin Rethwisch <rethwisch_kevin@va.gov>",
-  "private": true,
   "scripts": {
     "type-check": "vue-tsc --allowJs --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
