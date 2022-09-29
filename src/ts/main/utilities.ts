@@ -51,16 +51,6 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
   const list: NodeListOf<Element> = doc.querySelectorAll(predicate);
   return Array.from(list).map(({ id }) => id);
 }
-export function getNumberedProperties(
-  obj: object,
-  propName: string
-): Array<object> {
-  const retval: Array<object> = new Array<object>();
-  for (const [key, value] of Object.entries(obj)) {
-    if (key.startsWith(propName)) retval.push([key, value]);
-  }
-  return retval.sort();
-}
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {
   return _.random(min, max);
