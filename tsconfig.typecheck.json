@@ -1,0 +1,32 @@
+{
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "ES2016",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "noImplicitThis": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "preserveValueImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "types": ["node", "jsdom"],
+    "useDefineForClassFields": true,
+
+
+  }
+}

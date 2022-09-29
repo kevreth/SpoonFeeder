@@ -2,7 +2,7 @@
   "name": "cyberlearning2",
   "version": "0.0.0",
   "scripts": {
-    "type-check": "vue-tsc --allowJs --noEmit -p tsconfig.vitest.json --composite false",
+    "type-check": "vue-tsc --allowJs --noEmit -p tsconfig.typecheck.json --composite false",
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --loglevel=warn --write --single-quote \"src/ts/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test:unit": "vitest --run --environment jsdom --reporter default",
