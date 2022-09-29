@@ -1,4 +1,4 @@
-# vitest --run --environment jsdom && \
+npm run test:unit && \
 npx cypress run && \
 git commit -am refactoring && \
 git push
