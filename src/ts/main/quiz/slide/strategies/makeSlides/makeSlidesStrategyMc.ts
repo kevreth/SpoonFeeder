@@ -6,10 +6,17 @@ import { CreateHtmlTypeMc } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
-export function makeSlidesStrategyMc(txt: string, options: string[], isExercise: boolean, createHtml: CreateHtmlTypeMc, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string>) {
+export function makeSlidesStrategyMc(
+  txt: string,
+  options: string[],
+  isExercise: boolean,
+  createHtml: CreateHtmlTypeMc,
+  maxWidthStrategy: SetWidthTypeSimple,
+  doc: Document,
+  setValues: SetValues<string>
+) {
   const shuffleFlag = isExercise && isRandom();
-  if (shuffleFlag)
-    options = shuffle(options);
+  if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);
   createPageContent(html, doc);
   options.forEach((option, optionCtr) => {
@@ -29,7 +36,13 @@ function addBehavior(
     optionButtonEventListener(length, doc, setValues, option, optionCtr);
   });
 }
-function optionButtonEventListener(length: number, doc: Document, setValues: SetValues<string>, option: string, optionCtr: number) {
+function optionButtonEventListener(
+  length: number,
+  doc: Document,
+  setValues: SetValues<string>,
+  option: string,
+  optionCtr: number
+) {
   for (let i = 0; i < length; i++)
     removeListener(doc.getElementById('btn' + i) as HTMLElement);
   setValues.setRes(option);
@@ -37,11 +50,14 @@ function optionButtonEventListener(length: number, doc: Document, setValues: Set
   decorateOptionButton(setValues, doc, optionCtr);
   showButton(doc);
 }
-function decorateOptionButton(setValues: SetValues<string>, doc: Document, optionCtr: number) {
+function decorateOptionButton(
+  setValues: SetValues<string>,
+  doc: Document,
+  optionCtr: number
+) {
   const result = setValues.result();
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   let color = 'red';
   if (result) color = 'green';
   optionButton.style.backgroundColor = color;
 }
-

@@ -3,8 +3,8 @@ import { Json } from '../globals';
 import reloadPage from '../../../composables/startOver';
 import { Evaluation } from './evaluate';
 import { SaveData } from './slide/saveData';
-const {evaluate} = Evaluation;
-const {getSavedDataArray} = SaveData;
+const { evaluate } = Evaluation;
+const { getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
@@ -23,9 +23,7 @@ export class MakeSlides {
       const idx = arr.findIndex((x) => x.txt === slide.txt);
       slide.setResults(arr[idx].result);
       MakeSlides.showSlides(doc);
-    }
-    else
-      slide.makeSlides(doc);
+    } else slide.makeSlides(doc);
   }
   public static showButton(doc: Document): void {
     const continue_btn = MakeSlides.continueButton(doc);

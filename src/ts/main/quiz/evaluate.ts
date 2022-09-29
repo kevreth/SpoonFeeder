@@ -16,7 +16,7 @@ export class Evaluation {
   public static evaluate(): string {
     const TABLE_HEADER =
       '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
-      Json.reset();
+    Json.reset();
     let text = TABLE_HEADER;
     let correctCtr = 0;
     let responseCtr = 0;

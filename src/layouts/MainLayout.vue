@@ -1,8 +1,8 @@
 <template>
-  <q-layout>      
+  <q-layout>
     <q-card class="iconHamburger z-top">
       <MenuOverlay />
-    </q-card>             
+    </q-card>
 
     <q-page-container>
       <router-view />
@@ -18,7 +18,7 @@ import MenuOverlay from 'src/components/MenuOverlay.vue';
 .q-page-container {
   padding-top: calc(0px + env(safe-area-inset-top, 0)) !important;
 }
-.iconHamburger{
+.iconHamburger {
   max-height: 0px;
   display: flex;
   float: right;

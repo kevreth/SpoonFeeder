@@ -3,7 +3,7 @@ import { Slide } from '../../slide';
 import { isRandom, shuffleMap } from '../../../utilities';
 import { MakeSlidesVocabType } from '../strategies/makeSlides';
 export class Vocab extends Slide<Array<string>> {
-  list = new Map<string,string>();
+  list = new Map<string, string>();
   res = new Array<string>();
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
@@ -18,7 +18,7 @@ export class Vocab extends Slide<Array<string>> {
     const res = this.res;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesVocabType);
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesVocabType;
     makeSlidesStrategy(list, res, createHtml, maxWidthStrategy, doc, setValues);
   }
 }

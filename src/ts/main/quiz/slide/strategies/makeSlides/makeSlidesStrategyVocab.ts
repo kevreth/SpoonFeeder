@@ -11,7 +11,14 @@ export type vocabTuplesType = [
   ans: string,
   options: Array<string>
 ][];
-export function makeSlidesStrategyVocab(map: Map<string, string>, res: string[], createHtml: CreateHtmlTypeMc, maxWidthStrategy: SetWidthTypeSimple, doc: Document, setValues: SetValues<string[]>): void {
+export function makeSlidesStrategyVocab(
+  map: Map<string, string>,
+  res: string[],
+  createHtml: CreateHtmlTypeMc,
+  maxWidthStrategy: SetWidthTypeSimple,
+  doc: Document,
+  setValues: SetValues<string[]>
+): void {
   const vocabTuples = generateQuestions(map);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
   paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res, setValues);
@@ -30,11 +37,35 @@ export function paging(
   const answer = tuple[1];
   const options = tuple[2];
   options.forEach((option, j) => {
-    addOptionButtonEventListener(j, doc, answer, res, option, options, questionCtr, html_list, vocabTuples, maxWidthStrategy, setValues);
+    addOptionButtonEventListener(
+      j,
+      doc,
+      answer,
+      res,
+      option,
+      options,
+      questionCtr,
+      html_list,
+      vocabTuples,
+      maxWidthStrategy,
+      setValues
+    );
   });
   maxWidthStrategy(options.length, 'btn', doc);
 }
-export function addOptionButtonEventListener(j: number, doc: Document, answer: string, res: string[], option: string, options: string[], questionCtr: number, html_list: string[], vocabTuples: vocabTuplesType, maxWidthStrategy: SetWidthTypeSimple, setValues: SetValues<string[]>) {
+export function addOptionButtonEventListener(
+  j: number,
+  doc: Document,
+  answer: string,
+  res: string[],
+  option: string,
+  options: string[],
+  questionCtr: number,
+  html_list: string[],
+  vocabTuples: vocabTuplesType,
+  maxWidthStrategy: SetWidthTypeSimple,
+  setValues: SetValues<string[]>
+) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
   button.addEventListener('click', () => {
@@ -45,20 +76,39 @@ export function addOptionButtonEventListener(j: number, doc: Document, answer: s
       removeListener(button);
     }
     if (questionCtr + 1 < html_list.length) {
-      addContinueButtonListener(doc, html_list, vocabTuples, questionCtr, maxWidthStrategy, res, setValues);
+      addContinueButtonListener(
+        doc,
+        html_list,
+        vocabTuples,
+        questionCtr,
+        maxWidthStrategy,
+        res,
+        setValues
+      );
     } else {
       setValues.saveData();
       showButton(doc);
     }
   });
 }
-export function setButtonColor(option: string, answer: string, button: HTMLElement) {
+export function setButtonColor(
+  option: string,
+  answer: string,
+  button: HTMLElement
+) {
   let color = 'red';
-  if (option === answer)
-    color = 'green';
+  if (option === answer) color = 'green';
   button.style.backgroundColor = color;
 }
-export function addContinueButtonListener(doc: Document, html_list: string[], vocabTuples: vocabTuplesType, questionCtr: number, maxWidthStrategy: SetWidthTypeSimple, res: string[], setValues: SetValues<string[]>) {
+export function addContinueButtonListener(
+  doc: Document,
+  html_list: string[],
+  vocabTuples: vocabTuplesType,
+  questionCtr: number,
+  maxWidthStrategy: SetWidthTypeSimple,
+  res: string[],
+  setValues: SetValues<string[]>
+) {
   const element = continueButton(doc) as HTMLElement;
   addContinueEventListener(
     element,
@@ -83,10 +133,21 @@ export function addContinueEventListener(
   setValues: SetValues<string[]>
 ): void {
   element.addEventListener('click', (): void => {
-    paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res, setValues);
+    paging(
+      doc,
+      html_list,
+      vocabTuples,
+      questionCtr + 1,
+      maxWidthStrategy,
+      res,
+      setValues
+    );
   });
 }
-export function createHtmlLoop(vocabTuples: vocabTuplesType, createHtml: CreateHtmlTypeMc): string[] {
+export function createHtmlLoop(
+  vocabTuples: vocabTuplesType,
+  createHtml: CreateHtmlTypeMc
+): string[] {
   const retval: string[] = [];
   for (const tuple of vocabTuples) {
     const question = tuple[0];
@@ -103,10 +164,8 @@ export function generateQuestions(map: Map<string, string>): vocabTuplesType {
     let options = keys.slice(0, CHOICES);
     //if correct answer is not in "options",
     //replace the first entry with it.
-    if (!options.includes(key))
-      options[0] = key;
-    if (isRandom())
-      options = shuffle(options);
+    if (!options.includes(key)) options[0] = key;
+    if (isRandom()) options = shuffle(options);
     const quest = map.get(key) as string;
     vocabTuples.push([quest, key, options]);
   }

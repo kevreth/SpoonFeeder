@@ -6,7 +6,13 @@ import { CreateHtmlTypeSort } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
-export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: CreateHtmlTypeSort, doc: Document, setValues: SetValues<string[]>): void {
+export function makeSlidesStrategySort(
+  txt: string,
+  ans: string[],
+  createHtml: CreateHtmlTypeSort,
+  doc: Document,
+  setValues: SetValues<string[]>
+): void {
   const html = createHtml(txt, ans);
   createPageContent(html, doc);
   gsap.registerPlugin(Draggable);
@@ -21,8 +27,7 @@ export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: C
     const res = sortables.map((x) => x.element.innerHTML);
     setValues.setRes(res);
     let msg = 'incorrect';
-    if (setValues.result())
-      msg = 'correct';
+    if (setValues.result()) msg = 'correct';
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();
@@ -55,8 +60,7 @@ export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: C
     function setIndex(index: number) {
       sortable.index = index;
       // Don't layout while dragging
-      if (!dragger.isDragging)
-        layout();
+      if (!dragger.isDragging) layout();
     }
     function downAction(this: Draggable) {
       animation.play();
@@ -65,8 +69,7 @@ export function makeSlidesStrategySort(txt: string, ans: string[], createHtml: C
     function dragAction(this: Draggable) {
       // Calculate the current index based on element's position
       const index = clamp(Math.round(this.y / rowSize), 0, total - 1);
-      if (index !== sortable.index)
-        changeIndex(sortable, index);
+      if (index !== sortable.index) changeIndex(sortable, index);
     }
     function upAction() {
       animation.reverse();

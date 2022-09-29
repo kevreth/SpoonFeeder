@@ -1,42 +1,46 @@
-import { expect, it } from 'vitest'
+import { expect, it } from 'vitest';
 import { JSDOM } from 'jsdom';
-import {Vocab} from '../../../../../main/quiz/slide/slideType/vocab'
+import { Vocab } from '../../../../../main/quiz/slide/slideType/vocab';
 import { SlideFactory } from '../../../../../main/quiz/slide/slideFactory';
-import { generateQuestions, createHtmlLoop, setButtonColor } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
+import {
+  generateQuestions,
+  createHtmlLoop,
+  setButtonColor,
+} from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
 import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
 import { makeButton } from '../../../../../main/utilities';
-sessionStorage.setItem('random','false');
+sessionStorage.setItem('random', 'false');
 const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
-const MAP:Map<string,string> = new Map([
-	['term1','def1'],
-	['term2','def2'],
-	['term3','def3'],
-	['term4','def4'],
-	['term5','def5']
+const MAP: Map<string, string> = new Map([
+  ['term1', 'def1'],
+  ['term2', 'def2'],
+  ['term3', 'def3'],
+  ['term4', 'def4'],
+  ['term5', 'def5'],
 ]);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const json:any = {
-	type:'vocab',
-	list: MAP,
-	isExercise: false
-}
-const slide:Vocab = SlideFactory.getInstance('vocab') as Vocab;
+const json: any = {
+  type: 'vocab',
+  list: MAP,
+  isExercise: false,
+};
+const slide: Vocab = SlideFactory.getInstance('vocab') as Vocab;
 slide.processJson(json);
 it('generateQuestions', () => {
-	const result = generateQuestions(MAP);
-	expect(result).not.toBeNull();
-	expect(result.length).toBe(5);
-	expect(result[0][0]).not.toBeNull();
-	expect(result[0][1]).not.toBeNull();
-	expect(result[0][2].length).toBe(4);
-	expect(result[0][0]).toMatch(/def/);
-	expect(result[0][1]).toMatch(/term/);
+  const result = generateQuestions(MAP);
+  expect(result).not.toBeNull();
+  expect(result.length).toBe(5);
+  expect(result[0][0]).not.toBeNull();
+  expect(result[0][1]).not.toBeNull();
+  expect(result[0][2].length).toBe(4);
+  expect(result[0][0]).toMatch(/def/);
+  expect(result[0][1]).toMatch(/term/);
 });
 it('createHtmlLoop', () => {
-	const vocabTuples = generateQuestions(MAP);
-	const result = createHtmlLoop(vocabTuples, CreateHtml.MC);
-	expect(result).not.toBeNull();
-	expect(result.length).toBe(5);
+  const vocabTuples = generateQuestions(MAP);
+  const result = createHtmlLoop(vocabTuples, CreateHtml.MC);
+  expect(result).not.toBeNull();
+  expect(result.length).toBe(5);
 });
 it('setButtonColorCorrect', () => {
   testSetButtonColer('a', 'green');

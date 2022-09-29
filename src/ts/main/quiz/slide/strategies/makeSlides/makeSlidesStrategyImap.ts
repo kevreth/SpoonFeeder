@@ -6,12 +6,22 @@ import { CreateHtmlTypeImap } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
-export function makeSlidesStrategyImap(txt: string, img: string, createHtml: CreateHtmlTypeImap, doc: Document, setValues: SetValues<string>) {
+export function makeSlidesStrategyImap(
+  txt: string,
+  img: string,
+  createHtml: CreateHtmlTypeImap,
+  doc: Document,
+  setValues: SetValues<string>
+) {
   const html = createHtml(txt, img);
   createPageContent(html, doc);
   const picture = doc.getElementById('imagemap');
   //inject SVG into page so it is part of DOM
-  SVGInjector(picture, { afterAll() { afterAll(setValues, doc); } });
+  SVGInjector(picture, {
+    afterAll() {
+      afterAll(setValues, doc);
+    },
+  });
 }
 function afterAll(setValues: SetValues<string>, doc: Document) {
   const ids = getChildIds(doc, 'imagemap');
@@ -26,8 +36,7 @@ function afterAll(setValues: SetValues<string>, doc: Document) {
       setValues.setRes(id);
       const element = doc.getElementById(id) as HTMLElement;
       let classname = 'shape_incorrect';
-      if (setValues.result())
-        classname = 'shape_correct';
+      if (setValues.result()) classname = 'shape_correct';
       element.classList.add(classname);
       setValues.saveData();
       showButton(doc);

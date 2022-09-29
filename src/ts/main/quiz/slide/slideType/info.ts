@@ -3,14 +3,13 @@ import { CreateHtmlTypeInfo } from '../strategies/createHtml';
 import { MakeSlidesInfoType } from '../strategies/makeSlides';
 export class Info extends Slide<string> {
   processJson(json: Info): void {
-    ({txt:this.txt} = json);
+    ({ txt: this.txt } = json);
   }
   makeSlides(doc: Document): void {
-    const txt = (this.txt as string);
+    const txt = this.txt as string;
     const setValues = this.getSetValues();
-    const createHtml =(this.createHtml as CreateHtmlTypeInfo);
-    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesInfoType);
+    const createHtml = this.createHtml as CreateHtmlTypeInfo;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesInfoType;
     makeSlidesStrategy(txt, createHtml, doc, setValues);
   }
 }
-

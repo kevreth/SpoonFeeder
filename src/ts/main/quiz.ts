@@ -7,7 +7,7 @@ import { MakeSlides } from './quiz/makeSlides';
 import { ProcessJson } from './quiz/processJson';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
-const {getInstance} = SlideFactory;
+const { getInstance } = SlideFactory;
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
     // Phase 1: process Json

@@ -1,6 +1,10 @@
 import type { Evaluation } from './evaluate';
 
-import { ResultReturnType, AnswerType, ResultType } from './slide/strategies/result';
+import {
+  ResultReturnType,
+  AnswerType,
+  ResultType,
+} from './slide/strategies/result';
 import { append, empty } from '../utilities';
 import { SaveData } from '../quiz/slide/saveData';
 import { mathjax } from 'mathjax-full/ts/mathjax';
@@ -12,11 +16,11 @@ import { EvaluateType } from './slide/strategies/evaluate';
 import { MakeSlidesType } from './slide/strategies/makeSlides';
 import hljs from 'highlight.js';
 import { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
-const {saveData} = SaveData;
+const { saveData } = SaveData;
 RegisterHTMLHandler(browserAdaptor());
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
-export interface SlideInterface/* extends GetScore*/ {
+export interface SlideInterface /* extends GetScore*/ {
   txt: AnswerType;
   type: string;
   isExercise: boolean;
@@ -29,7 +33,7 @@ export interface SlideInterface/* extends GetScore*/ {
   //Evaluate user responses at the end of quiz
   //evaluation during quiz is NOT here
   evaluate(): Evaluation;
-  setResults(res:AnswerType):void;
+  setResults(res: AnswerType): void;
   result(): ResultReturnType;
 }
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
@@ -46,21 +50,21 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   constructor(
     public readonly type: string,
     public readonly createHtml: CreateHtmlTypeIntersection,
-    public readonly makeSlidesStrategy:MakeSlidesType,
-    public readonly evaluateStrategy:EvaluateType,
+    public readonly makeSlidesStrategy: MakeSlidesType,
+    public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file
   setResults(res: T): void {
-    this.res=res;
+    this.res = res;
   }
   evaluate(): Evaluation {
-    const txt = (this.txt as AnswerTypeIntersection);
-    const res = (this.res as AnswerTypeIntersection);
-    const ans = (this.ans as AnswerTypeIntersection);
-      const result = (this.result() as ResultTypeIntersection);
+    const txt = this.txt as AnswerTypeIntersection;
+    const res = this.res as AnswerTypeIntersection;
+    const ans = this.ans as AnswerTypeIntersection;
+    const result = this.result() as ResultTypeIntersection;
     return this.evaluateStrategy(txt, ans, res, result);
   }
   saveData() {
@@ -69,15 +73,15 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     saveData(txt, res);
   }
   result(): ResultReturnType {
-    return this.resultType(this.ans,this.res);
+    return this.resultType(this.ans, this.res);
   }
-  setRes(res:T):void {
-    this.res=res;
+  setRes(res: T): void {
+    this.res = res;
   }
   getSetValues() {
     const saveData = () => this.saveData();
     const result = (): ResultReturnType => this.result();
-    const setRes = (res:T): void => this.setRes(res);
+    const setRes = (res: T): void => this.setRes(res);
     return new SetValues<T>(saveData, result, setRes);
   }
   public static createPageContent(html: string, doc: Document): void {
@@ -105,10 +109,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   }
 }
 export class SetValues<T> {
-  constructor (
+  constructor(
     public readonly saveData: () => void,
     public readonly result: () => ResultReturnType,
-    public readonly setRes: (res:T) => void,
+    public readonly setRes: (res: T) => void
   ) {}
 }
-

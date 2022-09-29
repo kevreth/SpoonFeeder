@@ -16,8 +16,7 @@ export class Select extends Slide<Array<number>> {
     const ans = this.ans;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesSelectType);
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesSelectType;
     makeSlidesStrategy(inst, ans, txt, createHtml, doc, setValues);
   }
 }
-

@@ -1,9 +1,9 @@
 import { AnswerType } from './strategies/result';
-import {extend} from '../../../main/utilities';
-export class SaveData {;
+import { extend } from '../../../main/utilities';
+export class SaveData {
   constructor(
-    public readonly txt:AnswerType,
-    public readonly result:AnswerType
+    public readonly txt: AnswerType,
+    public readonly result: AnswerType
   ) {}
   public static getSavedDataArray(): Array<SaveData> {
     const data = localStorage.getItem('savedata') as string;

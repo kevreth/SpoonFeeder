@@ -1,40 +1,40 @@
 <template>
-  <MenuBtn @click="handleOverlay"/>
+  <MenuBtn @click="handleOverlay" />
 
   <q-overlay v-model="overlay">
-  <template #body>
-    <div class="overlayParent">
-      <div class="buttonChild">
-        <TrashBtn @click="startOver"/>
-        <OverlayCloseBtn @click="handleOverlay"/>
-      </div>
+    <template #body>
+      <div class="overlayParent">
+        <div class="buttonChild">
+          <TrashBtn @click="startOver" />
+          <OverlayCloseBtn @click="handleOverlay" />
+        </div>
 
-      <div class="hierarchyChild fixed-center">
-        <ProgressTable style="cursor:auto"/>
+        <div class="hierarchyChild fixed-center">
+          <ProgressTable style="cursor: auto" />
+        </div>
       </div>
-    </div>
-  </template>
+    </template>
   </q-overlay>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
 
-const overlay = ref(false)
+const overlay = ref(false);
 
 function handleOverlay() {
-  overlay.value = !overlay.value
+  overlay.value = !overlay.value;
 }
 
 function startOver() {
   const { clear, reload } = getStartOver();
   return { clear, reload };
-  }
+}
 </script>
 
 <style>
@@ -62,9 +62,7 @@ function startOver() {
   border-radius: 20px;
   padding: 2px 0 0 0;
   margin: 0;
-  max-height: 100vh; 
-  overflow:auto;
+  max-height: 100vh;
+  overflow: auto;
 }
-
-
 </style>

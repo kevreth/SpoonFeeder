@@ -1,15 +1,25 @@
-import { difference, intersection, removeListener } from '../../../../utilities';
+import {
+  difference,
+  intersection,
+  removeListener,
+} from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
-import {CreateHtmlTypeSelect} from '../../../../../main/quiz/slide/strategies/createHtml';
+import { CreateHtmlTypeSelect } from '../../../../../main/quiz/slide/strategies/createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
-export function makeSlidesStrategySelect(inst: string, ans: number[], txt: string[], createHtml: CreateHtmlTypeSelect, doc: Document, setValues: SetValues<number[]>) {
+export function makeSlidesStrategySelect(
+  inst: string,
+  ans: number[],
+  txt: string[],
+  createHtml: CreateHtmlTypeSelect,
+  doc: Document,
+  setValues: SetValues<number[]>
+) {
   const html = createHtml(inst, txt);
   createPageContent(html, doc);
-  for (let ctr = 0; ctr < txt.length; ctr++)
-    iter2(ctr + 1, doc);
+  for (let ctr = 0; ctr < txt.length; ctr++) iter2(ctr + 1, doc);
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txt.length;
   element.addEventListener('click', () => {
@@ -31,8 +41,7 @@ function selected(id: string, doc: Document): void {
   if (element.style.backgroundColor === 'blue') {
     element.style.removeProperty('background-color');
     color = 'black';
-  } else
-    element.style.backgroundColor = 'blue';
+  } else element.style.backgroundColor = 'blue';
   element.style.color = color;
 }
 function evaluate2(
@@ -56,11 +65,8 @@ function mark(doc: Document) {
     const id = 'w' + ctr.toString();
     const element = doc.getElementById(id);
     if (element !== null) {
-      if (element.style.backgroundColor === 'blue')
-        responses.push(ctr);
-    }
-    else
-      found = false;
+      if (element.style.backgroundColor === 'blue') responses.push(ctr);
+    } else found = false;
     ctr++;
   }
   return responses;

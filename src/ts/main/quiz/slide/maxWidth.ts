@@ -18,8 +18,7 @@ export class MaxWidth {
     let maxWidth = 0;
     elements.forEach((element) => {
       const width = element.offsetWidth;
-      if (width > maxWidth)
-        maxWidth = width;
+      if (width > maxWidth) maxWidth = width;
     });
     return maxWidth;
   }

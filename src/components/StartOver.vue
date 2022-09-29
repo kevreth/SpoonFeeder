@@ -1,20 +1,14 @@
 <template>
-  <q-btn
-    @click="startOver"
-    size="1em"
-    class="bg-primary"
-    label="Start Over"
-  />
+  <q-btn @click="startOver" size="1em" class="bg-primary" label="Start Over" />
 </template>
 
 <script setup>
-  import getStartOver from '../composables/startOver';
+import getStartOver from '../composables/startOver';
 
-  function startOver() {
-    const { clear, reload } = getStartOver();
-    return { clear, reload };
-    }
-
+function startOver() {
+  const { clear, reload } = getStartOver();
+  return { clear, reload };
+}
 </script>
 
 <style scoped>

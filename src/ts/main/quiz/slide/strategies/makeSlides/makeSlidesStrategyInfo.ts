@@ -5,7 +5,12 @@ import { CreateHtmlTypeInfo } from '../createHtml';
 const { createPageContent } = Slide;
 const { showSlides } = MakeSlides;
 
-export function makeSlidesStrategyInfo(txt: string, createHtml: CreateHtmlTypeInfo, doc: Document, setValues: SetValues<string>) {
+export function makeSlidesStrategyInfo(
+  txt: string,
+  createHtml: CreateHtmlTypeInfo,
+  doc: Document,
+  setValues: SetValues<string>
+) {
   const html = createHtml(txt);
   createPageContent(html, doc);
   setValues.saveData();

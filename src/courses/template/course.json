@@ -1,61 +1,67 @@
 {
-	"name": "",
-	"units": [
-		{
-			"name": "",
-			"lessons": [
-				{
-					"name": "",
-					"modules": [
-						{
-							"name": "",
-							"inst":[
-								{
-									"type": "info",
-									"txt": "<div id=\"table0\"></div><script>$('#table0').load(\"src/courses/english/english.html\")</script>"
-								},{
-									"type":"bool",
-									"txt": "yes",
-									"ans": "yes"
-								}
-							],
-							"exercises": [
-							{
-								"type":"mc",
-								"q":"",
-								"o": [],
-								"ans":""
-							},{
-								"type":"imap",
-								"txt":"",
-								"img":"src/svg/test.svg",
-								"ans":""
-							},{
-								"type":"gap",
-								"text":" (1)  (2)  (3)",
-								"ans":["", "", ""]
-							},{
-								"type":"select",
-								"inst":"",
-								"text":"",
-								"ans":[]
-							},{
-								"type":"sort",
-								"txt":"",
-								"ans":["a","b","c","d"]
-							},{
-								"type":"vocab",
-								"list": {
-									"1": "",
-									"2": "",
-									"3": ""
-								}
-							}
-					  	]
-						}
-					]
-				}
-			]
-		}
-	]
+  "name": "",
+  "units": [
+    {
+      "name": "",
+      "lessons": [
+        {
+          "name": "",
+          "modules": [
+            {
+              "name": "",
+              "inst": [
+                {
+                  "type": "info",
+                  "txt": "<div id=\"table0\"></div><script>$('#table0').load(\"src/courses/english/english.html\")</script>"
+                },
+                {
+                  "type": "bool",
+                  "txt": "yes",
+                  "ans": "yes"
+                }
+              ],
+              "exercises": [
+                {
+                  "type": "mc",
+                  "q": "",
+                  "o": [],
+                  "ans": ""
+                },
+                {
+                  "type": "imap",
+                  "txt": "",
+                  "img": "src/svg/test.svg",
+                  "ans": ""
+                },
+                {
+                  "type": "gap",
+                  "text": " (1)  (2)  (3)",
+                  "ans": ["", "", ""]
+                },
+                {
+                  "type": "select",
+                  "inst": "",
+                  "text": "",
+                  "ans": []
+                },
+                {
+                  "type": "sort",
+                  "txt": "",
+                  "ans": ["a", "b", "c", "d"]
+                },
+                {
+                  "type": "vocab",
+                  "list": {
+                    "1": "",
+                    "2": "",
+                    "3": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

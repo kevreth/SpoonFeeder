@@ -9,7 +9,14 @@ const { showButton } = MakeSlides;
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
-export function makeSlidesStrategyGap(txt: string, ans: string[], createHtml: CreateHtmlTypeGap, maxWidthStrategy: SetWidthTypeComplex, doc: Document, setValues: SetValues<string[]>): void {
+export function makeSlidesStrategyGap(
+  txt: string,
+  ans: string[],
+  createHtml: CreateHtmlTypeGap,
+  maxWidthStrategy: SetWidthTypeComplex,
+  doc: Document,
+  setValues: SetValues<string[]>
+): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
   const remaining = ans.length.toString();
@@ -24,7 +31,8 @@ export function makeSlidesStrategyGap(txt: string, ans: string[], createHtml: Cr
 export function fills(ans: string[]): string {
   let fill_accum = '';
   ans.forEach((currentFills, ctr) => {
-    const fill_html = `\n    <span id="fill${ctr}" ` +
+    const fill_html =
+      `\n    <span id="fill${ctr}" ` +
       `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
     fill_accum = fill_accum.concat(fill_html);
   });
@@ -45,7 +53,12 @@ export function gaps(length: number, gaps: string): string {
   //a remaining part of gaps is leftover, so we add it here.
   return gaps_accum + gaps;
 }
-function setgap(ctr: number, doc: Document, ans: string[], setValues: SetValues<string[]>): void {
+function setgap(
+  ctr: number,
+  doc: Document,
+  ans: string[],
+  setValues: SetValues<string[]>
+): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
   id.style.display = 'inline-block';
   id.style.borderBottom = '2px solid';
@@ -103,13 +116,19 @@ function evaluateA(doc: Document, ans: string[]): Array<string> {
     eAns.style.color = 'white';
   }
   const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
-  const response = `Number correct: ${correct} <br>\nNumber questions: ` +
+  const response =
+    `Number correct: ${correct} <br>\nNumber questions: ` +
     `${ans.length} <br>\n${pctCorrect}%`;
   const responseElem = doc.getElementById('response') as HTMLElement;
   responseElem.innerHTML = response;
   return responses;
 }
-function drop2(doc: Document, gapNumber: string, fillText: string, fillNumber: string) {
+function drop2(
+  doc: Document,
+  gapNumber: string,
+  fillText: string,
+  fillNumber: string
+) {
   const gap = doc.getElementById('gap' + gapNumber) as HTMLElement;
   gap.innerHTML = `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
   const fill = doc.getElementById('fill' + fillNumber) as HTMLElement;

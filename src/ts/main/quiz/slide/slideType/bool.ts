@@ -3,10 +3,6 @@ import { Mc } from './mc';
 export class Bool extends Mc {
   o = ['yes', 'no'];
   processJson(json: Mc): void {
-    ({
-      txt: this.txt,
-      ans: this.ans,
-      isExercise: this.isExercise
-    } = json);
+    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
 }

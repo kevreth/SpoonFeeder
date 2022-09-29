@@ -18,6 +18,4 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'history';
 const courseName = 'test';
 Quiz.slides(courseName, document);
-
 </script>
-

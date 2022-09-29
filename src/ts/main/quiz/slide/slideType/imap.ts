@@ -12,11 +12,10 @@ export class Imap extends Slide<string> {
   }
   makeSlides(doc: Document): void {
     const setValues = this.getSetValues();
-    const txt = (this.txt as string);
+    const txt = this.txt as string;
     const img = this.img;
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = (this.makeSlidesStrategy as MakeSlidesImapType);
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesImapType;
     makeSlidesStrategy(txt, img, createHtml, doc, setValues);
   }
 }
-
