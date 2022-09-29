@@ -1,4 +1,4 @@
-import { fills, gaps } from '../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyGap';
+import { fills, gaps } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyGap';
 import { expect, it } from 'vitest'
 const question = 'text (1) text (2) text (3)';
 const ans=['ans1', 'ans2', 'ans3']

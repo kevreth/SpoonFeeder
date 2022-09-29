@@ -1,10 +1,10 @@
 import { expect, it } from 'vitest'
 import { JSDOM } from 'jsdom';
-import {Vocab} from '../../main/quiz/slide/slideType/vocab'
-import { SlideFactory } from '../../main/quiz/slide/slideFactory';
-import { generateQuestions, createHtmlLoop, setButtonColor } from '../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
-import { CreateHtml } from '../../main/quiz/slide/strategies/createHtml';
-import { makeButton } from '../../main/utilities';
+import {Vocab} from '../../../../../main/quiz/slide/slideType/vocab'
+import { SlideFactory } from '../../../../../main/quiz/slide/slideFactory';
+import { generateQuestions, createHtmlLoop, setButtonColor } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
+import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
+import { makeButton } from '../../../../../main/utilities';
 sessionStorage.setItem('random','false');
 const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 const MAP:Map<string,string> = new Map([
