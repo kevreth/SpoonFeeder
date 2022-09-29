@@ -6,12 +6,12 @@
   "author": "Kevin Rethwisch <rethwisch_kevin@va.gov>",
   "private": true,
   "scripts": {
-    "format": "prettier --write \"src/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test:unit": "vitest --run --environment jsdom",
-    "test:e2e": "npx cypress run",
-    "build-only": "vite build",
     "type-check": "vue-tsc src/ts/**/* --noEmit --composite false",
-    "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --loglevel=warn --write --single-quote \"src/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test:unit": "vitest --run --environment jsdom --reporter default",
+    "test:e2e": "npx cypress run -q",
+    "build-only": "vite build"
   },
   "dependencies": {
     "@datastructures-js/queue": "^4.2.2",
@@ -68,7 +68,7 @@
     "quasar-app-extension-qhierarchy": "^1.0.9",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.7.4",
-    "vitest": "^0.21.0",
+    "vitest": "^0.23.4",
     "vue-tsc": "^0.39.5"
   },
   "engines": {

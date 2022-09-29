@@ -1,6 +1,6 @@
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
-describe('Cyberlearning', () => {
+describe('Cypress Testing', () => {
   it('visits the app root url', () => {
     cy.visit('/');
     cy.title().should('eq', 'CyberLearning');
