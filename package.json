@@ -8,7 +8,7 @@
   "scripts": {
     "type-check": "vue-tsc src/ts/**/* --noEmit --composite false",
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --loglevel=warn --write --single-quote \"src/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "format": "prettier --loglevel=warn --write --single-quote \"src/ts/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test:unit": "vitest --run --environment jsdom --reporter default",
     "test:e2e": "npx cypress run -q",
     "build-only": "vite build"
