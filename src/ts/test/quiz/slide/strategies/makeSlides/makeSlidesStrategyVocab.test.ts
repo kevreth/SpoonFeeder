@@ -39,22 +39,18 @@ it('createHtmlLoop', () => {
 	expect(result.length).toBe(5);
 });
 it('setButtonColorCorrect', () => {
-  const option = 'a';
-  const id = setButtonColer(option);
-  expect(id.style.backgroundColor).toBe('green');
+  testSetButtonColer('a', 'green');
 });
 it('setButtonColorIncorrect', () => {
-  const option = 'b';
-  const id = setButtonColer(option);
-  expect(id.style.backgroundColor).toBe('red');
+  testSetButtonColer('b', 'red');
 });
-function setButtonColer(option: string) {
+function testSetButtonColer(option: string, color: string) {
   const answer = 'a';
   const btn = makeButton('btn', 'btn', 'test');
   DOC.body.insertAdjacentHTML('beforeend', '<br>' + btn);
   const id = DOC.getElementById('btn') as HTMLElement;
   setButtonColor(option, answer, id);
-  return id;
+  expect(id.style.backgroundColor).toBe(color);
 }
 // //test that the question and 4 buttons appear
 // it('includesEverything', () => {
