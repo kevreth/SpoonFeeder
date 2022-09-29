@@ -1,3 +1,5 @@
+import { SaveData } from "src/ts/main/quiz/slide/saveData";
+
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
 describe("Cyberlearning", () => {
@@ -143,6 +145,8 @@ describe("Cyberlearning", () => {
     existVisibleNotEmpty('body');
     cy.contains("learn the periodic table");
     testButton('#btn0');
+    SaveData.getSavedDataArray(); 
+    expect(SaveData.getSavedDataArray().length === 18)
     testButton('#btn'); //continue
 
     //results
