@@ -1,5 +1,5 @@
-import { Evaluation } from './evaluate';
-import { AnswerType, ResultReturnType } from './slide/strategies/result';
+import type { Evaluation } from './evaluate';
+import type { AnswerType, ResultReturnType } from './slide/strategies/result';
 
 export interface SlideInterface {
   txt: AnswerType;
