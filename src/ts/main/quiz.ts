@@ -34,7 +34,9 @@ export class Quiz {
     });
   }
   //////////////// Phase 2: process Json
-  static processSlides(data: Array<SlideInterface>): Array<SlideInterface> {
+  public static processSlides(
+    data: Array<SlideInterface>
+  ): Array<SlideInterface> {
     const outJson: Array<SlideInterface> = new Array<SlideInterface>();
     Array.prototype.forEach.call(data, (currentQuestion: SlideInterface) => {
       const slide = getInstance(currentQuestion.type) as SlideInterface;
