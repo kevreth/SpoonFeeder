@@ -20,13 +20,18 @@ function makeSlideArray() {
   });
   return slides;
 }
-it('testSetGet', () => {
+function reset() {
+  Json.set(new Array<SlideInterface>());
+}
+it('testSet_Get', () => {
+  reset();
   const slides: SlideInterface[] = makeSlideArray();
   Json.set(slides);
   const arr = Json.get();
   expect(arr.length).toEqual(slideTypes.length);
 });
-it('testCount', () => {
+it('testCount_GetSlide', () => {
+  reset();
   const slides: SlideInterface[] = makeSlideArray();
   Json.set(slides);
   const expected = 3;
@@ -35,9 +40,36 @@ it('testCount', () => {
   expect(actual).toEqual(expected);
 });
 it('testGetNumSlides', () => {
+  reset();
   const slides: SlideInterface[] = makeSlideArray();
   Json.set(slides);
   const expected = slides.length;
   const actual = Json.getNumSlides();
   expect(actual).toEqual(expected);
+});
+it('testPush', () => {
+  reset();
+  slideTypes.forEach((slideStr) => {
+    const slide = SlideFactory.getInstance(slideStr) as SlideInterface;
+    Json.push(slide);
+  });
+  const expected = slideTypes.length;
+  const actual = Json.getNumSlides();
+  expect(actual).toEqual(expected);
+});
+it('testReset', () => {
+  reset();
+  const slides: SlideInterface[] = makeSlideArray();
+  Json.set(slides);
+  const times = 3;
+  for (let i = 0; i < times; i++) Json.getSlide();
+  Json.reset();
+  const actual = Json.count();
+  const expected = 0;
+  expect(actual).toEqual(expected);
+});
+it('testGetSlideByTxt', () => {
+  reset();
+  const slides: SlideInterface[] = makeSlideArray();
+  Json.set(slides);
 });
