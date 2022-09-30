@@ -71,5 +71,8 @@ it('testReset', () => {
 it('testGetSlideByTxt', () => {
   reset();
   const slides: SlideInterface[] = makeSlideArray();
+  slides[4].txt = 'A';
   Json.set(slides);
+  const slide = Json.getSlideByTxt('A');
+  expect(slide).not.toBeNull();
 });
