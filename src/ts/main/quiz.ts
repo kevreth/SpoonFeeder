@@ -18,13 +18,13 @@ export class Quiz {
     //TODO: add test for file existence
     const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
     //test data
-    Progress.data =     [
+    Progress.data = [
       {
         label: 'test 1',
         description: 'test 1 description data',
         note: 'test 1 note',
-        children:[]
-      }
+        children: [],
+      },
     ];
 
     getYaml(yaml, (course: Course) => {

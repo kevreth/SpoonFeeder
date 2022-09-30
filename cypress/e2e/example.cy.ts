@@ -61,7 +61,7 @@ describe('Cypress Testing', () => {
     testButton('#btn3');
     testButton('#btn'); //continue
     testButton('#btn0');
-    testButton('#btn'); //continue
+    continueButton(11); //continue
 
     //sort
     existVisibleNotEmpty('body');
@@ -143,7 +143,7 @@ describe('Cypress Testing', () => {
     existVisibleNotEmpty('body');
     cy.contains('learn the periodic table');
     testButton('#btn0');
-    testButton('#btn'); //continue
+    continueButton(18); //continue
 
     //results
     existVisibleNotEmpty('body');
@@ -183,4 +183,24 @@ function existVisibleNotEmpty(e1: string) {
   existAndVisible(e1);
   cy.get(e1).should('not.be.empty');
 }
+function continueButton(ctr: number) {
+  cy.get('#btn')
+    .should('exist')
+    .should('be.visible')
+    .should('not.be.empty')
+    .click()
+    .should(() => {
+      const arr = getLocalStorageArray();
+      const length = arr.length;
+      expect(length).to.eq(ctr);
+    });
+}
+function getLocalStorageArray() {
+  const data = localStorage.getItem('savedata') as string;
+  const arr = JSON.parse(data);
+  return arr;
+}
 export {}; //stops lint warning
+
+
+
