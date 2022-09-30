@@ -1,9 +1,9 @@
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
-import { SetValues, Slide } from '../../../slide';
+import { createPageContent } from '../../CreatePageContent';
+import { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeImap } from '../createHtml';
-const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategyImap(

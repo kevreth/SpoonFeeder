@@ -1,9 +1,9 @@
 import { isRandom, removeListener, shuffle } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
-import { SetValues, Slide } from '../../../slide';
+import { createPageContent } from '../../CreatePageContent';
+import { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeMc } from '../createHtml';
 import type { SetWidthTypeSimple } from '../setWidths';
-const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategyMc(

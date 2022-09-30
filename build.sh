@@ -8,6 +8,8 @@ convertsecs() {
 }
 
 start=`date +%s`
+echo "CIRCULAR"
+npm run --silent circular
 echo "LINT"
 npm run --silent lint
 echo "FORMAT"

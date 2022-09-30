@@ -5,8 +5,8 @@ import {
   removeListener,
 } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
-import { SetValues, Slide } from '../../../slide';
-const { createPageContent } = Slide;
+import { createPageContent } from '../../CreatePageContent';
+import { SetValues } from '../../SetValues';
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySelect(

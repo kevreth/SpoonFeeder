@@ -2,6 +2,7 @@
   "name": "cyberlearning2",
   "version": "0.0.0",
   "scripts": {
+    "circular": "dpdm --no-warning --no-tree src/ts/main/quiz.ts",
     "type-check": "vue-tsc --allowJs --noEmit -p tsconfig.typecheck.json --composite false",
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --loglevel=warn --write --single-quote \"src/ts/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",

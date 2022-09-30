@@ -1,8 +1,7 @@
 import type { Evaluation } from './evaluate';
 
 import { SaveData } from '../quiz/slide/saveData';
-import { append, empty } from '../utilities';
-import { postRender } from './slide/postRender';
+import { SetValues } from './slide/SetValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
 import type { EvaluateType } from './slide/strategies/evaluate';
 import type { MakeSlidesType } from './slide/strategies/makeSlides';
@@ -79,18 +78,4 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     const setRes = (res: T): void => this.setRes(res);
     return new SetValues<T>(saveData, result, setRes);
   }
-  public static createPageContent(html: string, doc: Document): void {
-    const element = doc.getElementById('btn') as HTMLElement | null;
-    if (element != null) element.remove(); // Removes the div with the 'div-02' id
-    empty('#content');
-    append('#content', html);
-    postRender(document);
-  }
-}
-export class SetValues<T> {
-  constructor(
-    public readonly saveData: () => void,
-    public readonly result: () => ResultReturnType,
-    public readonly setRes: (res: T) => void
-  ) {}
 }
