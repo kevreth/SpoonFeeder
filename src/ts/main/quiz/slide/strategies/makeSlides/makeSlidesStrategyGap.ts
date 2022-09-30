@@ -1,6 +1,6 @@
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../CreatePageContent';
-import { SetValues } from '../../SetValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeGap } from '../createHtml';
 import type { SetWidthTypeComplex } from '../setWidths';
 const { showButton } = MakeSlides;

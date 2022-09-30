@@ -4,7 +4,7 @@ import type { Course } from './quiz/course';
 import { MakeSlides } from './quiz/makeSlides';
 import { ProcessJson } from './quiz/processJson';
 import { SlideFactory } from './quiz/slide/slideFactory';
-import { SlideInterface } from './quiz/SlideInterface';
+import type { SlideInterface } from './quiz/SlideInterface';
 import { getYaml } from './utilities';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;

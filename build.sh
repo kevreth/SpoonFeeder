@@ -10,6 +10,8 @@ convertsecs() {
 start=`date +%s`
 echo "CIRCULAR"
 npm run --silent circular
+echo "TYPECHECKING"
+npm run type-check|grep "src/ts/main" || true
 echo "LINT"
 npm run --silent lint
 echo "FORMAT"

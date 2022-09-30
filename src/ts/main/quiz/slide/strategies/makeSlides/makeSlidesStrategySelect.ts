@@ -6,7 +6,7 @@ import {
 } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../CreatePageContent';
-import { SetValues } from '../../SetValues';
+import type { SetValues } from '../../SetValues';
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySelect(

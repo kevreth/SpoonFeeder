@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../CreatePageContent';
-import { SetValues } from '../../SetValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeSort } from '../createHtml';
 const { showButton } = MakeSlides;
 

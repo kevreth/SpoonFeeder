@@ -10,7 +10,7 @@ import type {
   ResultReturnType,
   ResultType,
 } from './slide/strategies/result';
-import { SlideInterface } from './SlideInterface';
+import type { SlideInterface } from './SlideInterface';
 const { saveData } = SaveData;
 
 type AnswerTypeIntersection = string & string[];
