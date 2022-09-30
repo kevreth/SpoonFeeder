@@ -1,10 +1,10 @@
+import { Json } from './globals';
+import type { Course } from './quiz/course';
+import { MakeSlides } from './quiz/makeSlides';
+import { ProcessJson } from './quiz/processJson';
 import type { SlideInterface } from './quiz/slide';
 import { SlideFactory } from './quiz/slide/slideFactory';
 import { getYaml } from './utilities';
-import type { Course } from './quiz/course';
-import { Json } from './globals';
-import { MakeSlides } from './quiz/makeSlides';
-import { ProcessJson } from './quiz/processJson';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 const { getInstance } = SlideFactory;

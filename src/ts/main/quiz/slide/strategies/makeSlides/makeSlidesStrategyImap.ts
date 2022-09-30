@@ -1,7 +1,7 @@
-import { SetValues, Slide } from '../../../slide';
-import { MakeSlides } from '../../../makeSlides';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
+import { MakeSlides } from '../../../makeSlides';
+import { SetValues, Slide } from '../../../slide';
 import type { CreateHtmlTypeImap } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;

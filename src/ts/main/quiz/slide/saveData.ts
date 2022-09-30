@@ -1,5 +1,5 @@
-import type { AnswerType } from './strategies/result';
 import { extend } from '../../../main/utilities';
+import type { AnswerType } from './strategies/result';
 export class SaveData {
   constructor(
     public readonly txt: AnswerType,

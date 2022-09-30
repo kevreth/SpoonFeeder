@@ -1,6 +1,6 @@
-import { SetValues, Slide } from '../../../slide';
-import { MakeSlides } from '../../../makeSlides';
 import { makeButton } from '../../../../utilities';
+import { MakeSlides } from '../../../makeSlides';
+import { SetValues, Slide } from '../../../slide';
 import type { CreateHtmlTypeInfo } from '../createHtml';
 const { createPageContent } = Slide;
 const { showSlides } = MakeSlides;

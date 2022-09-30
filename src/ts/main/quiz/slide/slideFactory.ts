@@ -1,17 +1,17 @@
 import type { SlideInterface } from '../slide';
-import { Mc } from './slideType/mc';
-import { Gap } from './slideType/gap';
 import { Bool } from './slideType/bool';
+import { Gap } from './slideType/gap';
 import { Imap } from './slideType/imap';
 import { Info } from './slideType/info';
+import { Mc } from './slideType/mc';
 import { Select } from './slideType/select';
 import { Sort } from './slideType/sort';
 import { Vocab } from './slideType/vocab';
-import { MakeSlides } from './strategies/makeSlides';
-import { Evaluate } from './strategies/evaluate';
-import { Result } from './strategies/result';
 import type { CreateHtmlTypeIntersection } from './strategies/createHtml';
 import { CreateHtml } from './strategies/createHtml';
+import { Evaluate } from './strategies/evaluate';
+import { MakeSlides } from './strategies/makeSlides';
+import { Result } from './strategies/result';
 export class SlideFactory {
   public static readonly BOOL = new SlideFactory('bool');
   public static readonly GAP = new SlideFactory('gap');

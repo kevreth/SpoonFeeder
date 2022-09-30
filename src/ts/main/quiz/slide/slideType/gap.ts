@@ -1,11 +1,11 @@
 import { polyfill } from 'mobile-drag-drop';
+import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
-import { shuffle, isRandom } from '../../../utilities';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import { SetWidths } from '../strategies/setWidths';
 import type { MakeSlidesGapType } from '../strategies/makeSlides';
+import { SetWidths } from '../strategies/setWidths';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });

@@ -1,6 +1,6 @@
-import { makeButton } from '../utilities';
-import { Json } from '../globals';
 import reloadPage from '../../../composables/startOver';
+import { Json } from '../globals';
+import { makeButton } from '../utilities';
 import { Evaluation } from './evaluate';
 import { SaveData } from './slide/saveData';
 const { evaluate } = Evaluation;

@@ -1,13 +1,13 @@
-import { expect, it } from 'vitest';
 import { JSDOM } from 'jsdom';
-import type { Vocab } from '../../../../../main/quiz/slide/slideType/vocab';
+import { expect, it } from 'vitest';
 import { SlideFactory } from '../../../../../main/quiz/slide/slideFactory';
+import type { Vocab } from '../../../../../main/quiz/slide/slideType/vocab';
+import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
 import {
-  generateQuestions,
   createHtmlLoop,
+  generateQuestions,
   setButtonColor,
 } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
-import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
 import { makeButton } from '../../../../../main/utilities';
 sessionStorage.setItem('random', 'false');
 const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;

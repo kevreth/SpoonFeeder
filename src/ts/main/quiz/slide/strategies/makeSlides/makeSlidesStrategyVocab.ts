@@ -1,8 +1,8 @@
-import type { SetWidthTypeSimple } from '../setWidths';
-import { SetValues, Slide } from '../../../slide';
-import { removeListener, isRandom, shuffle } from '../../../../utilities';
-import type { CreateHtmlTypeMc } from '../createHtml';
+import { isRandom, removeListener, shuffle } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
+import { SetValues, Slide } from '../../../slide';
+import type { CreateHtmlTypeMc } from '../createHtml';
+import type { SetWidthTypeSimple } from '../setWidths';
 const { createPageContent } = Slide;
 const { continueButton, showButton } = MakeSlides;
 export const CHOICES = 4;

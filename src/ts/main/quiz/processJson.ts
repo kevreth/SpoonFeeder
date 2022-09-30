@@ -1,4 +1,4 @@
-import { shuffle, isRandom } from '../utilities';
+import { isRandom, shuffle } from '../utilities';
 import type { Course } from './course';
 import type { SlideInterface } from './slide';
 import { SlideFactory } from './slide/slideFactory';

@@ -1,16 +1,16 @@
 import type { Evaluation } from './evaluate';
 
-import type {
-  ResultReturnType,
-  AnswerType,
-  ResultType,
-} from './slide/strategies/result';
-import { append, empty } from '../utilities';
 import { SaveData } from '../quiz/slide/saveData';
+import { append, empty } from '../utilities';
+import { postRender } from './slide/postRender';
+import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
 import type { EvaluateType } from './slide/strategies/evaluate';
 import type { MakeSlidesType } from './slide/strategies/makeSlides';
-import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
-import { postRender } from './slide/postRender';
+import type {
+  AnswerType,
+  ResultReturnType,
+  ResultType,
+} from './slide/strategies/result';
 const { saveData } = SaveData;
 
 type AnswerTypeIntersection = string & string[];

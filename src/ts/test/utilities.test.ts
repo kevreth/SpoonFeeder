@@ -1,12 +1,12 @@
+import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
 import {
-  isEqual,
   difference,
-  intersection,
-  makeButton,
   getChildIds,
+  intersection,
+  isEqual,
+  makeButton,
 } from '../main/utilities';
-import { JSDOM } from 'jsdom';
 const testArr1 = [1, 2];
 const testArr2 = [2, 3];
 it('makeButton', () => {

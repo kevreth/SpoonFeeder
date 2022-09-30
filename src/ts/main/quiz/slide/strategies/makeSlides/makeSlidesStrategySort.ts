@@ -1,7 +1,7 @@
-import { SetValues, Slide } from '../../../slide';
-import { MakeSlides } from '../../../makeSlides';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
+import { MakeSlides } from '../../../makeSlides';
+import { SetValues, Slide } from '../../../slide';
 import type { CreateHtmlTypeSort } from '../createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;

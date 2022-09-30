@@ -1,3 +1,4 @@
+import type { CreateHtmlTypeSelect } from '../../../../../main/quiz/slide/strategies/createHtml';
 import {
   difference,
   intersection,
@@ -5,7 +6,6 @@ import {
 } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { SetValues, Slide } from '../../../slide';
-import type { CreateHtmlTypeSelect } from '../../../../../main/quiz/slide/strategies/createHtml';
 const { createPageContent } = Slide;
 const { showButton } = MakeSlides;
 
