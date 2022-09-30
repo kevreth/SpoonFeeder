@@ -34,10 +34,7 @@ export function isRandom(): boolean {
   return retval;
 }
 export function shuffleMap<K, V>(map: Map<K, V>): Map<K, V> {
-  let keys: K[] = [];
-  map.forEach((value, key) => {
-    keys.push(key);
-  });
+  let keys = Array.from(map.keys());
   keys = shuffle(keys);
   const newmap: Map<K, V> = new Map();
   for (const key of keys) {
