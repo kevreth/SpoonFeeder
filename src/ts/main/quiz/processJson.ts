@@ -35,16 +35,20 @@ export class ProcessJson {
     return `${type} ${counter}:<br>${name}`;
   }
   private static loadQuestions(
-    slides: Array<SlideInterface>,
-    questions: Array<SlideInterface>,
+    slides: Array<SlideInterface>, //the currently processed slides
+    questions: Array<SlideInterface>, //raw slides to add in object notation form
     isExercise: boolean
   ): Array<SlideInterface> {
     if (typeof questions !== 'undefined') {
+      const processedSlides = new Array<SlideInterface>();
       questions.forEach((item) => {
         item.isExercise = isExercise;
+        const slide = getInstance(item.type) as SlideInterface;
+        slide.processJson(item);
+        processedSlides.push(slide);
       });
       if (isRandom() && isExercise) questions = shuffle(questions);
-      slides = slides.concat(questions);
+      slides = slides.concat(processedSlides);
     }
     return slides;
   }
