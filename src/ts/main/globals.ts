@@ -1,4 +1,4 @@
-import type { SlideInterface } from './quiz/slide';
+import { SlideInterface } from './quiz/SlideInterface';
 export class Json {
   private static counter = 0;
   private static json: Array<SlideInterface> = [];

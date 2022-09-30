@@ -10,26 +10,11 @@ import type {
   ResultReturnType,
   ResultType,
 } from './slide/strategies/result';
+import { SlideInterface } from './SlideInterface';
 const { saveData } = SaveData;
 
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
-export interface SlideInterface /* extends GetScore*/ {
-  txt: AnswerType;
-  type: string;
-  isExercise: boolean;
-  pageTemplate: string;
-  //Transform human-created YML into computer-friendly JSON
-  //Run before quiz starts
-  processJson(json: SlideInterface): void;
-  //Create slide HTML during quiz
-  makeSlides(doc: Document): void;
-  //Evaluate user responses at the end of quiz
-  //evaluation during quiz is NOT here
-  evaluate(): Evaluation;
-  setResults(res: AnswerType): void;
-  result(): ResultReturnType;
-}
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
   txt!: AnswerType;
   ans!: T;

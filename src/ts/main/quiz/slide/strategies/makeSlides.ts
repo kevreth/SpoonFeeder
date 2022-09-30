@@ -1,4 +1,4 @@
-import type { SetValues } from '../../slide';
+import { SetValues } from '../SetValues';
 import type {
   CreateHtmlTypeGap,
   CreateHtmlTypeImap,
