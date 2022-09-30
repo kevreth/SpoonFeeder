@@ -34,3 +34,10 @@ it('testCount', () => {
   const actual = Json.count();
   expect(actual).toEqual(expected);
 });
+it('testGetNumSlides', () => {
+  const slides: SlideInterface[] = makeSlideArray();
+  Json.set(slides);
+  const expected = slides.length;
+  const actual = Json.getNumSlides();
+  expect(actual).toEqual(expected);
+});
