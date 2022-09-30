@@ -1,3 +1,4 @@
+import { Progress } from '../../composables/progress';
 import { Json } from './globals';
 import type { Course } from './quiz/course';
 import { MakeSlides } from './quiz/makeSlides';
@@ -16,6 +17,16 @@ export class Quiz {
     // Phase 4: evaluate
     //TODO: add test for file existence
     const yaml = PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
+    //test data
+    Progress.data =     [
+      {
+        label: 'test 1',
+        description: 'test 1 description data',
+        note: 'test 1 note',
+        children:[]
+      }
+    ];
+
     getYaml(yaml, (course: Course) => {
       const slides = processJson(course);
       Json.set(Quiz.processSlides(slides));
