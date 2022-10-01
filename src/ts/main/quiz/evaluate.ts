@@ -39,7 +39,7 @@ export class Evaluation {
     const pctCorrect = Evaluation.percentCorrect(correctCtr, responseCtr);
     return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
   }
-  private static percentCorrect(
+  public static percentCorrect(
     correctCtr: number,
     responseCtr: number
   ): string {
