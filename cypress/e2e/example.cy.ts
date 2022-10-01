@@ -137,7 +137,7 @@ describe('Cypress Testing', () => {
     cy.get('#w6').should('have.css', 'text-decoration-color', GREEN);
 
     //test to make sure the correct text decoration is applied,
-    //either underlike or strikethrough
+    //either underscore or strikethrough
 
     testButton('#btn'); //continue
 
