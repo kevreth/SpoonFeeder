@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
-import { getInstance } from '../../../main/quiz/slide/slideFactory';
+import { MC } from '../../../main/quiz/slide/slideFactory';
 import { Mc } from '../../../main/quiz/slide/slideType/mc';
 it('testGetInstance', () => {
-  const slide = getInstance('mc');
+  const slide = MC();
   expect(slide).toBeInstanceOf(Mc);
 });

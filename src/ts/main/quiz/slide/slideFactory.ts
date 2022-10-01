@@ -16,7 +16,7 @@ export abstract class SlideInitializer {
   constructor(public readonly type: string) {}
   public abstract instance(): SlideInterface;
 }
-export class BOOL extends SlideInitializer {
+export class BoolFactory extends SlideInitializer {
   constructor() {
     super('bool');
   }
@@ -30,7 +30,7 @@ export class BOOL extends SlideInitializer {
     );
   }
 }
-export class GAP extends SlideInitializer {
+export class GapFactory extends SlideInitializer {
   constructor() {
     super('gap');
   }
@@ -44,7 +44,7 @@ export class GAP extends SlideInitializer {
     );
   }
 }
-export class IMAP extends SlideInitializer {
+export class ImapFactory extends SlideInitializer {
   constructor() {
     super('imap');
   }
@@ -58,7 +58,7 @@ export class IMAP extends SlideInitializer {
     );
   }
 }
-export class INFO extends SlideInitializer {
+export class InfoFactory extends SlideInitializer {
   constructor() {
     super('info');
   }
@@ -72,7 +72,7 @@ export class INFO extends SlideInitializer {
     );
   }
 }
-export class MC extends SlideInitializer {
+export class McFactory extends SlideInitializer {
   constructor() {
     super('mc');
   }
@@ -86,7 +86,7 @@ export class MC extends SlideInitializer {
     );
   }
 }
-export class SELECT extends SlideInitializer {
+export class SelectFactory extends SlideInitializer {
   constructor() {
     super('select');
   }
@@ -100,7 +100,7 @@ export class SELECT extends SlideInitializer {
     );
   }
 }
-export class SORT extends SlideInitializer {
+export class SortFactory extends SlideInitializer {
   constructor() {
     super('sort');
   }
@@ -114,7 +114,7 @@ export class SORT extends SlideInitializer {
     );
   }
 }
-export class VOCAB extends SlideInitializer {
+export class VocabFactory extends SlideInitializer {
   constructor() {
     super('vocab');
   }
@@ -129,17 +129,17 @@ export class VOCAB extends SlideInitializer {
   }
 }
 export const values = [
-  new BOOL(),
-  new GAP(),
-  new IMAP(),
-  new INFO(),
-  new MC(),
-  new SELECT(),
-  new SORT(),
-  new VOCAB(),
+  new BoolFactory(),
+  new GapFactory(),
+  new ImapFactory(),
+  new InfoFactory(),
+  new McFactory(),
+  new SelectFactory(),
+  new SortFactory(),
+  new VocabFactory(),
 ];
 export function getInstance(type: string): SlideInterface {
-  let retval = new INFO().instance();
+  let retval = new InfoFactory().instance();
   values.forEach((value) => {
     if (type == value.type) {
       retval = value.instance();
@@ -147,3 +147,11 @@ export function getInstance(type: string): SlideInterface {
   });
   return retval;
 }
+export const BOOL = () => new BoolFactory().instance() as Bool;
+export const GAP = () => new GapFactory().instance() as Gap;
+export const IMAP = () => new ImapFactory().instance() as Imap;
+export const INFO = () => new InfoFactory().instance() as Info;
+export const MC = () => new McFactory().instance() as Mc;
+export const SELECT = () => new SelectFactory().instance() as Select;
+export const SORT = () => new SortFactory().instance() as Sort;
+export const VOCAB = () => new VocabFactory().instance() as Vocab;

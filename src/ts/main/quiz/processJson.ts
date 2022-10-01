@@ -1,6 +1,6 @@
 import { isRandom, shuffle } from '../utilities';
 import type { Course } from './course';
-import { getInstance } from './slide/slideFactory';
+import { getInstance, INFO } from './slide/slideFactory';
 import type { SlideInterface } from './SlideInterface';
 //////////////// Phase 1: process Json
 export class ProcessJson {
@@ -52,7 +52,7 @@ export class ProcessJson {
     return slides;
   }
   private static addNewInfoSlide(text: string, slides: SlideInterface[]) {
-    const slide = getInstance('info') as SlideInterface;
+    const slide = INFO() as SlideInterface;
     slide.txt = text;
     slides.push(slide);
   }

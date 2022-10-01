@@ -1,7 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
-import { getInstance } from '../../../../../main/quiz/slide/slideFactory';
-import type { Vocab } from '../../../../../main/quiz/slide/slideType/vocab';
+import { VOCAB } from '../../../../../main/quiz/slide/slideFactory';
 import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
 import {
   createHtmlLoop,
@@ -24,7 +23,7 @@ const json: any = {
   list: MAP,
   isExercise: false,
 };
-const slide: Vocab = getInstance('vocab') as Vocab;
+const slide = VOCAB();
 slide.processJson(json);
 it('generateQuestions', () => {
   const result = generateQuestions(MAP);
