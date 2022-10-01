@@ -12,11 +12,11 @@ import { CreateHtml } from './strategies/createHtml';
 import { Evaluate } from './strategies/evaluate';
 import { MakeSlides } from './strategies/makeSlides';
 import { Result } from './strategies/result';
-export abstract class SlideInitializer {
+abstract class SlideInitializer {
   constructor(public readonly type: string) {}
   public abstract instance(): SlideInterface;
 }
-export class BoolFactory extends SlideInitializer {
+class BoolFactory extends SlideInitializer {
   constructor() {
     super('bool');
   }
@@ -30,7 +30,7 @@ export class BoolFactory extends SlideInitializer {
     );
   }
 }
-export class GapFactory extends SlideInitializer {
+class GapFactory extends SlideInitializer {
   constructor() {
     super('gap');
   }
@@ -44,7 +44,7 @@ export class GapFactory extends SlideInitializer {
     );
   }
 }
-export class ImapFactory extends SlideInitializer {
+class ImapFactory extends SlideInitializer {
   constructor() {
     super('imap');
   }
@@ -58,7 +58,7 @@ export class ImapFactory extends SlideInitializer {
     );
   }
 }
-export class InfoFactory extends SlideInitializer {
+class InfoFactory extends SlideInitializer {
   constructor() {
     super('info');
   }
@@ -72,7 +72,7 @@ export class InfoFactory extends SlideInitializer {
     );
   }
 }
-export class McFactory extends SlideInitializer {
+class McFactory extends SlideInitializer {
   constructor() {
     super('mc');
   }
@@ -86,7 +86,7 @@ export class McFactory extends SlideInitializer {
     );
   }
 }
-export class SelectFactory extends SlideInitializer {
+class SelectFactory extends SlideInitializer {
   constructor() {
     super('select');
   }
@@ -100,7 +100,7 @@ export class SelectFactory extends SlideInitializer {
     );
   }
 }
-export class SortFactory extends SlideInitializer {
+class SortFactory extends SlideInitializer {
   constructor() {
     super('sort');
   }
@@ -114,7 +114,7 @@ export class SortFactory extends SlideInitializer {
     );
   }
 }
-export class VocabFactory extends SlideInitializer {
+class VocabFactory extends SlideInitializer {
   constructor() {
     super('vocab');
   }
@@ -128,7 +128,7 @@ export class VocabFactory extends SlideInitializer {
     );
   }
 }
-export const values = [
+const values = [
   new BoolFactory(),
   new GapFactory(),
   new ImapFactory(),
