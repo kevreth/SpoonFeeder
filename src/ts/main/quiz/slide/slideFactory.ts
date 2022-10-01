@@ -12,83 +12,138 @@ import { CreateHtml } from './strategies/createHtml';
 import { Evaluate } from './strategies/evaluate';
 import { MakeSlides } from './strategies/makeSlides';
 import { Result } from './strategies/result';
-export class SlideFactory {
-  private static get values(): string[] {
-    return ['bool', 'gap', 'imap', 'info', 'mc', 'select', 'sort', 'vocab'];
+export abstract class SlideInitializer {
+  constructor(public readonly type: string) {}
+  public abstract instance(): SlideInterface;
+}
+export class BOOL extends SlideInitializer {
+  constructor() {
+    super('bool');
   }
-  public static getInstance(instanceType: string): SlideInterface | undefined {
-    const values = SlideFactory.values;
-    const numTypes = values.length;
-    for (let i = 0; i < numTypes; i++) {
-      const type = values[i];
-      if (type === instanceType) {
-        switch (values[i]) {
-          case 'bool':
-            return new Bool(
-              type,
-              CreateHtml.MC as CreateHtmlTypeIntersection,
-              MakeSlides.MC,
-              Evaluate.SIMPLE,
-              Result.SIMPLE
-            );
-          case 'gap':
-            return new Gap(
-              type,
-              CreateHtml.GAP as CreateHtmlTypeIntersection,
-              MakeSlides.GAP,
-              Evaluate.GAP,
-              Result.CORRELATED
-            );
-          case 'imap':
-            return new Imap(
-              type,
-              CreateHtml.IMAP as CreateHtmlTypeIntersection,
-              MakeSlides.IMAP,
-              Evaluate.SIMPLE,
-              Result.SIMPLE
-            );
-          case 'info':
-            return new Info(
-              type,
-              CreateHtml.INFO as CreateHtmlTypeIntersection,
-              MakeSlides.INFO,
-              Evaluate.DEFAULT,
-              Result.UNSUPPORTED
-            );
-          case 'mc':
-            return new Mc(
-              type,
-              CreateHtml.MC as CreateHtmlTypeIntersection,
-              MakeSlides.MC,
-              Evaluate.SIMPLE,
-              Result.SIMPLE
-            );
-          case 'select':
-            return new Select(
-              type,
-              CreateHtml.SELECT as CreateHtmlTypeIntersection,
-              MakeSlides.SELECT,
-              Evaluate.SIMPLE,
-              Result.LIST
-            );
-          case 'sort':
-            return new Sort(
-              type,
-              CreateHtml.SORT as CreateHtmlTypeIntersection,
-              MakeSlides.SORT,
-              Evaluate.SIMPLE,
-              Result.LIST
-            );
-          case 'vocab':
-            return new Vocab(
-              type,
-              CreateHtml.MC as CreateHtmlTypeIntersection,
-              MakeSlides.VOCAB,
-              Evaluate.VOCAB,
-              Result.CORRELATED
-            );
-        }
-      }
+  public instance(): SlideInterface {
+    return new Bool(
+      this.type,
+      CreateHtml.MC as CreateHtmlTypeIntersection,
+      MakeSlides.MC,
+      Evaluate.SIMPLE,
+      Result.SIMPLE
+    );
+  }
+}
+export class GAP extends SlideInitializer {
+  constructor() {
+    super('gap');
+  }
+  public instance(): SlideInterface {
+    return new Gap(
+      this.type,
+      CreateHtml.GAP as CreateHtmlTypeIntersection,
+      MakeSlides.GAP,
+      Evaluate.GAP,
+      Result.CORRELATED
+    );
+  }
+}
+export class IMAP extends SlideInitializer {
+  constructor() {
+    super('imap');
+  }
+  public instance(): SlideInterface {
+    return new Imap(
+      this.type,
+      CreateHtml.IMAP as CreateHtmlTypeIntersection,
+      MakeSlides.IMAP,
+      Evaluate.SIMPLE,
+      Result.SIMPLE
+    );
+  }
+}
+export class INFO extends SlideInitializer {
+  constructor() {
+    super('info');
+  }
+  public instance(): SlideInterface {
+    return new Info(
+      this.type,
+      CreateHtml.INFO,
+      MakeSlides.INFO,
+      Evaluate.DEFAULT,
+      Result.UNSUPPORTED
+    );
+  }
+}
+export class MC extends SlideInitializer {
+  constructor() {
+    super('mc');
+  }
+  public instance(): SlideInterface {
+    return new Mc(
+      this.type,
+      CreateHtml.MC as CreateHtmlTypeIntersection,
+      MakeSlides.MC,
+      Evaluate.SIMPLE,
+      Result.SIMPLE
+    );
+  }
+}
+export class SELECT extends SlideInitializer {
+  constructor() {
+    super('select');
+  }
+  public instance(): SlideInterface {
+    return new Select(
+      this.type,
+      CreateHtml.SELECT as CreateHtmlTypeIntersection,
+      MakeSlides.SELECT,
+      Evaluate.SIMPLE,
+      Result.LIST
+    );
+  }
+}
+export class SORT extends SlideInitializer {
+  constructor() {
+    super('sort');
+  }
+  public instance(): SlideInterface {
+    return new Sort(
+      this.type,
+      CreateHtml.SORT as CreateHtmlTypeIntersection,
+      MakeSlides.SORT,
+      Evaluate.SIMPLE,
+      Result.LIST
+    );
+  }
+}
+export class VOCAB extends SlideInitializer {
+  constructor() {
+    super('vocab');
+  }
+  public instance(): SlideInterface {
+    return new Vocab(
+      this.type,
+      CreateHtml.MC as CreateHtmlTypeIntersection,
+      MakeSlides.VOCAB,
+      Evaluate.VOCAB,
+      Result.CORRELATED
+    );
+  }
+}
+export const values = [
+  new BOOL(),
+  new GAP(),
+  new IMAP(),
+  new INFO(),
+  new MC(),
+  new SELECT(),
+  new SORT(),
+  new VOCAB(),
+];
+export function getInstance(type: string): SlideInterface {
+  let retval = new INFO().instance();
+  values.forEach((value) => {
+    if (type == value.type) {
+      retval = value.instance();
     }
-  }
+  });
+  return retval;
 }
