@@ -1,14 +1,16 @@
+import {click} from './functions';
+
 beforeEach(() => {
   cy.visit('/')
-  cy.get('.q-icon').click();
+  click('.q-icon');
   // cy.wait(2000)
 })
 
-describe('Menu Button Tests', () => {
+describe('Menu Button', () => {
   it('Close button', () => {
-    cy.get('.closeBtn').click();
+    click('.closeBtn');
   })
   it('Trash button', () => {
-    cy.get('.trash').click();
+    click('.trash');
   })
 })
