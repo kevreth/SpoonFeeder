@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { INFO } from '../../main/quiz/slide/slideFactory';
+import { INFO } from '../../main/quiz/slideFactory';
 it('getSetValues', () => {
   const info = INFO();
   const sv = info.getSetValues();

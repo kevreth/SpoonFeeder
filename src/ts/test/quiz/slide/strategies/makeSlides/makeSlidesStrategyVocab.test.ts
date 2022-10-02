@@ -1,12 +1,12 @@
 import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
-import { VOCAB } from '../../../../../main/quiz/slide/slideFactory';
 import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
 import {
   createHtmlLoop,
   generateQuestions,
   setButtonColor,
 } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
+import { VOCAB } from '../../../../../main/quiz/slideFactory';
 import { makeButton } from '../../../../../main/utilities';
 sessionStorage.setItem('random', 'false');
 const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;

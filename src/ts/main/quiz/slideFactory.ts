@@ -1,17 +1,17 @@
-import type { SlideInterface } from '../slideInterface';
-import { Bool } from './slideType/bool';
-import { Gap } from './slideType/gap';
-import { Imap } from './slideType/imap';
-import { Info } from './slideType/info';
-import { Mc } from './slideType/mc';
-import { Select } from './slideType/select';
-import { Sort } from './slideType/sort';
-import { Vocab } from './slideType/vocab';
-import type { CreateHtmlTypeIntersection } from './strategies/createHtml';
-import { CreateHtml } from './strategies/createHtml';
-import { Evaluate } from './strategies/evaluate';
-import { MakeSlides } from './strategies/makeSlides';
-import { Result } from './strategies/result';
+import { Bool } from './slide/slideType/bool';
+import { Gap } from './slide/slideType/gap';
+import { Imap } from './slide/slideType/imap';
+import { Info } from './slide/slideType/info';
+import { Mc } from './slide/slideType/mc';
+import { Select } from './slide/slideType/select';
+import { Sort } from './slide/slideType/sort';
+import { Vocab } from './slide/slideType/vocab';
+import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
+import { CreateHtml } from './slide/strategies/createHtml';
+import { Evaluate } from './slide/strategies/evaluate';
+import { MakeSlides } from './slide/strategies/makeSlides';
+import { Result } from './slide/strategies/result';
+import type { SlideInterface } from './slideInterface';
 abstract class SlideInitializer {
   constructor(public readonly type: string) {}
   public abstract instance(): SlideInterface;

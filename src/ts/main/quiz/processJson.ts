@@ -1,6 +1,6 @@
 import { isRandom, shuffle } from '../utilities';
 import type { Course } from './course';
-import { getInstance, INFO } from './slide/slideFactory';
+import { getInstance, INFO } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 //////////////// Phase 1: process Json
 export class ProcessJson {
