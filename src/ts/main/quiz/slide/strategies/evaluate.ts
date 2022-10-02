@@ -12,6 +12,15 @@
 import { Evaluation } from '../../evaluate';
 // Only makeRow from Evaluation is required.
 const { makeRow } = Evaluation;
+
+export type FunctionType = (
+  response: string,
+  answer: string,
+  text: string | string[],
+  idx: number,
+  length: number
+) => string;
+
 ///////////////////////////////////////////////////////////////////////////////
 // The types for each strategy.
 // txt: The text of the question, which also serves as a unique identifier.
@@ -101,12 +110,22 @@ export class Evaluate {
     const length = ans.length;
     ans.forEach((answer, idx) => {
       const response = res[idx];
-      const row = makeRow(txt[idx], response, answer);
+      const row = Evaluate.vocabRow(response, answer, txt, idx, length);
       rows.push(row);
     });
     const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(length, correctCtr, row_accum);
+  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private static vocabRow: FunctionType = function (
+    response,
+    answer,
+    text,
+    idx,
+    length
+  ) {
+    return makeRow(text[idx], response, answer);
   };
   /////////////////////////////////////////////////////////////////////////////
   //
@@ -125,7 +144,7 @@ export class Evaluate {
     const length = ans.length;
     ans.forEach((answer, idx) => {
       const response = res[idx];
-      const row = Evaluate.gapQuest(response, length, idx === 0, answer, txt);
+      const row = Evaluate.gapQuest(response, answer, txt, idx, length);
       rows.push(row);
     });
     const row_accum = rows.join('\n');
@@ -134,13 +153,13 @@ export class Evaluate {
   };
   // With multiple answers per one question, gap doesn't play by the same
   // rule and requires special treatment.
-  private static gapQuest(
-    response: string,
-    length: number,
-    isFirst: boolean,
-    ans: string,
-    text: string
-  ): string {
+  private static gapQuest: FunctionType = function (
+    response,
+    answer,
+    text,
+    idx,
+    length
+  ) {
     let replaceValue = '';
     // Gap shows multiple answers to questions. The first column will span
     // multiple rows to display the question (1 correct, 2 incorrect):
@@ -153,12 +172,12 @@ export class Evaluate {
     //
     // First column of first row requires special treatment
     // to display question.
-    if (isFirst) replaceValue = `<td rowspan="${length}">${text}</td>`;
-    let row_a = makeRow(replaceValue, response, ans);
+    if (idx === 0) replaceValue = `<td rowspan="${length}">${text}</td>`;
+    let row_a = makeRow(replaceValue, response, answer);
     // makeRow wasn't designed for this type of question.
     // Remove extra cell (td) tags.
     row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
     return row_a;
-  }
+  };
 }
 ///////////////////////////////////////////////////////////////////////////////
