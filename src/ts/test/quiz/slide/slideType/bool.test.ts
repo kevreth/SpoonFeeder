@@ -18,8 +18,8 @@ class Test extends SlideTest<string> {
   }
   public makeSlides(): void {
     return;
-    // const testable = test.getTestable();
-    // testable.makeSlides(DOC);
+    const testable = test.getTestable();
+    testable.makeSlides(DOC);
     //incomplete test
   }
   protected factory(): Slide<string> {
