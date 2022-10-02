@@ -11,7 +11,7 @@ import type {
   ResultType,
 } from './slide/strategies/result';
 import type { SlideInterface } from './slideInterface';
-const { saveData } = SaveData;
+const { set: saveData } = SaveData;
 
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];

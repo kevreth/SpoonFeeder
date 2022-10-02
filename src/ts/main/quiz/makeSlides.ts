@@ -4,7 +4,7 @@ import { makeButton } from '../utilities';
 import { Evaluation } from './evaluate';
 import { SaveData } from './slide/saveData';
 const { evaluate } = Evaluation;
-const { getSavedDataArray } = SaveData;
+const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {

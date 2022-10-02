@@ -1,25 +1,25 @@
 import { extend } from '../../../main/utilities';
 import type { AnswerType } from './strategies/result';
+const KEY = 'savedata';
 export class SaveData {
   constructor(
     public readonly txt: AnswerType,
     public readonly result: AnswerType
   ) {}
-  public static getSavedDataArray(): Array<SaveData> {
-    const data = localStorage.getItem('savedata') as string;
+  public static get(): Array<SaveData> {
+    const data = localStorage.getItem(KEY) as string;
     const data1 = JSON.parse(data);
-    const arr: Array<SaveData> = extend<Array<SaveData>>(
-      new Array<SaveData>(),
-      data1
-    );
+    const arr1 = new Array<SaveData>();
+    const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
     return arr;
   }
-  public static saveData(txt: AnswerType, res: AnswerType) {
+  public static set(txt: AnswerType, res: AnswerType) {
     if (txt !== '') {
       const save = new SaveData(txt, res);
-      const arr = SaveData.getSavedDataArray();
+      const arr = SaveData.get();
       arr.push(save);
-      localStorage.setItem('savedata', JSON.stringify(arr));
+      const json = JSON.stringify(arr);
+      localStorage.setItem(KEY, json);
     }
   }
 }
