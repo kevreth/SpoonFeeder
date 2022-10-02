@@ -107,6 +107,22 @@ export class Evaluate {
     // Vocab uses arrays of answers and responses. We evaluate in a correlated
     // manner inside a loop. Each correlated answer produces one row of output.
     const rowFunction: FunctionType = Evaluate.vocabRow;
+    return Evaluate.rowStrategy(ans, res, rowFunction, txt, result);
+  };
+
+  private static rowStrategy(
+    ans: string[],
+    res: string[],
+    rowFunction: (
+      response: string,
+      answer: string,
+      text: string | string[],
+      idx: number,
+      length: number
+    ) => string,
+    txt: string | string[],
+    result: Array<boolean>
+  ) {
     const rows = new Array<string>();
     const length = ans.length;
     ans.forEach((answer, idx) => {
@@ -117,7 +133,8 @@ export class Evaluate {
     const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(length, correctCtr, row_accum);
-  };
+  }
+
   private static vocabRow: FunctionType = function (
     response,
     answer,
@@ -142,16 +159,7 @@ export class Evaluate {
     result
   ) {
     const rowFunction: FunctionType = Evaluate.gapRow;
-    const rows = new Array<string>();
-    const length = ans.length;
-    ans.forEach((answer, idx) => {
-      const response = res[idx];
-      const row = rowFunction(response, answer, txt, idx, length);
-      rows.push(row);
-    });
-    const row_accum = rows.join('\n');
-    const correctCtr = result.filter(Boolean).length;
-    return new Evaluation(length, correctCtr, row_accum);
+    return Evaluate.rowStrategy(ans, res, rowFunction, txt, result);
   };
   // With multiple answers per one question, gap doesn't play by the same
   // rule and requires special treatment.
