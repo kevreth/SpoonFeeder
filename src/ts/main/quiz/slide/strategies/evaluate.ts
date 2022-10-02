@@ -12,7 +12,6 @@
 import { Evaluation } from '../../evaluate';
 // Only makeRow from Evaluation is required.
 const { makeRow } = Evaluation;
-
 export type FunctionType = (
   response: string,
   answer: string,
@@ -20,7 +19,6 @@ export type FunctionType = (
   idx: number,
   length: number
 ) => string;
-
 ///////////////////////////////////////////////////////////////////////////////
 // The types for each strategy.
 // txt: The text of the question, which also serves as a unique identifier.
@@ -86,8 +84,8 @@ export class Evaluate {
     result
   ) {
     let correctCtr = 0;
-    const text = makeRow(txt, res, ans);
     if (result) correctCtr++;
+    const text = makeRow(txt, res, ans);
     return new Evaluation(1, correctCtr, text);
   };
   /////////////////////////////////////////////////////////////////////////////
@@ -125,8 +123,9 @@ export class Evaluate {
     const rowFunction: FunctionType = Evaluate.gapRow;
     return Evaluate.multiAnswerStrategy(ans, res, txt, result, rowFunction);
   };
+
   /////////////////////////////////////////////////////////////////////////////
-  //                 The strategy function end here.
+  //                 The strategy functions end here.
   /////////////////////////////////////////////////////////////////////////////
   //
   //
@@ -137,8 +136,9 @@ export class Evaluate {
   // Used by gap and vocab, which only differ by two factors:
   // 1) the text type, string or string[]
   // 2) the string to display the row. Vocab has one term per definition but
-  // gap has one question with multiple answers. (All the gaps are one txt;
-  // see example below).
+  //    gap has one question with multiple answers. (All the gaps are one txt;
+  //    see example below).
+  /////////////////////////////////////////////////////////////////////////////
   private static multiAnswerStrategy(
     ans: string[],
     res: string[],
