@@ -1,4 +1,16 @@
-import { expect, it } from 'vitest';
-it('description', () => {
-  expect(0).toEqual(0);
+import { beforeEach, it } from 'vitest';
+import { Slide } from '../../../../main/quiz/slide';
+import { MC } from '../../../../main/quiz/slideFactory';
+import { SlideTest } from '../../slide.test';
+class Test extends SlideTest<string> {
+  protected factory(): Slide<string> {
+    return MC();
+  }
+}
+const test = new Test();
+beforeEach(() => {
+  test.setUp();
+});
+it('getSetValues', () => {
+  test.getSetValues();
 });
