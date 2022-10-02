@@ -12,7 +12,6 @@ import type {
 } from './slide/strategies/result';
 import type { SlideInterface } from './slideInterface';
 const { set: saveData } = SaveData;
-
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide<T extends AnswerType> implements SlideInterface {
@@ -20,11 +19,11 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   ans!: T;
   res!: T;
   pageTemplate = `
-        <div id="slide">
-            <div id="content">
-            </div>
-        </div>
-    `;
+    <div id="slide">
+      <div id="content">
+      </div>
+    </div>
+  `;
   isExercise = false;
   constructor(
     public readonly type: string,
