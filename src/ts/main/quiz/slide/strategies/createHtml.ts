@@ -25,12 +25,21 @@ export type CreateHtmlTypeIntersection = CreateHtmlTypeGap &
   CreateHtmlTypeSort;
 
 export class CreateHtml {
+  /////////////////////////////////////////////////////////////////////////////
+  //                             DEFAULT
+  /////////////////////////////////////////////////////////////////////////////
   static readonly DEFAULT = function () {
     return '';
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             INFO
+  /////////////////////////////////////////////////////////////////////////////
   static readonly INFO: CreateHtmlTypeInfo = function (txt: string) {
     return `\n${txt}`;
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             GAP
+  /////////////////////////////////////////////////////////////////////////////
   static readonly GAP: CreateHtmlTypeGap = function (remaining, fills, gaps) {
     const html =
       `\n<div id="fills">${fills}\n</div>` +
@@ -39,12 +48,19 @@ export class CreateHtml {
       '\n<div id="response"></div>';
     return html;
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             IMAP
+  /////////////////////////////////////////////////////////////////////////////
   static readonly IMAP: CreateHtmlTypeImap = function (
     inst: string,
     img: string
   ) {
     return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             MC
+  /////////////////////////////////////////////////////////////////////////////
+  // also used by VOCAB
   static readonly MC: CreateHtmlTypeMc = function (
     question: string,
     options: string[]
@@ -57,6 +73,9 @@ export class CreateHtml {
     });
     return accum.join('\n');
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             SELECT
+  /////////////////////////////////////////////////////////////////////////////
   static readonly SELECT: CreateHtmlTypeSelect = function (instructions, txt) {
     const accum = new Array<string>(
       `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
@@ -68,6 +87,9 @@ export class CreateHtml {
     accum.push(`</div><br>\n${button}\n`);
     return accum.join('\n');
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             SORT
+  /////////////////////////////////////////////////////////////////////////////
   static readonly SORT: CreateHtmlTypeSort = function createHtml(inst, ans) {
     const retval = inst + '<br>\n';
     let rev = '<div id="selection"></div>\n<section class="container">\n';
