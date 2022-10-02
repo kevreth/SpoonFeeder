@@ -106,23 +106,24 @@ export class Evaluate {
   ) {
     // Vocab uses arrays of answers and responses. We evaluate in a correlated
     // manner inside a loop. Each correlated answer produces one row of output.
+    const rowFunction: FunctionType = Evaluate.vocabRow;
     const rows = new Array<string>();
     const length = ans.length;
     ans.forEach((answer, idx) => {
       const response = res[idx];
-      const row = Evaluate.vocabRow(response, answer, txt, idx, length);
+      const row = rowFunction(response, answer, txt, idx, length);
       rows.push(row);
     });
     const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(length, correctCtr, row_accum);
   };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private static vocabRow: FunctionType = function (
     response,
     answer,
     text,
     idx,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     length
   ) {
     return makeRow(text[idx], response, answer);
@@ -140,11 +141,12 @@ export class Evaluate {
     ans,
     result
   ) {
+    const rowFunction: FunctionType = Evaluate.gapRow;
     const rows = new Array<string>();
     const length = ans.length;
     ans.forEach((answer, idx) => {
       const response = res[idx];
-      const row = Evaluate.gapQuest(response, answer, txt, idx, length);
+      const row = rowFunction(response, answer, txt, idx, length);
       rows.push(row);
     });
     const row_accum = rows.join('\n');
@@ -153,7 +155,7 @@ export class Evaluate {
   };
   // With multiple answers per one question, gap doesn't play by the same
   // rule and requires special treatment.
-  private static gapQuest: FunctionType = function (
+  private static gapRow: FunctionType = function (
     response,
     answer,
     text,
