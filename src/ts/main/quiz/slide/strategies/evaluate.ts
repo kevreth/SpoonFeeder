@@ -61,6 +61,7 @@ export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //
   //
+  //
   /////////////////////////////////////////////////////////////////////////////
   //                             default
   /////////////////////////////////////////////////////////////////////////////
@@ -95,15 +96,12 @@ export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //                               vocab
   /////////////////////////////////////////////////////////////////////////////
-  // multiple questions (definitions) correlate to multiple responses (terms)
   public static readonly VOCAB: EvaluateTypeVocab = function evaluate(
     txt,
     res,
     ans,
     result
   ) {
-    // Vocab uses arrays of answers and responses. We evaluate in a correlated
-    // manner inside a loop. Each correlated answer produces one row of output.
     const rowFunction: FunctionType = Evaluate.vocabRow;
     return Evaluate.multiAnswerStrategy(ans, res, txt, result, rowFunction);
   };
@@ -123,7 +121,6 @@ export class Evaluate {
     const rowFunction: FunctionType = Evaluate.gapRow;
     return Evaluate.multiAnswerStrategy(ans, res, txt, result, rowFunction);
   };
-
   /////////////////////////////////////////////////////////////////////////////
   //                 The strategy functions end here.
   /////////////////////////////////////////////////////////////////////////////
