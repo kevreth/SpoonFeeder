@@ -1,4 +1,5 @@
 import type { SlideInterface } from './quiz/slideInterface';
+//Should be replaced by a Pinia store
 export class Json {
   private static counter = 0;
   private static json: Array<SlideInterface> = [];
