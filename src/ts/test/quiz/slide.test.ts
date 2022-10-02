@@ -12,6 +12,6 @@ export abstract class SlideTest<T extends AnswerType> extends AbstractTest<
     expect(sv.result).not.toBeNull();
   }
 }
-it('getSetValues', () => {
+it('shutup', () => {
   expect(0).toEqual(0);
 });
