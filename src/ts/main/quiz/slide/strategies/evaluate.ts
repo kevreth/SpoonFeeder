@@ -12,7 +12,6 @@
 import { Evaluation } from '../../evaluate';
 // Only makeRow from Evaluation is required.
 const { makeRow } = Evaluation;
-export type EvaluateTypeDefault = () => Evaluation;
 ///////////////////////////////////////////////////////////////////////////////
 // The types for each strategy.
 // txt: The text of the question, which also serves as a unique identifier.
@@ -20,6 +19,7 @@ export type EvaluateTypeDefault = () => Evaluation;
 // ans: The correct answers to the quesion
 // result: The evaluated responses to the question after comparing res and ans.
 ///////////////////////////////////////////////////////////////////////////////
+export type EvaluateTypeDefault = () => Evaluation;
 export type EvaluateTypeSimple = (
   txt: string,
   res: string,
@@ -47,19 +47,28 @@ export type EvaluateType =
   | EvaluateTypeVocab
   | EvaluateTypeGap;
 export class Evaluate {
-  ///////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
   //
-  ///////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// default //////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////
+  // The strategy functions begin here.
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////// default ////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  // Used when there are no answers, such as INFO.
   public static readonly DEFAULT: EvaluateTypeDefault = function evaluate() {
     return new Evaluation(0, 0, '');
   };
-  ///////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
   //
-  ///////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// simple ///////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////// simple /////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  // one question -> one response
   //Used by IMAP, MC, SELECT, SORT
   public static readonly SIMPLE: EvaluateTypeSimple = function evaluate(
     txt,
@@ -72,35 +81,40 @@ export class Evaluate {
     if (result) correctCtr++;
     return new Evaluation(1, correctCtr, text);
   };
-  ///////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
   //
-  ///////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// vocab ////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////// vocab //////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  // multiple questions (definitions) correlate to multiple responses (terms)
   public static readonly VOCAB: EvaluateTypeVocab = function evaluate(
     txt,
     res,
     ans,
     result
   ) {
-    const rows = new Array<string>();
     // Vocab uses arrays of answers and responses. We evaluate in a correlated
     // manner inside a loop. Each correlated answer produces one row of output.
-    txt.forEach((txt1, idx) => {
-      const ans1 = ans[idx];
-      const res1 = res[idx];
-      const row = makeRow(txt1, res1, ans1);
+    const rows = new Array<string>();
+    const length = ans.length;
+    ans.forEach((answer, idx) => {
+      const response = res[idx];
+      const row = makeRow(txt[idx], response, answer);
       rows.push(row);
     });
     const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
-    return new Evaluation(ans.length, correctCtr, row_accum);
+    return new Evaluation(length, correctCtr, row_accum);
   };
-  ///////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
   //
-  ///////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// gap //////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////// gap ////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly GAP: EvaluateTypeGap = function evaluate(
     txt,
     res,
@@ -109,19 +123,21 @@ export class Evaluate {
   ) {
     const rows = new Array<string>();
     const length = ans.length;
-    for (let i = 0; i < length; i++) {
-      const answer = ans[i];
-      const response = res[i];
-      const row = Evaluate.gapQuest(response, answer, i, answer, txt);
+    ans.forEach((answer, idx) => {
+      const response = res[idx];
+      const row = Evaluate.gapQuest(response, length, idx === 0, answer, txt);
       rows.push(row);
-    }
+    });
+    const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
-    return new Evaluation(length, correctCtr, rows.join('\n'));
+    return new Evaluation(length, correctCtr, row_accum);
   };
+  // With multiple answers per one question, gap doesn't play by the same
+  // rule and requires special treatment.
   private static gapQuest(
     response: string,
-    answer: string,
-    i: number,
+    length: number,
+    isFirst: boolean,
     ans: string,
     text: string
   ): string {
@@ -135,14 +151,14 @@ export class Evaluate {
     //  The ____ in ____ stays mainly in the ____.     plain    Spain
     //                                                 Spain    plain
     //
-    // First column of first row requires special treatment to display question.
-    if (i === 0) replaceValue = `<td rowspan="${length}">${text}</td>`;
-    let row_a = makeRow(replaceValue, response, answer);
+    // First column of first row requires special treatment
+    // to display question.
+    if (isFirst) replaceValue = `<td rowspan="${length}">${text}</td>`;
+    let row_a = makeRow(replaceValue, response, ans);
     // makeRow wasn't designed for this type of question.
     // Remove extra cell (td) tags.
     row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);
     return row_a;
   }
 }
-
 ///////////////////////////////////////////////////////////////////////////////
