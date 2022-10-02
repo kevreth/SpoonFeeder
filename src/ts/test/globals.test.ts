@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { Json } from '../main/globals';
 import { getInstance } from '../main/quiz/slide/slideFactory';
-import { SlideInterface } from '../main/quiz/SlideInterface';
+import { SlideInterface } from '../main/quiz/slideInterface';
 const slideTypes = [
   'bool',
   'gap',

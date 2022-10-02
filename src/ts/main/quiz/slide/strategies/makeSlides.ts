@@ -1,4 +1,4 @@
-import type { SetValues } from '../SetValues';
+import type { SetValues } from '../setValues';
 import type {
   CreateHtmlTypeGap,
   CreateHtmlTypeImap,

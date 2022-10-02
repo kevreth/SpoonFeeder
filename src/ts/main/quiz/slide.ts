@@ -1,7 +1,7 @@
 import type { Evaluation } from './evaluate';
 
 import { SaveData } from '../quiz/slide/saveData';
-import { SetValues } from './slide/SetValues';
+import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
 import type { EvaluateType } from './slide/strategies/evaluate';
 import type { MakeSlidesType } from './slide/strategies/makeSlides';
@@ -10,7 +10,7 @@ import type {
   ResultReturnType,
   ResultType,
 } from './slide/strategies/result';
-import type { SlideInterface } from './SlideInterface';
+import type { SlideInterface } from './slideInterface';
 const { saveData } = SaveData;
 
 type AnswerTypeIntersection = string & string[];

@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../SlideInterface';
+import type { SlideInterface } from '../slideInterface';
 import { Bool } from './slideType/bool';
 import { Gap } from './slideType/gap';
 import { Imap } from './slideType/imap';

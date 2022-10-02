@@ -19,7 +19,7 @@
 
 import { Json } from '../globals';
 import type { Course } from './course';
-import type { SetValues } from './slide/SetValues';
+import type { SetValues } from './slide/setValues';
 export class Score<T> {
   private _score = 0;
   private _questions = 0;
