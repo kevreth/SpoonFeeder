@@ -11,6 +11,8 @@ export abstract class SlideTest<T extends AnswerType> extends AbstractTest<
     expect(sv.result).not.toBeNull();
     expect(sv.result).not.toBeNull();
   }
+  public abstract processJson(): void;
+  public abstract makeSlides(): void;
 }
 it('shutup', () => {
   expect(0).toEqual(0);
