@@ -58,13 +58,13 @@ export type EvaluateType =
 export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //
-  // The strategy functions begin here.
+  //               The strategy functions begin here.
   //
   /////////////////////////////////////////////////////////////////////////////
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// default ////////////////////////////////////
+  //                             default
   /////////////////////////////////////////////////////////////////////////////
   // Used when there are no answers, such as INFO.
   public static readonly DEFAULT: EvaluateTypeDefault = function evaluate() {
@@ -75,7 +75,7 @@ export class Evaluate {
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// simple /////////////////////////////////////
+  //                             simple
   /////////////////////////////////////////////////////////////////////////////
   // one question -> one response
   //Used by IMAP, MC, SELECT, SORT
@@ -95,7 +95,7 @@ export class Evaluate {
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// vocab //////////////////////////////////////
+  //                               vocab
   /////////////////////////////////////////////////////////////////////////////
   // multiple questions (definitions) correlate to multiple responses (terms)
   public static readonly VOCAB: EvaluateTypeVocab = function evaluate(
@@ -107,14 +107,14 @@ export class Evaluate {
     // Vocab uses arrays of answers and responses. We evaluate in a correlated
     // manner inside a loop. Each correlated answer produces one row of output.
     const rowFunction: FunctionType = Evaluate.vocabRow;
-    return Evaluate.rowStrategy(ans, res, txt, result, rowFunction);
+    return Evaluate.multiAnswerStrategy(ans, res, txt, result, rowFunction);
   };
   /////////////////////////////////////////////////////////////////////////////
   //
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// gap ////////////////////////////////////////
+  //                                 gap
   /////////////////////////////////////////////////////////////////////////////
   public static readonly GAP: EvaluateTypeGap = function evaluate(
     txt,
@@ -123,10 +123,23 @@ export class Evaluate {
     result
   ) {
     const rowFunction: FunctionType = Evaluate.gapRow;
-    return Evaluate.rowStrategy(ans, res, txt, result, rowFunction);
+    return Evaluate.multiAnswerStrategy(ans, res, txt, result, rowFunction);
   };
-
-  private static rowStrategy(
+  /////////////////////////////////////////////////////////////////////////////
+  //                 The strategy function end here.
+  /////////////////////////////////////////////////////////////////////////////
+  //
+  //
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //                      multiAnswerStrategy
+  /////////////////////////////////////////////////////////////////////////////
+  // Used by gap and vocab, which only differ by two factors:
+  // 1) the text type, string or string[]
+  // 2) the string to display the row. Vocab has one term per definition but
+  // gap has one question with multiple answers. (All the gaps are one txt;
+  // see example below).
+  private static multiAnswerStrategy(
     ans: string[],
     res: string[],
     txt: string | string[],
@@ -144,19 +157,31 @@ export class Evaluate {
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(length, correctCtr, row_accum);
   }
-
+  /////////////////////////////////////////////////////////////////////////////
+  //                             vocabRow
+  /////////////////////////////////////////////////////////////////////////////
   private static vocabRow: FunctionType = function (
     response,
     answer,
     text,
-    idx,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    length
+    idx
   ) {
     return makeRow(text[idx], response, answer);
   };
-  // With multiple answers per one question, gap doesn't play by the same
-  // rule and requires special treatment.
+  /////////////////////////////////////////////////////////////////////////////
+  //                             gapRow
+  /////////////////////////////////////////////////////////////////////////////
+  // Gap shows multiple answers per question (txt). The first column will
+  // span multiple rows to display the question (1 correct, 2 incorrect):
+  //
+  // Example:
+  //              QUESTION                         RESPONSE  ANSWER
+  //                                                 rain     rain
+  //  The ____ in ____ stays mainly in the ____.     plain    Spain
+  //                                                 Spain    plain
+  //
+  // First column of first row requires special treatment
+  // to display question.
   private static gapRow: FunctionType = function (
     response,
     answer,
@@ -165,17 +190,6 @@ export class Evaluate {
     length
   ) {
     let replaceValue = '';
-    // Gap shows multiple answers to questions. The first column will span
-    // multiple rows to display the question (1 correct, 2 incorrect):
-    //
-    // Example:
-    //              QUESTION                         RESPONSE  ANSWER
-    //                                                 rain     rain
-    //  The ____ in ____ stays mainly in the ____.     plain    Spain
-    //                                                 Spain    plain
-    //
-    // First column of first row requires special treatment
-    // to display question.
     if (idx === 0) replaceValue = `<td rowspan="${length}">${text}</td>`;
     let row_a = makeRow(replaceValue, response, answer);
     // makeRow wasn't designed for this type of question.
