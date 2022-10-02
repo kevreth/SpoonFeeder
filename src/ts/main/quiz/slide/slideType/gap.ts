@@ -4,7 +4,7 @@ import { Slide } from '../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { MakeSlidesGapType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeGap } from '../strategies/makeSlides';
 import { SetWidths } from '../strategies/setWidths';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
@@ -20,7 +20,7 @@ export class Gap extends Slide<Array<string>> {
     const createHtml = this.createHtml;
     let ans = this.ans;
     if (isRandom()) ans = shuffle(ans);
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesGapType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeGap;
     makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, setValues);
   }
 }

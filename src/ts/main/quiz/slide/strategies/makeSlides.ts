@@ -4,7 +4,7 @@ import type {
   CreateHtmlTypeImap,
   CreateHtmlTypeInfo,
   CreateHtmlTypeMc,
-  CreateHtmlTypeSelect,
+  CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeSort,
 } from './createHtml';
 import { makeSlidesStrategyGap } from './makeSlides/makeSlidesStrategyGap';
@@ -15,7 +15,7 @@ import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect'
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
 import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
 import type { SetWidthTypeComplex, SetWidthTypeSimple } from './setWidths';
-export type MakeSlidesGapType = (
+export type MakeSlidesTypeGap = (
   txt: string,
   ans: string[],
   createHtml: CreateHtmlTypeGap,
@@ -23,20 +23,20 @@ export type MakeSlidesGapType = (
   doc: Document,
   setValues: SetValues<string[]>
 ) => void;
-export type MakeSlidesImapType = (
+export type MakeSlidesTypeImap = (
   txt: string,
   img: string,
   createHtml: CreateHtmlTypeImap,
   doc: Document,
   setValues: SetValues<string>
 ) => void;
-export type MakeSlidesInfoType = (
+export type MakeSlidesTypeInfo = (
   txt: string,
   createHtml: CreateHtmlTypeInfo,
   doc: Document,
   setValues: SetValues<string>
 ) => void;
-export type MakeSlidesMcType = (
+export type MakeSlidesTypeMc = (
   txt: string,
   options: string[],
   isExercise: boolean,
@@ -45,22 +45,22 @@ export type MakeSlidesMcType = (
   doc: Document,
   setValues: SetValues<string>
 ) => void;
-export type MakeSlidesSelectType = (
+export type MakeSlidesTypeSelect = (
   inst: string,
   ans: number[],
   res: string[],
-  createHtml: CreateHtmlTypeSelect,
+  createHtml: CreateHtmlSelectType,
   doc: Document,
   setValues: SetValues<number[]>
 ) => void;
-export type MakeSlidesSortType = (
+export type MakeSlidesTypeSort = (
   txt: string,
   ans: string[],
   createHtml: CreateHtmlTypeSort,
   doc: Document,
   setValues: SetValues<string[]>
 ) => void;
-export type MakeSlidesVocabType = (
+export type MakeSlidesTypeVocab = (
   list: Map<string, string>,
   res: string[],
   createHtml: CreateHtmlTypeMc,
@@ -69,15 +69,15 @@ export type MakeSlidesVocabType = (
   setValues: SetValues<string[]>
 ) => void;
 export type MakeSlidesType =
-  | MakeSlidesGapType
-  | MakeSlidesImapType
-  | MakeSlidesInfoType
-  | MakeSlidesMcType
-  | MakeSlidesSelectType
-  | MakeSlidesSortType
-  | MakeSlidesVocabType;
+  | MakeSlidesTypeGap
+  | MakeSlidesTypeImap
+  | MakeSlidesTypeInfo
+  | MakeSlidesTypeMc
+  | MakeSlidesTypeSelect
+  | MakeSlidesTypeSort
+  | MakeSlidesTypeVocab;
 export class MakeSlides {
-  public static readonly GAP: MakeSlidesGapType = function (
+  public static readonly GAP: MakeSlidesTypeGap = function (
     txt,
     ans,
     createHtml,
@@ -94,7 +94,7 @@ export class MakeSlides {
       setValues
     );
   };
-  public static readonly IMAP: MakeSlidesImapType = function (
+  public static readonly IMAP: MakeSlidesTypeImap = function (
     txt: string,
     img: string,
     createHtml: CreateHtmlTypeImap,
@@ -134,7 +134,7 @@ export class MakeSlides {
     inst: string,
     ans: number[],
     res: string[],
-    createHtml: CreateHtmlTypeSelect,
+    createHtml: CreateHtmlSelectType,
     doc: Document,
     setValues: SetValues<number[]>
   ) {

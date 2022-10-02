@@ -1,5 +1,5 @@
 import { Slide } from '../../slide';
-import type { MakeSlidesMcType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeMc } from '../strategies/makeSlides';
 import { SetWidths } from '../strategies/setWidths';
 export class Mc extends Slide<string> {
   o: string[] = [];
@@ -14,7 +14,7 @@ export class Mc extends Slide<string> {
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt as string;
     const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesMcType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMc;
     makeSlidesStrategy(
       txt,
       options,

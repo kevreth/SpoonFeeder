@@ -1,5 +1,5 @@
 import { Slide } from '../../slide';
-import type { MakeSlidesSelectType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeSelect } from '../strategies/makeSlides';
 export class Select extends Slide<Array<number>> {
   inst = '';
   processJson(json: Select): void {
@@ -16,7 +16,7 @@ export class Select extends Slide<Array<number>> {
     const ans = this.ans;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesSelectType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSelect;
     makeSlidesStrategy(inst, ans, txt, createHtml, doc, setValues);
   }
 }

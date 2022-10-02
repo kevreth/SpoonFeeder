@@ -1,5 +1,5 @@
 import { Slide } from '../../slide';
-import type { MakeSlidesSortType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeSort } from '../strategies/makeSlides';
 export class Sort extends Slide<Array<string>> {
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
@@ -9,7 +9,7 @@ export class Sort extends Slide<Array<string>> {
     const ans = this.ans;
     const createHtml = this.createHtml;
     const setValues = this.getSetValues();
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesSortType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSort;
     makeSlidesStrategy(txt, ans, createHtml, doc, setValues);
   }
 }

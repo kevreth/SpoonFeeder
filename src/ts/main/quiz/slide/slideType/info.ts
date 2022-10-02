@@ -1,6 +1,6 @@
 import { Slide } from '../../slide';
 import type { CreateHtmlTypeInfo } from '../strategies/createHtml';
-import type { MakeSlidesInfoType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeInfo } from '../strategies/makeSlides';
 export class Info extends Slide<string> {
   processJson(json: Info): void {
     ({ txt: this.txt } = json);
@@ -9,7 +9,7 @@ export class Info extends Slide<string> {
     const txt = this.txt as string;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml as CreateHtmlTypeInfo;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesInfoType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeInfo;
     makeSlidesStrategy(txt, createHtml, doc, setValues);
   }
 }

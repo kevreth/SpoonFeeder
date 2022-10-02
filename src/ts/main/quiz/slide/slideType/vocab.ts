@@ -1,6 +1,6 @@
 import { isRandom, shuffleMap } from '../../../utilities';
 import { Slide } from '../../slide';
-import type { MakeSlidesVocabType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeVocab } from '../strategies/makeSlides';
 import { SetWidths } from '../strategies/setWidths';
 export class Vocab extends Slide<Array<string>> {
   list = new Map<string, string>();
@@ -18,7 +18,7 @@ export class Vocab extends Slide<Array<string>> {
     const res = this.res;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesVocabType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeVocab;
     makeSlidesStrategy(list, res, createHtml, maxWidthStrategy, doc, setValues);
   }
 }

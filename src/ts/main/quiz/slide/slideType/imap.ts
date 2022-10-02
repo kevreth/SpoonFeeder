@@ -1,5 +1,5 @@
 import { Slide } from '../../slide';
-import type { MakeSlidesImapType } from '../strategies/makeSlides';
+import type { MakeSlidesTypeImap } from '../strategies/makeSlides';
 export class Imap extends Slide<string> {
   img = '';
   processJson(json: Imap): void {
@@ -15,7 +15,7 @@ export class Imap extends Slide<string> {
     const txt = this.txt as string;
     const img = this.img;
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesImapType;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeImap;
     makeSlidesStrategy(txt, img, createHtml, doc, setValues);
   }
 }
