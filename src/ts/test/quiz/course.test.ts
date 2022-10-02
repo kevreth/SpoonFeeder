@@ -31,11 +31,11 @@ it('test module', () => {
   const division = new Module();
   const inst = division.inst;
   const exercises = division.exercises;
+  const name = division.name;
   expect(division).not.toBeNull();
+  expect(name).toHaveLength(0);
   expect(inst).not.toBeNull();
   expect(inst).toHaveLength(0);
-  expect(inst).toHaveLength(0);
   expect(exercises).not.toBeNull();
-  expect(exercises).toHaveLength(0);
   expect(exercises).toHaveLength(0);
 });
