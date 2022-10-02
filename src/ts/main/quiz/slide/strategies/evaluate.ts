@@ -107,21 +107,31 @@ export class Evaluate {
     // Vocab uses arrays of answers and responses. We evaluate in a correlated
     // manner inside a loop. Each correlated answer produces one row of output.
     const rowFunction: FunctionType = Evaluate.vocabRow;
-    return Evaluate.rowStrategy(ans, res, rowFunction, txt, result);
+    return Evaluate.rowStrategy(ans, res, txt, result, rowFunction);
+  };
+  /////////////////////////////////////////////////////////////////////////////
+  //
+  //
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////// gap ////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  public static readonly GAP: EvaluateTypeGap = function evaluate(
+    txt,
+    res,
+    ans,
+    result
+  ) {
+    const rowFunction: FunctionType = Evaluate.gapRow;
+    return Evaluate.rowStrategy(ans, res, txt, result, rowFunction);
   };
 
   private static rowStrategy(
     ans: string[],
     res: string[],
-    rowFunction: (
-      response: string,
-      answer: string,
-      text: string | string[],
-      idx: number,
-      length: number
-    ) => string,
     txt: string | string[],
-    result: Array<boolean>
+    result: Array<boolean>,
+    rowFunction: FunctionType
   ) {
     const rows = new Array<string>();
     const length = ans.length;
@@ -144,22 +154,6 @@ export class Evaluate {
     length
   ) {
     return makeRow(text[idx], response, answer);
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //
-  //
-  //
-  /////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// gap ////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly GAP: EvaluateTypeGap = function evaluate(
-    txt,
-    res,
-    ans,
-    result
-  ) {
-    const rowFunction: FunctionType = Evaluate.gapRow;
-    return Evaluate.rowStrategy(ans, res, rowFunction, txt, result);
   };
   // With multiple answers per one question, gap doesn't play by the same
   // rule and requires special treatment.
