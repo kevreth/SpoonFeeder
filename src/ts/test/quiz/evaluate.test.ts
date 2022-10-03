@@ -12,3 +12,9 @@ it('percentCorrect', () => {
 it('evaluate', () => {
   return;
 });
+it('summary', () => {
+  const actual = Evaluation.summary(8, 5);
+  const expected =
+    'NUMBER OF QUESTIONS: 8<br>\nNUMBER CORRECT: 5<br>\nPERCENT CORRECT: 63%';
+  expect(actual).toBe(expected);
+});
