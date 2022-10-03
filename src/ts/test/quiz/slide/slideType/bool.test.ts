@@ -6,6 +6,7 @@ import { BOOL } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
 
 class Test extends SlideTest<string> {
+  type = 'bool';
   public processJson(): void {
     const param = BOOL();
     param.txt = 'no';
