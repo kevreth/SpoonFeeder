@@ -1,11 +1,11 @@
 import { JSDOM } from 'jsdom';
-import { beforeEach, expect, it /*, vi*/ } from 'vitest';
+import { beforeEach, expect, it, vi } from 'vitest';
 import { Slide } from '../../../../main/quiz/slide';
+import { Bool } from '../../../../main/quiz/slide/slideType/bool';
 import { BOOL } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
+
 class Test extends SlideTest<string> {
-  // spy = vi.spyOn(this.testable,'spy');
   public processJson(): void {
     const param = BOOL();
     param.txt = 'no';
@@ -17,10 +17,15 @@ class Test extends SlideTest<string> {
     expect(testable.ans).toEqual(param.ans);
   }
   public makeSlides(): void {
-    return;
-    const testable = test.getTestable();
-    testable.makeSlides(DOC);
-    //incomplete test
+    const createHtml = vi.fn();
+    const makeSlides = vi.fn();
+    const evaluate = vi.fn();
+    const result = vi.fn();
+    const testable = new Bool('bool', createHtml, makeSlides, evaluate, result);
+    const spy = vi.spyOn(testable, 'makeSlidesStrategy');
+    const dom = new JSDOM();
+    testable.makeSlides(dom.window.document);
+    expect(spy).toHaveBeenCalled();
   }
   protected factory(): Slide<string> {
     return BOOL();
