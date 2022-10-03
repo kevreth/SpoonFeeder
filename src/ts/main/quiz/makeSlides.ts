@@ -24,13 +24,14 @@ export class MakeSlides {
       MakeSlides.showSlides(doc);
     } else slide.makeSlides(doc);
   }
-  public static showButton(doc: Document): void {
+  public static showButton(doc: Document): HTMLElement {
     const continue_btn = MakeSlides.continueButton(doc);
     continue_btn?.addEventListener('click', (): void => {
       MakeSlides.showSlides(doc);
     });
+    return continue_btn;
   }
-  public static continueButton(doc: Document) {
+  public static continueButton(doc: Document): HTMLElement {
     const button = makeButton('continueBtn', 'continueBtn', 'continue');
     const slide = doc.getElementById('slide') as HTMLElement;
     //place the button string in the DOM
