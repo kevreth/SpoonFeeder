@@ -48,7 +48,7 @@ export type MakeSlidesTypeMc = (
 export type MakeSlidesTypeSelect = (
   inst: string,
   ans: number[],
-  res: string[],
+  txt: string,
   createHtml: CreateHtmlSelectType,
   doc: Document,
   setValues: SetValues<number[]>
@@ -133,12 +133,12 @@ export class MakeSlides {
   public static readonly SELECT = function (
     inst: string,
     ans: number[],
-    res: string[],
+    txt: string,
     createHtml: CreateHtmlSelectType,
     doc: Document,
     setValues: SetValues<number[]>
   ) {
-    makeSlidesStrategySelect(inst, ans, res, createHtml, doc, setValues);
+    makeSlidesStrategySelect(inst, ans, txt, createHtml, doc, setValues);
   };
   public static readonly SORT = function (
     txt: string,

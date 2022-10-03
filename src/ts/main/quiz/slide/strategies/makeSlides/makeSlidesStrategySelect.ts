@@ -12,16 +12,17 @@ const { showButton } = MakeSlides;
 export function makeSlidesStrategySelect(
   inst: string,
   ans: number[],
-  txt: string[],
+  txt: string,
   createHtml: CreateHtmlTypeSelect,
   doc: Document,
   setValues: SetValues<number[]>
 ) {
-  const html = createHtml(inst, txt);
+  const txtarr = txt.split(' ');
+  const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
-  for (let ctr = 0; ctr < txt.length; ctr++) iter2(ctr + 1, doc);
+  for (let ctr = 0; ctr < txtarr.length; ctr++) iter2(ctr + 1, doc);
   const element = doc.getElementById('btn') as HTMLElement;
-  const numWords = txt.length;
+  const numWords = txtarr.length;
   element.addEventListener('click', () => {
     const res = evaluate2(element, numWords, ans, doc);
     setValues.setRes(res);

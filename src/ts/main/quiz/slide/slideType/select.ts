@@ -12,7 +12,7 @@ export class Select extends Slide<Array<number>> {
   }
   makeSlides(doc: Document): void {
     const inst = this.inst;
-    const txt = (this.txt as string).split(' ');
+    const txt = this.txt as string;
     const ans = this.ans;
     const setValues = this.getSetValues();
     const createHtml = this.createHtml;
