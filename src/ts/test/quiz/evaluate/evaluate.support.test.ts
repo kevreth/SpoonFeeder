@@ -2,6 +2,7 @@ import { Evaluation } from 'app/main/quiz/evaluate/evaluate';
 import { expect, it } from 'vitest';
 import {
   evalBody,
+  evalStats,
   makeRow,
   numbering,
   percentCorrect,
@@ -47,7 +48,6 @@ it('evalBody', () => {
   expect(act.responses).toBe(2);
 });
 it('evalStats', () => {
-  const act = 0;
-  const exp = 0;
-  expect(act).toBe(exp);
+  const txt = evalStats(2, 2);
+  expect(txt).not.toBeNull();
 });

@@ -37,8 +37,11 @@ export function processSlide(slide: SlideInterface, evalAccum: Evaluation) {
 export function evaluate(): string {
   Json.reset();
   const evalAccum = evalBody(Json.get());
-  const text = evalStats(evalAccum);
-  return text;
+  const txt0 = evalAccum.text;
+  const correct = evalAccum.correct;
+  const responses = evalAccum.responses;
+  const txt1 = evalStats(correct, responses);
+  return txt0.concat(txt1);
 }
 export function evalBody(slidesArr: SlideInterface[]) {
   const TABLE_HEADER =
@@ -50,14 +53,12 @@ export function evalBody(slidesArr: SlideInterface[]) {
     const slide = slides.dequeue();
     if (slide && slide.isExercise) processSlide(slide, evalAccum);
   }
+  evalAccum.text = numbering(evalAccum.responses, evalAccum.text);
   evalAccum.text = evalAccum.text.concat('</table>');
   return evalAccum;
 }
-export function evalStats(evalAccum: Evaluation) {
-  const correct = evalAccum.correct;
-  const responses = evalAccum.responses;
+export function evalStats(correct: number, responses: number) {
   const pctCorrect = percentCorrect(correct, responses);
-  let text = evalAccum.text.concat(summary(responses, correct, pctCorrect));
-  text = numbering(responses, text);
-  return text;
+  const txt = summary(responses, correct, pctCorrect);
+  return txt;
 }
