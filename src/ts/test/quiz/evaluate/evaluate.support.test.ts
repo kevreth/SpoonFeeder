@@ -48,6 +48,9 @@ it('evalBody', () => {
   expect(act.responses).toBe(2);
 });
 it('evalStats', () => {
-  const txt = evalStats(2, 2);
+  const txt = evalStats(1, 2);
   expect(txt).not.toBeNull();
+  expect(txt).toContain('NUMBER OF QUESTIONS: 2');
+  expect(txt).toContain('NUMBER CORRECT: 1');
+  expect(txt).toContain('PERCENT CORRECT: 50%');
 });
