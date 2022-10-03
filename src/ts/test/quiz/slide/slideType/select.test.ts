@@ -1,9 +1,17 @@
+import { ResultReturnType } from 'app/main/quiz/slide/strategies/result';
 import { beforeEach, expect, it, vi } from 'vitest';
 import { Slide } from '../../../../main/quiz/slide';
 import { Select } from '../../../../main/quiz/slide/slideType/select';
 import { SELECT } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest<number[]> {
+  public result(): void {
+    const testable = this.getTestable();
+    testable.ans = [1, 2];
+    testable.res = [1, 2];
+    const actual: ResultReturnType = testable.result();
+    expect(actual).toEqual(true);
+  }
   type = 'select';
   public processJson(): void {
     const param = SELECT();

@@ -5,21 +5,15 @@ import { AnswerType } from '../../main/quiz/slide/strategies/result';
 import { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
 
-// public result(): void {
-//   const testable = this.getTestable();
-//   const actual:ResultReturnType = testable.result();
-//   testable.ans:string = "1";
-//   testable.res:string = "1";
-//   expect(actual.).toEqual(0);
-// }
-
-// interface merging to avoid re-declaring inherited members
-// eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars
-export interface SlideTest<T extends AnswerType> extends SlideInterfaceTest {}
+// // interface merging to avoid re-declaring inherited members
+// // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars
+// export interface SlideTest<T extends AnswerType> extends SlideInterfaceTest {}
 export abstract class SlideTest<T extends AnswerType>
   extends AbstractTest<Slide<T>>
   implements SlideInterfaceTest
 {
+  public abstract processJson(): void;
+  public abstract result(): void;
   type!: string;
   public evaluate(): void {
     const testable = this.getTestable();
