@@ -13,12 +13,17 @@ export abstract class SlideTest<T extends AnswerType>
   implements SlideInterfaceTest
 {
   public abstract processJson(): void;
-  public abstract result(): void;
   type!: string;
   public evaluate(): void {
     const testable = this.getTestable();
     const spy = vi.spyOn(testable, 'evaluate');
     testable.evaluate();
+    expect(spy).toHaveBeenCalled();
+  }
+  public result(): void {
+    const testable = this.getTestable();
+    const spy = vi.spyOn(testable, 'result');
+    testable.result();
     expect(spy).toHaveBeenCalled();
   }
   public getSetValues() {

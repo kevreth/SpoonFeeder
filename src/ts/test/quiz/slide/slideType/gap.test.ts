@@ -35,6 +35,9 @@ it('processJson', () => {
 it('getSetValues', () => {
   test.getSetValues();
 });
-it('getSetValues', () => {
+it('makeSlides', () => {
   test.makeSlides();
+});
+it('result', () => {
+  test.result();
 });
