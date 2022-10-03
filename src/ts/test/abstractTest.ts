@@ -2,7 +2,7 @@ import { fail } from 'assert';
 import { expect } from 'vitest';
 export const MSG_PREFIX = 'Problem creating test instance in test class ';
 export abstract class AbstractTest<T extends object> {
-  protected testable!: T;
+  private testable!: T;
   protected abstract factory(): T;
   protected getTestableName(): string {
     return this.testable.constructor.name;
