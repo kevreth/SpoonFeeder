@@ -28,7 +28,7 @@ function showButton(doc: Document): void {
   const content = doc.getElementById('content') as HTMLElement;
   content.insertAdjacentHTML('beforeend', '<br>' + button);
   const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
-  continue_btn?.addEventListener('click', (): void => {
+  continue_btn.addEventListener('click', (): void => {
     showSlides(doc);
   });
 }
