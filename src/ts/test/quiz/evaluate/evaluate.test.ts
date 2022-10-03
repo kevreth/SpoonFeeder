@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { Evaluation } from '../../main/quiz/evaluate/evaluate';
+import { Evaluation } from '../../../main/quiz/evaluate/evaluate';
 it('makeRow', () => {
   const actual = Evaluation.makeRow('q', 'a', 'c');
   const expected = '<tr><td>q</td><td>%N%.</td><td>a</td><td>c</td></tr>';
