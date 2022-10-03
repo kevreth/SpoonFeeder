@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { ProcessJson } from '../../main/quiz/processJson';
 import { Mc } from '../../main/quiz/slide/slideType/mc';
-const testjson = `
+export const testjson = `
   {
     "name": "course 1",
     "units": [

@@ -33,8 +33,11 @@ export class MakeSlides {
   public static continueButton(doc: Document) {
     const button = makeButton('btn', 'continue-button', 'continue');
     const slide = doc.getElementById('slide') as HTMLElement;
+    //place the button string in the DOM
     slide.insertAdjacentHTML('beforeend', button);
+    //get the button as an HTMLElement
     const continue_btn = doc.getElementById('btn') as HTMLElement;
+    //as an HTMLElement we can assign styles
     continue_btn.style.position = 'absolute';
     continue_btn.style.marginTop = 10 + 'px';
     continue_btn.style.marginLeft = -2.3 + 'em';
