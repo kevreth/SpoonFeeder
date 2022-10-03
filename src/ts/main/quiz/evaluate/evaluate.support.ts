@@ -36,7 +36,7 @@ export function processSlide(slide: SlideInterface, evalAccum: Evaluation) {
 export function evaluate(): string {
   Json.reset();
   const evalAccum = evalBody(Json.get());
-  const text = evalStatistics(evalAccum);
+  const text = evalStats(evalAccum);
   return text;
 }
 export function evalBody(slides: SlideInterface[]) {
@@ -48,14 +48,14 @@ export function evalBody(slides: SlideInterface[]) {
     if (!slide.isExercise) continue;
     processSlide(slide, evalAccum);
   }
+  evalAccum.text = evalAccum.text.concat('</table>');
   return evalAccum;
 }
-export function evalStatistics(evalAccum: Evaluation) {
-  let text = evalAccum.text.concat('</table>');
+export function evalStats(evalAccum: Evaluation) {
   const correct = evalAccum.correct;
   const responses = evalAccum.responses;
   const pctCorrect = percentCorrect(correct, responses);
-  text = text.concat(summary(responses, correct, pctCorrect));
+  let text = evalAccum.text.concat(summary(responses, correct, pctCorrect));
   text = numbering(responses, text);
   return text;
 }
