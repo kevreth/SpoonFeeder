@@ -35,22 +35,21 @@ export function processSlide(slide: SlideInterface, evalAccum: Evaluation) {
 }
 export function evaluate(): string {
   Json.reset();
-  const evalAccum = evalBody();
+  const evalAccum = evalBody(Json.get());
   const text = evalStatistics(evalAccum);
   return text;
 }
-export function evalBody() {
+export function evalBody(slides: SlideInterface[]) {
   const TABLE_HEADER =
     '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
   const evalAccum = new Evaluation(0, 0, TABLE_HEADER);
-  for (let i = 0; i < Json.getNumSlides(); i++) {
-    const slide = Json.getSlide();
+  for (let i = 0; i < slides.length; i++) {
+    const slide = slides[i];
     if (!slide.isExercise) continue;
     processSlide(slide, evalAccum);
   }
   return evalAccum;
 }
-
 export function evalStatistics(evalAccum: Evaluation) {
   let text = evalAccum.text.concat('</table>');
   const correct = evalAccum.correct;
