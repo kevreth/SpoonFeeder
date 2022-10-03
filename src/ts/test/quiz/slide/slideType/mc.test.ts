@@ -11,7 +11,6 @@ class Test extends SlideTest<string> {
     param.ans = 'yes';
     param.o = ['yes', 'no'];
     const testable = test.getTestable() as Mc;
-    testable.o = ['yes', 'no'];
     testable.processJson(param);
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
