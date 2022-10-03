@@ -20,7 +20,7 @@ class Test extends SlideTest<string> {
     const makeSlides = vi.fn();
     const evaluate = vi.fn();
     const result = vi.fn();
-    return new Bool('bool', createHtml, makeSlides, evaluate, result);
+    return new Bool(this.type, createHtml, makeSlides, evaluate, result);
   }
 }
 const test = new Test();
