@@ -1,4 +1,16 @@
 import { expect, it } from 'vitest';
-it('description', () => {
+import { MaxWidth } from '../../../main/quiz/slide/maxWidth';
+it('getIdsAsArray', () => {
+  const arr = MaxWidth.getIdsAsArray(3, 'btn');
+  expect(arr.length).toEqual(3);
+  expect(arr[1]).toEqual('btn1');
+});
+it('getNumberedElementsAsList', () => {
+  expect(0).toEqual(0);
+});
+it('getMaxWidth', () => {
+  expect(0).toEqual(0);
+});
+it('setWidths', () => {
   expect(0).toEqual(0);
 });
