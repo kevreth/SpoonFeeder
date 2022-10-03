@@ -6,11 +6,11 @@ import { Mc } from './slide/slideType/mc';
 import { Select } from './slide/slideType/select';
 import { Sort } from './slide/slideType/sort';
 import { Vocab } from './slide/slideType/vocab';
-import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
-import { CreateHtml } from './slide/strategies/createHtml';
-import { Evaluate } from './slide/strategies/evaluate';
-import { MakeSlides } from './slide/strategies/makeSlides';
-import { Result } from './slide/strategies/result';
+import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
+import { CreateHtml } from './slide/strategies/createHtmlStrategy';
+import { Evaluate } from './slide/strategies/evaluateStrategy';
+import { MakeSlides } from './slide/strategies/makeSlidesStrategy';
+import { Result } from './slide/strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
 abstract class SlideInitializer {
   constructor(public readonly type: string) {}

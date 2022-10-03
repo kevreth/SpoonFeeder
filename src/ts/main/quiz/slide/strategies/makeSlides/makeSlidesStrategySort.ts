@@ -3,7 +3,7 @@ import { Draggable } from 'gsap/dist/Draggable';
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
-import type { CreateHtmlTypeSort } from '../createHtml';
+import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySort(

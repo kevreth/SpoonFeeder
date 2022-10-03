@@ -1,7 +1,7 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { makeButton } from '../utilities';
-import { Evaluation } from './evaluate';
+import { Evaluation } from './evaluate/evaluate';
 import { SaveData } from './slide/saveData';
 const { evaluate } = Evaluation;
 const { get: getSavedDataArray } = SaveData;

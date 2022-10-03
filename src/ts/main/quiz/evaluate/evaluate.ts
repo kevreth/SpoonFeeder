@@ -1,4 +1,4 @@
-import { Json } from '../globals';
+import { Json } from '../../globals';
 export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
 export class Evaluation {
   constructor(
@@ -29,14 +29,18 @@ export class Evaluation {
       text = text.concat(evaluation.text);
     }
     text = text.concat('</table>');
-    text = text.concat(Evaluation.summary(responseCtr, correctCtr));
+    const pctCorrect = Evaluation.percentCorrect(correctCtr, responseCtr);
+    text = text.concat(Evaluation.summary(responseCtr, correctCtr, pctCorrect));
     for (let i = 1; i < responseCtr + 1; i++) {
       text = text.replace('%N%', i.toString());
     }
     return text;
   }
-  private static summary(responseCtr: number, correctCtr: number) {
-    const pctCorrect = Evaluation.percentCorrect(correctCtr, responseCtr);
+  public static summary(
+    responseCtr: number,
+    correctCtr: number,
+    pctCorrect: string
+  ) {
     return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
   }
   public static percentCorrect(

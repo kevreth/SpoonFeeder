@@ -1,4 +1,3 @@
-import type { CreateHtmlTypeSelect } from '../../../../../main/quiz/slide/strategies/createHtml';
 import {
   difference,
   intersection,
@@ -7,6 +6,7 @@ import {
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
+import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySelect(

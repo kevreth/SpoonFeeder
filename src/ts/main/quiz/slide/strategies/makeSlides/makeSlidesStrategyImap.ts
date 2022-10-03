@@ -3,7 +3,7 @@ import { getChildIds, removeListener } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
-import type { CreateHtmlTypeImap } from '../createHtml';
+import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
 const { showButton } = MakeSlides;
 
 export function makeSlidesStrategyImap(

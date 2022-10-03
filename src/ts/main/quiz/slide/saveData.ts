@@ -1,5 +1,5 @@
 import { extend } from '../../../main/utilities';
-import type { AnswerType } from './strategies/result';
+import type { AnswerType } from './strategies/resultStrategy';
 const KEY = 'savedata';
 export class SaveData {
   constructor(

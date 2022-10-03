@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Another evaluation class, but evaluates an entire set of questions.
-import { Evaluation } from '../../evaluate';
+import { Evaluation } from '../../evaluate/evaluate';
 // Only makeRow from Evaluation is required.
 const { makeRow } = Evaluation;
 export type FunctionType = (

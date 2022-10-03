@@ -1,4 +1,4 @@
-import { isRandom, makeButton, shuffle } from '../../../../main/utilities';
+import { isRandom, makeButton, shuffle } from '../../../utilities';
 export type CreateHtmlTypeGap = (
   remaining: string,
   fills: string,

@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
 import { Slide } from '../../main/quiz/slide';
-import { AnswerType } from '../../main/quiz/slide/strategies/result';
+import { AnswerType } from '../../main/quiz/slide/strategies/resultStrategy';
 import { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
 export abstract class SlideTest<T extends AnswerType>

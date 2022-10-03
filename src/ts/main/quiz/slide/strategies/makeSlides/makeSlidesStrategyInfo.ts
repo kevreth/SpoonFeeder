@@ -2,7 +2,7 @@ import { makeButton } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
-import type { CreateHtmlTypeInfo } from '../createHtml';
+import type { CreateHtmlTypeInfo } from '../createHtmlStrategy';
 const { showSlides } = MakeSlides;
 
 export function makeSlidesStrategyInfo(

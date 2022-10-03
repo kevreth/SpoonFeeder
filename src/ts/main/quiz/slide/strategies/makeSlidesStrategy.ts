@@ -6,7 +6,7 @@ import type {
   CreateHtmlTypeMc,
   CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeSort,
-} from './createHtml';
+} from './createHtmlStrategy';
 import { makeSlidesStrategyGap } from './makeSlides/makeSlidesStrategyGap';
 import { makeSlidesStrategyImap } from './makeSlides/makeSlidesStrategyImap';
 import { makeSlidesStrategyInfo } from './makeSlides/makeSlidesStrategyInfo';
@@ -14,7 +14,10 @@ import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
 import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
-import type { SetWidthTypeComplex, SetWidthTypeSimple } from './setWidths';
+import type {
+  SetWidthTypeComplex,
+  SetWidthTypeSimple,
+} from './setWidthsStrategy';
 export type MakeSlidesTypeGap = (
   txt: string,
   ans: string[],

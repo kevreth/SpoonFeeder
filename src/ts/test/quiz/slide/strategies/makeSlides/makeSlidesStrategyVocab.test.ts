@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
-import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml';
+import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtmlStrategy';
 import {
   createHtmlLoop,
   generateQuestions,

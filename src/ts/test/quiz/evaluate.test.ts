@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { Evaluation } from '../../main/quiz/evaluate';
+import { Evaluation } from '../../main/quiz/evaluate/evaluate';
 it('makeRow', () => {
   const actual = Evaluation.makeRow('q', 'a', 'c');
   const expected = '<tr><td>q</td><td>%N%.</td><td>a</td><td>c</td></tr>';
@@ -13,7 +13,7 @@ it('evaluate', () => {
   return;
 });
 it('summary', () => {
-  const actual = Evaluation.summary(8, 5);
+  const actual = Evaluation.summary(8, 5, '63');
   const expected =
     'NUMBER OF QUESTIONS: 8<br>\nNUMBER CORRECT: 5<br>\nPERCENT CORRECT: 63%';
   expect(actual).toBe(expected);

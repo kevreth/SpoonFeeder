@@ -1,4 +1,4 @@
-import type { ResultReturnType } from './strategies/result';
+import type { ResultReturnType } from './strategies/resultStrategy';
 //Encapsulates certain methods in slides so they can be passed as parameters
 //to children of slides without keeping "this" context.
 export class SetValues<T> {

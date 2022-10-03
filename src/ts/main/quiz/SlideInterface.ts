@@ -1,12 +1,12 @@
-import type { Evaluation } from './evaluate';
-import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtml';
-import type { EvaluateType } from './slide/strategies/evaluate';
-import type { MakeSlidesType } from './slide/strategies/makeSlides';
+import type { Evaluation } from './evaluate/evaluate';
+import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
+import type { EvaluateType } from './slide/strategies/evaluateStrategy';
+import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './slide/strategies/result';
+} from './slide/strategies/resultStrategy';
 
 export interface SlideInterface {
   txt: AnswerType;
