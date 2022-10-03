@@ -9,12 +9,15 @@ class Test extends SlideTest<string> {
     const param = IMAP();
     param.txt = 'no';
     param.ans = 'no';
+    param.img = 'img';
     param.isExercise = true;
-    const testable = test.getTestable();
+    const testable = test.getTestable() as Imap;
+    testable.img = 'img';
     testable.processJson(param);
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);
+    expect(testable.img).toEqual(param.img);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide<string> {
