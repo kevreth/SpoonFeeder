@@ -24,7 +24,7 @@ export function makeSlidesStrategyInfo(
 //vertically.
 function showButton(doc: Document): void {
   const container = 'content';
-  const continue_btn = MakeSlides.createContinueButton(doc, container);
+  const continue_btn = MakeSlides.createContinueButton(doc, container, '<br>');
   continue_btn.addEventListener('click', (): void => {
     showSlides(doc);
   });

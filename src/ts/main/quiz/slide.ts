@@ -18,7 +18,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   txt!: AnswerType;
   ans!: T;
   res!: T;
-  pageTemplate = `
+  public pageTemplate = `
     <div id="slide">
       <div id="content">
       </div>
