@@ -9,11 +9,13 @@ class Test extends SlideTest<string> {
     const param = BOOL();
     param.txt = 'no';
     param.ans = 'no';
+    param.isExercise = true;
     const testable = test.getTestable();
     testable.processJson(param);
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);
+    expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide<string> {
     const createHtml = vi.fn();
