@@ -1,9 +1,8 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { makeButton } from '../utilities';
-import { Evaluation } from './evaluate/evaluate';
+import { evaluate } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
-const { evaluate } = Evaluation;
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {

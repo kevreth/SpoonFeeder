@@ -10,8 +10,8 @@
 //
 // Another evaluation class, but evaluates an entire set of questions.
 import { Evaluation } from '../../evaluate/evaluate';
+import { makeRow } from '../../evaluate/evaluate.support';
 // Only makeRow from Evaluation is required.
-const { makeRow } = Evaluation;
 export type FunctionType = (
   response: string,
   answer: string,
