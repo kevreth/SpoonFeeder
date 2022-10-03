@@ -1,4 +1,3 @@
-import { makeButton } from '../../../../utilities';
 import { MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
@@ -24,10 +23,8 @@ export function makeSlidesStrategyInfo(
 //other slide types where doing so causes the content to re-center
 //vertically.
 function showButton(doc: Document): void {
-  const button = makeButton('continueBtn', 'continueBtn', 'continue');
-  const content = doc.getElementById('content') as HTMLElement;
-  content.insertAdjacentHTML('beforeend', '<br>' + button);
-  const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
+  const container = 'content';
+  const continue_btn = MakeSlides.createContinueButton(doc, container);
   continue_btn.addEventListener('click', (): void => {
     showSlides(doc);
   });
