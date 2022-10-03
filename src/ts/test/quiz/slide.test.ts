@@ -4,10 +4,6 @@ import { Slide } from '../../main/quiz/slide';
 import { AnswerType } from '../../main/quiz/slide/strategies/result';
 import { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
-
-// // interface merging to avoid re-declaring inherited members
-// // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars
-// export interface SlideTest<T extends AnswerType> extends SlideInterfaceTest {}
 export abstract class SlideTest<T extends AnswerType>
   extends AbstractTest<Slide<T>>
   implements SlideInterfaceTest
@@ -39,6 +35,9 @@ export abstract class SlideTest<T extends AnswerType>
     testable.makeSlides(dom.window.document);
     expect(spy).toHaveBeenCalled();
   }
+  // This code is an experiment in creating testable classes
+  // using just a string name of a class. That way the
+  //subclasses won't have to do it.
   // public factory(): Slide<T> {
   //   const createHtml = vi.fn();
   //   const makeSlides = vi.fn();
