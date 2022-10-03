@@ -24,10 +24,10 @@ export function makeSlidesStrategyInfo(
 //other slide types where doing so causes the content to re-center
 //vertically.
 function showButton(doc: Document): void {
-  const button = makeButton('btn', 'continue-button', 'continue');
+  const button = makeButton('continueBtn', 'continueBtn', 'continue');
   const content = doc.getElementById('content') as HTMLElement;
   content.insertAdjacentHTML('beforeend', '<br>' + button);
-  const continue_btn = doc.getElementById('btn') as HTMLElement;
+  const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   continue_btn?.addEventListener('click', (): void => {
     showSlides(doc);
   });

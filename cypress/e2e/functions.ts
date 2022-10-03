@@ -22,7 +22,7 @@ export function existVisibleNotEmpty(e1: string) {
   cy.get(e1).should('not.be.empty');
 }
 export function continueButton(ctr: number) {
-  cy.get('#btn')
+  cy.get('#continueBtn')
     .should('exist')
     .should('be.visible')
     .should('not.be.empty')

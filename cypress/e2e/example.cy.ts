@@ -9,76 +9,76 @@ describe('Cypress Testing', () => {
     //course title
     existVisibleNotEmpty('body');
     elementContains('body', 'course 1');
-    testButton('#btn');
+    testButton('#continueBtn');
 
     //unit title
     existVisibleNotEmpty('body');
     elementContains('body', 'unit 1');
-    testButton('#btn');
+    testButton('#continueBtn');
 
     //lesson title
     existVisibleNotEmpty('body');
     elementContains('body', 'lesson 1');
-    testButton('#btn');
+    testButton('#continueBtn');
 
     //module title
     existVisibleNotEmpty('body');
     elementContains('body', 'module 1');
-    testButton('#btn');
+    testButton('#continueBtn');
 
     //info slides
-    testButton('#btn'); //Mathjax
-    testButton('#btn'); //code
-    testButton('#btn'); //table
+    testButton('#continueBtn'); //Mathjax
+    testButton('#continueBtn'); //code
+    testButton('#continueBtn'); //table
 
     //info slides
     existVisibleNotEmpty('body');
     elementContains('body', 'yes');
-    testButton('#btn0'); //continue
+    testButton('#btn0');
     cy.get('#btn0').should('have.css', 'background-color', GREEN);
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     existVisibleNotEmpty('body');
     elementContains('body', 'no');
     testButton('#btn0');
     cy.get('#btn0').should('have.css', 'background-color', RED);
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     existVisibleNotEmpty('body');
     elementContains('body', 'no1');
     testButton('#btn0');
     cy.get('#btn0').should('have.css', 'background-color', RED);
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     //vocab
     testButton('#btn0');
     existVisibleNotEmpty('body');
-    testButton('#btn');
+    testButton('#continueBtn');
     testButton('#btn0');
     cy.get('#btn0').should('have.css', 'background-color', RED);
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
     testButton('#btn2');
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
     testButton('#btn3');
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
     testButton('#btn0');
-    continueButton(11); //continue
+    continueButton(11);
 
     //sort
     existVisibleNotEmpty('body');
-    testButton('#btn'); //continue
-    testButton('#btn'); //continue
+    testButton('#btn'); //done
+    testButton('#continueBtn');
 
     //imap
     existVisibleNotEmpty('body');
     testButton('#blue');
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     //mc 1
     existVisibleNotEmpty('body');
     cy.contains('bus');
     testButton('#btn1');
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     //gap 1
     existVisibleNotEmpty('body');
@@ -101,7 +101,7 @@ describe('Cypress Testing', () => {
     cy.contains('Number correct: 3');
     cy.contains('Number questions: 3');
     cy.contains('100%');
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     //gap 2
     existVisibleNotEmpty('body');
@@ -124,7 +124,7 @@ describe('Cypress Testing', () => {
     cy.contains('Number correct: 1');
     cy.contains('Number questions: 3');
     cy.contains('33%');
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     //select
     existVisibleNotEmpty('body');
@@ -139,13 +139,13 @@ describe('Cypress Testing', () => {
     //test to make sure the correct text decoration is applied,
     //either underscore or strikethrough
 
-    testButton('#btn'); //continue
+    testButton('#continueBtn');
 
     //mc2
     existVisibleNotEmpty('body');
     cy.contains('learn the periodic table');
     testButton('#btn0');
-    continueButton(18); //continue
+    continueButton(18);
 
     //results
     existVisibleNotEmpty('body');
