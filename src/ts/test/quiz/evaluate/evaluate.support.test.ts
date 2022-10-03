@@ -1,6 +1,7 @@
 import { expect, it } from 'vitest';
 import {
   makeRow,
+  numbering,
   percentCorrect,
   summary,
 } from '../../../main/quiz/evaluate/evaluate.support';
@@ -11,10 +12,14 @@ it('makeRow', () => {
 });
 it('percentCorrect', () => {
   const actual = percentCorrect(5, 8);
-  expect(actual).toBe('63');
+  const expected = '63';
+  expect(actual).toBe(expected);
 });
-it('evaluate', () => {
-  return;
+it('numbering', () => {
+  const str = '%N%%N%%N%';
+  const actual = numbering(3, str);
+  const expected = '123';
+  expect(actual).toBe(expected);
 });
 it('summary', () => {
   const actual = summary(8, 5, '63');
