@@ -110,28 +110,6 @@ export function addContinueButtonListener(
   setValues: SetValues<string[]>
 ) {
   const element = continueButton(doc) as HTMLElement;
-  addContinueEventListener(
-    element,
-    doc,
-    html_list,
-    vocabTuples,
-    questionCtr,
-    maxWidthStrategy,
-    res,
-    setValues
-  );
-}
-
-export function addContinueEventListener(
-  element: HTMLElement,
-  doc: Document,
-  html_list: string[],
-  vocabTuples: vocabTuplesType,
-  questionCtr: number,
-  maxWidthStrategy: SetWidthTypeSimple,
-  res: string[],
-  setValues: SetValues<string[]>
-): void {
   element.addEventListener('click', (): void => {
     paging(
       doc,
