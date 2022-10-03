@@ -15,7 +15,7 @@ class Test extends SlideTest<Array<string>> {
 }
 const test = new Test();
 beforeEach(() => {
-  test.setUp();
+  test.beforeEach();
 });
 it('getSetValues', () => {
   test.getSetValues();

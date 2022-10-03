@@ -17,9 +17,10 @@ class Test extends SlideTest<string> {
     expect(testable.ans).toEqual(param.ans);
   }
   public makeSlides(): void {
-    const spy = vi.spyOn(this.testable, 'makeSlidesStrategy');
+    const testable = test.getTestable();
+    const spy = vi.spyOn(testable, 'makeSlidesStrategy');
     const dom = new JSDOM();
-    test.getTestable().makeSlides(dom.window.document);
+    testable.makeSlides(dom.window.document);
     expect(spy).toHaveBeenCalled();
   }
   protected factory(): Slide<string> {
@@ -32,7 +33,7 @@ class Test extends SlideTest<string> {
 }
 const test = new Test();
 beforeEach(() => {
-  test.setUp();
+  test.beforeEach();
 });
 it('processJson', () => {
   test.processJson();

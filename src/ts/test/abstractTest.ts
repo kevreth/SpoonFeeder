@@ -16,7 +16,7 @@ export abstract class AbstractTest<T extends object> {
   private message(): string {
     return MSG_PREFIX + this.getTestableName();
   }
-  public setUp() {
+  public beforeEach() {
     try {
       this.testable = this.factory();
     } catch (e) {
