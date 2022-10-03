@@ -1,3 +1,4 @@
+import { Queue } from 'mnemonist';
 import { Json } from '../../globals';
 import type { SlideInterface } from '../slideInterface';
 import { Evaluation, ROW } from './evaluate';
@@ -39,14 +40,15 @@ export function evaluate(): string {
   const text = evalStats(evalAccum);
   return text;
 }
-export function evalBody(slides: SlideInterface[]) {
+export function evalBody(slidesArr: SlideInterface[]) {
   const TABLE_HEADER =
     '<table><tr><th>Question</th><th></th><th>Your answer</th><th>Correct Answer</th></tr>';
   const evalAccum = new Evaluation(0, 0, TABLE_HEADER);
-  for (let i = 0; i < slides.length; i++) {
-    const slide = slides[i];
-    if (!slide.isExercise) continue;
-    processSlide(slide, evalAccum);
+  const slides = Queue.from(slidesArr);
+  const size = slides.size;
+  for (let i = 0; i < size; i++) {
+    const slide = slides.dequeue();
+    if (slide && slide.isExercise) processSlide(slide, evalAccum);
   }
   evalAccum.text = evalAccum.text.concat('</table>');
   return evalAccum;
