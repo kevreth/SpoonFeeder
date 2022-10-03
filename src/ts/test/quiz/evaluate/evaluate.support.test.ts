@@ -1,5 +1,5 @@
-import { Evaluation } from 'app/main/quiz/evaluate/evaluate';
 import { expect, it } from 'vitest';
+import { Evaluation } from '../../../main/quiz/evaluate/evaluate';
 import {
   evalBody,
   evalStats,

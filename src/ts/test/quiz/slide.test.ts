@@ -1,7 +1,9 @@
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
 import { Slide } from '../../main/quiz/slide';
+import { SaveData } from '../../main/quiz/slide/saveData';
 import { AnswerType } from '../../main/quiz/slide/strategies/resultStrategy';
+import { MC } from '../../main/quiz/slideFactory';
 import { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
 export abstract class SlideTest<T extends AnswerType>
@@ -59,6 +61,11 @@ export abstract class SlideTest<T extends AnswerType>
   //   return newInstance;
   // }
 }
-it('shutup', () => {
-  expect(0).toEqual(0);
+it('saveData', () => {
+  const slide = MC();
+  slide.txt = 'value';
+  slide.res = 'key';
+  slide.saveData();
+  const saved = SaveData.get();
+  console.log(saved);
 });
