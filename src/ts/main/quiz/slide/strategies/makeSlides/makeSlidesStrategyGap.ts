@@ -1,9 +1,8 @@
-import { MakeSlides } from '../../../makeSlides';
+import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
 import type { SetWidthTypeComplex } from '../setWidthsStrategy';
-const { showButton } = MakeSlides;
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to

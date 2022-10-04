@@ -3,11 +3,10 @@ import {
   intersection,
   removeListener,
 } from '../../../../utilities';
-import { MakeSlides } from '../../../makeSlides';
+import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
-const { showButton } = MakeSlides;
 
 export function makeSlidesStrategySelect(
   inst: string,

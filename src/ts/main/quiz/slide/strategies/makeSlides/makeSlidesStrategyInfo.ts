@@ -1,4 +1,4 @@
-import { MakeSlides } from '../../../makeSlides';
+import { createContinueButton, MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeInfo } from '../createHtmlStrategy';
@@ -24,7 +24,7 @@ export function makeSlidesStrategyInfo(
 //vertically.
 function showButton(doc: Document): void {
   const container = 'content';
-  const continue_btn = MakeSlides.createContinueButton(doc, container, '<br>');
+  const continue_btn = createContinueButton(doc, container, '<br>');
   continue_btn.addEventListener('click', (): void => {
     showSlides(doc);
   });
