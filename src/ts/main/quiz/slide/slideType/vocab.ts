@@ -7,9 +7,6 @@ export class Vocab extends Slide<Array<string>> {
   res = new Array<string>();
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
-    // console.log(json.list)
-    // console.log(Object.entries(json.list))
-    // console.log(this.list)
     this.txt = Array.from(this.list.values());
     this.ans = Array.from(this.list.keys());
     this.isExercise = json.isExercise;

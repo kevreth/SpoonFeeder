@@ -1,7 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
 import { Slide } from '../../main/quiz/slide';
-import { SaveData } from '../../main/quiz/slide/saveData';
 import { AnswerType } from '../../main/quiz/slide/strategies/resultStrategy';
 import { MC } from '../../main/quiz/slideFactory';
 import { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
@@ -66,6 +65,6 @@ it('saveData', () => {
   slide.txt = 'value';
   slide.res = 'key';
   slide.saveData();
-  const saved = SaveData.get();
-  console.log(saved);
+  // const saved = SaveData.get();
+  //verify data
 });

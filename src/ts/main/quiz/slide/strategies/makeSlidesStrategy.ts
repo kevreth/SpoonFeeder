@@ -18,6 +18,9 @@ import type {
   SetWidthTypeComplex,
   SetWidthTypeSimple,
 } from './setWidthsStrategy';
+/////////////////////////////////////////////////////////////////////////////
+//                             TYPES
+/////////////////////////////////////////////////////////////////////////////
 export type MakeSlidesTypeGap = (
   txt: string,
   ans: string[],
@@ -80,6 +83,9 @@ export type MakeSlidesType =
   | MakeSlidesTypeSort
   | MakeSlidesTypeVocab;
 export class MakeSlides {
+  /////////////////////////////////////////////////////////////////////////////
+  //                             GAP
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly GAP: MakeSlidesTypeGap = function (
     txt,
     ans,
@@ -97,6 +103,9 @@ export class MakeSlides {
       setValues
     );
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             IMAP
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly IMAP: MakeSlidesTypeImap = function (
     txt: string,
     img: string,
@@ -106,6 +115,9 @@ export class MakeSlides {
   ) {
     makeSlidesStrategyImap(txt, img, createHtml, doc, setValues);
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             INFO
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly INFO = function (
     txt: string,
     createHtml: CreateHtmlTypeInfo,
@@ -114,6 +126,9 @@ export class MakeSlides {
   ) {
     makeSlidesStrategyInfo(txt, createHtml, doc, setValues);
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             MC
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly MC = function (
     txt: string,
     options: string[],
@@ -133,6 +148,9 @@ export class MakeSlides {
       setValues
     );
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             SELECT
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly SELECT = function (
     inst: string,
     ans: number[],
@@ -143,6 +161,9 @@ export class MakeSlides {
   ) {
     makeSlidesStrategySelect(inst, ans, txt, createHtml, doc, setValues);
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             SORT
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly SORT = function (
     txt: string,
     ans: string[],
@@ -152,6 +173,9 @@ export class MakeSlides {
   ) {
     makeSlidesStrategySort(txt, ans, createHtml, doc, setValues);
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             VOCAB
+  /////////////////////////////////////////////////////////////////////////////
   public static readonly VOCAB = function (
     list: Map<string, string>,
     res: string[],
