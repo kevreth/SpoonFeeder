@@ -13,18 +13,39 @@
 
 <script setup>
 import { ref } from 'vue';
-import {Progress} from '../composables/progress';
 import {Score} from '../ts/main/quiz/score';
 import {CourseFile} from '../ts/main/globals'
 
+const _columns = [
+    {
+      name: 'name',
+      label: 'Name',
+      align: 'left',
+      field: 'name',
+      sortable: true,
+    },
+    {
+      name: 'count',
+      label: 'Count',
+      sortable: true,
+      field: 'count',
+      align: 'center',
+    },
+    {
+      name: 'score',
+      label: 'Score',
+      sortable: true,
+      field: 'score',
+      align: 'left',
+    },
+  ];
+
 const course = CourseFile.get();
 let summary = Score.summary(course);
-Progress.data  = summary;
-const columns = ref(Progress.columns);
-const data = ref(Progress.data);
+const columns = ref(_columns);
+const data = ref(summary);
 const classes = ref('bg-secondary');
 const dark = ref(true);
-
 
 </script>
 
