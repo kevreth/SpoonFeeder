@@ -1,7 +1,8 @@
-import { Json } from '../globals';
 import type { Course } from './course';
+import { SaveData } from './slide/saveData';
 import { getInstance } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
+const { get: getSavedDataArray } = SaveData;
 interface ISummaryLine {
   name: string;
   count: number;
@@ -52,11 +53,15 @@ export class Score {
             slide.processJson(exercise);
             const exercise_count = slide.getAnswerCount();
             moduleLine.count += exercise_count;
-            const slide2 = Json.getSlideByTxt(slide.txt);
-            if (slide2) {
-              slide.result = slide2.result;
-              moduleLine.score += 1;
-              // moduleLine.score += slide.evaluate().correct;
+            //refactoring opporunity for duplicate code with makeSlides
+            const arr = getSavedDataArray();
+            if (slide) {
+              const idx = arr.findIndex((x) => x.txt === slide.txt);
+              const slide2 = arr[idx];
+              if (slide2) {
+                slide.setResults(slide2.result);
+                moduleLine.score += slide.evaluate().correct;
+              }
             }
           }); //exercise
           lessonLine.add(moduleLine);
