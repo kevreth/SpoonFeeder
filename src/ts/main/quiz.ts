@@ -1,4 +1,3 @@
-import { Progress } from '../../composables/progress';
 import { Json } from './globals';
 import type { Course } from './quiz/course';
 import { MakeSlides } from './quiz/makeSlides';
@@ -14,14 +13,6 @@ export class Quiz {
     //TODO: add test for file existence
     const yamlFilename = Quiz.makeYamlFilename(courseName);
     //test data
-    Progress.data = [
-      {
-        label: 'test 1',
-        description: 'test 1 description data',
-        note: 'test 1 note',
-        children: [],
-      },
-    ];
     getYaml(yamlFilename, (course: Course) => {
       const slides = processJson(course);
       Json.set(slides);

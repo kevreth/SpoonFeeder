@@ -43,6 +43,10 @@ export class Score<T> {
     else count = result ? 1 : 0;
     return count;
   }
+  //currently has two faults:
+  //1) Cannot handle Vocab, which is skipped
+  //2) Cannot calculate scores, instead a dummy is used.
+  // consider if getScore() above can help. It's unused.
   public static summary(_course: Course): SummaryLine {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;

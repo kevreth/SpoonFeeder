@@ -14,6 +14,11 @@
 <script setup>
 import { ref } from 'vue';
 import {Progress} from '../composables/progress';
+import {Score} from '../ts/main/quiz/score';
+import { getYaml } from '../ts/main/utilities';
+getYaml('src/courses/test/course.yml',(course) => {
+      Progress.data  = Score.summary(course);
+    });
 
 const columns = ref(Progress.columns);
 const data = ref(Progress.data);
