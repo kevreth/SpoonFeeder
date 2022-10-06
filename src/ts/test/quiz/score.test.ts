@@ -96,7 +96,7 @@ export const results = `
 ]
 `;
 export const expected = `
-{
+[{
   "name":"course 1",
   "count":16,
   "score":5,
@@ -121,7 +121,7 @@ export const expected = `
         ]
      }
   ]
-}
+}]
 `;
 it('description', () => {
   Json.set(JSON.parse(results));

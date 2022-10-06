@@ -1,6 +1,16 @@
+import type { Course } from './quiz/course';
 import type { AnswerType } from './quiz/slide/strategies/resultStrategy';
 import type { SlideInterface } from './quiz/slideInterface';
 //Should be replaced by a Pinia store
+export class CourseFile {
+  private static json: Course;
+  public static get() {
+    return this.json;
+  }
+  public static set(json: Course) {
+    this.json = json;
+  }
+}
 export class Json {
   private static counter = 0;
   private static json: Array<SlideInterface> = [];

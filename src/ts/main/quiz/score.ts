@@ -47,7 +47,7 @@ export class Score<T> {
   //1) Cannot handle Vocab, which is skipped
   //2) Cannot calculate scores, instead a dummy is used.
   // consider if getScore() above can help. It's unused.
-  public static summary(_course: Course): SummaryLine {
+  public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
     _course.units.forEach((unit) => {
@@ -66,7 +66,6 @@ export class Score<T> {
             slide.processJson(exercise);
             const exercise_count = slide.getAnswerCount();
             moduleLine.count += exercise_count;
-            console.log(slide.txt);
             const slide2 = Json.getSlideByTxt(slide.txt);
             if (slide2) {
               slide.result = slide2.result;
@@ -81,7 +80,9 @@ export class Score<T> {
       courseLine.add(unitLine);
     }); //unit
     //course
-    return courseLine;
+    const courseLines = new Array<SummaryLine>();
+    courseLines.push(courseLine);
+    return courseLines;
   }
 }
 export interface GetScore {

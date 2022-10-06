@@ -15,16 +15,17 @@
 import { ref } from 'vue';
 import {Progress} from '../composables/progress';
 import {Score} from '../ts/main/quiz/score';
-import { getYaml } from '../ts/main/utilities';
-getYaml('src/courses/test/course.yml',(course) => {
-      Progress.data  = Score.summary(course);
-    });
+import {CourseFile} from '../ts/main/globals'
 
+const course = CourseFile.get();
+let summary = Score.summary(course);
+Progress.data  = summary;
 const columns = ref(Progress.columns);
 const data = ref(Progress.data);
-
 const classes = ref('bg-secondary');
 const dark = ref(true);
+
+
 </script>
 
 <style>
