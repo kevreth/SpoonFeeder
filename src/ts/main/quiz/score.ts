@@ -1,7 +1,7 @@
 import { Json } from '../globals';
 import type { Course } from './course';
-import type { SetValues } from './slide/setValues';
 import { getInstance } from './slideFactory';
+import type { SlideInterface } from './slideInterface';
 interface ISummaryLine {
   name: string;
   count: number;
@@ -20,23 +20,9 @@ class SummaryLine implements ISummaryLine {
   score = 0;
   children?: ISummaryLine[] = new Array<SummaryLine>();
 }
-export class Score<T> {
-  private _score = 0;
-  private _questions = 0;
-  public get questions(): number {
-    return this._questions;
-  }
-  public addToQuestions(value: number): void {
-    this._questions += value;
-  }
-  public addToScore(score: number): void {
-    this._score += score;
-  }
-  public get score(): number {
-    return this._score;
-  }
-  public getScore(sv: SetValues<T>): number {
-    const result = sv.result();
+export class Score {
+  public static getScore(slide: SlideInterface): number {
+    const result = slide.result();
     let count = 0;
     if (Array.isArray(result))
       count = result.filter((value) => value === true).length;
