@@ -1,3 +1,4 @@
+import type { AnswerType } from './quiz/slide/strategies/resultStrategy';
 import type { SlideInterface } from './quiz/slideInterface';
 //Should be replaced by a Pinia store
 export class Json {
@@ -14,7 +15,7 @@ export class Json {
     Json.counter++;
     return retval;
   }
-  public static getSlideByTxt(txt: string): SlideInterface {
+  public static getSlideByTxt(txt: AnswerType): SlideInterface {
     return Json.json.find((x) => x.txt === txt) as SlideInterface;
   }
   public static getNumSlides(): number {

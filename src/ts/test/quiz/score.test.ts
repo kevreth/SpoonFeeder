@@ -7,18 +7,22 @@ export const testJson = `
 {
   "name":"course 1",
   "count":16,
+  "score":0,
   "children":[
      {
         "name":"unit 1",
         "count":16,
+        "score":0,
         "children":[
            {
               "name":"lesson 1",
               "count":16,
+              "score":0,
               "children":[
                  {
                     "name":"module 1",
-                    "count":16
+                    "count":16,
+                    "score":0
                  }
               ]
            }

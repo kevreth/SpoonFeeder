@@ -1,14 +1,23 @@
+import { Json } from '../globals';
 import type { Course } from './course';
 import type { SetValues } from './slide/setValues';
 import { getInstance } from './slideFactory';
 interface ISummaryLine {
   name: string;
   count: number;
+  score: number;
   children?: Array<ISummaryLine>;
+  add(child: ISummaryLine): void;
 }
 class SummaryLine implements ISummaryLine {
+  add(child: ISummaryLine): void {
+    this.count += child.count;
+    this.score += child.score;
+    this.children?.push(child);
+  }
   name = '';
   count = 0;
+  score = 0;
   children?: ISummaryLine[] = new Array<SummaryLine>();
 }
 export class Score<T> {
@@ -51,19 +60,17 @@ export class Score<T> {
             const type = exercise.type;
             const slide = getInstance(type);
             slide.processJson(exercise);
-            //necessary when we include scores
-            // const slide2 = Json.getSlideByTxt(slide.txt as string);
             const exercise_count = slide.getAnswerCount();
             moduleLine.count += exercise_count;
+            console.log(slide.txt);
+            const slide2 = Json.getSlideByTxt(slide.txt);
+            if (slide2) moduleLine.score += slide2.evaluate().correct;
           }); //exercise
-          lessonLine.children?.push(moduleLine);
-          lessonLine.count += moduleLine.count;
+          lessonLine.add(moduleLine);
         }); //module
-        unitLine.children?.push(lessonLine);
-        unitLine.count += lessonLine.count;
+        unitLine.add(lessonLine);
       }); //lesson
-      courseLine.children?.push(unitLine);
-      courseLine.count += unitLine.count;
+      courseLine.add(unitLine);
     }); //unit
     //course
     return courseLine;
