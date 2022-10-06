@@ -64,7 +64,11 @@ export class Score<T> {
             moduleLine.count += exercise_count;
             console.log(slide.txt);
             const slide2 = Json.getSlideByTxt(slide.txt);
-            if (slide2) moduleLine.score += slide2.evaluate().correct;
+            if (slide2) {
+              slide.result = slide2.result;
+              moduleLine.score += 1;
+              // moduleLine.score += slide.evaluate().correct;
+            }
           }); //exercise
           lessonLine.add(moduleLine);
         }); //module
