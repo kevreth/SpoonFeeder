@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { Evaluation } from '../../../main/quiz/evaluate/evaluate';
+import type { Evaluation } from '../../../main/quiz/evaluate/evaluate';
 import {
   evalBody,
   evalStats,

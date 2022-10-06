@@ -14,8 +14,8 @@ export class Json {
     Json.counter++;
     return retval;
   }
-  public static getSlideByTxt(txt: string): SlideInterface | undefined {
-    return Json.json.find((x) => x.txt === txt);
+  public static getSlideByTxt(txt: string): SlideInterface {
+    return Json.json.find((x) => x.txt === txt) as SlideInterface;
   }
   public static getNumSlides(): number {
     return Json.json.length;

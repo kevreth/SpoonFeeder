@@ -21,4 +21,7 @@ export class Vocab extends Slide<Array<string>> {
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeVocab;
     makeSlidesStrategy(list, res, createHtml, maxWidthStrategy, doc, setValues);
   }
+  getAnswerCount(): number {
+    return this.list.size;
+  }
 }

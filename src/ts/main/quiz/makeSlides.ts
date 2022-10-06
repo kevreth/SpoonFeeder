@@ -11,7 +11,8 @@ export class MakeSlides {
     const arr = getSavedDataArray();
     if (typeof slide === 'undefined') {
       //end of quiz
-      doc.body.innerHTML = evaluate(); //EXECUTION ENDS
+      Json.reset();
+      doc.body.innerHTML = evaluate(Json.get()); //EXECUTION ENDS
       startOverButton(doc);
     }
     //If the slide has already been presented to the user,

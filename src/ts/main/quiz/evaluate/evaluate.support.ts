@@ -1,5 +1,4 @@
 import { Queue } from 'mnemonist';
-import { Json } from '../../globals';
 import type { SlideInterface } from '../slideInterface';
 import { Evaluation, ROW } from './evaluate';
 export function summary(
@@ -34,9 +33,8 @@ export function processSlide(slide: SlideInterface, evalAccum: Evaluation) {
   evalAccum.correct += evaluation.correct;
   evalAccum.text = evalAccum.text.concat(evaluation.text);
 }
-export function evaluate(): string {
-  Json.reset();
-  const evalAccum = evalBody(Json.get());
+export function evaluate(slides: SlideInterface[]): string {
+  const evalAccum = evalBody(slides);
   const txt0 = evalAccum.text;
   const correct = evalAccum.correct;
   const responses = evalAccum.responses;

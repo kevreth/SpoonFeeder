@@ -32,6 +32,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  getAnswerCount(): number {
+    return 1;
+  }
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file

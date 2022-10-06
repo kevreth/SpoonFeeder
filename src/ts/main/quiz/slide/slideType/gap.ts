@@ -23,4 +23,7 @@ export class Gap extends Slide<Array<string>> {
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeGap;
     makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, setValues);
   }
+  getAnswerCount(): number {
+    return this.ans.length;
+  }
 }

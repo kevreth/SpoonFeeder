@@ -27,4 +27,5 @@ export interface SlideInterface {
   evaluate(): Evaluation;
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
+  getAnswerCount(): number;
 }

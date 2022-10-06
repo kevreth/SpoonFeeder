@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
-import { Slide } from '../../main/quiz/slide';
-import { AnswerType } from '../../main/quiz/slide/strategies/resultStrategy';
-import { MC } from '../../main/quiz/slideFactory';
-import { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
+import type { Slide } from '../../main/quiz/slide';
+import type { AnswerType } from '../../main/quiz/slide/strategies/resultStrategy';
+import { MC, VOCAB } from '../../main/quiz/slideFactory';
+import type { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
 export abstract class SlideTest<T extends AnswerType>
   extends AbstractTest<Slide<T>>
@@ -68,3 +68,17 @@ it('saveData', () => {
   // const saved = SaveData.get();
   //verify data
 });
+//These should be moved to slideType files.
+it('getAnswerCountSingle'),
+  () => {
+    const slide = MC();
+    const actual = slide.getAnswerCount();
+    expect(actual).toEqual(1);
+  };
+it('getAnswerCountMultiple'),
+  () => {
+    const slide = VOCAB();
+    slide.ans = ['a', 'b', 'c'];
+    const actual = slide.getAnswerCount();
+    expect(actual).toEqual(3);
+  };
