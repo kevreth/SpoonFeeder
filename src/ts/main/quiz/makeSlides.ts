@@ -9,6 +9,7 @@ export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
     const arr = getSavedDataArray();
+    let idx = 0;
     if (typeof slide === 'undefined') {
       //end of quiz
       Json.reset();
@@ -18,9 +19,7 @@ export class MakeSlides {
     //If the slide has already been presented to the user,
     //call this method again.
     //"txt" identifies slides, which may be in random order.
-    else if (arr.some((x) => x.txt === slide.txt)) {
-      //load the results from the save file
-      const idx = arr.findIndex((x) => x.txt === slide.txt);
+    else if ((idx = arr.findIndex((x) => x.txt === slide.txt)) > -1) {
       slide.setResults(arr[idx].result);
       MakeSlides.showSlides(doc);
     } else slide.makeSlides(doc);
