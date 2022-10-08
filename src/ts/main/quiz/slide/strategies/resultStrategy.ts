@@ -31,8 +31,9 @@ export class Result {
   public static readonly CORRELATED: ResultType = function (ans, res) {
     const retval = new Array<boolean>();
     (ans as Array<string>).forEach((ansa, idx) => {
-      if (isEqual(ansa, res[idx])) retval.push(true);
-      else retval.push(false);
+      let val = false;
+      if (isEqual(ansa, res[idx])) val = true;
+      retval.push(val);
     });
     return retval;
   };
