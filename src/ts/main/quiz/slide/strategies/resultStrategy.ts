@@ -19,7 +19,7 @@ export class Result {
   //simple scalar string comparison
   //used with: IMAP, MC
   public static readonly SIMPLE: ResultType = function (ans, res) {
-    return ans === res;
+    return isEqual(ans, res);
   };
   /////////////////////////////////////////////////////////////////////////////
   //                             LIST
