@@ -9,28 +9,18 @@ export class Result {
   //                          UNSUPPORTED
   /////////////////////////////////////////////////////////////////////////////
   //throws error for slides without responses
-  //used with: INFO, SLIDES (default)
+  //used with: INFO
   public static readonly UNSUPPORTED: ResultType = function (ans, res) {
     throw new Error(`Method not implemented. +${ans} ${res}`);
   };
   /////////////////////////////////////////////////////////////////////////////
   //                            SIMPLE
   /////////////////////////////////////////////////////////////////////////////
-  //simple scalar string comparison
-  //used with: IMAP, MC
+  //simple comparison outputting one boolean
+  //used with: IMAP, MC, SELECT, SORT
   public static readonly SIMPLE: ResultType = function (ans, res) {
     return isEqual(ans, res);
   };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             LIST
-  /////////////////////////////////////////////////////////////////////////////
-  //array comparison where the two lists must be equal for true result
-  //example: {1,2,3},{1,2,3} -> true
-  //example: {4,5,6},{4,0,6} -> false
-  //used with: SELECT, SORT
-  // public static readonly LIST: ResultType = function (ans, res) {
-  //   return isEqual(ans, res);
-  // };
   /////////////////////////////////////////////////////////////////////////////
   //                          CORRELATED
   /////////////////////////////////////////////////////////////////////////////
@@ -41,7 +31,7 @@ export class Result {
   public static readonly CORRELATED: ResultType = function (ans, res) {
     const retval = new Array<boolean>();
     (ans as Array<string>).forEach((ansa, idx) => {
-      if (ansa === res[idx]) retval.push(true);
+      if (isEqual(ansa, res[idx])) retval.push(true);
       else retval.push(false);
     });
     return retval;
