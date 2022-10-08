@@ -28,9 +28,9 @@ export class Result {
   //example: {1,2,3},{1,2,3} -> true
   //example: {4,5,6},{4,0,6} -> false
   //used with: SELECT, SORT
-  public static readonly LIST: ResultType = function (ans, res) {
-    return isEqual(ans, res);
-  };
+  // public static readonly LIST: ResultType = function (ans, res) {
+  //   return isEqual(ans, res);
+  // };
   /////////////////////////////////////////////////////////////////////////////
   //                          CORRELATED
   /////////////////////////////////////////////////////////////////////////////

@@ -96,7 +96,7 @@ class SelectFactory extends SlideInitializer {
       CreateHtml.SELECT as CreateHtmlTypeIntersection,
       MakeSlides.SELECT,
       Evaluate.SIMPLE,
-      Result.LIST
+      Result.SIMPLE
     );
   }
 }
@@ -110,7 +110,7 @@ class SortFactory extends SlideInitializer {
       CreateHtml.SORT as CreateHtmlTypeIntersection,
       MakeSlides.SORT,
       Evaluate.SIMPLE,
-      Result.LIST
+      Result.SIMPLE
     );
   }
 }
