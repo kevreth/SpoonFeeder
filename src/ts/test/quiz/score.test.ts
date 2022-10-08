@@ -104,6 +104,7 @@ export const expected = `
      "pctCorrect":"0%",
      "count":16,
      "pctComplete":"0%",
+     "summary":"S",
      "children":[
         {
            "name":"unit 1",
@@ -112,6 +113,7 @@ export const expected = `
            "pctCorrect":"0%",
            "count":16,
            "pctComplete":"0%",
+           "summary":"S",
            "children":[
               {
                  "name":"lesson 1",
@@ -120,6 +122,7 @@ export const expected = `
                  "pctCorrect":"0%",
                  "count":16,
                  "pctComplete":"0%",
+                 "summary":"S",
                  "children":[
                     {
                        "name":"module 1",
@@ -127,7 +130,8 @@ export const expected = `
                        "complete":0,
                        "pctCorrect":"0%",
                        "count":16,
-                       "pctComplete":"0%"
+                       "pctComplete":"0%",
+                       "summary":"S"
                     }
                  ]
               }

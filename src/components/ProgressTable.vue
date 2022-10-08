@@ -59,6 +59,13 @@ const _columns = [
       field: 'pctComplete',
       align: 'right',
     },
+    {
+      name: 'summary',
+      label: '',
+      sortable: false,
+      field: 'summary',
+      align: 'right',
+    },
   ];
 
 const course = CourseFile.get();

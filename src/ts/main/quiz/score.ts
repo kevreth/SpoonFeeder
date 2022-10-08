@@ -12,6 +12,7 @@ interface ISummaryLine {
   pctCorrect: string;
   count: number;
   pctComplete: string;
+  summary: string;
   children?: Array<ISummaryLine>;
   add(child: ISummaryLine): void;
   calculate(): void;
@@ -23,6 +24,7 @@ class SummaryLine implements ISummaryLine {
   pctCorrect = '';
   count = 0;
   pctComplete = '';
+  summary = 'S';
   children?: ISummaryLine[] = new Array<SummaryLine>();
   add(child: ISummaryLine): void {
     this.score += child.score;
@@ -45,7 +47,6 @@ export class Score {
     else count = result ? 1 : 0;
     return count;
   }
-  //Cannot handle Vocab, which is skipped
   public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
