@@ -19,13 +19,7 @@ export class MakeSlides {
     //If the slide has already been presented to the user,
     //call this method again.
     //"txt" identifies slides, which may be in random order.
-    else if (
-      (idx = arr.findIndex(function (x) {
-        const xTxt = x.txt;
-        const sTxt = slide.txt;
-        return isEqual(xTxt, sTxt);
-      })) > -1
-    ) {
+    else if ((idx = arr.findIndex((x) => isEqual(x.txt, slide.txt))) > -1) {
       slide.setResults(arr[idx].result);
       MakeSlides.showSlides(doc);
     } else slide.makeSlides(doc);
