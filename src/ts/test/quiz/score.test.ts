@@ -96,32 +96,46 @@ export const results = `
 ]
 `;
 export const expected = `
-[{
-  "name":"course 1",
-  "count":16,
-  "score":0,
-  "children":[
-     {
-        "name":"unit 1",
-        "count":16,
-        "score":0,
-        "children":[
-           {
-              "name":"lesson 1",
-              "count":16,
-              "score":0,
-              "children":[
-                 {
-                    "name":"module 1",
-                    "count":16,
-                    "score":0
-                 }
-              ]
-           }
-        ]
-     }
-  ]
-}]
+[
+  {
+     "name":"course 1",
+     "score":0,
+     "complete":0,
+     "pctCorrect":"0%",
+     "count":16,
+     "pctComplete":"0%",
+     "children":[
+        {
+           "name":"unit 1",
+           "score":0,
+           "complete":0,
+           "pctCorrect":"0%",
+           "count":16,
+           "pctComplete":"0%",
+           "children":[
+              {
+                 "name":"lesson 1",
+                 "score":0,
+                 "complete":0,
+                 "pctCorrect":"0%",
+                 "count":16,
+                 "pctComplete":"0%",
+                 "children":[
+                    {
+                       "name":"module 1",
+                       "score":0,
+                       "complete":0,
+                       "pctCorrect":"0%",
+                       "count":16,
+                       "pctComplete":"0%"
+                    }
+                 ]
+              }
+           ]
+        }
+     ]
+  }
+]
 `;
 it('description', () => {
   Json.set(JSON.parse(results));
@@ -131,5 +145,6 @@ it('description', () => {
   const score = Score.summary(doc);
   const act = JSON.stringify(score);
   const exp = JSON.stringify(JSON.parse(expected));
+  console.count(act);
   expect(act).toEqual(exp);
 });

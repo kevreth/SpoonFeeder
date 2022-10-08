@@ -12,6 +12,7 @@ export function percentCorrect(
   correctCtr: number,
   responseCtr: number
 ): string {
+  if (responseCtr === 0) return '0'; // prevent divide-by-zero error
   return ((correctCtr / responseCtr) * 100).toFixed(0);
 }
 export function makeRow(question: string, response: string, answer: string) {

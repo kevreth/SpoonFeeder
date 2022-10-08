@@ -1,25 +1,35 @@
 import { isEqual } from '../utilities';
 import type { Course } from './course';
+import { percentCorrect } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
 import { getInstance } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 interface ISummaryLine {
   name: string;
-  count: number;
   score: number;
+  complete: number;
+  pctCorrect: string;
+  count: number;
+  pctComplete: string;
   children?: Array<ISummaryLine>;
   add(child: ISummaryLine): void;
 }
 class SummaryLine implements ISummaryLine {
   add(child: ISummaryLine): void {
-    this.count += child.count;
     this.score += child.score;
+    this.complete += child.complete;
+    this.count += child.count;
+    this.pctComplete = percentCorrect(this.complete, this.count) + '%';
+    this.pctCorrect = percentCorrect(this.score, this.complete) + '%';
     this.children?.push(child);
   }
   name = '';
-  count = 0;
   score = 0;
+  complete = 0;
+  pctCorrect = '';
+  count = 0;
+  pctComplete = '';
   children?: ISummaryLine[] = new Array<SummaryLine>();
 }
 export class Score {
@@ -49,6 +59,9 @@ export class Score {
             const type = exercise.type;
             const slide = getInstance(type);
             slide.processJson(exercise);
+            //these two lines cannot be moved to inside "if (slide2)..."
+            //the reason is unknown, but it results in the pctComplete
+            //always being 100%.
             const exercise_count = slide.getAnswerCount();
             moduleLine.count += exercise_count;
             //refactoring opporunity for duplicate code with makeSlides
@@ -60,9 +73,15 @@ export class Score {
             //However it has no functional effect. Still works.
             if (slide2) {
               slide.setResults(slide2.result);
-              moduleLine.score += slide.evaluate().correct;
+              const evaluation = slide.evaluate();
+              moduleLine.score += evaluation.correct;
+              moduleLine.complete += evaluation.responses;
             } else console.log(slide.txt);
           }); //exercise
+          moduleLine.pctComplete =
+            percentCorrect(moduleLine.complete, moduleLine.count) + '%';
+          moduleLine.pctCorrect =
+            percentCorrect(moduleLine.score, moduleLine.complete) + '%';
           lessonLine.add(moduleLine);
         }); //module
         unitLine.add(lessonLine);
