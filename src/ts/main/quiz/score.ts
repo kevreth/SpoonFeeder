@@ -60,39 +60,45 @@ export class Score {
           moduleLine.name = module.name;
           delete moduleLine['children'];
           module.exercises.forEach((exercise) => {
-            const type = exercise.type;
-            const slide = getInstance(type);
-            slide.processJson(exercise);
-            //these two lines cannot be moved to inside "if (slide2)..."
-            //the reason is unknown, but it results in the pctComplete
-            //always being 100%.
-            const exercise_count = slide.getAnswerCount();
-            moduleLine.count += exercise_count;
-            //refactoring opporunity for duplicate code with makeSlides
-            const arr = getSavedDataArray();
-            const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
-            const slide2 = arr[idx];
-            //conditional necessary because of iterative behavior not
-            //understood. the else executes multiple times per exercise.
-            //However it has no functional effect. Still works.
-            if (slide2) {
-              slide.setResults(slide2.result);
-              const evaluation = slide.evaluate();
-              moduleLine.score += evaluation.correct;
-              moduleLine.complete += evaluation.responses;
-            } else console.log(slide.txt);
+            Score.exercise(exercise, moduleLine);
           }); //exercise
           moduleLine.calculate();
           lessonLine.add(moduleLine);
         }); //module
+        lessonLine.calculate();
         unitLine.add(lessonLine);
       }); //lesson
+      unitLine.calculate();
       courseLine.add(unitLine);
     }); //unit
     //course
+    courseLine.calculate();
     const courseLines = new Array<SummaryLine>();
     courseLines.push(courseLine);
     return courseLines;
+  }
+  private static exercise(exercise: SlideInterface, moduleLine: ISummaryLine) {
+    const type = exercise.type;
+    const slide = getInstance(type);
+    slide.processJson(exercise);
+    //these two lines cannot be moved to inside "if (slide2)..."
+    //the reason is unknown, but it results in the pctComplete
+    //always being 100%.
+    const exercise_count = slide.getAnswerCount();
+    moduleLine.count += exercise_count;
+    //refactoring opporunity for duplicate code with makeSlides
+    const arr = getSavedDataArray();
+    const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
+    const slide2 = arr[idx];
+    //conditional necessary because of iterative behavior not
+    //understood. the else executes multiple times per exercise.
+    //However it has no functional effect. Still works.
+    if (slide2) {
+      slide.setResults(slide2.result);
+      const evaluation = slide.evaluate();
+      moduleLine.score += evaluation.correct;
+      moduleLine.complete += evaluation.responses;
+    } else console.log(slide.txt);
   }
 }
 export interface GetScore {
