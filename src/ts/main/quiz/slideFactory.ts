@@ -147,6 +147,12 @@ export function getInstance(type: string): SlideInterface {
   });
   return retval;
 }
+export function initSlide(exercise: SlideInterface) {
+  const type = exercise.type;
+  const slide = getInstance(type);
+  slide.processJson(exercise);
+  return slide;
+}
 export const BOOL = () => new BoolFactory().instance() as Bool;
 export const GAP = () => new GapFactory().instance() as Gap;
 export const IMAP = () => new ImapFactory().instance() as Imap;

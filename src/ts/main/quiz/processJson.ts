@@ -1,6 +1,6 @@
 import { isRandom, shuffle } from '../utilities';
 import type { Course } from './course';
-import { getInstance, INFO } from './slideFactory';
+import { INFO, initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 //////////////// Phase 1: process Json
 export class ProcessJson {
@@ -42,8 +42,7 @@ export class ProcessJson {
       const processedSlides = new Array<SlideInterface>();
       questions.forEach((item) => {
         item.isExercise = isExercise;
-        const slide = getInstance(item.type) as SlideInterface;
-        slide.processJson(item);
+        const slide = initSlide(item);
         processedSlides.push(slide);
       });
       if (isRandom() && isExercise) questions = shuffle(questions);

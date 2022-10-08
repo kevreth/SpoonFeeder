@@ -2,7 +2,7 @@ import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
-import { getInstance } from './slideFactory';
+import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 interface ISummaryLine {
@@ -78,9 +78,7 @@ export class Score {
     return courseLines;
   }
   private static exercise(exercise: SlideInterface, moduleLine: ISummaryLine) {
-    const type = exercise.type;
-    const slide = getInstance(type);
-    slide.processJson(exercise);
+    const slide = initSlide(exercise);
     //these two lines cannot be moved to inside "if (slide2)..."
     //the reason is unknown, but it results in the pctComplete
     //always being 100%.
