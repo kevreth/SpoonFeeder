@@ -1,6 +1,6 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
-import { makeButton } from '../utilities';
+import { isEqual, makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
 const { get: getSavedDataArray } = SaveData;
@@ -19,7 +19,13 @@ export class MakeSlides {
     //If the slide has already been presented to the user,
     //call this method again.
     //"txt" identifies slides, which may be in random order.
-    else if ((idx = arr.findIndex((x) => x.txt === slide.txt)) > -1) {
+    else if (
+      (idx = arr.findIndex(function (x) {
+        const xTxt = x.txt;
+        const sTxt = slide.txt;
+        return isEqual(xTxt, sTxt);
+      })) > -1
+    ) {
       slide.setResults(arr[idx].result);
       MakeSlides.showSlides(doc);
     } else slide.makeSlides(doc);
