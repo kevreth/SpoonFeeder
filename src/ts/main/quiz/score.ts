@@ -1,3 +1,4 @@
+import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { SaveData } from './slide/saveData';
 import { getInstance } from './slideFactory';
@@ -54,7 +55,7 @@ export class Score {
             const arr = getSavedDataArray();
             //conditional necessary because Vocab returns null
             if (slide) {
-              const idx = arr.findIndex((x) => x.txt === slide.txt);
+              const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
               const slide2 = arr[idx];
               //conditional necessary because of iterative behavior not
               //understood. the else executes multiple times per exercise.
