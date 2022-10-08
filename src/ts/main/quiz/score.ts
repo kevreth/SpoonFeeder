@@ -53,18 +53,15 @@ export class Score {
             moduleLine.count += exercise_count;
             //refactoring opporunity for duplicate code with makeSlides
             const arr = getSavedDataArray();
-            //conditional necessary because Vocab returns null
-            if (slide) {
-              const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
-              const slide2 = arr[idx];
-              //conditional necessary because of iterative behavior not
-              //understood. the else executes multiple times per exercise.
-              //However it has no functional effect. Still works.
-              if (slide2) {
-                slide.setResults(slide2.result);
-                moduleLine.score += slide.evaluate().correct;
-              } else console.log(slide.txt);
-            }
+            const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
+            const slide2 = arr[idx];
+            //conditional necessary because of iterative behavior not
+            //understood. the else executes multiple times per exercise.
+            //However it has no functional effect. Still works.
+            if (slide2) {
+              slide.setResults(slide2.result);
+              moduleLine.score += slide.evaluate().correct;
+            } else console.log(slide.txt);
           }); //exercise
           lessonLine.add(moduleLine);
         }); //module
