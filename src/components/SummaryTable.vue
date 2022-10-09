@@ -4,11 +4,12 @@
     <q-overlay v-model="model" :z-index="5000">
       <template #body>
         <div class="justify-evenly summaryContainer">          
-          <!-- <q-btn v-if="model === true && waiting !== true" color="primary" label="Exit" @click="model = !model" /> -->
-          <td style="padding-left:0px">{{ question }}</td> 
+          <td style="padding-left:0px" class="q-mt-sm">{{ question }}</td> 
           <td style="padding-left:0px">{{ correct }}</td>
           <td style="padding-left:0px">{{ pctCorrect }}</td>
+          
         </div>
+        <q-btn v-if="model === true && waiting !== true" color="primary" label="Exit" class="q-mt-lg fixed-center" @click="model = !model" />
       </template>
     </q-overlay>
 
@@ -32,5 +33,6 @@ const { question, correct, pctCorrect } = getSummary()
 }
 .summaryContainer {
   display:grid;
+  cursor: auto;
 }
 </style>
