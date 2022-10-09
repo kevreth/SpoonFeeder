@@ -12,7 +12,6 @@ interface ISummaryLine {
   pctCorrect: string;
   count: number;
   pctComplete: string;
-  // summary: string;
   children?: Array<ISummaryLine>;
   add(child: ISummaryLine): void;
   calculate(): void;
@@ -24,7 +23,6 @@ class SummaryLine implements ISummaryLine {
   pctCorrect = '';
   count = 0;
   pctComplete = '';
-  // summary = 'http://www.cnn.com';
   children?: ISummaryLine[] = new Array<SummaryLine>();
   add(child: ISummaryLine): void {
     this.score += child.score;
