@@ -96,7 +96,7 @@ export const results = `
 ]
 `;
 export const expected =
-  '[{"name":"course 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","summary":"http://www.cnn.com","children":[{"name":"unit 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","summary":"http://www.cnn.com","children":[{"name":"lesson 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","summary":"http://www.cnn.com","children":[{"name":"module 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","summary":"http://www.cnn.com"}]}]}]}]';
+  '[{"name":"course 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","children":[{"name":"unit 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","children":[{"name":"lesson 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%","children":[{"name":"module 1","score":0,"complete":0,"pctCorrect":"0%","count":16,"pctComplete":"0%"}]}]}]}]';
 it('description', () => {
   Json.set(JSON.parse(results));
   const doc = yaml.load(
