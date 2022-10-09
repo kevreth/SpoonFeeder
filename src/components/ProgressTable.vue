@@ -24,7 +24,12 @@
       <td class="text-right">{{props.item.pctCorrect}}</td>
       <td class="text-right">{{props.item.count}}</td>
       <td class="text-right">{{props.item.pctComplete}}</td>
-      <td class="text-left"><a v-bind:href="props.item.summary">S</a></td>
+      <td class="text-left">
+        <a v-bind:href="props.item.summary">
+        <q-icon class="summary" name="summarize">       
+        </q-icon>
+      </a>
+      </td>
     </template>
   </q-hierarchy>
 </template>
@@ -113,5 +118,12 @@ const dark = ref(true);
 }
 .hierarchy::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
+}
+td a {
+  color: white;
+  text-decoration: none
+}
+td a:hover {
+  color: #ddd;
 }
 </style>
