@@ -8,6 +8,24 @@
     :dark="dark"
     :default-expand-all="(default_expand_all = true)"
   >
+    <template v-slot:body="props">
+      <td class="text-left" data-th="Name">
+        <div v-bind:style="props.setPadding(props.item)"
+              :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
+          <q-btn @click="props.toggle(props.item)" v-if="props.iconName(props.item)!='done'"
+                  :icon="props.iconName(props.item)" flat
+                  dense>
+          </q-btn>
+          <span class="q-ml-sm">{{props.item.name}}</span>
+        </div>
+      </td>
+      <td class="text-right">{{props.item.score}}</td>
+      <td class="text-right">{{props.item.complete}}</td>
+      <td class="text-right">{{props.item.pctCorrect}}</td>
+      <td class="text-right">{{props.item.count}}</td>
+      <td class="text-right">{{props.item.pctComplete}}</td>
+      <td class="text-left"><a v-bind:href="props.item.summary">S</a></td>
+    </template>
   </q-hierarchy>
 </template>
 

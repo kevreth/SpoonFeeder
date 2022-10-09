@@ -24,7 +24,7 @@ class SummaryLine implements ISummaryLine {
   pctCorrect = '';
   count = 0;
   pctComplete = '';
-  summary = 'S';
+  summary = 'http://www.cnn.com';
   children?: ISummaryLine[] = new Array<SummaryLine>();
   add(child: ISummaryLine): void {
     this.score += child.score;
