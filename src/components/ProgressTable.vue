@@ -26,7 +26,7 @@
       <td class="text-right">{{props.item.pctComplete}}</td>
       <td class="text-left">
         <a v-bind:href="props.item.summary">
-          <q-icon class="summary" name="summarize" />       
+          <SummaryTable />       
         </a>
       </td>
     </template>
@@ -37,6 +37,7 @@
 import { ref } from 'vue';
 import {Score} from '../ts/main/quiz/score';
 import {CourseFile} from '../ts/main/globals'
+import SummaryTable from './SummaryTable.vue'
 
 const _columns = [
     {
@@ -117,12 +118,5 @@ const dark = ref(true);
 }
 .hierarchy::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
-}
-td a {
-  color: white;
-  text-decoration: none
-}
-td a:hover {
-  color: #ddd;
 }
 </style>
