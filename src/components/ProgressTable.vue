@@ -26,8 +26,8 @@
       <td class="text-right">{{props.item.pctComplete}}</td>
       <td class="text-left">
         <a v-bind:href="props.item.summary">
-        <q-icon class="summary" name="summarize" />       
-      </a>
+          <q-icon class="summary" name="summarize" />       
+        </a>
       </td>
     </template>
   </q-hierarchy>
