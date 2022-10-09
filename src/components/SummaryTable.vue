@@ -9,7 +9,7 @@
           <td style="padding-left:0px">{{ pctCorrect }}</td>
           
         </div>
-        <q-btn v-if="model === true && waiting !== true" color="primary" label="Exit" class="q-mt-lg fixed-center" @click="model = !model" />
+        <q-btn v-if="model === true" color="primary" label="Exit" class="q-mt-lg fixed-center" @click="model = !model" />
       </template>
     </q-overlay>
 
