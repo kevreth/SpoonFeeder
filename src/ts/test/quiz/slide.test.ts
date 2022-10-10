@@ -54,7 +54,6 @@ export abstract class SlideTest<T extends AnswerType>
   // }
   // public getInstance(type: any, ...args: any[]) {
   //   type = type.charAt(0).toUpperCase() + type.slice(1);
-  //   console.log(type);
   //   const newInstance = new (<any>window)[type]();
   //   newInstance.constructor(newInstance, ...args);
   //   return newInstance;
