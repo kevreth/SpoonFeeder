@@ -12,7 +12,6 @@ export class MakeSlides {
     let idx = 0;
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
-    //"isEqual" instead of "===" because txt may be an array.
     else if (reloadSlideCriteria()) MakeSlides.reloadSlide(slide, idx, doc);
     else slide.makeSlides(doc);
 
