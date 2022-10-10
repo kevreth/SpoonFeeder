@@ -23,7 +23,9 @@ export class MakeSlides {
     else if ((idx = arr.findIndex((x) => isEqual(x.txt, slide.txt))) > -1) {
       slide.setResults(arr[idx].result);
       MakeSlides.showSlides(doc);
-    } else slide.makeSlides(doc);
+    } else {
+      slide.makeSlides(doc);
+    }
   }
 }
 export function showButton(doc: Document): HTMLElement {
