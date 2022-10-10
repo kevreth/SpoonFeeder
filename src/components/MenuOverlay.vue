@@ -41,13 +41,13 @@ function startOver() {
 .q-overlay {
   backdrop-filter: blur(5px);
 }
-.overlayParent {
+/* .overlayParent {
   position: absolute;
   width: 600px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 .buttonChild {
   position: relative;
   left: 220px;

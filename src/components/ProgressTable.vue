@@ -26,7 +26,7 @@
       <td class="text-right">{{props.item.pctComplete}}</td>
       <td class="text-left">
         <a v-bind:href="props.item.summary">
-          <SummaryTable />       
+          <SummaryIcon />       
         </a>
       </td>
     </template>
@@ -37,7 +37,7 @@
 import { ref } from 'vue';
 import {Score} from '../ts/main/quiz/score';
 import {CourseFile} from '../ts/main/globals'
-import SummaryTable from './SummaryTable.vue'
+import SummaryIcon from './SummaryIcon.vue'
 
 const _columns = [
     {
