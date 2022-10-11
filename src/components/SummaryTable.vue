@@ -1,13 +1,14 @@
 <template>
   <q-overlay
-    class="bg-secondary "
+    class="bg-secondary"
     :z-index="5000"
     :summaryOverlay="summaryOverlay">
     <template #body>    
       <div class="justify-evenly summaryContainer">
-        {{ question }} <br>
+        <!-- {{ question }} <br>
         {{ correct }} <br>
-        {{ pctCorrect }}
+        {{ pctCorrect }} -->
+        {{ content }}
       </div>   
 
       <SummaryExit @click="closeSummary" />
@@ -16,10 +17,10 @@
 </template>
 
 <script setup>
-// import { Json } from '../ts/main/globals'
-// import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
+import { Json } from '../ts/main/globals'
+import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
 
-import getSummary from '../composables/getSummary'
+// import getSummary from '../composables/getSummary'
 import SummaryExit from './SummaryExit.vue';
 
 defineProps({ summaryOverlay: Boolean })
@@ -28,8 +29,8 @@ function closeSummary() {
   emit('closeSummary')
 }
 
-// const content = evaluate(Json.get())
-const { question, correct, pctCorrect } = getSummary()
+const content = evaluate(Json.get())
+// const { question, correct, pctCorrect } = getSummary()
 </script>
 
 <style>
@@ -37,5 +38,8 @@ const { question, correct, pctCorrect } = getSummary()
   display: flex;
   flex-direction: row;
   cursor: auto;  
+}
+.fullscreen {
+  border-radius: 8px !important
 }
 </style>
