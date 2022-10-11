@@ -1,12 +1,14 @@
 <template>
   <q-overlay
-    class="bg-secondary justify-evenly summaryContainer"
+    class="bg-secondary "
     :z-index="5000"
     :summaryOverlay="summaryOverlay">
-    <template #body>       
-      {{ question }} <br>
-      {{ correct }} <br>
-      {{ pctCorrect }}
+    <template #body>    
+      <div class="justify-evenly summaryContainer">
+        {{ question }} <br>
+        {{ correct }} <br>
+        {{ pctCorrect }}
+      </div>   
 
       <SummaryExit @click="closeSummary" />
     </template>
@@ -34,10 +36,6 @@ const { question, correct, pctCorrect } = getSummary()
 .summaryContainer {
   display: flex;
   flex-direction: row;
-  cursor: auto;
-  
-}
-.fullscreen {
-  border-radius: 8px;
+  cursor: auto;  
 }
 </style>
