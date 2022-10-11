@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-const getSummary = () => {
+export default function getSummary()  {
   const question = ref('NUMBER OF QUESTIONS:')
   const correct = ref('NUMBER CORRECT:')
   const pctCorrect = ref('PERCENT CORRECT:')
@@ -8,4 +8,4 @@ const getSummary = () => {
   return { question, correct, pctCorrect }
 } 
 
-export default getSummary
+// export default getSummary

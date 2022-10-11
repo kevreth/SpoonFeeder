@@ -1,47 +1,43 @@
 <template>
-  <!-- <div class="q-pa-md row justify-around" style="height: 100%; width: 100%;">     -->
-    <!-- <q-icon class="summary" name="summarize" @click="model = true"></q-icon> -->
-    <q-overlay
-    class=" bg-secondary"
-      :z-index="5000"
-      :summaryOverlay="summaryOverlay">
-      <template #body>
-        <div class="justify-evenly summaryContainer">          
-          <!-- <td style="padding-left:0px" class="q-mt-sm">{{ question }}</td> 
-          <td style="padding-left:0px">{{ correct }}</td>
-          <td style="padding-left:0px">{{ pctCorrect }}</td> -->
-          {{ content }}
-        </div>
-        <q-btn
-          color="primary"
-          label="Exit"
-          class="q-mt-xl fixed-center exitSummary z-top"
-          @click="closeSummary" />
-      </template>
-    </q-overlay>
+  <q-overlay
+    class="bg-secondary justify-evenly summaryContainer"
+    :z-index="5000"
+    :summaryOverlay="summaryOverlay">
+    <template #body>       
+      {{ question }} <br>
+      {{ correct }} <br>
+      {{ pctCorrect }}
 
-  <!-- </div> -->
+      <SummaryExit @click="closeSummary" />
+    </template>
+  </q-overlay>
 </template>
 
 <script setup>
-import { evaluate } from 'app/main/quiz/evaluate/evaluate.support'
-// import getSummary from '../composables/getSummary'
+// import { Json } from '../ts/main/globals'
+// import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
 
+import getSummary from '../composables/getSummary'
+import SummaryExit from './SummaryExit.vue';
 
 defineProps({ summaryOverlay: Boolean })
-
 const emit = defineEmits(['closeSummary'])
-
 function closeSummary() {
   emit('closeSummary')
 }
-const content = evaluate()
-// const { question, correct, pctCorrect } = getSummary()
+
+// const content = evaluate(Json.get())
+const { question, correct, pctCorrect } = getSummary()
 </script>
 
 <style>
 .summaryContainer {
-  /* display: grid; */
+  display: flex;
+  flex-direction: row;
   cursor: auto;
+  
+}
+.fullscreen {
+  border-radius: 8px;
 }
 </style>
