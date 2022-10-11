@@ -24,8 +24,4 @@ function handleCloseSummary() {
   color: #999;
   cursor: pointer;
 }
-.summaryContainer {
-  display:grid;
-  cursor: auto;
-}
 </style>

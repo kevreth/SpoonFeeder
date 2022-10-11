@@ -1,6 +1,6 @@
 <template>
   <q-hierarchy
-    class="hierarchy"
+    class="progressTable"
     dense
     :columns="columns"
     :data="data"
@@ -101,7 +101,7 @@ const dark = ref(true);
 </script>
 
 <style>
-.hierarchy {
+.progressTable {
   display: inline-block;
   max-height: 100vh;
   overflow: auto;
@@ -110,13 +110,13 @@ const dark = ref(true);
   border-radius: 20px;
   margin: 0;
 }
-.hierarchy {
+.progressTable {
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
-.hierarchy::-webkit-scrollbar-track {
+.progressTable::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
 }
-.hierarchy::-webkit-scrollbar-thumb {
+.progressTable::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
 }
 </style>

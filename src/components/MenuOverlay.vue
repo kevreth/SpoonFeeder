@@ -2,14 +2,14 @@
   <MenuBtn @click="handleOverlay" />
 
   <q-overlay v-model="overlay">
-    <template #body>
-      <div class="overlayParent">
-        <div class="buttonChild">
-          <TrashBtn @click="startOver" />
+    <template #body>        
+      <div class="hierarchy fixed-center">
+        <div class="overlayBtn">
           <OverlayCloseBtn @click="handleOverlay" />
+          <TrashBtn @click="startOver" />
         </div>
 
-        <div class="hierarchyChild fixed-center">
+        <div class="hierarchyBackground">
           <ProgressTable style="cursor: auto" />
         </div>
       </div>
@@ -41,28 +41,16 @@ function startOver() {
 .q-overlay {
   backdrop-filter: blur(5px);
 }
-/* .overlayParent {
-  position: absolute;
-  width: 600px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-.buttonChild {
-  position: relative;
-  left: 220px;
-  min-height: 100vh;
-  padding-top: 10%;
-  margin: 0;
-  height: 100px;
-}
-.hierarchyChild {
-  background-color: #3a3a3a;
+.hierarchy {
+  display: flex;
+  flex-direction: column;
   height: 60%;
+}
+.hierarchyBackground {
+  height: 70%;
+  background-color: #3a3a3a;
   border-radius: 20px;
-  padding: 2px 0 0 0;
-  margin: 0;
-  max-height: 100vh;
   overflow: auto;
 }
+
 </style>

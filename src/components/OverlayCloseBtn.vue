@@ -1,7 +1,7 @@
 <template>
   <q-icon
     round
-    class="closeBtn text-red-9 q-pa-none q-ma-none z-top"
+    class="closeBtn text-red-9 q-pa-none q-ma-none"
     max-size="2em"
     name="close"
   />
@@ -9,7 +9,7 @@
 
 <style>
 .closeBtn {
-  position: inline-block;
+  float: right; 
   cursor: pointer;
 }
 </style>

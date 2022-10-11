@@ -1,10 +1,10 @@
 <template>
-  <q-icon name="delete" max-size="2em" class="trash text-red-9 z-top" />
+  <q-icon name="delete" max-size="2em" class="trash text-red-9" />
 </template>
 
 <style>
 .trash {
-  padding: 5px;
+  float: right; 
   cursor: pointer;
 }
 </style>
