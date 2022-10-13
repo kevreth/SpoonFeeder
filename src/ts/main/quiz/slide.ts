@@ -32,6 +32,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  // isSlideSaved(): boolean {
+
+  // }
   getAnswerCount(): number {
     return 1;
   }

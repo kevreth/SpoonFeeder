@@ -28,4 +28,5 @@ export interface SlideInterface {
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
   getAnswerCount(): number;
+  // isSlideSaved(): boolean;
 }
