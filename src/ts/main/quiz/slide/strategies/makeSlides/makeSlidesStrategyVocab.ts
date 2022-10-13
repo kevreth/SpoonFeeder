@@ -1,9 +1,11 @@
 import { isRandom, removeListener, shuffle } from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
+import { SaveData } from '../../saveData';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
+const { set: saveData } = SaveData;
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -20,7 +22,7 @@ export function makeSlidesStrategyVocab(
 ): void {
   const vocabTuples = generateQuestions(map);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
-  paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res, setValues);
+  paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res);
 }
 export function paging(
   doc: Document,
@@ -28,8 +30,7 @@ export function paging(
   vocabTuples: vocabTuplesType,
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
-  res: string[],
-  setValues: SetValues<string[]>
+  res: string[]
 ): void {
   createPageContent(html_list[questionCtr], doc);
   const tuple = vocabTuples[questionCtr];
@@ -46,8 +47,7 @@ export function paging(
       questionCtr,
       html_list,
       vocabTuples,
-      maxWidthStrategy,
-      setValues
+      maxWidthStrategy
     );
   });
   maxWidthStrategy(options.length, 'btn', doc);
@@ -62,8 +62,7 @@ export function addOptionButtonEventListener(
   questionCtr: number,
   html_list: string[],
   vocabTuples: vocabTuplesType,
-  maxWidthStrategy: SetWidthTypeSimple,
-  setValues: SetValues<string[]>
+  maxWidthStrategy: SetWidthTypeSimple
 ) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
@@ -81,11 +80,11 @@ export function addOptionButtonEventListener(
         vocabTuples,
         questionCtr,
         maxWidthStrategy,
-        res,
-        setValues
+        res
       );
+      saveData(vocabTuples[questionCtr][0], res[questionCtr]);
     } else {
-      setValues.saveData();
+      saveData(vocabTuples[questionCtr][0], res[questionCtr]);
       showButton(doc);
     }
   });
@@ -105,20 +104,11 @@ export function addContinueButtonListener(
   vocabTuples: vocabTuplesType,
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
-  res: string[],
-  setValues: SetValues<string[]>
+  res: string[]
 ) {
   const element = continueButton(doc) as HTMLElement;
   element.addEventListener('click', (): void => {
-    paging(
-      doc,
-      html_list,
-      vocabTuples,
-      questionCtr + 1,
-      maxWidthStrategy,
-      res,
-      setValues
-    );
+    paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res);
   });
 }
 export function createHtmlLoop(

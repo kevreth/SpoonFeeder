@@ -71,8 +71,7 @@ export type MakeSlidesTypeVocab = (
   res: string[],
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
-  doc: Document,
-  setValues: SetValues<string[]>
+  doc: Document
 ) => void;
 export type MakeSlidesType =
   | MakeSlidesTypeGap
