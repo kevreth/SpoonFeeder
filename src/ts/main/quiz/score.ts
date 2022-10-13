@@ -97,9 +97,3 @@ export class Score {
     }
   }
 }
-export interface GetScore {
-  get score(): number;
-  addToScore(value: number): void;
-  get questions(): number;
-  addToQuestions(value: number): void;
-}

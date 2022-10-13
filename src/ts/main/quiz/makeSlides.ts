@@ -3,7 +3,7 @@ import { Json } from '../globals';
 import { isEqual, makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
-import { SlideInterface } from './slideInterface';
+import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {

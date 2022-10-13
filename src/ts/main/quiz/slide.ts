@@ -1,6 +1,6 @@
 import type { Evaluation } from './evaluate/evaluate';
 
-import { SaveData } from '../quiz/slide/saveData';
+import { SaveData } from './slide/saveData';
 import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
