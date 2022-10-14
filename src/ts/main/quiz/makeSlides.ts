@@ -1,6 +1,6 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
-import { isEqual, makeButton } from '../utilities';
+import { makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
 import type { SlideInterface } from './slideInterface';
@@ -10,16 +10,12 @@ export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
     let idx = 0;
+    const arr = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
-    else if (reloadSlideCriteria()) MakeSlides.reloadSlide(slide, idx, doc);
+    else if ((idx = slide.getSlideSavedIndex(arr)) > -1)
+      MakeSlides.reloadSlide(slide, idx, doc);
     else slide.makeSlides(doc);
-
-    function reloadSlideCriteria() {
-      const arr = getSavedDataArray();
-      const sTxt = slide.txt;
-      return (idx = arr.findIndex((x) => isEqual(x.txt, sTxt))) > -1;
-    }
   }
   //The slide has already been presented to the user, as will happen on reload.
   private static reloadSlide(

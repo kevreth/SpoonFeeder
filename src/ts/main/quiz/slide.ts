@@ -1,5 +1,5 @@
+import { isEqual } from '../utilities';
 import type { Evaluation } from './evaluate/evaluate';
-
 import { SaveData } from './slide/saveData';
 import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
@@ -32,9 +32,9 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
-  // isSlideSaved(): boolean {
-
-  // }
+  getSlideSavedIndex(arr: Array<SaveData>): number {
+    return arr.findIndex((x) => isEqual(x.txt, this.txt));
+  }
   getAnswerCount(): number {
     return 1;
   }
