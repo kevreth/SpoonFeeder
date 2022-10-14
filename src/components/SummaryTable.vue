@@ -5,7 +5,7 @@
     :summaryOverlay="summaryOverlay">
     <template #body>
       <div class="justify-evenly summaryContainer">
-        {{ content }}
+        <!-- {{ content }} -->
       </div>
 
       <SummaryExit @click="closeSummary" />
