@@ -1,4 +1,4 @@
-import { extend } from '../../../main/utilities';
+import { extend } from '../../utilities';
 import type { AnswerType } from './strategies/resultStrategy';
 const KEY = 'savedata';
 export class SaveData {

@@ -30,7 +30,7 @@ export function removeListener(element: Node): void {
 export function isRandom(): boolean {
   const val = sessionStorage.getItem('random');
   let retval = false;
-  if (val === null || val === 'true') retval = true;
+  if (val === 'true') retval = true;
   return retval;
 }
 export function shuffleMap<K, V>(map: Map<K, V>): Map<K, V> {

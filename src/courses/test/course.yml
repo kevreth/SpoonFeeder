@@ -36,11 +36,7 @@ units:
           beginner: someone starting to learn a skill
       - type: sort
         txt: sort
-        ans:
-        - a
-        - b
-        - c
-        - d
+        ans: [a, b, c, d]
       - type: imap
         txt: choose blue
         img: "src/courses/test/imap.svg"
@@ -54,24 +50,14 @@ units:
         - <img src="src/courses/test/train.svg" class="mcButton" width = "100" height="auto"/>
       - type: gap
         txt: text (1) text (2) text (3)
-        ans:
-        - ans1
-        - ans2
-        - ans3
+        ans: [ans1,ans2,ans3]
       - type: gap
         txt: texta (1) texta (2) texta (3)
-        ans:
-        - ans1
-        - ans2
-        - ans3
+        ans: [ans1,ans2,ans3]
       - type: select
         inst: Select the prepositional phrase.
         txt: This is a test of underlining.
-        ans:
-        - 5
-        - 6
+        ans: [5, 6]
       - type: mc
         txt: If only we ____ have to learn the periodic table of the elements by tomorrow!
-        o:
-        - didn't
-        - don't
+        o: [didn't, don't]

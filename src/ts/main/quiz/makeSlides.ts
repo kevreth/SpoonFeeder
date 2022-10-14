@@ -1,29 +1,37 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
-import { isEqual, makeButton } from '../utilities';
+import { makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
+import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    const arr = getSavedDataArray();
     let idx = 0;
-    if (typeof slide === 'undefined') {
-      //end of quiz
-      Json.reset();
-      doc.body.innerHTML = evaluate(Json.get()); //EXECUTION ENDS
-      startOverButton(doc);
-    }
-    //If the slide has already been presented to the user,
-    //call this method again.
+    const arr = getSavedDataArray();
+    if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
-    //"isEqual" instead of "===" because txt may be an array.
-    else if ((idx = arr.findIndex((x) => isEqual(x.txt, slide.txt))) > -1) {
-      slide.setResults(arr[idx].result);
-      MakeSlides.showSlides(doc);
-    } else slide.makeSlides(doc);
+    else if ((idx = slide.getSlideSavedIndex(arr)) > -1)
+      MakeSlides.reloadSlide(slide, idx, doc);
+    else slide.makeSlides(doc);
+  }
+  //The slide has already been presented to the user, as will happen on reload.
+  private static reloadSlide(
+    slide: SlideInterface,
+    idx: number,
+    doc: Document
+  ) {
+    const arr = getSavedDataArray();
+    slide.setResults(arr[idx].result);
+    MakeSlides.showSlides(doc);
+  }
+
+  private static endQuiz(doc: Document) {
+    Json.reset();
+    doc.body.innerHTML = evaluate(Json.get()); //EXECUTION ENDS
+    startOverButton(doc);
   }
 }
 export function showButton(doc: Document): HTMLElement {

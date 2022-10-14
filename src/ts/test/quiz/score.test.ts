@@ -105,6 +105,5 @@ it('description', () => {
   const score = Score.summary(doc);
   const act = JSON.stringify(score);
   const exp = JSON.stringify(JSON.parse(expected));
-  console.count(act);
   expect(act).toEqual(exp);
 });

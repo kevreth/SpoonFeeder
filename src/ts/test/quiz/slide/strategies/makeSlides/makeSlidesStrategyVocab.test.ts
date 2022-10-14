@@ -26,7 +26,7 @@ const json: any = {
 const slide = VOCAB();
 slide.processJson(json);
 it('generateQuestions', () => {
-  const result = generateQuestions(MAP);
+  const result = generateQuestions(MAP, Array.from(MAP.values()));
   expect(result).not.toBeNull();
   expect(result.length).toBe(5);
   expect(result[0][0]).not.toBeNull();
@@ -36,7 +36,7 @@ it('generateQuestions', () => {
   expect(result[0][1]).toMatch(/term/);
 });
 it('createHtmlLoop', () => {
-  const vocabTuples = generateQuestions(MAP);
+  const vocabTuples = generateQuestions(MAP, Array.from(MAP.values()));
   const result = createHtmlLoop(vocabTuples, CreateHtml.MC);
   expect(result).not.toBeNull();
   expect(result.length).toBe(5);

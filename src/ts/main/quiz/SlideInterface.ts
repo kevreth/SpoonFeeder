@@ -1,4 +1,5 @@
 import type { Evaluation } from './evaluate/evaluate';
+import type { SaveData } from './slide/saveData';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -28,4 +29,5 @@ export interface SlideInterface {
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
   getAnswerCount(): number;
+  getSlideSavedIndex(arr: Array<SaveData>): number;
 }

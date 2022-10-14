@@ -62,7 +62,7 @@ describe('Cypress Testing', () => {
     testButton('#btn3');
     testButton('#continueBtn');
     testButton('#btn0');
-    continueButton(11);
+    continueButton(15);
 
     //sort
     existVisibleNotEmpty('body');
@@ -145,7 +145,7 @@ describe('Cypress Testing', () => {
     existVisibleNotEmpty('body');
     cy.contains('learn the periodic table');
     testButton('#btn0');
-    continueButton(18);
+    continueButton(22);
 
     //results
     existVisibleNotEmpty('body');
@@ -154,10 +154,9 @@ describe('Cypress Testing', () => {
     cy.contains('NUMBER OF QUESTIONS: 16');
     cy.contains('NUMBER CORRECT: 10');
     cy.contains('PERCENT CORRECT: 63%');
-
+    // cy.wait(20000);
     cy.contains('15.');
     cy.contains('ans');
-    // cy.wait(20000);
     testButton('#startOver');
     cy.contains('course 1');
   });

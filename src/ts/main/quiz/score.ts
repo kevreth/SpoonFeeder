@@ -88,19 +88,12 @@ export class Score {
     const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
     const slide2 = arr[idx];
     //conditional necessary because of iterative behavior not
-    //understood. the else executes multiple times per exercise.
-    //However it has no functional effect. Still works.
+    //understood. However it has no functional effect. Still works.
     if (slide2) {
       slide.setResults(slide2.result);
       const evaluation = slide.evaluate();
       moduleLine.score += evaluation.correct;
       moduleLine.complete += evaluation.responses;
-    } else console.log(slide.txt);
+    }
   }
-}
-export interface GetScore {
-  get score(): number;
-  addToScore(value: number): void;
-  get questions(): number;
-  addToQuestions(value: number): void;
 }

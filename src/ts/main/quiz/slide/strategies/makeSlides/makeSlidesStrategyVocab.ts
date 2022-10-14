@@ -1,26 +1,47 @@
-import { isRandom, removeListener, shuffle } from '../../../../utilities';
+import {
+  isEqual,
+  isRandom,
+  removeListener,
+  shuffle,
+} from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+import { SaveData } from '../../saveData';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
+import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
+const { get: getSavedDataArray } = SaveData;
+const { set: saveData } = SaveData;
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
   ans: string,
   options: Array<string>
 ][];
+export function getMissingSlides(
+  arr: Array<SaveData>,
+  txtArr: string[]
+): string[] {
+  const retval: string[] = [];
+  for (const txt of txtArr) {
+    const idx = arr.findIndex((x) => isEqual(x.txt, txt as AnswerType));
+    if (idx < 0) retval.push(txt as string);
+  }
+  return retval;
+}
 export function makeSlidesStrategyVocab(
   map: Map<string, string>,
   res: string[],
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
-  doc: Document,
-  setValues: SetValues<string[]>
+  doc: Document
 ): void {
-  const vocabTuples = generateQuestions(map);
+  const txtArr = Array.from(map.values());
+  const savedData = getSavedDataArray();
+  const missing = getMissingSlides(savedData, txtArr);
+  const vocabTuples = generateQuestions(map, missing);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
-  paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res, setValues);
+  paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res);
 }
 export function paging(
   doc: Document,
@@ -28,8 +49,7 @@ export function paging(
   vocabTuples: vocabTuplesType,
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
-  res: string[],
-  setValues: SetValues<string[]>
+  res: string[]
 ): void {
   createPageContent(html_list[questionCtr], doc);
   const tuple = vocabTuples[questionCtr];
@@ -46,8 +66,7 @@ export function paging(
       questionCtr,
       html_list,
       vocabTuples,
-      maxWidthStrategy,
-      setValues
+      maxWidthStrategy
     );
   });
   maxWidthStrategy(options.length, 'btn', doc);
@@ -62,8 +81,7 @@ export function addOptionButtonEventListener(
   questionCtr: number,
   html_list: string[],
   vocabTuples: vocabTuplesType,
-  maxWidthStrategy: SetWidthTypeSimple,
-  setValues: SetValues<string[]>
+  maxWidthStrategy: SetWidthTypeSimple
 ) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
@@ -81,11 +99,11 @@ export function addOptionButtonEventListener(
         vocabTuples,
         questionCtr,
         maxWidthStrategy,
-        res,
-        setValues
+        res
       );
+      saveData(vocabTuples[questionCtr][0], res[questionCtr]);
     } else {
-      setValues.saveData();
+      saveData(vocabTuples[questionCtr][0], res[questionCtr]);
       showButton(doc);
     }
   });
@@ -105,20 +123,11 @@ export function addContinueButtonListener(
   vocabTuples: vocabTuplesType,
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
-  res: string[],
-  setValues: SetValues<string[]>
+  res: string[]
 ) {
   const element = continueButton(doc) as HTMLElement;
   element.addEventListener('click', (): void => {
-    paging(
-      doc,
-      html_list,
-      vocabTuples,
-      questionCtr + 1,
-      maxWidthStrategy,
-      res,
-      setValues
-    );
+    paging(doc, html_list, vocabTuples, questionCtr + 1, maxWidthStrategy, res);
   });
 }
 export function createHtmlLoop(
@@ -134,10 +143,17 @@ export function createHtmlLoop(
   }
   return retval;
 }
-export function generateQuestions(map: Map<string, string>): vocabTuplesType {
+export function generateQuestions(
+  map: Map<string, string>,
+  missingValues: Array<string>
+): vocabTuplesType {
+  const missingKeys = new Array<string>();
+  map.forEach((value, key) => {
+    if (missingValues.includes(value)) missingKeys.push(key);
+  });
   const keys = Array.from(map.keys());
   const vocabTuples: vocabTuplesType = [];
-  for (const key of keys) {
+  for (const key of missingKeys) {
     let options = keys.slice(0, CHOICES);
     //if correct answer is not in "options",
     //replace the first entry with it.
