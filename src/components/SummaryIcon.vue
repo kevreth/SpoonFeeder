@@ -1,23 +1,12 @@
 <template>
-   <q-icon
+  <q-icon
     class="summary"
     name="summarize"
-    @click="summaryOverlay = true">
-  </q-icon>
-   <SummaryTable
-    v-model="summaryOverlay"
-    @closeSummary="handleCloseSummary"/>
+    >
+  </q-icon>   
 </template>
 
-<script setup>
-import SummaryTable from './SummaryTable.vue';
-import { ref } from 'vue';
-
-const summaryOverlay = ref(false);
-function handleCloseSummary() {
-  summaryOverlay.value = !summaryOverlay.value;
-}
-</script>
+<script setup></script>
 
 <style>
 .summary:hover {

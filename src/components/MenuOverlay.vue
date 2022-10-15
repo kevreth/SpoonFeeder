@@ -1,7 +1,7 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
-  <q-overlay v-model="overlay" @keydown.esc="overlay = false" tabindex="0">
+  <q-overlay v-model="overlay" @keydown.esc="overlay = false">
     <template #body>        
       <div class="hierarchy fixed-center">
         <div class="overlayBtn">

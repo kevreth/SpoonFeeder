@@ -26,7 +26,15 @@
       <td class="text-right">{{props.item.pctComplete}}</td>
       <td class="text-left">
         <a v-bind:href="props.item.summary">
-          <SummaryIcon />       
+          <SummaryIcon
+            @click="summaryOverlay = true"
+            @keydown.esc="summaryOverlay = false" tabindex="0"
+          />    
+          <SummaryTable
+            v-model="summaryOverlay"
+            @closeSummary="handleCloseSummary"
+            @keydown.esc="summaryOverlay = false" tabindex="0"
+          />
         </a>
       </td>
     </template>
@@ -38,7 +46,13 @@ import { ref } from 'vue';
 import {Score} from '../ts/main/quiz/score';
 import {CourseFile} from '../ts/main/globals'
 import SummaryIcon from './SummaryIcon.vue'
+import SummaryTable from './SummaryTable.vue';
 
+
+const summaryOverlay = ref(false);
+function handleCloseSummary() {
+  summaryOverlay.value = !summaryOverlay.value;
+}
 const _columns = [
     {
       name: 'name',
