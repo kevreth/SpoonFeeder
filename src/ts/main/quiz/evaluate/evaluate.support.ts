@@ -1,4 +1,3 @@
-import { Queue } from 'mnemonist';
 import type { SlideInterface } from '../slideInterface';
 import { Evaluation, ROW } from './evaluate';
 export function summary(
@@ -47,11 +46,10 @@ export function evaluate(slidesArr: SlideInterface[]): string {
   return txt0.concat(txt1);
 }
 export function getEvaluationArray(slidesArr: SlideInterface[]) {
-  const slides = Queue.from(slidesArr);
-  const size = slides.size;
+  const size = slidesArr.length;
   const evals = new Array<Evaluation>();
   for (let i = 0; i < size; i++) {
-    const slide = slides.dequeue();
+    const slide = slidesArr[i];
     if (slide && slide.isExercise) {
       const evaluation: Evaluation = slide.evaluate();
       evals.push(evaluation);
