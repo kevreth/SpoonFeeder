@@ -32,7 +32,7 @@
           />    
           <SummaryTable
             v-model="summaryOverlay"
-            @closeSummary="handleCloseSummary"
+            @closeSummary="summaryOverlay = false"
             @keydown.esc="summaryOverlay = false" tabindex="0"
           />
         </a>
@@ -50,9 +50,7 @@ import SummaryTable from './SummaryTable.vue';
 
 
 const summaryOverlay = ref(false);
-function handleCloseSummary() {
-  summaryOverlay.value = !summaryOverlay.value;
-}
+
 const _columns = [
     {
       name: 'name',
