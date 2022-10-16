@@ -80,14 +80,15 @@ export class Evaluate {
   //Used by IMAP, MC, SELECT, SORT
   public static readonly SIMPLE: EvaluateTypeSimple = function evaluate(
     txt,
-    res,
     ans,
+    res,
     result
   ) {
     let correctCtr = 0;
     if (result) correctCtr++;
     const text = makeRow(txt, res, ans);
-    return new Evaluation(1, correctCtr, text);
+    const count = res == null ? 0 : 1;
+    return new Evaluation(count, correctCtr, text);
   };
   /////////////////////////////////////////////////////////////////////////////
   //
@@ -144,12 +145,15 @@ export class Evaluate {
     rowFunction: FunctionType
   ) {
     const rows = new Array<string>();
-    const length = ans.length;
-    ans.forEach((answer, idx) => {
-      const response = res[idx];
-      const row = rowFunction(response, answer, txt, idx, length);
-      rows.push(row);
-    });
+    let length = 0;
+    if (ans != null) {
+      length = ans.length;
+      ans.forEach((answer, idx) => {
+        const response = res[idx];
+        const row = rowFunction(response, answer, txt, idx, length);
+        rows.push(row);
+      });
+    }
     const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(length, correctCtr, row_accum);
@@ -172,10 +176,10 @@ export class Evaluate {
   // span multiple rows to display the question (1 correct, 2 incorrect):
   //
   // Example:
-  //              QUESTION                         RESPONSE  ANSWER
-  //                                                 rain     rain
-  //  The ____ in ____ stays mainly in the ____.     plain    Spain
-  //                                                 Spain    plain
+  //              QUESTION                       RESPONSE ANSWER
+  //                                               rain    rain
+  //  The ____ in ____ stays mainly in the ____.   plain   Spain
+  //                                               Spain   plain
   //
   // First column of first row requires special treatment
   // to display question.

@@ -30,11 +30,13 @@ export class Result {
   //used with: VOCAB, GAP
   public static readonly CORRELATED: ResultType = function (ans, res) {
     const retval = new Array<boolean>();
-    (ans as Array<string>).forEach((ansa, idx) => {
-      let val = false;
-      if (isEqual(ansa, res[idx])) val = true;
-      retval.push(val);
-    });
+    if (res != null) {
+      (ans as Array<string>).forEach((ansa, idx) => {
+        let val = false;
+        if (isEqual(ansa, res[idx])) val = true;
+        retval.push(val);
+      });
+    }
     return retval;
   };
 }
