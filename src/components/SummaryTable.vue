@@ -2,10 +2,10 @@
   <q-overlay
     class="bg-secondary"
     :z-index="5000"
-    :summaryOverlay="summaryOverlay">
+  >
     <template #body>
       <div class="justify-evenly summaryContainer">
-        {{ content }}
+        <!-- {{ content }} -->
       </div>
 
       <SummaryExit @click="closeSummary" />
@@ -18,7 +18,6 @@
 // import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
 import SummaryExit from './SummaryExit.vue';
 
-defineProps({ summaryOverlay: Boolean })
 const emit = defineEmits(['closeSummary'])
 function closeSummary() {
   emit('closeSummary')

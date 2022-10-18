@@ -1,5 +1,5 @@
 <template>
-  <MenuBtn @click="handleOverlay" />
+  <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
   <q-overlay v-model="overlay">
     <template #body>        
