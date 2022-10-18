@@ -48,6 +48,26 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
   const list: NodeListOf<Element> = doc.querySelectorAll(predicate);
   return Array.from(list).map(({ id }) => id);
 }
+// ================================ Date ======================================
+export function convertTwoDigits(dateItem: number) {
+  return dateItem.toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  });
+}
+export function createTimeStamp(d: Date) {
+  const str =
+    d.getUTCFullYear().toString() +
+    convertTwoDigits(d.getUTCMonth()) +
+    convertTwoDigits(d.getUTCDate()) +
+    convertTwoDigits(d.getUTCHours()) +
+    convertTwoDigits(d.getUTCMinutes()) +
+    convertTwoDigits(d.getUTCSeconds());
+  return str;
+}
+export function timestampNow() {
+  return createTimeStamp(new Date(Date.now()));
+}
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {
   return _.random(min, max);

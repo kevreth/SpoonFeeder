@@ -1,4 +1,4 @@
-import { isEqual } from '../utilities';
+import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate/evaluate';
 import { SaveData } from './slide/saveData';
 import { SetValues } from './slide/setValues';
@@ -66,7 +66,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   saveData() {
     const txt = this.txt;
     const res = this.res;
-    saveData(txt, res);
+    saveData(txt, res, timestampNow());
   }
   result(): ResultReturnType {
     return this.resultType(this.ans, this.res);

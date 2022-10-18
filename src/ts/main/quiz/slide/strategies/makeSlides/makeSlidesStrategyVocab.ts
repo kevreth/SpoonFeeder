@@ -3,6 +3,7 @@ import {
   isRandom,
   removeListener,
   shuffle,
+  timestampNow,
 } from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
@@ -101,9 +102,9 @@ export function addOptionButtonEventListener(
         maxWidthStrategy,
         res
       );
-      saveData(vocabTuples[questionCtr][0], res[questionCtr]);
+      saveData(vocabTuples[questionCtr][0], res[questionCtr], timestampNow());
     } else {
-      saveData(vocabTuples[questionCtr][0], res[questionCtr]);
+      saveData(vocabTuples[questionCtr][0], res[questionCtr], timestampNow());
       showButton(doc);
     }
   });

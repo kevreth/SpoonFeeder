@@ -4,7 +4,8 @@ const KEY = 'savedata';
 export class SaveData {
   constructor(
     public readonly txt: AnswerType,
-    public readonly result: AnswerType
+    public readonly result: AnswerType,
+    public readonly ts: string
   ) {}
   public static get(): Array<SaveData> {
     const data = localStorage.getItem(KEY) as string;
@@ -13,9 +14,9 @@ export class SaveData {
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
     return arr;
   }
-  public static set(txt: AnswerType, res: AnswerType) {
+  public static set(txt: AnswerType, res: AnswerType, ts: string) {
     if (txt !== '') {
-      const save = new SaveData(txt, res);
+      const save = new SaveData(txt, res, ts);
       const arr = SaveData.get();
       arr.push(save);
       const json = JSON.stringify(arr);
