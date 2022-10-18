@@ -33,7 +33,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly resultType: ResultType
   ) {}
   getSlideSavedIndex(saves: Array<SaveData>): number {
-    //Refactor along with Score.exercise()
+    //TODO: factor out code in common with MakeSlides.showSlides() and Score.exercise()
     let retval = -1;
     if (Array.isArray(this.txt)) {
       for (let i = 0; i < saves.length; i++) {

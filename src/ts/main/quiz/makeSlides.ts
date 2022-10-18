@@ -1,6 +1,6 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
-import { makeButton } from '../utilities';
+import { isEqual, makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
 import type { SlideInterface } from './slideInterface';
@@ -10,12 +10,40 @@ export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
     let idx = 0;
-    const arr = getSavedDataArray();
+    const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
-    else if ((idx = slide.getSlideSavedIndex(arr)) > -1)
-      MakeSlides.reloadSlide(slide, idx, doc);
-    else slide.makeSlides(doc);
+    //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
+    else if ((idx = slide.getSlideSavedIndex(saves)) > -1) {
+      if (Array.isArray(slide.txt)) {
+        //if all slide questions answered
+        const results = Array<string>();
+        for (const saved of saves) {
+          idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
+          if (idx > -1) {
+            results.push(saved.result as string);
+          }
+        }
+        if (isEqual(results.length, slide.txt.length)) {
+          MakeSlides.reloadSlide(slide, idx, doc);
+        }
+        //not all slide questions answered
+        else {
+          const saves = getSavedDataArray();
+          const results = Array<string>();
+          for (const saved of saves) {
+            idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
+            if (idx > -1) {
+              results.push(saved.result as string);
+            }
+          }
+          slide.setResults(results);
+          slide.makeSlides(doc);
+        }
+      } else {
+        MakeSlides.reloadSlide(slide, idx, doc);
+      }
+    } else slide.makeSlides(doc);
   }
   //The slide has already been presented to the user, as will happen on reload.
   private static reloadSlide(

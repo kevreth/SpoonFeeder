@@ -86,6 +86,7 @@ export class Score {
     const slide = initSlide(exercise);
     let idx = -1;
     let results: AnswerType;
+    //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
     if (Array.isArray(slide.txt)) {
       results = Array<string>();
       for (const saved of saves) {
