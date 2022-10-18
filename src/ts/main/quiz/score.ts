@@ -2,6 +2,7 @@ import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
+import type { AnswerType } from './slide/strategies/resultStrategy';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
@@ -84,19 +85,21 @@ export class Score {
   ) {
     const slide = initSlide(exercise);
     let idx = -1;
+    let results: AnswerType;
     if (Array.isArray(slide.txt)) {
-      const combinedResults = Array<string>();
+      results = Array<string>();
       for (const saved of saves) {
         idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
         if (idx > -1) {
-          combinedResults.push(saved.result as string);
+          results.push(saved.result as string);
         }
       }
-      slide.setResults(combinedResults);
+      slide.setResults(results);
     } else {
       idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
       if (idx > -1) {
-        slide.setResults(saves[idx].result);
+        results = saves[idx].result;
+        slide.setResults(results);
       }
     }
     const evaluation = slide.evaluate();

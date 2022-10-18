@@ -33,6 +33,8 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly resultType: ResultType
   ) {}
   getSlideSavedIndex(arr: Array<SaveData>): number {
+    //this doesn't work with VOCAB
+    //refactor code from Score.exercise and use here.
     return arr.findIndex((x) => isEqual(x.txt, this.txt));
   }
   getAnswerCount(): number {
