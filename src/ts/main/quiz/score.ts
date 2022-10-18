@@ -2,6 +2,7 @@ import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate/evaluate.support';
 import { SaveData } from './slide/saveData';
+import type { AnswerType } from './slide/strategies/resultStrategy';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
@@ -59,7 +60,7 @@ export class Score {
           moduleLine.name = module.name;
           delete moduleLine['children'];
           module.exercises.forEach((exercise) => {
-            Score.exercise(exercise, moduleLine);
+            Score.exercise(exercise, moduleLine, getSavedDataArray());
           }); //exercise
           moduleLine.calculate();
           lessonLine.add(moduleLine);
@@ -76,24 +77,35 @@ export class Score {
     courseLines.push(courseLine);
     return courseLines;
   }
-  private static exercise(exercise: SlideInterface, moduleLine: ISummaryLine) {
+  //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
+  private static exercise(
+    exercise: SlideInterface,
+    moduleLine: ISummaryLine,
+    saves: SaveData[]
+  ) {
     const slide = initSlide(exercise);
-    //these two lines cannot be moved to inside "if (slide2)..."
-    //the reason is unknown, but it results in the pctComplete
-    //always being 100%.
-    const exercise_count = slide.getAnswerCount();
-    moduleLine.count += exercise_count;
-    //refactoring opporunity for duplicate code with makeSlides
-    const arr = getSavedDataArray();
-    const idx = arr.findIndex((x) => isEqual(x.txt, slide.txt));
-    const slide2 = arr[idx];
-    //conditional necessary because of iterative behavior not
-    //understood. However it has no functional effect. Still works.
-    if (slide2) {
-      slide.setResults(slide2.result);
-      const evaluation = slide.evaluate();
-      moduleLine.score += evaluation.correct;
-      moduleLine.complete += evaluation.responses;
+    let idx = -1;
+    let results: AnswerType;
+    //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
+    if (Array.isArray(slide.txt)) {
+      results = Array<string>();
+      for (const saved of saves) {
+        idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
+        if (idx > -1) {
+          results.push(saved.result as string);
+        }
+      }
+      slide.setResults(results);
+    } else {
+      idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
+      if (idx > -1) {
+        results = saves[idx].result;
+        slide.setResults(results);
+      }
     }
+    const evaluation = slide.evaluate();
+    moduleLine.count += slide.getAnswerCount();
+    moduleLine.score += evaluation.correct;
+    moduleLine.complete += evaluation.responses;
   }
 }
