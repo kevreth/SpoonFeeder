@@ -32,10 +32,20 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
-  getSlideSavedIndex(arr: Array<SaveData>): number {
-    //this doesn't work with VOCAB
-    //refactor code from Score.exercise and use here.
-    return arr.findIndex((x) => isEqual(x.txt, this.txt));
+  getSlideSavedIndex(saves: Array<SaveData>): number {
+    //Refactor along with Score.exercise()
+    let retval = -1;
+    if (Array.isArray(this.txt)) {
+      for (let i = 0; i < saves.length; i++) {
+        const idx = this.txt.findIndex((x) =>
+          isEqual(x, saves[i].txt as string)
+        );
+        if (idx > -1) retval = i;
+      }
+    } else {
+      retval = saves.findIndex((x) => isEqual(x.txt, this.txt));
+    }
+    return retval;
   }
   getAnswerCount(): number {
     return 1;
