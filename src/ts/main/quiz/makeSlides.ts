@@ -19,7 +19,9 @@ export class MakeSlides {
         //if all slide questions answered
         const results = Array<string>();
         for (const saved of saves) {
-          idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
+          const idx = slide.txt.findIndex((x) =>
+            isEqual(x, saved.txt as string)
+          );
           if (idx > -1) {
             results.push(saved.result as string);
           }
@@ -32,7 +34,9 @@ export class MakeSlides {
           const saves = getSavedDataArray();
           const results = Array<string>();
           for (const saved of saves) {
-            idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
+            const idx = slide.txt.findIndex((x) =>
+              isEqual(x, saved.txt as string)
+            );
             if (idx > -1) {
               results.push(saved.result as string);
             }
