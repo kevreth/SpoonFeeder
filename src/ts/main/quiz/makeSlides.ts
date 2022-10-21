@@ -47,7 +47,11 @@ export class MakeSlides {
       } else {
         MakeSlides.reloadSlide(slide, idx, doc);
       }
-    } else slide.makeSlides(doc);
+    } else {
+      let _slide = Json.getPrevSlide();
+      if(_slide == null) _slide=slide;
+      _slide.makeSlides(doc);
+    }
   }
   //The slide has already been presented to the user, as will happen on reload.
   private static reloadSlide(
