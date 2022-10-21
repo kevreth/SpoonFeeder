@@ -26,7 +26,8 @@ export class Json {
     return retval;
   }
   public static getPrevSlide() {
-    const retval = Json.json[Json.counter-1];
+    //-2 because the counter is advanced during the last getSlide()
+    const retval = Json.json[Json.counter-2];
     return retval;
   }
   public static getSlideByTxt(txt: AnswerType): SlideInterface {
