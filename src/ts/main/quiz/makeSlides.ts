@@ -19,10 +19,10 @@ export class MakeSlides {
         //if all slide questions answered
         const results = Array<string>();
         for (const saved of saves) {
-          const idx = slide.txt.findIndex((x) =>
+          const idx2 = slide.txt.findIndex((x) =>
             isEqual(x, saved.txt as string)
           );
-          if (idx > -1) {
+          if (idx2 > -1) {
             results.push(saved.result as string);
           }
         }
@@ -34,10 +34,10 @@ export class MakeSlides {
           const saves = getSavedDataArray();
           const results = Array<string>();
           for (const saved of saves) {
-            const idx = slide.txt.findIndex((x) =>
+            const idx2 = slide.txt.findIndex((x) =>
               isEqual(x, saved.txt as string)
             );
-            if (idx > -1) {
+            if (idx2 > -1) {
               results.push(saved.result as string);
             }
           }
@@ -55,14 +55,30 @@ export class MakeSlides {
     idx: number,
     doc: Document
   ) {
-    const arr = getSavedDataArray();
-    slide.setResults(arr[idx].result);
-    MakeSlides.showSlides(doc);
+    const saves = getSavedDataArray();
+    if (Array.isArray(slide.txt)) {
+      const results = Array<string>();
+      for (const saved of saves) {
+        const idx2 = slide.txt.findIndex((x) =>
+          isEqual(x, saved.txt as string)
+        );
+        if (idx2 > -1) {
+          results.push(saved.result as string);
+        }
+      }
+      slide.setResults(results);
+      MakeSlides.showSlides(doc);
+    } else {
+      const result = saves[idx].result;
+      slide.setResults(result);
+      MakeSlides.showSlides(doc);
+    }
   }
 
   private static endQuiz(doc: Document) {
     Json.reset();
-    doc.body.innerHTML = evaluate(Json.get()); //EXECUTION ENDS
+    const json = Json.get();
+    doc.body.innerHTML = evaluate(json); //EXECUTION ENDS
     startOverButton(doc);
   }
 }
