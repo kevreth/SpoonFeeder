@@ -2,6 +2,12 @@
   <q-btn
     color="primary"
     label="Exit"
-    class="fixed-bottom"
+    class="exitBtn "
   />
 </template>
+
+<style>
+.exitBtn {
+  left: 42%;
+}
+</style>
