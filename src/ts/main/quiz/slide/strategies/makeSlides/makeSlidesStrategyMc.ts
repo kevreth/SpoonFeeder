@@ -1,10 +1,11 @@
-import { isRandom, removeListener, shuffle } from '../../../../utilities';
+import { isEqual, isRandom, removeListener, shuffle } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
-
+import { SaveData } from '../../../slide/saveData';
+const { get: getSavedDataArray } = SaveData;
 export function makeSlidesStrategyMc(
   txt: string,
   options: string[],
@@ -22,6 +23,17 @@ export function makeSlidesStrategyMc(
     addBehavior(doc, option, options.length, optionCtr, setValues);
   });
   maxWidthStrategy(options.length, 'btn', doc);
+  const saves = getSavedDataArray();
+  let idx = 0;
+  if ((idx = setValues.slideSavedIndex(saves)) > -1) {
+    //slide was previously saved, so we display results
+    const result = saves[idx].result as string;
+    const optionCtr = options.findIndex((x) => isEqual(x, result as string));
+    decorateOptionButton(setValues,doc,optionCtr);
+    for (let i = 0; i < options.length; i++)
+      removeListener(doc.getElementById('btn' + i) as HTMLElement);
+    showButton(doc);
+  }
 }
 function addBehavior(
   doc: Document,
