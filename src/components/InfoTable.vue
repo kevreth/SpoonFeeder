@@ -1,19 +1,17 @@
 <template>
-  <q-overlay
-    class="infoOverlay column"
-  >
+  <q-overlay class="infoOverlay column">
     <template #body>
       <div class="iconContainer bg-secondary">
-          <p class="iconContent">
-            COR: number correct <br>
-            COM: number completed <br>
-            TOT: number available <br>
-            SCO: score; COR/COM * 100% <br>
-            CPL: completion: COM/TOT * 100%
-          </p>
+        <p class="iconContent">
+          COR: number correct <br>
+          COM: number completed <br>
+          TOT: number available <br>
+          SCO: score; COR/COM * 100% <br>
+          CPL: completion: COM/TOT * 100%
+        </p>
+
         <ExitBtn @click="closeInfo" />
       </div>
-
     </template>
   </q-overlay>
 </template>
@@ -29,13 +27,16 @@ function closeInfo() {
 </script>
 
 <style>
+.infoOverlay {
+  display: block;
+}
 p.iconContent {
   text-align: left;
-  margin: 20px 10px 20px 50px;
+  margin-top: 25px;
+  padding: 15px 0 0 50px;
   font-size: 18px;
   line-height: 2em;
 }
-
 .iconContainer {
   border-radius: 20px;
 }
