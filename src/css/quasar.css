@@ -1,0 +1,7 @@
+.q-btn {
+  box-shadow: none;
+}
+.q-overlay {
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0) !important;
+}

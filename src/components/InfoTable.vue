@@ -1,7 +1,8 @@
 <template>
   <q-overlay class="infoOverlay column">
     <template #body>
-      <div class="iconContainer bg-secondary">
+      <div class="iconContainer fixed-center bg-accent">
+        <h5>Informations:</h5>
         <p class="iconContent">
           COR: number correct <br>
           COM: number completed <br>
@@ -30,15 +31,22 @@ function closeInfo() {
 .infoOverlay {
   display: block;
 }
-p.iconContent {
-  text-align: left;
-  margin-top: 25px;
-  padding: 15px 0 0 50px;
-  font-size: 18px;
-  line-height: 2em;
-}
 .iconContainer {
   border-radius: 20px;
+  width: 70%;
+  box-sizing: border-box;
+}
+.iconContainer h5 {
+  padding: 0px;
+  margin: 5px 0 0 0;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+p.iconContent {
+  text-align: left;
+  padding: 0 0 0 25px;
+  font-size: 14px;
+  line-height: 2em;
 }
 </style>
 
