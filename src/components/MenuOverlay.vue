@@ -47,6 +47,7 @@ function startOver() {
   overflow: auto;
 }
 .overlayBtn {
-  color: #fc3d08
+  color: #fc3d08;
+  font-size: 25px;
 }
 </style>
