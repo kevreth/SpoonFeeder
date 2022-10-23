@@ -8,15 +8,15 @@
         <!-- {{ content }} -->
       </div>
 
-      <SummaryExit @click="closeSummary" />
+      <ExitBtn @click="closeSummary" />
     </template>
   </q-overlay>
 </template>
 
 <script setup>
+import ExitBtn from './ExitBtn.vue';
 // import { Json } from '../ts/main/globals'
 // import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
-import SummaryExit from './SummaryExit.vue';
 
 const emit = defineEmits(['closeSummary'])
 function closeSummary() {
