@@ -1,8 +1,5 @@
 <template>
-  <q-overlay
-    class="bg-secondary"
-    :z-index="5000"
-  >
+  <q-overlay class="summaryOverlay bg-secondary">
     <template #body>
       <div class="justify-evenly summaryContainer">
         <!-- {{ content }} -->
@@ -34,7 +31,7 @@ function closeSummary() {
   cursor: auto;
 }
 .fullscreen {
-  border-radius: 8px !important
+  border-radius: 8px !important;
 }
 </style>
 
