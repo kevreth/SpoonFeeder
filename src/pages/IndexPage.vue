@@ -9,6 +9,7 @@
 <script setup>
 import { Quiz } from '../ts/main/quiz';
 import '../css/style1.css';
+import '../css/quasar.css'
 sessionStorage.clear();
 
 //===========================================================================

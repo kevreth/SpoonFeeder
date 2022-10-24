@@ -1,10 +1,24 @@
+<<<<<<< HEAD
 import { isEqual, isRandom, removeListener, shuffle } from '../../../../utilities';
+=======
+import { Slide } from '../../../../../main/quiz/slide';
+import {
+  isEqual,
+  isRandom,
+  removeListener,
+  shuffle,
+} from '../../../../utilities';
+>>>>>>> main
 import { showButton } from '../../../makeSlides';
+import { SaveData } from '../../../slide/saveData';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
+<<<<<<< HEAD
 import { SaveData } from '../../../slide/saveData';
+=======
+>>>>>>> main
 const { get: getSavedDataArray } = SaveData;
 export function makeSlidesStrategyMc(
   txt: string,
@@ -13,18 +27,16 @@ export function makeSlidesStrategyMc(
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues<string>
+  setValues: SetValues
 ) {
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);
   createPageContent(html, doc);
-  options.forEach((option, optionCtr) => {
-    addBehavior(doc, option, options.length, optionCtr, setValues);
-  });
   maxWidthStrategy(options.length, 'btn', doc);
   const saves = getSavedDataArray();
   let idx = 0;
+<<<<<<< HEAD
   if ((idx = setValues.slideSavedIndex(saves)) > -1) {
     //slide was previously saved, so we display results
     const result = saves[idx].result as string;
@@ -33,6 +45,18 @@ export function makeSlidesStrategyMc(
     for (let i = 0; i < options.length; i++)
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
     showButton(doc);
+=======
+  if ((idx = Slide.getSlideSavedIndex(saves, txt)) > -1) {
+    //slide was previously saved, so we display results
+    const result = saves[idx].result as string;
+    const optionCtr = options.findIndex((x) => isEqual(x, result as string));
+    decorateOptionButton(setValues, doc, optionCtr);
+    showButton(doc, setValues);
+  } else {
+    options.forEach((option, optionCtr) => {
+      addBehavior(doc, option, options.length, optionCtr, setValues);
+    });
+>>>>>>> main
   }
 }
 function addBehavior(
@@ -40,7 +64,7 @@ function addBehavior(
   option: string,
   length: number,
   optionCtr: number,
-  setValues: SetValues<string>
+  setValues: SetValues
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
@@ -50,7 +74,7 @@ function addBehavior(
 function optionButtonEventListener(
   length: number,
   doc: Document,
-  setValues: SetValues<string>,
+  setValues: SetValues,
   option: string,
   optionCtr: number
 ) {
@@ -59,10 +83,10 @@ function optionButtonEventListener(
   setValues.setRes(option);
   setValues.saveData();
   decorateOptionButton(setValues, doc, optionCtr);
-  showButton(doc);
+  showButton(doc, setValues);
 }
 function decorateOptionButton(
-  setValues: SetValues<string>,
+  setValues: SetValues,
   doc: Document,
   optionCtr: number
 ) {

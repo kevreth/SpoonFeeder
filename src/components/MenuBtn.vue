@@ -1,3 +1,10 @@
 <template>
-  <q-btn size="200%" icon="menu" />
+  <q-btn
+    flat
+    dense
+    size="200%"
+    icon="menu" 
+    class="menuBtn q-mt-xs q-mr-sm q-pt-xs"  
+  />
 </template>
+

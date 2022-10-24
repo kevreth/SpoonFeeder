@@ -14,10 +14,11 @@ import type { SlideInterface } from './slideInterface';
 const { set: saveData } = SaveData;
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
-export abstract class Slide<T extends AnswerType> implements SlideInterface {
+export abstract class Slide implements SlideInterface {
   txt!: AnswerType;
-  ans!: T;
-  res!: T;
+  ans!: AnswerType;
+  res!: AnswerType;
+  cont = false;
   public pageTemplate = `
     <div id="slide">
       <div id="content">
@@ -32,18 +33,19 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
-  getSlideSavedIndex(saves: Array<SaveData>): number {
+  setContinue(): void {
+    this.cont = true;
+  }
+  static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
     //TODO: factor out code in common with MakeSlides.showSlides() and Score.exercise()
     let retval = -1;
-    if (Array.isArray(this.txt)) {
+    if (Array.isArray(txt)) {
       for (let i = 0; i < saves.length; i++) {
-        const idx = this.txt.findIndex((x) =>
-          isEqual(x, saves[i].txt as string)
-        );
+        const idx = txt.findIndex((x) => isEqual(x, saves[i].txt as string));
         if (idx > -1) retval = i;
       }
     } else {
-      retval = saves.findIndex((x) => isEqual(x.txt, this.txt));
+      retval = saves.findIndex((x) => isEqual(x.txt, txt));
     }
     return retval;
   }
@@ -53,7 +55,7 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file
-  setResults(res: T): void {
+  setResults(res: AnswerType): void {
     this.res = res;
   }
   evaluate(): Evaluation {
@@ -66,19 +68,20 @@ export abstract class Slide<T extends AnswerType> implements SlideInterface {
   saveData() {
     const txt = this.txt;
     const res = this.res;
-    saveData(txt, res, timestampNow());
+    const cont = this.cont;
+    saveData(txt, res, timestampNow(), cont);
   }
   result(): ResultReturnType {
     return this.resultType(this.ans, this.res);
   }
-  setRes(res: T): void {
+  setRes(res: AnswerType): void {
     this.res = res;
   }
   getSetValues() {
     const saveData = () => this.saveData();
     const result = (): ResultReturnType => this.result();
-    const setRes = (res: T): void => this.setRes(res);
-    const slideSavedIndex = (saves: SaveData[]): number => this.getSlideSavedIndex(saves);
-    return new SetValues<T>(saveData, result, setRes, slideSavedIndex);
+    const setRes = (res: AnswerType): void => this.setRes(res);
+    const setContinue = (): void => this.setContinue();
+    return new SetValues(saveData, result, setRes, setContinue);
   }
 }

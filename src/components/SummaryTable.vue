@@ -1,22 +1,19 @@
 <template>
-  <q-overlay
-    class="bg-secondary"
-    :z-index="5000"
-  >
+  <q-overlay class="summaryOverlay bg-secondary">
     <template #body>
       <div class="justify-evenly summaryContainer">
         <!-- {{ content }} -->
       </div>
 
-      <SummaryExit @click="closeSummary" />
+      <ExitBtn @click="closeSummary" />
     </template>
   </q-overlay>
 </template>
 
 <script setup>
+import ExitBtn from './ExitBtn.vue';
 // import { Json } from '../ts/main/globals'
 // import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
-import SummaryExit from './SummaryExit.vue';
 
 const emit = defineEmits(['closeSummary'])
 function closeSummary() {
@@ -34,7 +31,7 @@ function closeSummary() {
   cursor: auto;
 }
 .fullscreen {
-  border-radius: 8px !important
+  border-radius: 8px !important;
 }
 </style>
 

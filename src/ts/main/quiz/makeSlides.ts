@@ -2,12 +2,14 @@ import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { isEqual, makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
+import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
+import type { SetValues } from './slide/setValues';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {
-  public static showSlides(doc: Document, cont: boolean): void {
+  public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
     console.log(slide.txt);
     let idx = 0;
@@ -15,9 +17,7 @@ export class MakeSlides {
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
     //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
-    // the slide has been saved
-    else if ((idx = Slide.getSlideSavedIndex(saves)) > -1) {
-      console.log("found");
+    else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1) {
       if (Array.isArray(slide.txt)) {
         //if all slide questions answered
         const results = Array<string>();
@@ -55,7 +55,7 @@ export class MakeSlides {
       console.log("not found");
       let _slide = slide;
       //was the continue button clicked?
-      if (!cont) {
+      if (!slide.cont) {
         console.log("continue button not pressed");
         //no, use previous slide
         const prev = Json.getPrevSlide();
@@ -86,11 +86,11 @@ export class MakeSlides {
         }
       }
       slide.setResults(results);
-      MakeSlides.showSlides(doc, false);
+      MakeSlides.showSlides(doc);
     } else {
       const result = saves[idx].result;
       slide.setResults(result);
-      MakeSlides.showSlides(doc, false);
+      MakeSlides.showSlides(doc);
     }
   }
 
@@ -101,10 +101,11 @@ export class MakeSlides {
     startOverButton(doc);
   }
 }
-export function showButton(doc: Document): HTMLElement {
+export function showButton(doc: Document, setValues: SetValues): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
-    MakeSlides.showSlides(doc, true);
+    setValues.setContinue();
+    MakeSlides.showSlides(doc);
   });
   return continue_btn;
 }

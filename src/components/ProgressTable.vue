@@ -1,44 +1,52 @@
 <template>
-  <q-hierarchy
-    class="progressTable"
-    dense
-    :columns="columns"
-    :data="data"
-    :classes="classes"
-    :dark="dark"
-    :default-expand-all="(default_expand_all = true)"
-  >
-    <template v-slot:body="props">
-      <td class="text-left" data-th="Name">
-        <div v-bind:style="props.setPadding(props.item)"
-              :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
-          <q-btn @click="props.toggle(props.item)" v-if="props.iconName(props.item)!='done'"
-                  :icon="props.iconName(props.item)" flat
-                  dense>
-          </q-btn>
-          <span class="q-ml-sm">{{props.item.name}}</span>
-        </div>
-      </td>
-      <td class="text-right">{{props.item.score}}</td>
-      <td class="text-right">{{props.item.complete}}</td>
-      <td class="text-right">{{props.item.pctCorrect}}</td>
-      <td class="text-right">{{props.item.count}}</td>
-      <td class="text-right">{{props.item.pctComplete}}</td>
-      <td class="text-left">
-        <a v-bind:href="props.item.summary">
-          <SummaryIcon
-            @click="summaryOverlay = true"
-            @keydown.esc="summaryOverlay = false" tabindex="0"
-          />    
-          <SummaryTable
-            v-model="summaryOverlay"
-            @closeSummary="summaryOverlay = false"
-            @keydown.esc="summaryOverlay = false" tabindex="0"
-          />
-        </a>
-      </td>
-    </template>
-  </q-hierarchy>
+  <q-card class="bg-secondary">
+    <InfoIcon  @click="infoOverlay = true" @keydown.esc="infoOverlay = false"/>
+    <InfoTable
+      v-model="infoOverlay"
+      @closeInfo="infoOverlay = false"
+      />
+
+    <q-hierarchy
+      class="progressTable"
+      dense
+      :columns="columns"
+      :data="data"
+      :classes="classes"
+      :dark="dark"
+      :default-expand-all="(default_expand_all = true)"
+    >
+      <template v-slot:body="props">
+        <td class="text-left" data-th="Name">
+          <div v-bind:style="props.setPadding(props.item)"
+                :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
+            <q-btn @click="props.toggle(props.item)" v-if="props.iconName(props.item)!='done'"
+                    :icon="props.iconName(props.item)" flat
+                    dense>
+            </q-btn>
+            <span class="q-ml-sm">{{props.item.name}}</span>
+          </div>
+        </td>
+        <td class="text-right">{{props.item.score}}</td>
+        <td class="text-right">{{props.item.complete}}</td>
+        <td class="text-right">{{props.item.pctCorrect}}</td>
+        <td class="text-right">{{props.item.count}}</td>
+        <td class="text-right">{{props.item.pctComplete}}</td>
+        <td class="text-left">
+          <a v-bind:href="props.item.summary">
+            <SummaryIcon
+              @click="summaryOverlay = true"
+              @keydown.esc="summaryOverlay = false" tabindex="0"
+            />    
+            <SummaryTable
+              v-model="summaryOverlay"
+              @closeSummary="summaryOverlay = false"
+              @keydown.esc="summaryOverlay = false" tabindex="0"
+            />
+          </a>
+        </td>
+      </template>
+    </q-hierarchy>
+  </q-card>
 </template>
 
 <script setup>
@@ -47,9 +55,13 @@ import {Score} from '../ts/main/quiz/score';
 import {CourseFile} from '../ts/main/globals'
 import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
+import InfoIcon from './InfoIcon.vue';
+import InfoTable from './InfoTable.vue';
 
 
 const summaryOverlay = ref(false);
+const infoOverlay = ref(false);
+
 
 const _columns = [
     {
@@ -113,6 +125,9 @@ const dark = ref(true);
 </script>
 
 <style>
+.progressTable tbody {
+  display:contents;
+}
 .progressTable {
   display: inline-block;
   max-height: 100vh;
