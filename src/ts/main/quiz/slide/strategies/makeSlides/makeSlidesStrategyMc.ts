@@ -8,7 +8,7 @@ import {
 import { showButton } from '../../../makeSlides';
 import { SaveData } from '../../../slide/saveData';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 const { get: getSavedDataArray } = SaveData;

@@ -33,7 +33,7 @@ export class SaveData {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));
   }
   public static replace(save: SaveData, idx: number, saves: SaveData[]) {
-    if (save !== null && idx != null && saves != null) return;
+    if (save == null || idx == null || saves == null) return;
     saves[idx] = save;
     const json = JSON.stringify(saves);
     localStorage.setItem(KEY, json);

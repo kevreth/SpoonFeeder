@@ -2,7 +2,7 @@ import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
 export function makeSlidesStrategyImap(
   txt: string,

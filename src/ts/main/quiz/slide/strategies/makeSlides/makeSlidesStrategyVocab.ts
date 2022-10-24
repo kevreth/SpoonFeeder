@@ -8,7 +8,7 @@ import {
 import { continueButton, showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';

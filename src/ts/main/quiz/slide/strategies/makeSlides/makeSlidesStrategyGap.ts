@@ -1,6 +1,6 @@
 import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeComplex } from '../setWidthsStrategy';

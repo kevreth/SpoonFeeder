@@ -5,7 +5,7 @@ import {
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 

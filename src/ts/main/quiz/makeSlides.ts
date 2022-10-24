@@ -10,7 +10,7 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    if(slide !=null) console.log(slide.txt);
+    if (slide != null) console.log(slide.txt);
     let idx = 0;
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
@@ -51,18 +51,14 @@ export class MakeSlides {
       }
       //the slide is unsaved
     } else {
-      console.log('not found');
-      let _slide = slide;
+      // const _slide = slide;
       //was the continue button of the previous slide clicked?
-      const prev = Json.getPrevSlide();
-      if (prev != null && !prev.cont) {
-        console.log('continue button not pressed');
-        //no, use previous slide
-        _slide = prev;
-      } else {
-        console.log('continue button pressed');
-      }
-      _slide.makeSlides(doc);
+      // const prev = Json.getPrevSlide();
+      // if (prev != null && !prev.cont) {
+      //   //no, use previous slide
+      //   _slide = prev;
+      // }
+      slide.makeSlides(doc);
     }
   }
   //The slide has already been presented to the user, as will happen on reload.
