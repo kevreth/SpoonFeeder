@@ -17,7 +17,7 @@ export class Quiz {
       CourseFile.set(course);
       const slides = processJson(course);
       Json.set(slides);
-      MakeSlides.showSlides(doc, false);
+      MakeSlides.showSlides(doc);
     });
   }
   public static makeYamlFilename(courseName: string) {

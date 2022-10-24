@@ -32,7 +32,7 @@ export function makeSlidesStrategySort(
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();
     setValues.saveData();
-    showButton(doc, setValues);
+    showButton(doc, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {

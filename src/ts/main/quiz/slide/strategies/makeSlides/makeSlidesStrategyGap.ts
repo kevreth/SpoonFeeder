@@ -24,7 +24,7 @@ export function makeSlidesStrategyGap(
   createPageContent(html, doc);
   (ans as string[]).forEach((currentFills, ctr) => {
     setfills(ctr, currentFills, doc);
-    setgap(ctr, doc, ans, setValues);
+    setgap(ctr, doc, ans, txt, setValues);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
@@ -57,6 +57,7 @@ function setgap(
   ctr: number,
   doc: Document,
   ans: AnswerType,
+  txt: string,
   setValues: SetValues
 ): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
@@ -88,7 +89,7 @@ function setgap(
       const res = evaluateA(doc, ans);
       setValues.setRes(res);
       setValues.saveData();
-      showButton(doc, setValues);
+      showButton(doc, txt);
     }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');

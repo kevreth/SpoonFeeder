@@ -4,13 +4,13 @@ import { isEqual, makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
 import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
-import type { SetValues } from './slide/setValues';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
+    if(slide !=null) console.log(slide.txt);
     let idx = 0;
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
@@ -28,12 +28,12 @@ export class MakeSlides {
             results.push(saved.result as string);
           }
         }
+        //TODO: should this just test on the length, or the content?
         if (isEqual(results.length, slide.txt.length)) {
           MakeSlides.reloadSlide(slide, idx, doc);
         }
         //not all slide questions answered
         else {
-          const saves = getSavedDataArray();
           const results = Array<string>();
           for (const saved of saves) {
             const idx2 = slide.txt.findIndex((x) =>
@@ -98,10 +98,10 @@ export class MakeSlides {
     startOverButton(doc);
   }
 }
-export function showButton(doc: Document, setValues: SetValues): HTMLElement {
+export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
-    setValues.setContinue();
+    SaveData.setContinueTrue(txt);
     MakeSlides.showSlides(doc);
   });
   return continue_btn;

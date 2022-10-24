@@ -27,7 +27,7 @@ export function makeSlidesStrategySelect(
     const res = evaluate2(element, numWords, ans, doc);
     setValues.setRes(res);
     setValues.saveData();
-    showButton(doc, setValues);
+    showButton(doc, txt);
   });
 }
 function iter2(ctr: number, doc: Document): void {
