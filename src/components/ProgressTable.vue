@@ -125,6 +125,9 @@ const dark = ref(true);
 </script>
 
 <style>
+.progressTable tbody {
+  display:contents;
+}
 .progressTable {
   display: inline-block;
   max-height: 100vh;
