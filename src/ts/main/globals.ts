@@ -26,9 +26,9 @@ export class Json {
     return retval;
   }
   public static getPrevSlide() {
-    const retval = Json.json[Json.counter-2];
+    const retval = Json.json[Json.counter - 2];
     return retval;
-  }  
+  }
   public static getSlideByTxt(txt: AnswerType): SlideInterface {
     return Json.json.find((x) => x.txt === txt) as SlideInterface;
   }

@@ -2,7 +2,9 @@ import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { isEqual, makeButton } from '../utilities';
 import { evaluate } from './evaluate/evaluate.support';
+import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
+import type { SetValues } from './slide/setValues';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
@@ -14,7 +16,7 @@ export class MakeSlides {
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
     //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
-    else if ((idx = slide.getSlideSavedIndex(saves)) > -1) {
+    else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1) {
       if (Array.isArray(slide.txt)) {
         //if all slide questions answered
         const results = Array<string>();
@@ -48,8 +50,8 @@ export class MakeSlides {
         MakeSlides.reloadSlide(slide, idx, doc);
       }
     } else {
-      let _slide=slide;
-      const idx = slide.getSlideSavedIndex(saves);
+      let _slide = slide;
+      const idx = Slide.getSlideSavedIndex(saves, slide.txt);
       if (idx > -1) {
         _slide = Json.getPrevSlide();
       }
@@ -89,9 +91,10 @@ export class MakeSlides {
     startOverButton(doc);
   }
 }
-export function showButton(doc: Document): HTMLElement {
+export function showButton(doc: Document, setValues: SetValues): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
+    setValues.setContinue();
     MakeSlides.showSlides(doc);
   });
   return continue_btn;

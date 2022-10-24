@@ -1,3 +1,4 @@
+import { Slide } from '../../../../../main/quiz/slide';
 import {
   isEqual,
   isRandom,
@@ -18,7 +19,7 @@ export function makeSlidesStrategyMc(
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues<string>
+  setValues: SetValues
 ) {
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag) options = shuffle(options);
@@ -27,12 +28,12 @@ export function makeSlidesStrategyMc(
   maxWidthStrategy(options.length, 'btn', doc);
   const saves = getSavedDataArray();
   let idx = 0;
-  if ((idx = setValues.slideSavedIndex(saves)) > -1) {
+  if ((idx = Slide.getSlideSavedIndex(saves, txt)) > -1) {
     //slide was previously saved, so we display results
     const result = saves[idx].result as string;
     const optionCtr = options.findIndex((x) => isEqual(x, result as string));
     decorateOptionButton(setValues, doc, optionCtr);
-    showButton(doc);
+    showButton(doc, setValues);
   } else {
     options.forEach((option, optionCtr) => {
       addBehavior(doc, option, options.length, optionCtr, setValues);
@@ -44,7 +45,7 @@ function addBehavior(
   option: string,
   length: number,
   optionCtr: number,
-  setValues: SetValues<string>
+  setValues: SetValues
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
@@ -54,7 +55,7 @@ function addBehavior(
 function optionButtonEventListener(
   length: number,
   doc: Document,
-  setValues: SetValues<string>,
+  setValues: SetValues,
   option: string,
   optionCtr: number
 ) {
@@ -63,10 +64,10 @@ function optionButtonEventListener(
   setValues.setRes(option);
   setValues.saveData();
   decorateOptionButton(setValues, doc, optionCtr);
-  showButton(doc);
+  showButton(doc, setValues);
 }
 function decorateOptionButton(
-  setValues: SetValues<string>,
+  setValues: SetValues,
   doc: Document,
   optionCtr: number
 ) {
