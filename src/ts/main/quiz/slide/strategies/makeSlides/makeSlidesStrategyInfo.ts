@@ -25,6 +25,6 @@ function showButton(doc: Document): void {
   const container = 'content';
   const continue_btn = createContinueButton(doc, container, '<br>');
   continue_btn.addEventListener('click', (): void => {
-    MakeSlides.showSlides(doc);
+    MakeSlides.showSlides(doc, true);
   });
 }

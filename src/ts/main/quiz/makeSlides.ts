@@ -7,14 +7,17 @@ import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 3: make slides
 export class MakeSlides {
-  public static showSlides(doc: Document): void {
+  public static showSlides(doc: Document, cont: boolean): void {
     const slide = Json.getSlide();
+    console.log(slide.txt);
     let idx = 0;
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
     //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
-    else if ((idx = slide.getSlideSavedIndex(saves)) > -1) {
+    // the slide has been saved
+    else if ((idx = Slide.getSlideSavedIndex(saves)) > -1) {
+      console.log("found");
       if (Array.isArray(slide.txt)) {
         //if all slide questions answered
         const results = Array<string>();
@@ -47,9 +50,21 @@ export class MakeSlides {
       } else {
         MakeSlides.reloadSlide(slide, idx, doc);
       }
+    //the slide is unsaved
     } else {
-      let _slide = Json.getPrevSlide();
-      if(_slide == null) _slide=slide;
+      console.log("not found");
+      let _slide = slide;
+      //was the continue button clicked?
+      if (!cont) {
+        console.log("continue button not pressed");
+        //no, use previous slide
+        const prev = Json.getPrevSlide();
+        if(prev != null)
+          _slide = prev;
+      }
+      else {
+        console.log("continue button pressed");
+      }
       _slide.makeSlides(doc);
     }
   }
@@ -71,11 +86,11 @@ export class MakeSlides {
         }
       }
       slide.setResults(results);
-      MakeSlides.showSlides(doc);
+      MakeSlides.showSlides(doc, false);
     } else {
       const result = saves[idx].result;
       slide.setResults(result);
-      MakeSlides.showSlides(doc);
+      MakeSlides.showSlides(doc, false);
     }
   }
 
@@ -89,7 +104,7 @@ export class MakeSlides {
 export function showButton(doc: Document): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
-    MakeSlides.showSlides(doc);
+    MakeSlides.showSlides(doc, true);
   });
   return continue_btn;
 }
