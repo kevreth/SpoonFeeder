@@ -11,7 +11,7 @@ export function makeSlidesStrategyInfo(
   const html = createHtml(txt);
   createPageContent(html, doc);
   setValues.saveData();
-  showButton(doc);
+  showButton(doc, setValues);
 }
 //info has it's own showButton because the continue button
 //appears immediately upon page load and can be in the wrong
@@ -20,10 +20,12 @@ export function makeSlidesStrategyInfo(
 //The continue button is placed inside #content here, unlike
 //other slide types where doing so causes the content to re-center
 //vertically.
-function showButton(doc: Document): void {
+function showButton(doc: Document, setValues: SetValues): void {
   const container = 'content';
   const continue_btn = createContinueButton(doc, container, '<br>');
   continue_btn.addEventListener('click', (): void => {
-    MakeSlides.showSlides(doc, true);
+    setValues.setContinue();
+    console.log('INFO continue button pressed');
+    MakeSlides.showSlides(doc);
   });
 }

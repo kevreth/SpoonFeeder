@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { isEqual, isRandom, removeListener, shuffle } from '../../../../utilities';
-=======
 import { Slide } from '../../../../../main/quiz/slide';
 import {
   isEqual,
@@ -8,17 +5,12 @@ import {
   removeListener,
   shuffle,
 } from '../../../../utilities';
->>>>>>> main
 import { showButton } from '../../../makeSlides';
 import { SaveData } from '../../../slide/saveData';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
-<<<<<<< HEAD
-import { SaveData } from '../../../slide/saveData';
-=======
->>>>>>> main
 const { get: getSavedDataArray } = SaveData;
 export function makeSlidesStrategyMc(
   txt: string,
@@ -36,16 +28,6 @@ export function makeSlidesStrategyMc(
   maxWidthStrategy(options.length, 'btn', doc);
   const saves = getSavedDataArray();
   let idx = 0;
-<<<<<<< HEAD
-  if ((idx = setValues.slideSavedIndex(saves)) > -1) {
-    //slide was previously saved, so we display results
-    const result = saves[idx].result as string;
-    const optionCtr = options.findIndex((x) => isEqual(x, result as string));
-    decorateOptionButton(setValues,doc,optionCtr);
-    for (let i = 0; i < options.length; i++)
-      removeListener(doc.getElementById('btn' + i) as HTMLElement);
-    showButton(doc);
-=======
   if ((idx = Slide.getSlideSavedIndex(saves, txt)) > -1) {
     //slide was previously saved, so we display results
     const result = saves[idx].result as string;
@@ -56,7 +38,6 @@ export function makeSlidesStrategyMc(
     options.forEach((option, optionCtr) => {
       addBehavior(doc, option, options.length, optionCtr, setValues);
     });
->>>>>>> main
   }
 }
 function addBehavior(
