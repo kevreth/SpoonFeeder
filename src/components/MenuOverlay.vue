@@ -1,20 +1,26 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
-  <q-overlay v-model="overlay">
-    <template #body>        
-      <div class="overlay fixed-center column">
-        <div class="overlayBtn">
-          <OverlayCloseBtn @click="handleOverlay" />
-          <TrashBtn @click="startOver" />
+  <transition
+    enter-active-class="animated zoomIn"
+    leave-active-class="animated zoomOutDown"
+    :duration="1000"
+    >
+    <q-overlay v-model="overlay">
+      <template #body>        
+        <div class="overlay fixed-center column">
+          <div class="overlayBtn">
+            <OverlayCloseBtn @click="handleOverlay" />
+            <TrashBtn @click="startOver" />
+          </div>
+  
+          <div class="progressBackground bg-secondary">
+            <ProgressTable style="cursor: auto" />
+          </div>
         </div>
-
-        <div class="progressBackground bg-secondary">
-          <ProgressTable style="cursor: auto" />
-        </div>
-      </div>
-    </template>
-  </q-overlay>
+      </template>
+    </q-overlay>
+  </transition>
 </template>
 
 <script setup>

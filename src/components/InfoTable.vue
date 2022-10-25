@@ -1,20 +1,25 @@
 <template>
-  <q-overlay class="infoOverlay column">
-    <template #body>
-      <div class="iconContainer fixed-center bg-accent">
-        <h5>Informations:</h5>
-        <p class="iconContent">
-          COR: number correct <br>
-          COM: number completed <br>
-          TOT: number available <br>
-          SCO: score; COR/COM * 100% <br>
-          CPL: completion: COM/TOT * 100%
-        </p>
-
-        <ExitBtn @click="closeInfo" />
-      </div>
-    </template>
-  </q-overlay>
+  <transition 
+    enter-active-class="animated slideInDown"
+    leave-active-class="animated slideOutUp"
+    :duration="1000">
+    <q-overlay class="infoOverlay column">
+      <template #body>
+        <div class="iconContainer fixed-center bg-accent">
+          <h5>Informations:</h5>
+          <p class="iconContent">
+            COR: number correct <br>
+            COM: number completed <br>
+            TOT: number available <br>
+            SCO: score; COR/COM * 100% <br>
+            CPL: completion: COM/TOT * 100%
+          </p>
+  
+          <ExitBtn @click="closeInfo" />
+        </div>
+      </template>
+    </q-overlay>
+  </transition>
 </template>
 
 <script setup>
