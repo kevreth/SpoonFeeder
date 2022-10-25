@@ -1,7 +1,7 @@
 import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate/evaluate';
 import { SaveData } from './slide/saveData';
-import { SetValues } from './slide/setValues';
+import { SetValues } from './slide/SetValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';

@@ -8,7 +8,7 @@ import {
 import { continueButton, showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
@@ -91,6 +91,7 @@ export function addOptionButtonEventListener(
 ) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
+  const txt = vocabTuples[questionCtr][0];
   button.addEventListener('click', () => {
     (res as string[]).push(option);
     setButtonColor(option, answer, button);
@@ -108,12 +109,7 @@ export function addOptionButtonEventListener(
         res,
         setValues
       );
-      saveData(
-        vocabTuples[questionCtr][0],
-        (res as string[])[questionCtr],
-        timestampNow(),
-        true
-      );
+      saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
     } else {
       saveData(
         vocabTuples[questionCtr][0],
@@ -121,7 +117,7 @@ export function addOptionButtonEventListener(
         timestampNow(),
         true
       );
-      showButton(doc, setValues);
+      showButton(doc, txt);
     }
   });
 }

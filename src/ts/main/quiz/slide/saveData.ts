@@ -1,4 +1,4 @@
-import { extend } from '../../utilities';
+import { extend, isEqual } from '../../utilities';
 import type { AnswerType } from './strategies/resultStrategy';
 const KEY = 'savedata';
 export class SaveData {
@@ -28,5 +28,21 @@ export class SaveData {
       const json = JSON.stringify(arr);
       localStorage.setItem(KEY, json);
     }
+  }
+  public static find(txt: string, saves: Array<SaveData>): number {
+    return saves.findIndex((saved) => isEqual(saved.txt, txt));
+  }
+  public static replace(save: SaveData, idx: number, saves: SaveData[]) {
+    if (save == null || idx == null || saves == null) return;
+    saves[idx] = save;
+    const json = JSON.stringify(saves);
+    localStorage.setItem(KEY, json);
+  }
+  public static setContinueTrue(txt: string) {
+    const saves = SaveData.get();
+    const idx = SaveData.find(txt, saves);
+    const record0 = saves[idx];
+    const record1 = new SaveData(record0.txt, record0.result, record0.ts, true);
+    SaveData.replace(record1, idx, saves);
   }
 }

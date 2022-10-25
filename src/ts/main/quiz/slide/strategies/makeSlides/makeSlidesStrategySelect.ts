@@ -5,7 +5,7 @@ import {
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 
@@ -27,7 +27,7 @@ export function makeSlidesStrategySelect(
     const res = evaluate2(element, numWords, ans, doc);
     setValues.setRes(res);
     setValues.saveData();
-    showButton(doc, setValues);
+    showButton(doc, txt);
   });
 }
 function iter2(ctr: number, doc: Document): void {
