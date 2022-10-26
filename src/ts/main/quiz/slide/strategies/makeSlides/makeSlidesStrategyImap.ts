@@ -33,8 +33,16 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
       });
       setValues.setRes(id);
       const element = doc.getElementById(id) as HTMLElement;
+      const audio = new Audio();
+
       let classname = 'shape_incorrect';
-      if (setValues.result()) classname = 'shape_correct';
+      audio.src = '/src/audio/incorrect.mp3';
+
+      if (setValues.result()) {
+        classname = 'shape_correct';
+        audio.src = '/src/audio/correct.mp3';
+      };
+      audio.play();
       element.classList.add(classname);
       setValues.saveData();
       showButton(doc, txt);

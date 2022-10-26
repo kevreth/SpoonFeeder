@@ -25,9 +25,17 @@ export function makeSlidesStrategySort(
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
     const res = sortables.map((x) => x.element.innerHTML);
+    const audio = new Audio();
+
     setValues.setRes(res);
     let msg = 'incorrect';
-    if (setValues.result()) msg = 'correct';
+    audio.src = '/src/audio/incorrect.mp3';
+
+    if (setValues.result()) {
+      msg = 'correct';
+      audio.src = '/src/audio/correct.mp3';
+    };
+    audio.play();
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();

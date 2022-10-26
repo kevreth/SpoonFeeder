@@ -126,8 +126,16 @@ export function setButtonColor(
   answer: string,
   button: HTMLElement
 ) {
+  const audio = new Audio();
+
   let color = 'red';
-  if (option === answer) color = 'green';
+  audio.src = '/src/audio/incorrect.mp3';
+
+  if (option === answer) {
+    color = 'green';
+    audio.src = '/src/audio/correct.mp3';
+  };
+  audio.play();
   button.style.backgroundColor = color;
 }
 export function addContinueButtonListener(
