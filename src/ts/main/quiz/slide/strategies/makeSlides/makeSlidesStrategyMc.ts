@@ -78,8 +78,7 @@ function decorateOptionButton(
   const audio = new Audio();
 
   let color = 'red';
-  audio.src = '/src/audio/incorrect.mp3';
-  
+  audio.src = '/src/audio/incorrect.mp3';  
   if (result) {
     color = 'green';
     audio.src = '/src/audio/correct.mp3';

@@ -56,6 +56,6 @@ function startOver() {
   font-size: 25px;
 }
 .animated {
-  animation-duration: 1.5s;
+  animation-duration: 1s;
 }
 </style>

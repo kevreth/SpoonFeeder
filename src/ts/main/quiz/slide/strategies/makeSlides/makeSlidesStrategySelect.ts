@@ -75,15 +75,26 @@ function mark(doc: Document) {
 function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
   const _ans = ans as string[];
   const _responses = responses as string[];
+  const audio = new Audio();
   //items that were not selected but should have been
-  let diff = difference(_ans, _responses);
-  style(diff, 'underline', 'red', doc);
+  let diff 
+  if(diff= difference(_ans, _responses)) {
+    style(diff, 'underline', 'red', doc);
+    audio.src = '/src/audio/incorrect.mp3';
+    audio.play();
+  } 
   //items that should not have been selected but were
-  diff = difference(_responses, _ans);
-  style(diff, 'line-through', 'red', doc);
+  else if (diff = difference(_responses, _ans)) {
+    style(diff, 'line-through', 'red', doc);
+    audio.src = '/src/audio/incorrect.mp3';
+    audio.play();
+  } 
   //correctly selected items
-  diff = intersection(_responses, _ans);
-  style(diff, 'underline', 'green', doc);
+  else if (diff = intersection(_responses, _ans)) {
+    style(diff, 'underline', 'green', doc);
+    audio.src = '/src/audio/correct.mp3';
+    audio.play();
+  }
 }
 function style(
   diff: AnswerType,
