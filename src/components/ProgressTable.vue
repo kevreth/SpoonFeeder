@@ -1,10 +1,13 @@
 <template>
   <q-card class="bg-secondary">
-    <InfoIcon  @click="infoOverlay = true" @keydown.esc="infoOverlay = false"/>
+    <InfoIcon 
+      @click="handleInfoOverlay" 
+      @keydown.esc="handleInfoOverlay" tabindex="0"
+    />
     <InfoTable
       v-model="infoOverlay"
-      @closeInfo="infoOverlay = false"
-      />
+      @closeInfo="handleInfoOverlay"
+    />
 
     <q-hierarchy
       class="progressTable"
@@ -122,6 +125,9 @@ const data = ref(summary);
 const classes = ref('bg-secondary');
 const dark = ref(true);
 
+function handleInfoOverlay() {
+  infoOverlay.value = !infoOverlay.value
+}
 </script>
 
 <style>

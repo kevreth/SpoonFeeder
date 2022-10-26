@@ -1,10 +1,9 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
-  <transition
-    enter-active-class="animated zoomIn"
+  <transition appear group
+    enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
-    :duration="1000"
     >
     <q-overlay v-model="overlay">
       <template #body>        
@@ -55,5 +54,8 @@ function startOver() {
 .overlayBtn {
   color: #fc3d08;
   font-size: 25px;
+}
+.animated {
+  animation-duration: 1.5s;
 }
 </style>
