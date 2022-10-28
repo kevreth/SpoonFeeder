@@ -9,6 +9,7 @@ import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
+import { isEqual } from 'lodash';
 
 export function makeSlidesStrategySelect(
   inst: string,
@@ -85,19 +86,13 @@ function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
   // correctly selected items
   diff = intersection(_responses, _ans);
   style(diff, 'underline', 'green', doc);
-
-  // let diff
-  // if(diff = difference(_ans, _responses)) {
-  //   style(diff, 'underline', 'red', doc);
-  //   getWrongAudio();
-  // } else if (diff = difference(_responses, _ans)) {
-  //   style(diff, 'line-through', 'red', doc);
-  //   getWrongAudio();
-  // } else if (diff = intersection(_responses, _ans)) {
-  //   style(diff, 'underline', 'green', doc);
-  //   getCorrectAudio();
-  // }
-  // playAudio();
+  // get audio buttons
+  if(isEqual(_ans, _responses)) {
+    getCorrectAudio();
+  } else {
+    getWrongAudio();
+  }
+  playAudio();
 }
 function style(
   diff: AnswerType,
