@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import {
   difference,
   intersection,
@@ -75,15 +76,28 @@ function mark(doc: Document) {
 function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
   const _ans = ans as string[];
   const _responses = responses as string[];
-  //items that were not selected but should have been
+  // items that were not selected but should have been
   let diff = difference(_ans, _responses);
   style(diff, 'underline', 'red', doc);
-  //items that should not have been selected but were
+  // items that should not have been selected but were
   diff = difference(_responses, _ans);
   style(diff, 'line-through', 'red', doc);
-  //correctly selected items
+  // correctly selected items
   diff = intersection(_responses, _ans);
   style(diff, 'underline', 'green', doc);
+
+  // let diff
+  // if(diff = difference(_ans, _responses)) {
+  //   style(diff, 'underline', 'red', doc);
+  //   getWrongAudio();
+  // } else if (diff = difference(_responses, _ans)) {
+  //   style(diff, 'line-through', 'red', doc);
+  //   getWrongAudio();
+  // } else if (diff = intersection(_responses, _ans)) {
+  //   style(diff, 'underline', 'green', doc);
+  //   getCorrectAudio();
+  // }
+  // playAudio();
 }
 function style(
   diff: AnswerType,

@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
@@ -33,14 +34,13 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
       });
       setValues.setRes(id);
       const element = doc.getElementById(id) as HTMLElement;
-      const audio = new Audio();
       let classname = 'shape_incorrect';
-      audio.src = '/src/audio/incorrect.mp3';
+      getWrongAudio();
       if (setValues.result()) {
         classname = 'shape_correct';
-        audio.src = '/src/audio/correct.mp3';
+        getCorrectAudio();
       };
-      audio.play();
+      playAudio();
       element.classList.add(classname);
       setValues.saveData();
       showButton(doc, txt);

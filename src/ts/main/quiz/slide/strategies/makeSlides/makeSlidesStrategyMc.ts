@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { Slide } from '../../../../../main/quiz/slide';
 import {
   isEqual,
@@ -75,14 +76,12 @@ function decorateOptionButton(
 ) {
   const result = setValues.result();
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
-  const audio = new Audio();
-
   let color = 'red';
-  audio.src = '/src/audio/incorrect.mp3';  
+  getWrongAudio();
   if (result) {
     color = 'green';
-    audio.src = '/src/audio/correct.mp3';
+    getCorrectAudio();
   }
-  audio.play();
+  playAudio();
   optionButton.style.backgroundColor = color;
 }
