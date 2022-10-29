@@ -28,17 +28,17 @@ export function removeListener(element: Node): void {
   );
 }
 function checkSessionStorageFlag(key: string): boolean {
-  const val = sessionStorage.getItem(key);
+  const val = localStorage.getItem(key);
   //assume key not existing is false
   let retval = false;
   if (val === 'true') retval = true;
   return retval;
 }
 function setSessionStorageFlag(key: string) {
-  sessionStorage.setItem(key, 'true');
+  localStorage.setItem(key, 'true');
 }
 function clearSessionStorageFlag(key: string) {
-  sessionStorage.setItem(key, 'false');
+  localStorage.setItem(key, 'false');
 }
 export function setMute() {
   setSessionStorageFlag('mute');
