@@ -1,9 +1,9 @@
-import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { showButton } from '../../../makeSlides';
+import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 
@@ -32,7 +32,7 @@ export function makeSlidesStrategySort(
     if (setValues.result()) {
       msg = 'correct';
       getCorrectAudio();
-    };
+    }
     playAudio();
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);

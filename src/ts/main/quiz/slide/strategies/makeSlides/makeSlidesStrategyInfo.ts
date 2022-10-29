@@ -1,7 +1,7 @@
 import { createContinueButton, MakeSlides } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeInfo } from '../createHtmlStrategy';
 export function makeSlidesStrategyInfo(
   txt: string,

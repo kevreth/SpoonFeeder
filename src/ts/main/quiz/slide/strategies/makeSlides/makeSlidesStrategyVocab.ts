@@ -1,4 +1,3 @@
-import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import {
   isEqual,
   isRandom,
@@ -7,9 +6,10 @@ import {
   timestampNow,
 } from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
+import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
@@ -132,7 +132,7 @@ export function setButtonColor(
   if (option === answer) {
     color = 'green';
     getCorrectAudio();
-  };
+  }
   playAudio();
   button.style.backgroundColor = color;
 }

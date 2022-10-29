@@ -1,9 +1,9 @@
-import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
+import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
 export function makeSlidesStrategyImap(
   txt: string,
@@ -39,7 +39,7 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
       if (setValues.result()) {
         classname = 'shape_correct';
         getCorrectAudio();
-      };
+      }
       playAudio();
       element.classList.add(classname);
       setValues.saveData();

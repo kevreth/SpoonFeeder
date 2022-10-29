@@ -1,15 +1,15 @@
-import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
+import { isEqual } from 'lodash';
 import {
   difference,
   intersection,
   removeListener,
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
+import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
-import { isEqual } from 'lodash';
 
 export function makeSlidesStrategySelect(
   inst: string,
@@ -87,7 +87,7 @@ function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
   diff = intersection(_responses, _ans);
   style(diff, 'underline', 'green', doc);
   // get audio buttons
-  if(isEqual(_ans, _responses)) {
+  if (isEqual(_ans, _responses)) {
     getCorrectAudio();
   } else {
     getWrongAudio();

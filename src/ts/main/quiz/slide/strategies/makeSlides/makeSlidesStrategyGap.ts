@@ -1,7 +1,7 @@
-import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { showButton } from '../../../makeSlides';
+import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeComplex } from '../setWidthsStrategy';

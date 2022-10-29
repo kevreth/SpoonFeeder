@@ -1,4 +1,3 @@
-import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { Slide } from '../../../../../main/quiz/slide';
 import {
   isEqual,
@@ -8,8 +7,9 @@ import {
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import { SaveData } from '../../../slide/saveData';
+import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../SetValues';
+import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 const { get: getSavedDataArray } = SaveData;
