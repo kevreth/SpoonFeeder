@@ -6,7 +6,7 @@ import {
   timestampNow,
 } from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
-import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
+import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
 import type { SetValues } from '../../setValues';
@@ -95,7 +95,9 @@ export function addOptionButtonEventListener(
   const txt = vocabTuples[questionCtr][0];
   button.addEventListener('click', () => {
     (res as string[]).push(option);
-    setButtonColor(option, answer, button);
+    const correct = isEqual(option, answer);
+    setButtonColor(correct, button);
+    playAudio(correct);
     for (let i = 0; i < options.length; i++) {
       const button = doc.getElementById('btn' + i) as HTMLElement;
       removeListener(button);
@@ -122,18 +124,9 @@ export function addOptionButtonEventListener(
     }
   });
 }
-export function setButtonColor(
-  option: string,
-  answer: string,
-  button: HTMLElement
-) {
+export function setButtonColor(correct: boolean, button: HTMLElement) {
   let color = 'red';
-  getWrongAudio();
-  if (option === answer) {
-    color = 'green';
-    getCorrectAudio();
-  }
-  playAudio();
+  if (correct) color = 'green';
   button.style.backgroundColor = color;
 }
 export function addContinueButtonListener(

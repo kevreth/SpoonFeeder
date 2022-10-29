@@ -5,7 +5,7 @@ import {
   removeListener,
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
-import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
+import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
@@ -57,6 +57,7 @@ function evaluate2(
   //remove event listeners from words to prevent selection after submission
   removeEventListeners(numWords, doc);
   decorate(ans, responses, doc);
+  playAudio(isEqual(ans, responses));
   element.remove();
   return responses;
 }
@@ -86,13 +87,6 @@ function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
   // correctly selected items
   diff = intersection(_responses, _ans);
   style(diff, 'underline', 'green', doc);
-  // get audio buttons
-  if (isEqual(_ans, _responses)) {
-    getCorrectAudio();
-  } else {
-    getWrongAudio();
-  }
-  playAudio();
 }
 function style(
   diff: AnswerType,

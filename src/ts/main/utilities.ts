@@ -27,11 +27,36 @@ export function removeListener(element: Node): void {
     true
   );
 }
-export function isRandom(): boolean {
-  const val = sessionStorage.getItem('random');
+function checkSessionStorageFlag(key: string): boolean {
+  const val = sessionStorage.getItem(key);
+  //assume key not existing is false
   let retval = false;
   if (val === 'true') retval = true;
   return retval;
+}
+function setSessionStorageFlag(key: string) {
+  sessionStorage.setItem(key, 'true');
+}
+function clearSessionStorageFlag(key: string) {
+  sessionStorage.setItem(key, 'false');
+}
+export function setMute() {
+  setSessionStorageFlag('mute');
+}
+export function clearMute() {
+  clearSessionStorageFlag('mute');
+}
+export function setRandom() {
+  setSessionStorageFlag('random');
+}
+export function clearRandom() {
+  clearSessionStorageFlag('random');
+}
+export function isMute(): boolean {
+  return checkSessionStorageFlag('mute');
+}
+export function isRandom(): boolean {
+  return checkSessionStorageFlag('random');
 }
 export function shuffleMap<K, V>(map: Map<K, V>): Map<K, V> {
   let keys = Array.from(map.keys());

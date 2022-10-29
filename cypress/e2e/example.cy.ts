@@ -2,6 +2,7 @@ import {existVisibleNotEmpty,elementContains,testButton,existAndVisible,continue
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
 describe('Cypress Testing', () => {
+  sessionStorage.setItem('mute','false');
   it('visits the app root url', () => {
     cy.visit('/');
     cy.title().should('eq', 'CyberLearning');

@@ -17,7 +17,7 @@ class Test extends SlideTest<number[]> {
     expect(testable.ans).toEqual(param.ans);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
-  protected factory(): Slide<number[]> {
+  protected factory(): Slide {
     const createHtml = vi.fn();
     const makeSlides = vi.fn();
     const evaluate = vi.fn();

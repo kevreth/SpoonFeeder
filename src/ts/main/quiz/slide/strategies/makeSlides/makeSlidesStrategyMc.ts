@@ -7,7 +7,7 @@ import {
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import { SaveData } from '../../../slide/saveData';
-import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
+import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
@@ -77,11 +77,7 @@ function decorateOptionButton(
   const result = setValues.result();
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   let color = 'red';
-  getWrongAudio();
-  if (result) {
-    color = 'green';
-    getCorrectAudio();
-  }
-  playAudio();
+  if (result) color = 'green';
+  playAudio(result as boolean);
   optionButton.style.backgroundColor = color;
 }

@@ -20,7 +20,7 @@ class Test extends SlideTest<string> {
     expect(testable.img).toEqual(param.img);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
-  protected factory(): Slide<string> {
+  protected factory(): Slide {
     const createHtml = vi.fn();
     const makeSlides = vi.fn();
     const evaluate = vi.fn();

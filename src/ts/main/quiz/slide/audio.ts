@@ -1,10 +1,19 @@
+import { isMute } from '../../../main/utilities';
+
 const audio = new Audio();
-export const getWrongAudio = () => {
-  audio.src = '/resources/audio/incorrect.mp3';
+const PATH = '/resources/audio/incorrect.mp3';
+export const playWrongAudio = () => {
+  audio.src = PATH;
+  play();
 };
-export const getCorrectAudio = () => {
-  audio.src = '/resources/audio/correct.mp3';
+export const playCorrectAudio = () => {
+  audio.src = PATH.replace('in', '');
+  play();
 };
-export const playAudio = () => {
-  audio.play();
-};
+function play() {
+  if (!isMute()) audio.play();
+}
+export function playAudio(correct: boolean) {
+  if (correct) playCorrectAudio();
+  else playWrongAudio();
+}

@@ -1,7 +1,7 @@
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
-import { getCorrectAudio, getWrongAudio, playAudio } from '../../audio';
+import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
@@ -35,12 +35,8 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
       setValues.setRes(id);
       const element = doc.getElementById(id) as HTMLElement;
       let classname = 'shape_incorrect';
-      getWrongAudio();
-      if (setValues.result()) {
-        classname = 'shape_correct';
-        getCorrectAudio();
-      }
-      playAudio();
+      if (setValues.result()) classname = 'shape_correct';
+      playAudio(setValues.result() as boolean);
       element.classList.add(classname);
       setValues.saveData();
       showButton(doc, txt);

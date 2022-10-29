@@ -42,17 +42,16 @@ it('createHtmlLoop', () => {
   expect(result.length).toBe(5);
 });
 it('setButtonColorCorrect', () => {
-  testSetButtonColer('a', 'green');
+  testSetButtonColor(true, 'green');
 });
 it('setButtonColorIncorrect', () => {
-  testSetButtonColer('b', 'red');
+  testSetButtonColor(false, 'red');
 });
-function testSetButtonColer(option: string, color: string) {
-  const answer = 'a';
+function testSetButtonColor(correct: boolean, color: string) {
   const btn = makeButton('btn', 'btn', 'test');
   DOC.body.insertAdjacentHTML('beforeend', '<br>' + btn);
   const id = DOC.getElementById('btn') as HTMLElement;
-  setButtonColor(option, answer, id);
+  setButtonColor(correct, id);
   expect(id.style.backgroundColor).toBe(color);
 }
 

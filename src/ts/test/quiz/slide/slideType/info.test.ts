@@ -13,7 +13,7 @@ class Test extends SlideTest<string> {
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
   }
-  protected factory(): Slide<string> {
+  protected factory(): Slide {
     const createHtml = vi.fn();
     const makeSlides = vi.fn();
     const evaluate = vi.fn();
