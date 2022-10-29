@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import {
   difference,
   intersection,
@@ -8,6 +9,7 @@ import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../SetValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
+import { isEqual } from 'lodash';
 
 export function makeSlidesStrategySelect(
   inst: string,
@@ -75,15 +77,22 @@ function mark(doc: Document) {
 function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
   const _ans = ans as string[];
   const _responses = responses as string[];
-  //items that were not selected but should have been
+  // items that were not selected but should have been
   let diff = difference(_ans, _responses);
   style(diff, 'underline', 'red', doc);
-  //items that should not have been selected but were
+  // items that should not have been selected but were
   diff = difference(_responses, _ans);
   style(diff, 'line-through', 'red', doc);
-  //correctly selected items
+  // correctly selected items
   diff = intersection(_responses, _ans);
   style(diff, 'underline', 'green', doc);
+  // get audio buttons
+  if(isEqual(_ans, _responses)) {
+    getCorrectAudio();
+  } else {
+    getWrongAudio();
+  }
+  playAudio();
 }
 function style(
   diff: AnswerType,

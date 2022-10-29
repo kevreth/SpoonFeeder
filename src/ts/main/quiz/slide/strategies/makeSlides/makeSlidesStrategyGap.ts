@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { showButton } from '../../../makeSlides';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../SetValues';
@@ -117,6 +118,12 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
     eAns.style.color = 'white';
   }
   const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
+  if (pctCorrect === '100') {
+    getCorrectAudio();
+  } else {
+    getWrongAudio();
+  }
+  playAudio();
   const response =
     `Number correct: ${correct} <br>\nNumber questions: ` +
     `${ans.length} <br>\n${pctCorrect}%`;

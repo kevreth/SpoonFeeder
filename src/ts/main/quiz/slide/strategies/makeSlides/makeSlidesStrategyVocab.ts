@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import {
   isEqual,
   isRandom,
@@ -127,7 +128,12 @@ export function setButtonColor(
   button: HTMLElement
 ) {
   let color = 'red';
-  if (option === answer) color = 'green';
+  getWrongAudio();
+  if (option === answer) {
+    color = 'green';
+    getCorrectAudio();
+  };
+  playAudio();
   button.style.backgroundColor = color;
 }
 export function addContinueButtonListener(

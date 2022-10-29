@@ -1,20 +1,25 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
-  <q-overlay v-model="overlay">
-    <template #body>        
-      <div class="overlay fixed-center column">
-        <div class="overlayBtn">
-          <OverlayCloseBtn @click="handleOverlay" />
-          <TrashBtn @click="startOver" />
+  <transition appear group
+    enter-active-class="animated zoomInUp"
+    leave-active-class="animated zoomOutDown"
+    >
+    <q-overlay v-model="overlay">
+      <template #body>        
+        <div class="overlay fixed-center column">
+          <div class="overlayBtn">
+            <OverlayCloseBtn @click="handleOverlay" />
+            <TrashBtn @click="startOver" />
+          </div>
+  
+          <div class="progressBackground bg-secondary">
+            <ProgressTable style="cursor: auto" />
+          </div>
         </div>
-
-        <div class="progressBackground bg-secondary">
-          <ProgressTable style="cursor: auto" />
-        </div>
-      </div>
-    </template>
-  </q-overlay>
+      </template>
+    </q-overlay>
+  </transition>
 </template>
 
 <script setup>
@@ -49,5 +54,8 @@ function startOver() {
 .overlayBtn {
   color: #fc3d08;
   font-size: 25px;
+}
+.animated {
+  animation-duration: 1s;
 }
 </style>

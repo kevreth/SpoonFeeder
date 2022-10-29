@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { showButton } from '../../../makeSlides';
@@ -27,7 +28,12 @@ export function makeSlidesStrategySort(
     const res = sortables.map((x) => x.element.innerHTML);
     setValues.setRes(res);
     let msg = 'incorrect';
-    if (setValues.result()) msg = 'correct';
+    getWrongAudio();
+    if (setValues.result()) {
+      msg = 'correct';
+      getCorrectAudio();
+    };
+    playAudio();
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();

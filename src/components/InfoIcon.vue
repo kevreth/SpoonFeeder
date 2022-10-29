@@ -13,5 +13,6 @@
  top: 20px;
  left: 425px;
  z-index: 1;
+ cursor: pointer;
 }
 </style>

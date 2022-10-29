@@ -12,6 +12,27 @@
 
 <script setup>
 import MenuOverlay from 'src/components/MenuOverlay.vue';
+import { onBeforeUnmount, onMounted } from 'vue'
+import { useQuasar } from 'quasar'
+
+// loading page
+const $q = useQuasar()
+let timer
+
+onBeforeUnmount(() => {
+  if (timer !== void 0) {
+    clearTimeout(timer)
+    $q.loading.hide()
+  }
+})
+onMounted(() => {
+  $q.loading.show()
+  // hiding in 1s
+  timer = setTimeout(() => {
+    $q.loading.hide()
+    timer = void 0
+  }, 1000)
+})
 </script>
 
 <style>

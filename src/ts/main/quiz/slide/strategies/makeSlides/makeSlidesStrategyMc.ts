@@ -1,3 +1,4 @@
+import { getWrongAudio, getCorrectAudio, playAudio } from '../makeSlidesStrategy';
 import { Slide } from '../../../../../main/quiz/slide';
 import {
   isEqual,
@@ -76,6 +77,11 @@ function decorateOptionButton(
   const result = setValues.result();
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   let color = 'red';
-  if (result) color = 'green';
+  getWrongAudio();
+  if (result) {
+    color = 'green';
+    getCorrectAudio();
+  }
+  playAudio();
   optionButton.style.backgroundColor = color;
 }
