@@ -78,6 +78,6 @@ function decorateOptionButton(
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   let color = 'red';
   if (result) color = 'green';
-  playAudio(result as boolean);
   optionButton.style.backgroundColor = color;
+  playAudio(result as boolean);
 }
