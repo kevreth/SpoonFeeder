@@ -120,7 +120,8 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
     eAns.style.color = 'white';
   }
   const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
-  playAudio(pctCorrect === '100');
+  const isCorrect = pctCorrect === '100';
+  playAudio(isCorrect);
   const response =
     `Number correct: ${correct} <br>\nNumber questions: ` +
     `${ans.length} <br>\n${pctCorrect}%`;

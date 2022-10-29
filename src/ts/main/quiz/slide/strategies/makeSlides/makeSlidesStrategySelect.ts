@@ -1,4 +1,3 @@
-import { isEqual } from 'lodash';
 import {
   difference,
   intersection,
@@ -26,8 +25,10 @@ export function makeSlidesStrategySelect(
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txtarr.length;
   element.addEventListener('click', () => {
-    const res = evaluate2(element, numWords, ans, doc);
+    const res = evaluate(element, numWords, ans, doc);
     setValues.setRes(res);
+    const isCorrect = setValues.result() as boolean;
+    playAudio(isCorrect);
     setValues.saveData();
     showButton(doc, txt);
   });
@@ -47,7 +48,7 @@ function selected(id: string, doc: Document): void {
   } else element.style.backgroundColor = 'blue';
   element.style.color = color;
 }
-function evaluate2(
+function evaluate(
   element: Element,
   numWords: number,
   ans: AnswerType,
@@ -57,8 +58,6 @@ function evaluate2(
   //remove event listeners from words to prevent selection after submission
   removeEventListeners(numWords, doc);
   decorate(ans, responses, doc);
-  const isCorrect = isEqual(ans, responses);
-  playAudio(isCorrect);
   element.remove();
   return responses;
 }
