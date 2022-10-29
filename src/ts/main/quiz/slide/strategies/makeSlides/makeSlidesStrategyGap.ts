@@ -1,3 +1,4 @@
+import { isEqual } from 'lodash';
 import { showButton } from '../../../makeSlides';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
@@ -108,7 +109,8 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
     const response = responses[ctr];
     let color = 'red';
     const answer = ans[ctr];
-    if (answer === response) {
+    const isCorrect = isEqual(answer, response);
+    if (isCorrect) {
       color = 'green';
       correct++;
     }

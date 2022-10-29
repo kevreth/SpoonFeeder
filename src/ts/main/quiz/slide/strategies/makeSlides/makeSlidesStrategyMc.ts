@@ -74,10 +74,10 @@ function decorateOptionButton(
   doc: Document,
   optionCtr: number
 ) {
-  const result = setValues.result();
+  const isCorrect = setValues.result() as boolean;
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   let color = 'red';
-  if (result) color = 'green';
+  if (isCorrect) color = 'green';
   optionButton.style.backgroundColor = color;
-  playAudio(result as boolean);
+  playAudio(isCorrect as boolean);
 }

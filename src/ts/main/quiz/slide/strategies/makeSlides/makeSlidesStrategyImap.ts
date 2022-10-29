@@ -34,9 +34,10 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
       });
       setValues.setRes(id);
       const element = doc.getElementById(id) as HTMLElement;
+      const isCorrect = setValues.result() as boolean;
       let classname = 'shape_incorrect';
-      if (setValues.result()) classname = 'shape_correct';
-      playAudio(setValues.result() as boolean);
+      if (isCorrect) classname = 'shape_correct';
+      playAudio(isCorrect);
       element.classList.add(classname);
       setValues.saveData();
       showButton(doc, txt);

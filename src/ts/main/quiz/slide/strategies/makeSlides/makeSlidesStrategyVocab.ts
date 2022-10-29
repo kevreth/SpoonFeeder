@@ -95,9 +95,9 @@ export function addOptionButtonEventListener(
   const txt = vocabTuples[questionCtr][0];
   button.addEventListener('click', () => {
     (res as string[]).push(option);
-    const correct = isEqual(option, answer);
-    setButtonColor(correct, button);
-    playAudio(correct);
+    const isCorrect = isEqual(option, answer);
+    setButtonColor(isCorrect, button);
+    playAudio(isCorrect);
     for (let i = 0; i < options.length; i++) {
       const button = doc.getElementById('btn' + i) as HTMLElement;
       removeListener(button);

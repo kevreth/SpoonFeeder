@@ -28,8 +28,9 @@ export function makeSlidesStrategySort(
     const res = sortables.map((x) => x.element.innerHTML);
     setValues.setRes(res);
     let msg = 'incorrect';
-    if (setValues.result()) msg = 'correct';
-    playAudio(setValues.result() as boolean);
+    const isCorrect = setValues.result() as boolean;
+    if (isCorrect) msg = 'correct';
+    playAudio(isCorrect);
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();

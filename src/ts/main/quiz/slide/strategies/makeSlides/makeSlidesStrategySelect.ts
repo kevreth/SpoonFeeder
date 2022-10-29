@@ -57,7 +57,8 @@ function evaluate2(
   //remove event listeners from words to prevent selection after submission
   removeEventListeners(numWords, doc);
   decorate(ans, responses, doc);
-  playAudio(isEqual(ans, responses));
+  const isCorrect = isEqual(ans, responses);
+  playAudio(isCorrect);
   element.remove();
   return responses;
 }
