@@ -1,0 +1,12 @@
+Exercise group: 
+    vocabulary
+Evaluation
+    vocab
+    gap
+Result
+    vocab
+    gap
+Exercise item:
+    gap (requires all gaps correct)
+Whole Exercise:
+    gap (requires 100% correct)
