@@ -107,13 +107,15 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
   let correct = 0;
   for (let ctr = 0; ctr < responses.length; ctr++) {
     const response = responses[ctr];
+
+    //icCorrect
     let color = 'red';
     const answer = ans[ctr];
     const isCorrect = isEqual(answer, response);
-    if (isCorrect) {
-      color = 'green';
-      correct++;
-    }
+    if (isCorrect) color = 'green';
+    if (isCorrect) correct++;
+    /////
+
     const id = 'ans' + ctr;
     const eAns = doc.getElementById(id) as HTMLElement;
     eAns.style.backgroundColor = color;

@@ -27,8 +27,12 @@ export function makeSlidesStrategySelect(
   element.addEventListener('click', () => {
     const res = evaluate(element, numWords, ans, doc);
     setValues.setRes(res);
+
+    //icCorrect
     const isCorrect = setValues.result() as boolean;
     playAudio(isCorrect);
+    /////
+
     setValues.saveData();
     showButton(doc, txt);
   });

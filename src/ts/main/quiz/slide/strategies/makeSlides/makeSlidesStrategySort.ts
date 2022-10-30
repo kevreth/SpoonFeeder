@@ -27,10 +27,14 @@ export function makeSlidesStrategySort(
   done.addEventListener('click', () => {
     const res = sortables.map((x) => x.element.innerHTML);
     setValues.setRes(res);
+
+    //icCorrect
     let msg = 'incorrect';
     const isCorrect = setValues.result() as boolean;
     if (isCorrect) msg = 'correct';
     playAudio(isCorrect);
+    /////
+
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();
