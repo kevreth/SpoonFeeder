@@ -37,8 +37,7 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
 
       //icCorrect
       const isCorrect = setValues.result() as boolean;
-      let classname = 'shape_incorrect';
-      if (isCorrect) classname = 'shape_correct';
+      const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
       playAudio(isCorrect);
       /////
 

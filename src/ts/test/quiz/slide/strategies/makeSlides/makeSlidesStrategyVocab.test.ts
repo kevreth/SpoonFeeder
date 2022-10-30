@@ -4,10 +4,8 @@ import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtml
 import {
   createHtmlLoop,
   generateQuestions,
-  setButtonColor,
 } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
 import { VOCAB } from '../../../../../main/quiz/slideFactory';
-import { makeButton } from '../../../../../main/utilities';
 sessionStorage.setItem('random', 'false');
 const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 const MAP: Map<string, string> = new Map([
@@ -41,19 +39,7 @@ it('createHtmlLoop', () => {
   expect(result).not.toBeNull();
   expect(result.length).toBe(5);
 });
-it('setButtonColorCorrect', () => {
-  testSetButtonColor(true, 'green');
-});
-it('setButtonColorIncorrect', () => {
-  testSetButtonColor(false, 'red');
-});
-function testSetButtonColor(correct: boolean, color: string) {
-  const btn = makeButton('btn', 'btn', 'test');
-  DOC.body.insertAdjacentHTML('beforeend', '<br>' + btn);
-  const id = DOC.getElementById('btn') as HTMLElement;
-  setButtonColor(correct, id);
-  expect(id.style.backgroundColor).toBe(color);
-}
+// s
 
 // //test that the question and 4 buttons appear
 // it('includesEverything', () => {

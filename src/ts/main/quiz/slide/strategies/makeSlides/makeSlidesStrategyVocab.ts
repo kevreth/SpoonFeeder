@@ -98,10 +98,11 @@ export function addOptionButtonEventListener(
 
     //isCorrect
     const isCorrect = isEqual(option, answer);
-    setButtonColor(isCorrect, button);
+    const color = isCorrect ? 'green' : 'red';
     playAudio(isCorrect);
     /////
 
+    button.style.backgroundColor = color;
     for (let i = 0; i < options.length; i++) {
       const button = doc.getElementById('btn' + i) as HTMLElement;
       removeListener(button);
@@ -127,11 +128,6 @@ export function addOptionButtonEventListener(
       showButton(doc, txt);
     }
   });
-}
-export function setButtonColor(correct: boolean, button: HTMLElement) {
-  let color = 'red';
-  if (correct) color = 'green';
-  button.style.backgroundColor = color;
 }
 export function addContinueButtonListener(
   doc: Document,

@@ -108,11 +108,10 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
   for (let ctr = 0; ctr < responses.length; ctr++) {
     const response = responses[ctr];
 
-    //icCorrect
-    let color = 'red';
     const answer = ans[ctr];
+    //icCorrect
     const isCorrect = isEqual(answer, response);
-    if (isCorrect) color = 'green';
+    const color = isCorrect ? 'green' : 'red';
     if (isCorrect) correct++;
     /////
 

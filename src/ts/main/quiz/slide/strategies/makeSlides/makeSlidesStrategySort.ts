@@ -29,12 +29,10 @@ export function makeSlidesStrategySort(
     setValues.setRes(res);
 
     //icCorrect
-    let msg = 'incorrect';
     const isCorrect = setValues.result() as boolean;
-    if (isCorrect) msg = 'correct';
+    const msg = isCorrect ? 'correct' : 'incorrect';
     playAudio(isCorrect);
-    /////
-
+    ////
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();
