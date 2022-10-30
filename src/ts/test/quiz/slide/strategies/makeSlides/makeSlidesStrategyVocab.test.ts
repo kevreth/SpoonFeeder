@@ -1,4 +1,3 @@
-import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
 import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtmlStrategy';
 import {
@@ -7,7 +6,7 @@ import {
 } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
 import { VOCAB } from '../../../../../main/quiz/slideFactory';
 sessionStorage.setItem('random', 'false');
-const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
+// const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 const MAP: Map<string, string> = new Map([
   ['term1', 'def1'],
   ['term2', 'def2'],
