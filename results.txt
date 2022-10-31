@@ -10,3 +10,11 @@ Exercise item:
     gap (requires all gaps correct)
 Whole Exercise:
     gap (requires 100% correct)
+
+       slides per exercise  results per exercise  result
+gap    Y                       N                  array
+imap   Y                       Y                  scalar
+mc     Y                       Y                  scalar
+select Y                       Y                  array
+sort   Y                       Y                  array
+vocab  N                       N                  array
