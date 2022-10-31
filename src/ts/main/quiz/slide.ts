@@ -42,7 +42,11 @@ export abstract class Slide implements SlideInterface {
     let retval = -1;
     const isArray = Array.isArray(txt);
     if (isArray) {
-      retval = exerciseGroupSlideIndex(saves, txt, retval);
+      retval = exerciseGroupSlideIndex(
+        saves,
+        txt as string[] & number[],
+        retval
+      );
     } else {
       retval = saves.findIndex((x) => isEqual(x.txt, txt));
     }
