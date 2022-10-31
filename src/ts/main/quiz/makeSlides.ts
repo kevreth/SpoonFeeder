@@ -20,33 +20,7 @@ export class MakeSlides {
       const isArray = Array.isArray(slide.txt);
       if (isArray) {
         //if all slide questions answered
-        const results = Array<string>();
-        for (const saved of saves) {
-          const idx2 = (slide.txt as string[]).findIndex((x) =>
-            isEqual(x, saved.txt as string)
-          );
-          if (idx2 > -1) {
-            results.push(saved.result as string);
-          }
-        }
-        //TODO: should this just test on the length, or the content?
-        if (isEqual(results.length, slide.txt.length)) {
-          MakeSlides.reloadSlide(slide, idx, doc);
-        }
-        //not all slide questions answered
-        else {
-          const results = Array<string>();
-          for (const saved of saves) {
-            const idx2 = (slide.txt as string[]).findIndex((x) =>
-              isEqual(x, saved.txt as string)
-            );
-            if (idx2 > -1) {
-              results.push(saved.result as string);
-            }
-          }
-          slide.setResults(results);
-          slide.makeSlides(doc);
-        }
+        exerciseGroupMakeSlides(saves, slide, idx, doc);
       } else {
         MakeSlides.reloadSlide(slide, idx, doc);
       }
@@ -63,25 +37,11 @@ export class MakeSlides {
     }
   }
   //The slide has already been presented to the user, as will happen on reload.
-  private static reloadSlide(
-    slide: SlideInterface,
-    idx: number,
-    doc: Document
-  ) {
+  public static reloadSlide(slide: SlideInterface, idx: number, doc: Document) {
     const saves = getSavedDataArray();
     const isArray = Array.isArray(slide.txt);
     if (isArray) {
-      const results = Array<string>();
-      for (const saved of saves) {
-        const idx2 = (slide.txt as string[]).findIndex((x) =>
-          isEqual(x, saved.txt as string)
-        );
-        if (idx2 > -1) {
-          results.push(saved.result as string);
-        }
-      }
-      slide.setResults(results);
-      MakeSlides.showSlides(doc);
+      exerciseGroupReloadSlide(saves, slide, doc);
     } else {
       const result = saves[idx].result;
       slide.setResults(result);
@@ -96,6 +56,60 @@ export class MakeSlides {
     startOverButton(doc);
   }
 }
+export function exerciseGroupMakeSlides(
+  saves: SaveData[],
+  slide: SlideInterface,
+  idx: number,
+  doc: Document
+) {
+  const results = Array<string>();
+  for (const saved of saves) {
+    const idx2 = (slide.txt as string[]).findIndex((x) =>
+      isEqual(x, saved.txt as string)
+    );
+    if (idx2 > -1) {
+      results.push(saved.result as string);
+    }
+  }
+  //TODO: should this just test on the length, or the content?
+  if (isEqual(results.length, slide.txt.length)) {
+    MakeSlides.reloadSlide(slide, idx, doc);
+  }
+
+  //not all slide questions answered
+  else {
+    const results = Array<string>();
+    for (const saved of saves) {
+      const idx2 = (slide.txt as string[]).findIndex((x) =>
+        isEqual(x, saved.txt as string)
+      );
+      if (idx2 > -1) {
+        results.push(saved.result as string);
+      }
+    }
+    slide.setResults(results);
+    slide.makeSlides(doc);
+  }
+}
+
+export function exerciseGroupReloadSlide(
+  saves: SaveData[],
+  slide: SlideInterface,
+  doc: Document
+) {
+  const results = Array<string>();
+  for (const saved of saves) {
+    const idx2 = (slide.txt as string[]).findIndex((x) =>
+      isEqual(x, saved.txt as string)
+    );
+    if (idx2 > -1) {
+      results.push(saved.result as string);
+    }
+  }
+  slide.setResults(results);
+  MakeSlides.showSlides(doc);
+}
+
 export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
