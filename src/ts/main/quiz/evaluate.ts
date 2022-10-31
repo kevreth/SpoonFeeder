@@ -13,10 +13,7 @@ export function summary(
   correctCtr: number,
   pctCorrect: string
 ) {
-  return +
-    `NUMBER OF QUESTIONS: ${responseCtr}<br>\n` +
-    `NUMBER CORRECT: ${correctCtr}<br>\n` +
-    `PERCENT CORRECT: ${pctCorrect}%`;
+  return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
 }
 export function percentCorrect(
   correctCtr: number,
