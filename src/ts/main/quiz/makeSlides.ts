@@ -20,7 +20,7 @@ export class MakeSlides {
       const isArray = Array.isArray(slide.txt);
       if (isArray) {
         //if all slide questions answered
-        exerciseGroupMakeSlides(saves, slide, idx, doc);
+        exerciseGroupMakeSlides(saves, slide, idx, doc, MakeSlides.reloadSlide);
       } else {
         MakeSlides.reloadSlide(slide, idx, doc);
       }
@@ -60,7 +60,8 @@ export function exerciseGroupMakeSlides(
   saves: SaveData[],
   slide: SlideInterface,
   idx: number,
-  doc: Document
+  doc: Document,
+  reloadSlide: (slide: SlideInterface, idx: number, doc: Document) => void
 ) {
   const results = Array<string>();
   for (const saved of saves) {
@@ -73,7 +74,7 @@ export function exerciseGroupMakeSlides(
   }
   //TODO: should this just test on the length, or the content?
   if (isEqual(results.length, slide.txt.length)) {
-    MakeSlides.reloadSlide(slide, idx, doc);
+    reloadSlide(slide, idx, doc);
   }
 
   //not all slide questions answered
