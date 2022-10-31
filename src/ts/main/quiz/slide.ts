@@ -1,5 +1,6 @@
 import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
+import { exerciseGroupSlideIndex } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
 import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
@@ -41,10 +42,7 @@ export abstract class Slide implements SlideInterface {
     let retval = -1;
     const isArray = Array.isArray(txt);
     if (isArray) {
-      for (let i = 0; i < saves.length; i++) {
-        const idx = txt.findIndex((x) => isEqual(x, saves[i].txt as string));
-        if (idx > -1) retval = i;
-      }
+      retval = exerciseGroupSlideIndex(saves, txt, retval);
     } else {
       retval = saves.findIndex((x) => isEqual(x.txt, txt));
     }

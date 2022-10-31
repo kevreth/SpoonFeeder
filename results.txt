@@ -11,10 +11,10 @@ Exercise item:
 Whole Exercise:
     gap (requires 100% correct)
 
-       slides per exercise  results per exercise  result
-gap    Y                       N                  array
-imap   Y                       Y                  scalar
-mc     Y                       Y                  scalar
-select Y                       Y                  array
-sort   Y                       Y                  array
-vocab  N                       N                  array
+       slides   result  marking  audio
+gap    single   array   item     
+imap   single   scalar  whole
+mc     single   scalar  whole
+select single   array   item
+sort   single   array   whole
+vocab  multiple array   whole

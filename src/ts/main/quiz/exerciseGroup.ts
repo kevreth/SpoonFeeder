@@ -19,3 +19,11 @@ export function exerciseGroupScore(
   slide.setResults(results);
   return idx;
 }
+export function exerciseGroupSlideIndex(saves: SaveData[], txt: string[] | number[], retval: number) {
+  for (let i = 0; i < saves.length; i++) {
+    const idx = txt.findIndex((x) => isEqual(x, saves[i].txt as string));
+    if (idx > -1)
+      retval = i;
+  }
+  return retval;
+}
