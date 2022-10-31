@@ -107,7 +107,6 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
   let correct = 0;
   for (let ctr = 0; ctr < responses.length; ctr++) {
     const response = responses[ctr];
-
     const answer = ans[ctr];
     //icCorrect
     const isCorrect = isEqual(answer, response);

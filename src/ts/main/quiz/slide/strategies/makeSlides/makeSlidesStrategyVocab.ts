@@ -99,8 +99,8 @@ export function addOptionButtonEventListener(
     //isCorrect
     const isCorrect = isEqual(option, answer);
     const color = isCorrect ? 'green' : 'red';
-    playAudio(isCorrect);
     /////
+    playAudio(isCorrect);
 
     button.style.backgroundColor = color;
     for (let i = 0; i < options.length; i++) {

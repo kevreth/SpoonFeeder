@@ -33,14 +33,14 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
         removeListener(element);
       });
       setValues.setRes(id);
-      const element = doc.getElementById(id) as HTMLElement;
 
       //icCorrect
       const isCorrect = setValues.result() as boolean;
       const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
-      playAudio(isCorrect);
       /////
+      playAudio(isCorrect);
 
+      const element = doc.getElementById(id) as HTMLElement;
       element.classList.add(classname);
       setValues.saveData();
       showButton(doc, txt);

@@ -40,11 +40,12 @@ export function makeSlidesStrategySelect(
 function iter2(ctr: number, doc: Document): void {
   const element = doc.getElementById('w' + ctr) as HTMLElement;
   element.addEventListener('click', (event) => {
-    selected((event.target as Element).id, doc);
+    const id = (event.target as Element).id;
+    const element = doc.getElementById(id) as HTMLElement;
+    selected(element);
   });
 }
-function selected(id: string, doc: Document): void {
-  const element = doc.getElementById(id) as HTMLElement;
+function selected(element: HTMLElement): void {
   let color = 'white';
   if (element.style.backgroundColor === 'blue') {
     element.style.removeProperty('background-color');

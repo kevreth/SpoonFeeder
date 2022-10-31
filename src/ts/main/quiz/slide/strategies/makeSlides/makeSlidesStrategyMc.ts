@@ -80,6 +80,6 @@ function decorateOptionButton(
   const isCorrect = setValues.result() as boolean;
   const color = isCorrect ? 'green' : 'red';
   optionButton.style.backgroundColor = color;
-  playAudio(isCorrect as boolean);
   /////
+  playAudio(isCorrect as boolean);
 }

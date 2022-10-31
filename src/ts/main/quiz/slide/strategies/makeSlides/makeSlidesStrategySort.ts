@@ -31,8 +31,8 @@ export function makeSlidesStrategySort(
     //icCorrect
     const isCorrect = setValues.result() as boolean;
     const msg = isCorrect ? 'correct' : 'incorrect';
-    playAudio(isCorrect);
     ////
+    playAudio(isCorrect);
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
     done.remove();
