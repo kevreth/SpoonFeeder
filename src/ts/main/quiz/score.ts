@@ -87,7 +87,8 @@ export class Score {
     const isArray = Array.isArray(slide.txt);
     //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
     if (isArray) {
-      exerciseGroupScore(saves, slide);
+      const results = exerciseGroupScore(saves, slide.txt as string[]);
+      slide.setResults(results);
     } else {
       const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
       if (idx > -1) {
