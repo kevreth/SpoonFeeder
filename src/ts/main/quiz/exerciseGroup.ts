@@ -22,26 +22,14 @@ export function exerciseGroupMakeSlides(
   reloadSlide: (slide: SlideInterface, idx: number, doc: Document) => void
 ) {
   const txt = slide.txt as string[];
-  const results = Array<string>();
-  for (const saved of saves) {
-    const includes = txt.includes(saved.txt as string);
-    if (includes) {
-      results.push(saved.result as string);
-    }
-  }
+  const results = exerciseGroupScore(saves, txt);
   //TODO: should this just test on the length, or the content?
   if (isEqual(results.length, slide.txt.length)) {
     reloadSlide(slide, idx, doc);
   }
   //not all slide questions answered
   else {
-    const results = Array<string>();
-    for (const saved of saves) {
-      const includes = txt.includes(saved.txt as string);
-      if (includes) {
-        results.push(saved.result as string);
-      }
-    }
+    const results = exerciseGroupScore(saves, txt);
     slide.setResults(results);
     slide.makeSlides(doc);
   }
