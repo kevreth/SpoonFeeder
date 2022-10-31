@@ -83,3 +83,6 @@ export function exerciseGroupReloadSlide(
   slide.setResults(results);
   showSlides(doc);
 }
+export function exerciseGroupScore2(count: number, result: boolean[]) {
+  return result.filter((value) => value === true).length;
+}
