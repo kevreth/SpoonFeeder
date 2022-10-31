@@ -10,7 +10,10 @@ export function exerciseGroupSlideIndex(
   for (let i = 0; i < saves.length; i++) {
     const save = saves[i].txt as string & number;
     const includes = txt.includes(save);
-    if (includes) retval = i;
+    if (includes) {
+      retval = i;
+      break;
+    }
   }
   return retval;
 }
@@ -29,7 +32,6 @@ export function exerciseGroupMakeSlides(
   }
   //not all slide questions answered
   else {
-    const results = exerciseGroupScore(saves, txt);
     slide.setResults(results);
     slide.makeSlides(doc);
   }
