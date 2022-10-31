@@ -40,8 +40,8 @@ export class Score {
   public static getScore(slide: SlideInterface): number {
     const result = slide.result();
     let count = 0;
-    if (Array.isArray(result))
-      count = result.filter((value) => value === true).length;
+    const isArray = Array.isArray(result);
+    if (isArray) count = result.filter((value) => value === true).length;
     else count = result ? 1 : 0;
     return count;
   }

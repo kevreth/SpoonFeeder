@@ -39,7 +39,8 @@ export abstract class Slide implements SlideInterface {
   static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
     //TODO: factor out code in common with MakeSlides.showSlides() and Score.exercise()
     let retval = -1;
-    if (Array.isArray(txt)) {
+    const isArray = Array.isArray(txt);
+    if (isArray) {
       for (let i = 0; i < saves.length; i++) {
         const idx = txt.findIndex((x) => isEqual(x, saves[i].txt as string));
         if (idx > -1) retval = i;
