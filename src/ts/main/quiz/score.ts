@@ -42,7 +42,7 @@ export class Score {
     const result = slide.result();
     let count = 0;
     const isArray = Array.isArray(result);
-    if (isArray) count = exerciseGroupScore2(count, result);
+    if (isArray) count = exerciseGroupScore2(result);
     else count = result ? 1 : 0;
     return count;
   }
