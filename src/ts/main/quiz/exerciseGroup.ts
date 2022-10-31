@@ -22,10 +22,8 @@ export function exerciseGroupMakeSlides(
 ) {
   const results = Array<string>();
   for (const saved of saves) {
-    const idx2 = (slide.txt as string[]).findIndex((x) =>
-      isEqual(x, saved.txt as string)
-    );
-    if (idx2 > -1) {
+    const idx2 = (slide.txt as string[]).includes(saved.txt as string);
+    if (idx2) {
       results.push(saved.result as string);
     }
   }
