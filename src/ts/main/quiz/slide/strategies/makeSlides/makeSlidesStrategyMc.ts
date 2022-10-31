@@ -31,16 +31,27 @@ export function makeSlidesStrategyMc(
   let idx = 0;
   if ((idx = Slide.getSlideSavedIndex(saves, txt)) > -1) {
     //slide was previously saved, so we display results
-    const result = saves[idx].result as string;
-    const optionCtr = options.findIndex((x) => isEqual(x, result as string));
-    decorateOptionButton(setValues, doc, optionCtr);
-    showButton(doc, txt);
+    conclude(saves, idx, options, setValues, doc, txt);
   } else {
     options.forEach((option, optionCtr) => {
       addBehavior(doc, option, options.length, optionCtr, setValues, txt);
     });
   }
 }
+function conclude(
+  saves: SaveData[],
+  idx: number,
+  options: string[],
+  setValues: SetValues,
+  doc: Document,
+  txt: string
+) {
+  const result = saves[idx].result as string;
+  const optionCtr = options.findIndex((x) => isEqual(x, result as string));
+  decorateOptionButton(setValues, doc, optionCtr);
+  showButton(doc, txt);
+}
+
 function addBehavior(
   doc: Document,
   option: string,

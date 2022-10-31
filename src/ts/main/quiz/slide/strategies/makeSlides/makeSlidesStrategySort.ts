@@ -25,19 +25,7 @@ export function makeSlidesStrategySort(
   gsap.to(container, { duration: 0.5, autoAlpha: 1 });
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
-    const res = sortables.map((x) => x.element.innerHTML);
-    setValues.setRes(res);
-
-    //icCorrect
-    const isCorrect = setValues.result() as boolean;
-    const msg = isCorrect ? 'correct' : 'incorrect';
-    ////
-    playAudio(isCorrect);
-    const content = doc.getElementById('content') as HTMLElement;
-    content.insertAdjacentHTML('beforeend', msg);
-    done.remove();
-    setValues.saveData();
-    showButton(doc, txt);
+    conclude(sortables, setValues, doc, done, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {
@@ -105,4 +93,30 @@ export function makeSlidesStrategySort(
     }
     return sortable;
   }
+}
+function conclude(
+  sortables: {
+    dragger: Draggable;
+    element: Element;
+    index: number;
+    setIndex: (index: number) => void;
+  }[],
+  setValues: SetValues,
+  doc: Document,
+  done: HTMLElement,
+  txt: string
+) {
+  const res = sortables.map((x) => x.element.innerHTML);
+  setValues.setRes(res);
+
+  //icCorrect
+  const isCorrect = setValues.result() as boolean;
+  const msg = isCorrect ? 'correct' : 'incorrect';
+  ////
+  playAudio(isCorrect);
+  const content = doc.getElementById('content') as HTMLElement;
+  content.insertAdjacentHTML('beforeend', msg);
+  done.remove();
+  setValues.saveData();
+  showButton(doc, txt);
 }

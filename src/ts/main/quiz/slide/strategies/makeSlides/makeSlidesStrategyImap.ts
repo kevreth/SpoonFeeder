@@ -27,23 +27,32 @@ function afterAll(setValues: SetValues, doc: Document, txt: string) {
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.addEventListener('click', () => {
-      ids.forEach((id) => {
-        const element = doc.getElementById(id) as HTMLElement;
-        element.classList.remove('shape');
-        removeListener(element);
-      });
-      setValues.setRes(id);
-
-      //icCorrect
-      const isCorrect = setValues.result() as boolean;
-      const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
-      /////
-      playAudio(isCorrect);
-
-      const element = doc.getElementById(id) as HTMLElement;
-      element.classList.add(classname);
-      setValues.saveData();
-      showButton(doc, txt);
+      conclude(ids, doc, setValues, id, txt);
     });
   });
+}
+function conclude(
+  ids: string[],
+  doc: Document,
+  setValues: SetValues,
+  id: string,
+  txt: string
+) {
+  ids.forEach((id) => {
+    const element = doc.getElementById(id) as HTMLElement;
+    element.classList.remove('shape');
+    removeListener(element);
+  });
+  setValues.setRes(id);
+
+  //icCorrect
+  const isCorrect = setValues.result() as boolean;
+  const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
+  /////
+  playAudio(isCorrect);
+
+  const element = doc.getElementById(id) as HTMLElement;
+  element.classList.add(classname);
+  setValues.saveData();
+  showButton(doc, txt);
 }

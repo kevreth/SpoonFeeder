@@ -22,26 +22,32 @@ export function makeSlidesStrategySelect(
   const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
   for (let ctr = 0; ctr < txtarr.length; ctr++) iter2(ctr + 1, doc);
+  conclude(doc, txtarr, ans, setValues, txt);
+}
+function conclude(
+  doc: Document,
+  txtarr: string[],
+  ans: AnswerType,
+  setValues: SetValues,
+  txt: string
+) {
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txtarr.length;
   element.addEventListener('click', () => {
     const res = evaluate(element, numWords, ans, doc);
     setValues.setRes(res);
-
     //icCorrect
     const isCorrect = setValues.result() as boolean;
     playAudio(isCorrect);
     /////
-
     setValues.saveData();
     showButton(doc, txt);
   });
 }
+
 function iter2(ctr: number, doc: Document): void {
   const element = doc.getElementById('w' + ctr) as HTMLElement;
-  element.addEventListener('click', (event) => {
-    const id = (event.target as Element).id;
-    const element = doc.getElementById(id) as HTMLElement;
+  element.addEventListener('click', () => {
     selected(element);
   });
 }

@@ -94,41 +94,70 @@ export function addOptionButtonEventListener(
   const button = doc.getElementById(buttonId) as HTMLElement;
   const txt = vocabTuples[questionCtr][0];
   button.addEventListener('click', () => {
-    (res as string[]).push(option);
-
-    //isCorrect
-    const isCorrect = isEqual(option, answer);
-    const color = isCorrect ? 'green' : 'red';
-    /////
-    playAudio(isCorrect);
-
-    button.style.backgroundColor = color;
-    for (let i = 0; i < options.length; i++) {
-      const button = doc.getElementById('btn' + i) as HTMLElement;
-      removeListener(button);
-    }
-    if (questionCtr + 1 < html_list.length) {
-      addContinueButtonListener(
-        doc,
-        html_list,
-        vocabTuples,
-        questionCtr,
-        maxWidthStrategy,
-        res,
-        setValues
-      );
-      saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
-    } else {
-      saveData(
-        vocabTuples[questionCtr][0],
-        (res as string[])[questionCtr],
-        timestampNow(),
-        true
-      );
-      showButton(doc, txt);
-    }
+    conclude(
+      res,
+      option,
+      answer,
+      button,
+      options,
+      doc,
+      questionCtr,
+      html_list,
+      vocabTuples,
+      maxWidthStrategy,
+      setValues,
+      txt
+    );
   });
 }
+function conclude(
+  res: AnswerType,
+  option: string,
+  answer: string,
+  button: HTMLElement,
+  options: string[],
+  doc: Document,
+  questionCtr: number,
+  html_list: string[],
+  vocabTuples: vocabTuplesType,
+  maxWidthStrategy: SetWidthTypeSimple,
+  setValues: SetValues,
+  txt: string
+) {
+  (res as string[]).push(option);
+  //isCorrect
+  const isCorrect = isEqual(option, answer);
+  const color = isCorrect ? 'green' : 'red';
+  /////
+  playAudio(isCorrect);
+
+  button.style.backgroundColor = color;
+  for (let i = 0; i < options.length; i++) {
+    const button = doc.getElementById('btn' + i) as HTMLElement;
+    removeListener(button);
+  }
+  if (questionCtr + 1 < html_list.length) {
+    addContinueButtonListener(
+      doc,
+      html_list,
+      vocabTuples,
+      questionCtr,
+      maxWidthStrategy,
+      res,
+      setValues
+    );
+    saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
+  } else {
+    saveData(
+      vocabTuples[questionCtr][0],
+      (res as string[])[questionCtr],
+      timestampNow(),
+      true
+    );
+    showButton(doc, txt);
+  }
+}
+
 export function addContinueButtonListener(
   doc: Document,
   html_list: string[],

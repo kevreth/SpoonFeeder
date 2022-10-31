@@ -88,15 +88,24 @@ function setgap(
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
     if (fillsRemaining === 0) {
-      const res = evaluateA(doc, ans);
-      setValues.setRes(res);
-      setValues.saveData();
-      showButton(doc, txt);
+      conclude(doc, ans, setValues, txt);
     }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
 }
+function conclude(
+  doc: Document,
+  ans: AnswerType,
+  setValues: SetValues,
+  txt: string
+) {
+  const res = evaluateA(doc, ans);
+  setValues.setRes(res);
+  setValues.saveData();
+  showButton(doc, txt);
+}
+
 function evaluateA(doc: Document, ans: AnswerType): Array<string> {
   const responses: string[] = [];
   const ansId = doc.getElementsByClassName('ans');
