@@ -148,12 +148,7 @@ function conclude(
     );
     saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
   } else {
-    saveData(
-      vocabTuples[questionCtr][0],
-      (res as string[])[questionCtr],
-      timestampNow(),
-      true
-    );
+    saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
     showButton(doc, txt);
   }
 }
