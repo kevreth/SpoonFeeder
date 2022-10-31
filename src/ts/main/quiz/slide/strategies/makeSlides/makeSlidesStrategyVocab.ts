@@ -67,7 +67,7 @@ export function paging(
       answer,
       res,
       option,
-      options,
+      options.length,
       questionCtr,
       html_list,
       vocabTuples,
@@ -83,7 +83,7 @@ export function addOptionButtonEventListener(
   answer: string,
   res: AnswerType,
   option: string,
-  options: string[],
+  numOptions: number,
   questionCtr: number,
   html_list: string[],
   vocabTuples: vocabTuplesType,
@@ -99,7 +99,7 @@ export function addOptionButtonEventListener(
       option,
       answer,
       button,
-      options,
+      numOptions,
       doc,
       questionCtr,
       html_list,
@@ -115,7 +115,7 @@ function conclude(
   option: string,
   answer: string,
   button: HTMLElement,
-  options: string[],
+  numOptions: number,
   doc: Document,
   questionCtr: number,
   html_list: string[],
@@ -132,7 +132,7 @@ function conclude(
   playAudio(isCorrect);
 
   button.style.backgroundColor = color;
-  for (let i = 0; i < options.length; i++) {
+  for (let i = 0; i < numOptions; i++) {
     const button = doc.getElementById('btn' + i) as HTMLElement;
     removeListener(button);
   }
