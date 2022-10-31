@@ -21,9 +21,10 @@ export function exerciseGroupMakeSlides(
   doc: Document,
   reloadSlide: (slide: SlideInterface, idx: number, doc: Document) => void
 ) {
+  const txt = slide.txt as string[];
   const results = Array<string>();
   for (const saved of saves) {
-    const includes = (slide.txt as string[]).includes(saved.txt as string);
+    const includes = txt.includes(saved.txt as string);
     if (includes) {
       results.push(saved.result as string);
     }
@@ -36,7 +37,7 @@ export function exerciseGroupMakeSlides(
   else {
     const results = Array<string>();
     for (const saved of saves) {
-      const includes = (slide.txt as string[]).includes(saved.txt as string);
+      const includes = txt.includes(saved.txt as string);
       if (includes) {
         results.push(saved.result as string);
       }
@@ -51,13 +52,8 @@ export function exerciseGroupReloadSlide(
   doc: Document,
   showSlides: (doc: Document) => void
 ) {
-  const results = Array<string>();
-  for (const saved of saves) {
-    const includes = (slide.txt as string[]).includes(saved.txt as string);
-    if (includes) {
-      results.push(saved.result as string);
-    }
-  }
+  const txt = slide.txt as string[];
+  const results = exerciseGroupScore(saves, txt);
   slide.setResults(results);
   showSlides(doc);
 }
@@ -67,8 +63,8 @@ export function exerciseGroupScore2(result: boolean[]) {
 export function exerciseGroupScore(saves: SaveData[], txt: string[]) {
   const results = Array<string>();
   for (const saved of saves) {
-    const idx2 = (txt as string[]).includes(saved.txt as string);
-    if (idx2) {
+    const includes = txt.includes(saved.txt as string);
+    if (includes) {
       results.push(saved.result as string);
     }
   }
