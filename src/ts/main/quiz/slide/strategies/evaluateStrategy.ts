@@ -9,8 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Another evaluation class, but evaluates an entire set of questions.
-import { Evaluation } from '../../evaluate/evaluate';
-import { makeRow } from '../../evaluate/evaluate.support';
+import { Evaluation, makeRow } from '../../evaluate';
 import type { AnswerType } from './resultStrategy';
 // Only makeRow from Evaluation is required.
 export type FunctionType = (

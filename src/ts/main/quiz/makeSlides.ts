@@ -1,12 +1,12 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { isEqual, makeButton } from '../utilities';
-import { evaluate } from './evaluate/evaluate.support';
+import { evaluate } from './evaluate';
 import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
-///////////////// PHASE 3: make slides
+///////////////// PHASE 2: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();

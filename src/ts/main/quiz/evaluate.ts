@@ -1,12 +1,22 @@
-import type { AnswerType } from '../slide/strategies/resultStrategy';
-import type { SlideInterface } from '../slideInterface';
-import { Evaluation, ROW } from './evaluate';
+export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
+import type { AnswerType } from './slide/strategies/resultStrategy';
+import type { SlideInterface } from './slideInterface';
+export class Evaluation {
+  constructor(
+    public responses: number,
+    public correct: number,
+    public text: string
+  ) {}
+}
 export function summary(
   responseCtr: number,
   correctCtr: number,
   pctCorrect: string
 ) {
-  return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
+  return +
+    `NUMBER OF QUESTIONS: ${responseCtr}<br>\n` +
+    `NUMBER CORRECT: ${correctCtr}<br>\n` +
+    `PERCENT CORRECT: ${pctCorrect}%`;
 }
 export function percentCorrect(
   correctCtr: number,

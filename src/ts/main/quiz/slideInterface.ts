@@ -1,4 +1,4 @@
-import type { Evaluation } from './evaluate/evaluate';
+import type { Evaluation } from './evaluate';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';

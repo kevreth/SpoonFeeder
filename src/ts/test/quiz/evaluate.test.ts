@@ -5,7 +5,7 @@ import {
   numbering,
   percentCorrect,
   summary,
-} from '../../../main/quiz/evaluate/evaluate.support';
+} from '../../main/quiz/evaluate';
 it('makeRow', () => {
   const act = makeRow('q', 'a', 'c');
   const exp = '<tr><td>q</td><td>%N%.</td><td>a</td><td>c</td></tr>';

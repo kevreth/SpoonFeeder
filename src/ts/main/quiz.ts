@@ -8,8 +8,8 @@ const { processJson } = ProcessJson;
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
     // Phase 1: process Json
-    // Phase 3: make slides
-    // Phase 4: evaluate
+    // Phase 2: make slides
+    // Phase 3: evaluate
     //TODO: add test for file existence
     const yamlFilename = Quiz.makeYamlFilename(courseName);
     //test data

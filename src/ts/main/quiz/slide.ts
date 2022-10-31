@@ -1,5 +1,5 @@
 import { isEqual, timestampNow } from '../utilities';
-import type { Evaluation } from './evaluate/evaluate';
+import type { Evaluation } from './evaluate';
 import { SaveData } from './slide/saveData';
 import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';

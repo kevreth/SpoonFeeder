@@ -1,6 +1,6 @@
 import { isEqual } from '../utilities';
 import type { Course } from './course';
-import { percentCorrect } from './evaluate/evaluate.support';
+import { percentCorrect } from './evaluate';
 import { SaveData } from './slide/saveData';
 import type { AnswerType } from './slide/strategies/resultStrategy';
 import { initSlide } from './slideFactory';
