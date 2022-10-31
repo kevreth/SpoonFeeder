@@ -84,13 +84,12 @@ export class Score {
     saves: SaveData[]
   ) {
     const slide = initSlide(exercise);
-    let idx = -1;
     const isArray = Array.isArray(slide.txt);
     //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
     if (isArray) {
-      idx = exerciseGroupScore(saves, idx, slide);
+      exerciseGroupScore(saves, slide);
     } else {
-      idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
+      const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
       if (idx > -1) {
         const results = saves[idx].result;
         slide.setResults(results);

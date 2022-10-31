@@ -2,23 +2,6 @@ import { isEqual } from 'lodash';
 import type { SaveData } from './slide/saveData';
 import type { SlideInterface } from './slideInterface';
 
-export function exerciseGroupScore(
-  saves: SaveData[],
-  idx: number,
-  slide: SlideInterface
-) {
-  const results = Array<string>();
-  for (const saved of saves) {
-    idx = (slide.txt as string[]).findIndex((x) =>
-      isEqual(x, saved.txt as string)
-    );
-    if (idx > -1) {
-      results.push(saved.result as string);
-    }
-  }
-  slide.setResults(results);
-  return idx;
-}
 export function exerciseGroupSlideIndex(
   saves: SaveData[],
   txt: string[] | number[],
@@ -85,4 +68,16 @@ export function exerciseGroupReloadSlide(
 }
 export function exerciseGroupScore2(result: boolean[]) {
   return result.filter((value) => value === true).length;
+}
+export function exerciseGroupScore(saves: SaveData[], slide: SlideInterface) {
+  const results = Array<string>();
+  for (const saved of saves) {
+    const idx = (slide.txt as string[]).findIndex((x) =>
+      isEqual(x, saved.txt as string)
+    );
+    if (idx > -1) {
+      results.push(saved.result as string);
+    }
+  }
+  slide.setResults(results);
 }
