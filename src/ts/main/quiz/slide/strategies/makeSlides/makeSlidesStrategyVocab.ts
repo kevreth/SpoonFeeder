@@ -45,7 +45,15 @@ export function makeSlidesStrategyVocab(
   const missing = getMissingSlides(savedData, txtArr);
   const vocabTuples = generateQuestions(map, missing);
   const html_list = createHtmlLoop(vocabTuples, createHtml);
-  paging(doc, html_list, vocabTuples, 0, maxWidthStrategy, res, setValues);
+  paging(
+    doc,
+    html_list,
+    vocabTuples,
+    0,
+    maxWidthStrategy,
+    res as string[],
+    setValues
+  );
 }
 export function paging(
   doc: Document,
@@ -53,7 +61,7 @@ export function paging(
   vocabTuples: vocabTuplesType,
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
-  res: AnswerType,
+  res: string[],
   setValues: SetValues
 ): void {
   createPageContent(html_list[questionCtr], doc);
@@ -81,7 +89,7 @@ export function addOptionButtonEventListener(
   j: number,
   doc: Document,
   answer: string,
-  res: AnswerType,
+  res: string[],
   option: string,
   numOptions: number,
   questionCtr: number,
@@ -111,7 +119,7 @@ export function addOptionButtonEventListener(
   });
 }
 function conclude(
-  res: AnswerType,
+  res: string[],
   option: string,
   answer: string,
   button: HTMLElement,
@@ -124,7 +132,7 @@ function conclude(
   setValues: SetValues,
   txt: string
 ) {
-  (res as string[]).push(option);
+  res.push(option);
   //isCorrect
   const isCorrect = isEqual(option, answer);
   const color = isCorrect ? 'green' : 'red';
@@ -146,9 +154,9 @@ function conclude(
       res,
       setValues
     );
-    saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
+    saveData(txt, res[questionCtr], timestampNow(), true);
   } else {
-    saveData(txt, (res as string[])[questionCtr], timestampNow(), true);
+    saveData(txt, res[questionCtr], timestampNow(), true);
     showButton(doc, txt);
   }
 }
@@ -159,7 +167,7 @@ export function addContinueButtonListener(
   vocabTuples: vocabTuplesType,
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
-  res: AnswerType,
+  res: string[],
   setValues: SetValues
 ) {
   const element = continueButton(doc) as HTMLElement;

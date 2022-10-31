@@ -15,7 +15,7 @@ export class Vocab extends Slide {
     if (isRandom()) this.list = shuffleMap(this.list);
     const list = this.list;
     const maxWidthStrategy = SetWidths.SIMPLE;
-    const res = this.res;
+    const res = this.res as string[];
     const createHtml = this.createHtml;
     const setValues = this.getSetValues();
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeVocab;
