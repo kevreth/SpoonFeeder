@@ -41,7 +41,7 @@ export class MakeSlides {
     const saves = getSavedDataArray();
     const isArray = Array.isArray(slide.txt);
     if (isArray) {
-      exerciseGroupReloadSlide(saves, slide, doc);
+      exerciseGroupReloadSlide(saves, slide, doc, MakeSlides.showSlides);
     } else {
       const result = saves[idx].result;
       slide.setResults(result);
@@ -96,7 +96,8 @@ export function exerciseGroupMakeSlides(
 export function exerciseGroupReloadSlide(
   saves: SaveData[],
   slide: SlideInterface,
-  doc: Document
+  doc: Document,
+  showSlides: (doc: Document) => void
 ) {
   const results = Array<string>();
   for (const saved of saves) {
@@ -108,7 +109,7 @@ export function exerciseGroupReloadSlide(
     }
   }
   slide.setResults(results);
-  MakeSlides.showSlides(doc);
+  showSlides(doc);
 }
 
 export function showButton(doc: Document, txt: string): HTMLElement {
