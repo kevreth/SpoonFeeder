@@ -2,7 +2,6 @@ import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate';
 import { SaveData } from './slide/saveData';
-import type { AnswerType } from './slide/strategies/resultStrategy';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
@@ -85,12 +84,14 @@ export class Score {
   ) {
     const slide = initSlide(exercise);
     let idx = -1;
-    let results: AnswerType;
+    const isArray = Array.isArray(slide.txt);
     //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
-    if (Array.isArray(slide.txt)) {
-      results = Array<string>();
+    if (isArray) {
+      const results = Array<string>();
       for (const saved of saves) {
-        idx = slide.txt.findIndex((x) => isEqual(x, saved.txt as string));
+        idx = (slide.txt as string[]).findIndex((x) =>
+          isEqual(x, saved.txt as string)
+        );
         if (idx > -1) {
           results.push(saved.result as string);
         }
@@ -99,7 +100,7 @@ export class Score {
     } else {
       idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
       if (idx > -1) {
-        results = saves[idx].result;
+        const results = saves[idx].result;
         slide.setResults(results);
       }
     }

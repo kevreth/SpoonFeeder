@@ -17,11 +17,12 @@ export class MakeSlides {
     //"txt" identifies slides, which may be in random order.
     //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
     else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1) {
-      if (Array.isArray(slide.txt)) {
+      const isArray = Array.isArray(slide.txt);
+      if (isArray) {
         //if all slide questions answered
         const results = Array<string>();
         for (const saved of saves) {
-          const idx2 = slide.txt.findIndex((x) =>
+          const idx2 = (slide.txt as string[]).findIndex((x) =>
             isEqual(x, saved.txt as string)
           );
           if (idx2 > -1) {
@@ -36,7 +37,7 @@ export class MakeSlides {
         else {
           const results = Array<string>();
           for (const saved of saves) {
-            const idx2 = slide.txt.findIndex((x) =>
+            const idx2 = (slide.txt as string[]).findIndex((x) =>
               isEqual(x, saved.txt as string)
             );
             if (idx2 > -1) {
