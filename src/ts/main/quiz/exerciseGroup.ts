@@ -4,12 +4,13 @@ import type { SlideInterface } from './slideInterface';
 
 export function exerciseGroupSlideIndex(
   saves: SaveData[],
-  txt: string[] | number[],
+  txt: string[] & number[],
   retval: number
 ) {
   for (let i = 0; i < saves.length; i++) {
-    const idx = txt.findIndex((x) => isEqual(x, saves[i].txt as string));
-    if (idx > -1) retval = i;
+    const save = saves[i].txt as string & number;
+    const includes = txt.includes(save);
+    if (includes) retval = i;
   }
   return retval;
 }
@@ -22,8 +23,8 @@ export function exerciseGroupMakeSlides(
 ) {
   const results = Array<string>();
   for (const saved of saves) {
-    const idx2 = (slide.txt as string[]).includes(saved.txt as string);
-    if (idx2) {
+    const includes = (slide.txt as string[]).includes(saved.txt as string);
+    if (includes) {
       results.push(saved.result as string);
     }
   }
@@ -35,10 +36,8 @@ export function exerciseGroupMakeSlides(
   else {
     const results = Array<string>();
     for (const saved of saves) {
-      const idx2 = (slide.txt as string[]).findIndex((x) =>
-        isEqual(x, saved.txt as string)
-      );
-      if (idx2 > -1) {
+      const includes = (slide.txt as string[]).includes(saved.txt as string);
+      if (includes) {
         results.push(saved.result as string);
       }
     }
@@ -54,10 +53,8 @@ export function exerciseGroupReloadSlide(
 ) {
   const results = Array<string>();
   for (const saved of saves) {
-    const idx2 = (slide.txt as string[]).findIndex((x) =>
-      isEqual(x, saved.txt as string)
-    );
-    if (idx2 > -1) {
+    const includes = (slide.txt as string[]).includes(saved.txt as string);
+    if (includes) {
       results.push(saved.result as string);
     }
   }
@@ -70,8 +67,8 @@ export function exerciseGroupScore2(result: boolean[]) {
 export function exerciseGroupScore(saves: SaveData[], txt: string[]) {
   const results = Array<string>();
   for (const saved of saves) {
-    const idx = txt.findIndex((x) => isEqual(x, saved.txt as string));
-    if (idx > -1) {
+    const idx2 = (txt as string[]).includes(saved.txt as string);
+    if (idx2) {
       results.push(saved.result as string);
     }
   }
