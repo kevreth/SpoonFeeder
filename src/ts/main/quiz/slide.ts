@@ -34,6 +34,9 @@ export abstract class Slide implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  getSlideSet(): SlideInterface[] {
+    return new Array<SlideInterface>();
+  }
   setContinue(): void {
     this.cont = true;
   }

@@ -30,4 +30,5 @@ export interface SlideInterface {
   result(): ResultReturnType;
   getAnswerCount(): number;
   setContinue(): void;
+  getSlideSet(): SlideInterface[];
 }
