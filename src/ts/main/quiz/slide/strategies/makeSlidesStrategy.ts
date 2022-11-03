@@ -14,7 +14,7 @@ import { makeSlidesStrategyInfo } from './makeSlides/makeSlidesStrategyInfo';
 import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
-import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
+// import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
 import type { AnswerType } from './resultStrategy';
 import type {
   SetWidthTypeComplex,
@@ -176,27 +176,5 @@ export class MakeSlides {
     setValues: SetValues
   ) {
     makeSlidesStrategySort(txt, ans, createHtml, doc, setValues);
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             VOCAB
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly VOCAB = function (
-    list: Map<string, string>,
-    res: AnswerType,
-    createHtml: CreateHtmlTypeMc,
-    maxWidthStrategy: SetWidthTypeSimple,
-    doc: Document,
-    setValues: SetValues,
-    set: SlideInterface[]
-  ) {
-    makeSlidesStrategyVocab(
-      list,
-      res,
-      createHtml,
-      maxWidthStrategy,
-      doc,
-      setValues,
-      set
-    );
   };
 }

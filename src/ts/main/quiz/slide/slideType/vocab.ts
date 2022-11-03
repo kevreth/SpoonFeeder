@@ -40,24 +40,6 @@ export class Vocab extends Slide {
   makeSlides(doc: Document): void {
     return;
   }
-  //   if (isRandom()) this.list = shuffleMap(this.list);
-  //   const list = this.list;
-  //   const maxWidthStrategy = SetWidths.SIMPLE;
-  //   const res = this.res as string[];
-  //   const createHtml = this.createHtml;
-  //   const setValues = this.getSetValues();
-  //   const set = this.set;
-  //   const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeVocab;
-  //   makeSlidesStrategy(
-  //     list,
-  //     res,
-  //     createHtml,
-  //     maxWidthStrategy,
-  //     doc,
-  //     setValues,
-  //     set
-  //   );
-  // }
   getAnswerCount(): number {
     return this.list.size;
   }

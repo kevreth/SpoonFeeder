@@ -1,6 +1,9 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/quiz/slide';
-import { Vocab } from '../../../../main/quiz/slide/slideType/vocab';
+import {
+  generateQuestions,
+  Vocab,
+} from '../../../../main/quiz/slide/slideType/vocab';
 import { VOCAB } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
@@ -34,12 +37,31 @@ beforeEach(() => {
 it('processJson', () => {
   test.processJson();
 });
-// it('getSetValues', () => {
-//   test.getSetValues();
-// });
-// it('makeSlides', () => {
-//   test.makeSlides();
-// });
-// it('result', () => {
-//   test.result();
-// });
+
+sessionStorage.setItem('random', 'false');
+// const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
+const MAP: Map<string, string> = new Map([
+  ['term1', 'def1'],
+  ['term2', 'def2'],
+  ['term3', 'def3'],
+  ['term4', 'def4'],
+  ['term5', 'def5'],
+]);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const json: any = {
+  type: 'vocab',
+  list: MAP,
+  isExercise: false,
+};
+const slide = VOCAB();
+slide.processJson(json);
+it('generateQuestions', () => {
+  const result = generateQuestions(MAP, Array.from(MAP.values()));
+  expect(result).not.toBeNull();
+  expect(result.length).toBe(5);
+  expect(result[0][0]).not.toBeNull();
+  expect(result[0][1]).not.toBeNull();
+  expect(result[0][2].length).toBe(4);
+  expect(result[0][0]).toMatch(/def/);
+  expect(result[0][1]).toMatch(/term/);
+});

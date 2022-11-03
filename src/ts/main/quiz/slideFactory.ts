@@ -122,8 +122,8 @@ class VocabFactory extends SlideInitializer {
     return new Vocab(
       this.type,
       CreateHtml.MC as CreateHtmlTypeIntersection,
-      MakeSlides.VOCAB,
-      Evaluate.VOCAB,
+      MakeSlides.MC,
+      Evaluate.SIMPLE,
       Result.CORRELATED
     );
   }
