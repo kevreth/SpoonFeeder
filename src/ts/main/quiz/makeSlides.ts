@@ -21,13 +21,7 @@ export class MakeSlides {
     //"txt" identifies slides, which may be in random order.
     //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
     else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1) {
-      const isArray = Array.isArray(slide.txt);
-      if (isArray) {
-        //if all slide questions answered
-        // exerciseGroupMakeSlides(saves, slide, idx, doc, MakeSlides.reloadSlide);
-      } else {
-        MakeSlides.reloadSlide(slide, idx, doc);
-      }
+      MakeSlides.reloadSlide(slide, idx, doc);
       //the slide is unsaved
     } else {
       // const _slide = slide;
