@@ -37,7 +37,7 @@ export class Vocab extends Slide {
   getSlideSet(): SlideInterface[] {
     return this.set;
   }
-  makeSlides(doc: Document): void {
+  makeSlides(): void {
     return;
   }
   getAnswerCount(): number {
