@@ -1,3 +1,4 @@
+import { SlideInterface } from '../../slideInterface';
 import type { SetValues } from '../setValues';
 import type {
   CreateHtmlTypeGap,
@@ -74,7 +75,8 @@ export type MakeSlidesTypeVocab = (
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues
+  setValues: SetValues,
+  set: SlideInterface[]
 ) => void;
 export type MakeSlidesType =
   | MakeSlidesTypeGap
