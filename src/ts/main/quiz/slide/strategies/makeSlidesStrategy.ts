@@ -1,4 +1,4 @@
-import { SlideInterface } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { SetValues } from '../setValues';
 import type {
   CreateHtmlTypeGap,
@@ -186,7 +186,8 @@ export class MakeSlides {
     createHtml: CreateHtmlTypeMc,
     maxWidthStrategy: SetWidthTypeSimple,
     doc: Document,
-    setValues: SetValues
+    setValues: SetValues,
+    set: SlideInterface[]
   ) {
     makeSlidesStrategyVocab(
       list,
@@ -194,7 +195,8 @@ export class MakeSlides {
       createHtml,
       maxWidthStrategy,
       doc,
-      setValues
+      setValues,
+      set
     );
   };
 }

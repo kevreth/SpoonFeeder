@@ -6,6 +6,7 @@ import {
   timestampNow,
 } from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
@@ -38,7 +39,8 @@ export function makeSlidesStrategyVocab(
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues
+  setValues: SetValues,
+  set: SlideInterface[]
 ): void {
   const txtArr = Array.from(map.values());
   const savedData = getSavedDataArray();
@@ -52,7 +54,8 @@ export function makeSlidesStrategyVocab(
     0,
     maxWidthStrategy,
     res as string[],
-    setValues
+    setValues,
+    set
   );
 }
 export function paging(
@@ -62,7 +65,8 @@ export function paging(
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
   res: string[],
-  setValues: SetValues
+  setValues: SetValues,
+  set: SlideInterface[]
 ): void {
   createPageContent(html_list[questionCtr], doc);
   const tuple = vocabTuples[questionCtr];
@@ -80,7 +84,8 @@ export function paging(
       html_list,
       vocabTuples,
       setValues,
-      maxWidthStrategy
+      maxWidthStrategy,
+      set
     );
   });
   maxWidthStrategy(options.length, 'btn', doc);
@@ -96,7 +101,8 @@ export function addOptionButtonEventListener(
   html_list: string[],
   vocabTuples: vocabTuplesType,
   setValues: SetValues,
-  maxWidthStrategy: SetWidthTypeSimple
+  maxWidthStrategy: SetWidthTypeSimple,
+  set: SlideInterface[]
 ) {
   const buttonId = 'btn' + j.toString();
   const button = doc.getElementById(buttonId) as HTMLElement;
@@ -114,7 +120,8 @@ export function addOptionButtonEventListener(
       vocabTuples,
       maxWidthStrategy,
       setValues,
-      txt
+      txt,
+      set
     );
   });
 }
@@ -130,7 +137,8 @@ function conclude(
   vocabTuples: vocabTuplesType,
   maxWidthStrategy: SetWidthTypeSimple,
   setValues: SetValues,
-  txt: string
+  txt: string,
+  set: SlideInterface[]
 ) {
   res.push(option);
   //isCorrect
@@ -152,7 +160,8 @@ function conclude(
       questionCtr,
       maxWidthStrategy,
       res,
-      setValues
+      setValues,
+      set
     );
     saveData(txt, res[questionCtr], timestampNow(), true);
   } else {
@@ -168,7 +177,8 @@ export function addContinueButtonListener(
   questionCtr: number,
   maxWidthStrategy: SetWidthTypeSimple,
   res: string[],
-  setValues: SetValues
+  setValues: SetValues,
+  set: SlideInterface[]
 ) {
   const element = continueButton(doc) as HTMLElement;
   element.addEventListener('click', (): void => {
@@ -179,7 +189,8 @@ export function addContinueButtonListener(
       questionCtr + 1,
       maxWidthStrategy,
       res,
-      setValues
+      setValues,
+      set
     );
   });
 }

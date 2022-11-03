@@ -1,6 +1,6 @@
 import { isRandom, shuffleMap } from '../../../utilities';
 import { Slide } from '../../slide';
-import { SlideInterface } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeVocab } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Vocab extends Slide {
