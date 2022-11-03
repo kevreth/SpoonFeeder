@@ -1,7 +1,6 @@
 import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate';
-// import { exerciseGroupScore2 } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
@@ -86,7 +85,6 @@ export class Score {
   ) {
     const slides = initSlide(exercise);
     const isArray = Array.isArray(slides);
-    //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
     if (isArray) {
       slides.forEach((slide) => {
         const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
