@@ -2,10 +2,10 @@ import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
-import {
-  exerciseGroupMakeSlides,
-  exerciseGroupReloadSlide,
-} from './exerciseGroup';
+// import {
+//   exerciseGroupMakeSlides,
+//   exerciseGroupReloadSlide,
+// } from './exerciseGroup';
 import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
 import type { SlideInterface } from './slideInterface';
@@ -24,7 +24,7 @@ export class MakeSlides {
       const isArray = Array.isArray(slide.txt);
       if (isArray) {
         //if all slide questions answered
-        exerciseGroupMakeSlides(saves, slide, idx, doc, MakeSlides.reloadSlide);
+        // exerciseGroupMakeSlides(saves, slide, idx, doc, MakeSlides.reloadSlide);
       } else {
         MakeSlides.reloadSlide(slide, idx, doc);
       }
@@ -45,7 +45,7 @@ export class MakeSlides {
     const saves = getSavedDataArray();
     const isArray = Array.isArray(slide.txt);
     if (isArray) {
-      exerciseGroupReloadSlide(saves, slide, doc, MakeSlides.showSlides);
+      // exerciseGroupReloadSlide(saves, slide, doc, MakeSlides.showSlides);
     } else {
       const result = saves[idx].result;
       slide.setResults(result);

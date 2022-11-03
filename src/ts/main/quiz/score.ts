@@ -1,7 +1,7 @@
 import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate';
-import { exerciseGroupScore2 } from './exerciseGroup';
+// import { exerciseGroupScore2 } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
@@ -42,7 +42,8 @@ export class Score {
     const result = slide.result();
     let count = 0;
     const isArray = Array.isArray(result);
-    if (isArray) count = exerciseGroupScore2(result);
+    if (isArray) {
+    } //count = exerciseGroupScore2(result);
     else count = result ? 1 : 0;
     return count;
   }
