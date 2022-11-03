@@ -6,6 +6,7 @@ import {
   timestampNow,
 } from '../../../../utilities';
 import { continueButton, showButton } from '../../../makeSlides';
+import { MC } from '../../../slideFactory';
 import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
@@ -46,6 +47,14 @@ export function makeSlidesStrategyVocab(
   const savedData = getSavedDataArray();
   const missing = getMissingSlides(savedData, txtArr);
   const vocabTuples = generateQuestions(map, missing);
+  vocabTuples.forEach((vtuple) => {
+    const slide = MC();
+    slide.txt = vtuple[0];
+    slide.ans = vtuple[1];
+    slide.o = vtuple[2];
+    slide.isExercise = true;
+    set.push(slide);
+  });
   const html_list = createHtmlLoop(vocabTuples, createHtml);
   paging(
     doc,
