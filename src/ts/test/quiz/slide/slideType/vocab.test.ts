@@ -3,7 +3,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import { Vocab } from '../../../../main/quiz/slide/slideType/vocab';
 import { VOCAB } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-class Test extends SlideTest<string[]> {
+class Test extends SlideTest {
   type = 'vocab';
   public processJson(): void {
     const param = VOCAB();
