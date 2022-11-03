@@ -2,10 +2,6 @@ import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
-// import {
-//   exerciseGroupMakeSlides,
-//   exerciseGroupReloadSlide,
-// } from './exerciseGroup';
 import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
 import type { SlideInterface } from './slideInterface';
@@ -19,7 +15,6 @@ export class MakeSlides {
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
-    //TODO: factor out code in common with Score.exercise() and Slide.getSlideSavedIndex()
     else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1) {
       MakeSlides.reloadSlide(slide, idx, doc);
       //the slide is unsaved
@@ -37,14 +32,9 @@ export class MakeSlides {
   //The slide has already been presented to the user, as will happen on reload.
   public static reloadSlide(slide: SlideInterface, idx: number, doc: Document) {
     const saves = getSavedDataArray();
-    const isArray = Array.isArray(slide.txt);
-    if (isArray) {
-      // exerciseGroupReloadSlide(saves, slide, doc, MakeSlides.showSlides);
-    } else {
-      const result = saves[idx].result;
-      slide.setResults(result);
-      MakeSlides.showSlides(doc);
-    }
+    const result = saves[idx].result;
+    slide.setResults(result);
+    MakeSlides.showSlides(doc);
   }
 
   private static endQuiz(doc: Document) {
