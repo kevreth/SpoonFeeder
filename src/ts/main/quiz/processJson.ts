@@ -42,8 +42,12 @@ export class ProcessJson {
       const processedSlides = new Array<SlideInterface>();
       questions.forEach((item) => {
         item.isExercise = isExercise;
-        const slide = initSlide(item);
-        processedSlides.push(slide);
+        const slides = initSlide(item);
+        if (Array.isArray(slides)) {
+          slides.forEach((slide) => {
+            processedSlides.push(slide);
+          });
+        } else processedSlides.push(slides);
       });
       if (isRandom() && isExercise) questions = shuffle(questions);
       slides = slides.concat(processedSlides);

@@ -1,7 +1,7 @@
 import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate';
-import { exerciseGroupScore, exerciseGroupScore2 } from './exerciseGroup';
+import { exerciseGroupScore2 } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
@@ -83,22 +83,22 @@ export class Score {
     moduleLine: ISummaryLine,
     saves: SaveData[]
   ) {
-    const slide = initSlide(exercise);
-    const isArray = Array.isArray(slide.txt);
+    const slides = initSlide(exercise);
+    const isArray = Array.isArray(slides);
     //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
     if (isArray) {
-      const results = exerciseGroupScore(saves, slide.txt as string[]);
-      slide.setResults(results);
+      slides.forEach((slide) => {
+        const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
+        if (idx > -1) {
+          const results = saves[idx].result;
+          slide.setResults(results);
+        }
+      });
     } else {
-      const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-      if (idx > -1) {
-        const results = saves[idx].result;
-        slide.setResults(results);
-      }
+      const evaluation = slides.evaluate();
+      moduleLine.count += slides.getAnswerCount();
+      moduleLine.score += evaluation.correct;
+      moduleLine.complete += evaluation.responses;
     }
-    const evaluation = slide.evaluate();
-    moduleLine.count += slide.getAnswerCount();
-    moduleLine.score += evaluation.correct;
-    moduleLine.complete += evaluation.responses;
   }
 }

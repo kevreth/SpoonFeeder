@@ -34,12 +34,12 @@ beforeEach(() => {
 it('processJson', () => {
   test.processJson();
 });
-it('getSetValues', () => {
-  test.getSetValues();
-});
-it('makeSlides', () => {
-  test.makeSlides();
-});
-it('result', () => {
-  test.result();
-});
+// it('getSetValues', () => {
+//   test.getSetValues();
+// });
+// it('makeSlides', () => {
+//   test.makeSlides();
+// });
+// it('result', () => {
+//   test.result();
+// });

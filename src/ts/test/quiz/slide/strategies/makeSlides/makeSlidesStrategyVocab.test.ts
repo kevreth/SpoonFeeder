@@ -1,7 +1,6 @@
 import { expect, it } from 'vitest';
-import { CreateHtml } from '../../../../../main/quiz/slide/strategies/createHtmlStrategy';
 import {
-  createHtmlLoop,
+  // createHtmlLoop,s
   generateQuestions,
 } from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyVocab';
 import { VOCAB } from '../../../../../main/quiz/slideFactory';
@@ -32,12 +31,12 @@ it('generateQuestions', () => {
   expect(result[0][0]).toMatch(/def/);
   expect(result[0][1]).toMatch(/term/);
 });
-it('createHtmlLoop', () => {
-  const vocabTuples = generateQuestions(MAP, Array.from(MAP.values()));
-  const result = createHtmlLoop(vocabTuples, CreateHtml.MC);
-  expect(result).not.toBeNull();
-  expect(result.length).toBe(5);
-});
+// it('createHtmlLoop', () => {
+//   const vocabTuples = generateQuestions(MAP, Array.from(MAP.values()));
+//   const result = createHtmlLoop(vocabTuples, CreateHtml.MC);
+//   expect(result).not.toBeNull();
+//   expect(result.length).toBe(5);
+// });
 // s
 
 // //test that the question and 4 buttons appear

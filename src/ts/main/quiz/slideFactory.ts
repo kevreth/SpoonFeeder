@@ -151,6 +151,8 @@ export function initSlide(exercise: SlideInterface) {
   const type = exercise.type;
   const slide = getInstance(type);
   slide.processJson(exercise);
+  const slides = slide.getSlideSet();
+  if (slides.length > 0) return slides;
   return slide;
 }
 export const BOOL = () => new BoolFactory().instance() as Bool;
