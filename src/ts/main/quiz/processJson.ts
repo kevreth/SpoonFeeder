@@ -43,11 +43,8 @@ export class ProcessJson {
       questions.forEach((item) => {
         item.isExercise = isExercise;
         const slides = initSlide(item);
-        if (Array.isArray(slides)) {
-          slides.forEach((slide) => {
-            processedSlides.push(slide);
-          });
-        } else processedSlides.push(slides);
+        if (Array.isArray(slides)) processedSlides.push(...slides);
+        else processedSlides.push(slides);
       });
       if (isRandom() && isExercise) questions = shuffle(questions);
       slides = slides.concat(processedSlides);
