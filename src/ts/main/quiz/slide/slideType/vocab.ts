@@ -11,6 +11,8 @@ export type vocabTuplesType = [
   ans: string,
   options: Array<string>
 ][];
+//Vocab is different than the other slide types because it concisely
+//represents a group of mc questions.
 export class Vocab extends Slide {
   list = new Map<string, string>();
   res = new Array<string>();
