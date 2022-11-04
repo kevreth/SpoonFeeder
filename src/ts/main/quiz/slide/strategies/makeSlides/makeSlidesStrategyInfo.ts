@@ -30,7 +30,6 @@ function showButton(doc: Document, txt: string): void {
   const continue_btn = createContinueButton(doc, container, '<br>');
   continue_btn.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
-    console.log('INFO continue button pressed');
     MakeSlides.showSlides(doc);
   });
 }

@@ -10,7 +10,6 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    if (slide != null) console.log(slide.txt);
     let idx = 0;
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
