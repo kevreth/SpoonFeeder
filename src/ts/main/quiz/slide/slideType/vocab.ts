@@ -32,7 +32,7 @@ export class Vocab extends Slide {
       slide.txt = vtuple[0];
       slide.ans = vtuple[1];
       slide.o = vtuple[2];
-      slide.isExercise = true;
+      slide.isExercise = this.isExercise;
       this.set.push(slide);
     });
   }
