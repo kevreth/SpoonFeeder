@@ -17,10 +17,6 @@ export class Vocab extends Slide {
   set = new Array<SlideInterface>();
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
-    this.txt = Array.from(this.list.values());
-    this.ans = Array.from(this.list.keys());
-    this.isExercise = json.isExercise;
-
     const txtArr = Array.from(this.list.values());
     const savedData = getSavedDataArray();
     const missing = getMissingSlides(savedData, txtArr);
@@ -30,7 +26,7 @@ export class Vocab extends Slide {
       slide.txt = vtuple[0];
       slide.ans = vtuple[1];
       slide.o = vtuple[2];
-      slide.isExercise = true;
+      slide.isExercise = this.isExercise;
       this.set.push(slide);
     });
   }
