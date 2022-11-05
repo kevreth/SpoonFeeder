@@ -9,7 +9,7 @@ import { Vocab } from './slide/slideType/vocab';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import { CreateHtml } from './slide/strategies/createHtmlStrategy';
 import { Evaluate } from './slide/strategies/evaluateStrategy';
-import { MakeSlides } from './slide/strategies/makeSlidesStrategy';
+import { MakeSlidesStrategy } from './slide/strategies/makeSlidesStrategy';
 import { Result } from './slide/strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
 abstract class SlideInitializer {
@@ -24,7 +24,7 @@ class BoolFactory extends SlideInitializer {
     return new Bool(
       this.type,
       CreateHtml.MC as CreateHtmlTypeIntersection,
-      MakeSlides.MC,
+      MakeSlidesStrategy.MC,
       Evaluate.SIMPLE,
       Result.SIMPLE
     );
@@ -38,7 +38,7 @@ class GapFactory extends SlideInitializer {
     return new Gap(
       this.type,
       CreateHtml.GAP as CreateHtmlTypeIntersection,
-      MakeSlides.GAP,
+      MakeSlidesStrategy.GAP,
       Evaluate.GAP,
       Result.CORRELATED
     );
@@ -52,7 +52,7 @@ class ImapFactory extends SlideInitializer {
     return new Imap(
       this.type,
       CreateHtml.IMAP as CreateHtmlTypeIntersection,
-      MakeSlides.IMAP,
+      MakeSlidesStrategy.IMAP,
       Evaluate.SIMPLE,
       Result.SIMPLE
     );
@@ -66,7 +66,7 @@ class InfoFactory extends SlideInitializer {
     return new Info(
       this.type,
       CreateHtml.INFO,
-      MakeSlides.INFO,
+      MakeSlidesStrategy.INFO,
       Evaluate.DEFAULT,
       Result.UNSUPPORTED
     );
@@ -80,7 +80,7 @@ class McFactory extends SlideInitializer {
     return new Mc(
       this.type,
       CreateHtml.MC as CreateHtmlTypeIntersection,
-      MakeSlides.MC,
+      MakeSlidesStrategy.MC,
       Evaluate.SIMPLE,
       Result.SIMPLE
     );
@@ -94,7 +94,7 @@ class SelectFactory extends SlideInitializer {
     return new Select(
       this.type,
       CreateHtml.SELECT as CreateHtmlTypeIntersection,
-      MakeSlides.SELECT,
+      MakeSlidesStrategy.SELECT,
       Evaluate.SIMPLE,
       Result.SIMPLE
     );
@@ -108,7 +108,7 @@ class SortFactory extends SlideInitializer {
     return new Sort(
       this.type,
       CreateHtml.SORT as CreateHtmlTypeIntersection,
-      MakeSlides.SORT,
+      MakeSlidesStrategy.SORT,
       Evaluate.SIMPLE,
       Result.SIMPLE
     );
@@ -122,7 +122,7 @@ class VocabFactory extends SlideInitializer {
     return new Vocab(
       this.type,
       CreateHtml.MC as CreateHtmlTypeIntersection,
-      MakeSlides.MC,
+      MakeSlidesStrategy.MC,
       Evaluate.SIMPLE,
       Result.CORRELATED
     );

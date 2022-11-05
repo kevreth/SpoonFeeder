@@ -1,7 +1,12 @@
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
-import { MC } from '../../slideFactory';
 import type { SlideInterface } from '../../slideInterface';
+import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
+import { CreateHtml } from '../strategies/createHtmlStrategy';
+import { Evaluate } from '../strategies/evaluateStrategy';
+import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy';
+import { Result } from '../strategies/resultStrategy';
+import { Mc } from './mc';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -21,7 +26,14 @@ export class Vocab extends Slide {
     this.isExercise = json.isExercise;
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
-      const slide = MC();
+      //using SlideFactory creates a circular dependency
+      const slide = new Mc(
+        this.type,
+        CreateHtml.MC as CreateHtmlTypeIntersection,
+        MakeSlidesStrategy.MC,
+        Evaluate.SIMPLE,
+        Result.SIMPLE
+      );
       slide.txt = vtuple[0];
       slide.ans = vtuple[1];
       slide.o = vtuple[2];

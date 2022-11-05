@@ -14,7 +14,6 @@ import { makeSlidesStrategyInfo } from './makeSlides/makeSlidesStrategyInfo';
 import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
-// import { makeSlidesStrategyVocab } from './makeSlides/makeSlidesStrategyVocab';
 import type { AnswerType } from './resultStrategy';
 import type {
   SetWidthTypeComplex,
@@ -86,7 +85,7 @@ export type MakeSlidesType =
   | MakeSlidesTypeSelect
   | MakeSlidesTypeSort
   | MakeSlidesTypeVocab;
-export class MakeSlides {
+export class MakeSlidesStrategy {
   /////////////////////////////////////////////////////////////////////////////
   //                             GAP
   /////////////////////////////////////////////////////////////////////////////
