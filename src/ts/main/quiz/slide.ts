@@ -1,6 +1,6 @@
 import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
-import { exerciseGroupSlideIndex } from './exerciseGroup';
+// import { exerciseGroupSlideIndex } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
 import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
@@ -34,23 +34,14 @@ export abstract class Slide implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  getSlideSet(): SlideInterface[] {
+    return new Array<SlideInterface>();
+  }
   setContinue(): void {
     this.cont = true;
   }
   static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
-    //TODO: factor out code in common with MakeSlides.showSlides() and Score.exercise()
-    let retval = -1;
-    const isArray = Array.isArray(txt);
-    if (isArray) {
-      retval = exerciseGroupSlideIndex(
-        saves,
-        txt as string[] & number[],
-        retval
-      );
-    } else {
-      retval = saves.findIndex((x) => isEqual(x.txt, txt));
-    }
-    return retval;
+    return saves.findIndex((x) => isEqual(x.txt, txt));
   }
   getAnswerCount(): number {
     return 1;

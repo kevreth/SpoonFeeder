@@ -1,12 +1,12 @@
+import { SlideInterface } from 'app/main/quiz/slideInterface';
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
 import type { Slide } from '../../main/quiz/slide';
-import type { AnswerType } from '../../main/quiz/slide/strategies/resultStrategy';
 import { MC, VOCAB } from '../../main/quiz/slideFactory';
 import type { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
-export abstract class SlideTest<T extends AnswerType>
-  extends AbstractTest<Slide<T>>
+export abstract class SlideTest
+  extends AbstractTest<Slide>
   implements SlideInterfaceTest
 {
   public abstract processJson(): void;
@@ -80,4 +80,10 @@ it('getAnswerCountMultiple'),
     slide.ans = ['a', 'b', 'c'];
     const actual = slide.getAnswerCount();
     expect(actual).toEqual(3);
+  };
+it('getSlideSet'),
+  () => {
+    const slide = MC();
+    const actual = slide.getSlideSet();
+    expect(actual).toEqual(new Array<SlideInterface>());
   };
