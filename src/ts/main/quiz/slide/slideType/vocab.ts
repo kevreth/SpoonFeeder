@@ -1,10 +1,7 @@
-import { isEqual, isRandom, shuffle } from '../../../utilities';
+import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
 import { MC } from '../../slideFactory';
 import type { SlideInterface } from '../../slideInterface';
-import { SaveData } from '../saveData';
-import type { AnswerType } from '../strategies/resultStrategy';
-const { get: getSavedDataArray } = SaveData;
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -22,11 +19,7 @@ export class Vocab extends Slide {
     this.txt = Array.from(this.list.values());
     this.ans = Array.from(this.list.keys());
     this.isExercise = json.isExercise;
-
-    const txtArr = Array.from(this.list.values());
-    const savedData = getSavedDataArray();
-    const missing = getMissingSlides(savedData, txtArr);
-    const vocabTuples = generateQuestions(this.list, missing);
+    const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
       const slide = MC();
       slide.txt = vtuple[0];
@@ -46,35 +39,10 @@ export class Vocab extends Slide {
     return this.list.size;
   }
 }
-export function getMissingSlides(
-  arr: Array<SaveData>,
-  txtArr: string[]
-): string[] {
-  const retval: string[] = [];
-  for (const txt of txtArr) {
-    const idx = arr.findIndex((x) => isEqual(x.txt, txt as AnswerType));
-    if (idx < 0) retval.push(txt as string);
-  }
-  return retval;
-}
-export function generateQuestions(
-  map: Map<string, string>,
-  missingValues: Array<string>
-): vocabTuplesType {
-  const missingKeys = new Array<string>();
-  map.forEach((value, key) => {
-    if (missingValues.includes(value)) missingKeys.push(key);
-  });
-  const vocabTuples: vocabTuplesType = generateQuestions2(map, missingKeys);
-  return vocabTuples;
-}
-export function generateQuestions2(
-  map: Map<string, string>,
-  missingKeys: string[]
-) {
+export function generateQuestions(map: Map<string, string>) {
   const keys = Array.from(map.keys());
   const vocabTuples: vocabTuplesType = [];
-  for (const key of missingKeys) {
+  for (const key of keys) {
     let options = keys.slice(0, CHOICES);
     //if correct answer is not in "options",
     //replace the first entry with it.

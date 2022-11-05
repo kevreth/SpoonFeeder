@@ -56,7 +56,7 @@ const json: any = {
 const slide = VOCAB();
 slide.processJson(json);
 it('generateQuestions', () => {
-  const result = generateQuestions(MAP, Array.from(MAP.values()));
+  const result = generateQuestions(MAP);
   expect(result).not.toBeNull();
   expect(result.length).toBe(5);
   expect(result[0][0]).not.toBeNull();
