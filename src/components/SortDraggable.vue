@@ -30,7 +30,7 @@ const list = ref([
   { name: 'a', id: 0 },
   { name: 'b', id: 1 },
   { name: 'c', id: 2 },
-  { name: 'd', id: 2 }
+  { name: 'd', id: 3 }
 ])
 </script>
 
@@ -41,7 +41,6 @@ const list = ref([
   display: inline-flex;
   background: #141E30;
   border: solid 2px white;
-
 }
 .ghost > div {
   visibility:hidden;
