@@ -65,6 +65,13 @@ export function generateQuestions(
   map.forEach((value, key) => {
     if (missingValues.includes(value)) missingKeys.push(key);
   });
+  const vocabTuples: vocabTuplesType = generateQuestions2(map, missingKeys);
+  return vocabTuples;
+}
+export function generateQuestions2(
+  map: Map<string, string>,
+  missingKeys: string[]
+) {
   const keys = Array.from(map.keys());
   const vocabTuples: vocabTuplesType = [];
   for (const key of missingKeys) {
