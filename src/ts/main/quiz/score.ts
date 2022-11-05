@@ -87,29 +87,25 @@ export class Score {
     const isArray = Array.isArray(slides);
     if (isArray) {
       slides.forEach((slide) => {
-        for (const saved of saves) {
-          const idx = saves.findIndex((x) =>
-            isEqual(x.txt, slide.txt as string)
-          );
-          if (idx > -1) {
-            slide.setResults(saved.result as string);
-            const evaluation = slide.evaluate();
-            moduleLine.count += slide.getAnswerCount();
-            moduleLine.score += evaluation.correct;
-            moduleLine.complete += evaluation.responses;
-          }
-        }
+        createLine(saves, slide, moduleLine);
       });
     } else {
-      const idx = saves.findIndex((x) => isEqual(x.txt, slides.txt as string));
-      if (idx > -1) {
-        const results = saves[idx].result;
-        slides.setResults(results);
-        const evaluation = slides.evaluate();
-        moduleLine.count += slides.getAnswerCount();
-        moduleLine.score += evaluation.correct;
-        moduleLine.complete += evaluation.responses;
-      }
+      createLine(saves, slides, moduleLine);
     }
+  }
+}
+function createLine(
+  saves: SaveData[],
+  slides: SlideInterface,
+  moduleLine: ISummaryLine
+) {
+  const idx = saves.findIndex((x) => isEqual(x.txt, slides.txt as string));
+  if (idx > -1) {
+    const results = saves[idx].result;
+    slides.setResults(results);
+    const evaluation = slides.evaluate();
+    moduleLine.count += slides.getAnswerCount();
+    moduleLine.score += evaluation.correct;
+    moduleLine.complete += evaluation.responses;
   }
 }
