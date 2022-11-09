@@ -1,21 +1,19 @@
 <template>
   <div class="sortContainer">
-    <p>sort</p>     
+    <p>sort</p>
 
     <draggable
       :list="list"
       :disabled="!enabled"
       item-key="name"
-      class="list-group"
-      ghost-class="ghost"
-      :animation="100"
+      v-bind="dragOptions"
+      class="dropArea"
     >
+
       <template #item="{ element }">
-        <li>
-          <div class="list-group-item">
-            {{ element.name }}
-          </div>
-        </li>
+        <div class="sortable">
+          {{ element.name }}
+        </div>
       </template>
     </draggable>
   </div>
@@ -32,37 +30,46 @@ const list = ref([
   { name: 'c', id: 2 },
   { name: 'd', id: 3 }
 ])
+const dragOptions = ref({
+  ghostClass: 'ghost',
+  dragClass: 'drag',
+  forceFallback: true,
+  fallbackClass: 'dragged-item',
+  animation: 500
+})
 </script>
 
 <style>
-.list-group-item, .ghost {
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-  background: #141E30;
-  border: solid 2px white;
+.dragged-item {
+  opacity: 0 !important;
 }
-.ghost > div {
-  visibility:hidden;
+.isSelected {
+  opacity: 1 !important;
+}
+.ghost {
+  scale: 1.1;
 }
 .sortContainer {
+  width: 500px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.list-group {
-  width: 500px;
-  display: inline-block;
+.sortContainer p {
+  text-align: center;
 }
-.list-group-item {  
-  cursor: move;
+.sortable {
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  background: #141E30;
+  border: solid 2px white;
   height: 90px;
-  width: 500px;
-  margin: 8px;
+  width: 100%;
+  margin: 5px 0;
   color: white;
-}
-li {
-  list-style: none;
+  user-select: none;
+  cursor: default;
 }
 </style>
