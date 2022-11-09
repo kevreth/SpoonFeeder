@@ -1,7 +1,6 @@
 import { isEqual } from '../utilities';
 import type { Course } from './course';
 import { percentCorrect } from './evaluate';
-import { exerciseGroupScore, exerciseGroupScore2 } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
@@ -42,7 +41,8 @@ export class Score {
     const result = slide.result();
     let count = 0;
     const isArray = Array.isArray(result);
-    if (isArray) count = exerciseGroupScore2(result);
+    if (isArray) {
+    } //count = exerciseGroupScore2(result);
     else count = result ? 1 : 0;
     return count;
   }
@@ -83,21 +83,28 @@ export class Score {
     moduleLine: ISummaryLine,
     saves: SaveData[]
   ) {
-    const slide = initSlide(exercise);
-    const isArray = Array.isArray(slide.txt);
-    //TODO: factor out code in common with MakeSlides.showSlides() and Slide.getSlideSavedIndex()
+    const slides = initSlide(exercise);
+    const isArray = Array.isArray(slides);
     if (isArray) {
-      const results = exerciseGroupScore(saves, slide.txt as string[]);
-      slide.setResults(results);
+      slides.forEach((slide) => {
+        createLine(saves, slide, moduleLine);
+      });
     } else {
-      const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-      if (idx > -1) {
-        const results = saves[idx].result;
-        slide.setResults(results);
-      }
+      createLine(saves, slides, moduleLine);
     }
-    const evaluation = slide.evaluate();
-    moduleLine.count += slide.getAnswerCount();
+  }
+}
+function createLine(
+  saves: SaveData[],
+  slides: SlideInterface,
+  moduleLine: ISummaryLine
+) {
+  const idx = saves.findIndex((x) => isEqual(x.txt, slides.txt as string));
+  if (idx > -1) {
+    const results = saves[idx].result;
+    slides.setResults(results);
+    const evaluation = slides.evaluate();
+    moduleLine.count += slides.getAnswerCount();
     moduleLine.score += evaluation.correct;
     moduleLine.complete += evaluation.responses;
   }

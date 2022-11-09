@@ -27,7 +27,7 @@ export class Result {
   //array comparison where the correlated elements of two
   //arrays each represent a separate question, so it returns
   //an array of results {1,2,3},{1,3,3} -> {true,false,true}
-  //used with: VOCAB, GAP
+  //used with: GAP
   public static readonly CORRELATED: ResultType = function (ans, res) {
     const retval = new Array<boolean>();
     if (res != null) {
