@@ -7,7 +7,6 @@
       :disabled="!enabled"
       item-key="name"
       v-bind="dragOptions"
-      class="dropArea"
     >
 
       <template #item="{ element }">
@@ -42,9 +41,6 @@ const dragOptions = ref({
 <style>
 .dragged-item {
   opacity: 0 !important;
-}
-.isSelected {
-  opacity: 1 !important;
 }
 .ghost {
   scale: 1.1;
