@@ -49,14 +49,12 @@ function conclude(
   setValues.setRes(option);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
+  playAudio(isCorrect);
   mark(isCorrect, doc, optionCtr);
   showButton(doc, txt);
 }
 function mark(isCorrect: boolean, doc: Document, optionCtr: number) {
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
-  //icCorrect
   const color = isCorrect ? 'green' : 'red';
   optionButton.style.backgroundColor = color;
-  /////
-  playAudio(isCorrect);
 }
