@@ -45,12 +45,12 @@ function conclude(
   });
   setValues.setRes(id);
   setValues.saveData();
-  mark(setValues, doc, id);
+  const isCorrect = setValues.result() as boolean;
+  mark(isCorrect, doc, id);
   showButton(doc, txt);
 }
-function mark(setValues: SetValues, doc: Document, id: string) {
+function mark(isCorrect: boolean, doc: Document, id: string) {
   //icCorrect
-  const isCorrect = setValues.result() as boolean;
   const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
   /////
   playAudio(isCorrect);

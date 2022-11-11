@@ -48,15 +48,15 @@ function conclude(
     removeListener(doc.getElementById('btn' + i) as HTMLElement);
   setValues.setRes(option);
   setValues.saveData();
-  mark(setValues, doc, optionCtr);
+  const isCorrect = setValues.result() as boolean;
+  mark(isCorrect, doc, optionCtr);
   showButton(doc, txt);
 }
-function mark(setValues: SetValues, doc: Document, optionCtr: number) {
+function mark(isCorrect: boolean, doc: Document, optionCtr: number) {
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   //icCorrect
-  const isCorrect = setValues.result() as boolean;
   const color = isCorrect ? 'green' : 'red';
   optionButton.style.backgroundColor = color;
   /////
-  playAudio(isCorrect as boolean);
+  playAudio(isCorrect);
 }

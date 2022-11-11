@@ -108,16 +108,14 @@ function conclude(
 ) {
   const res = sortables.map((x) => x.element.innerHTML);
   setValues.setRes(res);
-
-  mark(setValues, doc, done);
-  const isCorrect = setValues.result() as boolean;
-  playAudio(isCorrect);
   setValues.saveData();
+  const isCorrect = setValues.result() as boolean;
+  mark(isCorrect, doc, done);
+  playAudio(isCorrect);
   showButton(doc, txt);
 }
-function mark(setValues: SetValues, doc: Document, done: HTMLElement) {
+function mark(isCorrect: boolean, doc: Document, done: HTMLElement) {
   //icCorrect
-  const isCorrect = setValues.result() as boolean;
   const msg = isCorrect ? 'correct' : 'incorrect';
   ////
   const content = doc.getElementById('content') as HTMLElement;
