@@ -105,10 +105,12 @@ function conclude(
   setValues.saveData();
   const corrArr: boolean[] = evaluate2(res, ans);
   mark2(corrArr, doc);
-  mark(corrArr, ans.length, doc);
+  const correct = corrArr.filter(Boolean).length;
+  const isCorrect = correct === ans.length;
+  playAudio(isCorrect);
+  mark(correct, ans.length, doc);
   showButton(doc, txt);
 }
-
 function evaluate(doc: Document): Array<string> {
   const responses: string[] = [];
   const ansId = doc.getElementsByClassName('ans');
@@ -118,10 +120,7 @@ function evaluate(doc: Document): Array<string> {
   });
   return responses;
 }
-function mark(corrArr: boolean[], numAns: number, doc: Document) {
-  const correct = corrArr.filter(Boolean).length;
-  const isCorrect = correct === numAns ? true : false;
-  playAudio(isCorrect);
+function mark(correct: number, numAns: number, doc: Document) {
   const pctCorrect = ((correct / numAns) * 100).toFixed(0);
   const response =
     `Number correct: ${correct} <br>\nNumber questions: ` +
