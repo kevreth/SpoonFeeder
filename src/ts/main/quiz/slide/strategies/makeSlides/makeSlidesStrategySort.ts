@@ -106,11 +106,12 @@ function conclude(
   done: HTMLElement,
   txt: string
 ) {
+  done.remove();
   const res = evaluate(sortables);
   setValues.setRes(res);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, doc, done);
+  mark(isCorrect, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
@@ -124,9 +125,8 @@ function evaluate(
 ) {
   return sortables.map((x) => x.element.innerHTML);
 }
-function mark(isCorrect: boolean, doc: Document, done: HTMLElement) {
+function mark(isCorrect: boolean, doc: Document) {
   const msg = isCorrect ? 'correct' : 'incorrect';
   const content = doc.getElementById('content') as HTMLElement;
   content.insertAdjacentHTML('beforeend', msg);
-  done.remove();
 }
