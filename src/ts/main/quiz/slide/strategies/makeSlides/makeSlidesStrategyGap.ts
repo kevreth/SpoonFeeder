@@ -147,7 +147,6 @@ function evaluate2(responses: string[], ans: AnswerType) {
   }
   return corrArr;
 }
-
 function drop(
   doc: Document,
   gapNumber: string,
