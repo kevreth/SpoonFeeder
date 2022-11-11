@@ -125,15 +125,14 @@ function mark(responses: string[], ans: AnswerType, doc: Document) {
     const isCorrect = isEqual(answer, response);
     corrArr.push(isCorrect);
   }
-  let correct = 0;
   corrArr.forEach((answer, ctr) => {
-    if (answer) correct++;
     const color = answer ? 'green' : 'red';
     const id = 'ans' + ctr;
     const eAns = doc.getElementById(id) as HTMLElement;
     eAns.style.backgroundColor = color;
     eAns.style.color = 'white';
   });
+  const correct = corrArr.filter(Boolean).length;
   const isCorrect = correct === ans.length ? true : false;
   playAudio(isCorrect);
   const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
