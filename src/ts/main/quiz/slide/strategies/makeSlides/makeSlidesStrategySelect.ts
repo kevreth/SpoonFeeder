@@ -22,9 +22,9 @@ export function makeSlidesStrategySelect(
   const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
   for (let ctr = 0; ctr < txtarr.length; ctr++) iter2(ctr + 1, doc);
-  conclude(doc, txtarr, ans, setValues, txt);
+  setEventListener(doc, txtarr, ans, setValues, txt);
 }
-function conclude(
+function setEventListener(
   doc: Document,
   txtarr: string[],
   ans: AnswerType,
@@ -34,15 +34,26 @@ function conclude(
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txtarr.length;
   element.addEventListener('click', () => {
-    const res = evaluate(element, numWords, ans, doc);
-    setValues.setRes(res);
-    //icCorrect
-    const isCorrect = setValues.result() as boolean;
-    playAudio(isCorrect);
-    /////
-    setValues.saveData();
-    showButton(doc, txt);
+    conclude(element, numWords, ans, doc, setValues, txt);
   });
+}
+
+function conclude(
+  element: HTMLElement,
+  numWords: number,
+  ans: AnswerType,
+  doc: Document,
+  setValues: SetValues,
+  txt: string
+) {
+  const res = evaluate(element, numWords, ans, doc);
+  setValues.setRes(res);
+  //icCorrect
+  const isCorrect = setValues.result() as boolean;
+  playAudio(isCorrect);
+  /////
+  setValues.saveData();
+  showButton(doc, txt);
 }
 
 function iter2(ctr: number, doc: Document): void {
@@ -65,14 +76,14 @@ function evaluate(
   ans: AnswerType,
   doc: Document
 ): Array<number> {
-  const responses: number[] = mark(doc);
+  const responses: number[] = collectReponse(doc);
   //remove event listeners from words to prevent selection after submission
   removeEventListeners(numWords, doc);
-  decorate(ans, responses, doc);
+  mark(ans, responses, doc);
   element.remove();
   return responses;
 }
-function mark(doc: Document) {
+function collectReponse(doc: Document) {
   let found = true;
   let ctr = 1;
   const responses: number[] = [];
@@ -86,7 +97,7 @@ function mark(doc: Document) {
   }
   return responses;
 }
-function decorate(ans: AnswerType, responses: AnswerType, doc: Document) {
+function mark(ans: AnswerType, responses: AnswerType, doc: Document) {
   const _ans = ans as string[];
   const _responses = responses as string[];
   // items that were not selected but should have been
