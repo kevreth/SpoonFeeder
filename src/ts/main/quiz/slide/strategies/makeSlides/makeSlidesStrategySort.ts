@@ -109,14 +109,18 @@ function conclude(
   const res = sortables.map((x) => x.element.innerHTML);
   setValues.setRes(res);
 
+  mark(setValues, doc, done);
+  const isCorrect = setValues.result() as boolean;
+  playAudio(isCorrect);
+  setValues.saveData();
+  showButton(doc, txt);
+}
+function mark(setValues: SetValues, doc: Document, done: HTMLElement) {
   //icCorrect
   const isCorrect = setValues.result() as boolean;
   const msg = isCorrect ? 'correct' : 'incorrect';
   ////
-  playAudio(isCorrect);
   const content = doc.getElementById('content') as HTMLElement;
   content.insertAdjacentHTML('beforeend', msg);
   done.remove();
-  setValues.saveData();
-  showButton(doc, txt);
 }

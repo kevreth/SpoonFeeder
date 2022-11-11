@@ -21,10 +21,10 @@ export function makeSlidesStrategySelect(
   const txtarr = txt.split(' ');
   const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
-  for (let ctr = 0; ctr < txtarr.length; ctr++) iter2(ctr + 1, doc);
-  setEventListener(doc, txtarr, ans, setValues, txt);
+  for (let ctr = 0; ctr < txtarr.length; ctr++) addEventListener1(ctr + 1, doc);
+  addEventListener(doc, txtarr, ans, setValues, txt);
 }
-function setEventListener(
+function addEventListener(
   doc: Document,
   txtarr: string[],
   ans: AnswerType,
@@ -46,17 +46,18 @@ function conclude(
   setValues: SetValues,
   txt: string
 ) {
-  const res = evaluate(element, numWords, ans, doc);
+  const res = evaluate(element, numWords, doc);
   setValues.setRes(res);
   //icCorrect
   const isCorrect = setValues.result() as boolean;
   playAudio(isCorrect);
+  mark(ans, res, doc);
   /////
   setValues.saveData();
   showButton(doc, txt);
 }
 
-function iter2(ctr: number, doc: Document): void {
+function addEventListener1(ctr: number, doc: Document): void {
   const element = doc.getElementById('w' + ctr) as HTMLElement;
   element.addEventListener('click', () => {
     selected(element);
@@ -73,13 +74,11 @@ function selected(element: HTMLElement): void {
 function evaluate(
   element: Element,
   numWords: number,
-  ans: AnswerType,
   doc: Document
 ): Array<number> {
   const responses: number[] = collectReponse(doc);
   //remove event listeners from words to prevent selection after submission
   removeEventListeners(numWords, doc);
-  mark(ans, responses, doc);
   element.remove();
   return responses;
 }
@@ -97,17 +96,17 @@ function collectReponse(doc: Document) {
   }
   return responses;
 }
-function mark(ans: AnswerType, responses: AnswerType, doc: Document) {
+function mark(ans: AnswerType, res: AnswerType, doc: Document) {
   const _ans = ans as string[];
-  const _responses = responses as string[];
+  const _res = res as string[];
   // items that were not selected but should have been
-  let diff = difference(_ans, _responses);
+  let diff = difference(_ans, _res);
   style(diff, 'underline', 'red', doc);
   // items that should not have been selected but were
-  diff = difference(_responses, _ans);
+  diff = difference(_res, _ans);
   style(diff, 'line-through', 'red', doc);
   // correctly selected items
-  diff = intersection(_responses, _ans);
+  diff = intersection(_res, _ans);
   style(diff, 'underline', 'green', doc);
 }
 function style(
