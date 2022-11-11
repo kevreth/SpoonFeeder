@@ -103,8 +103,8 @@ function conclude(
   const corrArr = setValues.result() as boolean[];
   mark(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;
-  const isCorrect = correct === ans.length;
   summary(correct, ans.length, doc);
+  const isCorrect = correct === ans.length;
   playAudio(isCorrect);
   showButton(doc, txt);
 }
