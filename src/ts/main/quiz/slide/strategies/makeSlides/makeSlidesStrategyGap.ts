@@ -128,7 +128,6 @@ function mark(correct: number, numAns: number, doc: Document) {
   const responseElem = doc.getElementById('response') as HTMLElement;
   responseElem.innerHTML = response;
 }
-
 function mark2(corrArr: boolean[], doc: Document) {
   corrArr.forEach((answer, ctr) => {
     const color = answer ? 'green' : 'red';
@@ -138,7 +137,6 @@ function mark2(corrArr: boolean[], doc: Document) {
     eAns.style.color = 'white';
   });
 }
-
 function evaluate2(responses: string[], ans: AnswerType) {
   const corrArr: boolean[] = [];
   for (let ctr = 0; ctr < responses.length; ctr++) {
