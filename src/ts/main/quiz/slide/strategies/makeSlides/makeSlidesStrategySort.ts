@@ -95,12 +95,7 @@ export function makeSlidesStrategySort(
   }
 }
 function conclude(
-  sortables: {
-    dragger: Draggable;
-    element: Element;
-    index: number;
-    setIndex: (index: number) => void;
-  }[],
+  sortables: { element: Element }[],
   setValues: SetValues,
   doc: Document,
   done: HTMLElement,
@@ -115,14 +110,7 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function evaluate(
-  sortables: {
-    dragger: Draggable;
-    element: Element;
-    index: number;
-    setIndex: (index: number) => void;
-  }[]
-) {
+function evaluate(sortables: { element: Element }[]) {
   return sortables.map((x) => x.element.innerHTML);
 }
 function mark(isCorrect: boolean, doc: Document) {
