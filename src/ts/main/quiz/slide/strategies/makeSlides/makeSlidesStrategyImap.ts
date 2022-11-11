@@ -18,11 +18,11 @@ export function makeSlidesStrategyImap(
   //inject SVG into page so it is part of DOM
   SVGInjector(picture, {
     afterAll() {
-      afterAll(setValues, doc, txt);
+      addEventListener(setValues, doc, txt);
     },
   });
 }
-function afterAll(setValues: SetValues, doc: Document, txt: string) {
+function addEventListener(setValues: SetValues, doc: Document, txt: string) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
@@ -44,15 +44,16 @@ function conclude(
     removeListener(element);
   });
   setValues.setRes(id);
-
+  setValues.saveData();
+  mark(setValues, doc, id);
+  showButton(doc, txt);
+}
+function mark(setValues: SetValues, doc: Document, id: string) {
   //icCorrect
   const isCorrect = setValues.result() as boolean;
   const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
   /////
   playAudio(isCorrect);
-
   const element = doc.getElementById(id) as HTMLElement;
   element.classList.add(classname);
-  setValues.saveData();
-  showButton(doc, txt);
 }
