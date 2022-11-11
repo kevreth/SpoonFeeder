@@ -131,9 +131,9 @@ function mark(responses: string[], ans: AnswerType, doc: Document) {
     eAns.style.backgroundColor = color;
     eAns.style.color = 'white';
   }
-  const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
-  const isCorrect = pctCorrect === '100';
+  const isCorrect = correct === ans.length ? true : false;
   playAudio(isCorrect);
+  const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
   const response =
     `Number correct: ${correct} <br>\nNumber questions: ` +
     `${ans.length} <br>\n${pctCorrect}%`;
