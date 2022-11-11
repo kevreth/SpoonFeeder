@@ -86,7 +86,7 @@ function setgap(
     const fillNumber = (e.dataTransfer as DataTransfer).getData('number');
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
-    const fillsRemaining = drop2(doc, gapNumber, fillText, fillNumber);
+    const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
     if (fillsRemaining === 0) {
       conclude(doc, ans, setValues, txt);
     }
@@ -100,19 +100,23 @@ function conclude(
   setValues: SetValues,
   txt: string
 ) {
-  const res = evaluateA(doc, ans);
+  const res = evaluate(doc, ans);
   setValues.setRes(res);
   setValues.saveData();
+  mark(res, ans, doc);
   showButton(doc, txt);
 }
 
-function evaluateA(doc: Document, ans: AnswerType): Array<string> {
+function evaluate(doc: Document, ans: AnswerType): Array<string> {
   const responses: string[] = [];
   const ansId = doc.getElementsByClassName('ans');
   Array.prototype.forEach.call(ansId, (slide) => {
     const response = slide.innerText as never;
     responses.push(response);
   });
+  return responses;
+}
+function mark(responses: string[], ans: AnswerType, doc: Document) {
   let correct = 0;
   for (let ctr = 0; ctr < responses.length; ctr++) {
     const response = responses[ctr];
@@ -122,7 +126,6 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
     const color = isCorrect ? 'green' : 'red';
     if (isCorrect) correct++;
     /////
-
     const id = 'ans' + ctr;
     const eAns = doc.getElementById(id) as HTMLElement;
     eAns.style.backgroundColor = color;
@@ -136,9 +139,9 @@ function evaluateA(doc: Document, ans: AnswerType): Array<string> {
     `${ans.length} <br>\n${pctCorrect}%`;
   const responseElem = doc.getElementById('response') as HTMLElement;
   responseElem.innerHTML = response;
-  return responses;
 }
-function drop2(
+
+function drop(
   doc: Document,
   gapNumber: string,
   fillText: string,
