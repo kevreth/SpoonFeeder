@@ -1,4 +1,3 @@
-import { isEqual } from 'lodash';
 import { showButton } from '../../../makeSlides';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
@@ -103,7 +102,8 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  const corrArr: boolean[] = evaluate2(res, ans);
+  // const corrArr: boolean[] = evaluate2(res, ans);
+  const corrArr = setValues.result() as boolean[];
   mark2(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;
   const isCorrect = correct === ans.length;
@@ -137,16 +137,16 @@ function mark2(corrArr: boolean[], doc: Document) {
     eAns.style.color = 'white';
   });
 }
-function evaluate2(responses: string[], ans: AnswerType) {
-  const corrArr: boolean[] = [];
-  for (let ctr = 0; ctr < responses.length; ctr++) {
-    const response = responses[ctr];
-    const answer = ans[ctr];
-    const isCorrect = isEqual(answer, response);
-    corrArr.push(isCorrect);
-  }
-  return corrArr;
-}
+// function evaluate2(responses: string[], ans: AnswerType) {
+//   const corrArr: boolean[] = [];
+//   for (let ctr = 0; ctr < responses.length; ctr++) {
+//     const response = responses[ctr];
+//     const answer = ans[ctr];
+//     const isCorrect = isEqual(answer, response);
+//     corrArr.push(isCorrect);
+//   }
+//   return corrArr;
+// }
 function drop(
   doc: Document,
   gapNumber: string,
