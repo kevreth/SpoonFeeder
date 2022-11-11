@@ -103,7 +103,9 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  mark(res, ans, doc);
+  const corrArr: boolean[] = evaluate2(res, ans);
+  mark2(corrArr, doc);
+  mark(corrArr, ans.length, doc);
   showButton(doc, txt);
 }
 
@@ -116,15 +118,19 @@ function evaluate(doc: Document): Array<string> {
   });
   return responses;
 }
-function mark(responses: string[], ans: AnswerType, doc: Document) {
-  const corrArr: boolean[] = [];
-  for (let ctr = 0; ctr < responses.length; ctr++) {
-    const response = responses[ctr];
-    const answer = ans[ctr];
-    //icCorrect
-    const isCorrect = isEqual(answer, response);
-    corrArr.push(isCorrect);
-  }
+function mark(corrArr: boolean[], numAns: number, doc: Document) {
+  const correct = corrArr.filter(Boolean).length;
+  const isCorrect = correct === numAns ? true : false;
+  playAudio(isCorrect);
+  const pctCorrect = ((correct / numAns) * 100).toFixed(0);
+  const response =
+    `Number correct: ${correct} <br>\nNumber questions: ` +
+    `${numAns} <br>\n${pctCorrect}%`;
+  const responseElem = doc.getElementById('response') as HTMLElement;
+  responseElem.innerHTML = response;
+}
+
+function mark2(corrArr: boolean[], doc: Document) {
   corrArr.forEach((answer, ctr) => {
     const color = answer ? 'green' : 'red';
     const id = 'ans' + ctr;
@@ -132,15 +138,17 @@ function mark(responses: string[], ans: AnswerType, doc: Document) {
     eAns.style.backgroundColor = color;
     eAns.style.color = 'white';
   });
-  const correct = corrArr.filter(Boolean).length;
-  const isCorrect = correct === ans.length ? true : false;
-  playAudio(isCorrect);
-  const pctCorrect = ((correct / ans.length) * 100).toFixed(0);
-  const response =
-    `Number correct: ${correct} <br>\nNumber questions: ` +
-    `${ans.length} <br>\n${pctCorrect}%`;
-  const responseElem = doc.getElementById('response') as HTMLElement;
-  responseElem.innerHTML = response;
+}
+
+function evaluate2(responses: string[], ans: AnswerType) {
+  const corrArr: boolean[] = [];
+  for (let ctr = 0; ctr < responses.length; ctr++) {
+    const response = responses[ctr];
+    const answer = ans[ctr];
+    const isCorrect = isEqual(answer, response);
+    corrArr.push(isCorrect);
+  }
+  return corrArr;
 }
 
 function drop(
