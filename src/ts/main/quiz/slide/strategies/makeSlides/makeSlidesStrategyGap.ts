@@ -100,14 +100,14 @@ function conclude(
   setValues: SetValues,
   txt: string
 ) {
-  const res = evaluate(doc, ans);
+  const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
   mark(res, ans, doc);
   showButton(doc, txt);
 }
 
-function evaluate(doc: Document, ans: AnswerType): Array<string> {
+function evaluate(doc: Document): Array<string> {
   const responses: string[] = [];
   const ansId = doc.getElementsByClassName('ans');
   Array.prototype.forEach.call(ansId, (slide) => {
@@ -117,20 +117,23 @@ function evaluate(doc: Document, ans: AnswerType): Array<string> {
   return responses;
 }
 function mark(responses: string[], ans: AnswerType, doc: Document) {
-  let correct = 0;
+  const corrArr: boolean[] = [];
   for (let ctr = 0; ctr < responses.length; ctr++) {
     const response = responses[ctr];
     const answer = ans[ctr];
     //icCorrect
     const isCorrect = isEqual(answer, response);
-    const color = isCorrect ? 'green' : 'red';
-    if (isCorrect) correct++;
-    /////
+    corrArr.push(isCorrect);
+  }
+  let correct = 0;
+  corrArr.forEach((answer, ctr) => {
+    if (answer) correct++;
+    const color = answer ? 'green' : 'red';
     const id = 'ans' + ctr;
     const eAns = doc.getElementById(id) as HTMLElement;
     eAns.style.backgroundColor = color;
     eAns.style.color = 'white';
-  }
+  });
   const isCorrect = correct === ans.length ? true : false;
   playAudio(isCorrect);
   const pctCorrect = ((correct / ans.length) * 100).toFixed(0);

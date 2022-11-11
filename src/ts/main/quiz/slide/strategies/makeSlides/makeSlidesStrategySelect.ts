@@ -51,8 +51,8 @@ function conclude(
   //icCorrect
   const isCorrect = setValues.result() as boolean;
   playAudio(isCorrect);
-  mark(ans, res, doc);
   /////
+  mark(ans, res, doc);
   setValues.saveData();
   showButton(doc, txt);
 }
