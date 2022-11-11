@@ -1,4 +1,3 @@
-import { Slide } from '../../../../../main/quiz/slide';
 import {
   isEqual,
   isRandom,
@@ -28,15 +27,15 @@ export function makeSlidesStrategyMc(
   createPageContent(html, doc);
   maxWidthStrategy(options.length, 'btn', doc);
   const saves = getSavedDataArray();
-  let idx = 0;
-  if ((idx = Slide.getSlideSavedIndex(saves, txt)) > -1) {
-    //slide was previously saved, so we display results
-    conclude(saves, idx, options, setValues, doc, txt);
-  } else {
-    options.forEach((option, optionCtr) => {
-      addBehavior(doc, option, options.length, optionCtr, setValues, txt);
-    });
-  }
+  const idx = 0;
+  // if ((idx = Slide.getSlideSavedIndex(saves, txt)) > -1) {
+  //   //slide was previously saved, so we display results
+  //   conclude(saves, idx, options, setValues, doc, txt);
+  // } else {
+  options.forEach((option, optionCtr) => {
+    addEventListener(doc, option, options.length, optionCtr, setValues, txt);
+  });
+  // }
 }
 function conclude(
   saves: SaveData[],
@@ -48,11 +47,11 @@ function conclude(
 ) {
   const result = saves[idx].result as string;
   const optionCtr = options.findIndex((x) => isEqual(x, result as string));
-  decorateOptionButton(setValues, doc, optionCtr);
+  mark(setValues, doc, optionCtr);
   showButton(doc, txt);
 }
 
-function addBehavior(
+function addEventListener(
   doc: Document,
   option: string,
   length: number,
@@ -77,14 +76,10 @@ function optionButtonEventListener(
     removeListener(doc.getElementById('btn' + i) as HTMLElement);
   setValues.setRes(option);
   setValues.saveData();
-  decorateOptionButton(setValues, doc, optionCtr);
+  mark(setValues, doc, optionCtr);
   showButton(doc, txt);
 }
-function decorateOptionButton(
-  setValues: SetValues,
-  doc: Document,
-  optionCtr: number
-) {
+function mark(setValues: SetValues, doc: Document, optionCtr: number) {
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
 
   //icCorrect
