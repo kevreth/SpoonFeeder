@@ -52,8 +52,8 @@ function conclude(
   setValues.setRes(res);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
-  playAudio(isCorrect);
   mark(ans, res, doc);
+  playAudio(isCorrect);
   showButton(doc, txt);
 }
 

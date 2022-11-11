@@ -101,11 +101,11 @@ function conclude(
   setValues.setRes(res);
   setValues.saveData();
   const corrArr = setValues.result() as boolean[];
-  mark2(corrArr, doc);
+  summary(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;
   const isCorrect = correct === ans.length;
-  playAudio(isCorrect);
   mark(correct, ans.length, doc);
+  playAudio(isCorrect);
   showButton(doc, txt);
 }
 function evaluate(doc: Document): Array<string> {
@@ -125,7 +125,7 @@ function mark(correct: number, numAns: number, doc: Document) {
   const responseElem = doc.getElementById('response') as HTMLElement;
   responseElem.innerHTML = response;
 }
-function mark2(corrArr: boolean[], doc: Document) {
+function summary(corrArr: boolean[], doc: Document) {
   corrArr.forEach((answer, ctr) => {
     const color = answer ? 'green' : 'red';
     const id = 'ans' + ctr;

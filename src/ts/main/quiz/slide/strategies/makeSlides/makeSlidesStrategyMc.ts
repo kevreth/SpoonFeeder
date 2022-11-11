@@ -49,8 +49,8 @@ function conclude(
   setValues.setRes(option);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
-  playAudio(isCorrect);
   mark(isCorrect, doc, optionCtr);
+  playAudio(isCorrect);
   showButton(doc, txt);
 }
 function mark(isCorrect: boolean, doc: Document, optionCtr: number) {

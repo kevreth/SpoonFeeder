@@ -46,8 +46,8 @@ function conclude(
   setValues.setRes(id);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
-  playAudio(isCorrect);
   mark(isCorrect, doc, id);
+  playAudio(isCorrect);
   showButton(doc, txt);
 }
 function mark(isCorrect: boolean, doc: Document, id: string) {
