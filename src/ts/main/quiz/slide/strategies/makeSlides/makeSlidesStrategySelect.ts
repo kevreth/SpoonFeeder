@@ -46,12 +46,14 @@ function conclude(
   setValues: SetValues,
   txt: string
 ) {
-  const res = evaluate(element, numWords, doc);
+  removeEventListeners(numWords, doc);
+  element.remove();
+  const res = evaluate(doc);
   setValues.setRes(res);
+  setValues.saveData();
   const isCorrect = setValues.result() as boolean;
   playAudio(isCorrect);
   mark(ans, res, doc);
-  setValues.saveData();
   showButton(doc, txt);
 }
 
@@ -69,18 +71,7 @@ function selected(element: HTMLElement): void {
   } else element.style.backgroundColor = 'blue';
   element.style.color = color;
 }
-function evaluate(
-  element: Element,
-  numWords: number,
-  doc: Document
-): Array<number> {
-  const responses: number[] = collectReponse(doc);
-  //remove event listeners from words to prevent selection after submission
-  removeEventListeners(numWords, doc);
-  element.remove();
-  return responses;
-}
-function collectReponse(doc: Document) {
+function evaluate(doc: Document) {
   let found = true;
   let ctr = 1;
   const responses: number[] = [];
