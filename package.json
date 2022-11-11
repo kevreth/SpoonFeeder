@@ -37,6 +37,7 @@
     "vara": "^1.4.1",
     "vue": "^3.2.41",
     "vue-i18n": "^9.2.2",
+    "vuedraggable": "^4.1.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
