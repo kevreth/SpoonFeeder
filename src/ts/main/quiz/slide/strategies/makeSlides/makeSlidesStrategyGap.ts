@@ -101,10 +101,10 @@ function conclude(
   setValues.setRes(res);
   setValues.saveData();
   const corrArr = setValues.result() as boolean[];
-  summary(corrArr, doc);
+  mark(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;
   const isCorrect = correct === ans.length;
-  mark(correct, ans.length, doc);
+  summary(correct, ans.length, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
@@ -117,7 +117,7 @@ function evaluate(doc: Document): Array<string> {
   });
   return responses;
 }
-function mark(correct: number, numAns: number, doc: Document) {
+function summary(correct: number, numAns: number, doc: Document) {
   const pctCorrect = ((correct / numAns) * 100).toFixed(0);
   const response =
     `Number correct: ${correct} <br>\nNumber questions: ` +
@@ -125,7 +125,7 @@ function mark(correct: number, numAns: number, doc: Document) {
   const responseElem = doc.getElementById('response') as HTMLElement;
   responseElem.innerHTML = response;
 }
-function summary(corrArr: boolean[], doc: Document) {
+function mark(corrArr: boolean[], doc: Document) {
   corrArr.forEach((answer, ctr) => {
     const color = answer ? 'green' : 'red';
     const id = 'ans' + ctr;

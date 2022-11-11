@@ -46,11 +46,11 @@ function conclude(
   setValues.setRes(id);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, doc, id);
+  mark(isCorrect, id, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function mark(isCorrect: boolean, doc: Document, id: string) {
+function mark(isCorrect: boolean, id: string, doc: Document) {
   const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
   const element = doc.getElementById(id) as HTMLElement;
   element.classList.add(classname);

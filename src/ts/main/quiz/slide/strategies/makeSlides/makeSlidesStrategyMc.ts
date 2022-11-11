@@ -49,11 +49,11 @@ function conclude(
   setValues.setRes(option);
   setValues.saveData();
   const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, doc, optionCtr);
+  mark(isCorrect, optionCtr, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function mark(isCorrect: boolean, doc: Document, optionCtr: number) {
+function mark(isCorrect: boolean, optionCtr: number, doc: Document) {
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   const color = isCorrect ? 'green' : 'red';
   optionButton.style.backgroundColor = color;
