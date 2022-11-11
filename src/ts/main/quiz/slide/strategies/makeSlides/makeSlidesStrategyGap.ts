@@ -86,9 +86,7 @@ function setgap(
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) {
-      conclude(doc, ans, setValues, txt);
-    }
+    if (fillsRemaining === 0) conclude(doc, ans, setValues, txt);
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
@@ -102,7 +100,6 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  // const corrArr: boolean[] = evaluate2(res, ans);
   const corrArr = setValues.result() as boolean[];
   mark2(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;
@@ -137,16 +134,6 @@ function mark2(corrArr: boolean[], doc: Document) {
     eAns.style.color = 'white';
   });
 }
-// function evaluate2(responses: string[], ans: AnswerType) {
-//   const corrArr: boolean[] = [];
-//   for (let ctr = 0; ctr < responses.length; ctr++) {
-//     const response = responses[ctr];
-//     const answer = ans[ctr];
-//     const isCorrect = isEqual(answer, response);
-//     corrArr.push(isCorrect);
-//   }
-//   return corrArr;
-// }
 function drop(
   doc: Document,
   gapNumber: string,
