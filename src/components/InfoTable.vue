@@ -6,7 +6,7 @@
     <q-overlay class="infoOverlay column">
       <template #body>
         <div class="iconContainer fixed-center bg-accent" @keydown.esc="closeInfo" tabindex="0">
-          <h5>Informations:</h5>
+          <h5>Navigations:</h5>
           <p class="iconContent">
             COR: number correct <br>
             COM: number completed <br>
