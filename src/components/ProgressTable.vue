@@ -2,11 +2,11 @@
   <q-card class="bg-secondary">
     <InfoIcon 
       @click="handleInfoOverlay" 
-      @keydown.esc="handleInfoOverlay" tabindex="0"
+      @keydown.esc="infoOverlay = false" tabindex="0"
     />
     <InfoTable
       v-model="infoOverlay"
-      @closeInfo="handleInfoOverlay"
+      @closeInfo="infoOverlay = false"
     />
 
     <q-hierarchy
@@ -38,13 +38,11 @@
           <a v-bind:href="props.item.summary">
             <SummaryIcon
               @click="summaryOverlay = true"
-              @keydown.esc="summaryOverlay = false" tabindex="0"
-            />    
+              />    
             <SummaryTable
               v-model="summaryOverlay"
               @closeSummary="summaryOverlay = false"
-              @keydown.esc="summaryOverlay = false" tabindex="0"
-            />
+              />
           </a>
         </td>
       </template>

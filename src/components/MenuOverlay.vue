@@ -5,7 +5,7 @@
     enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
     >
-    <q-overlay v-model="overlay">
+    <q-overlay v-model="overlay" class="mainOverlay">
       <template #body>        
         <div class="overlay fixed-center column">
           <div class="overlayBtn">
