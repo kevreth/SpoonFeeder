@@ -1,12 +1,21 @@
+import Handlebars from 'handlebars';
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
 import type { Course } from './quiz/course';
 export function getYaml(filename: string, f: (data: Course) => void) {
+  Handlebars.registerHelper('table', function (aString) {
+    return `<div id="table0"></div><script>$('#table0').load("src/courses/test/${aString}.html")</script>`;
+  });
+  Handlebars.registerHelper('svg', function (aString) {
+    return `<img src="src/courses/test/${aString}.svg" class="mcButton" width = "100" height="auto"/>`;
+  });
   fetch(filename)
     .then((res) => res.blob())
     .then((blob) => blob.text())
     .then((yamlAsString) => {
+      const template = Handlebars.compile(yamlAsString);
+      yamlAsString = template({});
       const yml = yaml.load(yamlAsString) as Course;
       f(yml);
     })
@@ -15,6 +24,7 @@ export function getYaml(filename: string, f: (data: Course) => void) {
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
+
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
