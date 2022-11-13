@@ -10,14 +10,15 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    let idx = 0;
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     //"txt" identifies slides, which may be in random order.
-    else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1)
-      MakeSlides.reloadSlide(slide, idx, doc);
-    //the slide is unsaved
-    else slide.makeSlides(doc);
+    else {
+      const idx = Slide.getSlideSavedIndex(saves, slide.txt);
+      if (idx > -1) MakeSlides.reloadSlide(slide, idx, doc);
+      //the slide is unsaved
+      else slide.makeSlides(doc);
+    }
   }
   //The slide has already been presented to the user, as will happen on reload.
   public static reloadSlide(slide: SlideInterface, idx: number, doc: Document) {
