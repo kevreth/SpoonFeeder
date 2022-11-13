@@ -15,7 +15,13 @@ export class MakeSlides {
     //"txt" identifies slides, which may be in random order.
     else {
       const idx = Slide.getSlideSavedIndex(saves, slide.txt);
-      if (idx > -1) MakeSlides.reloadSlide(slide, idx, doc);
+      const savedSlide = saves[idx];
+      const savedFlag = idx > -1;
+      if (savedFlag) {
+        const firstFlag = idx === 0;
+        const contFlag = savedSlide.cont;
+        MakeSlides.reloadSlide(slide, idx, doc);
+      }
       //the slide is unsaved
       else slide.makeSlides(doc);
     }
