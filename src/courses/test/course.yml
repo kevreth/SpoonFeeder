@@ -44,7 +44,7 @@ units:
       - type: mc
         txt: Choose the bus.
         o:
-        - c
+        - {{{svg "bus"}}}
         - {{{svg "car"}}}
         - {{{svg "plane"}}}
         - {{{svg "train"}}}
