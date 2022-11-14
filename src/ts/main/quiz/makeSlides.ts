@@ -12,24 +12,25 @@ export class MakeSlides {
     const slide = Json.getSlide();
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
-    //"txt" identifies slides, which may be in random order.
     else {
       const idx = Slide.getSlideSavedIndex(saves, slide.txt);
-      const savedSlide = saves[idx];
       const savedFlag = idx > -1;
-      if (savedFlag) {
-        const firstFlag = idx === 0;
-        const contFlag = savedSlide.cont;
-        MakeSlides.reloadSlide(slide, idx, doc);
-      }
-      //the slide is unsaved
+      if (savedFlag) MakeSlides.reloadSlide(slide, idx, doc);
       else slide.makeSlides(doc);
     }
   }
+  // first? cont? action
+  // Y      Y     slide 2
+  // Y      N     slide 1
+  // N      Y     slide n
+  // N      N     slide n-1
   //The slide has already been presented to the user, as will happen on reload.
   public static reloadSlide(slide: SlideInterface, idx: number, doc: Document) {
     const saves = getSavedDataArray();
-    const result = saves[idx].result;
+    const savedSlide = saves[idx];
+    const result = savedSlide.result;
+    const firstFlag = idx === 0;
+    const contFlag = savedSlide.cont;
     slide.setResults(result);
     MakeSlides.showSlides(doc);
   }
