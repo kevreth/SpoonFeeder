@@ -4,6 +4,7 @@ import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
+import type { AnswerType } from '../resultStrategy';
 
 export function makeSlidesStrategySelect(
   inst: string,
@@ -37,7 +38,7 @@ function addEventListener(
 function conclude(
   doc: Document,
   slide: SlideInterface,
-  res: number[],
+  res: AnswerType,
   txt: string
 ) {
   slide.setRes(res);

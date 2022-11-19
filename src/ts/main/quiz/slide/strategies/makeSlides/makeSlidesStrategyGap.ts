@@ -95,7 +95,7 @@ function setgap(
 function conclude(
   doc: Document,
   slide: SlideInterface,
-  res: string[],
+  res: AnswerType,
   txt: string
 ) {
   slide.setRes(res);

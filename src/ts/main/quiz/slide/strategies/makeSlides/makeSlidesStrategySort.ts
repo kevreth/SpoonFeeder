@@ -99,7 +99,7 @@ export function makeSlidesStrategySort(
 function conclude(
   doc: Document,
   slide: SlideInterface,
-  res: string[],
+  res: AnswerType,
   txt: string
 ) {
   slide.setRes(res);

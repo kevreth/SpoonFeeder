@@ -5,6 +5,7 @@ import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
+import type { AnswerType } from '../resultStrategy';
 export function makeSlidesStrategyImap(
   txt: string,
   img: string,
@@ -34,7 +35,7 @@ function addEventListener(slide: SlideInterface, doc: Document, txt: string) {
 function conclude(
   doc: Document,
   slide: SlideInterface,
-  res: string,
+  res: AnswerType,
   txt: string
 ) {
   slide.setRes(res);
