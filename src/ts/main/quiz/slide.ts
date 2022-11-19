@@ -76,6 +76,7 @@ export abstract class Slide implements SlideInterface {
     const result = (): ResultReturnType => this.result();
     const setRes = (res: AnswerType): void => this.setRes(res);
     const setContinue = (): void => this.setContinue();
-    return new SetValues(saveData, result, setRes, setContinue);
+    const getSlide = (): SlideInterface => this;
+    return new SetValues(saveData, result, setRes, setContinue, getSlide);
   }
 }

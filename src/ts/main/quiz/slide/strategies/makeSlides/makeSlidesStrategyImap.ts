@@ -40,16 +40,12 @@ function conclude(
 ) {
   setValues.setRes(id);
   setValues.saveData();
-  const isCorrect = decorate(ids, doc, setValues, id);
+  const isCorrect = decorate(doc, setValues, id);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(
-  ids: string[],
-  doc: Document,
-  setValues: SetValues,
-  id: string
-) {
+function decorate(doc: Document, setValues: SetValues, id: string) {
+  const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.classList.remove('shape');
