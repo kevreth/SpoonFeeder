@@ -4,7 +4,6 @@ import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-// import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 

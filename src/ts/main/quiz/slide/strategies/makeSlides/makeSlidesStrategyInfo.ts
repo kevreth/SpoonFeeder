@@ -1,19 +1,19 @@
 import { createContinueButton, MakeSlides } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
-import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeInfo } from '../createHtmlStrategy';
 export function makeSlidesStrategyInfo(
   txt: string,
   createHtml: CreateHtmlTypeInfo,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) {
   const html = createHtml(txt);
   createPageContent(html, doc);
   conclude(setValues, doc, txt);
 }
-function conclude(setValues: SetValues, doc: Document, txt: string) {
+function conclude(setValues: SlideInterface, doc: Document, txt: string) {
   setValues.saveData();
   showButton(doc, txt);
 }

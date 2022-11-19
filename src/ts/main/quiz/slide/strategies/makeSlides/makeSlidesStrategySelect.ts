@@ -7,7 +7,6 @@ import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-// import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 

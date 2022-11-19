@@ -1,8 +1,6 @@
 import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
-// import { exerciseGroupSlideIndex } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
-// import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -77,22 +75,4 @@ export abstract class Slide implements SlideInterface {
   public getAns(): AnswerType {
     return this.ans;
   }
-  // getSetValues() {
-  //   const saveData = () => this.saveData();
-  //   const result = (): ResultReturnType => this.result();
-  //   const getAns = (): AnswerType => this.ans;
-  //   const getRes = (): AnswerType => this.res;
-  //   const setRes = (res: AnswerType): void => this.setRes(res);
-  //   const setContinue = (): void => this.setContinue();
-  //   const getSlide = (): SlideInterface => this;
-  //   return new SetValues(
-  //     saveData,
-  //     result,
-  //     getAns,
-  //     getRes,
-  //     setRes,
-  //     setContinue,
-  //     getSlide
-  //   );
-  // }
 }

@@ -14,7 +14,6 @@ export class Gap extends Slide {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
-    // const setValues = this.getSetValues();
     const txt = this.txt as string;
     const maxWidthStrategy = SetWidths.TARGETED;
     const createHtml = this.createHtml;

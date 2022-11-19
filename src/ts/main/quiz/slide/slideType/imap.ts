@@ -11,7 +11,6 @@ export class Imap extends Slide {
     } = json);
   }
   makeSlides(doc: Document): void {
-    // const setValues = this.getSetValues();
     const txt = this.txt as string;
     const img = this.img;
     const createHtml = this.createHtml;
