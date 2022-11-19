@@ -100,8 +100,7 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  const correct = setValues.decorate(setValues, doc);
-  const isCorrect = correct === ans.length;
+  const isCorrect = setValues.decorate(setValues, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

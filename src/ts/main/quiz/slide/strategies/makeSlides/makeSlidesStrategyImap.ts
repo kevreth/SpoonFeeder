@@ -1,5 +1,5 @@
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds, removeListener } from '../../../../utilities';
+import { getChildIds } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
@@ -43,23 +43,7 @@ function conclude(
 ) {
   setValues.setRes(id);
   setValues.saveData();
-  const isCorrect = decorate(setValues, doc);
+  const isCorrect = setValues.decorate(setValues, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
-}
-function decorate(setValues: SlideInterface, doc: Document) {
-  const ids = getChildIds(doc, 'imagemap');
-  ids.forEach((id) => {
-    const element = doc.getElementById(id) as HTMLElement;
-    element.classList.remove('shape');
-    removeListener(element);
-  });
-  const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, setValues.getRes() as string, doc);
-  return isCorrect;
-}
-function mark(isCorrect: boolean, id: string, doc: Document) {
-  const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
-  const element = doc.getElementById(id) as HTMLElement;
-  element.classList.add(classname);
 }
