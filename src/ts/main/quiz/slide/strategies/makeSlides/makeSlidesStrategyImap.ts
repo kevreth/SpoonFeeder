@@ -39,11 +39,11 @@ function conclude(
 ) {
   setValues.setRes(id);
   setValues.saveData();
-  const isCorrect = decorate(doc, setValues);
+  const isCorrect = decorate(setValues, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(doc: Document, setValues: SetValues) {
+function decorate(setValues: SetValues, doc: Document) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
@@ -54,7 +54,6 @@ function decorate(doc: Document, setValues: SetValues) {
   mark(isCorrect, setValues.getRes() as string, doc);
   return isCorrect;
 }
-
 function mark(isCorrect: boolean, id: string, doc: Document) {
   const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
   const element = doc.getElementById(id) as HTMLElement;
