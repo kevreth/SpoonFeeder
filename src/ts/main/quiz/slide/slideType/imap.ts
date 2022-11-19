@@ -1,6 +1,6 @@
 import { getChildIds, removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
-import { SlideInterface } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy';
 export class Imap extends Slide {
   img = '';

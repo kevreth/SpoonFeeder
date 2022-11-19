@@ -1,8 +1,8 @@
 import { difference, intersection } from '../../../utilities';
 import { Slide } from '../../slide';
-import { SlideInterface } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
-import { AnswerType } from '../strategies/resultStrategy';
+import type { AnswerType } from '../strategies/resultStrategy';
 export class Select extends Slide {
   inst = '';
   processJson(json: Select): void {

@@ -1,6 +1,6 @@
 import { removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
-import { SlideInterface } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Mc extends Slide {
