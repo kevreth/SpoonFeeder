@@ -3,6 +3,7 @@ import { showButton } from '../../../makeSlides';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
+import { Mc } from '../../slideType/mc';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMc(
@@ -21,49 +22,42 @@ export function makeSlidesStrategyMc(
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
   options.forEach((option, optionCtr) => {
-    addEventListener(doc, option, numOptions, optionCtr, setValues, txt);
+    addEventListener(doc, option, optionCtr, setValues, txt);
   });
 }
 function addEventListener(
   doc: Document,
   option: string,
-  numOptions: number,
   optionCtr: number,
   setValues: SetValues,
   txt: string
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
-    conclude(numOptions, doc, setValues, option, optionCtr, txt);
+    conclude(doc, setValues, option, txt);
   });
 }
 function conclude(
-  numOptions: number,
   doc: Document,
   setValues: SetValues,
   option: string,
-  optionCtr: number,
   txt: string
 ) {
   setValues.setRes(option);
   setValues.saveData();
-  const isCorrect = decorate(numOptions, doc, setValues, optionCtr);
+  const isCorrect = decorate(doc, setValues);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(
-  numOptions: number,
-  doc: Document,
-  setValues: SetValues,
-  optionCtr: number
-) {
-  for (let i = 0; i < numOptions; i++)
+function decorate(doc: Document, setValues: SetValues) {
+  const options = (setValues.getSlide() as Mc).o;
+  for (let i = 0; i < options.length; i++)
     removeListener(doc.getElementById('btn' + i) as HTMLElement);
   const isCorrect = setValues.result() as boolean;
+  const optionCtr = options.indexOf(setValues.getRes() as string);
   mark(isCorrect, optionCtr, doc);
   return isCorrect;
 }
-
 function mark(isCorrect: boolean, optionCtr: number, doc: Document) {
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   const color = isCorrect ? 'green' : 'red';
