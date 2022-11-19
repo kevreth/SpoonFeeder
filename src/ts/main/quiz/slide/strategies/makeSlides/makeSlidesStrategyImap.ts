@@ -27,12 +27,11 @@ function addEventListener(setValues: SetValues, doc: Document, txt: string) {
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.addEventListener('click', () => {
-      conclude(ids, doc, setValues, id, txt);
+      conclude(doc, setValues, id, txt);
     });
   });
 }
 function conclude(
-  ids: string[],
   doc: Document,
   setValues: SetValues,
   id: string,
@@ -40,11 +39,11 @@ function conclude(
 ) {
   setValues.setRes(id);
   setValues.saveData();
-  const isCorrect = decorate(doc, setValues, id);
+  const isCorrect = decorate(doc, setValues);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(doc: Document, setValues: SetValues, id: string) {
+function decorate(doc: Document, setValues: SetValues) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
@@ -52,7 +51,7 @@ function decorate(doc: Document, setValues: SetValues, id: string) {
     removeListener(element);
   });
   const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, id, doc);
+  mark(isCorrect, setValues.getRes() as string, doc);
   return isCorrect;
 }
 
