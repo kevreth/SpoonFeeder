@@ -53,12 +53,6 @@ function conclude(
   showButton(doc, txt);
 }
 
-function decorate(setValues: SlideInterface, doc: Document) {
-  const isCorrect = setValues.result() as boolean;
-  mark(setValues.getAns(), setValues.getRes(), doc);
-  return isCorrect;
-}
-
 function addEventListener1(ctr: number, doc: Document): void {
   const element = doc.getElementById('w' + ctr) as HTMLElement;
   element.addEventListener('click', () => {
@@ -86,6 +80,11 @@ function evaluate(doc: Document) {
     ctr++;
   }
   return responses;
+}
+function decorate(setValues: SlideInterface, doc: Document) {
+  const isCorrect = setValues.result() as boolean;
+  mark(setValues.getAns(), setValues.getRes(), doc);
+  return isCorrect;
 }
 function mark(ans: AnswerType, res: AnswerType, doc: Document) {
   const _ans = ans as string[];

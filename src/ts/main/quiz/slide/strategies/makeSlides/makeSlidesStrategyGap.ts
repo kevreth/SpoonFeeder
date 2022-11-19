@@ -105,14 +105,6 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(setValues: SlideInterface, doc: Document) {
-  const corrArr = setValues.result() as boolean[];
-  mark(corrArr, doc);
-  const correct = corrArr.filter(Boolean).length;
-  const numAnswers = setValues.getAns().length;
-  summary(correct, numAnswers, doc);
-  return correct;
-}
 function evaluate(doc: Document): Array<string> {
   const responses: string[] = [];
   const ansId = doc.getElementsByClassName('ans');
@@ -121,6 +113,14 @@ function evaluate(doc: Document): Array<string> {
     responses.push(response);
   });
   return responses;
+}
+function decorate(setValues: SlideInterface, doc: Document) {
+  const corrArr = setValues.result() as boolean[];
+  mark(corrArr, doc);
+  const correct = corrArr.filter(Boolean).length;
+  const numAnswers = setValues.getAns().length;
+  summary(correct, numAnswers, doc);
+  return correct;
 }
 function summary(correct: number, numAns: number, doc: Document) {
   const pctCorrect = ((correct / numAns) * 100).toFixed(0);

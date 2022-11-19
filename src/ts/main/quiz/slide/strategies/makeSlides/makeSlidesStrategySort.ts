@@ -109,14 +109,13 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
+function evaluate(sortables: { element: Element }[]) {
+  return sortables.map((x) => x.element.innerHTML);
+}
 function decorate(setValues: SlideInterface, doc: Document) {
   const isCorrect = setValues.result() as boolean;
   mark(isCorrect, doc);
   return isCorrect;
-}
-
-function evaluate(sortables: { element: Element }[]) {
-  return sortables.map((x) => x.element.innerHTML);
 }
 function mark(isCorrect: boolean, doc: Document) {
   const msg = isCorrect ? 'correct' : 'incorrect';
