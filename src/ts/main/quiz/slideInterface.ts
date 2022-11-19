@@ -35,4 +35,5 @@ export interface SlideInterface {
   getRes(): AnswerType;
   getAns(): AnswerType;
   saveData(): void;
+  decorate(setValues: SlideInterface, doc: Document): boolean;
 }

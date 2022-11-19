@@ -100,7 +100,7 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  const correct = decorate(setValues, doc);
+  const correct = setValues.decorate(setValues, doc);
   const isCorrect = correct === ans.length;
   playAudio(isCorrect);
   showButton(doc, txt);
@@ -113,31 +113,6 @@ function evaluate(doc: Document): Array<string> {
     responses.push(response);
   });
   return responses;
-}
-function decorate(setValues: SlideInterface, doc: Document) {
-  const corrArr = setValues.result() as boolean[];
-  mark(corrArr, doc);
-  const correct = corrArr.filter(Boolean).length;
-  const numAnswers = setValues.getAns().length;
-  summary(correct, numAnswers, doc);
-  return correct;
-}
-function summary(correct: number, numAns: number, doc: Document) {
-  const pctCorrect = ((correct / numAns) * 100).toFixed(0);
-  const response =
-    `Number correct: ${correct} <br>\nNumber questions: ` +
-    `${numAns} <br>\n${pctCorrect}%`;
-  const responseElem = doc.getElementById('response') as HTMLElement;
-  responseElem.innerHTML = response;
-}
-function mark(corrArr: boolean[], doc: Document) {
-  corrArr.forEach((answer, ctr) => {
-    const color = answer ? 'green' : 'red';
-    const id = 'ans' + ctr;
-    const eAns = doc.getElementById(id) as HTMLElement;
-    eAns.style.backgroundColor = color;
-    eAns.style.color = 'white';
-  });
 }
 function drop(
   doc: Document,

@@ -44,6 +44,7 @@ export abstract class Slide implements SlideInterface {
   getAnswerCount(): number {
     return 1;
   }
+  abstract decorate(setValues: SlideInterface, doc: Document): boolean;
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file
