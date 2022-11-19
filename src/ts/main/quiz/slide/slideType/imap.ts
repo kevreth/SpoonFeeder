@@ -11,11 +11,11 @@ export class Imap extends Slide {
     } = json);
   }
   makeSlides(doc: Document): void {
-    const setValues = this.getSetValues();
+    // const setValues = this.getSetValues();
     const txt = this.txt as string;
     const img = this.img;
     const createHtml = this.createHtml;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeImap;
-    makeSlidesStrategy(txt, img, createHtml, doc, setValues);
+    makeSlidesStrategy(txt, img, createHtml, doc, this);
   }
 }

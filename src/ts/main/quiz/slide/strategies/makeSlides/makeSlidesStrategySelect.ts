@@ -4,9 +4,10 @@ import {
   removeListener,
 } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+// import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 
@@ -15,7 +16,7 @@ export function makeSlidesStrategySelect(
   txt: string,
   createHtml: CreateHtmlTypeSelect,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) {
   const txtarr = txt.split(' ');
   const html = createHtml(inst, txtarr);
@@ -26,7 +27,7 @@ export function makeSlidesStrategySelect(
 function addEventListener(
   doc: Document,
   txtarr: string[],
-  setValues: SetValues,
+  setValues: SlideInterface,
   txt: string
 ) {
   const element = doc.getElementById('btn') as HTMLElement;
@@ -40,7 +41,7 @@ function conclude(
   element: HTMLElement,
   numWords: number,
   doc: Document,
-  setValues: SetValues,
+  setValues: SlideInterface,
   txt: string
 ) {
   removeEventListeners(numWords, doc);
@@ -53,7 +54,7 @@ function conclude(
   showButton(doc, txt);
 }
 
-function decorate(setValues: SetValues, doc: Document) {
+function decorate(setValues: SlideInterface, doc: Document) {
   const isCorrect = setValues.result() as boolean;
   mark(setValues.getAns(), setValues.getRes(), doc);
   return isCorrect;

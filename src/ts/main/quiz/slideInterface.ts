@@ -31,4 +31,8 @@ export interface SlideInterface {
   getAnswerCount(): number;
   setContinue(): void;
   getSlideSet(): SlideInterface[];
+  setRes(res: AnswerType): void;
+  getRes(): AnswerType;
+  getAns(): AnswerType;
+  saveData(): void;
 }

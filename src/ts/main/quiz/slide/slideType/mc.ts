@@ -8,7 +8,7 @@ export class Mc extends Slide {
     this.ans = this.o[0];
   }
   makeSlides(doc: Document): void {
-    const setValues = this.getSetValues();
+    // const setValues = this.getSetValues();
     const isExercise = this.isExercise;
     const createHtml = this.createHtml;
     const maxWidthStrategy = SetWidths.SIMPLE;
@@ -22,7 +22,7 @@ export class Mc extends Slide {
       createHtml,
       maxWidthStrategy,
       doc,
-      setValues
+      this
     );
   }
 }

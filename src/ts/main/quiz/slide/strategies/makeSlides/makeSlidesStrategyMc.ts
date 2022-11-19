@@ -1,8 +1,9 @@
 import { isRandom, removeListener, shuffle } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+// import type { SetValues } from '../../setValues';
 import type { Mc } from '../../slideType/mc';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
@@ -13,7 +14,7 @@ export function makeSlidesStrategyMc(
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) {
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag) options = shuffle(options);
@@ -29,7 +30,7 @@ function addEventListener(
   doc: Document,
   option: string,
   optionCtr: number,
-  setValues: SetValues,
+  setValues: SlideInterface,
   txt: string
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
@@ -39,7 +40,7 @@ function addEventListener(
 }
 function conclude(
   doc: Document,
-  setValues: SetValues,
+  setValues: SlideInterface,
   option: string,
   txt: string
 ) {
@@ -49,8 +50,8 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(setValues: SetValues, doc: Document) {
-  const options = (setValues.getSlide() as Mc).o;
+function decorate(setValues: SlideInterface, doc: Document) {
+  const options = (setValues as Mc).o;
   for (let i = 0; i < options.length; i++)
     removeListener(doc.getElementById('btn' + i) as HTMLElement);
   const isCorrect = setValues.result() as boolean;

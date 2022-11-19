@@ -2,7 +2,7 @@ import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
 // import { exerciseGroupSlideIndex } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
-import { SetValues } from './slide/setValues';
+// import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -37,7 +37,7 @@ export abstract class Slide implements SlideInterface {
   getSlideSet(): SlideInterface[] {
     return new Array<SlideInterface>();
   }
-  setContinue(): void {
+  public setContinue(): void {
     this.cont = true;
   }
   static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
@@ -59,34 +59,40 @@ export abstract class Slide implements SlideInterface {
     const result = this.result() as ResultTypeIntersection;
     return this.evaluateStrategy(txt, ans, res, result);
   }
-  saveData() {
+  public saveData() {
     const txt = this.txt;
     const res = this.res;
     const cont = this.cont;
     saveData(txt, res, timestampNow(), cont);
   }
-  result(): ResultReturnType {
+  public result(): ResultReturnType {
     return this.resultType(this.ans, this.res);
   }
-  setRes(res: AnswerType): void {
+  public setRes(res: AnswerType): void {
     this.res = res;
   }
-  getSetValues() {
-    const saveData = () => this.saveData();
-    const result = (): ResultReturnType => this.result();
-    const getAns = (): AnswerType => this.ans;
-    const getRes = (): AnswerType => this.res;
-    const setRes = (res: AnswerType): void => this.setRes(res);
-    const setContinue = (): void => this.setContinue();
-    const getSlide = (): SlideInterface => this;
-    return new SetValues(
-      saveData,
-      result,
-      getAns,
-      getRes,
-      setRes,
-      setContinue,
-      getSlide
-    );
+  public getRes(): AnswerType {
+    return this.res;
   }
+  public getAns(): AnswerType {
+    return this.ans;
+  }
+  // getSetValues() {
+  //   const saveData = () => this.saveData();
+  //   const result = (): ResultReturnType => this.result();
+  //   const getAns = (): AnswerType => this.ans;
+  //   const getRes = (): AnswerType => this.res;
+  //   const setRes = (res: AnswerType): void => this.setRes(res);
+  //   const setContinue = (): void => this.setContinue();
+  //   const getSlide = (): SlideInterface => this;
+  //   return new SetValues(
+  //     saveData,
+  //     result,
+  //     getAns,
+  //     getRes,
+  //     setRes,
+  //     setContinue,
+  //     getSlide
+  //   );
+  // }
 }

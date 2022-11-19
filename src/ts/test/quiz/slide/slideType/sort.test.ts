@@ -3,7 +3,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import { Sort } from '../../../../main/quiz/slide/slideType/sort';
 import { SORT } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-class Test extends SlideTest<string[]> {
+class Test extends SlideTest {
   type = 'sort';
   public processJson(): void {
     const param = SORT();

@@ -1,7 +1,8 @@
 import { showButton } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+// import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeComplex } from '../setWidthsStrategy';
@@ -16,7 +17,7 @@ export function makeSlidesStrategyGap(
   createHtml: CreateHtmlTypeGap,
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
@@ -59,7 +60,7 @@ function setgap(
   doc: Document,
   ans: AnswerType,
   txt: string,
-  setValues: SetValues
+  setValues: SlideInterface
 ): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
   id.style.display = 'inline-block';
@@ -94,7 +95,7 @@ function setgap(
 function conclude(
   doc: Document,
   ans: AnswerType,
-  setValues: SetValues,
+  setValues: SlideInterface,
   txt: string
 ) {
   const res = evaluate(doc);
@@ -105,7 +106,7 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(setValues: SetValues, doc: Document) {
+function decorate(setValues: SlideInterface, doc: Document) {
   const corrArr = setValues.result() as boolean[];
   mark(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;

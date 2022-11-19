@@ -24,7 +24,7 @@ export abstract class SlideTest
     expect(spy).toHaveBeenCalled();
   }
   public getSetValues() {
-    const sv = this.getTestable().getSetValues();
+    const sv = this.getTestable();
     expect(sv.result).not.toBeNull();
     expect(sv.result).not.toBeNull();
     expect(sv.result).not.toBeNull();

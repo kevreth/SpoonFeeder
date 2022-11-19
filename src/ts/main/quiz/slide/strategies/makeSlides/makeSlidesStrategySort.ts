@@ -1,9 +1,10 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
 import { showButton } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+// import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 
@@ -12,7 +13,7 @@ export function makeSlidesStrategySort(
   ans: AnswerType,
   createHtml: CreateHtmlTypeSort,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ): void {
   const html = createHtml(txt, ans);
   createPageContent(html, doc);
@@ -96,7 +97,7 @@ export function makeSlidesStrategySort(
 }
 function conclude(
   sortables: { element: Element }[],
-  setValues: SetValues,
+  setValues: SlideInterface,
   doc: Document,
   done: HTMLElement,
   txt: string
@@ -109,7 +110,7 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(setValues: SetValues, doc: Document) {
+function decorate(setValues: SlideInterface, doc: Document) {
   const isCorrect = setValues.result() as boolean;
   mark(isCorrect, doc);
   return isCorrect;

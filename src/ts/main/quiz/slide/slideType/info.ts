@@ -7,9 +7,9 @@ export class Info extends Slide {
   }
   makeSlides(doc: Document): void {
     const txt = this.txt as string;
-    const setValues = this.getSetValues();
+    // const setValues = this.getSetValues();
     const createHtml = this.createHtml as CreateHtmlTypeInfo;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeInfo;
-    makeSlidesStrategy(txt, createHtml, doc, setValues);
+    makeSlidesStrategy(txt, createHtml, doc, this);
   }
 }

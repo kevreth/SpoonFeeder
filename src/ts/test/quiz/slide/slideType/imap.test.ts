@@ -3,7 +3,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import { Imap } from '../../../../main/quiz/slide/slideType/imap';
 import { IMAP } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-class Test extends SlideTest<string> {
+class Test extends SlideTest {
   type = 'imap';
   public processJson(): void {
     const param = IMAP();

@@ -1,16 +1,17 @@
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds, removeListener } from '../../../../utilities';
 import { showButton } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
+// import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
 export function makeSlidesStrategyImap(
   txt: string,
   img: string,
   createHtml: CreateHtmlTypeImap,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) {
   const html = createHtml(txt, img);
   createPageContent(html, doc);
@@ -22,7 +23,11 @@ export function makeSlidesStrategyImap(
     },
   });
 }
-function addEventListener(setValues: SetValues, doc: Document, txt: string) {
+function addEventListener(
+  setValues: SlideInterface,
+  doc: Document,
+  txt: string
+) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
@@ -33,7 +38,7 @@ function addEventListener(setValues: SetValues, doc: Document, txt: string) {
 }
 function conclude(
   doc: Document,
-  setValues: SetValues,
+  setValues: SlideInterface,
   id: string,
   txt: string
 ) {
@@ -43,7 +48,7 @@ function conclude(
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(setValues: SetValues, doc: Document) {
+function decorate(setValues: SlideInterface, doc: Document) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
