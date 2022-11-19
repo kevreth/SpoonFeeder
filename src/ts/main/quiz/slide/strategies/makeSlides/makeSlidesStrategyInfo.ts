@@ -7,14 +7,14 @@ export function makeSlidesStrategyInfo(
   txt: string,
   createHtml: CreateHtmlTypeInfo,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) {
   const html = createHtml(txt);
   createPageContent(html, doc);
-  conclude(setValues, doc, txt);
+  conclude(slide, doc, txt);
 }
-function conclude(setValues: SlideInterface, doc: Document, txt: string) {
-  setValues.saveData();
+function conclude(slide: SlideInterface, doc: Document, txt: string) {
+  slide.saveData();
   showButton(doc, txt);
 }
 

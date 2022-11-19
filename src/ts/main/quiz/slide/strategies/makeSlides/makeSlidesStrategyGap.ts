@@ -86,17 +86,12 @@ function setgap(
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) conclude(doc, ans, setValues, txt);
+    if (fillsRemaining === 0) conclude(doc, setValues, txt);
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
 }
-function conclude(
-  doc: Document,
-  ans: AnswerType,
-  setValues: SlideInterface,
-  txt: string
-) {
+function conclude(doc: Document, setValues: SlideInterface, txt: string) {
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();

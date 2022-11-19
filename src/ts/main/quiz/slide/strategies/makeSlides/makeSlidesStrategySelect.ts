@@ -10,24 +10,24 @@ export function makeSlidesStrategySelect(
   txt: string,
   createHtml: CreateHtmlTypeSelect,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) {
   const txtarr = txt.split(' ');
   const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
   for (let ctr = 0; ctr < txtarr.length; ctr++) addEventListener1(ctr + 1, doc);
-  addEventListener(doc, txtarr, setValues, txt);
+  addEventListener(doc, txtarr, slide, txt);
 }
 function addEventListener(
   doc: Document,
   txtarr: string[],
-  setValues: SlideInterface,
+  slide: SlideInterface,
   txt: string
 ) {
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txtarr.length;
   element.addEventListener('click', () => {
-    conclude(element, numWords, doc, setValues, txt);
+    conclude(element, numWords, doc, slide, txt);
   });
 }
 
@@ -35,15 +35,15 @@ function conclude(
   element: HTMLElement,
   numWords: number,
   doc: Document,
-  setValues: SlideInterface,
+  slide: SlideInterface,
   txt: string
 ) {
   removeEventListeners(numWords, doc);
   element.remove();
   const res = evaluate(doc);
-  setValues.setRes(res);
-  setValues.saveData();
-  const isCorrect = setValues.decorate(doc);
+  slide.setRes(res);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

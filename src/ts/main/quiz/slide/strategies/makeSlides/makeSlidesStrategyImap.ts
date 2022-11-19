@@ -10,7 +10,7 @@ export function makeSlidesStrategyImap(
   img: string,
   createHtml: CreateHtmlTypeImap,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) {
   const html = createHtml(txt, img);
   createPageContent(html, doc);
@@ -18,32 +18,28 @@ export function makeSlidesStrategyImap(
   //inject SVG into page so it is part of DOM
   SVGInjector(picture, {
     afterAll() {
-      addEventListener(setValues, doc, txt);
+      addEventListener(slide, doc, txt);
     },
   });
 }
-function addEventListener(
-  setValues: SlideInterface,
-  doc: Document,
-  txt: string
-) {
+function addEventListener(slide: SlideInterface, doc: Document, txt: string) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.addEventListener('click', () => {
-      conclude(doc, setValues, id, txt);
+      conclude(doc, slide, id, txt);
     });
   });
 }
 function conclude(
   doc: Document,
-  setValues: SlideInterface,
-  id: string,
+  slide: SlideInterface,
+  res: string,
   txt: string
 ) {
-  setValues.setRes(id);
-  setValues.saveData();
-  const isCorrect = setValues.decorate(doc);
+  slide.setRes(res);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

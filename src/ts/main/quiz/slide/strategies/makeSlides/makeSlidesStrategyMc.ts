@@ -12,7 +12,7 @@ export function makeSlidesStrategyMc(
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) {
   const shuffleFlag = isExercise && isRandom();
   if (shuffleFlag) options = shuffle(options);
@@ -21,30 +21,30 @@ export function makeSlidesStrategyMc(
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
   options.forEach((option, optionCtr) => {
-    addEventListener(doc, option, optionCtr, setValues, txt);
+    addEventListener(doc, option, optionCtr, slide, txt);
   });
 }
 function addEventListener(
   doc: Document,
   option: string,
   optionCtr: number,
-  setValues: SlideInterface,
+  slide: SlideInterface,
   txt: string
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
-    conclude(doc, setValues, option, txt);
+    conclude(doc, slide, option, txt);
   });
 }
 function conclude(
   doc: Document,
-  setValues: SlideInterface,
+  slide: SlideInterface,
   option: string,
   txt: string
 ) {
-  setValues.setRes(option);
-  setValues.saveData();
-  const isCorrect = setValues.decorate(doc);
+  slide.setRes(option);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

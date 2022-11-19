@@ -12,7 +12,7 @@ export function makeSlidesStrategySort(
   ans: AnswerType,
   createHtml: CreateHtmlTypeSort,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ): void {
   const html = createHtml(txt, ans);
   createPageContent(html, doc);
@@ -25,7 +25,7 @@ export function makeSlidesStrategySort(
   gsap.to(container, { duration: 0.5, autoAlpha: 1 });
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
-    conclude(sortables, setValues, doc, done, txt);
+    conclude(sortables, slide, doc, done, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {
@@ -96,16 +96,16 @@ export function makeSlidesStrategySort(
 }
 function conclude(
   sortables: { element: Element }[],
-  setValues: SlideInterface,
+  slide: SlideInterface,
   doc: Document,
   done: HTMLElement,
   txt: string
 ) {
   done.remove();
   const res = evaluate(sortables);
-  setValues.setRes(res);
-  setValues.saveData();
-  const isCorrect = setValues.decorate(doc);
+  slide.setRes(res);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
