@@ -1,6 +1,5 @@
 import { difference, intersection } from '../../../utilities';
 import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
 export class Select extends Slide {
@@ -20,9 +19,9 @@ export class Select extends Slide {
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSelect;
     makeSlidesStrategy(inst, txt, createHtml, doc, this);
   }
-  decorate(setValues: SlideInterface, doc: Document) {
-    const isCorrect = setValues.result() as boolean;
-    this.mark(setValues.getAns(), setValues.getRes(), doc);
+  decorate(doc: Document) {
+    const isCorrect = this.result() as boolean;
+    this.mark(this.getAns(), this.getRes(), doc);
     return isCorrect;
   }
   mark(ans: AnswerType, res: AnswerType, doc: Document) {

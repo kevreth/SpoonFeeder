@@ -4,7 +4,6 @@ import { Slide } from '../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 polyfill({
@@ -26,13 +25,13 @@ export class Gap extends Slide {
   getAnswerCount(): number {
     return this.ans.length;
   }
-  decorate(setValues: SlideInterface, doc: Document) {
-    const corrArr = setValues.result() as boolean[];
+  decorate(doc: Document) {
+    const corrArr = this.result() as boolean[];
     this.mark(corrArr, doc);
     const correct = corrArr.filter(Boolean).length;
-    const numAnswers = setValues.getAns().length;
+    const numAnswers = this.getAns().length;
     this.summary(correct, numAnswers, doc);
-    return correct === setValues.getAns().length;
+    return correct === this.getAns().length;
   }
   summary(correct: number, numAns: number, doc: Document) {
     const pctCorrect = ((correct / numAns) * 100).toFixed(0);

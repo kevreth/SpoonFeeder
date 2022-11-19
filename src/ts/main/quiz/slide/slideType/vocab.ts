@@ -50,8 +50,8 @@ export class Vocab extends Slide {
   getAnswerCount(): number {
     return this.list.size;
   }
-  decorate(setValues: SlideInterface, doc: Document): boolean {
-    setValues.getAns();
+  decorate(doc: Document): boolean {
+    this.getAns();
     doc.getRootNode();
     throw new Error('Method not implemented.');
   }

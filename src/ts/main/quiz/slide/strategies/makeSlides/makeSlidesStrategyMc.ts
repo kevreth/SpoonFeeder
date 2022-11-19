@@ -44,7 +44,7 @@ function conclude(
 ) {
   setValues.setRes(option);
   setValues.saveData();
-  const isCorrect = setValues.decorate(setValues, doc);
+  const isCorrect = setValues.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

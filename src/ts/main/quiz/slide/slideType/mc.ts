@@ -1,6 +1,5 @@
 import { removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Mc extends Slide {
@@ -26,12 +25,12 @@ export class Mc extends Slide {
       this
     );
   }
-  decorate(setValues: SlideInterface, doc: Document) {
-    const options = (setValues as Mc).o;
+  decorate(doc: Document) {
+    const options = this.o;
     for (let i = 0; i < options.length; i++)
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
-    const isCorrect = setValues.result() as boolean;
-    const optionCtr = options.indexOf(setValues.getRes() as string);
+    const isCorrect = this.result() as boolean;
+    const optionCtr = options.indexOf(this.getRes() as string);
     this.mark(isCorrect, optionCtr, doc);
     return isCorrect;
   }

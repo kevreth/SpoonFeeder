@@ -43,7 +43,7 @@ function conclude(
 ) {
   setValues.setRes(id);
   setValues.saveData();
-  const isCorrect = setValues.decorate(setValues, doc);
+  const isCorrect = setValues.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

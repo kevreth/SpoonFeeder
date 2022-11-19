@@ -105,7 +105,7 @@ function conclude(
   const res = evaluate(sortables);
   setValues.setRes(res);
   setValues.saveData();
-  const isCorrect = setValues.decorate(setValues, doc);
+  const isCorrect = setValues.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

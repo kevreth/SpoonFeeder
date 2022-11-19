@@ -1,10 +1,9 @@
 import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeInfo } from '../strategies/createHtmlStrategy';
 import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy';
 export class Info extends Slide {
-  decorate(setValues: SlideInterface, doc: Document): boolean {
-    setValues.getAns();
+  decorate(doc: Document): boolean {
+    this.getAns();
     doc.getRootNode();
     throw new Error('Method not implemented.');
   }
