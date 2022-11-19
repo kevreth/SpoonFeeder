@@ -18,26 +18,27 @@ export function makeSlidesStrategyMc(
   if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);
   createPageContent(html, doc);
-  maxWidthStrategy(options.length, 'btn', doc);
+  const numOptions = options.length;
+  maxWidthStrategy(numOptions, 'btn', doc);
   options.forEach((option, optionCtr) => {
-    addEventListener(doc, option, options.length, optionCtr, setValues, txt);
+    addEventListener(doc, option, numOptions, optionCtr, setValues, txt);
   });
 }
 function addEventListener(
   doc: Document,
   option: string,
-  length: number,
+  numOptions: number,
   optionCtr: number,
   setValues: SetValues,
   txt: string
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
-    conclude(length, doc, setValues, option, optionCtr, txt);
+    conclude(numOptions, doc, setValues, option, optionCtr, txt);
   });
 }
 function conclude(
-  length: number,
+  numOptions: number,
   doc: Document,
   setValues: SetValues,
   option: string,
@@ -46,17 +47,17 @@ function conclude(
 ) {
   setValues.setRes(option);
   setValues.saveData();
-  const isCorrect = decorate(length, doc, setValues, optionCtr);
+  const isCorrect = decorate(numOptions, doc, setValues, optionCtr);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
 function decorate(
-  length: number,
+  numOptions: number,
   doc: Document,
   setValues: SetValues,
   optionCtr: number
 ) {
-  for (let i = 0; i < length; i++)
+  for (let i = 0; i < numOptions; i++)
     removeListener(doc.getElementById('btn' + i) as HTMLElement);
   const isCorrect = setValues.result() as boolean;
   mark(isCorrect, optionCtr, doc);
