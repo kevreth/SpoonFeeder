@@ -6,6 +6,7 @@ export class SetValues {
   constructor(
     public readonly saveData: () => void,
     public readonly result: () => ResultReturnType,
+    public readonly getAns: () => AnswerType,
     public readonly getRes: () => AnswerType,
     public readonly setRes: (res: AnswerType) => void,
     public readonly setContinue: () => void,

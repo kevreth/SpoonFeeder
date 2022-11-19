@@ -3,7 +3,7 @@ import { showButton } from '../../../makeSlides';
 import { playAudio } from '../../audio';
 import { createPageContent } from '../../createPageContent';
 import type { SetValues } from '../../setValues';
-import { Mc } from '../../slideType/mc';
+import type { Mc } from '../../slideType/mc';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMc(
@@ -45,11 +45,11 @@ function conclude(
 ) {
   setValues.setRes(option);
   setValues.saveData();
-  const isCorrect = decorate(doc, setValues);
+  const isCorrect = decorate(setValues, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
-function decorate(doc: Document, setValues: SetValues) {
+function decorate(setValues: SetValues, doc: Document) {
   const options = (setValues.getSlide() as Mc).o;
   for (let i = 0; i < options.length; i++)
     removeListener(doc.getElementById('btn' + i) as HTMLElement);

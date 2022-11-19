@@ -55,7 +55,6 @@ export type MakeSlidesTypeMc = (
 ) => void;
 export type MakeSlidesTypeSelect = (
   inst: string,
-  ans: AnswerType,
   txt: string,
   createHtml: CreateHtmlSelectType,
   doc: Document,
@@ -156,13 +155,12 @@ export class MakeSlidesStrategy {
   /////////////////////////////////////////////////////////////////////////////
   public static readonly SELECT = function (
     inst: string,
-    ans: AnswerType,
     txt: string,
     createHtml: CreateHtmlSelectType,
     doc: Document,
     setValues: SetValues
   ) {
-    makeSlidesStrategySelect(inst, ans, txt, createHtml, doc, setValues);
+    makeSlidesStrategySelect(inst, txt, createHtml, doc, setValues);
   };
   /////////////////////////////////////////////////////////////////////////////
   //                             SORT

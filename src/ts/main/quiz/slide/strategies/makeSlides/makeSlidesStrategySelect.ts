@@ -12,7 +12,6 @@ import type { AnswerType } from '../resultStrategy';
 
 export function makeSlidesStrategySelect(
   inst: string,
-  ans: AnswerType,
   txt: string,
   createHtml: CreateHtmlTypeSelect,
   doc: Document,
@@ -22,26 +21,24 @@ export function makeSlidesStrategySelect(
   const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
   for (let ctr = 0; ctr < txtarr.length; ctr++) addEventListener1(ctr + 1, doc);
-  addEventListener(doc, txtarr, ans, setValues, txt);
+  addEventListener(doc, txtarr, setValues, txt);
 }
 function addEventListener(
   doc: Document,
   txtarr: string[],
-  ans: AnswerType,
   setValues: SetValues,
   txt: string
 ) {
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txtarr.length;
   element.addEventListener('click', () => {
-    conclude(element, numWords, ans, doc, setValues, txt);
+    conclude(element, numWords, doc, setValues, txt);
   });
 }
 
 function conclude(
   element: HTMLElement,
   numWords: number,
-  ans: AnswerType,
   doc: Document,
   setValues: SetValues,
   txt: string
@@ -51,19 +48,14 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  const isCorrect = decorate(setValues, ans, res, doc);
+  const isCorrect = decorate(setValues, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
 
-function decorate(
-  setValues: SetValues,
-  ans: AnswerType,
-  res: number[],
-  doc: Document
-) {
+function decorate(setValues: SetValues, doc: Document) {
   const isCorrect = setValues.result() as boolean;
-  mark(ans, res, doc);
+  mark(setValues.getAns(), setValues.getRes(), doc);
   return isCorrect;
 }
 
