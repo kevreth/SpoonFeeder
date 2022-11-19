@@ -1,4 +1,5 @@
 import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSort } from '../strategies/makeSlidesStrategy';
 export class Sort extends Slide {
   processJson(json: Sort): void {
@@ -10,5 +11,15 @@ export class Sort extends Slide {
     const createHtml = this.createHtml;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSort;
     makeSlidesStrategy(txt, ans, createHtml, doc, this);
+  }
+  decorate(setValues: SlideInterface, doc: Document) {
+    const isCorrect = setValues.result() as boolean;
+    this.mark(isCorrect, doc);
+    return isCorrect;
+  }
+  mark(isCorrect: boolean, doc: Document) {
+    const msg = isCorrect ? 'correct' : 'incorrect';
+    const content = doc.getElementById('content') as HTMLElement;
+    content.insertAdjacentHTML('beforeend', msg);
   }
 }

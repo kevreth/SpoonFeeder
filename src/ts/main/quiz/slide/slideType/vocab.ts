@@ -50,6 +50,11 @@ export class Vocab extends Slide {
   getAnswerCount(): number {
     return this.list.size;
   }
+  decorate(setValues: SlideInterface, doc: Document): boolean {
+    setValues.getAns();
+    doc.getRootNode();
+    throw new Error('Method not implemented.');
+  }
 }
 export function generateQuestions(map: Map<string, string>) {
   const keys = Array.from(map.keys());
