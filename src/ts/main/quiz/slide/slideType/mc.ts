@@ -1,4 +1,6 @@
+import { removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
+import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Mc extends Slide {
@@ -23,5 +25,19 @@ export class Mc extends Slide {
       doc,
       this
     );
+  }
+  decorate(setValues: SlideInterface, doc: Document) {
+    const options = (setValues as Mc).o;
+    for (let i = 0; i < options.length; i++)
+      removeListener(doc.getElementById('btn' + i) as HTMLElement);
+    const isCorrect = setValues.result() as boolean;
+    const optionCtr = options.indexOf(setValues.getRes() as string);
+    this.mark(isCorrect, optionCtr, doc);
+    return isCorrect;
+  }
+  mark(isCorrect: boolean, optionCtr: number, doc: Document) {
+    const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
+    const color = isCorrect ? 'green' : 'red';
+    optionButton.style.backgroundColor = color;
   }
 }
