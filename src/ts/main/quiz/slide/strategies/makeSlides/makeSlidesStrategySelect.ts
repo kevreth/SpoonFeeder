@@ -27,20 +27,19 @@ function addEventListener(
   const element = doc.getElementById('btn') as HTMLElement;
   const numWords = txtarr.length;
   element.addEventListener('click', () => {
-    conclude(element, numWords, doc, slide, txt);
+    removeEventListeners(numWords, doc);
+    element.remove();
+    const res = evaluate(doc);
+    conclude(doc, slide, res, txt);
   });
 }
 
 function conclude(
-  element: HTMLElement,
-  numWords: number,
   doc: Document,
   slide: SlideInterface,
+  res: number[],
   txt: string
 ) {
-  removeEventListeners(numWords, doc);
-  element.remove();
-  const res = evaluate(doc);
   slide.setRes(res);
   slide.saveData();
   const isCorrect = slide.decorate(doc);

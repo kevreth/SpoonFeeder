@@ -25,7 +25,9 @@ export function makeSlidesStrategySort(
   gsap.to(container, { duration: 0.5, autoAlpha: 1 });
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
-    conclude(sortables, slide, doc, done, txt);
+    done.remove();
+    const res = evaluate(sortables);
+    conclude(doc, slide, res, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {
@@ -95,14 +97,11 @@ export function makeSlidesStrategySort(
   }
 }
 function conclude(
-  sortables: { element: Element }[],
-  slide: SlideInterface,
   doc: Document,
-  done: HTMLElement,
+  slide: SlideInterface,
+  res: string[],
   txt: string
 ) {
-  done.remove();
-  const res = evaluate(sortables);
   slide.setRes(res);
   slide.saveData();
   const isCorrect = slide.decorate(doc);

@@ -16,7 +16,7 @@ export function makeSlidesStrategyGap(
   createHtml: CreateHtmlTypeGap,
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
@@ -25,7 +25,7 @@ export function makeSlidesStrategyGap(
   createPageContent(html, doc);
   (ans as string[]).forEach((currentFills, ctr) => {
     setfills(ctr, currentFills, doc);
-    setgap(ctr, doc, ans, txt, setValues);
+    setgap(ctr, doc, ans, txt, slide);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
@@ -59,7 +59,7 @@ function setgap(
   doc: Document,
   ans: AnswerType,
   txt: string,
-  setValues: SlideInterface
+  slide: SlideInterface
 ): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
   id.style.display = 'inline-block';
@@ -86,16 +86,21 @@ function setgap(
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) conclude(doc, setValues, txt);
+    const res = evaluate(doc);
+    if (fillsRemaining === 0) conclude(doc, slide, res, txt);
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
 }
-function conclude(doc: Document, setValues: SlideInterface, txt: string) {
-  const res = evaluate(doc);
-  setValues.setRes(res);
-  setValues.saveData();
-  const isCorrect = setValues.decorate(doc);
+function conclude(
+  doc: Document,
+  slide: SlideInterface,
+  res: string[],
+  txt: string
+) {
+  slide.setRes(res);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }

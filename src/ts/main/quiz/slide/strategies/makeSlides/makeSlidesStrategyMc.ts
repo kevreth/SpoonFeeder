@@ -39,10 +39,10 @@ function addEventListener(
 function conclude(
   doc: Document,
   slide: SlideInterface,
-  option: string,
+  res: string,
   txt: string
 ) {
-  slide.setRes(option);
+  slide.setRes(res);
   slide.saveData();
   const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
