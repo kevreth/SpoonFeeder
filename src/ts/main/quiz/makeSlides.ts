@@ -15,22 +15,22 @@ export class MakeSlides {
     else {
       const idx = Slide.getSlideSavedIndex(saves, slide.txt);
       const savedFlag = idx > -1;
-      if (savedFlag) MakeSlides.reloadSlide(slide, idx, doc);
-      else slide.makeSlides(doc);
+      let contFlag = false;
+      if (savedFlag) contFlag = saves[idx].cont;
+      if (contFlag) {
+        console.log('reload ', slide.txt.slice(0, 6), Json.count());
+        MakeSlides.reloadSlide(slide, idx, doc);
+      } else {
+        console.log('make ', slide.txt.slice(0, 6), Json.count());
+        slide.makeSlides(doc);
+      }
     }
   }
-  // first? cont? action
-  // Y      Y     slide 2
-  // Y      N     slide 1
-  // N      Y     slide n
-  // N      N     slide n-1
   //The slide has already been presented to the user, as will happen on reload.
   public static reloadSlide(slide: SlideInterface, idx: number, doc: Document) {
     const saves = getSavedDataArray();
     const savedSlide = saves[idx];
     const result = savedSlide.result;
-    const firstFlag = idx === 0;
-    const contFlag = savedSlide.cont;
     slide.setResults(result);
     MakeSlides.showSlides(doc);
   }

@@ -44,15 +44,25 @@ function conclude(
   optionCtr: number,
   txt: string
 ) {
-  for (let i = 0; i < length; i++)
-    removeListener(doc.getElementById('btn' + i) as HTMLElement);
   setValues.setRes(option);
   setValues.saveData();
-  const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, optionCtr, doc);
+  const isCorrect = decorate(length, doc, setValues, optionCtr);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
+function decorate(
+  length: number,
+  doc: Document,
+  setValues: SetValues,
+  optionCtr: number
+) {
+  for (let i = 0; i < length; i++)
+    removeListener(doc.getElementById('btn' + i) as HTMLElement);
+  const isCorrect = setValues.result() as boolean;
+  mark(isCorrect, optionCtr, doc);
+  return isCorrect;
+}
+
 function mark(isCorrect: boolean, optionCtr: number, doc: Document) {
   const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
   const color = isCorrect ? 'green' : 'red';

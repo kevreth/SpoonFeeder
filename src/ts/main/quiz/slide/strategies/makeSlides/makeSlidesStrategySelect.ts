@@ -51,10 +51,20 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
-  const isCorrect = setValues.result() as boolean;
-  mark(ans, res, doc);
+  const isCorrect = decorate(setValues, ans, res, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
+}
+
+function decorate(
+  setValues: SetValues,
+  ans: AnswerType,
+  res: number[],
+  doc: Document
+) {
+  const isCorrect = setValues.result() as boolean;
+  mark(ans, res, doc);
+  return isCorrect;
 }
 
 function addEventListener1(ctr: number, doc: Document): void {

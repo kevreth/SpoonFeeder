@@ -100,13 +100,17 @@ function conclude(
   const res = evaluate(doc);
   setValues.setRes(res);
   setValues.saveData();
+  const correct = decorate(setValues, doc, ans);
+  const isCorrect = correct === ans.length;
+  playAudio(isCorrect);
+  showButton(doc, txt);
+}
+function decorate(setValues: SetValues, doc: Document, ans: AnswerType) {
   const corrArr = setValues.result() as boolean[];
   mark(corrArr, doc);
   const correct = corrArr.filter(Boolean).length;
   summary(correct, ans.length, doc);
-  const isCorrect = correct === ans.length;
-  playAudio(isCorrect);
-  showButton(doc, txt);
+  return correct;
 }
 function evaluate(doc: Document): Array<string> {
   const responses: string[] = [];

@@ -38,18 +38,28 @@ function conclude(
   id: string,
   txt: string
 ) {
+  setValues.setRes(id);
+  setValues.saveData();
+  const isCorrect = decorate(ids, doc, setValues, id);
+  playAudio(isCorrect);
+  showButton(doc, txt);
+}
+function decorate(
+  ids: string[],
+  doc: Document,
+  setValues: SetValues,
+  id: string
+) {
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.classList.remove('shape');
     removeListener(element);
   });
-  setValues.setRes(id);
-  setValues.saveData();
   const isCorrect = setValues.result() as boolean;
   mark(isCorrect, id, doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
+  return isCorrect;
 }
+
 function mark(isCorrect: boolean, id: string, doc: Document) {
   const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
   const element = doc.getElementById(id) as HTMLElement;

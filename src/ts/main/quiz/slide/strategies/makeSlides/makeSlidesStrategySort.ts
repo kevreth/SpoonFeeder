@@ -105,11 +105,16 @@ function conclude(
   const res = evaluate(sortables);
   setValues.setRes(res);
   setValues.saveData();
-  const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, doc);
+  const isCorrect = decorate(setValues, doc);
   playAudio(isCorrect);
   showButton(doc, txt);
 }
+function decorate(setValues: SetValues, doc: Document) {
+  const isCorrect = setValues.result() as boolean;
+  mark(isCorrect, doc);
+  return isCorrect;
+}
+
 function evaluate(sortables: { element: Element }[]) {
   return sortables.map((x) => x.element.innerHTML);
 }
