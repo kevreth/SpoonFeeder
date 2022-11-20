@@ -18,13 +18,13 @@ export class MakeSlides {
       let contFlag = false;
       if (savedFlag) contFlag = saves[idx].cont;
       if (contFlag) {
-        console.log('reload ', slide.txt.slice(0, 6), Json.count());
         MakeSlides.reloadSlide(slide, idx, doc);
-        // } else if (savedFlag) {
-        //   slide.makeSlides(doc);
-        //   slide.decorate(doc);
+      } else if (savedFlag) {
+        MakeSlides.reloadSlide(slide, idx, doc);
+        slide.makeSlides(doc);
+        slide.decorate(doc);
+        continueButton(doc);
       } else {
-        console.log('make ', slide.txt.slice(0, 6), Json.count());
         slide.makeSlides(doc);
       }
     }
