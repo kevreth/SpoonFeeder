@@ -18,13 +18,17 @@ export class MakeSlides {
       let contFlag = false;
       if (savedFlag) contFlag = saves[idx].cont;
       if (contFlag) {
+        console.log('reload ', slide.txt.slice(0, 6), Json.count());
         MakeSlides.reloadSlide(slide, idx, doc);
-        // } else if (savedFlag) {
-        //   MakeSlides.reloadSlide(slide, idx, doc);
-        //   slide.makeSlides(doc);
-        //   slide.decorate(doc);
-        //   showButton(doc, slide.txt);
+        MakeSlides.showSlides(doc);
+      } else if (savedFlag) {
+        console.log('saved ', slide.txt.slice(0, 6), Json.count());
+        MakeSlides.reloadSlide(slide, idx, doc);
+        slide.makeSlides(doc);
+        slide.decorate(doc);
+        showButton(doc, slide.txt);
       } else {
+        console.log('make ', slide.txt.slice(0, 6), Json.count());
         slide.makeSlides(doc);
       }
     }
@@ -35,7 +39,6 @@ export class MakeSlides {
     const savedSlide = saves[idx];
     const result = savedSlide.result;
     slide.setResults(result);
-    MakeSlides.showSlides(doc);
   }
   private static endQuiz(doc: Document) {
     Json.reset();
