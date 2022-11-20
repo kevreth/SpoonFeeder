@@ -96,6 +96,9 @@ export function makeSlidesStrategySort(
     return sortable;
   }
 }
+function evaluate(sortables: { element: Element }[]) {
+  return sortables.map((x) => x.element.innerHTML);
+}
 function conclude(
   doc: Document,
   slide: SlideInterface,
@@ -107,7 +110,4 @@ function conclude(
   const isCorrect = slide.decorate(doc);
   playAudio(isCorrect);
   showButton(doc, txt);
-}
-function evaluate(sortables: { element: Element }[]) {
-  return sortables.map((x) => x.element.innerHTML);
 }

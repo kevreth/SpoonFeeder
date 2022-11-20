@@ -92,18 +92,6 @@ function setgap(
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
 }
-function conclude(
-  doc: Document,
-  slide: SlideInterface,
-  res: AnswerType,
-  txt: string
-) {
-  slide.setRes(res);
-  slide.saveData();
-  const isCorrect = slide.decorate(doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
-}
 function evaluate(doc: Document): Array<string> {
   const responses: string[] = [];
   const ansId = doc.getElementsByClassName('ans');
@@ -139,4 +127,16 @@ function setfills(ctr: number, currentFills: string, doc: Document): void {
     (e.dataTransfer as DataTransfer).setData('number', number);
     (e.dataTransfer as DataTransfer).setData('text', text);
   };
+}
+function conclude(
+  doc: Document,
+  slide: SlideInterface,
+  res: string[],
+  txt: string
+) {
+  slide.setRes(res);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
+  playAudio(isCorrect);
+  showButton(doc, txt);
 }

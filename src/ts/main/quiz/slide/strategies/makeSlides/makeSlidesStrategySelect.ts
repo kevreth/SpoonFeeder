@@ -34,20 +34,6 @@ function addEventListener(
     conclude(doc, slide, res, txt);
   });
 }
-
-function conclude(
-  doc: Document,
-  slide: SlideInterface,
-  res: AnswerType,
-  txt: string
-) {
-  slide.setRes(res);
-  slide.saveData();
-  const isCorrect = slide.decorate(doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
-}
-
 function addEventListener1(ctr: number, doc: Document): void {
   const element = doc.getElementById('w' + ctr) as HTMLElement;
   element.addEventListener('click', () => {
@@ -84,4 +70,16 @@ function removeEventListeners(numWords: number, doc: Document) {
     element.style.removeProperty('background-color');
     element.style.color = 'white';
   }
+}
+function conclude(
+  doc: Document,
+  slide: SlideInterface,
+  res: AnswerType,
+  txt: string
+) {
+  slide.setRes(res);
+  slide.saveData();
+  const isCorrect = slide.decorate(doc);
+  playAudio(isCorrect);
+  showButton(doc, txt);
 }
