@@ -17,7 +17,6 @@ function conclude(slide: SlideInterface, doc: Document, txt: string) {
   slide.saveData();
   showButton(doc, txt);
 }
-
 //info has it's own showButton because the continue button
 //appears immediately upon page load and can be in the wrong
 //place because dynamic content in course files may cause it

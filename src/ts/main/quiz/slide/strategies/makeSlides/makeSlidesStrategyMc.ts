@@ -1,10 +1,8 @@
 import { isRandom, shuffle } from '../../../../utilities';
-import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
-import { playAudio } from '../../audio';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
-import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMc(
   txt: string,
@@ -36,16 +34,4 @@ function addEventListener(
   element.addEventListener('click', () => {
     conclude(doc, slide, option, txt);
   });
-}
-function conclude(
-  doc: Document,
-  slide: SlideInterface,
-  res: AnswerType,
-  txt: string
-) {
-  slide.setRes(res);
-  slide.saveData();
-  const isCorrect = slide.decorate(doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
 }

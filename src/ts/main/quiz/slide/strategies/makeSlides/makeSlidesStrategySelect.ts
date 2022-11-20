@@ -1,11 +1,8 @@
 import { removeListener } from '../../../../utilities';
-import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
-import { playAudio } from '../../audio';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
-import type { AnswerType } from '../resultStrategy';
-
 export function makeSlidesStrategySelect(
   inst: string,
   txt: string,
@@ -70,16 +67,4 @@ function removeEventListeners(numWords: number, doc: Document) {
     element.style.removeProperty('background-color');
     element.style.color = 'white';
   }
-}
-function conclude(
-  doc: Document,
-  slide: SlideInterface,
-  res: AnswerType,
-  txt: string
-) {
-  slide.setRes(res);
-  slide.saveData();
-  const isCorrect = slide.decorate(doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
 }

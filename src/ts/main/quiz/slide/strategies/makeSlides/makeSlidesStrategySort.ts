@@ -1,12 +1,10 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
-import { playAudio } from '../../audio';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
-
 export function makeSlidesStrategySort(
   txt: string,
   ans: AnswerType,
@@ -98,16 +96,4 @@ export function makeSlidesStrategySort(
 }
 function evaluate(sortables: { element: Element }[]) {
   return sortables.map((x) => x.element.innerHTML);
-}
-function conclude(
-  doc: Document,
-  slide: SlideInterface,
-  res: AnswerType,
-  txt: string
-) {
-  slide.setRes(res);
-  slide.saveData();
-  const isCorrect = slide.decorate(doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
 }

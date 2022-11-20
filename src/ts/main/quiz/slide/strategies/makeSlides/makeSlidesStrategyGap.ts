@@ -1,6 +1,5 @@
-import { showButton } from '../../../makeSlides';
 import type { SlideInterface } from '../../../slideInterface';
-import { playAudio } from '../../audio';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
@@ -127,16 +126,4 @@ function setfills(ctr: number, currentFills: string, doc: Document): void {
     (e.dataTransfer as DataTransfer).setData('number', number);
     (e.dataTransfer as DataTransfer).setData('text', text);
   };
-}
-function conclude(
-  doc: Document,
-  slide: SlideInterface,
-  res: string[],
-  txt: string
-) {
-  slide.setRes(res);
-  slide.saveData();
-  const isCorrect = slide.decorate(doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
 }
