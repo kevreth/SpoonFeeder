@@ -12,7 +12,7 @@ export class Mc extends Slide {
     const isExercise = this.isExercise;
     const createHtml = this.createHtml;
     const maxWidthStrategy = SetWidths.SIMPLE;
-    const txt = this.txt as string;
+    const txt = this.txt;
     const options = this.o;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMc;
     makeSlidesStrategy(

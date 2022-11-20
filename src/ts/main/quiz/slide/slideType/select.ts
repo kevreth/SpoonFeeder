@@ -14,7 +14,7 @@ export class Select extends Slide {
   }
   makeSlides(doc: Document): void {
     const inst = this.inst;
-    const txt = this.txt as string;
+    const txt = this.txt;
     const createHtml = this.createHtml;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSelect;
     makeSlidesStrategy(inst, txt, createHtml, doc, this);

@@ -5,7 +5,7 @@ export class Sort extends Slide {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
-    const txt = this.txt as string;
+    const txt = this.txt;
     const ans = this.ans;
     const createHtml = this.createHtml;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSort;

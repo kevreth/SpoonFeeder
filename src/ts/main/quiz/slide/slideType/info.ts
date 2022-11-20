@@ -11,7 +11,7 @@ export class Info extends Slide {
     ({ txt: this.txt } = json);
   }
   makeSlides(doc: Document): void {
-    const txt = this.txt as string;
+    const txt = this.txt;
     const createHtml = this.createHtml as CreateHtmlTypeInfo;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeInfo;
     makeSlidesStrategy(txt, createHtml, doc, this);
