@@ -31,6 +31,7 @@ export class Mc extends Slide {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
     const isCorrect = this.result() as boolean;
     const optionCtr = options.indexOf(this.getRes() as string);
+    console.log(optionCtr);
     this.mark(isCorrect, optionCtr, doc);
     return isCorrect;
   }
