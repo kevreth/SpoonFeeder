@@ -19,11 +19,11 @@ export class MakeSlides {
       if (savedFlag) contFlag = saves[idx].cont;
       if (contFlag) {
         MakeSlides.reloadSlide(slide, idx, doc);
-      } else if (savedFlag) {
-        MakeSlides.reloadSlide(slide, idx, doc);
-        slide.makeSlides(doc);
-        slide.decorate(doc);
-        showButton(doc, slide.txt);
+        // } else if (savedFlag) {
+        //   MakeSlides.reloadSlide(slide, idx, doc);
+        //   slide.makeSlides(doc);
+        //   slide.decorate(doc);
+        //   showButton(doc, slide.txt);
       } else {
         slide.makeSlides(doc);
       }

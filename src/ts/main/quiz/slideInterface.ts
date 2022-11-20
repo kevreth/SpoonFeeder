@@ -9,7 +9,7 @@ import type {
 } from './slide/strategies/resultStrategy';
 
 export interface SlideInterface {
-  txt: AnswerType;
+  txt: string;
   type: string;
   cont: boolean;
   isExercise: boolean;

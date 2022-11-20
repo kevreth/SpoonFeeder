@@ -14,7 +14,7 @@ const { set: saveData } = SaveData;
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
-  txt!: AnswerType;
+  txt!: string;
   ans!: AnswerType;
   res!: AnswerType;
   cont = false;

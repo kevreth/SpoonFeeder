@@ -18,8 +18,6 @@ class Test extends SlideTest {
     const testable = test.getTestable() as Vocab;
     testable.processJson(param);
     expect(testable.type).toEqual('vocab');
-    expect(testable.ans[0]).toEqual('key1');
-    expect(testable.txt[1]).toEqual('value2');
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide {
