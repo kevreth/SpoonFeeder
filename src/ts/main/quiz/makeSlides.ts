@@ -23,7 +23,7 @@ export class MakeSlides {
         MakeSlides.reloadSlide(slide, idx, doc);
         slide.makeSlides(doc);
         slide.decorate(doc);
-        continueButton(doc);
+        showButton(doc, slide.txt);
       } else {
         slide.makeSlides(doc);
       }
