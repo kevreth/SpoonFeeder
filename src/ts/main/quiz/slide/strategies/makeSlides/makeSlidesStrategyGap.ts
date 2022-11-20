@@ -24,7 +24,7 @@ export function makeSlidesStrategyGap(
   createPageContent(html, doc);
   (ans as string[]).forEach((currentFills, ctr) => {
     setfills(ctr, currentFills, doc);
-    setgap(ctr, doc, ans, txt, slide);
+    setgap(ctr, doc, txt, slide);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
@@ -56,7 +56,6 @@ export function gaps(length: number, gaps: string): string {
 function setgap(
   ctr: number,
   doc: Document,
-  ans: AnswerType,
   txt: string,
   slide: SlideInterface
 ): void {
