@@ -84,8 +84,10 @@ function setgap(
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-    const res = evaluate(doc);
-    if (fillsRemaining === 0) conclude(doc, slide, res, txt);
+    if (fillsRemaining === 0) {
+      const res = evaluate(doc);
+      conclude(doc, slide, res, txt);
+    }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
