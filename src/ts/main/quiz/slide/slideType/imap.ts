@@ -26,7 +26,8 @@ export class Imap extends Slide {
       removeListener(element);
     });
     const isCorrect = this.result() as boolean;
-    this.mark(isCorrect, this.getRes() as string, doc);
+    const res = this.getRes() as string;
+    this.mark(isCorrect, res, doc);
     return isCorrect;
   }
   mark(isCorrect: boolean, id: string, doc: Document) {
