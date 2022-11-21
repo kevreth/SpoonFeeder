@@ -3,7 +3,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import { Mc } from '../../../../main/quiz/slide/slideType/mc';
 import { MC } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-class Test extends SlideTest<string> {
+class Test extends SlideTest {
   type = 'mc';
   public processJson(): void {
     const param = MC();

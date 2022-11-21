@@ -1,23 +1,22 @@
 import { createContinueButton, MakeSlides } from '../../../makeSlides';
+import type { SlideInterface } from '../../../slideInterface';
 import { createPageContent } from '../../createPageContent';
 import { SaveData } from '../../saveData';
-import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeInfo } from '../createHtmlStrategy';
 export function makeSlidesStrategyInfo(
   txt: string,
   createHtml: CreateHtmlTypeInfo,
   doc: Document,
-  setValues: SetValues
+  slide: SlideInterface
 ) {
   const html = createHtml(txt);
   createPageContent(html, doc);
-  conclude(setValues, doc, txt);
+  conclude(slide, doc, txt);
 }
-function conclude(setValues: SetValues, doc: Document, txt: string) {
-  setValues.saveData();
+function conclude(slide: SlideInterface, doc: Document, txt: string) {
+  slide.saveData();
   showButton(doc, txt);
 }
-
 //info has it's own showButton because the continue button
 //appears immediately upon page load and can be in the wrong
 //place because dynamic content in course files may cause it

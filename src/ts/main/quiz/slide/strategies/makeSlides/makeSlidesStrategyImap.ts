@@ -1,16 +1,15 @@
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds, removeListener } from '../../../../utilities';
-import { showButton } from '../../../makeSlides';
-import { playAudio } from '../../audio';
+import { getChildIds } from '../../../../utilities';
+import type { SlideInterface } from '../../../slideInterface';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
 export function makeSlidesStrategyImap(
   txt: string,
   img: string,
   createHtml: CreateHtmlTypeImap,
   doc: Document,
-  setValues: SetValues
+  slide: SlideInterface
 ) {
   const html = createHtml(txt, img);
   createPageContent(html, doc);
@@ -18,40 +17,16 @@ export function makeSlidesStrategyImap(
   //inject SVG into page so it is part of DOM
   SVGInjector(picture, {
     afterAll() {
-      addEventListener(setValues, doc, txt);
+      addEventListener(slide, doc, txt);
     },
   });
 }
-function addEventListener(setValues: SetValues, doc: Document, txt: string) {
+function addEventListener(slide: SlideInterface, doc: Document, txt: string) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.addEventListener('click', () => {
-      conclude(ids, doc, setValues, id, txt);
+      conclude(doc, slide, id, txt);
     });
   });
-}
-function conclude(
-  ids: string[],
-  doc: Document,
-  setValues: SetValues,
-  id: string,
-  txt: string
-) {
-  ids.forEach((id) => {
-    const element = doc.getElementById(id) as HTMLElement;
-    element.classList.remove('shape');
-    removeListener(element);
-  });
-  setValues.setRes(id);
-  setValues.saveData();
-  const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, id, doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
-}
-function mark(isCorrect: boolean, id: string, doc: Document) {
-  const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
-  const element = doc.getElementById(id) as HTMLElement;
-  element.classList.add(classname);
 }

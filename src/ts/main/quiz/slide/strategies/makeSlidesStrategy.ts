@@ -1,5 +1,4 @@
 import type { SlideInterface } from '../../slideInterface';
-import type { SetValues } from '../setValues';
 import type {
   CreateHtmlTypeGap,
   CreateHtmlTypeImap,
@@ -19,7 +18,6 @@ import type {
   SetWidthTypeComplex,
   SetWidthTypeSimple,
 } from './setWidthsStrategy';
-
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
@@ -29,20 +27,20 @@ export type MakeSlidesTypeGap = (
   createHtml: CreateHtmlTypeGap,
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) => void;
 export type MakeSlidesTypeImap = (
   txt: string,
   img: string,
   createHtml: CreateHtmlTypeImap,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) => void;
 export type MakeSlidesTypeInfo = (
   txt: string,
   createHtml: CreateHtmlTypeInfo,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) => void;
 export type MakeSlidesTypeMc = (
   txt: string,
@@ -51,22 +49,21 @@ export type MakeSlidesTypeMc = (
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) => void;
 export type MakeSlidesTypeSelect = (
   inst: string,
-  ans: AnswerType,
   txt: string,
   createHtml: CreateHtmlSelectType,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) => void;
 export type MakeSlidesTypeSort = (
   txt: string,
   ans: AnswerType,
   createHtml: CreateHtmlTypeSort,
   doc: Document,
-  setValues: SetValues
+  setValues: SlideInterface
 ) => void;
 export type MakeSlidesTypeVocab = (
   list: Map<string, string>,
@@ -74,7 +71,7 @@ export type MakeSlidesTypeVocab = (
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SetValues,
+  setValues: SlideInterface,
   set: SlideInterface[]
 ) => void;
 export type MakeSlidesType =
@@ -114,7 +111,7 @@ export class MakeSlidesStrategy {
     img: string,
     createHtml: CreateHtmlTypeImap,
     doc: Document,
-    setValues: SetValues
+    setValues: SlideInterface
   ) {
     makeSlidesStrategyImap(txt, img, createHtml, doc, setValues);
   };
@@ -125,7 +122,7 @@ export class MakeSlidesStrategy {
     txt: string,
     createHtml: CreateHtmlTypeInfo,
     doc: Document,
-    setValues: SetValues
+    setValues: SlideInterface
   ) {
     makeSlidesStrategyInfo(txt, createHtml, doc, setValues);
   };
@@ -139,7 +136,7 @@ export class MakeSlidesStrategy {
     createHtml: CreateHtmlTypeMc,
     maxWidthStrategy: SetWidthTypeSimple,
     doc: Document,
-    setValues: SetValues
+    setValues: SlideInterface
   ) {
     makeSlidesStrategyMc(
       txt,
@@ -156,13 +153,12 @@ export class MakeSlidesStrategy {
   /////////////////////////////////////////////////////////////////////////////
   public static readonly SELECT = function (
     inst: string,
-    ans: AnswerType,
     txt: string,
     createHtml: CreateHtmlSelectType,
     doc: Document,
-    setValues: SetValues
+    setValues: SlideInterface
   ) {
-    makeSlidesStrategySelect(inst, ans, txt, createHtml, doc, setValues);
+    makeSlidesStrategySelect(inst, txt, createHtml, doc, setValues);
   };
   /////////////////////////////////////////////////////////////////////////////
   //                             SORT
@@ -172,7 +168,7 @@ export class MakeSlidesStrategy {
     ans: AnswerType,
     createHtml: CreateHtmlTypeSort,
     doc: Document,
-    setValues: SetValues
+    setValues: SlideInterface
   ) {
     makeSlidesStrategySort(txt, ans, createHtml, doc, setValues);
   };

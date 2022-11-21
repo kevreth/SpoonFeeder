@@ -1,8 +1,6 @@
 import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
-// import { exerciseGroupSlideIndex } from './exerciseGroup';
 import { SaveData } from './slide/saveData';
-import { SetValues } from './slide/setValues';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -16,7 +14,7 @@ const { set: saveData } = SaveData;
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
-  txt!: AnswerType;
+  txt!: string;
   ans!: AnswerType;
   res!: AnswerType;
   cont = false;
@@ -37,7 +35,7 @@ export abstract class Slide implements SlideInterface {
   getSlideSet(): SlideInterface[] {
     return new Array<SlideInterface>();
   }
-  setContinue(): void {
+  public setContinue(): void {
     this.cont = true;
   }
   static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
@@ -46,6 +44,7 @@ export abstract class Slide implements SlideInterface {
   getAnswerCount(): number {
     return 1;
   }
+  abstract decorate(doc: Document): boolean;
   abstract processJson(json: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   //necessary to load results from save file
@@ -59,23 +58,22 @@ export abstract class Slide implements SlideInterface {
     const result = this.result() as ResultTypeIntersection;
     return this.evaluateStrategy(txt, ans, res, result);
   }
-  saveData() {
+  public saveData() {
     const txt = this.txt;
     const res = this.res;
     const cont = this.cont;
     saveData(txt, res, timestampNow(), cont);
   }
-  result(): ResultReturnType {
+  public result(): ResultReturnType {
     return this.resultType(this.ans, this.res);
   }
-  setRes(res: AnswerType): void {
+  public setRes(res: AnswerType): void {
     this.res = res;
   }
-  getSetValues() {
-    const saveData = () => this.saveData();
-    const result = (): ResultReturnType => this.result();
-    const setRes = (res: AnswerType): void => this.setRes(res);
-    const setContinue = (): void => this.setContinue();
-    return new SetValues(saveData, result, setRes, setContinue);
+  public getRes(): AnswerType {
+    return this.res;
+  }
+  public getAns(): AnswerType {
+    return this.ans;
   }
 }
