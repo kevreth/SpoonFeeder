@@ -140,7 +140,7 @@ function myClass (pctCorrect, pctComplete) {
   } else if(pctCorrect >=80 + '%') {
     return 'text-blue';
   } else {
-    return 'text-red';
+    return 'text-red-7';
   }
 }
 </script>
