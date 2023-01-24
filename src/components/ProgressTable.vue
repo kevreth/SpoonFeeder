@@ -26,14 +26,14 @@
                     :icon="props.iconName(props.item)" flat
                     dense>
             </q-btn>
-            <span class="q-ml-sm">{{props.item.name}}</span>
+            <span class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
           </div>
         </td>
         <td class="text-right">{{props.item.score}}</td>
-        <td class="text-right">{{props.item.complete}}</td>
-        <td class="text-right">{{props.item.pctCorrect}}</td>
+        <td class="text-right complete">{{props.item.complete}}</td>
+        <td class="text-right pctScore">{{props.item.pctCorrect}}</td>
         <td class="text-right">{{props.item.count}}</td>
-        <td class="text-right">{{props.item.pctComplete}}</td>
+        <td class="text-right pctComplete">{{props.item.pctComplete}}</td>
         <td class="text-left">
           <a v-bind:href="props.item.summary">
             <SummaryIcon
@@ -125,6 +125,21 @@ const dark = ref(true);
 
 function handleInfoOverlay() {
   infoOverlay.value = !infoOverlay.value
+}
+
+function myClass (pctCorrect, pctComplete) {
+  if(pctComplete < 100 + '%') {
+    return 'bg-black q-pa-sm';
+  }
+  if(pctCorrect === 100 + '%') {
+    return 'bg-green q-pa-sm';
+  } else if (pctCorrect >= 90 + '%') {
+    return 'bg-green q-pa-sm';
+  } else if(pctCorrect >=80 + '%') {
+    return 'bg-blue q-pa-sm';
+  } else {
+    return 'bg-red q-pa-sm';
+  }
 }
 </script>
 
