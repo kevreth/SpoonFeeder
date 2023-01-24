@@ -26,7 +26,9 @@
                     :icon="props.iconName(props.item)" flat
                     dense>
             </q-btn>
-            <span class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
+            <span class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}            </span>
+
+            <img v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../courses/test/award.svg" width="20"/>
           </div>
         </td>
         <td class="text-right">{{props.item.score}}</td>
@@ -164,5 +166,10 @@ function myClass (pctCorrect, pctComplete) {
 }
 .progressTable::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
+}
+.award-icon {
+  position: relative;
+  top: 5px;
+  left: 5px;
 }
 </style>
