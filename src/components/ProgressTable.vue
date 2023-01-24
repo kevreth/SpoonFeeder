@@ -131,16 +131,16 @@ function handleInfoOverlay() {
 
 function myClass (pctCorrect, pctComplete) {
   if(pctComplete < 100 + '%') {
-    return 'bg-black q-pa-sm';
+    return 'text-white';
   }
   if(pctCorrect === 100 + '%') {
-    return 'bg-green q-pa-sm';
+    return 'text-green';
   } else if (pctCorrect >= 90 + '%') {
-    return 'bg-green q-pa-sm';
+    return 'text-green';
   } else if(pctCorrect >=80 + '%') {
-    return 'bg-blue q-pa-sm';
+    return 'text-blue';
   } else {
-    return 'bg-red q-pa-sm';
+    return 'text-red';
   }
 }
 </script>
