@@ -1,0 +1,7 @@
+name: javascript
+unit:
+    - variables
+    - conditionals
+    - loops
+    - functions
+    - classes
