@@ -1,7 +1,36 @@
 name: javascript
-unit:
-    - variables
-    - conditionals
-    - loops
-    - functions
-    - classes
+units:
+    - name: data
+      - lessons:
+        - name: let
+        - name: var
+        - name: const
+    - name: conditionals
+      - name: if
+        - lessons:
+          - name: if
+          - name: else
+          - name: else-if
+      - name: switch
+          - name: switch 1
+          - modules:
+            - name: introduction
+            - inst:
+              - type: info
+                txt: "<pre>The <i>switch</i> statement chooses from several conditionals in a concise manner. Intead of this:
+                if(a===1) {b=b+1}
+                else if (a === 2) {b=b+2}
+
+                One can do this instead:
+                switch(a):
+                  case 1: b=b+1;
+                  case 2: b=b+2;
+                  </pre>"
+          - nmae: switch 2
+    - name: loops
+      - lessons:
+        - name: for
+        - name: while
+        - name: do
+    - name: functions
+    - name: classes
