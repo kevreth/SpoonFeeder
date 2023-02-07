@@ -26,14 +26,16 @@
                     :icon="props.iconName(props.item)" flat
                     dense>
             </q-btn>
-            <span class="q-ml-sm">{{props.item.name}}</span>
+            <span class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
+
+            <img v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../courses/test/award.svg" width="20"/>
           </div>
         </td>
         <td class="text-right">{{props.item.score}}</td>
-        <td class="text-right">{{props.item.complete}}</td>
-        <td class="text-right">{{props.item.pctCorrect}}</td>
+        <td class="text-right complete">{{props.item.complete}}</td>
+        <td class="text-right pctScore">{{props.item.pctCorrect}}</td>
         <td class="text-right">{{props.item.count}}</td>
-        <td class="text-right">{{props.item.pctComplete}}</td>
+        <td class="text-right pctComplete">{{props.item.pctComplete}}</td>
         <td class="text-left">
           <a v-bind:href="props.item.summary">
             <SummaryIcon
@@ -126,6 +128,21 @@ const dark = ref(true);
 function handleInfoOverlay() {
   infoOverlay.value = !infoOverlay.value
 }
+
+function myClass (pctCorrect, pctComplete) {
+  if(pctComplete < 100 + '%') {
+    return 'text-white';
+  }
+  if(pctCorrect === 100 + '%') {
+    return 'text-green';
+  } else if (pctCorrect >= 90 + '%') {
+    return 'text-green';
+  } else if(pctCorrect >=80 + '%') {
+    return 'text-blue';
+  } else {
+    return 'text-red-7';
+  }
+}
 </script>
 
 <style>
@@ -149,5 +166,10 @@ function handleInfoOverlay() {
 }
 .progressTable::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
+}
+.award-icon {
+  position: relative;
+  top: 5px;
+  left: 5px;
 }
 </style>

@@ -21,8 +21,6 @@ export class Vocab extends Slide {
   set = new Array<SlideInterface>();
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
-    this.txt = Array.from(this.list.values());
-    this.ans = Array.from(this.list.keys());
     this.isExercise = json.isExercise;
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
@@ -49,6 +47,11 @@ export class Vocab extends Slide {
   }
   getAnswerCount(): number {
     return this.list.size;
+  }
+  decorate(doc: Document): boolean {
+    this.getAns();
+    doc.getRootNode();
+    throw new Error('Method not implemented.');
   }
 }
 export function generateQuestions(map: Map<string, string>) {

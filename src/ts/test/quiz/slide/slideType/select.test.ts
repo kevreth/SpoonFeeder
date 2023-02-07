@@ -3,7 +3,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import { Select } from '../../../../main/quiz/slide/slideType/select';
 import { SELECT } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-class Test extends SlideTest<number[]> {
+class Test extends SlideTest {
   type = 'select';
   public processJson(): void {
     const param = SELECT();

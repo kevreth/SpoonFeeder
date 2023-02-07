@@ -14,16 +14,40 @@ export class Gap extends Slide {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
   }
   makeSlides(doc: Document): void {
-    const setValues = this.getSetValues();
-    const txt = this.txt as string;
+    const txt = this.txt;
     const maxWidthStrategy = SetWidths.TARGETED;
     const createHtml = this.createHtml;
     let ans = this.ans;
     if (isRandom()) ans = shuffle(ans as string[]);
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeGap;
-    makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, setValues);
+    makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, this);
   }
   getAnswerCount(): number {
     return this.ans.length;
+  }
+  decorate(doc: Document) {
+    const corrArr = this.result() as boolean[];
+    this.mark(corrArr, doc);
+    const correct = corrArr.filter(Boolean).length;
+    const numAnswers = this.getAns().length;
+    this.summary(correct, numAnswers, doc);
+    return correct === this.getAns().length;
+  }
+  summary(correct: number, numAns: number, doc: Document) {
+    const pctCorrect = ((correct / numAns) * 100).toFixed(0);
+    const response =
+      `Number correct: ${correct} <br>\nNumber questions: ` +
+      `${numAns} <br>\n${pctCorrect}%`;
+    const responseElem = doc.getElementById('response') as HTMLElement;
+    responseElem.innerHTML = response;
+  }
+  mark(corrArr: boolean[], doc: Document) {
+    corrArr.forEach((answer, ctr) => {
+      const color = answer ? 'green' : 'red';
+      const id = 'ans' + ctr;
+      const eAns = doc.getElementById(id) as HTMLElement;
+      eAns.style.backgroundColor = color;
+      eAns.style.color = 'white';
+    });
   }
 }

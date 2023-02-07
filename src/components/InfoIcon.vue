@@ -9,9 +9,9 @@
 <style>
 .infoIcon {
  display: flex;
- justify-content: space-between;
  top: 20px;
- left: 425px;
+ margin-left: auto;
+ right: 15px;
  z-index: 1;
  cursor: pointer;
 }

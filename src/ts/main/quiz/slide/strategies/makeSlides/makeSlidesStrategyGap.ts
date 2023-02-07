@@ -1,7 +1,6 @@
-import { showButton } from '../../../makeSlides';
-import { playAudio } from '../../audio';
+import type { SlideInterface } from '../../../slideInterface';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
 import type { SetWidthTypeComplex } from '../setWidthsStrategy';
@@ -16,7 +15,7 @@ export function makeSlidesStrategyGap(
   createHtml: CreateHtmlTypeGap,
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
-  setValues: SetValues
+  slide: SlideInterface
 ): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
@@ -25,7 +24,7 @@ export function makeSlidesStrategyGap(
   createPageContent(html, doc);
   (ans as string[]).forEach((currentFills, ctr) => {
     setfills(ctr, currentFills, doc);
-    setgap(ctr, doc, ans, txt, setValues);
+    setgap(ctr, doc, txt, slide);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
 }
@@ -57,9 +56,8 @@ export function gaps(length: number, gaps: string): string {
 function setgap(
   ctr: number,
   doc: Document,
-  ans: AnswerType,
   txt: string,
-  setValues: SetValues
+  slide: SlideInterface
 ): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
   id.style.display = 'inline-block';
@@ -86,27 +84,13 @@ function setgap(
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) conclude(doc, ans, setValues, txt);
+    if (fillsRemaining === 0) {
+      const res = evaluate(doc);
+      conclude(doc, slide, res, txt);
+    }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
   };
-}
-function conclude(
-  doc: Document,
-  ans: AnswerType,
-  setValues: SetValues,
-  txt: string
-) {
-  const res = evaluate(doc);
-  setValues.setRes(res);
-  setValues.saveData();
-  const corrArr = setValues.result() as boolean[];
-  mark(corrArr, doc);
-  const correct = corrArr.filter(Boolean).length;
-  summary(correct, ans.length, doc);
-  const isCorrect = correct === ans.length;
-  playAudio(isCorrect);
-  showButton(doc, txt);
 }
 function evaluate(doc: Document): Array<string> {
   const responses: string[] = [];
@@ -116,23 +100,6 @@ function evaluate(doc: Document): Array<string> {
     responses.push(response);
   });
   return responses;
-}
-function summary(correct: number, numAns: number, doc: Document) {
-  const pctCorrect = ((correct / numAns) * 100).toFixed(0);
-  const response =
-    `Number correct: ${correct} <br>\nNumber questions: ` +
-    `${numAns} <br>\n${pctCorrect}%`;
-  const responseElem = doc.getElementById('response') as HTMLElement;
-  responseElem.innerHTML = response;
-}
-function mark(corrArr: boolean[], doc: Document) {
-  corrArr.forEach((answer, ctr) => {
-    const color = answer ? 'green' : 'red';
-    const id = 'ans' + ctr;
-    const eAns = doc.getElementById(id) as HTMLElement;
-    eAns.style.backgroundColor = color;
-    eAns.style.color = 'white';
-  });
 }
 function drop(
   doc: Document,

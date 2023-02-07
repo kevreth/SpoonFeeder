@@ -115,11 +115,7 @@ export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //                      multiAnswerStrategy
   /////////////////////////////////////////////////////////////////////////////
-  // Used by gap and vocab, which only differ by two factors:
-  // 1) the text type, string or string[]
-  // 2) the string to display the row. Vocab has one term per definition but
-  //    gap has one question with multiple answers. (All the gaps are one txt;
-  //    see example below).
+  // Used by gap. Once also used by vobab, thus the rowFunction parameter.
   /////////////////////////////////////////////////////////////////////////////
   private static multiAnswerStrategy(
     ans: AnswerType,

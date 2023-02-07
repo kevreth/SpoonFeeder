@@ -1,18 +1,16 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { showButton } from '../../../makeSlides';
-import { playAudio } from '../../audio';
+import type { SlideInterface } from '../../../slideInterface';
+import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
-import type { SetValues } from '../../setValues';
 import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
 import type { AnswerType } from '../resultStrategy';
-
 export function makeSlidesStrategySort(
   txt: string,
   ans: AnswerType,
   createHtml: CreateHtmlTypeSort,
   doc: Document,
-  setValues: SetValues
+  slide: SlideInterface
 ): void {
   const html = createHtml(txt, ans);
   createPageContent(html, doc);
@@ -25,7 +23,9 @@ export function makeSlidesStrategySort(
   gsap.to(container, { duration: 0.5, autoAlpha: 1 });
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
-    conclude(sortables, setValues, doc, done, txt);
+    done.remove();
+    const res = evaluate(sortables);
+    conclude(doc, slide, res, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {
@@ -94,27 +94,6 @@ export function makeSlidesStrategySort(
     return sortable;
   }
 }
-function conclude(
-  sortables: { element: Element }[],
-  setValues: SetValues,
-  doc: Document,
-  done: HTMLElement,
-  txt: string
-) {
-  done.remove();
-  const res = evaluate(sortables);
-  setValues.setRes(res);
-  setValues.saveData();
-  const isCorrect = setValues.result() as boolean;
-  mark(isCorrect, doc);
-  playAudio(isCorrect);
-  showButton(doc, txt);
-}
 function evaluate(sortables: { element: Element }[]) {
   return sortables.map((x) => x.element.innerHTML);
-}
-function mark(isCorrect: boolean, doc: Document) {
-  const msg = isCorrect ? 'correct' : 'incorrect';
-  const content = doc.getElementById('content') as HTMLElement;
-  content.insertAdjacentHTML('beforeend', msg);
 }

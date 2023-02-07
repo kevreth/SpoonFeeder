@@ -1,3 +1,4 @@
+import { getChildIds, removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy';
 export class Imap extends Slide {
@@ -11,11 +12,27 @@ export class Imap extends Slide {
     } = json);
   }
   makeSlides(doc: Document): void {
-    const setValues = this.getSetValues();
-    const txt = this.txt as string;
+    const txt = this.txt;
     const img = this.img;
     const createHtml = this.createHtml;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeImap;
-    makeSlidesStrategy(txt, img, createHtml, doc, setValues);
+    makeSlidesStrategy(txt, img, createHtml, doc, this);
+  }
+  decorate(doc: Document) {
+    const ids = getChildIds(doc, 'imagemap');
+    ids.forEach((id) => {
+      const element = doc.getElementById(id) as HTMLElement;
+      element.classList.remove('shape');
+      removeListener(element);
+    });
+    const isCorrect = this.result() as boolean;
+    const res = this.getRes() as string;
+    this.mark(isCorrect, res, doc);
+    return isCorrect;
+  }
+  mark(isCorrect: boolean, id: string, doc: Document) {
+    const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
+    const element = doc.getElementById(id) as HTMLElement;
+    element.classList.add(classname);
   }
 }

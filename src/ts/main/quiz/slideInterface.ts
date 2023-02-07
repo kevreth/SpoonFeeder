@@ -9,7 +9,7 @@ import type {
 } from './slide/strategies/resultStrategy';
 
 export interface SlideInterface {
-  txt: AnswerType;
+  txt: string;
   type: string;
   cont: boolean;
   isExercise: boolean;
@@ -31,4 +31,9 @@ export interface SlideInterface {
   getAnswerCount(): number;
   setContinue(): void;
   getSlideSet(): SlideInterface[];
+  setRes(res: AnswerType): void;
+  getRes(): AnswerType;
+  getAns(): AnswerType;
+  saveData(): void;
+  decorate(doc: Document): boolean;
 }

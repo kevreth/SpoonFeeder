@@ -10,21 +10,35 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    let idx = 0;
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
-    //"txt" identifies slides, which may be in random order.
-    else if ((idx = Slide.getSlideSavedIndex(saves, slide.txt)) > -1)
-      MakeSlides.reloadSlide(slide, idx, doc);
-    //the slide is unsaved
-    else slide.makeSlides(doc);
+    else {
+      const idx = Slide.getSlideSavedIndex(saves, slide.txt);
+      const savedFlag = idx > -1;
+      let contFlag = false;
+      if (savedFlag) contFlag = saves[idx].cont;
+      if (contFlag) {
+        // console.log('reload ', slide.txt.slice(0, 6), Json.count());
+        MakeSlides.reloadSlide(slide, idx);
+        MakeSlides.showSlides(doc);
+      } else if (savedFlag) {
+        // console.log('saved ', slide.txt.slice(0, 6), Json.count());
+        MakeSlides.reloadSlide(slide, idx);
+        slide.makeSlides(doc);
+        slide.decorate(doc);
+        showButton(doc, slide.txt);
+      } else {
+        // console.log('make ', slide.txt.slice(0, 6), Json.count());
+        slide.makeSlides(doc);
+      }
+    }
   }
   //The slide has already been presented to the user, as will happen on reload.
-  public static reloadSlide(slide: SlideInterface, idx: number, doc: Document) {
+  public static reloadSlide(slide: SlideInterface, idx: number) {
     const saves = getSavedDataArray();
-    const result = saves[idx].result;
+    const savedSlide = saves[idx];
+    const result = savedSlide.result;
     slide.setResults(result);
-    MakeSlides.showSlides(doc);
   }
   private static endQuiz(doc: Document) {
     Json.reset();

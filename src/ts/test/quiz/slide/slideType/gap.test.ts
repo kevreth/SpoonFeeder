@@ -3,7 +3,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import { Gap } from '../../../../main/quiz/slide/slideType/gap';
 import { GAP } from '../../../../main/quiz/slideFactory';
 import { SlideTest } from '../../slide.test';
-class Test extends SlideTest<Array<string>> {
+class Test extends SlideTest {
   type = 'gap';
   public processJson(): void {
     const param = GAP();
