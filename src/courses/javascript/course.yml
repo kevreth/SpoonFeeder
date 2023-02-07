@@ -52,7 +52,7 @@ units:
               txt: "<pre>
                 HTML stands for Hypertext Markup Language.
                 <i>Hypertext</i> means text content that is "active" such as the ability to use hyperlinks. Printed documents cannot use hypertext, only computers can.
-                A <i>Markup Language</p> is a type of computer language that isn't for prgrogramming. Intead, it is used to describe text documents. For example <code><b>This is boldface</b></code>. The <b> and </b> are markup to indicate the text should be displayed as boldface.
+                A <i>Markup Language</p> is a type of computer language that isn't for programming. Intead, it is used to describe text documents. For example <code><b>This is boldface</b></code>. The <code><b></code> and <code></b></code> are markup to indicate the text should be displayed as boldface.
                 </pre>"
             - type: info
               txt: "<pre>
