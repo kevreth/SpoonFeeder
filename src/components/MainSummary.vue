@@ -10,16 +10,9 @@
       :default-expand-all="(default_expand_all = true)"
     >
       <template v-slot:body="props">
-        <td class="text-left" data-th="Name">
-          <div v-bind:style="props.setPadding(props.item)"
-                :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
-            <q-btn @click="props.toggle(props.item)" v-if="props.iconName(props.item)!='done'"
-                    :icon="props.iconName(props.item)" flat
-                    dense>
-            </q-btn>
+        <td data-th="Name">
+          <div>
             <span class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
-
-            <img v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../courses/test/award.svg" width="20"/>
           </div>
         </td>
         <td class="text-right pctScore">{{props.item.pctCorrect}}</td>
