@@ -78,8 +78,31 @@ export class Score {
     courseLines.push(courseLine);
     return courseLines;
   }
+  //remove all SummaryLines except the course, last unit, last lesson, and last module
   public static quickSummary(courseLines: Array<SummaryLine> ): Array<SummaryLine> {
-    return courseLines;
+    //there is only one item in the array because of q-hierarchy
+    const retval = new Array<SummaryLine>();
+    const course = courseLines[0];
+    if (typeof course.children !== 'undefined') {
+      const units = course.children;
+      units.filter(unit => unit.pctComplete !== "0");
+      const last_unit = units[units.length -1];
+      retval.push(last_unit);
+      if (typeof last_unit.children !== 'undefined') {
+        const lessons = last_unit.children;
+        lessons.filter(lesson => lesson.pctComplete !== "0");
+        const last_lesson = units[lessons.length -1];
+        retval.push(last_lesson);
+        if (typeof last_lesson.children !== 'undefined') {
+          const modules = last_lesson.children;
+          modules.filter(module => module.pctComplete !== "0");
+          const last_module = units[modules.length -1];
+          retval.push(last_module);
+        }
+      }
+    }
+    assert(retval.length === 4);
+    return retval;
   }
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
   private static exercise(
