@@ -1,6 +1,6 @@
 import { Score } from '../../main/quiz/score';
 import { expect, it } from 'vitest';
-import { ISummaryLine, SummaryLine } from 'app/main/quiz/score';
+import { ISummaryLine, SummaryLine } from '../../main/quiz/score';
 export const results = `
 [
   {

@@ -53,10 +53,13 @@ const _columns = [
   ];
 
 const course = CourseFile.get();
+let courseLines = null;
+let summary = null;
+let data = new Array({});
 if(typeof course !== "undefined") {
-  const courseLines = Score.summary(course);
-  const summary = Score.quickSummary(courseLines);
-  const data = ref(summary);
+  courseLines = Score.summary(course);
+  summary = Score.quickSummary(courseLines);
+  data = ref(summary);
 }
 const columns = ref(_columns);
 const classes = ref('bg-secondary');
