@@ -83,20 +83,21 @@ export class Score {
     //there is only one item in the array because of q-hierarchy
     const retval = new Array<SummaryLine>();
     const course = courseLines[0];
+    retval.push(course);
     if (typeof course.children !== 'undefined') {
-      const units = course.children;
-      units.filter(unit => unit.complete !== 0);
+      let units = course.children;
+      units = units.filter(unit => unit.complete !== 0);
       const last_unit = units[units.length -1];
       retval.push(last_unit);
       if (typeof last_unit.children !== 'undefined') {
-        const lessons = last_unit.children;
-        lessons.filter(lesson => lesson.complete !== 0);
-        const last_lesson = units[lessons.length -1];
+        let lessons = last_unit.children;
+        lessons = lessons.filter(lesson => lesson.complete !== 0);
+        const last_lesson = lessons[lessons.length -1];
         retval.push(last_lesson);
         if (typeof last_lesson.children !== 'undefined') {
-          const modules = last_lesson.children;
-          modules.filter(module => module.complete !== 0);
-          const last_module = units[modules.length -1];
+          let modules = last_lesson.children;
+          modules = modules.filter(module => module.complete !== 0);
+          const last_module = modules[modules.length -1];
           retval.push(last_module);
         }
       }
