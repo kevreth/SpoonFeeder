@@ -46,6 +46,7 @@ export class Score {
     else count = result ? 1 : 0;
     return count;
   }
+  //Must return an array for requirements of q-hierarchy component.
   public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
@@ -75,6 +76,9 @@ export class Score {
     courseLine.calculate();
     const courseLines = new Array<SummaryLine>();
     courseLines.push(courseLine);
+    return courseLines;
+  }
+  public static quickSummary(courseLines: Array<SummaryLine> ): Array<SummaryLine> {
     return courseLines;
   }
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
