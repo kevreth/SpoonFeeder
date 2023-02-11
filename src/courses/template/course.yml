@@ -8,7 +8,7 @@ units:
     - name: ''
       inst:
       - type: info
-        txt: <div id="table0"></div><script>$('#table0').load("src/courses/english/english.html")</script>
+        txt: {{{table "english"}}}
       - type: bool
         txt: 'yes'
         ans: 'yes'
@@ -19,7 +19,7 @@ units:
         ans: ''
       - type: imap
         txt: ''
-        img: src/svg/test.svg
+        img: {{{svg "test"}}}
         ans: ''
       - type: gap
         text: " (1)  (2)  (3)"
