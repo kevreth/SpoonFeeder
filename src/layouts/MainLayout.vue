@@ -1,6 +1,7 @@
 <template>
   <q-layout>
     <q-card>
+      <MainSummary />
       <MenuOverlay />
     </q-card>
 
@@ -14,6 +15,7 @@
 import MenuOverlay from 'src/components/MenuOverlay.vue';
 import { onBeforeUnmount, onMounted } from 'vue'
 import { useQuasar } from 'quasar'
+import MainSummary from '../components/MainSummary.vue';
 
 // loading page
 const $q = useQuasar()

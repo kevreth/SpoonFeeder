@@ -1,5 +1,5 @@
 <template>
-  <MainSummary class="mainSummary"></MainSummary>
+  <!-- <MainSummary class="mainSummary"></MainSummary> -->
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
   <transition appear group
@@ -30,7 +30,7 @@ import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
-import MainSummary from './MainSummary.vue'
+// import MainSummary from './MainSummary.vue';
 
 const overlay = ref(false);
 
@@ -45,10 +45,6 @@ function startOver() {
 </script>
 
 <style>
-.mainSummary {
-  position: absolute;
-  float: left;
-}
 .overlay {
   height: 60%;
 }

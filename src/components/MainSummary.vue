@@ -76,3 +76,10 @@ const dark = ref(true);
 //   }
 // }
 </script>
+
+<style>
+.mainSummary {
+  position: absolute;
+  float: left;
+}
+</style>
