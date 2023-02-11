@@ -1,4 +1,6 @@
+import { Score } from '../../main/quiz/score';
 import { expect, it } from 'vitest';
+import { ISummaryLine, SummaryLine } from 'app/main/quiz/score';
 export const results = `
 [
   {
@@ -101,4 +103,33 @@ it('description', () => {
   //   const act = JSON.stringify(score);
   const exp = JSON.stringify(JSON.parse(expected));
   expect(exp).toEqual(exp);
+});
+it('quickSummary',() => {
+   const module_0 = new SummaryLine();
+   const module_1 = new SummaryLine();
+   const module_2 = new SummaryLine();
+   const module_3 = new SummaryLine();
+   const lesson_0 = new SummaryLine();
+   const lesson_1 = new SummaryLine();
+   const unit_0 = new SummaryLine();
+   const unit_1 = new SummaryLine();
+   const course = new SummaryLine();
+   module_0.complete = 1;
+   module_1.complete = 0;
+   module_2.complete = 0;
+   module_3.complete = 0;
+   lesson_0.complete = 1;
+   lesson_1.complete = 0;
+   unit_0.complete=1;
+   unit_1.complete=0;
+   lesson_0.children=new Array<ISummaryLine>();
+   lesson_0.children.push(module_0);
+   lesson_0.children.push(module_1);
+   lesson_1.children=new Array<ISummaryLine>();
+   lesson_1.children.push(module_2);
+   lesson_1.children.push(module_3);
+   const course_arr:Array<ISummaryLine> = new Array<ISummaryLine>();
+   course_arr.push(course);
+
+   const quickSummary = Score.quickSummary(course_arr);
 });
