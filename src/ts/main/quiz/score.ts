@@ -12,7 +12,7 @@ export interface ISummaryLine {
   pctCorrect: string;
   count: number;
   pctComplete: string;
-  children?: Array<ISummaryLine>;
+  children: Array<ISummaryLine>;
   add(child: ISummaryLine): void;
   calculate(): void;
 }
@@ -23,7 +23,7 @@ export class SummaryLine implements ISummaryLine {
   pctCorrect = '';
   count = 0;
   pctComplete = '';
-  children?: ISummaryLine[] = new Array<SummaryLine>();
+  children: ISummaryLine[] = new Array<SummaryLine>();
   add(child: ISummaryLine): void {
     this.score += child.score;
     this.complete += child.complete;
@@ -59,7 +59,7 @@ export class Score {
         lesson.modules.forEach((module) => {
           const moduleLine: ISummaryLine = new SummaryLine();
           moduleLine.name = module.name;
-          delete moduleLine['children'];
+          // delete moduleLine['children'];
           module.exercises.forEach((exercise) => {
             Score.exercise(exercise, moduleLine, getSavedDataArray());
           }); //exercise
@@ -79,31 +79,28 @@ export class Score {
     return courseLines;
   }
   //remove all SummaryLines except the course, last unit, last lesson, and last module
-  public static quickSummary(courseLines: Array<SummaryLine> ): Array<SummaryLine> {
+  public static quickSummary(courseLines: Array<ISummaryLine> ): Array<SummaryLine> {
     //there is only one item in the array because of q-hierarchy
     const retval = new Array<SummaryLine>();
     const course = courseLines[0];
     retval.push(course);
-    if (typeof course.children !== 'undefined') {
-      let units = course.children;
-      units = units.filter(unit => unit.complete !== 0);
-      const last_unit = units[units.length -1];
-      retval.push(last_unit);
-      if (typeof last_unit.children !== 'undefined') {
-        let lessons = last_unit.children;
-        lessons = lessons.filter(lesson => lesson.complete !== 0);
-        const last_lesson = lessons[lessons.length -1];
-        retval.push(last_lesson);
-        if (typeof last_lesson.children !== 'undefined') {
-          let modules = last_lesson.children;
-          modules = modules.filter(module => module.complete !== 0);
-          const last_module = modules[modules.length -1];
-          retval.push(last_module);
-        }
-      }
-    }
+    let item:ISummaryLine = Score.pushItem(retval, course); //unit
+    item = Score.pushItem(retval, item); //lesson
+    item = Score.pushItem(retval, item); //module
     // assert(retval.length === 4);
     return retval;
+  }
+  public static pushItem(retval:Array<SummaryLine>, item:ISummaryLine):ISummaryLine {
+    const children = Score.filterQuickSummary(item.children);
+    const last_item = Score.getLastItem(children);
+    retval.push(last_item);
+    return last_item;
+  }
+  public static filterQuickSummary(lines:Array<ISummaryLine>):Array<ISummaryLine> {
+    return lines.filter(child => child.complete !== 0);
+  }
+  public static getLastItem(lines:Array<ISummaryLine>):ISummaryLine {
+    return lines[lines.length -1];
   }
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
   private static exercise(
