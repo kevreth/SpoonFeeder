@@ -1,4 +1,5 @@
 <template>
+  <MainSummary class="mainSummary"></MainSummary>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
   <transition appear group
@@ -7,8 +8,6 @@
     >
     <q-overlay v-model="overlay" class="mainOverlay">
       <template #body>    
-        <MainSummary class="mainSummary"></MainSummary>
-
         <div class="overlay fixed-center column">
           <div class="overlayBtn">
             <OverlayCloseBtn @click="handleOverlay" />

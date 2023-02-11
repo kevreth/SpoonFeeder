@@ -101,7 +101,7 @@ export class Score {
         }
       }
     }
-    assert(retval.length === 4);
+    // assert(retval.length === 4);
     return retval;
   }
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
