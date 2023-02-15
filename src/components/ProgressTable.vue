@@ -120,8 +120,8 @@ const _columns = [
 
 const course = CourseFile.get();
 let summary = Score.summary(course);
-const columns = ref(_columns);
 const data = ref(summary);
+const columns = ref(_columns);
 const classes = ref('bg-secondary');
 const dark = ref(true);
 

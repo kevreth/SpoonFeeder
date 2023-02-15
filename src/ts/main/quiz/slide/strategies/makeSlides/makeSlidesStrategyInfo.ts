@@ -30,5 +30,7 @@ function showButton(doc: Document, txt: string): void {
   continue_btn.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
     MakeSlides.showSlides(doc);
+    const event = new Event('updateData');
+    window.dispatchEvent(event);
   });
 }

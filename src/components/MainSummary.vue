@@ -4,19 +4,21 @@
       hide-bottom
       dense
       :columns="columns"
-      :rows="data"
       :dark="dark"
       :classes="classes"
     >
       <template v-slot:body>
-        <tr v-for="item in data" :key="item">
-          <td data-th="Name" class="summaryTable">
+        <tr v-for="row in rows" :key="row">
+          <td rows-th="Name" class="summaryTable">
             <div>
-              <span class="title-vertical" :class="(item.pctCorrect, item.pctComplete)">{{item.name}}</span>
+              {{row}}
+            </div>
+            <div>
+              <span class="title-vertical" :class="(row.pctCorrect, row.pctComplete)">{{row.name}}</span>
             </div>
           </td>
-          <td class="text-right pctScore">{{item.pctCorrect}}</td>
-          <td class="text-right pctComplete">{{item.pctComplete}}</td>     
+          <td class="text-right pctScore">{{row.pctCorrect}}</td>
+          <td class="text-right pctComplete">{{row.pctComplete}}</td>     
         </tr>
       </template>
     </q-table>
@@ -25,8 +27,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import {Score} from '../ts/main/quiz/score';
-import {CourseFile} from '../ts/main/globals'
+// import {Score} from '../ts/main/quiz/score';
+// import {CourseFile} from '../ts/main/globals'
 
 const _columns = [
     {
@@ -52,15 +54,24 @@ const _columns = [
     }
   ];
 
-const course = CourseFile.get();
-let courseLines = null;
-let summary = null;
-let data = new Array({});
-if(typeof course !== "undefined") {
-  courseLines = Score.summary(course);
-  summary = Score.quickSummary(courseLines);
-  data = ref(summary);
-}
+// const course = CourseFile.get();
+// let courseLines = null;
+// let summary = null;
+// let data = new Array({});
+// if(typeof course !== "undefined") {
+//   courseLines = Score.summary(course);
+//   summary = Score.quickSummary(courseLines);
+//   data = ref(summary);
+// }
+
+const props = defineProps({
+  rows: {
+    type: Number
+  }
+})
+
+console.log('props row:' + props.rows)
+
 const columns = ref(_columns);
 const classes = ref('bg-secondary');
 const dark = ref(true);

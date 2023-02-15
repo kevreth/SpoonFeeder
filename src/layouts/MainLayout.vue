@@ -1,7 +1,7 @@
 <template>
   <q-layout>
     <q-card>
-      <MainSummary />
+      <MainSummary :rows="rows" />
       <MenuOverlay />
     </q-card>
 
@@ -13,9 +13,11 @@
 
 <script setup>
 import MenuOverlay from 'src/components/MenuOverlay.vue';
-import { onBeforeUnmount, onMounted } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useQuasar } from 'quasar'
 import MainSummary from '../components/MainSummary.vue';
+import {Score} from '../ts/main/quiz/score';
+import {CourseFile} from '../ts/main/globals'
 
 // loading page
 const $q = useQuasar()
@@ -35,6 +37,13 @@ onMounted(() => {
     timer = void 0
   }, 1000)
 })
+const rows = ref(0);
+window.addEventListener('updateData', () => {
+  // const course = CourseFile.get();
+  // let summary = Score.summary(course);
+  // row.value = ref(summary);
+  console.log('button activated')
+});
 </script>
 
 <style>
