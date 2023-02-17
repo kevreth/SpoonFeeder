@@ -20,10 +20,40 @@ units:
         - name: What Vue Is
           inst:
             - type: info
-              txt: Vue.js is an open-source model-view-viewmodel front-end JavaScript framework for building user interfaces and single-page applications.
-  - name: name: Global API
+              txt: "
+                <p>According to Wikipedia,<p>
+                <i>Vue.js is a model-view-viewmodel front-end JavaScript framework for building user interfaces and single-page applications.</i>
+                That's a lot of verbiage, so we will take parts and explain them.
+              "
+            - type: info
+              txt: "
+                Vue.js is a <p>model-view-viewmodel</p> front-end JavaScript framework for building user interfaces and single-page applications.
+              "
+            - type: info
+              txt: "
+                Vue.js is a model-view-viewmodel <p>front-end JavaScript framework</p> for building user interfaces and single-page applications.
+              "
+            - type: info
+              txt: "
+                Vue.js is a model-view-viewmodel front-end JavaScript framework for building <p>user interfaces</p> and single-page applications.
+              "
+            - type: info
+              txt: "
+                Vue.js is a model-view-viewmodel front-end JavaScript framework for building user interfaces and <p>single-page applications</p>.
+              "
+  - name: Anatomy of Vue projects
     lessons:
-    - name: name: Application
+      - name: Creating a Vue project
+        modules:
+          - name: create-vue
+            inst:
+              type: info
+              txt: "<p>The <b>create-vue</b> command is executed on a command line to create a new Vue project. After execution a bare Vue project will be available.<p>"
+      - name: A basic Hellow World project
+      - name: A complete Vue project
+  - name: Global API
+    lessons:
+    - name: Application
       modules:
       - name: createApp
       - name: createSSRApp
