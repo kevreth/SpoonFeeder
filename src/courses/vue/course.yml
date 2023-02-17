@@ -7,9 +7,14 @@ units:
         - name: Skills needed for this course
           inst:
             - type: info
-              txt: "<pre>
-
-              </pre>" 
+              txt: "<p>The following skills are needed to understand this course:</p>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>Typescript</li>
+              </ul>
+              <p>If you feel weak in any of these areas then gaining skill in them first is recommended."
     - name: What is Vue?
       modules:
         - name: What Vue Is
