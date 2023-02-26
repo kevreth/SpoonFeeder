@@ -1,8 +1,4 @@
 ---
-# downTo, step, until, open, augmented assignment, layout, constraint layout, activity, view, 
-# views:
-#   ImageView, dp , px, sp, density-independent pixels, alternative bitmap
-#xhdmi, baseline constraint, wrap content, match constraint, bias, anchor point
 name: ''
 units:
 - name: ''

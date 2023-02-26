@@ -1,0 +1,76 @@
+---
+#Amazon Machine Image
+#An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. You can select an AMI provided by AWS, our user community, or the AWS Marketplace; or you can select one of your own AMIs.
+#S3
+#EC2
+#shared responsibility model
+#horizontal scaling: more server
+#vertical scaling: faster server
+#availablility zones
+#reserved instance
+#ami
+#ELASTIC ip 
+#CloudFormation
+#AWS Sessino MAnager
+#AWS Transit Gateway
+#Direct Connect
+# Load Balancers
+  # Application, Netowrk, Gateway
+#CIDR
+# EBS: block storage
+# EFS: file storage
+# S3: object storage
+# Secrets manager: securely passes keys to external services
+# RDS
+# Amazon Aurora
+# 
+# cloud architecture design principles
+  # design for failure
+  # decoupled v monolithic
+  # implement elasticity in cloud v on-premises
+  # parallelism
+
+name: ''
+units:
+- name: ''
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: <div id="table0"></div><script>$('#table0').load("src/courses/english/english.html")</script>
+      - type: bool
+        txt: 'yes'
+        ans: 'yes'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+      - type: imap
+        txt: ''
+        img: src/svg/test.svg
+        ans: ''
+      - type: gap
+        text: " (1)  (2)  (3)"
+        ans:
+        - ''
+        - ''
+        - ''
+      - type: select
+        inst: ''
+        text: ''
+        ans: []
+      - type: sort
+        txt: ''
+        ans:
+        - a
+        - b
+        - c
+        - d
+      - type: vocab
+        list:
+          '1': ''
+          '2': ''
+          '3': ''
