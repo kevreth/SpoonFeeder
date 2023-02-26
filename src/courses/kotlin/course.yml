@@ -1,0 +1,49 @@
+---
+# downTo, step, until, open, augmented assignment, layout, constraint layout, activity, view, 
+# views:
+#   ImageView, dp , px, sp, density-independent pixels, alternative bitmap
+#xhdmi, baseline constraint, wrap content, match constraint, bias, anchor point
+name: ''
+units:
+- name: ''
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: <div id="table0"></div><script>$('#table0').load("src/courses/english/english.html")</script>
+      - type: bool
+        txt: 'yes'
+        ans: 'yes'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+      - type: imap
+        txt: ''
+        img: src/svg/test.svg
+        ans: ''
+      - type: gap
+        text: " (1)  (2)  (3)"
+        ans:
+        - ''
+        - ''
+        - ''
+      - type: select
+        inst: ''
+        text: ''
+        ans: []
+      - type: sort
+        txt: ''
+        ans:
+        - a
+        - b
+        - c
+        - d
+      - type: vocab
+        list:
+          '1': ''
+          '2': ''
+          '3': ''

@@ -1,0 +1,165 @@
+name: Vue
+units:
+  - name: Introduction
+    lessons:
+    - name: Prerequisites
+      modules:
+        - name: Skills needed for this course
+          inst:
+            - type: info
+              txt: "<p>The following skills are needed to understand this course:</p>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>Typescript</li>
+              </ul>
+              <p>If you feel weak in any of these areas then gaining skill in them first is recommended."
+    - name: What is Vue?
+      modules:
+        - name: What Vue Is
+          inst:
+            - type: info
+              txt: "
+                <p>According to Wikipedia,<p>
+                <i>Vue.js is a model-view-viewmodel front-end JavaScript framework for building user interfaces and single-page applications.</i>
+                That's a lot of verbiage, so we will take parts and explain them.
+              "
+            - type: info
+              txt: "
+                Vue.js is a <p>model-view-viewmodel</p> front-end JavaScript framework for building user interfaces and single-page applications.
+              "
+            - type: info
+              txt: "
+                Vue.js is a model-view-viewmodel <p>front-end JavaScript framework</p> for building user interfaces and single-page applications.
+              "
+            - type: info
+              txt: "
+                Vue.js is a model-view-viewmodel front-end JavaScript framework for building <p>user interfaces</p> and single-page applications.
+              "
+            - type: info
+              txt: "
+                Vue.js is a model-view-viewmodel front-end JavaScript framework for building user interfaces and <p>single-page applications</p>.
+              "
+  - name: Anatomy of Vue projects
+    lessons:
+      - name: Creating a Vue project
+        modules:
+          - name: create-vue
+            inst:
+              type: info
+              txt: "<p>The <b>create-vue</b> command is executed on a command line to create a new Vue project. After execution a bare Vue project will be available.<p>"
+      - name: A basic Hellow World project
+      - name: A complete Vue project
+  - name: Global API
+    lessons:
+    - name: Application
+      modules:
+      - name: createApp
+      - name: createSSRApp
+      - name: app.mount
+      - name: app.unmount
+      - name: app.provide
+      - name: app.component
+      - name: app.directive
+      - name: app.use
+      - name: app.mixin
+      - name: app.version
+      - name: app.config
+      - name: app.config.errorHandler
+      - name: app.config.warnHandler
+      - name: app.config.performance
+      - name: app.config.compilerOptions
+      - name: app.config.globalProperties
+      - name: app.config.optionMergeStrategies
+  - name: General
+    - name: version
+    - name: nextTick
+    - name: defineComponent
+    - name: defineAsyncComponent
+    - name: defineCustomElement
+  - name: Composition API
+    lessons:
+    - name: Core
+      modules:
+      - name: ref
+      - name: computed
+      - name: reactive
+      - name: readonly
+      - name: watchEffect
+      - name: watchPostEffect
+      - name: watchSyncEffect
+      - name: watch
+    - name: Utilities
+      modules:
+      - name: isRef
+      - name: unref
+      - name: toRef
+      - name: toRefs
+      - name: isProxy
+      - name: isReactive
+      - name: isReadonly
+    - name: Advanced
+      modules:
+      - name: shallowRef
+      - name: triggerRef
+      - name: customRef
+      - name: shallowReactive
+      - name: shallowReadonly
+      - name: toRaw
+      - name: markRaw
+      - name: effectScope
+      - name: getCurrentScope
+      - name: onScopeDispose
+    - name: Lifecycle Hooks
+      modules:
+      - name: onMounted
+      - name: onUpdated
+      - name: onUnmounted
+      - name: onBeforeMount
+      - name: onBeforeUpdate
+      - name: onBeforeUnmount
+      - name: onErrorCaptured
+      - name: onRenderTracked
+      - name: onRenderTriggered
+      - name: onActivated
+      - name: onDeactivated
+      - name: onServerPrefetch
+    - name: Dependency Injection
+      modules:
+      - name: provide
+      - name: inject
+== Built-ins
+  - name: Directives
+    modules:
+    - name: text
+    - name: html
+    - name: show
+    - name: if
+    - name: else
+    - name: else-if
+    - name: for
+    - name: on
+    - name: bind
+    - name: model
+    - name: slot
+    - name: pre
+    - name: once
+    - name: memo
+    - name: cloak
+  - name: Components
+    modules:
+    - name: Transition
+    - name: TransitionGroup
+    - name: KeepAlive
+    - name: Teleport
+    - name: Suspense
+  - name: Elements
+    modules:
+    - name: component
+    - name: slot
+  - name: Attributes
+    modules:
+    - name: key
+    - name: ref
+    - name: is
