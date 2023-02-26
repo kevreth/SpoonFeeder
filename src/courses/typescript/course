@@ -1,42 +1,42 @@
-- Different with ts and js:  
-    Typescript need to specify the type of the variable while Javascript does not
-- Typescript compiler: is a tool that converts typescript code into JavaScript code that can be executed in a browser or a Node.js environment.
-- Inference: when you declare a variable and assign it a value, Typescript will automatically deduces the type of that variable based on the value you provided
-- Assignment: explicity specifies the type of variable
-- Basic types:
-  - number: numeric value
-  - string: string value
-  - boolean: logical value, true or false
-  - null and undefined: the absence of a value
-  - void: used as the return type of functions that don't return a value
-  - any: represents any type and is used when the type of a value is unknown or when working with dynamic data
-  - unknown: represents any value,it provides type safety by requiring type checking before using the value
-  - never: a value that can never be produced, typically used to indicate errors of infinite loops
-- User-defined types:
-  - interfaces: describe the shape of an object with only properties and their types, but no behavior
-  - classes:  define object types with state and behavior Classes can inherit properties and method from other classes and can implement interfaces
-    - constructor: used to initialize the properties of the class
-  - object types: useful for defining data structures that have a fixed properties and values
-  - array types: a data type that represent a collection of ellements of the same type. In typescript the syntax of array types can using as `type[]` or `Array<type>`
-  - tuples: an array with a fixed number of elements, each with a specific data type
-  - enum: allows developers to define a set of named constants with integer values
-  - literal: a specific value and can be used in combination with union types
-- Advanced types:
-  - union types: allow a variable to have multiple possible types
-	- intersection types: combine multiple types into a single type
-	- type aliases: allow developers to create new names for existing types or combinations of existing types
-	- generic: allow for reusable functions and classes that can work with multiple types
-	- conditional types: allow types that depends on other types
-- Inheritance: which child class inherit all of the properties and methods of the parent class by using `extend`
-  - super: is used in any subclass that need to call methods or constructors of the parent class
-- Abstract: can not used to create objects, but serves as a blueprint for other classes that inherit from it
-- Polymorphism: a parent object that has different child objects with their own unique propterties and methods, but they can share some of the same properties and methods that are defined in the parent object
-- Encapsulation: the practice of hiding implementation details and exposing only a public interface to the outside world
-  - Private: can only be accessed form within the class itself
-	- Public: accesible from anywhire, both inside and ouside the class
-	- Protected: like private but they can also be accessed by subclasses that inherit from the class
-
-
-
-
-  
+# - Different with ts and js:  
+#     Typescript need to specify the type of the variable while Javascript does not
+# - Typescript compiler: is a tool that converts typescript code into JavaScript code that can be executed in a browser or a Node.js environment.
+# - Inference: when you declare a variable and assign it a value, Typescript will automatically deduces the type of that variable based on the value you provided
+# - Assignment: explicity specifies the type of variable
+# - Basic types:
+#   - number: numeric value
+#   - string: string value
+#   - boolean: logical value, true or false
+#   - null and undefined: the absence of a value
+#   - void: used as the return type of functions that don't return a value
+#   - any: represents any type and is used when the type of a value is unknown or when working with dynamic data
+#   - unknown: represents any value,it provides type safety by requiring type checking before using the value
+#   - never: a value that can never be produced, typically used to indicate errors of infinite loops
+# - User-defined types:
+#   - interfaces: describe the shape of an object with only properties and their types, but no behavior
+#   - classes:  define object types with state and behavior Classes can inherit properties and method from other classes and can implement interfaces
+#     - constructor: used to initialize the properties of the class
+#   - object types: useful for defining data structures that have a fixed properties and values
+#   - array types: a data type that represent a collection of ellements of the same type. In typescript the syntax of array types can using as `type[]` or `Array<type>`
+#   - tuples: an array with a fixed number of elements, each with a specific data type
+#   - enum: allows developers to define a set of named constants with integer values
+#   - literal: a specific value and can be used in combination with union types
+# - Advanced types:
+#   - union types: allow a variable to have multiple possible types
+# 	- intersection types: combine multiple types into a single type
+# 	- type aliases: allow developers to create new names for existing types or combinations of existing types
+# 	- generic: allow for reusable functions and classes that can work with multiple types
+# 	- conditional types: allow types that depends on other types
+# - Inheritance: which child class inherit all of the properties and methods of the parent class by using `extend`
+#   - super: is used in any subclass that need to call methods or constructors of the parent class
+# - Abstract: can not used to create objects, but serves as a blueprint for other classes that inherit from it
+# - Polymorphism: a parent object that has different child objects with their own unique propterties and methods, but they can share some of the same properties and methods that are defined in the parent object
+# - Encapsulation: the practice of hiding implementation details and exposing only a public interface to the outside world
+#   - Private: can only be accessed form within the class itself
+# 	- Public: accesible from anywhire, both inside and ouside the class
+# 	- Protected: like private but they can also be accessed by subclasses that inherit from the class
+# 
+# 
+# 
+# 
+#   
