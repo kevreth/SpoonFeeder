@@ -1,34 +1,315 @@
----
-#Amazon Machine Image
-#An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. You can select an AMI provided by AWS, our user community, or the AWS Marketplace; or you can select one of your own AMIs.
-#S3
-#EC2
-#shared responsibility model
-#horizontal scaling: more server
-#vertical scaling: faster server
-#availablility zones
-#reserved instance
-#ami
-#ELASTIC ip 
-#CloudFormation
-#AWS Sessino MAnager
-#AWS Transit Gateway
-#Direct Connect
-# Load Balancers
-  # Application, Netowrk, Gateway
-#CIDR
-# EBS: block storage
-# EFS: file storage
-# S3: object storage
-# Secrets manager: securely passes keys to external services
-# RDS
-# Amazon Aurora
-# 
+----
+# artificial intelligence
+    # Amazon Augmented AI
+    # Amazon CodeGuru
+    # Amazon Comprehend
+    # Amazon DevOps Guru
+    # Amazon Forecast
+    # Amazon Fraud Detector
+    # Amazon HealthLake
+    # Amazon Kendra
+    # Amazon Lex	chatbot
+    # Amazon Lookout
+    # Amazon Monitron
+    # Amazon Omics
+    # Amazon Personalize	recommender
+    # Amazon Polly	speech generation
+    # Amazon Rekognition	image recognition
+    # Amazon Sagemaker	machine intelligence
+    # Amazon Textract	OCR
+    # Amazon Transcribe	speech to text
+# analytics
+  # Analytics
+    # Amazon Athena	Interactive analytics
+    # Amazon EMR	Big data processing
+    # Amazon Redshift	Data warehousing
+    # Amazon Kinesis	Interactive analytics
+    # Amazon OpenSearch Service	Operational analytics
+    # Amazon Quicksight	Dashboards and visualizations
+    # AWS Glue DataBrew	Visual data preparation
+  # Data movement    # Real-time data movement
+    # AWS Glue
+    # Amazon Managed Streaming for Apache Kafka (MSK)
+    # Amazon Kinesis Data Streams
+    # Amazon Kinesis Data Firehose
+    # Amazon Kinesis Video Streams
+    # AWS Database Migration Service
+  # Data lake
+    # Amazon S3	Object storage
+    # AWS Lake Formation
+    # Amazon S3 Glacier	Backup and archive
+    # AWS Backup
+    # AWS Glue	Data catalog
+    # AWS Lake Formation
+    # AWS Data Exchange	Third-party data
+  # Predictive analytics and machine learning
+    # AWS Deep Learning AMIs	Frameworks and interfaces
+    # Amazon SageMaker	Platform services
+# compute
+  # Instances (virtual machines)
+    # Amazon Elastic Compute Cloud (EC2)	Secure and resizable compute capacity (virtual servers) in the cloud
+      # types of EC2 instances (list use cases)
+        # general purpose: 
+        # compute optimized:
+        # memory optimized: databases
+        # accelerated computing: 
+        # storage optimized: data warehouses
+    # Amazon EC2 Spot	Run fault-tolerant workloads for up to 90% off
+    # Amazon EC2 Autoscaling	Automatically add or remove compute capacity to meet changes in demand
+      # dynamic: responds to changing demand
+      # predictive: schedules based on expected demand
+    # Amazon Lightsail	Easy-to-use cloud platform that offers you everything you need to build an application or website
+    # AWS Batch	Fully managed batch processing at any scale
+  # Containers
+    # Amazon Elastic Container Service (ECS)	Highly secure, reliable, and scalable way to run containers
+    # Amazon ECS Anywhere	Run containers on customer-managed infrastructure
+    # Amazon Elastic Container Registry (ECR)	Easily store, manage, and deploy container images
+    # Amazon Elastic Kubernetes Service (EKS)	Fully managed Kubernetes service
+    # Amazon EKS Anywhere	Create and operate Kubernetes clusters on your own infrastructure
+    # AWS Fargate	Serverless compute for containers
+    # AWS App Runner	Build and run containerized applications on a fully managed service
+  # Serverless
+    # AWS Lambda	Run code without thinking about servers. Pay only for the compute time you consume
+  # Edge and hybrid
+    # AWS Outposts	Run AWS infrastructure and services on-premises
+    # AWS Snow Family	Collect and process data in rugged or disconnected edge environments
+    # AWS Wavelength	Deliver ultra-low latency application for 5G devices
+    # VMware Cloud on AWS	Preferred service for all vSphere workloads to rapidly extend and migrate to the cloud
+    # AWS Local Zones	Run latency sensitive applications closer to end-users
+  # Cost and capacity management
+    # AWS Savings Plan	Flexible pricing model that provides savings of up to 72% on AWS compute usage
+    # AWS Compute Optimizer	Recommends optimal AWS compute resources for your workloads to reduce costs and improve performance
+    # AWS Elastic Beanstalk	Easy-to-use service for deploying and scaling web applications and services
+    # EC2 Image Builder	Build and maintain secure Linux or Windows Server images
+    # Elastic Load Balancing (ELB)	Automatically distribute incoming application traffic across multiple targets
+# developer
+    # AWS CodePipeline
+    # AWS CodeBuild	 
+    # AWS CodeDeploy
+    # AWS CodeStar
+    # AWS CodeCommit
+# management
+  # billing and pricing
+    # AWS Cost and Usage Report	Dive deeper into your AWS costs and usage
+    # AWS Cost Explorer	Visualize, understand, and manage your AWS costs and usage over time
+  # Governance
+    # AWS Control Tower	The easiest way to set up and govern a new, secure multi-account AWS environment
+    # AWS Organizations	Central governance and management across AWS accounts
+    # AWS Well-Architected Tool	Review your architecture and adopt best practices
+    # AWS Budgets	Set custom budgets that alert you when you exceed your budgeted thresholds
+    # AWS License Manager	Set rules to manage, discover, and report software license usage
+  # Provisioning
+    # AWS CloudFormation	Model and provision all your cloud infrastructure resources
+    # AWS Service Catalog	Create, organize, and govern
+    # AWS OpsWorks	Automate operations with Chef and Puppet
+    # AWS Marketplace	Find, test, buy, and deploy software that runs on AWS
+  # Operations
+    # Amazon CloudWatch	Observability of your AWS resources and applications on AWS and on-premises
+    # Amazon Managed Grafana	Scalable, secure, and highly available data visualization for your operational metrics
+    # Amazon Managed Service for Prometheus	Highly available, secure, and managed monitoring for your containers
+    # AWS CloudTrail	Track user activity and API usage
+    # AWS Config	Record and evaluate configurations of your AWS resources
+    # AWS Systems Manager	Gain operational insights and take action on AWS resources
+    # AWS Managed Services	Operate AWS infrastructure on behalf of entire enterprise customers and partners
+    # AWS Service Management Connector	Provision, manage and operate AWS resources within Service Management Tools
+    # AWS X-Ray	Analyze and debug production, distributed applications
+    # AWS Distro for OpenTelemetry	Collect correlated metrics and traces
+    # AWS Proton	Automated management for container and serverless deployment
+    # Amazon DevOps Guru	Leverage ML to improve an application’s operational performance and availability.
+# networking
+  # Network foundations	Amazon VPC	Customize and control your networking environment with Amazon Virtual Private Cloud (VPC)
+    # AWS Transit Gateway	Simplify your network with VPCs and on-premises networks connected to a single gateway
+    # AWS PrivateLink	Establish private connectivity between VPCs and AWS or on- premises services
+  # Application networking
+    # AWS AppMesh	Connect containers and microservices with application-level networking
+    # AWS API Gateway	Create, maintain, and secure APIs at any scale
+    # AWS Cloud Map	Discover and access the most up-to-date service resources
+  # Edge networking
+    # Amazon CloudFront	Deliver data, videos, applications, and APIs at high transfer speeds with low latency
+    # Amazon Route 53	Drive end users to internet applications with a low-cost managed Domain Name System (DNS)
+    # AWS Global Accelerator	Optimize user traffic to your application
+  # Hybrid connectivity
+    # AWS Direct Connect	Establish a private, dedicated AWS connection to your data center, office, or colocation environment
+    # AWS Site-to-Site VPN	Create an encrypted network connection to your Amazon VPCs or AWS Transit Gateways
+    # AWS Client VPN	Connect your remote workforce to AWS or on-premises with a Virtual Private Network (VPN)
+    # AWS Cloud WAN	Easily build, manage, and monitor global wide area networks
+  # Network security
+    # AWS Shield	Safeguard AWS applications against distributed denial of service (DDoS) attacks
+    # AWS WAF	Protect your web applications from common web exploits
+    # AWS Network Firewall	Deploy network security across your Amazon VPCs
+    # AWS Firewall Manager	Centrally configure and manage firewall rules
+# security
+  # Identity and access management	AWS Identity and Access Management (IAM)	Securely manage identities and access to AWS services and resources  
+    # AWS IAM Identity Center (successor to SSO)	Centrally manage workforce access to multiple AWS accounts and applications
+    # Amazon Cognito	Implement secure, frictionless customer identity and access management that scales
+    # Amazon Verified Permissions (preview)	Manage fine-grained permissions and authorization within custom applications
+    # AWS Directory Service	Gain efficiency with a fully managed Microsoft Active Directory service
+    # AWS Resource Access Manager	Simply and securely share your AWS resources across multiple accounts
+    # AWS Organizations	Centrally manage your environment as you scale your AWS resources
+  # Detection	AWS Security Hub	Automate AWS security checks and centralize security alerts
+    # Amazon GuardDuty	Protect AWS accounts with intelligent threat detection
+    # Amazon Inspector	Automated and continual vulnerability management at scale
+    # Amazon Security Lake (Preview)	Automatically centralize your security data in a few steps 
+    # AWS Config	Assess, audit, and evaluate configurations of your resources
+    # Amazon CloudWatch	Observe and monitor resources and applications on AWS, on premises, and on other clouds
+    # AWS CloudTrail	Track user activity and API usage
+    # AWS IoT Device Defender	Security management across your IoT devices and fleets
+  # Network and application protection	AWS Firewall Manager	Centrally configure and manage firewall rules across your accounts
+    # AWS Network Firewall	Deploy network firewall security across your VPCs
+    # AWS Shield	Maximize application availability and responsiveness with managed DDoS protection
+    # AWS Verified Acces (Preview)	Provide secure access to corporate applications without a VPN
+    # AWS Web Application Firewall (WAF)	Protect your web applications from common exploits
+    # Amazon Route 53 Resolver DNS Firewall	Filter and control outbound DNS traffic for your VPCs
+  # Data protection	Amazon Macie	Discover and protect your sensitive data at scale
+    # AWS Key Management Service (AWS KMS)	Create and control keys to encrypt or digitally sign your data
+    # AWS CloudHSM	Manage single-tenant hardware security modules (HSMs) on AWS
+    # AWS Certificate Manager	Provision and manage SSL/TLS certificates with AWS services and connected resources
+    # AWS Private Certificate Authority 	Create private certificates to identify resources and protect data
+    # AWS Secrets Manager	Centrally manage the lifecycle of secrets
+  # Incident response	Amazon Detective	Analyze and visualize security data to investigate potential security issues
+    # AWS Elastic Disaster Recovery	Scalable, cost-effective application recovery to AWS
+  # Compliance	AWS Artifact	No cost, self-service portal for on-demand access to AWS’ compliance reports
+    # AWS Audit Manager	Continually audit your AWS usage to simplify risk and compliance assessment
+# storage
+  # Object, file, and block storage
+    # Amazon Simple Storage Service (S3)	Object storage with industry-leading scalability, availability, and security for you to store and retrieve any amount of data from anywhere.
+    # Amazon Elastic File System (EFS)	A simple, serverless, elastic, set-and-forget file system for you to share file data without managing storage.
+    # Amazon FSx	Fully managed, cost-effective file storage offering the capabilities and performance of popular commercial and open-source file systems.
+    # Amazon Elastic Block Store (EBS)	Easy to use, high-performance block storage service for both throughput and transaction-intensive workloads at any scale.
+    # Amazon File Cache	High-speed cache for datasets stored anywhere, accelerate cloud bursting workloads.
+  # Data migration
+    # AWS DataSync	Online data transfer service that optimizes network bandwidth and accelerates data movement between on-premises storage and AWS storage.
+    # AWS Snow Family	Offline data transfer devices with built-in security and logistics features for simplified data migration.
+  # Hybrid cloud storage and edge computing
+    # AWS Storage Gateway	Hybrid cloud storage service that gives you on-premises access to virtually unlimited cloud storage.
+    # AWS Snow Family	Edge compute, data collection, and data transfer services with security and end-to-end logistics for mobile and rugged deployments.
+  # Managed file transfer
+    # AWS Transfer Family	Simple and seamless file transfer to Amazon S3 and Amazon EFS using SFTP, FTPS, and FTP protocols.
+  # Disaster recovery and backup
+    # AWS Elastic Disaster Recovery (DRS)	Minimize downtime and data loss storage, minimal compute, and point-in-time recovery.
+    # AWS Backup	Fully managed, policy-based service to centrally manage and automate data protection, compliance, and governance for applications running on AWS.
+# support
+    # AWS Partner Network
+    # AWS Trusted Advisor
+
+
+# cloud computing
+  # on demand access
+  # low up-front investment
+  # provision as needed
+  # pay only for what is used
+
+#  hybrid
+  # connect cloud resources to on-premises resources
+  # necessary to integrate cloud resources to legacy IT applications 
+
+# AWS Core Services
+  # database
+    # RDS
+    # Dynamo DB
+    # Elasticache
+    # Redshift
+  # storage
+    # EBS (Elastic Block Service): block storage
+    # EFS (Elastic File Service): file storage
+    # S3 (Simple Storage Service): object storage
+    # Glacier
+  # networking
+    # Route 53
+    # Direct Connect
+    # Virtual Private Cloud (VPC)
+  # compute
+    # instances
+    # containers
+    # serverless
+    # edge and hybrid
+    # cost and capacity management 
+    # EC2
+      # Elsastic IP
+      # Network ACLs
+      # security groups
+    # Lamba: serverless computing
+    # Beanstalk
+    # ECS (Elastic Container Services)
+    # Elastic Kubernetes Service (EKS)
+    # Fargate
+  # IAM
+  # Health
+  # AMI:(Amazon Machine Image) a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. You can select an AMI provided by AWS, our user community, or the AWS Marketplace; or you can select one of your own AMIs.
+  # CloudFormation
+  # CIDR (Classless Inter-Domain Routing)
+  # AWS Session Manager
+  # AWS Transit Gateway
+  # Load Balancers
+    # Application
+    # Network
+    # Gateway
+  # Amazon Aurora
+  # Security
+    # Cloudwatch
+    # CloudTrail
+    # Config
+    # Inspector
+    # (Web Application Firewall) WAF
+    # Secrets manager: securely passes keys to external services
+    # Trusted Advisor
+
+  # Marketplace
+# compliance
+# bucket
+# shared responsibility model
+# scaling
+  # horizontal: more servers
+  # vertical: faster/bigger servers
+# reserved instance
 # cloud architecture design principles
   # design for failure
   # decoupled v monolithic
   # implement elasticity in cloud v on-premises
   # parallelism
+  # eliminate single points of failure
+  # loose coupling
+  # microservice architecture
+  # horizontal scaling
+  # high availability
+  # disaster recovery
+# gateways
+  # internet
+  # NAT
+  # customer
+  # transit
+  # virtual private
+# global infrastructure
+  # regions: clusters of data centers
+  # availablility zones (AZs)
+  # edge locations: endpoints that serve cached content and provide access to AWS services
+# AWS Cloud communication methods (AKA management options):
+  # APIs and SDKs
+  # AWS CLI
+  # AWS management Console
+  # infrastructure as code
+# connectivity options
+  # vpn
+  # Direct Connect
+  # public internet
+# tags
+# resoruce groups
+# support levels
+  # basic
+  # developer
+  # business
+  # enterprise
+# data sovereignty: data are subject to the laws and governance structures of the nation where they are collected
+# pricing models (descending expense)
+  # dedicated host: a physical server
+  # dedicated instance: an EC2 instance
+  # on-demand: most flexible
+  # reserved: 
+  # spot: use spare capacity; can be cancelled by Amazon with two minute warning
+  # compute savings plan
+# auto scaling
+  # 
+
 
 name: ''
 units:
