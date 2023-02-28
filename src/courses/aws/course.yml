@@ -46,14 +46,31 @@
     # AWS Deep Learning AMIs	Frameworks and interfaces
     # Amazon SageMaker	Platform services
 # compute
+  # Cloud computing: is the on-demand delivery of compute power, database, storage, applications and other IT resources through a cloud services platform through the internet with pay-as-you-go pricing
+  # Cloud-based deployment: run, migrate, design, and build both new and existing applications to the cloud
+	# On-premises deployment: know as a private cloud deployment, deploy and increase resource by using virtualization and management tools
+	# Hybrid deployment: splitting an application or software between on-premises and cloud infrastructure to take the benefits of both environments
+	# Benefits of cloud computing:
+		# Allows for trade-off between trade upfront expense and variable expense by paying for cloud services on a pay-as-you-go basic
+		# Stop pending money to run and maintain data center
+		# Stop guessing capacity for hardware and infrastructure, resources can be easily scaled up in or scale out in respond to demand
+		# Benefit from massive economies of scale, cloud providers can offer services to a large number of customers which can reduce the cost of services for each individual customer
+		# Increase speed and agility, by comparision, cloud computing enables to access new resources within minutes
+		# Go global in minutes, with low latency
   # Instances (virtual machines)
     # Amazon Elastic Compute Cloud (EC2)	Secure and resizable compute capacity (virtual servers) in the cloud
       # types of EC2 instances (list use cases)
-        # general purpose: 
-        # compute optimized:
-        # memory optimized: databases
-        # accelerated computing: 
-        # storage optimized: data warehouses
+        # general purpose: provided a balance of compute, memory and networking resources, this is an instance family
+        # compute optimized: use for a batch processing workload which offers high-performance processors
+        # memory optimized: for workloads that process large datasets in memory, ideal for high-performance databases
+        # accelerated computing: use hardware accelerators, or coprocessors that can expedite data processing
+        # storage optimized: designed for workloads that require hig, sequential read and write access to large datasets on local storage, suitable for data warehousing applications
+      # EC2 pricing:
+		    # On-demand: ideal for short-term, irregular workloads that cannot be interrupted, pay for only the compute time you use
+		    # Saving plans: enable to reduce compute costs by committing to a consistent amout of compute usage for 1 or 3 year term and can reduce costs by up to 72%
+		    # Spot instances: ideal for workloads it does not require a minimum contract length, and that can withstand interruptions and can reduce costs by up to 90%
+        # Reserved Instances: require a commitment of either 1 year or 3 years. The 3-year option offers a larger discount.
+		    # Dedicated Instances: run in a virtual private cloud (VPC) on hardware that is dedicated to a single customer. They have a higher cost than the other response options, which run on shared hardware.
     # Amazon EC2 Spot	Run fault-tolerant workloads for up to 90% off
     # Amazon EC2 Autoscaling	Automatically add or remove compute capacity to meet changes in demand
       # dynamic: responds to changing demand
@@ -261,7 +278,16 @@
 # scaling
   # horizontal: more servers
   # vertical: faster/bigger servers
-# reserved instance
+  # Scalability: pay for only the resources you use
+		# Auto scaling: automatically scaling your instances in and out as needed. To scail faster, you can use dynamic scaling and predictive scaling together.
+			# Dynamic scaling: respond to changing demand
+			# Predictive scaling: automatically schedules the right number of Amazon EC2 instances based on predicted demand
+  # Elastic load balancing (ELB): automatically distribute incoming application traffic across multiple resources
+	# Messaging and queuing:
+		# Monolithic application: are tightly coupled components, if a single component fail, the entire application fails.
+		# Microservices approach: with application components are loosely coupled which prevents the entire application from failing
+			# Amazon simple notification service (SNS): is a publish/subscribe service
+			# Amazon simple queue service (SQS): is a message queuing service
 # cloud architecture design principles
   # design for failure
   # decoupled v monolithic
