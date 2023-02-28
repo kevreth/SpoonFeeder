@@ -1,14 +1,58 @@
 ---
-name: ''
+name: 'Spring Framework 6 With Kotlin'
 units:
-- name: ''
+- name: 'Dependency Injection'
   lessons:
   - name: ''
     modules:
-    - name: ''
+    - name: 'Multitiered Architecture'
       inst:
       - type: info
-        txt: <div id="table0"></div><script>$('#table0').load("src/courses/english/english.html")</script>
+        txt: |
+          <p>A Spring Application is typically divided into five layers:</p>
+            <ul>
+              <li>view</li>
+              <li>controller</li>
+              <li>service</li>
+              <li>model</li>
+              <li>data</li>
+            </ul>
+      - type: info #VIEW
+        txt: |
+          <p>The <i>view layer</i> is external to the Spring application. The view layer is often a Web browser, thin client, or mobile device.</p>
+      - type: info #CONTROLLER
+        txt: |  
+        <p>The <i>controller layer</i></p>
+        <ul>
+          <li>represents the REST interface</li>
+          <li>has @RestController and @RequestMapping delared at the class level.</li>
+          <li>is passed model layer objects from the request body, but does not create model objects</li>
+          <li>calls the service layer passing model layer objects</li>
+        </ul>
+      - type: info #SERVICE
+        txt: |  
+        <p>The <i>service layer</i></p>
+        <ul>
+          <li>performs computations and data transformations</li>
+          <li>has @Service declared at the class level</li>
+          <li>contains methods called from the controller</li>
+          <li>has a constructor with a parameter for a data layer object</li>
+          <li>calls the data layer with model layer objects</li>
+          <li>never creates model objects</li>
+        </ul>      
+      - type: info #MODEL
+        txt: |  
+        <p>The <i>model layer<i> contains data classes ("model objects") representing the data returned from a data source.</p>
+        <p>The model layer is used by the controller, service, and data layers. All three layers both pass and are passed model objects. The view and data layers create model objects.</p>
+      - type: info #DATA
+        txt: |  
+        <p>The <i>data layer</i></p>
+        <ul>
+          <li>interfaces to the data source</li>
+          <li>creates and is passed model objects</li>
+          <li>contains an interface to abstract multiple possible data sources in implementing classes</li>
+          <li>the interfaces is mocked in testing</li>
+        </ul>
       - type: bool
         txt: 'yes'
         ans: 'yes'
