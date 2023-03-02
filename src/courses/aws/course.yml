@@ -117,6 +117,7 @@
     # AWS License Manager	Set rules to manage, discover, and report software license usage
   # Provisioning
     # AWS CloudFormation	Model and provision all your cloud infrastructure resources
+    # AWS Elastic beanstalk deploys the resources necessary to adjust capacity, load balancing, automtic scaling, application health monitoring base on your provide code and configuration settings
     # AWS Service Catalog	Create, organize, and govern
     # AWS OpsWorks	Automate operations with Chef and Puppet
     # AWS Marketplace	Find, test, buy, and deploy software that runs on AWS
@@ -307,12 +308,16 @@
   # virtual private
 # global infrastructure
   # regions: clusters of data centers
-  # availablility zones (AZs)
+    # compliance: process data run in specific areas
+		# proximity: selecting a region that is close to customers will help to get content to them faster
+		# feature availability: run in one of the Region that  already offers the features which closest Region might not have
+    # pricing: the cost of services can vary from Region to Region
+  # availablility zones (AZs): A fully isolated portion of the AWS global infrastructure
   # edge locations: endpoints that serve cached content and provide access to AWS services
 # AWS Cloud communication methods (AKA management options):
-  # APIs and SDKs
-  # AWS CLI
-  # AWS management Console
+  # APIs and SDKs: it easier to use AWS services through an API designed for programming language or platform
+  # AWS CLI: a tool to save time when making API request and automate actions for AWS services and applications through scripts
+  # AWS management Console: useful for test environments, view AWS bills, view monitoring, work with non-technical resources
   # infrastructure as code
 # connectivity options
   # vpn
