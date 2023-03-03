@@ -135,7 +135,7 @@
     # AWS Proton	Automated management for container and serverless deployment
     # Amazon DevOps Guru	Leverage ML to improve an application’s operational performance and availability.
 # networking
-  # Network foundations	Amazon VPC	Customize and control your networking environment with Amazon Virtual Private Cloud (VPC)
+    # Network foundations	Amazon VPC	Customize and control your networking environment with Amazon Virtual Private Cloud (VPC)
     # AWS Transit Gateway	Simplify your network with VPCs and on-premises networks connected to a single gateway
     # AWS PrivateLink	Establish private connectivity between VPCs and AWS or on- premises services
   # Application networking
@@ -233,9 +233,13 @@
     # S3 (Simple Storage Service): object storage
     # Glacier
   # networking
-    # Route 53
-    # Direct Connect
-    # Virtual Private Cloud (VPC)
+    # Domain name system (DNS) resolution: is the process of translating a domain name to an IP address 
+    # Route 53: is a DNS web service that translates human-readable domain names into IP addresses
+    # Direct Connect: a dedicated private connection between data center and a VPC, help to reduce network costs and increase the amount of bandwidth that can travel through network
+    # Virtual Private Cloud (VPC): provision an isolated section of the AWS Cloud, organize resources into subnets.
+      # Subnets: is a  section of a VPC which you can group resources based on security or operation needs. Subnets can be public or private and can communicate with each other
+			# Public subnet: support the customer-facing website
+			# Private subnet: isolate databases containing customers personal information
   # compute
     # instances
     # containers
@@ -244,8 +248,10 @@
     # cost and capacity management 
     # EC2
       # Elsastic IP
-      # Network ACLs
-      # security groups
+      # Network access control list (ACLs): a virtual firewall that controls inbound and outbound traffic at the subnet level, perform stateless packet filtering
+      # security groups: are stateful, it deny all inbound traffic, but you can add custom rules to fit operations and security needs
+      # Stateless packet filtering: they remember nothing and check packets that cross subnet border each way inbound and outbound
+      # Stateful packet filtering: they remember previous decisions made for incoming packets
     # Lamba: serverless computing
     # Beanstalk
     # ECS (Elastic Container Services)
@@ -301,11 +307,11 @@
   # high availability
   # disaster recovery
 # gateways
-  # internet
+  # Internet gateway: a connection between a VPC and internet
   # NAT
   # customer
   # transit
-  # virtual private
+  # virtual private gateway: to accesss private resource in a VPC. Create a VPN connection between the VPC and the internal corporate network
 # global infrastructure
   # regions: clusters of data centers
     # compliance: process data run in specific areas
