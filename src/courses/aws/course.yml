@@ -66,7 +66,7 @@
         # accelerated computing: use hardware accelerators, or coprocessors that can expedite data processing
         # storage optimized: designed for workloads that require hig, sequential read and write access to large datasets on local storage, suitable for data warehousing applications
       # EC2 pricing:
-		    # On-demand: ideal for short-term, irregular workloads that cannot be interrupted, pay for only the compute time you use
+		    # On-demand: no long-term commitment, ideal for short-term, irregular workloads that cannot be interrupted, pay for only the compute time you use
 		    # Saving plans: enable to reduce compute costs by committing to a consistent amout of compute usage for 1 or 3 year term and can reduce costs by up to 72%
 		    # Spot instances: ideal for workloads it does not require a minimum contract length, and that can withstand interruptions and can reduce costs by up to 90%
         # Reserved Instances: require a commitment of either 1 year or 3 years. The 3-year option offers a larger discount.
@@ -191,9 +191,20 @@
 # storage
   # Object, file, and block storage
     # Amazon Simple Storage Service (S3)	Object storage with industry-leading scalability, availability, and security for you to store and retrieve any amount of data from anywhere.
+      # Amazon S3 storage classes: select a fit for your business and cost needs
+        # S3 Standard: desinged for frequently accessed data, stores data in a minimum of three Availability Zones, it has a higher cost
+        # S3 Standard-Infrequent Access (S3 Standard-IA): ideal for data infrequently accessed but requires high availability when needed, stores data in a minimum of three Availability Zones too, same level of S3 Standard but at a lower storage price and a higher retrieval price
+        # S3 One Zone-Infrequent Access (S3 OneZone-IA): stores data in a single Availability Zone, has a lower storage price than Standard-IA. Consider to use it when you want to save costs on storage and you can easily reproduce your data in the event of an Availability Zone failure
+        # S3 Intelligent-Tiering: ideal for data with unknown or changing access patterns, it monitors object' access patterns. If you haven't accessed an object for 30 consecutive days, automatically moves it to the infrequent access tier S3 Standard-IA. If you access an boject in the infrequent access tier, automatically moves it to the frequent access tier, S3 Standard
+        # S3 Glacier Instant Retrieval: works well for archived data that requires immediate access and can retrieve objects within a few miliseconds
+        # S3 Glacier Flexible Retrieval: low-cost storage designed for data archiving, able to retrieve objects within a few minutes to hours
+        # S3 Glacier Deep Archive: supports long-term retention and digital preservation for data that might be accessed once or twice in a year. This storage class is the lowest-cost storage in AWS Cloud, with data retrieval from 12 to 48 hours
+        # S3 Outposts: delivers object storage to on-premises AWS Outposts environment
     # Amazon Elastic File System (EFS)	A simple, serverless, elastic, set-and-forget file system for you to share file data without managing storage.
     # Amazon FSx	Fully managed, cost-effective file storage offering the capabilities and performance of popular commercial and open-source file systems.
+    # Instances store: block storage for an Amazon EC2 instance. Physically attached to the host computer for an EC2 instance and has the same lifespan as the instance. When the instances is terminated, you lose any data in the instance store
     # Amazon Elastic Block Store (EBS)	Easy to use, high-performance block storage service for both throughput and transaction-intensive workloads at any scale.
+    # Amazon EBS snapshots is an incremental backup. Increment backups are different from full backup, in which all the data in storage volume copies each time a backup occurs.
     # Amazon File Cache	High-speed cache for datasets stored anywhere, accelerate cloud bursting workloads.
   # Data migration
     # AWS DataSync	Online data transfer service that optimizes network bandwidth and accelerates data movement between on-premises storage and AWS storage.
