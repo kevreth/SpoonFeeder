@@ -200,10 +200,13 @@
         # S3 Glacier Flexible Retrieval: low-cost storage designed for data archiving, able to retrieve objects within a few minutes to hours
         # S3 Glacier Deep Archive: supports long-term retention and digital preservation for data that might be accessed once or twice in a year. This storage class is the lowest-cost storage in AWS Cloud, with data retrieval from 12 to 48 hours
         # S3 Outposts: delivers object storage to on-premises AWS Outposts environment
-    # Amazon Elastic File System (EFS)	A simple, serverless, elastic, set-and-forget file system for you to share file data without managing storage.
     # Amazon FSx	Fully managed, cost-effective file storage offering the capabilities and performance of popular commercial and open-source file systems.
     # Instances store: block storage for an Amazon EC2 instance. Physically attached to the host computer for an EC2 instance and has the same lifespan as the instance. When the instances is terminated, you lose any data in the instance store
+    # Amazon Elastic File System (EFS)	A simple, serverless, elastic, set-and-forget file system for you to share file data without managing storage.
     # Amazon Elastic Block Store (EBS)	Easy to use, high-performance block storage service for both throughput and transaction-intensive workloads at any scale.
+      # Compare EBS and EFS:
+        # EBS volume stores data in a single Avaliability Zone, EBS volume attach to EC2 isntance, both must reside within the same Availability Zone, volume do not automatic scale
+        # EFS is a regional service, it stores data in and accross multiple Availability Zone, Linux file system, automatically scales
     # Amazon EBS snapshots is an incremental backup. Increment backups are different from full backup, in which all the data in storage volume copies each time a backup occurs.
     # Amazon File Cache	High-speed cache for datasets stored anywhere, accelerate cloud bursting workloads.
   # Data migration
@@ -234,8 +237,11 @@
 
 # AWS Core Services
   # database
-    # RDS
-    # Dynamo DB
+    # RDS using SQL to organize data and run relational database
+    # DynamoDB non-relational databases, NoSQL databases. A key-value database service, purpose built, it has millisecond respond time
+      # Compare RDS and DynamoDB:
+        # RDS: automatic high availability; recovery provided. Control data, schema, network
+        # DynamoDB: using key-value, massive throughput capabilites. PB size potential, granular API access
     # Elasticache
     # Redshift
   # storage
