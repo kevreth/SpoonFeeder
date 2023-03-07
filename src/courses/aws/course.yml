@@ -33,7 +33,11 @@
     # Amazon Kinesis Data Streams
     # Amazon Kinesis Data Firehose
     # Amazon Kinesis Video Streams
-    # AWS Database Migration Service
+    # AWS Database Migration Service (DMS): enables to migrate relational and nonrelational databases and other types of data stores, move data between a source database and a target database
+      # Other use cases for AWS DMS
+		    # Development and test database migrations: enabling developers to test applications against production
+		    # Database consolidation: combining several databases into a single database
+		    # Continuous replication: sending ongoing copies of data to other target sources instead of a doing one-time
   # Data lake
     # Amazon S3	Object storage
     # AWS Lake Formation
@@ -242,8 +246,14 @@
       # Compare RDS and DynamoDB:
         # RDS: automatic high availability; recovery provided. Control data, schema, network
         # DynamoDB: using key-value, massive throughput capabilites. PB size potential, granular API access
-    # Elasticache
-    # Redshift
+    # Redshift: a data warehousing service that can use for big data analytics, massively scailable, collect data from many sources
+    # Amazon DocumentDB: small attributes, a database services that support MongoDB (a document database program) workloads
+	  # Neptune: socal network, a graph database service, highly connected datasets
+	  # Quantum Ledger Dabase(QLDB): is a ledger database service, to review a complete history of all the changes that have made to application data
+	  # Managed Blockchain: a service to create and manage blockchain networks with open-source framework
+		  # Blockchain is a distributed ledger system that lets multiple parties run transactions and share data without a central autority
+	  # ElastiCache: add caching layers on top of databases to help improve the read times of common requests. It supports 2 types of data stores: Redis and Memcached
+	  # DynamoDB Accelerator (DAX): is an in-memory cache for DynamoDB
   # storage
     # EBS (Elastic Block Service): block storage
     # EFS (Elastic File Service): file storage
