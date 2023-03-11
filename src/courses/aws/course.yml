@@ -242,7 +242,38 @@
 		    # The green check: detected no problems
 		    # The orange triangle: recommended investigations
 		    # The red circle: recommended actions
-
+# Pricing and support
+  # AWS Free Tier using certain services without having to worry about incurring costs for the specified period
+	  # Always free: do not expire and all available to all AWS customers
+	  # 12 months free: following your initial sign-up date to AWS
+	  # Trials: offer short-term free trial offers start from the date you active a particular service
+  # AWS pricing concepts:
+	  # How AWS pricing works
+		  # Pay for what you use
+		  # Pay less when you reserve: provide a significant discount compared to On-Demand Instance pricing
+		  # Pay less with volume-based discounts when you use more: offer tiered pricing, so the per-unit cost is incrementally lower with increased usage
+	  # AWS Pricing Calculator: explore AWS services and create an estimate for the cost
+	  # AWS pricing:
+		  # AWS Lambda pricing: charged based on the number of request and the time it takes to run
+		  # AWS EC2 pricing: pay for only the compute time while instances are running
+		  # AWS S3 pricing:
+			  # Storage: pay for only the storage that you use
+			  # Requests and data retrievals: pay for requests made to your Amazon S3 objects and buckets
+			  # Data transfer: pay for data that you transfer into and out of Amazon S3 with a few exceptions
+			  # Management and replication: pay for the storage management features include inventory, analytics, object tagging that you have enabled on your account's Amazon S3 buckets
+	  # Consolidated billing: offer review itemized charges incurred by each account and can share bulk discount pricing
+	  # AWS Budgets: create budgets to plan your sevice usage, it updates three times a day, and can set custom alerts when your usage exceeds the budgeted amount
+	  # AWS Cost Explorer enables to visualize, understand and manage your AWS costs and usage over time
+	  # AWS Support
+		  # Basic: free, includes access to whitepapers, documentation and support communities
+		  # Developer, Business, Enterprise On-Ramp, and Enterprise Support pay-by-the-month and require no long-term contracts
+			  # Developer support: basic support, email access to customer support
+			  # Business support: basic and developer support, AWS Trusted Advisor provides full of best practice checks, direct phone access to cloud support engineers
+			  # Enterprise On-Ramp: basic, developer and business support, 15-minute SLA for business critical workload. Support a pool of TAM, a Cost Optimization workshop (1 per year), a Concierge support team, tools to monitor costs
+			  # Enterprise support a designed TAM,  a Concierge support team, operations reviews and tools to monitor health, training and game days to drive innovation, tools to monitor costs
+	  # Technical Account Manager (TAM): included of Enterprise On-Ramp and Enterprise Support plans, it a primary point of contact at AWS. Educates, empowers, evolves your cloud journey across the full range of AWS services
+	  # AWS Marketplace: you can find, test and buy software run on AWS, you can access detailed information on pricing options, available support and reviews from other customers
+		  # AWS Marketplace categories: infrastructure software, DevOps, data products, professional services, buniness applications, machine learning, industries, Internet of Things(IoT)
 
 # cloud computing
   # on demand access
