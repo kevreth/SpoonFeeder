@@ -127,9 +127,12 @@
     # AWS Marketplace	Find, test, buy, and deploy software that runs on AWS
   # Operations
     # Amazon CloudWatch	Observability of your AWS resources and applications on AWS and on-premises
+    # CloudWarch alarms: automatically prform actions if the value of your metric has gone above or below a predefined threshold
+    # CloudWatch dashboard enables to access all the metrics from a single location, you can customize separate dashboards for different buniness purposes, applications or resources
     # Amazon Managed Grafana	Scalable, secure, and highly available data visualization for your operational metrics
     # Amazon Managed Service for Prometheus	Highly available, secure, and managed monitoring for your containers
     # AWS CloudTrail	Track user activity and API usage
+      # CloudTrail Insights: automatically detect unusual API activites in your AWS account
     # AWS Config	Record and evaluate configurations of your AWS resources
     # AWS Systems Manager	Gain operational insights and take action on AWS resources
     # AWS Managed Services	Operate AWS infrastructure on behalf of entire enterprise customers and partners
@@ -161,13 +164,21 @@
     # AWS Network Firewall	Deploy network security across your Amazon VPCs
     # AWS Firewall Manager	Centrally configure and manage firewall rules
 # security
-  # Identity and access management	AWS Identity and Access Management (IAM)	Securely manage identities and access to AWS services and resources  
+  # Identity and access management	AWS Identity and Access Management (IAM)	Securely manage identities and access to AWS services and resources
     # AWS IAM Identity Center (successor to SSO)	Centrally manage workforce access to multiple AWS accounts and applications
+      # AWS account root user: complete access to all the AWS services and resources in the account
+	    # IAM users: it consists of a name and credentials, by defaut it has no permissions, you must grant the IAM user the necessary pemissions
+	    # IAM policy: a document that describe permissions, allows or denies permissions to AWS services and resources
+	    # IAM groups: a collection of IAM users, all users in the group are granted permissions specified by the policy
+	    # IAM roles: identity that you can assume to gain temporaty access to permissions. When someone assumes an IAM role, they abandon all previous permissions and assume the permissions of the new role
     # Amazon Cognito	Implement secure, frictionless customer identity and access management that scales
     # Amazon Verified Permissions (preview)	Manage fine-grained permissions and authorization within custom applications
     # AWS Directory Service	Gain efficiency with a fully managed Microsoft Active Directory service
     # AWS Resource Access Manager	Simply and securely share your AWS resources across multiple accounts
+    # Multi-factor authentication (MFA) provides an extra layer (provide muiltiple pieces of information to verify your identity) of security for your AWS account
     # AWS Organizations	Centrally manage your environment as you scale your AWS resources
+      # Service control policies (SCPs): to specify the maximum permissions for individual member account, organization root, or an OU in organization
+	    # Organizational units (OUs): in AWS Organizaions, you group accounts into OUs, enables to attach polices, give them access to the services and resources that they need
   # Detection	AWS Security Hub	Automate AWS security checks and centralize security alerts
     # Amazon GuardDuty	Protect AWS accounts with intelligent threat detection
     # Amazon Inspector	Automated and continual vulnerability management at scale
@@ -196,10 +207,10 @@
   # Object, file, and block storage
     # Amazon Simple Storage Service (S3)	Object storage with industry-leading scalability, availability, and security for you to store and retrieve any amount of data from anywhere.
       # Amazon S3 storage classes: select a fit for your business and cost needs
-        # S3 Standard: desinged for frequently accessed data, stores data in a minimum of three Availability Zones, it has a higher cost
+        # S3 Standard: is a storage data that is ideal for frequently accessed data, not achirval data, stores data in a minimum of three Availability Zones, it has a higher cost
         # S3 Standard-Infrequent Access (S3 Standard-IA): ideal for data infrequently accessed but requires high availability when needed, stores data in a minimum of three Availability Zones too, same level of S3 Standard but at a lower storage price and a higher retrieval price
         # S3 One Zone-Infrequent Access (S3 OneZone-IA): stores data in a single Availability Zone, has a lower storage price than Standard-IA. Consider to use it when you want to save costs on storage and you can easily reproduce your data in the event of an Availability Zone failure
-        # S3 Intelligent-Tiering: ideal for data with unknown or changing access patterns, it monitors object' access patterns. If you haven't accessed an object for 30 consecutive days, automatically moves it to the infrequent access tier S3 Standard-IA. If you access an boject in the infrequent access tier, automatically moves it to the frequent access tier, S3 Standard
+        # S3 Intelligent-Tiering: ideal for data with unknown or changing access patterns, it monitors object' access and automatically moves them between Amazon S3 Standard and Amazon S3 Standard-IA storage classes
         # S3 Glacier Instant Retrieval: works well for archived data that requires immediate access and can retrieve objects within a few miliseconds
         # S3 Glacier Flexible Retrieval: low-cost storage designed for data archiving, able to retrieve objects within a few minutes to hours
         # S3 Glacier Deep Archive: supports long-term retention and digital preservation for data that might be accessed once or twice in a year. This storage class is the lowest-cost storage in AWS Cloud, with data retrieval from 12 to 48 hours
@@ -226,7 +237,11 @@
     # AWS Backup	Fully managed, policy-based service to centrally manage and automate data protection, compliance, and governance for applications running on AWS.
 # support
     # AWS Partner Network
-    # AWS Trusted Advisor
+    # AWS Trusted Advisor inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices. The inspection includes security checks, such as Amazon S3 buckets with open access permissions., compares its findings to AWS best practices in 5 categories - cost optimization, performance, security, fault tolerance, and service limits
+	    # AWS Trusted Advisor dashboard review completed checks
+		    # The green check: detected no problems
+		    # The orange triangle: recommended investigations
+		    # The red circle: recommended actions
 
 
 # cloud computing
@@ -306,7 +321,7 @@
     # Trusted Advisor
 
   # Marketplace
-# compliance
+# compliance: is a set of rules and guidelines that people who use AWS must follow for safely and fairly
 # bucket
 # shared responsibility model
 # scaling
