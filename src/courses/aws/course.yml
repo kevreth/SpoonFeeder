@@ -116,7 +116,13 @@
   # Governance
     # AWS Control Tower	The easiest way to set up and govern a new, secure multi-account AWS environment
     # AWS Organizations	Central governance and management across AWS accounts
-    # AWS Well-Architected Tool	Review your architecture and adopt best practices
+    # AWS Well-Architected Tool	Review your architecture and adopt best practices, based on six pillars
+      # Operational exellence: to run and monitor systems to deliver business value and to continually improving processes and procedures
+		  # Security: protecting data, systems, and assets, and using cloud technologies to improve the security of your workloads
+		  # Reliability: includes testing recovery procedures, focuses on the ability of a workload to consistently and correctly perform its intended functions
+		  # Performance efficiency: evaluating the performance efficiency of your architecture includes experimenting more often, using serverless architectures and designing systems to be able to go global in minutes
+		  # Cost optimization: includes adopting a consumption model, analyzing and attributing expenditure and using managed services to reduce the cost of owenership
+		  # Sustainability: undestand your impact, establish sustainability goals, maxinize utitlization
     # AWS Budgets	Set custom budgets that alert you when you exceed your budgeted thresholds
     # AWS License Manager	Set rules to manage, discover, and report software license usage
   # Provisioning
@@ -226,12 +232,12 @@
     # Amazon File Cache	High-speed cache for datasets stored anywhere, accelerate cloud bursting workloads.
   # Data migration
     # AWS Cloud Adoption Framework (CAF): six areas of focus called Perspectives. Business, Peole, and Governance Perspectives focus on business capabitlities (for nontechnical planning), the Platform, Security, and Operations Perperstive focus on technical capabilities (for techincal planning)
-      # Business Perspective: ensure that IT aligns with business needs and IT investment link to key business results
+      # Business Perspective: helps you to move from a model that separates business and IT strategies into a business model that integrates IT strategy.
 	    # People Perspective: supports development of an organization-wide change management strategy for successful cloud adoption
-	    # Governance Perspective: focuses on the skills and processess to align IT strategy with business strategy. This ensure that you maximize the business value and minimize risks
+	    # Governance Perspective: helps you to identify and implement best practices for IT governance and support business processes with technology.
 	    # Platform Perspective: includes principles and patterns for implementing new solutions on the cloud, and migrating on-premises workloads to the cloud
-	    # Security Perspective: ensures that the organization meets security objectives for visibility, auditability, control, and agility
-	    # Operations Perspective: helps you to enable, run, use, operate, and recover IT workloads to the level agreed upon with your business stakeholdersv
+	    # Security Perspective: helps you structure the selection and implementation of permissions, ensures that the organization meets security objectives for visibility, auditability, control, and agility
+	    # Operations Perspective: focuses on operating and recovering IT workloads to meet the requirements of your business stakeholders.
     # Migration strategies: 6 strategies (the 6 R's) when migrating applications to the cloud
 	    # Rehosting: known as "lift-and-shift" involves moving applications without changes
 	    # Replatforming: known as "lift, tinker, and shift" involves making a few cloud optimizations (optimization is achieved without changing the core architecture of the application) to realize a tangible benefit
@@ -245,7 +251,7 @@
 	    # Snowball: offer 2 types of devices
 		    # Snowball Edge Storage Optimized devices are well suited for large-scale data migrations and recurring transfer workflows, in addition to local computing with higher capacity needs. 80 TB HDD, 1TB SATA SSD, 40 vCPUSs, 80 GiB
 		    # Snowball Edge Compute Optimized: provides powerful computing resources for use cases such as machine learning, full motion video analytics, and local computing stacks. 42 TB HDD, 7.68 TB NVMe SSD, 52 vCPUs, 208 GiB
-	    # Snowmobile: is an exabyte-scale data transfer service used to move large amounts of data to AWS
+	    # Snowmobile: is a service that is used for transferring up to 100 PB of data to AWS. Each Snowmobile is a 45-foot long shipping container that is pulled by a semi trailer truck.
   # Innovate
     # Serverless applications: AWS Lambda is an example, building your architecture with serverless applications enables to focus on their core product instead of managing and operating servers
 	  # Artifiial intelligence (AI): convert speech to text with Amazon Transcribe, discover patterns in text with Amazon Comprehend, identify potentially faudulent online activities with Amazon Fraud Detector, build voice and text chatbots with Amazon Lex
