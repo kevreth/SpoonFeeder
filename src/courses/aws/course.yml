@@ -105,7 +105,7 @@
     # Elastic Load Balancing (ELB)	Automatically distribute incoming application traffic across multiple targets
 # developer
     # AWS CodePipeline
-    # AWS CodeBuild	 
+    # AWS CodeBuild
     # AWS CodeDeploy
     # AWS CodeStar
     # AWS CodeCommit
@@ -308,15 +308,9 @@
 	  # AWS Marketplace: is a digital catalog that includes thousands of software listings from independent software vendors. You can use AWS Marketplace to find, test, and buy software that runs on AWS.
 		  # AWS Marketplace categories: infrastructure software, DevOps, data products, professional services, buniness applications, machine learning, industries, Internet of Things(IoT)
 
-# cloud computing
-  # on demand access
-  # low up-front investment
-  # provision as needed
-  # pay only for what is used
-
 #  hybrid
   # connect cloud resources to on-premises resources
-  # necessary to integrate cloud resources to legacy IT applications 
+  # necessary to integrate cloud resources to legacy IT applications
 
 # AWS Core Services
   # database
@@ -339,7 +333,7 @@
     # S3 (Simple Storage Service): object storage
     # Glacier
   # networking
-    # Domain name system (DNS) resolution: is the process of translating a domain name to an IP address 
+    # Domain name system (DNS) resolution: is the process of translating a domain name to an IP address
     # Route 53: is a DNS web service that translates human-readable domain names into IP addresses
     # Direct Connect: a dedicated private connection between data center and a VPC, help to reduce network costs and increase the amount of bandwidth that can travel through network
     # Virtual Private Cloud (VPC): provision an isolated section of the AWS Cloud, organize resources into subnets.
@@ -351,7 +345,7 @@
     # containers
     # serverless
     # edge and hybrid
-    # cost and capacity management 
+    # cost and capacity management
     # EC2
       # Elsastic IP
       # Network access control list (ACLs): a virtual firewall that controls inbound and outbound traffic at the subnet level, perform stateless packet filtering
@@ -447,54 +441,127 @@
   # dedicated host: a physical server
   # dedicated instance: an EC2 instance
   # on-demand: most flexible
-  # reserved: 
+  # reserved:
   # spot: use spare capacity; can be cancelled by Amazon with two minute warning
   # compute savings plan
 # auto scaling
-  # 
+  #
 
 
-name: ''
+name: Amazon Web Services Cloud Practitioner
 units:
-- name: ''
+- name: Introduction # unit
   lessons:
-  - name: ''
+  - name: '' # lesson
     modules:
-    - name: ''
+    - name: Introduction to cloud computing # module
       inst:
       - type: info
-        txt: <div id="table0"></div><script>$('#table0').load("src/courses/english/english.html")</script>
-      - type: bool
-        txt: 'yes'
-        ans: 'yes'
+        txt: |
+          The Internet is based on <i>client-server architecture</i>.
+          Responses to user requests, such as "get the page at xyz.com", are serviced by a set of <i>servers</i>.
+      - type: info
+        txt: |
+          Typically, the number of servers must be enough to service the maximum projected number of users.
+          So, if a special event happens once a week requiring 20 servers, but normally only 3 servers are needed,
+          then 20 servers must be continuously provided while paying for the associated costs.
+      - type: info
+        txt: |
+          <i>Cloud computing</i> replaces the servers with a set of rented on-demand services. Thus, when the 20-server usage spike occurs,
+          capacity can be <b>rented</b> as needed instead of continuously paying for a fixed number of servers to always be online.
+      - type: info
+        txt: Cloud computing is invisible to users. Users don't know if the service they connect to is a dedicated server or a cloud service.
+      - type: info
+        txt: Cloud computing transparently handles usage spikes. If a website is unexpectedly mentioned in the media, resulting in many users requesting it, additional resources are automatically added. So, if suddenly our typically 3-server website requires 100 servers, the servers will be added automatically and on-demand. Previously before cloud computing, this would result in website failure because resources cannot be dynamically added.
       exercises:
-      - type: mc
-        q: ''
-        o: []
-        ans: ''
-      - type: imap
-        txt: ''
-        img: src/svg/test.svg
-        ans: ''
-      - type: gap
-        text: " (1)  (2)  (3)"
-        ans:
-        - ''
-        - ''
-        - ''
-      - type: select
-        inst: ''
-        text: ''
-        ans: []
-      - type: sort
-        txt: ''
-        ans:
-        - a
-        - b
-        - c
-        - d
-      - type: vocab
-        list:
-          '1': ''
-          '2': ''
-          '3': ''
+    - name: Principles of cloud computing # module
+      inst:
+      - type: info
+        txt: |
+          Cloud Computing
+             - on demand access
+             - low up-front investment
+             - provision as needed
+             - pay only for what is used
+      - type: info
+        txt: |
+          on-demand access
+          Computing resources are added automatically as needed.
+          No need exists to buy and maintain the maximum number of needed servers.
+      - type: info
+        txt: |
+          low up-front investment
+          Instead of buying servers and possibly paying for a data center, resources are rented without large up-front costs.
+      - type: info
+        txt: |
+          provision as needed
+          Resources are pre-configured to enable on-demand access.
+          <i>On-demand access</i> refers to making hardware available dymanically, while <i>provision as needed</i> means the dynamically added hardware is configured dynamically.
+      - type: info
+        txt: |
+          pay only for what is used
+          Under normal load, the example website only needs 3 servers. Only those 3 servers are paid for unless a usage spike occurs.
+      - type: info
+        txt: |
+          invisibility to users
+          Users don't know if the service they connect to is a dedicated server or a cloud service.
+    -name: Amazon Web Services # module
+      inst:
+      - type: info
+        txt: Amazon Web Services (AWS) is a collection of <i>cloud computing</i> services provided by Amazon.
+      - type: info
+        txt: |
+          AWS provides a "free tier" to use for learning, but several problems result from using an AWS account while learning, including
+          <ul>
+            <li>accidentally incurring charges,</li>
+            <li>constant switching between this course and an AWS account, and</li>
+            <li>the AWS user interface doesn't work well with small screens.</li>
+          </ul>
+          Therefore, this course is designed to <b>not</b> require an AWS account.
+      - type: info
+        txt: The Amazon Management Console (AMC) is a Web interface to interact with AWS. You can think of it as a control panel.
+      exercises:
+- name: Creating your first AWS application # unit
+  lessons:
+  - name: '' # lesson
+    modules:
+    - name: Introducing Amazon Elastic Compute Cloud # module
+      inst:
+      - type: info
+        txt: Amazon Elastic Compute Cloud (EC2) provides <i>virtual servers</i> and is the most fundamental but also most expensive Amazon cloud service.
+      - type: info
+        txt: Think of virtual servers as a slice of a server. If a server possesses 64 GB of RAM, 32 CPU cores, and 128 TB of hard disk space, a virtual server is an <i>instance</i> that might provide 2 GB of RAM, 4 CPU cores, and 1 TB of hard disk space. However it appears to be a separate machine, running it's own operating system.
+      - type: info
+        txt: |
+          An EC2 instance can operate one of several types of operating systems, including
+          <ul>
+            <li>Linux, with many choices of distributions such as Ubuntu, Redhat, and Debian.<li>
+            <li>MacOS<li>
+            <li>Windows<li>
+          </ul>
+- name: AWS managed services, the alternative to EC2 # unit
+  lessons:
+  - name: '' # lesson
+    modules:
+    - name: Introducing Managed Services # module
+      - type: info
+        txt: "The advantage of EC2 is <b>flexibility</b>: with a full operating system available, the choice of software is unlimited."
+      - type: info
+        txt: |
+          The disadvantages of EC2 include
+          <ul>
+            <li>Expense: the operating system executing on dedicated CPU, hard disk, and memory creates significant costs.</li>
+            <li>Complexity: The customer must install and configure all the software.</li>
+            <li>Support: Amazon will not assist with software installed on EC2 instances.</li>
+          </ul>
+      - type: info
+        txt: Amazon provides <i>managed services</i> to mitigate the disadvantages of EC2.
+      - type: info
+        txt: <i>Managed services</i> can be thought of as <i>instances</i> of software packages instead of instances of EC2 operating systems.
+      - type: info
+        txt: For example, instead of running an expensive EC2 instance just to run a database server, one can use a database server run by Amazon. A slice of the database server is rented instead of an entire EC2 instance. This can produce significant cost savings.
+      - type: info
+        txt: Another advantage of managed services is Amazon both manages and supports the database. For example, Amazon handles all upgrades seamlessly. The user only needs to be concerned about using the database server, not it's installation, configuration, or operation, including backups.
+      exercises:
+- name: The most important AWS managed services # unit
+- name: AWS
