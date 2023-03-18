@@ -40,8 +40,7 @@ export class Ma extends Slide {
         isCorrect = true;
       this.mark(isCorrect, i, doc);
     }
-    // return isCorrect;
-    return true;
+    return this.result() as boolean;
   }
   mark(isCorrect: boolean, optionCtr: number, doc: Document) {
     const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
