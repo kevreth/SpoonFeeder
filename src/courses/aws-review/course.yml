@@ -6,7 +6,7 @@ units:
     modules:
     - name: one module
       exercises:
-      - type: mc
+      - type: ma
         txt: Which AWS service is primarily used for software version control?
         o:
         - AWS CodeCommit
@@ -25,7 +25,7 @@ units:
         - "https://aws.amazon.com/codestar/"
         - "https://aws.amazon.com/cloud9/"
         - "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html"
-      - type: mc
+      - type: ma
         txt: Which AWS service can you use to install a third-party database?
         o:
         - Amazon RDS
@@ -38,7 +38,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Identify the services that have a global (rather than regional) scope? (choose 2)
         o:
         - Amazon Route 53
@@ -53,7 +53,7 @@ units:
         - AWS Lambda is a regional service
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: Which service can you use to provision a preconfigured server with little to no AWS experience?
         o:
         - Amazon Elastic Beanstalk
@@ -70,7 +70,7 @@ units:
         - AWS Lambda provides serverless functions not preconfigured servers
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which AWS service allows you to connect to storage from on-premise servers using standard file protocols?
         o:
         - Amazon S3
@@ -88,7 +88,7 @@ units:
         - Amazon Elastic Block Storage (EBS) is block-level storage that can only be accessed by EC2 instances from the same AZ as the EBS volume
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which pricing model should you use for EC2 instances that will be used in a lab environment for several hours on a weekend and must run uninterrupted?
         o:
         - On-Demand
@@ -103,7 +103,7 @@ units:
         - Dedicated instances are EC2 instances that run on hardware dedicated to a single customer
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: What is an availability zone composed of?
         o:
         - One or more regions
@@ -118,7 +118,7 @@ units:
         - Each region consists of 2 or more availability zones
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
-      - type: mc
+      - type: ma
         txt: Which AWS services are used for analytics? (choose 2)
         o:
         - Amazon RDS
@@ -136,7 +136,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: What advantages does deploying Amazon CloudFront provide? (choose 2)
         o:
         - A private network link to the AWS cloud
@@ -154,7 +154,7 @@ units:
         - CloudFront is a CDN not a serverless compute service
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: What considerations are there when choosing which region to use? (choose 2)
         o:
         - Data sovereignty
@@ -170,7 +170,7 @@ units:
         ref:
         - "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-region.html"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
-      - type: mc
+      - type: ma
         txt: Which service can be used to track the CPU usage of an EC2 instance?
         o:
         - Amazon CloudTrail
@@ -186,7 +186,7 @@ units:
         - CloudFront is a content delivery network (CDN) that caches content
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: Which feature of AWS allows you to deploy a new application for which the requirements may change over time?
         o:
         - Elasticity
@@ -200,7 +200,7 @@ units:
         - Disposable resources is an architectural principle in which servers and other components are treated as temporary resources and are replaced rather than updated
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which items can be configured from within the VPC management console? (choose 2)
         o:
         - Subnets
@@ -215,7 +215,7 @@ units:
         - Load balancing and auto scaling is configured from the EC2 console
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which services are integrated with KMS encryption? (choose 2)
         o:
         - Amazon RDS
@@ -228,7 +228,7 @@ units:
         - Not all services integrate with KMS. Review the reference below
         ref:
         - "https://aws.amazon.com/kms/features/"
-      - type: mc
+      - type: ma
         txt: Which service allows you to automatically expand and shrink your application in response to demand?
         o:
         - AWS ElastiCache
@@ -243,7 +243,7 @@ units:
         - Amazon DynamoDB is a NoSQL database
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: The AWS global infrastructure is composed of? (choose 2)
         o:
         - Regions
@@ -258,7 +258,7 @@ units:
         - AZs consist of one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
-      - type: mc
+      - type: ma
         txt: Which of the statements below is accurate regarding Amazon S3 buckets? (choose 2)
         o:
         - Bucket names must be unique regionally
@@ -274,7 +274,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-s3/"
-      - type: mc
+      - type: ma
         txt: Which AWS storage technology can be considered a "virtual hard disk in the cloud"?
         o:
         - Amazon Elastic File Storage (EFS) filesystem
@@ -289,7 +289,7 @@ units:
         - Glacier is an archiving solution where you can archive your S3 objects at extremely low cost
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Under the AWS shared responsibility model what is the customer responsible for? (choose 2)
         o:
         - Physical security of the data center
@@ -305,7 +305,7 @@ units:
         - Customers are responsible for items such as configuring security groups, network ACLs, patching their operating systems and encrypting their data
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: Which service records API activity on your account and delivers log files to an Amazon S3 bucket?
         o:
         - Amazon CloudWatch
@@ -320,7 +320,7 @@ units:
         - Amazon CloudWatch Logs lets you monitor and troubleshoot your systems and applications using your existing system, application and custom log files
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: The IAM service can be used to manage which objects? (choose 2)
         o:
         - Security groups
@@ -337,7 +337,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
-      - type: mc
+      - type: ma
         txt: Which types of pricing policies does AWS offer? (choose 2)
         o:
         - Pay-as-you-go
@@ -352,7 +352,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://aws.amazon.com/pricing/"
-      - type: mc
+      - type: ma
         txt: Which tool enables you to visualize your usage patterns over time and to identify your underlying cost drivers?
         o:
         - AWS Simple Monthly Calculator
@@ -368,7 +368,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://aws.amazon.com/aws-cost-management/aws-budgets/"
-      - type: mc
+      - type: ma
         txt: What advantages do you get from using the AWS cloud? (choose 2)
         o:
         - Trade capital expense for variable expense
@@ -388,7 +388,7 @@ units:
         - You do not gain greater control of the infrastructure layer as AWS largely control this, and though AWS is compliant with lots of security compliance programs, not all programs in all local countries will be included
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: A company plans to create a hybrid cloud architecture. What technology will allow them to create a hybrid cloud?
         o:
         - VPC Peering
@@ -403,7 +403,7 @@ units:
         - An Elastic Network Interface (ENI) is a logical networking component in a VPC that represents a virtual network card
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which service supports the resolution of public domain names to IP addresses or AWS resources?
         o:
         - Amazon Route 53
@@ -418,7 +418,7 @@ units:
         - Simple Notification Service is used to send notifications over multiple transport protocols
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: What can you use to quickly connect your office securely to your Amazon VPC?
         o:
         - Route Table
@@ -433,7 +433,7 @@ units:
         - A Route Table is part of a VPC and is used to control how traffic is routed within the VPC
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What is the scope of a VPC within a region?
         o:
         - Spans all Availability Zones within the region
@@ -448,7 +448,7 @@ units:
         - An AZ uses one or more data centers. AWS does not publicize the details
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which service can be used for building and integrating loosely-coupled, distributed applications?
         o:
         - Amazon EBS
@@ -464,7 +464,7 @@ units:
         - Amazon Relational Database Service (RDS) provides a managed relational database service
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/notification-services/"
-      - type: mc
+      - type: ma
         txt: Which type of Amazon Elastic Load Balancer operates at layer 7 of the OSI model?
         o:
         - Application Load Balancer
@@ -479,7 +479,7 @@ units:
         - An F5 load balancer is not an Amazon load balancer
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which services can help to automate a company's IT infrastructure? (choose 2)
         o:
         - Amazon CloudWatch Alarms
@@ -496,7 +496,7 @@ units:
         - An ENI is a logical network adapter and is not an example of automation
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which database service is a NoSQL type of database that is fully managed?
         o:
         - Amazon RDS
@@ -511,7 +511,7 @@ units:
         - Elasticache is a data caching service that is used to help improve performance
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Which storage service allows you to connect multiple EC2 instances concurrently using file-level protocols?
         o:
         - Amazon S3
@@ -525,7 +525,7 @@ units:
         - Amazon S3 is an object storage system and Glacier is used for archiving S3 objects
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: For which services does Amazon not charge customers? (choose 2)
         o:
         - Amazon VPC
@@ -539,7 +539,7 @@ units:
         - All other listed services are chargeable
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: What architectural best practice aims to reduce the interdependencies between services?
         o:
         - Services, Not Servers
@@ -552,7 +552,7 @@ units:
         - The concept of loos coupling includes "well-defined interfaces" which reduce interdependencies in a system by enabling interaction only through specific, technology-agnostic interfaces (e.g. RESTful APIs)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: What is the most cost-effective support plan that should be selected to provide at least a 1-hour response time for a production system failure?
         o:
         - Basic
@@ -567,7 +567,7 @@ units:
         - Enterprise provides &lt; 1-hour response times for a production system failure but is a more expensive
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS database service supports complex queries and joins and is suitable for a transactional database deployment?
         o:
         - Amazon RDS
@@ -582,7 +582,7 @@ units:
         - Amazon EMR is a Hadoop service that is not suitable for transactional databases
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Under the shared responsibility model, what are examples of shared controls? (choose 2)
         o:
         - Patch management
@@ -600,7 +600,7 @@ units:
         - Physical and Environmental controls is an example of an inherited control (a customer fully inherits from AWS)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: How can an organization compare the cost of running applications in an on-premise or colocation environment against the AWS cloud?
         o:
         - AWS Budgets
@@ -615,7 +615,7 @@ units:
         - AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: What is the most cost-effective EC2 pricing option to use for a non-critical overnight workload?
         o:
         - On-Demand
@@ -630,7 +630,7 @@ units:
         - Dedicated hosts provide a full server dedicated to a single customer and is therefore expensive
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which service allows you to run code as functions without needing to provision or manage servers?
         o:
         - Amazon EC2
@@ -645,7 +645,7 @@ units:
         - Amazon Elastic Container Service for Kubernetes (Amazon EKS) is a managed service that makes it easy for you to run Kubernetes on AWS without needing to stand up or maintain your own Kubernetes control plane
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: What benefits does Amazon EC2 provide over using non-cloud servers? (choose 2)
         o:
         - Complete control of the hypervisor layer
@@ -663,7 +663,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which type of Elastic Load Balancer operates at the connection layer (layer 4) and supports IP addresses as targets?
         o:
         - Application Load Balancer
@@ -679,7 +679,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: Which of the following are features of Amazon CloudWatch? (choose 2)
         o:
         - Used to gain system-wide visibility into resource utilization
@@ -698,7 +698,7 @@ units:
         - CloudTrail records account activity and service events from most AWS services
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: Amazon S3 bucket names must follow as set of rules. Which of the rules below apply to Amazon S3 bucket names? (choose 2)
         o:
         - Names must be unique across all of AWS
@@ -715,7 +715,7 @@ units:
           - Names cannot be formatted as an IP address
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which of the following statements are correct about Elastic Block Store (EBS) volumes? (choose 2)
         o:
         - Root EBS volumes are retained on termination by default
@@ -732,7 +732,7 @@ units:
         - EBS volumes can be backed up by taking a snapshot
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which statement below is incorrect in relation to Security Groups?
         o:
         - Operate at the instance level
@@ -744,7 +744,7 @@ units:
         - Security groups are stateful meaning that if traffic is allowed in one direction, the return traffic is automatically allowed regardless of whether there is a matching rule for the traffic
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What constraints apply to customers when performing penetration testing? (choose 2)
         o:
         - Permission is required for all penetration tests
@@ -760,7 +760,7 @@ units:
         - There is a limited set of resources on which penetration testing can be performed
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: Which statement below is incorrect in relation to Network ACLs?
         o:
         - Operate at the Availability Zone level
@@ -772,7 +772,7 @@ units:
         - Network ACLS operate at the subnet  level
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What benefits are provided by Amazon CloudFront? (choose 2)
         o:
         - Allows you to register domain names
@@ -791,7 +791,7 @@ units:
           - Integrates with many AWS services (S3, EC2, ELB, Route 53, Lambda)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: Which service can be used to help you to migrate databases to AWS quickly and securely?
         o:
         - AWS KMS
@@ -806,7 +806,7 @@ units:
         - AWS Migration Hub provides a single location to track the progress of application migrations across multiple AWS and partner solutions
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which feature can you use to grant read/write access to an Amazon S3 bucket?
         o:
         - IAM Role
@@ -822,7 +822,7 @@ units:
         - An IAM user is an entity that represents a person or service
         ref:
         - "https://aws.amazon.com/blogs/security/writing-iam-policies-how-to-grant-access-to-an-amazon-s3-bucket/"
-      - type: mc
+      - type: ma
         txt: Which AWS support plan should you use if you need a response time of &lt; 15 minutes for a business-critical system failure?
         o:
         - Basic
@@ -835,7 +835,7 @@ units:
         - Both Business and Enterprise offer &lt; 1-hour response time for the failure of a production system
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is used to enable multi-factor authentication?
         o:
         - Amazon STS
@@ -851,7 +851,7 @@ units:
         - Amazon EC2 is used for running operating systems instances in the cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to convert video and audio files from their source format into versions that will playback on devices like smartphones, tablets and PC?
         o:
         - Elastic Transcoder
@@ -865,7 +865,7 @@ units:
         - ELB is used to distribute incoming connections to EC2 instances and Auto Scaling is used to automatically ensure the right number of EC2 instances are available to service current load
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/media-services/amazon-elastic-transcoder/"
-      - type: mc
+      - type: ma
         txt: What method can you use to take a backup of an Amazon EC2 instance using AWS tools?
         o:
         - Take full and incremental file-level backups using the backup console
@@ -881,7 +881,7 @@ units:
         - Cross Region Replication is used to replicate Amazon S3 buckets are across regions
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What are two ways that moving to an AWS cloud can benefit an organization? (choose 2)
         o:
         - Switch to a CAPEX model
@@ -898,7 +898,7 @@ units:
         - Though the AWS cloud does provide significant security standards for the data center, you do not get more control as this is an AWS responsibility
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which of the following statements is correct in relation to consolidated billing? (choose 2)
         o:
         - Paying accounts are independent and cannot access resources of other accounts
@@ -914,7 +914,7 @@ units:
         - Consolidated billing is available to all customers
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS service allows you to use block-based volumes on-premise that are then asynchronously backed up to Amazon S3?
         o:
         - AWS Storage Gateway File Gateway
@@ -932,7 +932,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/aws-storage-gateway/"
-      - type: mc
+      - type: ma
         txt: When instantiating compute resources, what are two techniques for using automated, repeatable processes that are fast and avoid human error? (choose 2)
         o:
         - Snapshotting
@@ -947,7 +947,7 @@ units:
         - Snapshotting is about saving data, not instantiating resources. Fault tolerance is a method of increasing the availability of your system when components fail. Performance monitoring has nothing to do with instantiating resources
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: A company would like to maximize their potential volume and RI discounts across multiple accounts and also apply service control policies on member accounts. What can they use gain these benefits?
         o:
         - AWS Budgets
@@ -963,7 +963,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html"
-      - type: mc
+      - type: ma
         txt: Which AWS service can an organization use to automate operational tasks on EC2 instances using existing Chef cookbooks?
         o:
         - AWS OpsWorks
@@ -979,7 +979,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://aws.amazon.com/opsworks/chefautomate/features/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to process a large amount of data using the Hadoop framework?
         o:
         - Amazon Athena
@@ -994,7 +994,7 @@ units:
         - Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which feature of Amazon Rekognition can assist with saving time?
         o:
         - Identification of objects in images and videos
@@ -1010,7 +1010,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://aws.amazon.com/rekognition/"
-      - type: mc
+      - type: ma
         txt: Which type of cloud deployment enables customers to leverage the benefits of the public cloud and co-existing with on-premises infrastructure?
         o:
         - Public Cloud
@@ -1025,7 +1025,7 @@ units:
         - Legacy IT infrastructure is not a cloud model. Typically, this includes systems that either not virtualized or do not have a cloud management layer
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which AWS service gives you centralized control over the encryption keys used to protect your data?
         o:
         - AWS STS
@@ -1040,7 +1040,7 @@ units:
         - Amazon Elastic Block Store (Amazon EBS) provides persistent block storage volumes for use with Amazon EC2instances in the AWS Cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: How can a security compliance officer retrieve AWS compliance documentation such as a SOC 2 report?
         o:
         - Using AWS Artifact
@@ -1057,7 +1057,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
         - "https://aws.amazon.com/artifact/"
-      - type: mc
+      - type: ma
         txt: Which items should be included in a TCO analysis comparing on-premise to AWS Cloud? (choose 2)
         o:
         - Firewall management
@@ -1071,7 +1071,7 @@ units:
         - Firewall management, application licensing and operating system patching need to be paid for on-premise and in the cloud so there is little difference
         ref:
         - "https://media.amazonwebservices.com/AWS_TCO_Web_Applications.pdf"
-      - type: mc
+      - type: ma
         txt: Which service provides visibility into user activity by recording actions taken on your account?
         o:
         - Amazon CloudWatch
@@ -1086,7 +1086,7 @@ units:
         - CloudHSM is a hardware security module for generating, managing and storing encryption keys
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: Which of the facts below are accurate in relation to AWS Regions? (choose 2)
         o:
         - Each region consists of 2 or more availability zones
@@ -1101,7 +1101,7 @@ units:
         - Edge locations are (not regions) are Content Delivery Network (CDN) endpoints for CloudFront
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
-      - type: mc
+      - type: ma
         txt: Which AWS service provides elastic web-scale cloud computing allowing you to deploy operating system instances?
         o:
         - Amazon EBS
@@ -1116,7 +1116,7 @@ units:
         - Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: You need to ensure you have the right amount of compute available to service demand. Which AWS service can automatically scale the number of EC2 instances for your application?
         o:
         - Amazon Elastic Load Balancer
@@ -1131,7 +1131,7 @@ units:
         - Amazon ElastiCache  offers fully managed Redis and Memcached
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which configuration changes are associated with scaling vertically? (choose 2)
         o:
         - Adding additional EC2 instances through Auto Scaling
@@ -1145,7 +1145,7 @@ units:
         - Scaling horizontally takes place through an increase in the number of resources (e.g., adding more hard drives to a storage array or adding more servers to support an application)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: What are two ways an AWS customer can reduce their monthly spend? (choose 2)
         o:
         - Turn off resources that are not being used
@@ -1159,7 +1159,7 @@ units:
         - You don't pay for power, security groups, or data ingress to the AWS cloud so these answers are all incorrect
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS services can be utilized at no cost? (choose 2)
         o:
         - Identity and Access Management (IAM)
@@ -1172,7 +1172,7 @@ units:
         - The only services that do not incur cost in this list are IAM and VPC
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which types of AWS resource can be launched from a Golden Image? (choose 2)
         o:
         - Amazon DynamoDB tables
@@ -1185,7 +1185,7 @@ units:
         - Some resource types can be launched from a golden image. A golden image is a snapshot of a particular state for that resource. Examples are EC2 instances, RDS instances and EBS volumes
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Using AWS terminology, which items can be created in an Amazon S3 bucket? (choose 2)
         o:
         - Folders
@@ -1200,7 +1200,7 @@ units:
         - Tables and queues cannot be created on S3
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What are two ways of connecting to an Amazon VPC from an on-premise data center? (choose 2)
         o:
         - VPC Peering
@@ -1217,7 +1217,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
         - "https://docs.aws.amazon.com/vpc/latest/userguide/VPN_CloudHub.html"
-      - type: mc
+      - type: ma
         txt: Which of the below is Amazon's proprietary RDS database?
         o:
         - MariaDB
@@ -1231,7 +1231,7 @@ units:
         - DynamoDB is an Amazon proprietary DB but it is not an RDS DB
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: A new user is unable to access any AWS services, what is the most likely explanation?
         o:
         - The user needs to login with a key pair
@@ -1243,7 +1243,7 @@ units:
         - By default, new users are created with NO access to any AWS services - they can only login to the AWS console
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which of the following compliance programs allows the AWS environment to process, maintain, and store protected health information?
         o:
         - ISO 27001
@@ -1255,7 +1255,7 @@ units:
         - AWS enables covered entities and their business associates subject to the U.S. Health Insurance Portability and Accountability Act of 1996 (HIPAA) to use the secure AWS environment to process, maintain, and store protected health information
         ref:
         - "https://aws.amazon.com/compliance/hipaa-compliance/"
-      - type: mc
+      - type: ma
         txt: Which of the following services does Amazon Route 53 provide? (choose 2)
         o:
         - Domain registration
@@ -1268,7 +1268,7 @@ units:
         - Route 53 services include domain registration, DNS, health checking (availability monitoring) and traffic management
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: Which file format is used to write AWS Identity and Access Management (IAM) policies?
         o:
         - DOC
@@ -1280,7 +1280,7 @@ units:
         - You manage access in AWS by creating policies and attaching them to IAM identities or AWS resources. A policy is an object in AWS that, when associated with an entity or resource, defines their permissions. AWS evaluates these policies when a principal, such as a user, makes a request. Permissions in the policies determine whether the request is allowed or denied. Most policies are stored in AWS as JSON documents
         ref:
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html"
-      - type: mc
+      - type: ma
         txt: Which of the following are valid types of Reserved Instance? (choose 2)
         o:
         - Convertible RI
@@ -1296,7 +1296,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://aws.amazon.com/ec2/pricing/reserved-instances/"
-      - type: mc
+      - type: ma
         txt: At what level is a Network ACL applied?
         o:
         - Instance level
@@ -1309,7 +1309,7 @@ units:
         - Security Groups provide a firewall/security layer at the instance level
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: An architect needs to compare the cost of deploying an on-premise web server and an EC2 instance on the AWS cloud. Which tool can be used to assist the architect?
         o:
         - AWS Cost Explorer
@@ -1324,7 +1324,7 @@ units:
         - AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS service provides preconfigured virtual private servers (instances) that include everything required to deploy an application or create a database?
         o:
         - AWS CloudFormation
@@ -1341,7 +1341,7 @@ units:
         - Lambda is a serverless computing technology that allows you to run code without provisioning or managing servers
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which AWS service protects against common exploits that could compromise application availability, compromise security or consume excessive resources?
         o:
         - AWS WAF
@@ -1355,7 +1355,7 @@ units:
         - Security groups and Network ACLs are firewalls protecting at the instance and subnet level respectively
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: A Solutions Architect is launching a new EC2 instance that will be a web-server. Which EBS volume type provides a good balancer of price and performance and can be used as a system boot volume?
         o:
         - Cold HDD (sc1)
@@ -1370,7 +1370,7 @@ units:
         - Throughput Optimized volumes are ideal for streaming workloads with fast throughput such as big data and data warehouses
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which Amazon S3 storage tier provides does not include a data retrieval fee and has an availability SLA of 99.99%?
         o:
         - S3 Standard
@@ -1383,7 +1383,7 @@ units:
         - "Availability SLAs are: S3 Standard = 99.99%; S3 Standard-IA = 99.9%; S3 One Zone-IA = 99%; Amazon Glacier = no SLA"
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: An organization would like to run managed desktops on the AWS cloud using the Windows 10 operating system. Which service can deliver these requirements?
         o:
         - Amazon EC2
@@ -1397,7 +1397,7 @@ units:
         - WorkSpaces offers bundles that come with a Windows 7 or Windows 10 desktop experience, powered by Windows Server 2008 R2 and Windows Server 2016 respectively
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/desktop-app-streaming/amazon-workspaces/"
-      - type: mc
+      - type: ma
         txt: How can an organization assess applications for vulnerabilities and deviations from best practice?
         o:
         - Use AWS Artifact
@@ -1412,7 +1412,7 @@ units:
         - AWS WAF is a web application firewall
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: Which of the following is NOT one of the five AWS Trusted Advisor categories?
         o:
         - Cost Optimization
@@ -1424,7 +1424,7 @@ units:
         - The five categories are cost optimization, performance, security, fault tolerance and service limits
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: A company is planning to migrate some resources into the cloud. What factors need to be considered when determining the cost of the AWS Cloud? (choose 2)
         o:
         - The number of VPCs created
@@ -1437,7 +1437,7 @@ units:
         - AWS charge for EC2 instances and data egress. There are no charges for VPCs, IAM users or data ingress
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: What features does Amazon RDS provide to deliver scalability, availability and durability? (choose 2)
         o:
         - Multi-AZ
@@ -1453,7 +1453,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-rds/"
-      - type: mc
+      - type: ma
         txt: Which of the following are AWS recommended best practices in relation to IAM? (choose 2)
         o:
         - Assign permissions to users
@@ -1467,7 +1467,7 @@ units:
         - You should use groups to assign permissions to IAM users, should avoid embedding access keys in application code, and should enable MFA for privileged users (not everyone)
         ref:
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
-      - type: mc
+      - type: ma
         txt: What is an example of using loose coupling when designing an information system?
         o:
         - Synchronous replication
@@ -1482,7 +1482,7 @@ units:
         - A monolithic application architecture is not an example of loose coupling
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: An architect wants to find a tool for consistently deploying the same resources through a templated configuration. Which AWS service can be used?
         o:
         - AWS Elastic Beanstalk
@@ -1497,7 +1497,7 @@ units:
         - AWS Elastic Beanstalk is the fastest and simplest way to get web applications up and running on AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which of the following security operations tasks must be performed by AWS customers? (choose 2)
         o:
         - Collecting syslog messages from physical firewalls
@@ -1510,7 +1510,7 @@ units:
         - The customer is responsible for installing security updates on EC2 instances and enabling MFA. AWS is responsible for security of the physical data center and the infrastructure upon which customer services run
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: At which layers of the OSI model do the different types of Elastic Load Balancers operate? (choose 2)
         o:
         - Network Load Balancer at layer 4
@@ -1525,7 +1525,7 @@ units:
         - Classic Load Balancer (CLB) - this is the oldest of the three and provides basic load balancing at both layer 4 and layer 7
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to host a static website?
         o:
         - Amazon S3
@@ -1538,7 +1538,7 @@ units:
         - The other services listed cannot be used to host a static website
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-s3/"
-      - type: mc
+      - type: ma
         txt: What type of storage is provided by Amazon EBS?
         o:
         - Block
@@ -1552,7 +1552,7 @@ units:
         - Relational is not a type of storage, it is typically used to describe a type of database such as RDS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What type of database is fully managed and can be scaled without incurring downtime?
         o:
         - Amazon RDS
@@ -1566,7 +1566,7 @@ units:
         - Both RDS and ElastiCache use EC2 instances and therefore scaling (vertically) requires downtime
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: A manager needs to keep a check on his AWS spend. How can the manager setup alarms that notify him when his bill reaches a certain amount?
         o:
         - Using CloudWatch
@@ -1579,7 +1579,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
         - "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html"
-      - type: mc
+      - type: ma
         txt: Which AWS support plans provide support via email, chat and phone? (choose 2)
         o:
         - Basic
@@ -1592,7 +1592,7 @@ units:
         - Only the business and enterprise plans provide support via email, chat and phone
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which of the following services allow root level access to the operating system? (choose 2)
         o:
         - Amazon ElastiCache
@@ -1603,7 +1603,7 @@ units:
         numans: 2,4
         exp:
         - In this list only EC2 and EMR allow root level access to the operating system
-      - type: mc
+      - type: ma
         txt: You need to implement a hosted queue for storing messages in transit between application servers. Which service should you use?
         o:
         - Amazon SWF
@@ -1618,7 +1618,7 @@ units:
         - Amazon DynamoDB is a nonrelational database that delivers reliable performance at any scale
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/application-integration/amazon-sqs/"
-      - type: mc
+      - type: ma
         txt: Which configuration changes are associated with scaling horizontally? (choose 2)
         o:
         - Adding additional EC2 instances through Auto Scaling
@@ -1632,7 +1632,7 @@ units:
         - Scaling vertically takes place through an increase in the specifications of an individual resource (e.g., upgrading a server with a larger hard drive or a faster CPU). On Amazon EC2, this can easily be achieved by stopping an instance and resizing it to an instance type that has more RAM, CPU, IO, or networking capabilities
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which AWS construct provides you with your own dedicated virtual network in the cloud?
         o:
         - Amazon Workspaces
@@ -1647,7 +1647,7 @@ units:
         - Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which AWS network element allows you to assign a static IPv4 address to an EC2 instance?
         o:
         - Public IP
@@ -1661,7 +1661,7 @@ units:
         - Static IP and dynamic IP are terms used to describe IP addresses (public or private) that are either statically defined or dynamically obtained (through DHCP)
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html"
-      - type: mc
+      - type: ma
         txt: An architect is creating a scalable application using AWS Auto Scaling. What needs to be created to enable a working configuration? (choose 2)
         o:
         - Create a listener
@@ -1675,7 +1675,7 @@ units:
         - Listeners, listener rules and target groups are associated with Elastic Load Balancing
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: A Solutions Architect is designing an application stack that will be highly elastic. What AWS services can be used that don’t require you to make any capacity decisions upfront? (choose 2)
         o:
         - AWS Lambda
@@ -1693,7 +1693,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can assist with coordinating tasks across distributed application components?
         o:
         - Amazon STS
@@ -1710,7 +1710,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/application-integration/amazon-swf/"
-      - type: mc
+      - type: ma
         txt: What kinds of routing policies are available in Amazon Route 53? (choose 2)
         o:
         - Simple
@@ -1724,7 +1724,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-route-53/"
-      - type: mc
+      - type: ma
         txt: An application stores images which will be retrieved infrequently, but must be available for retrieval immediately. Which is the most cost-effective storage option that meets these requirements?
         o:
         - Amazon Glacier with expedited retrievals
@@ -1739,7 +1739,7 @@ units:
         - Amazon S3 Standard provides immediate retrieval but is not less cost-effective compared to Standard-Infrequent access
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What components can be managed in the Virtual Private Cloud (VPC) management console? (choose 2)
         o:
         - Subnets
@@ -1754,7 +1754,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which services are managed at a regional (rather than global) level? (choose 2)
         o:
         - Amazon CloudFront
@@ -1769,7 +1769,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
         - "https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/"
-      - type: mc
+      - type: ma
         txt: What are the names of two types of AWS Storage Gateway? (choose 2)
         o:
         - S3 Gateway
@@ -1786,7 +1786,7 @@ units:
         - All other answers are bogus and use terms that are associated with Storage Gateways (S3, block, cached)
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/aws-storage-gateway/"
-      - type: mc
+      - type: ma
         txt: To connect an on-premises network to an Amazon VPC using an Amazon Managed VPN connection, which components are required? (choose 2)
         o:
         - VPC Router
@@ -1802,7 +1802,7 @@ units:
         - Direct Connect can be used to connect an on-premise network to the cloud however it is not part of the configuration of an Amazon Managed VPN connection
         ref:
         - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_VPN.html"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to run Docker containers?
         o:
         - AWS Lambda
@@ -1817,7 +1817,7 @@ units:
         - Amazon Machine Images (AMI) store configuration information for Amazon EC2 instances
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: How can you apply metadata to an EC2 instance that categorizes it according to its purpose, owner or environment?
         o:
         - Labels
@@ -1829,7 +1829,7 @@ units:
         - A tag is a label that you assign to an AWS resource. Each tag consists of a key  and an optional value , both of which you define. Tags enable you to categorize your AWS resources in different ways, for example, by purpose, owner, or environment
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html"
-      - type: mc
+      - type: ma
         txt: Which tool can be used to create and manage a selection of AWS services that are approved for use on AWS?
         o:
         - AWS Service Catalog
@@ -1844,7 +1844,7 @@ units:
         - AWS Organizations offers policy-based management for multiple AWS accounts
         ref:
         - "https://aws.amazon.com/servicecatalog/"
-      - type: mc
+      - type: ma
         txt: Which services are involved with security? (choose 2)
         o:
         - AWS CloudHSM
@@ -1860,7 +1860,7 @@ units:
         - Amazon Elastic Load Balancing is used for distributing incoming connections to pools of EC2 instances
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: What is a Resource Group?
         o:
         - A collection of resources within a VPC
@@ -1872,7 +1872,7 @@ units:
         - A resource group is a collection of resources that share one or more tags  or portions of tags. To create a resource group, you simply identify the tags that contain the items that members of the group should have in common
         ref:
         - "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-are-resource-groups.html"
-      - type: mc
+      - type: ma
         txt: What are the benefits of using the AWS Managed Services? (choose 2)
         o:
         - Alignment with ITIL processes
@@ -1889,7 +1889,7 @@ units:
         - AWS Managed Services is designed to meet the needs of Enterprises  that require stringent SLAs, adherence to corporate compliance, and integration with their systems and ITIL®-based processes
         ref:
         - "https://aws.amazon.com/managed-services/"
-      - type: mc
+      - type: ma
         txt: Which database engines are supported by Amazon RDS? (choose 2)
         o:
         - DynamoDB
@@ -1911,7 +1911,7 @@ units:
         - ElastiCache is not a type of RDS database
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: What categories of Amazon Machine Image (AMI) are available? (choose 2)
         o:
         - Community AMIs
@@ -1927,7 +1927,7 @@ units:
           - My AMIs - AMIs that you create yourself
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which statements are true about Amazon EBS volumes? (choose 2)
         o:
         - You can attach EBS volumes to multiple instances
@@ -1944,7 +1944,7 @@ units:
         - EBS volumes are block storage
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Virtual servers such as EC2 instances are examples of services delivered under which cloud model?
         o:
         - IaaS
@@ -1959,7 +1959,7 @@ units:
         - Database as a Service (DBaaS) is a type of PaaS in which a managed database is offered for consumption
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: To optimize pricing or ensure capacity is available reservations can be applied to which of the following services? (choose 2)
         o:
         - Amazon EC2
@@ -1977,7 +1977,7 @@ units:
           - RedShift
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which of the options below are recommendations in the performance efficiency pillar of the well-architected framework? (choose 2)
         o:
         - Democratize advanced technologies
@@ -1997,7 +1997,7 @@ units:
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: What are Edge locations used for?
         o:
         - They are used for terminating VPN connections
@@ -2009,7 +2009,7 @@ units:
         - An edge location is used by CloudFront as is the location where content is cached (separate to AWS regions/AZs). Requests are automatically routed to the nearest edge location. Edge locations are not tied to Availability Zones or regions
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: What is required to enable an EC2 instance in a public subnet to access the Internet? (choose 2)
         o:
         - A public IP address
@@ -2024,7 +2024,7 @@ units:
         - A VPN connection is used to establish a secure connection between the AWS cloud and an on-premise data center or other cloud location. They are not used to access the Internet
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What types of origins are supported by Amazon CloudFront? (choose 2)
         o:
         - EBS volume
@@ -2037,7 +2037,7 @@ units:
         - An origin is the origin of the files that the CDN will distribute. Origins can be either an S3 bucket, an EC2 instance, an Elastic Load Balancer, or Route 53 - can also be external (non-AWS)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: Which feature enables fast, easy, and secure transfers of files over long distances between a client and an Amazon S3 bucket?
         o:
         - S3 Static Websites
@@ -2052,7 +2052,7 @@ units:
         - S3 can also be used to host static websites
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: How is data protected by default in Amazon S3?
         o:
         - Buckets are replicated across all regions
@@ -2066,7 +2066,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://docs.aws.amazon.com/AmazonS3/latest/dev/DataDurability.html"
-      - type: mc
+      - type: ma
         txt: Which of the options below are recommendations in the cost optimization pillar of the well-architected framework? (choose 2)
         o:
         - Adopt a consumption model
@@ -2086,7 +2086,7 @@ units:
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which pricing options are available when using Amazon EC2 Reserved Instances? (choose 2)
         o:
         - Capacity upfront
@@ -2100,7 +2100,7 @@ units:
         - Payment options include All Upfront, Partial Upfront, and No Upfront
         ref:
         - "https://aws.amazon.com/ec2/pricing/reserved-instances/"
-      - type: mc
+      - type: ma
         txt: Which data consistency models are available with Amazon S3? (choose 2)
         o:
         - Eventual consistency for PUTS of new objects
@@ -2115,7 +2115,7 @@ units:
           - Eventual consistency for overwrite PUTS and DELETES (takes time to propagate)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which Amazon EC2 Reserved Instance type enables you to match your capacity reservation to predictable recurring dates and times?
         o:
         - Standard RI
@@ -2130,7 +2130,7 @@ units:
         - "Scheduled RIs: These are available to launch within the time windows you reserve. This option allows you to match your capacity reservation to a predictable recurring schedule that only requires a fraction of a day, a week, or a month"
         ref:
         - "https://aws.amazon.com/ec2/pricing/reserved-instances/"
-      - type: mc
+      - type: ma
         txt: Which information security standard applies to entities that store, process or transmit credit cardholder data?
         o:
         - ISO 27001
@@ -2145,7 +2145,7 @@ units:
         - "ISO/IEC 27001:2013 is a security management standard that specifies security management best practices and comprehensive security controls following the ISO/IEC 27002 best practice guidance"
         ref:
         - "https://aws.amazon.com/compliance/programs/"
-      - type: mc
+      - type: ma
         txt: Which Amazon RDS database engines support AWS RDS Read Replicas? (choose 2)
         o:
         - Oracle
@@ -2159,7 +2159,7 @@ units:
         - DynamoDB is not a type of RDS database and does not support read replicas
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-rds/"
-      - type: mc
+      - type: ma
         txt: Which Amazon RDS feature enables disaster recovery by creating a replica in another Availability Zone and synchronously replicating data to it?
         o:
         - Read Replica
@@ -2173,7 +2173,7 @@ units:
         - DB mirroring and log shipping are not Amazon RDS features, they are methods of replicating data using native database technologies (rather than AWS technology)
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-rds/"
-      - type: mc
+      - type: ma
         txt: When deploying resources using AWS CloudFormation, what are you charged for? (choose 2)
         o:
         - Per-usage costs for CloudFormation
@@ -2189,7 +2189,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/management-tools/aws-cloudformation/"
-      - type: mc
+      - type: ma
         txt: Which statement best describes elasticity in the cloud?
         o:
         - The ability to scale resources up or down and only pay for what you use
@@ -2201,7 +2201,7 @@ units:
         - Elasticity is the ability to scale resources up or down and only pay for what you use. A great example is Auto Scaling which adds and removes EC2 instances based on the amount of load
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: What are the advantages of Availability Zones? (choose 2)
         o:
         - They allow regional disaster recovery
@@ -2217,7 +2217,7 @@ units:
         - Direct Connect is the technology that is used to connect your on-premises network to AWS to form a hybrid cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to ensure the persistence of in-flight transactions independently of any single application component?
         o:
         - AWS CloudFormation
@@ -2232,7 +2232,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/application-integration/amazon-sqs/"
-      - type: mc
+      - type: ma
         txt: Which of the below AWS services supports automated backups as a default configuration?
         o:
         - Amazon S3
@@ -2247,7 +2247,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-rds/"
-      - type: mc
+      - type: ma
         txt: How can you ensure that the EBS volumes attached to an EC2 instance are still available after the instance is terminated?
         o:
         - EBS volumes automatically persist after the EC2 instance is terminated
@@ -2262,7 +2262,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/amazon-ebs/"
-      - type: mc
+      - type: ma
         txt: Which EC2 tenancy model gives you visibility and control over how instances are placed on a server?
         o:
         - Dedicated Instances
@@ -2277,7 +2277,7 @@ units:
         - Dedicated EC2 is not an available tenancy model
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html"
-      - type: mc
+      - type: ma
         txt: How does the consolidated billing feature of AWS Organizations treat Reserved Instances that were purchased by another account in the organization?
         o:
         - All accounts in the organization are treated as one account so any account can receive the hourly cost benefit
@@ -2289,7 +2289,7 @@ units:
         - For billing purposes, the consolidated billing feature of AWS Organizations treats all the accounts in the organization as one account. This means that all accounts in the organization can receive the hourly cost benefit of Reserved Instances that are purchased by any other account
         ref:
         - "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-behavior.html"
-      - type: mc
+      - type: ma
         txt: What is the best way to apply an organizational system to EC2 instances so they can be identified by descriptors such as purpose or department?
         o:
         - Use descriptive hostnames
@@ -2303,7 +2303,7 @@ units:
         - Storing information in instance meta-data is possible but you need to retrieve the information, tags enable you to do this more easily
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html"
-      - type: mc
+      - type: ma
         txt: Which services provide protection measures against distributed denial of service (DDoS) attacks? (choose 2)
         o:
         - AWS CloudHSM
@@ -2320,7 +2320,7 @@ units:
         ref:
         - "https://aws.amazon.com/answers/networking/aws-ddos-attack-mitigation/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: Which service can be used to create sophisticated, interactive graph applications?
         o:
         - Amazon RedShift
@@ -2335,7 +2335,7 @@ units:
         - Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which of the below is a fully managed Amazon search service based on open source software?
         o:
         - Amazon Elastic Beanstalk
@@ -2350,7 +2350,7 @@ units:
         - AWS Elastic Beanstalk is the fastest and simplest way to get web applications up and running on AWS. Developers simply upload their application code and the service automatically handles all the details such as resource provisioning, load balancing, auto-scaling, and monitoring
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which descriptions are correct regarding cloud deployment models? (choose 2)
         o:
         - With the public cloud the consumer organization typically owns and manages the infrastructure
@@ -2365,7 +2365,7 @@ units:
         - Hybrid clouds are created when you connect private and public clouds together
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: When using Amazon IAM, what authentication methods are available to use? (choose 2)
         o:
         - Client certificates
@@ -2383,7 +2383,7 @@ units:
         - AES 256 is an encryption algorithm, not an authentication method
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: To ensure the security of your AWS account, what are two AWS best practices for managing access keys? (choose 2)
         o:
         - Don’t create any access keys, use IAM roles instead
@@ -2403,7 +2403,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
         - "https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html"
-      - type: mc
+      - type: ma
         txt: Which AWS database service provides a fully managed data warehouse that can be analyzed using SQL tools and business intelligence tools?
         o:
         - Amazon RDS
@@ -2418,7 +2418,7 @@ units:
         - ElastiCache is a data caching service that is used to help improve the speed/performance of web applications running on AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Which AWS service lets you use Chef and Puppet to automate how servers are configured, deployed, and managed across your Amazon EC2 instances or on-premises compute environments?
         o:
         - AWS Elastic Beanstalk
@@ -2434,7 +2434,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/management-tools/aws-opsworks/"
-      - type: mc
+      - type: ma
         txt: Which of the following statements are correct about the benefits of AWS Direct Connect? (choose 2)
         o:
         - Quick to implement
@@ -2456,7 +2456,7 @@ units:
         - Direct Connect uses private network connections, it does not use redundant paths over the Internet
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which types of Amazon Kinesis services are available? (choose 2)
         o:
         - Kinesis Video Streams
@@ -2475,7 +2475,7 @@ units:
         - The other options presented are bogus
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Where is the information stored that defines an EC2 instance such as the template for the root volume, launch permissions and block device mappings?
         o:
         - EFS
@@ -2489,7 +2489,7 @@ units:
         - ARN is the Amazon Resource Name which uniquely identifies AWS resources
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html"
-      - type: mc
+      - type: ma
         txt: What is the best way for an organization to automate the creation, retention, and deletion of EBS snapshots?
         o:
         - Use S3 lifecycle policies
@@ -2504,7 +2504,7 @@ units:
         - CloudFormation is typically used for deploying and updating resource configurations rather than for performing operational activities
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html"
-      - type: mc
+      - type: ma
         txt: Which of the following statements are correct regarding Elastic Network Interfaces (ENIs)? (choose 2)
         o:
         - Additional ENIs can be detached from an instance and attached to another instance
@@ -2519,7 +2519,7 @@ units:
         - Every instance in a VPC has a default network interface, called the primary network interface  (eth0). You cannot detach a primary network interface from an instance. You can create and attach additional network interfaces
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html"
-      - type: mc
+      - type: ma
         txt: What are the charges for using Amazon Glacier? (choose 2)
         o:
         - Data transferred into Glacier
@@ -2535,7 +2535,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://aws.amazon.com/glacier/pricing/"
-      - type: mc
+      - type: ma
         txt: Which database allows you to scale at the push of a button without incurring any downtime?
         o:
         - Amazon RDS
@@ -2549,7 +2549,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-dynamodb/"
-      - type: mc
+      - type: ma
         txt: Which feature of Amazon S3 adds a layer of additional security to prevent accidental deletion?
         o:
         - Versioning
@@ -2564,7 +2564,7 @@ units:
         - Lifecycle management can also reduce the impact of deleting objects as they may have been archived, but again it does not stop you from deleting them
         ref:
         - "https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html"
-      - type: mc
+      - type: ma
         txt: Which service can an organization use to track API activity within their account?
         o:
         - AWS CloudTrail
@@ -2579,7 +2579,7 @@ units:
         - AWS CloudHSM is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: What tool provides real time guidance to help you provision your resources following best practices in the areas of cost optimization, performance, security and fault tolerance?
         o:
         - AWS Inspector
@@ -2594,7 +2594,7 @@ units:
         - Amazon Identity and Access Management is an identity service that provide authentication and authorization services
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: What is the best way for an organization to transfer hundreds of terabytes of data from their on-premise data center into Amazon S3 with limited bandwidth available?
         o:
         - Use S3 Transfer Acceleration
@@ -2607,7 +2607,7 @@ units:
         - Amazon S3 Transfer Acceleration enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration takes advantage of Amazon CloudFront’s globally distributed edge locations. However, for these volumes of data Snowball is a better choice
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: When launching an EC2 instance, where can you specify configuration tasks and scripts to run after the instance starts?
         o:
         - Metadata
@@ -2624,7 +2624,7 @@ units:
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/amazon-ec2/"
-      - type: mc
+      - type: ma
         txt: You need to run a production process that will use several EC2 instances and run constantly on an ongoing basis. The process cannot be interrupted or restarted without issue. What EC2 pricing model would be best for this workload?
         o:
         - Reserved instances
@@ -2639,7 +2639,7 @@ units:
         ref:
         - "https://aws.amazon.com/ec2/pricing/reserved-instances/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which Amazon RDS feature can reduce the burden on a database that is experiencing heavy read traffic?
         o:
         - Multi AZ
@@ -2654,7 +2654,7 @@ units:
         - Global Tables is a feature of DynamoDB
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Which of the options below are recommendations in the reliability pillar of the well-architected framework? (choose 2)
         o:
         - Use ad-hoc recovery procedures
@@ -2674,7 +2674,7 @@ units:
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which AWS service does API Gateway integrate with to enable users from around the world to achieve the lowest possible latency for API requests and responses?
         o:
         - AWS Direct Connect
@@ -2690,7 +2690,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-api-gateway/"
-      - type: mc
+      - type: ma
         txt: Which service provides the ability to simply upload applications and have AWS handle the deployment details of capacity provisioning, load balancing, auto-scaling, and application health monitoring?
         o:
         - Amazon EC2
@@ -2705,7 +2705,7 @@ units:
         - AWS OpsWorks provides a managed service for Chef and Puppet
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: You are concerned that you may be getting close to some of the default service limits for several AWS services. What AWS tool can be used to display current usage and limits?
         o:
         - AWS CloudWatch
@@ -2720,7 +2720,7 @@ units:
         - AWS Systems Manager gives you visibility and control of your infrastructure on AWS
         ref:
         - "https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html"
-      - type: mc
+      - type: ma
         txt: Which of the following represent economic advantages of moving to the AWS cloud? (choose 2)
         o:
         - Reduce the need to manage applications
@@ -2736,7 +2736,7 @@ units:
         - You want to reduce not increase time to market for new applications
         ref:
         - "https://d1.awsstatic.com/whitepapers/introduction-to-aws-cloud-economics-final.pdf"
-      - type: mc
+      - type: ma
         txt: What advantages do NAT Gateways have over NAT Instances? (choose 2)
         o:
         - Can be assigned to security groups
@@ -2750,7 +2750,7 @@ units:
         - NAT instances are managed by.  They must be scaled manually and do not provide HA. NAT Instances can be used as bastion hosts and can be assigned to security groups
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What speeds is AWS Direct Connect offered at by AWS? (choose 2)
         o:
         - 50 Mbps
@@ -2765,7 +2765,7 @@ units:
         - Speeds of 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, and 500Mbps can be purchased through AWS Direct Connect Partners
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is known as a "serverless" service and runs code as functions triggered by events?
         o:
         - Amazon ECS
@@ -2780,7 +2780,7 @@ units:
         - Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is used for decoupling applications components using a message queue?
         o:
         - Amazon SWF
@@ -2796,7 +2796,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/application-integration/amazon-sqs/"
-      - type: mc
+      - type: ma
         txt: At what level is an Internet Gateway attached in the AWS infrastructure?
         o:
         - Availability Zone
@@ -2808,7 +2808,7 @@ units:
         - Internet Gateways are attached at the VPC level and then referenced in route tables that are associated with subnets
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which of the below are valid options for interacting with Amazon Glacier archives? (choose 2)
         o:
         - Directly through the management console
@@ -2822,7 +2822,7 @@ units:
         - For example, to upload data, such as photos, videos, and other documents, you must either use the AWS CLI or write code to make requests, using either the REST API directly or by using the AWS SDKs
         ref:
         - "https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html"
-      - type: mc
+      - type: ma
         txt: Which service provides a way to convert video and audio files from their source format into versions that will playback on devices like smartphones, tablets and PCs?
         o:
         - Amazon Elastic Transcoder
@@ -2838,7 +2838,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/media-services/amazon-elastic-transcoder/"
-      - type: mc
+      - type: ma
         txt: Which AWS support plan comes with a Technical Account Manager (TAM)?
         o:
         - Basic
@@ -2850,7 +2850,7 @@ units:
         - Only the Enterprise plan comes with a TAM
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: When using AWS Organizations with consolidated billing what are two valid best practices? (choose 2)
         o:
         - Always enable multi-factor authentication (MFA) on the root account
@@ -2867,7 +2867,7 @@ units:
         - There is a default limit of 20 linked accounts but this can be extended and there is no reason why you should stick to a maximum of 20 accounts
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which statement best describes Amazon Route 53?
         o:
         - Amazon Route 53 is a service that enables routing within VPCs in an account
@@ -2883,7 +2883,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-route-53/"
-      - type: mc
+      - type: ma
         txt: Which type of AWS Elastic Load Balancer should be used if you want to route traffic to targets based on the content of the request such as DNS name or URL path?
         o:
         - Application Load Balancer (ALB)
@@ -2898,7 +2898,7 @@ units:
         - AWS Auto Scaling is not a type of ELB
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which data warehouse service can be used to query data in an Amazon S3 data lake without loading the data?
         o:
         - Amazon RDS
@@ -2913,7 +2913,7 @@ units:
         - Amazon Elastic Map Reduce (EMR) provides a managed Hadoop service and cannot query data in S3 at rest
         ref:
         - "https://aws.amazon.com/redshift/features/"
-      - type: mc
+      - type: ma
         txt: Under the AWS shared responsibility model what is AWS responsible for? (choose 2)
         o:
         - Physical security of the data center
@@ -2929,7 +2929,7 @@ units:
         - Customers are responsible for items such as configuring security groups, network ACLs, patching their operating systems and encrypting their data
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: Which feature allows customers to route traffic via private IP addresses between two VPCs?
         o:
         - Endpoints
@@ -2944,7 +2944,7 @@ units:
         - Network Address Translation (NAT) is used to translate IP addresses when routing between subnets that do not have a fully routable address space
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which AWS services can be used to create a "stateless" application? (choose 2)
         o:
         - Amazon DynamoDB
@@ -2960,7 +2960,7 @@ units:
         - Amazon EBS is not a shared storage service so is not ideal for stateless architectures (use S3 or EFS instead)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which of the options below are recommendations in the security pillar of the well-architected framework? (choose 2)
         o:
         - Enable traceability
@@ -2981,7 +2981,7 @@ units:
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which open-source technology allows you to build and deploy distributed applications inside of software containers?
         o:
         - Docker
@@ -2994,7 +2994,7 @@ units:
         - The other options are automation and orchestration tools
         ref:
         - "https://d1.awsstatic.com/whitepapers/AWS_Cloud_Best_Practices.pdf"
-      - type: mc
+      - type: ma
         txt: Which of the advantages of cloud listed below is most closely addressed by the capabilities of AWS Auto Scaling?
         o:
         - Benefit from massive economies of scale
@@ -3006,7 +3006,7 @@ units:
         - AWS Auto Scaling helps you to adapt to the demand for you application and scale up and down as needed. This means you don't have to guess capacity upfront as you can provision what you need and allows Auto Scaling to manage the scaling
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: What does an organization need to do in Amazon IAM to enable user access to services being launched in new region?
         o:
         - Update the user accounts to allow access from another region
@@ -3018,7 +3018,7 @@ units:
         - IAM is used to securely control individual and group access to AWS resources. IAM is universal (global) and does not apply to regions
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: What do Amazon S3 objects consist of? (choose 2)
         o:
         - Key
@@ -3035,7 +3035,7 @@ units:
           - Metadata (data about the data that is stored)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which type of EBS volume should you choose for an application that requires 12,000 IOPS from a single volume?
         o:
         - General Purpose SSD
@@ -3048,7 +3048,7 @@ units:
         - Throughput Optimized HDD supports up to 500 IOPS and Cold HDD supports up to 250 IOPS per volume
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which type of Amazon Route 53 record set should be used to map a zone apex record to an Amazon Elastic Load Balancer?
         o:
         - A
@@ -3063,7 +3063,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-route-53/"
-      - type: mc
+      - type: ma
         txt: What is the most cost-effective Amazon S3 storage tier for data that is not often accessed but requires high durability?
         o:
         - Amazon S3 Standard
@@ -3076,7 +3076,7 @@ units:
         - S3 One Zone-IA is for data that is accessed less frequently, but requires rapid access when needed. Unlike other S3 Storage Classes which store data in a minimum of three Availability Zones (AZs), S3 One Zone-IA stores data in a single AZ
         ref:
         - "https://aws.amazon.com/s3/storage-classes/"
-      - type: mc
+      - type: ma
         txt: Which types of root storage devices are available for Amazon EC2 instances? (choose 2)
         o:
         - EFS file system
@@ -3090,7 +3090,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html"
-      - type: mc
+      - type: ma
         txt: Which of the following are supported event sources for AWS Lambda? (choose 2)
         o:
         - Amazon S3
@@ -3105,7 +3105,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
         - "https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-function.html"
-      - type: mc
+      - type: ma
         txt: Which Amazon EC2 pricing option provides significant discounts for fixed term contracts?
         o:
         - Reserved Instances
@@ -3120,7 +3120,7 @@ units:
         - Dedicated Instances are Amazon EC2 instances that run in a VPC on hardware that's dedicated to a single customer
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which type of Amazon Route 53 routing policy allows you to specify a numerical value per IP address, totalling 100, that favors addresses with higher values?
         o:
         - Latency based
@@ -3135,7 +3135,7 @@ units:
         - Geo-location Caters to different users in different countries and different languages. Contains users within a particular geography and offers them a customized version of the workload based on their specific needs. Geolocation can be used for localizing content and presenting some or all of your website in the language of your users
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-route-53/"
-      - type: mc
+      - type: ma
         txt: Which statement is correct in relation to the AWS Shared Responsibility Model?
         o:
         - Customers are responsible for security of the cloud
@@ -3148,7 +3148,7 @@ units:
         - Customers are responsible for “Security in the Cloud”. This includes encrypting customer data, patching operating systems but not patching or maintaining the underlying infrastructure
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: Which Amazon RDS deployment type is best used to enable fault tolerance in the event of the failure of an availability zone?
         o:
         - Multiple Availability Zones
@@ -3163,7 +3163,7 @@ units:
         - There is no such thing as write replicas
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Which AWS service lets you add user sign up, sign-in and access control to web and mobile apps?
         o:
         - AWS Directory Service
@@ -3178,7 +3178,7 @@ units:
         - AWS CloudHSM is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which of the options below are recommendations in the reliability pillar of the well-architected framework? (choose 2)
         o:
         - Test recovery procedures
@@ -3198,7 +3198,7 @@ units:
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is a Natural Language Processing (NLP) service that uses machine learning to find insights and relationships in text?
         o:
         - Amazon Transcribe
@@ -3213,7 +3213,7 @@ units:
         - Amazon SageMaker is a fully-managed platform that enables developers and data scientists to quickly and easily build, train, and deploy machine learning models at any scale
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which of the following can be assigned to an IAM user? (choose 2)
         o:
         - An access key ID and secret access key
@@ -3229,7 +3229,7 @@ units:
         - You cannot assign an SSL/TLS certificate to a user
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which Amazon namespace is used to uniquely identify AWS resources?
         o:
         - AMI
@@ -3244,7 +3244,7 @@ units:
         - Amazon S3 access control lists (ACLs) enable you to manage access to buckets and objects
         ref:
         - "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
-      - type: mc
+      - type: ma
         txt: Which Amazon EC2 billing option allows gives you low cost, maximum flexibility, no upfront costs or commitment, and you only pay for what you use?
         o:
         - Reserved Instances
@@ -3260,7 +3260,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/amazon-ec2/"
-      - type: mc
+      - type: ma
         txt: What is the difference between an EBS volume and an Instance store?
         o:
         - EBS volumes are object storage devices whereas Instance store volume are block based
@@ -3274,7 +3274,7 @@ units:
         - EBS volumes can be used with all EC2 instance types whereas Instance store volumes are more limited in compatibility
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which of the below are valid use cases for using AWS services to implement real-time auditing? (choose 2)
         o:
         - Use Amazon Inspector to monitor for compliance
@@ -3290,7 +3290,7 @@ units:
         - AWS IAM is not used for storage of log files
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which Compute service should be used for running a Linux operating system upon which you will install custom software?
         o:
         - Amazon ECS
@@ -3304,7 +3304,7 @@ units:
         - AWS Lambda runs code as functions in response to events
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: What is the scope of an Amazon Virtual Private Cloud (VPC)?
         o:
         - It spans multiple subnets
@@ -3318,7 +3318,7 @@ units:
         - A VPC spans AZs, subnets are created within AZs
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which of the below are valid options within the VPC Wizard? (choose 2)
         o:
         - VPC with Two Public Subnets
@@ -3335,7 +3335,7 @@ units:
           - VPC with a Private Subnet Only and Hardware VPN Access
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which type of AWS Storage Gateway can be used to backup data with popular backup software?
         o:
         - File Gateway
@@ -3351,7 +3351,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/aws-storage-gateway/"
-      - type: mc
+      - type: ma
         txt: Which type of security control can be used to deny network access from a specific IP address?
         o:
         - Security Group
@@ -3366,7 +3366,7 @@ units:
         - AWS Shield is a managed Distributed Denial of Service (DDoS) protection service
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Where can resources be launched when configuring AWS Auto Scaling?
         o:
         - Multiple AZs and multiple regions
@@ -3378,7 +3378,7 @@ units:
         - AWS Auto Scaling is configured within the EC2 console and can launch instances within a VPC across multiple AZs. It cannot launch resources into another region
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which of the following security related activities are AWS customers responsible for? (choose 2)
         o:
         - Installing patches on network devices
@@ -3392,7 +3392,7 @@ units:
         - AWS are responsible for installing patches on physical hardware devices, data center access controls and secure disposal of disk drives
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: In addition to DNS services, what other services does Amazon Route 53 provide? (choose 2)
         o:
         - DHCP
@@ -3406,7 +3406,7 @@ units:
         - Route 53 does not support DHCP, routing or caching
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: What pricing models are available for DynamoDB? (choose 2)
         o:
         - On-demand capacity mode
@@ -3420,7 +3420,7 @@ units:
         - "Provisioned capacity mode:  you specify the number of reads and writes per second that you expect your application to require. You can use auto scaling to automatically adjust your table’s capacity based on the specified utilization rate to ensure application performance while reducing cost"
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-dynamodb/"
-      - type: mc
+      - type: ma
         txt: Which storage type can be mounted using the NFS protocol to many EC2 instances simultaneously?
         o:
         - Amazon EBS
@@ -3436,7 +3436,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-efs/"
-      - type: mc
+      - type: ma
         txt: What are the fundamental charges for an Amazon EC2 instance? (choose 2)
         o:
         - Compute uptime
@@ -3452,7 +3452,7 @@ units:
         - You do not pay for private IP addresses
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: What are the fundamental charges for Elastic Block Store (EBS) volumes? (choose 2)
         o:
         - The amount of data storage consumed
@@ -3467,7 +3467,7 @@ units:
         - You pay for the storage consumed by snapshots, not by the number of snapshots
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which tool can be used to provide real time guidance on provisioning resources following AWS best practices?
         o:
         - AWS Personal Health Dashboard
@@ -3482,7 +3482,7 @@ units:
         - The AWS Simple Monthly Calculator helps you to estimate the cost of using AWS services
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: What types of monitoring can Amazon CloudWatch be used for? (choose 2)
         o:
         - Application performance
@@ -3497,7 +3497,7 @@ units:
         - Infrastructure and data center monitoring is not accessible to AWS customers
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/management-tools/amazon-cloudwatch/"
-      - type: mc
+      - type: ma
         txt: When using an Elastic Load Balancer, which process checks for connections requests, using a configured protocol and port?
         o:
         - Rule
@@ -3512,7 +3512,7 @@ units:
         - "There are two types of rule conditions: host and path. Each rule can have up to one host condition and up to one path condition"
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which two types of database engine can be used with Amazon ElastiCache? (choose 2)
         o:
         - Memcached
@@ -3527,7 +3527,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-elasticache/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is a data warehouse that uses columnar data storage and is suited to analytic and reporting workloads against very large data sets?
         o:
         - Amazon RDS
@@ -3543,7 +3543,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: What are two components of Amazon S3? (choose 2)
         o:
         - Buckets
@@ -3557,7 +3557,7 @@ units:
         - The terms directory, file system and block device do not apply to S3
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: When using Amazon RDS databases, which items are you charged for? (choose 2)
         o:
         - Inbound data transfer
@@ -3570,7 +3570,7 @@ units:
         - With Amazon RDS you are charged for the type and size of database, the uptime, any additional storage of backup (above the DB size), requests, deployment type (e.g. you pay for multi AZ), and data transfer outbound
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: You need to resolve a domain name to a target domain name for a record that is hosted externally to AWS. Which record type can you configure in Route 53?
         o:
         - Alias
@@ -3585,7 +3585,7 @@ units:
         - An SPF record is a Sender Policy Framework record and identifies the mail servers that are allowed to send mail for a domain
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
-      - type: mc
+      - type: ma
         txt: Which feature of AWS IAM enables you to identify unnecessary permissions that have been assigned to users?
         o:
         - Role Advisor
@@ -3597,7 +3597,7 @@ units:
         - The IAM console provides information about when IAM users and roles last attempted to access AWS services. This information is called service last accessed data . This data can help you identify unnecessary permissions so that you can refine your IAM policies to better adhere to the principle of "least privilege." That means granting the minimum permissions required to perform a specific task. You can find the data on the Access Advisor  tab in the IAM console by examining the detail view for any IAM user, group, role, or managed policy
         ref:
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html"
-      - type: mc
+      - type: ma
         txt: How can you enable access to AWS accounts using credentials from an on-premise corporate directory?
         o:
         - SSO using Cognito
@@ -3612,7 +3612,7 @@ units:
         - AWS Organizations offers policy-based management for multiple AWS accounts. With Organizations, you can create groups of accounts, automate account creation, apply and manage policies for those group. It is not used for SSO
         ref:
         - "https://aws.amazon.com/identity/federation/"
-      - type: mc
+      - type: ma
         txt: What billing timeframes are available for Amazon EC2 on-demand instances? (choose 2)
         o:
         - Per second
@@ -3625,7 +3625,7 @@ units:
         - With EC2 you are billed either by the second, for some Linux instances, or by the hour for all other instance types
         ref:
         - "https://aws.amazon.com/ec2/pricing/on-demand/"
-      - type: mc
+      - type: ma
         txt: Which service can be used to assign a policy to a group?
         o:
         - AWS IAM
@@ -3640,7 +3640,7 @@ units:
         - AWS Shield  is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which AWS service uses a highly secure hardware storage device to store encryption keys?
         o:
         - AWS WAF
@@ -3655,7 +3655,7 @@ units:
         - AWS Identity and Access Management (IAM) is used for managing users, groups, and roles in AWS
         ref:
         - "https://aws.amazon.com/cloudhsm/features/"
-      - type: mc
+      - type: ma
         txt: Using Amazon S3 what method can be used to automatically copy objects from one region to another?
         o:
         - Cross-region synchronization
@@ -3668,7 +3668,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-s3/"
-      - type: mc
+      - type: ma
         txt: An organization has multiple AWS accounts and uses a mixture of on-demand and reserved instances. One account has a considerable amount of unused reserved instances. How can the organization reduce their costs? (choose 2)
         o:
         - Redeem their reserved instances
@@ -3684,7 +3684,7 @@ units:
         - Spot instance pricing is variable so it is not guaranteed to lower the cost and it is not suitable for workloads that cannot be unexpectedly terminated by AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which type of connection should be used to connect an on-premises data center with the AWS cloud that is high speed, low latency and does not use the Internet?
         o:
         - AWS Managed VPN
@@ -3698,7 +3698,7 @@ units:
         - VPC endpoint enable private connectivity to services hosted in AWS, from within your VPC without using an Internet Gateway, VPN, Network Address Translation (NAT) devices, or firewall proxies
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What are two examples of the advantages of cloud computing? (choose 2)
         o:
         - Trade operating costs for capital costs
@@ -3718,7 +3718,7 @@ units:
         - Secure data centers are not a reason to move to the cloud. Your on-premises data centers should also be secure
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which AWS service provides a single location to track the progress of application migrations across multiple AWS and partner solutions?
         o:
         - AWS Database Migration Service
@@ -3733,7 +3733,7 @@ units:
         - With AWS Batch, you simply package the code for your batch jobs, specify their dependencies, and submit your batch job using the AWS Management Console, CLIs, or SDK
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which Amazon EC2 feature provides a static IPv4 public IP address that does not change when the instance is rebooted?
         o:
         - Elastic IP
@@ -3746,7 +3746,7 @@ units:
         - All other answers are bogus
         ref:
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html"
-      - type: mc
+      - type: ma
         txt: Which security service only requires a rule to be created in one direction as it automatically allows return traffic?
         o:
         - VPC Router
@@ -3761,7 +3761,7 @@ units:
         - AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: Which AWS service allows you to automate the evaluation of recorded configurations against desired configuration?
         o:
         - AWS OpsWorks
@@ -3776,7 +3776,7 @@ units:
         - AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Your organization is looking to expand into the cloud for their web presence and development and test environments. Production systems will remain on-premises. What cloud computing model will best suit the organization?
         o:
         - Private
@@ -3789,7 +3789,7 @@ units:
         - Platform as a Service (PaaS) is a type service offering rather than a cloud computing model
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: You would like to collect custom metrics from a production application every 1 minute. What type of monitoring should you use?
         o:
         - CloudWatch with detailed monitoring
@@ -3802,7 +3802,7 @@ units:
         - AWS CloudTrail is a web service that records activity made on your account and delivers log files to an Amazon S3 bucket. CloudTrail is for auditing (CloudWatch is for performance monitoring). CloudTrail is about logging and saves a history of API calls for your AWS account
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: To reduce the price of your Amazon EC2 instances, which term lengths are available for reserved instances?
         o:
         - 1 year
@@ -3815,7 +3815,7 @@ units:
         - Reserved instances provide significant discounts, up to 75% compared to On-Demand pricing, by paying for capacity ahead of time. Good for applications that have predictable usage, that need reserved capacity, and for customers who can commit to a 1 or 3-year term
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which of the following is an advantage of cloud computing compared to deploying your own infrastructure on-premise?
         o:
         - Flexibility to choose your own hardware
@@ -3827,7 +3827,7 @@ units:
         - With AWS you only pay for what you use. However, you cannot choose your own hardware/infrastructure and the payment model is operational (OPEX) not capital (CAPEX)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which team is available to support AWS customers on an Enterprise support plan?
         o:
         - AWS Technical Account Manager
@@ -3840,7 +3840,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://aws.amazon.com/premiumsupport/features/"
-      - type: mc
+      - type: ma
         txt: What is required to decrypt the Administrator password of a newly launched Amazon EC2 Windows instance?
         o:
         - Key pair
@@ -3855,7 +3855,7 @@ units:
         - IAM roles cannot be used for decrypting the Administrator password
         ref:
         - "https://aws.amazon.com/premiumsupport/knowledge-center/retrieve-windows-admin-password/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used for testing and interacting with apps for Android, iOS and web apps?
         o:
         - AWS AppSync
@@ -3870,7 +3870,7 @@ units:
         - AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: How are AWS Lambda functions triggered?
         o:
         - Events
@@ -3882,7 +3882,7 @@ units:
         - AWS Lambda lets you run code as functions without provisioning or managing server. Lambda-based applications (also referred to as serverless applications) are composed of functions triggered by events
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: Which of the below are good use cases for a specific Amazon EC2 pricing model? (choose 2)
         o:
         - Spot for consistent load over a long term
@@ -3899,7 +3899,7 @@ units:
         - "Dedicated hosts:  Useful for regulatory requirements that may not support multi-tenant virtualization. Great for licensing which does not support multi-tenancy or cloud deployments"
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: What type of Amazon CloudFront distribution support streaming media files using Adobe Flash Media?
         o:
         - Web distribution
@@ -3912,7 +3912,7 @@ units:
         - Of the answers listed, only web distribution and RTMP distribution are actually types of distribution
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-cloudfront/"
-      - type: mc
+      - type: ma
         txt: Which of the below are components that can be configured in the VPC section of the AWS management console? (choose 2)
         o:
         - Subnet
@@ -3927,7 +3927,7 @@ units:
         - DNS records must be configured in Amazon Route 53
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-vpc/"
-      - type: mc
+      - type: ma
         txt: A company wants to utilize a pay as you go cloud model for all of their applications without CAPEX costs and which is highly elastic. Which cloud delivery model will suit them best?
         o:
         - Public
@@ -3941,7 +3941,7 @@ units:
         - A hybrid model combines public and private and this company wants to go all in on a single model
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which AWS support plan provides email support by the Cloud Support Associates team?
         o:
         - Basic
@@ -3954,7 +3954,7 @@ units:
         - Basic does not provide email support at all
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which type of data storage system is typically considered to hold "structured" data?
         o:
         - Non-relational database
@@ -3967,7 +3967,7 @@ units:
         - File systems, email systems and non-relational databases hold data in an "unstructured" format. This means that though there is some structure to it, the data cannot be easily searched using standard data processing algorithms or structured queries. Unstructured data is more human-friendly than machine-friendly
         ref:
         - "https://www.webopedia.com/TERM/S/structured_data.html"
-      - type: mc
+      - type: ma
         txt: Which statements are correct about the retention of Amazon Elastic Block Store (EBS) volumes when an EC2 instance is terminated? (choose 2)
         o:
         - Root EBS volumes are deleted by default
@@ -3981,7 +3981,7 @@ units:
         - Extra non-boot volumes are not deleted on termination by default
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What modifications can be made to an IAM access key once created? (choose 2)
         o:
         - Change user
@@ -3994,7 +3994,7 @@ units:
         - All you can do with an access key once it has been generated is to make active, make inactive, or delete the access key
         ref:
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
-      - type: mc
+      - type: ma
         txt: Which options are available for transferring domains with Route 53? (choose 2)
         o:
         - You can transfer domains to Route 53 if the Top Level Domain (TLD) is supported
@@ -4010,7 +4010,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/content-delivery-and-dns-services/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-route-53/"
-      - type: mc
+      - type: ma
         txt: When connecting to AWS over AWS Direct Connect, what the is scope of connectivity enabled? (choose 2)
         o:
         - You can connect to all public and private services in all regions
@@ -4025,7 +4025,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/aws-direct-connect/"
         - "https://docs.aws.amazon.com/directconnect/latest/UserGuide/remote_regions.html"
-      - type: mc
+      - type: ma
         txt: What are the primary benefits of using AWS Elastic Load Balancing? (choose 2)
         o:
         - High availability
@@ -4042,7 +4042,7 @@ units:
         - Caching is not a benefit of ELB
         ref:
         - "https://digitalcloud.training/2018/10/19/cloud-computing-basics-compute/"
-      - type: mc
+      - type: ma
         txt: Which AWS service lets connected devices easily and securely interact with cloud applications and other devices?
         o:
         - Amazon Workspaces
@@ -4057,7 +4057,7 @@ units:
         - AWS Server Migration Service (SMS) is an agentless service which makes it easier and faster for you to migrate thousands of on-premises workloads to AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to prepare and load data for analytics using an extract, transform and load (ETL) process?
         o:
         - AWS Lambda
@@ -4072,7 +4072,7 @@ units:
         - AWS Lambda is a serverless application that runs code as functions in response to events
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Under the AWS Shared Responsibility Model, which of the following is the customer NOT responsible for?
         o:
         - Adding firewall rules to security groups and network ACLs
@@ -4085,7 +4085,7 @@ units:
         - AWS customers must protect their AWS services through policies, encryption, and firewall rules
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: What is the availability model of Amazon DynamoDB?
         o:
         - Data is synchronously replicated across all regions
@@ -4097,7 +4097,7 @@ units:
         - Amazon DynamoDB stores three geographically distributed replicas of each table to enable high availability and data durability. Data is synchronously replicated across 3 facilities (AZs) in a region
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-dynamodb/"
-      - type: mc
+      - type: ma
         txt: Which of the following constitute the five pillars for the AWS Well-Architected Framework? (choose 2)
         o:
         - Operational excellence, security, and reliability
@@ -4110,7 +4110,7 @@ units:
         - The five pillars of the AWS Well-Architected Framework are operational excellence, security, reliability, performance efficiency, and cost optimization
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
-      - type: mc
+      - type: ma
         txt: Which type of storage stores objects comprised of key, value pairs?
         o:
         - Amazon DynamoDB
@@ -4125,7 +4125,7 @@ units:
         - Amazon EFS is a file-based storage system
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What is the relationship between subnets and availability zones?
         o:
         - You can create one or more subnets within each availability zone
@@ -4137,7 +4137,7 @@ units:
         - You can create one or more subnets within each availability zone but subnets cannot span across availability zones
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What is an Edge location?
         o:
         - A public endpoint for Amazon S3
@@ -4149,7 +4149,7 @@ units:
         - Edge locations are Content Delivery Network (CDN) endpoints for CloudFront. There are many more edge locations than regions
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
-      - type: mc
+      - type: ma
         txt: Which service provides alerts and remediation guidance when AWS is experiencing events that may impact you?
         o:
         - AWS Trusted Advisor
@@ -4164,7 +4164,7 @@ units:
         - AWS Shield is a managed Distributed Denial of Service (DDoS) protection service
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: Which AWS services form the app-facing services of the AWS serverless infrastructure? (choose 2)
         o:
         - AWS Step Functions
@@ -4179,7 +4179,7 @@ units:
         - AWS Step Functions is an orchestration service
         ref:
         - "https://aws.amazon.com/serverless/"
-      - type: mc
+      - type: ma
         txt: Which type of EBS volumes can be encrypted?
         o:
         - Non-root volumes only
@@ -4191,7 +4191,7 @@ units:
         - You can encrypt non-root volumes at launch time. Root volumes (boot volumes) can only be encrypted if you create the instance from an encrypted AMI
         ref:
         - "https://aws.amazon.com/blogs/aws/new-encrypted-ebs-boot-volumes/"
-      - type: mc
+      - type: ma
         txt: Which AWS service enables developers and data scientists to build, train, and deploy machine learning models?
         o:
         - Amazon Rekognition
@@ -4206,7 +4206,7 @@ units:
         - Amazon MQ is a managed message broker service for Apache ActiveMQ that makes it easy to set up and operate message brokers in the cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: What is the name of the online, self-service portal that AWS provides to enable customers to view reports and, such as PCI reports, and accept agreements?
         o:
         - AWS Compliance Portal
@@ -4221,7 +4221,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://aws.amazon.com/artifact/"
-      - type: mc
+      - type: ma
         txt: Which AWS services have a global (rather than regional) scope? (choose 2)
         o:
         - Amazon S3
@@ -4236,7 +4236,7 @@ units:
         - "NOTE: S3 uses a global namespace, meaning that bucket names must be unique globally. However, you still create buckets within a region"
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
-      - type: mc
+      - type: ma
         txt: What is the name of the AWS managed Docker registry service used by the Amazon Elastic Container Service (ECS)?
         o:
         - EC2 Container Registry
@@ -4248,7 +4248,7 @@ units:
         - The EC2 container registry (ECR) is a managed AWS Docker registry service for storing, managing and deploying Docker images
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: What are two benefits of using AWS Lambda? (choose 2)
         o:
         - No servers to manage
@@ -4264,7 +4264,7 @@ units:
         - Lambda is AWS proprietary not open source
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: What are two correct statements about AWS Organizations with consolidated billing? (choose 2)
         o:
         - Multiple bills are provided per organization
@@ -4279,7 +4279,7 @@ units:
         - CloudTrail is on a per account basis and per region basis but can be aggregated into a single bucket in the paying account
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which of the following statements are true in relation to public facing Elastic Load Balancers? (choose 2)
         o:
         - ELB nodes have public IP addresses
@@ -4292,7 +4292,7 @@ units:
         - ELBs can be configured as public facing or internal only. Public facing load balancers have public IP addresses and require an Internet Gateway to function. The public facing ELBs route traffic to the private IP addresses of EC2 instances
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: Which AWS service can be used to send automated notifications to HTTP endpoints?
         o:
         - Amazon SQS
@@ -4307,7 +4307,7 @@ units:
         - Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/notification-services/"
-      - type: mc
+      - type: ma
         txt: Why would a company choose a NAT Gateway over a NAT instance? (choose 2)
         o:
         - They can be additionally used as bastion hosts
@@ -4321,7 +4321,7 @@ units:
         - You cannot assign a NAT Gateway to a security group, use them as bastion hosts, or configure port forwarding
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: What feature of Amazon S3 enables you to set rules to automatically transfer objects between different storage classes at defined time intervals?
         o:
         - Elastic Data Management
@@ -4335,7 +4335,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html"
-      - type: mc
+      - type: ma
         txt: How can an organization scale out write performance for their Amazon Aurora database across multiple availability zones?
         o:
         - Using Read Replicas
@@ -4349,7 +4349,7 @@ units:
         - Read replicas and cross-region read replicas would not assist with scaling write performance as they only scale read performance
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-rds/"
-      - type: mc
+      - type: ma
         txt: Which cloud model should a company use for an application that has a requirement for a bespoke, specialized hardware configuration?
         o:
         - Private
@@ -4363,7 +4363,7 @@ units:
         - Software as a Service (SaaS) is a type of cloud service that delivers a managed application
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which support plan is the lowest cost option that allows unlimited cases to be open?
         o:
         - Basic
@@ -4377,7 +4377,7 @@ units:
         - You cannot open any support cases with the basic support plan
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: What are the AWS best practices for storing large items and attributes in Amazon DynamoDB? (choose 2)
         o:
         - Compress large attribute values
@@ -4392,7 +4392,7 @@ units:
         - You cannot use ElastiCache to cache the large objects as it is not designed for this purpose
         ref:
         - "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-use-s3-too.html"
-      - type: mc
+      - type: ma
         txt: How can you configure Amazon Route 53 to monitor the health and performance of your application?
         o:
         - Using DNS lookups
@@ -4405,7 +4405,7 @@ units:
         - None of the other options provide a solution that can check the health and performance of an application
         ref:
         - "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html"
-      - type: mc
+      - type: ma
         txt: At which layer of the OSI model does a Classic Load Balancer operate at?
         o:
         - Layer 3
@@ -4419,7 +4419,7 @@ units:
         - Network Load Balancer (NLB) - layer 4 load balancer that routes connections based on IP protocol data
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: Which AWS IAM best practice recommends applying the minimum permissions necessary to perform a task when creating IAM policies?
         o:
         - Create individual IAM users
@@ -4431,7 +4431,7 @@ units:
         - When you create IAM policies, follow the standard security advice of granting least privilege—that is, granting only the permissions required to perform a task. Determine what users need to do and then craft policies for them that let the users perform only those tasks
         ref:
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege"
-      - type: mc
+      - type: ma
         txt: In Amazon EC2, which types of Placement Groups are available? (choose 2)
         o:
         - Cluster
@@ -4446,7 +4446,7 @@ units:
           - A spread placement group is a group of instances that are each placed on distinct underlying hardware. Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/amazon-ec2/"
-      - type: mc
+      - type: ma
         txt: What are the benefits of using IAM roles for applications that run on EC2 instances? (choose 2)
         o:
         - Easier to configure than using storing access keys within the EC2 instance
@@ -4462,7 +4462,7 @@ units:
         - Role credentials are temporary, not permanent, and are rotated automatically
         ref:
         - "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html"
-      - type: mc
+      - type: ma
         txt: With which service can a developer upload code from a Git repository and have the service handle the end-to-end deployment of the resources?
         o:
         - AWS CodeDeploy
@@ -4477,7 +4477,7 @@ units:
         - Amazon Elastic Container Service is a managed service for running Docker containers
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/aws-elastic-beanstalk/"
-      - type: mc
+      - type: ma
         txt: Which service can you use to monitor, store and access log files generated by EC2 instances and on-premises servers?
         o:
         - Amazon CloudTrail
@@ -4492,7 +4492,7 @@ units:
         - Amazon Kinesis is a set of services used for collecting, processing and analyzing streaming data
         ref:
         - "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html"
-      - type: mc
+      - type: ma
         txt: Which type of Amazon RDS automated backup allows you to restore the database with a granularity of as little as 5 minutes?
         o:
         - Snapshot backup
@@ -4504,7 +4504,7 @@ units:
         - You can restore a DB instance to a specific point in time with a granularity of 5 minutes. RDS uses transaction logs which it uploads to Amazon S3 to do this
         ref:
         - "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html"
-      - type: mc
+      - type: ma
         txt: Which combination of AWS services could be used to deploy a stateless web application that can automatically and elastically scale?
         o:
         - EC2, Auto Scaling and Elastic Load Balancing
@@ -4518,7 +4518,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which DynamoDB feature provides in-memory acceleration to tables that result in significant performance improvements?
         o:
         - Amazon ElastiCache
@@ -4531,7 +4531,7 @@ units:
         - DAX does all the heavy lifting required to add in-memory acceleration to your DynamoDB tables, without requiring developers to manage cache invalidation, data population, or cluster management
         ref:
         - "https://aws.amazon.com/dynamodb/dax/"
-      - type: mc
+      - type: ma
         txt: A developer needs a way to automatically provision a collection of AWS resources. Which AWS service is primarily used for deploying infrastructure as code?
         o:
         - AWS Elastic Beanstalk
@@ -4546,7 +4546,7 @@ units:
         - Jenkins deploys infrastructure as code but is not an AWS service
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Select the statements that are correct in relation to Amazon Route 53? (choose 2)
         o:
         - Amazon Route 53 is an internal elastic load balancer
@@ -4568,7 +4568,7 @@ units:
         - It does not support connecting on-premises data centers to the cloud - this is done by Direct Connect
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-route-53/"
-      - type: mc
+      - type: ma
         txt: Assuming you have configured them correctly, which AWS services can scale automatically without intervention? (choose 2)
         o:
         - Amazon RDS
@@ -4584,7 +4584,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-dynamodb/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-s3/"
-      - type: mc
+      - type: ma
         txt: To reward customers for using their services, what are two ways AWS reduce prices? (choose 2)
         o:
         - Volume based discounts when you use more services
@@ -4601,7 +4601,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://aws.amazon.com/pricing/"
-      - type: mc
+      - type: ma
         txt: How can a company connect from their on-premises network to VPCs in multiple regions using private connections?
         o:
         - AWS Managed VPN
@@ -4616,7 +4616,7 @@ units:
         - Inter-Region VPC peering does not help you to connect from an on-premise network
         ref:
         - "https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-gateways.html"
-      - type: mc
+      - type: ma
         txt: Which AWS components aid in the construction of fault-tolerant applications? (choose 2)
         o:
         - Elastic IP addresses
@@ -4630,7 +4630,7 @@ units:
         - Amazon Resource Names (ARNs), tags and block device mappings don't really help with fault tolerance
         ref:
         - "https://aws.amazon.com/whitepapers/designing-fault-tolerant-applications/"
-      - type: mc
+      - type: ma
         txt: What offerings are included in the Amazon Lightsail product set? (choose 2)
         o:
         - Virtual Private Server
@@ -4645,7 +4645,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
         - "https://aws.amazon.com/lightsail/features/"
-      - type: mc
+      - type: ma
         txt: Which of the following are advantages of using the AWS cloud computing over legacy IT? (choose 2)
         o:
         - You are able to pass responsibility for the availability of your application to AWS
@@ -4661,7 +4661,7 @@ units:
         - The cloud is centralized so you won't necessarily bring services closer to your end users
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which type of Amazon EBS volume do AWS suggest customers use for the boot volume of most workloads?
         o:
         - General Purpose SSD
@@ -4676,7 +4676,7 @@ units:
         - Cold HDD is the lowest cost HDD and is for infrequently accessed data
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What charges are applicable to Amazon S3 Standard storage class? (choose 2)
         o:
         - Per GB/month storage fee
@@ -4693,7 +4693,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-s3/"
-      - type: mc
+      - type: ma
         txt: An engineer launched a new EC2 instance and it was immediately terminated. What is the most likely reason?
         o:
         - The user does not have the permissions to launch EC2 instances
@@ -4707,7 +4707,7 @@ units:
         - If the AZ did not have capacity, or the AMI was deleted the instance would not launch
         ref:
         - "https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2"
-      - type: mc
+      - type: ma
         txt: How can a company connect their EC2 instances in one region with EC2 instances in another region using private IP addresses?
         o:
         - Inter-Region VPC Peering
@@ -4721,7 +4721,7 @@ units:
         - AWS Direct Connect is a private connection from an on-premise network to an AWS region, it does not enable connectivity between regions (unless you use Direct Connect Gateway)
         ref:
         - "https://aws.amazon.com/about-aws/whats-new/2017/11/announcing-support-for-inter-region-vpc-peering/"
-      - type: mc
+      - type: ma
         txt: Which of the following descriptions is incorrect in relation to the design of Availability Zones?
         o:
         - AZ’s have direct, low-latency, high throughput and redundant network connections between each other
@@ -4734,7 +4734,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: How can a systems administrator connect to a Linux instance in a private subnet using the Internet?
         o:
         - Deploy a bastion host in a public subnet
@@ -4747,7 +4747,7 @@ units:
         - A NAT Gateway is used to allow instances in a private subnet to access the Internet, it cannot be used for proxying inbound connections
         ref:
         - "https://aws.amazon.com/blogs/security/securely-connect-to-linux-instances-running-in-a-private-amazon-vpc/"
-      - type: mc
+      - type: ma
         txt: When designing a VPC, what is the purpose of an Internet Gateway?
         o:
         - Provides Internet access for EC2 instances in private subnets
@@ -4766,7 +4766,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
         - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html"
-      - type: mc
+      - type: ma
         txt: In Amazon CloudWatch, which of the following Amazon EC2 data points requires a custom metric to monitor?
         o:
         - Memory utilization
@@ -4787,7 +4787,7 @@ units:
           - NetworkPacketsOut
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/management-tools/amazon-cloudwatch/"
-      - type: mc
+      - type: ma
         txt: Which of the following configuration items are important to enabling an EC2 web server to serve web pages on the Internet? (choose 2)
         o:
         - Security group rules configured to allow HTTP/HTTPS
@@ -4803,7 +4803,7 @@ units:
         - An established VPN connection is not required, connections will come through an Internet Gateway to a public subnet
         ref:
         - "https://digitalcloud.training/2018/10/19/cloud-computing-basics-compute/"
-      - type: mc
+      - type: ma
         txt: How can a company protect their Amazon S3 data from a regional disaster?
         o:
         - Archive to Amazon Glacier
@@ -4818,7 +4818,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://aws.amazon.com/s3/features/"
-      - type: mc
+      - type: ma
         txt: Which of the following is NOT an AWS service used for transferring large amounts of data into Amazon S3?
         o:
         - AWS Snowball
@@ -4831,7 +4831,7 @@ units:
         - All other options are valid services that are used for transferring large amounts of data into Amazon S3
         ref:
         - "https://aws.amazon.com/s3/features/"
-      - type: mc
+      - type: ma
         txt: How do AWS charge for Amazon CloudFront? (choose 2)
         o:
         - Data transfer out
@@ -4844,7 +4844,7 @@ units:
         - With Amazon CloudFront the basic elements you are charged for include the amount of data transfer out and the number of requests. There are additional chargeable items such as invalidation requests, field-level encryption requests, and custom SSL certificates
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is part of the suite of "serverless" services and runs code as functions?
         o:
         - Amazon ECS
@@ -4859,7 +4859,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
         - "https://aws.amazon.com/lambda/features/"
-      - type: mc
+      - type: ma
         txt: How do AWS charge for the use of NAT Gateways? (choose 2)
         o:
         - Price per gateway hour
@@ -4872,7 +4872,7 @@ units:
         - If you choose to create a NAT gateway in your VPC, you are charged for each “NAT Gateway-hour" that your NAT gateway is provisioned and available. Data processing charges apply for each Gigabyte processed through the NAT gateway regardless of the traffic’s source or destination
         ref:
         - "https://aws.amazon.com/vpc/pricing/"
-      - type: mc
+      - type: ma
         txt: What type of cloud computing service type do AWS Elastic Beanstalk and Amazon RDS correspond to?
         o:
         - IaaS
@@ -4887,7 +4887,7 @@ units:
         - Hybrid is a type of cloud delivery model in which you consume both public and private cloud and connect the two together
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: Which types of scaling policies are available when using AWS Auto Scaling? (choose 2)
         o:
         - Simple scaling
@@ -4902,7 +4902,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/aws-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Which type of Elastic Load Balancer only distributes traffic using the TCP protocol information?
         o:
         - Application Load Balancer (ALB)
@@ -4917,7 +4917,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: How can a company configure automatic, asynchronous copying of objects in Amazon S3 buckets across regions?
         o:
         - This is done by default by AWS
@@ -4932,7 +4932,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html"
-      - type: mc
+      - type: ma
         txt: A web server is being maliciously targeted, how a systems administrator deny access from a list of known attacker IP addresses? (choose 2)
         o:
         - Using a local firewall such as iptables
@@ -4947,7 +4947,7 @@ units:
         - Internet Gateways do not have allow/deny rules and route table configuration could not be used to break connections with specific addresses
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: How can a Solutions Architect reduce the latency between end-users and applications or content? (choose 2)
         o:
         - Deploy applications in multiple AZs
@@ -4964,7 +4964,7 @@ units:
         - Using a larger instance type for your application may improve application performance but will not reduce latency
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: What is an example of scaling vertically?
         o:
         - AWS Auto Scaling adding more EC2 instances
@@ -4977,7 +4977,7 @@ units:
         - All of the other options are examples of scaling horizontally
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: To reduce cost, which of the following services support reservations? (choose 2)
         o:
         - Amazon ElastiCache
@@ -4993,7 +4993,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
         - "https://d1.awsstatic.com/whitepapers/aws_pricing_overview.pdf"
-      - type: mc
+      - type: ma
         txt: Which of the following is not a best practice for protecting the root user of an AWS account?
         o:
         - Don’t share the root user credentials
@@ -5005,7 +5005,7 @@ units:
         - You cannot remove administrative permissions from the root user of an AWS account. Therefore, you must protect the account through creating a complex password, enabling MFA, locking away access keys (assuming they're even required), and not sharing the account details
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which AWS database service is a SQL database that supports complex queries and joins?
         o:
         - Amazon DynamoDB
@@ -5018,7 +5018,7 @@ units:
         - All other options listed are NoSQL types of database which are not suitable for complex queries and joins
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: You are evaluating AWS services that can assist with creating scalable application environments. Which of the statements below best describes the Elastic Load Balancer service?
         o:
         - Helps you ensure that you have the correct number of Amazon EC2 instances available to handle the load for your application
@@ -5031,7 +5031,7 @@ units:
         - Elastic Load Balancing provides fault tolerance for applications by automatically balancing traffic across targets - Amazon EC2 instances, containers and IP addresses - and Availability Zones while ensuring only healthy targets receive traffic
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: What are two of the core concepts related to Amazon SNS? (choose 2)
         o:
         - Topics
@@ -5047,7 +5047,7 @@ units:
           - Publishers - the person/alarm/event that gives SNS the message that needs to be sent
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/notification-services/"
-      - type: mc
+      - type: ma
         txt: What types of rules can be defined in a security group? (choose 2)
         o:
         - Inbound
@@ -5063,7 +5063,7 @@ units:
         - A security group is stateful but this is not a rule type
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
-      - type: mc
+      - type: ma
         txt: A Solutions Architect needs to design a cloud-native application architecture using AWS services. What is a typical use case for Amazon Simple Queue Service (SQS)?
         o:
         - Providing fault tolerance for EC2 instances
@@ -5076,7 +5076,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/application-integration/amazon-sqs/"
-      - type: mc
+      - type: ma
         txt: Which AWS technology enables you to group resources that share one or more tags?
         o:
         - Tag groups
@@ -5089,7 +5089,7 @@ units:
         - The other options are bogus and do not exist
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: Which AWS security tool uses an agent installed in EC2 instances and assesses applications for vulnerabilities and deviations from best practices?
         o:
         - AWS Trusted Advisor
@@ -5104,7 +5104,7 @@ units:
         - The AWS TCO calculator can be used to compare the cost of running your applications in an on-premises or colocation environment to AWS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-security/"
-      - type: mc
+      - type: ma
         txt: You need to provision a single EBS volume that is 500 GiB in size and needs to support 20,000 IOPS. Which EBS volume type will you select?
         o:
         - General Purpose SSD
@@ -5118,7 +5118,7 @@ units:
         - The HDD options provide much lower IOPS per volume (500, 250)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: What is the easiest way to store a backup of an EBS volume on Amazon S3?
         o:
         - Write a custom script to copy the data into a bucket
@@ -5133,7 +5133,7 @@ units:
         - Amazon Kinesis is used for processing streaming data, not data in EBS volumes
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which AWS storage service is accessed using the Network File System (NFS) protocol?
         o:
         - Amazon EBS
@@ -5147,7 +5147,7 @@ units:
         - Amazon S3 is an object-based storage system and is accessed by HTTP/HTTPS
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: Which of the statements below do not characterize cloud computing?
         o:
         - Cloud computing is the on-demand delivery of compute power
@@ -5159,7 +5159,7 @@ units:
         - Cloud computing is not a one-off capital expense, it is an ongoing operating expense. The caveat to this is that if you purchase reserved capacity you have an option to partially or fully pay upfront. however, it is still an operating cost as you do not own and depreciate the assets
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/cloud-computing-concepts/"
-      - type: mc
+      - type: ma
         txt: What are the advantages of running a database service such as Amazon RDS in the cloud versus deploying on-premise? (choose 2)
         o:
         - You have full control of the operating system and can install your own operational tools
@@ -5173,7 +5173,7 @@ units:
         - With Amazon RDS you do not have control of the operating system and you cannot use any database software you like as you are restricted to a list of several engines. There are costs for replicating data between AZs and regions so this must be taken into account in any cost analysis
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: A Solutions Architect is looking for a way to use standard templates for describing and provisioning their infrastructure resources on AWS. Which AWS service can be used in this scenario?
         o:
         - Amazon SNS
@@ -5188,7 +5188,7 @@ units:
         - Amazon Simple Notification Service (Amazon SNS) is a web service that makes it easy to set up, operate, and send notifications from the cloud
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: Which type of Elastic Load Balancer allows you to route traffic to instances based on the URL path of the HTTP header?
         o:
         - Application Load Balancer (ALB)
@@ -5202,7 +5202,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
         - "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-load-balancer-routing.html"
-      - type: mc
+      - type: ma
         txt: What can be used to automatically invoke an AWS Lambda function? (choose 2)
         o:
         - Changes to an Amazon S3 bucket
@@ -5216,7 +5216,7 @@ units:
         - A list of possible event sources is included in the reference link below
         ref:
         - "https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-function.html#supported-event-source-s3"
-      - type: mc
+      - type: ma
         txt: Which of the following are pillars from the five pillars of the AWS Well-Architected Framework? (Choose 2)
         o:
         - Resilience
@@ -5229,7 +5229,7 @@ units:
         - The five pillars of the AWS Well-Architected Framework are operation excellence, security, reliability, performance efficiency, and cost optimization
         ref:
         - "https://aws.amazon.com/blogs/apn/the-5-pillars-of-the-aws-well-architected-framework/"
-      - type: mc
+      - type: ma
         txt: Up to what layer of the OSI model does AWS Web Application Firewall operate?
         o:
         - Layer 3
@@ -5241,7 +5241,7 @@ units:
         - The AWS Web Application Firewall operates up to the application layer (layer 7). You can use AWS WAF to create custom rules that block common attack patterns, such as SQL injection or cross-site scripting, and rules that are designed for your specific application
         ref:
         - "https://aws.amazon.com/waf/"
-      - type: mc
+      - type: ma
         txt: What do you need to log into the AWS console?
         o:
         - User name and password
@@ -5254,7 +5254,7 @@ units:
         - You cannot log in to the AWS console using a key pair, access key &amp; secret ID or certificate
         ref:
         - "https://aws.amazon.com/console/"
-      - type: mc
+      - type: ma
         txt: Your manager has asked you to explain the benefits of using IAM groups. Which of the below statements are valid benefits? (choose 2)
         o:
         - You can restrict access to the subnets in your VPC
@@ -5271,7 +5271,7 @@ units:
         - You cannot nest groups (groups within groups)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which of the authentication options below can be used to authenticate using AWS APIs? (choose 2)
         o:
         - Key pairs
@@ -5288,7 +5288,7 @@ units:
         - Security groups are an instance-level firewall used for controlling access to AWS resources
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: When using Amazon Kinesis Data Streams, where can a consumer store their results? (choose 2)
         o:
         - Amazon S3
@@ -5301,7 +5301,7 @@ units:
         - Kinesis Data Streams enables you to build custom applications that process or analyze streaming data for specialized needs. Producers continually push data to Kinesis Data Streams and Consumers process the data in real time. Consumers can store their results using an AWS service such as Amazon DynamoDB, Amazon Redshift, or Amazon S3
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/analytics/amazon-kinesis/"
-      - type: mc
+      - type: ma
         txt: A company wants to use their on-premise Active Directory service to authenticate with applications on the AWS cloud. Which AWS service can be used to connect their on-premise AD to AWS?
         o:
         - Simple AD
@@ -5316,7 +5316,7 @@ units:
         - Remote Authentication Dial-In User Service (RADIUS) is a networking protocol, operating on port 1812 that provides centralized Authentication, Authorization, and Accounting (AAA or Triple A) management for users who connect and use a network service. It is not an AWS service
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/security-identity-compliance/aws-directory-service/"
-      - type: mc
+      - type: ma
         txt: Which type of Elastic Load Balancer only distributes traffic using the HTTP, and HTTPS protocol information?
         o:
         - Application Load Balancer (ALB)
@@ -5331,7 +5331,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: A company is currently running containers using Docker and Kubernetes. The company are interested in consuming a managed Kubernetes service so they don't need to maintain their own implementation. Which AWS service can they use?
         o:
         - Amazon ECS
@@ -5346,7 +5346,7 @@ units:
         - Amazon Elastic Block Store (EBS) provides block storage volumes
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
-      - type: mc
+      - type: ma
         txt: You need to connect your company’s on-premise network into AWS and would like to establish an AWS managed VPN service. Which of the following configuration items needs to be setup in your company side of the connection?
         o:
         - A Virtual Private Gateway
@@ -5361,7 +5361,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
         - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_VPN.html#VPN"
-      - type: mc
+      - type: ma
         txt: How can you deploy your EC2 instances so that if a single data center fails you still have instances available?
         o:
         - Across regions
@@ -5376,7 +5376,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-global-infrastructure/"
         - "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
-      - type: mc
+      - type: ma
         txt: When using an Application Load Balancer (ALB), what protocols can be selected for instance health checks? (choose 2)
         o:
         - HTTP
@@ -5390,7 +5390,7 @@ units:
         - The Application Load Balancer (ALB) only supports health checks on HTTP and HTTPS
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: How can a systems administrator specify a script to be run on an EC2 instance during launch?
         o:
         - Metadata
@@ -5406,7 +5406,7 @@ units:
         - User data and meta data are not encrypted
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/"
-      - type: mc
+      - type: ma
         txt: How can a company facilitate the sharing of data over private connections between two accounts they own within a region?
         o:
         - Create an internal ELB
@@ -5421,7 +5421,7 @@ units:
         - Configuring matching CIDR address ranges will not mean you can route between accounts. Also, you cannot peer with an account with a matching (or overlapping) address range
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/networking-and-content-delivery/amazon-vpc/"
-      - type: mc
+      - type: ma
         txt: Which AWS support plans provide 24x7 access to customer service?
         o:
         - Basic
@@ -5433,7 +5433,7 @@ units:
         - All support plans provide 24x7 access to customer service, documentation, whitepapers, and support forums
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: What advantages does the AWS cloud provide in relation to cost? (choose 2)
         o:
         - Fine-grained billing
@@ -5448,7 +5448,7 @@ units:
         - You do not get enterprise licensing discounts from AWS and you do not pay anything for power as the cost is built in
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which of the following are NOT features of AWS IAM? (choose 2)
         o:
         - Shared access to your AWS account
@@ -5462,7 +5462,7 @@ units:
         - The other options are all features of AWS IAM
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which HTTP code indicates a successful upload of an object to Amazon S3
         o:
         - 200
@@ -5478,7 +5478,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         - "https://en.wikipedia.org/wiki/List_of_HTTP_status_codes"
-      - type: mc
+      - type: ma
         txt: Which of the following records are captured by Amazon CloudTrail? (choose 2)
         o:
         - The identity of the API caller
@@ -5498,7 +5498,7 @@ units:
         - All other options are metrics that can be recorded using CloudWatch
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: Which AWS database service is schema-less and can be scaled dynamically without incurring downtime?
         o:
         - Amazon RDS
@@ -5511,7 +5511,7 @@ units:
         - All other options are SQL type of databases and therefore have a schema. They also rely on EC2 instances so cannot be scaled dynamically without incurring downtime (you have to change instance types)
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: Under the AWS Shared Responsibility Model, who is responsible for what? (choose 2)
         o:
         - Customers are responsible for compute infrastructure
@@ -5528,7 +5528,7 @@ units:
         - AWS are responsible for edge locations
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-shared-responsibility-model/"
-      - type: mc
+      - type: ma
         txt: When using Amazon RDS with Read Replicas, which of the deployment options below are valid? (choose 2)
         o:
         - Within an Availability Zone
@@ -5542,7 +5542,7 @@ units:
         - You cannot specify the subnet or data center to deploy a read replica in
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/database/amazon-rds/"
-      - type: mc
+      - type: ma
         txt: What do you need to create to specify how your AWS Auto Scaling Group scales and shrinks?
         o:
         - IAM Policy
@@ -5557,7 +5557,7 @@ units:
         - An IAM policy is not used to control Auto Scaling
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
-      - type: mc
+      - type: ma
         txt: Your manager has asked you to explain some of the security features available in the AWS cloud. How can you describe the function of Amazon CloudHSM?
         o:
         - It is a Public Key Infrastructure (PKI)
@@ -5571,7 +5571,7 @@ units:
         - CloudHSM is a managed service that automates time-consuming administrative tasks, such as hardware provisioning, software patching, high availability, and backups
         ref:
         - "https://aws.amazon.com/cloudhsm/details/"
-      - type: mc
+      - type: ma
         txt: Which AWS Glacier data access option retrieves data from an archive in 1-5 minutes?
         o:
         - Standard
@@ -5585,7 +5585,7 @@ units:
         - The other options are bogus and do not exist
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/"
-      - type: mc
+      - type: ma
         txt: With which AWS Storage Gateway Volume Gateway configuration is data stored on-premise and asynchronously backed up to Amazon S3?
         o:
         - Cached volume mode
@@ -5601,7 +5601,7 @@ units:
         - Virtual Tape Library is not a mode but a gateway that is preconfigured with a media changer and tape drives
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/aws-storage-gateway/"
-      - type: mc
+      - type: ma
         txt: Which type of AWS database is ideally suited to analytics using SQL queries?
         o:
         - Amazon DynamoDB
@@ -5616,7 +5616,7 @@ units:
         - Amazon S3 is an object storage solution not a database
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-databases/"
-      - type: mc
+      - type: ma
         txt: When using Identity and Access Management (IAM) what is the process of gaining access to a resource?
         o:
         - First you authenticate, then you are authorized, and then you gain access
@@ -5628,7 +5628,7 @@ units:
         - The process is that you are first authenticated (the system checks you are who you say you are), then you are authorized (the system determined the resources you are allowed to access), and then you are able to access the resources
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/identity-and-access-management/"
-      - type: mc
+      - type: ma
         txt: Which AWS service makes it easy to coordinate the components of distributed applications as a series of steps in a visual workflow?
         o:
         - Amazon SWF
@@ -5643,7 +5643,7 @@ units:
         - Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails
         ref:
         - "https://aws.amazon.com/step-functions/"
-      - type: mc
+      - type: ma
         txt: A Solutions Architect is creating the business process workflows associated with an order fulfilment system. Which AWS service can assist with coordinating tasks across distributed application components?
         o:
         - Amazon STS
@@ -5660,7 +5660,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/"
         - "https://aws.amazon.com/swf/"
-      - type: mc
+      - type: ma
         txt: Which types of servers can be migrated using the AWS Server Migration Service? (choose 2)
         o:
         - OpenStack VMs
@@ -5674,7 +5674,7 @@ units:
         ref:
         - "https://aws.amazon.com/server-migration-service/"
         - "https://aws.amazon.com/server-migration-service/faqs/"
-      - type: mc
+      - type: ma
         txt: Which billing and account management service can be used by businesses to sell applications they have built on the AWS cloud?
         o:
         - Amazon Payments
@@ -5687,7 +5687,7 @@ units:
         - None of the other options are valid
         ref:
         - "https://aws.amazon.com/devpay/"
-      - type: mc
+      - type: ma
         txt: Which AWS service is designed to be used for operational analytics?
         o:
         - Amazon EMR
@@ -5702,7 +5702,7 @@ units:
         - For dashboards and visualizations, Amazon QuickSight provides you a fast, cloud-powered business analytics service, that that makes it easy to build stunning visualizations and rich dashboards that can be accessed from any browser or mobile device
         ref:
         - "https://aws.amazon.com/big-data/datalakes-and-analytics/"
-      - type: mc
+      - type: ma
         txt: You need to connect your company’s on-premise network into AWS and would like to establish an AWS managed VPN service. Which of the following configuration items needs to be setup on the Amazon VPC side of the connection?
         o:
         - A Virtual Private Gateway
@@ -5717,7 +5717,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/"
         - "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_VPN.html#VPN"
-      - type: mc
+      - type: ma
         txt: Where are Amazon EBS snapshots stored?
         o:
         - On an Amazon EBS instance store
@@ -5729,7 +5729,7 @@ units:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
         ref:
         - Snapshots capture a point-in-time state of an instance. Snapshots are stored on S3
-      - type: mc
+      - type: ma
         txt: Which type of Elastic Load Balancer distributes traffic using the TCP, SSL, HTTP and HTTPS protocol information?
         o:
         - Application Load Balancer (ALB)
@@ -5744,7 +5744,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/elastic-load-balancing-and-auto-scaling/"
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/elastic-load-balancing/"
-      - type: mc
+      - type: ma
         txt: What locations can be used for storing Amazon CloudWatch log files? (choose 2)
         o:
         - Amazon EBS
@@ -5758,7 +5758,7 @@ units:
         - Options for storing logs include CloudWatch Logs, Amazon S3 by using a custom script, and a centralized logging system such as Splunk
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/monitoring-and-logging-services/"
-      - type: mc
+      - type: ma
         txt: How many snapshots are required in order to restore an Amazon EBS volume?
         o:
         - The most recent snapshot only
@@ -5770,7 +5770,7 @@ units:
         - if you make periodic snapshots of a volume, the snapshots are incremental, which means that only the blocks on the device that have changed after your last snapshot are saved in the new snapshot. Even though snapshots are saved incrementally, the snapshot deletion process is designed so that you need to retain only the most recent snapshot in order to restore the volume
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/"
-      - type: mc
+      - type: ma
         txt: To which destinations can Amazon S3 NOT send event notifications? (choose 2)
         o:
         - DynamoDB Table
@@ -5785,7 +5785,7 @@ units:
         ref:
         - "https://digitalcloud.training/certification-training/aws-solutions-architect-associate/storage/amazon-s3/"
         - "https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations"
-      - type: mc
+      - type: ma
         txt: Which type of scaling does AWS Auto Scaling provide?
         o:
         - Vertical
@@ -5797,7 +5797,7 @@ units:
         - AWS Auto Scaling scales horizontally by adding additional compute instances
         ref:
         - "https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/architecting-for-the-cloud/"
-      - type: mc
+      - type: ma
         txt: Which Amazon S3 storage class has a minimum storage duration charge of 90 days?
         o:
         - S3 Standard
@@ -6161,7 +6161,7 @@ units:
         - Software used to create HA websites
         - Hardware that enables you to increase the performance of your physical servers
         qnum: 3
-      - type: mc
+      - type: ma
         txt: Which of the following are the primary benefits of server virtualization? (Select two answers.)
         o:
         - Ability to provision virtual servers in a matter of minutes
@@ -6204,7 +6204,7 @@ units:
         qnum: 8
     - name: 2
       exercises:
-      - type: mc
+      - type: ma
         txt: Which of the following AWS support plans gives you access to all AWS Trusted Advisor reports? (Select two answers)
         o:
         - Enterprise support plan
@@ -6270,7 +6270,7 @@ units:
         - Edge locations
         - Regional edge caches
         qnum: 8
-      - type: mc
+      - type: ma
         txt: Which of the following services are considered global services on the AWS platform? (Select two answers)
         o:
         - Amazon CloudFront
@@ -6280,7 +6280,7 @@ units:
         - AWS EC2
         qnum: 9
         numans: 2
-      - type: mc
+      - type: ma
         txt: Which of the following services are designed to be set up, configured, and consumed on premises? (Select two answers)
         o:
         - Amazon Storage Gateway
@@ -6324,7 +6324,7 @@ units:
         - AWS VPC
         - AWS GuardDuty
         qnum: 2
-      - type: mc
+      - type: ma
         txt: Which of the following services are offered completely free by AWS? (Select two answers.)
         o:
         - AWS Elastic Beanstalk
@@ -6368,7 +6368,7 @@ units:
         qnum: 7
     - name: 4
       exercises:
-      - type: mc
+      - type: ma
         txt: To deploy a dev and test environment on AWS with enhanced security, which two configuration options should you choose? (Select two)
         o:
         - Configure IAM password policy with complexity rules.
@@ -6452,7 +6452,7 @@ units:
         qnum: 10
     - name: 5
       exercises:
-      - type: mc
+      - type: ma
         txt: Which of the following is true regarding Amazon S3? (Select 2 answers)
         o:
         - The Amazon S3 One Zone-IA storage class offers 99.5% of availability.
@@ -6618,7 +6618,7 @@ units:
         - On-Demand Instance
         - Dedicated Hosts
         qnum: 2
-      - type: mc
+      - type: ma
         txt: Which of the following is true with regards to the benefits of purchasing a Convertible EC2 Reserved Instance? (Choose 2 answers)
         o:
         - You can exchange one or more Convertible Reserved Instances for another Convertible Reserved Instance with a different configuration, including instance family, operating system, and tenancy.
@@ -6660,7 +6660,7 @@ units:
         - Amazon Elastic Block Store
         - Amazon DFS Volumes for Windows File Server
         qnum: 7
-      - type: mc
+      - type: ma
         txt: Which of the following types of EBS volumes can be used as boot volumes for your EC2 instances? (Select 2 answers)
         o:
         - Provisioned IOPS SSD (io1)
@@ -6704,7 +6704,7 @@ units:
         - You have full access to the operating system layer that the RDS database runs on.
         - You can choose which drive and partition to install the RDS database on.
         qnum: 2
-      - type: mc
+      - type: ma
         txt: AWS RDS supports six database engines. From the following list, choose three engines supported by Amazon RDS.
         o:
         - MySQL
@@ -6912,7 +6912,7 @@ units:
         - Amazon Glue
         - Amazon QuickSight
         qnum: 2
-      - type: mc
+      - type: ma
         txt: You are planning on building an application that will capture video streams from speed cameras on country roads for analysis. You need to be able to capture all the vehicles that break the speed limit and identify the offending drivers via the vehicles' license plates. Which two services on AWS can help you achieve these requirements? (Choose 2 answers.)
         o:
         - Amazon Rekognition
@@ -6972,7 +6972,7 @@ units:
         - AWS Config
         - AWS FSx for Lustre
         qnum: 2
-      - type: mc
+      - type: ma
         txt: Which two file formats are used when creating CloudFormation templates? (Choose 2.)
         o:
         - YAML
@@ -7050,7 +7050,7 @@ units:
         qnum: 5
     - name: 14
       exercises:
-      - type: mc
+      - type: ma
         txt: Which of the following is part of the customers' responsibility regarding the Shared Security Model? (Choose 2.)
         o:
         - Configure NACL to only allow inbound ports 80 and 443 to Linux web servers from the internet.
@@ -7160,7 +7160,7 @@ units:
         - Public cloud
         - Multi-cloud
         qnum: 2
-      - type: mc
+      - type: ma
         txt: Which of the following statements are valid reasons for choosing a specific AWS Region to deploy your applications in? (Choose two)
         o:
         - If your organization has specific compliance or data residency laws to follow, then your choice of an AWS Region will be dictated by this requirement.
@@ -7194,7 +7194,7 @@ units:
         - Business Support plan
         - Enterprise Support plan
         qnum: 6
-      - type: mc
+      - type: ma
         txt: Which of the following are regarded as global services on AWS? (Choose two)
         o:
         - Amazon Route53
@@ -7693,7 +7693,7 @@ units:
         - Amazon RDS
         - Amazon QLDB
         - Amazon Aurora
-      - type: mc
+      - type: ma
         qnum: 4
         txt: Which of the following services further increase your EC2 instances' costs? (Choose two)
         o:
@@ -7927,7 +7927,7 @@ units:
         - Web services tier
         - Backend tier
         - Database tier
-      - type: mc
+      - type: ma
         qnum: 33
         txt: Which of the following formats are CloudFormation templates written in? (Choose two)
         o:
