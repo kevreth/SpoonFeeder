@@ -2,6 +2,7 @@ import { Bool } from './slide/slideType/bool';
 import { Gap } from './slide/slideType/gap';
 import { Imap } from './slide/slideType/imap';
 import { Info } from './slide/slideType/info';
+import { Ma } from './slide/slideType/ma';
 import { Mc } from './slide/slideType/mc';
 import { Select } from './slide/slideType/select';
 import { Sort } from './slide/slideType/sort';
@@ -72,6 +73,20 @@ class InfoFactory extends SlideInitializer {
     );
   }
 }
+class MaFactory extends SlideInitializer {
+  constructor() {
+    super('ma');
+  }
+  public instance(): SlideInterface {
+    return new Ma(
+      this.type,
+      CreateHtml.MA as CreateHtmlTypeIntersection,
+      MakeSlidesStrategy.MA,
+      Evaluate.SIMPLE,
+      Result.SIMPLE
+    );
+  }
+}
 class McFactory extends SlideInitializer {
   constructor() {
     super('mc');
@@ -133,6 +148,7 @@ const values = [
   new GapFactory(),
   new ImapFactory(),
   new InfoFactory(),
+  new MaFactory(),
   new McFactory(),
   new SelectFactory(),
   new SortFactory(),
@@ -159,6 +175,7 @@ export const BOOL = () => new BoolFactory().instance() as Bool;
 export const GAP = () => new GapFactory().instance() as Gap;
 export const IMAP = () => new ImapFactory().instance() as Imap;
 export const INFO = () => new InfoFactory().instance() as Info;
+export const MA = () => new McFactory().instance() as Ma;
 export const MC = () => new McFactory().instance() as Mc;
 export const SELECT = () => new SelectFactory().instance() as Select;
 export const SORT = () => new SortFactory().instance() as Sort;
