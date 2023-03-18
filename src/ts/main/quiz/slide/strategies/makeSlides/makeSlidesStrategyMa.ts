@@ -19,19 +19,19 @@ export function makeSlidesStrategyMa(
   createPageContent(html, doc);
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
-  options.forEach((option, optionCtr) => {
-    // addEventListener(doc, option, optionCtr, slide, txt);
-  });
+  // options.forEach((option, optionCtr) => {
+  //   // addEventListener(doc, option, optionCtr, slide, txt);
+  // });
 }
-function addEventListener(
-  doc: Document,
-  option: string,
-  optionCtr: number,
-  slide: SlideInterface,
-  txt: string
-): void {
-  const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-  element.addEventListener('click', () => {
-    conclude(doc, slide, option, txt);
-  });
-}
+// function addEventListener(
+//   doc: Document,
+//   option: string,
+//   optionCtr: number,
+//   slide: SlideInterface,
+//   txt: string
+// ): void {
+//   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
+//   element.addEventListener('click', () => {
+//     conclude(doc, slide, option, txt);
+//   });
+// }
