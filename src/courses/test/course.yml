@@ -27,6 +27,10 @@ units:
         txt: no1
         ans: 'no'
       exercises:
+      - type: mc
+        txt: Choose A and C.
+        o: [A, C, B, D]
+        numans: 2
       - type: vocab
         list:
           active: something that is currently in use
@@ -61,3 +65,4 @@ units:
       - type: mc
         txt: If only we ____ have to learn the periodic table of the elements by tomorrow!
         o: [didn't, don't]
+
