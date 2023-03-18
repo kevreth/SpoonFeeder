@@ -43,8 +43,12 @@ export class Ma extends Slide {
     return this.result() as boolean;
   }
   mark(isCorrect: boolean, optionCtr: number, doc: Document) {
-    const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
-    const color = isCorrect ? 'green' : 'red';
-    optionButton.style.backgroundColor = color;
+    const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
+    let selected = false;
+    if(btn.style.backgroundColor === 'blue')
+      selected = true;
+    if(isCorrect && selected) btn.style.backgroundColor = 'green';
+    if(!isCorrect && selected) btn.style.backgroundColor = 'red';
+    if(isCorrect && !selected) btn.style.borderColor = 'red';
   }
 }

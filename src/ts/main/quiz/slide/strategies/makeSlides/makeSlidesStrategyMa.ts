@@ -43,6 +43,7 @@ export function makeSlidesStrategyMa(
       }
     });
     answers = answers.sort();
+    done.remove();
     conclude(doc, slide, answers, txt);
   });
 }
