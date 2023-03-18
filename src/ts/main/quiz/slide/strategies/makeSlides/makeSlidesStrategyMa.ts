@@ -19,19 +19,30 @@ export function makeSlidesStrategyMa(
   createPageContent(html, doc);
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
-  // options.forEach((option, optionCtr) => {
-  //   // addEventListener(doc, option, optionCtr, slide, txt);
-  // });
+  options.forEach((_option, optionCtr) => {
+    const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
+    const color = 'blue';
+    btn.addEventListener('click', () => {
+      if(btn.style.backgroundColor === color) {
+        btn.style.backgroundColor = 'black';
+      }
+      else {
+        btn.style.backgroundColor = color;
+      }
+    });
+  });
+  const done = doc.getElementById('btn') as HTMLElement;
+  done.addEventListener('click', () => {
+    // retrieve all buttons in blue
+    let answers: string[] = [];
+    options.forEach((_option, optionCtr) => {
+      const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
+      const color = 'blue';
+      if(btn.style.backgroundColor === color) {
+        answers.push(_option);
+      }
+    });
+    answers = answers.sort();
+    conclude(doc, slide, answers, txt);
+  });
 }
-// function addEventListener(
-//   doc: Document,
-//   option: string,
-//   optionCtr: number,
-//   slide: SlideInterface,
-//   txt: string
-// ): void {
-//   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-//   element.addEventListener('click', () => {
-//     conclude(doc, slide, option, txt);
-//   });
-// }

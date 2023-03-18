@@ -4,13 +4,14 @@ import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Ma extends Slide {
   o: string[] = [];
+  numans = 0;
+  answers:string[] = [];
   processJson(json: Ma): void {
     ({ txt: this.txt, o: this.o, isExercise: this.isExercise, numans: this.numans} = json);
-    const answers:string[] = [];
     for(let i=0; i<this.numans; i++) {
-      answers.push(this.o[i]);
+      this.answers.push(this.o[i]);
     }
-    this.ans = answers;
+    this.ans = this.answers.sort();
   }
   makeSlides(doc: Document): void {
     const isExercise = this.isExercise;
@@ -31,13 +32,16 @@ export class Ma extends Slide {
   }
   decorate(doc: Document) {
     const options = this.o;
-    for (let i = 0; i < options.length; i++)
+    for (let i = 0; i < options.length; i++) {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
-    const isCorrect = this.result() as boolean;
-    const optionCtr = options.indexOf(this.getRes() as string);
-    console.log(optionCtr);
-    this.mark(isCorrect, optionCtr, doc);
-    return isCorrect;
+      const option = options[i];
+      let isCorrect = false;
+      if (this.answers.includes(option))
+        isCorrect = true;
+      this.mark(isCorrect, i, doc);
+    }
+    // return isCorrect;
+    return true;
   }
   mark(isCorrect: boolean, optionCtr: number, doc: Document) {
     const optionButton = doc.getElementById('btn' + optionCtr) as HTMLElement;
