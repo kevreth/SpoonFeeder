@@ -4,20 +4,9 @@ import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Mc extends Slide {
   o: string[] = [];
-  multipleAnswerFlag = false;
   processJson(json: Mc): void {
-    ({ txt: this.txt, o: this.o, isExercise: this.isExercise, numans: this.numans} = json);
-    if(this.numans === undefined ) {
-      this.ans = this.o[0];
-    }
-    else {
-      this.multipleAnswerFlag = true;
-      const answers:string[] = [];
-      for(let i=0; i<this.numans; i++) {
-        answers.push(this.o[i]);
-      }
-      this.ans = answers;
-    }
+    ({ txt: this.txt, o: this.o, isExercise: this.isExercise } = json);
+    this.ans = this.o[0];
   }
   makeSlides(doc: Document): void {
     const isExercise = this.isExercise;
@@ -25,12 +14,10 @@ export class Mc extends Slide {
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt;
     const options = this.o;
-    const multipleAnswerFlag = this.multipleAnswerFlag;
     const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMc;
     makeSlidesStrategy(
       txt,
       options,
-      multipleAnswerFlag,
       isExercise,
       createHtml,
       maxWidthStrategy,
@@ -44,7 +31,6 @@ export class Mc extends Slide {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
     const isCorrect = this.result() as boolean;
     const optionCtr = options.indexOf(this.getRes() as string);
-    console.log(optionCtr);
     this.mark(isCorrect, optionCtr, doc);
     return isCorrect;
   }

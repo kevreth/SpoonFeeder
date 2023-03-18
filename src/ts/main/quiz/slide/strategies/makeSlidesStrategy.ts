@@ -3,6 +3,7 @@ import type {
   CreateHtmlTypeGap,
   CreateHtmlTypeImap,
   CreateHtmlTypeInfo,
+  CreateHtmlTypeMa,
   CreateHtmlTypeMc,
   CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeSort,
@@ -10,6 +11,7 @@ import type {
 import { makeSlidesStrategyGap } from './makeSlides/makeSlidesStrategyGap';
 import { makeSlidesStrategyImap } from './makeSlides/makeSlidesStrategyImap';
 import { makeSlidesStrategyInfo } from './makeSlides/makeSlidesStrategyInfo';
+import { makeSlidesStrategyMa } from './makeSlides/makeSlidesStrategyMa';
 import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
@@ -42,10 +44,18 @@ export type MakeSlidesTypeInfo = (
   doc: Document,
   setValues: SlideInterface
 ) => void;
+export type MakeSlidesTypeMa = (
+  txt: string,
+  options: string[],
+  isExercise: boolean,
+  createHtml: CreateHtmlTypeMa,
+  maxWidthStrategy: SetWidthTypeSimple,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 export type MakeSlidesTypeMc = (
   txt: string,
   options: string[],
-  multipleAnswerFlag: boolean,
   isExercise: boolean,
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
@@ -127,13 +137,34 @@ export class MakeSlidesStrategy {
   ) {
     makeSlidesStrategyInfo(txt, createHtml, doc, setValues);
   };
+  // /////////////////////////////////////////////////////////////////////////////
+  // //                             MA
+  // /////////////////////////////////////////////////////////////////////////////
+  public static readonly MA = function (
+    txt: string,
+    options: string[],
+    isExercise: boolean,
+    createHtml: CreateHtmlTypeMa,
+    maxWidthStrategy: SetWidthTypeSimple,
+    doc: Document,
+    setValues: SlideInterface
+  ) {
+    makeSlidesStrategyMa(
+      txt,
+      options,
+      isExercise,
+      createHtml,
+      maxWidthStrategy,
+      doc,
+      setValues
+    );
+  };
   /////////////////////////////////////////////////////////////////////////////
   //                             MC
   /////////////////////////////////////////////////////////////////////////////
   public static readonly MC = function (
     txt: string,
     options: string[],
-    multipleAnswerFlag: boolean,
     isExercise: boolean,
     createHtml: CreateHtmlTypeMc,
     maxWidthStrategy: SetWidthTypeSimple,
@@ -143,7 +174,6 @@ export class MakeSlidesStrategy {
     makeSlidesStrategyMc(
       txt,
       options,
-      multipleAnswerFlag,
       isExercise,
       createHtml,
       maxWidthStrategy,

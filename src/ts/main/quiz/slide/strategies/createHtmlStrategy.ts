@@ -7,6 +7,7 @@ export type CreateHtmlTypeGap = (
 ) => string;
 export type CreateHtmlTypeInfo = (txt: string) => string;
 export type CreateHtmlTypeImap = (inst: string, img: string) => string;
+export type CreateHtmlTypeMa = (question: string, options: string[]) => string;
 export type CreateHtmlTypeMc = (question: string, options: string[]) => string;
 export type CreateHtmlTypeSelect = (
   instructions: string,
@@ -16,11 +17,13 @@ export type CreateHtmlTypeSort = (inst: string, ans: AnswerType) => string;
 export type CreateHtmlTypeUnion =
   | CreateHtmlTypeGap
   | CreateHtmlTypeImap
+  | CreateHtmlTypeMa
   | CreateHtmlTypeMc
   | CreateHtmlTypeSelect
   | CreateHtmlTypeSort;
 export type CreateHtmlTypeIntersection = CreateHtmlTypeGap &
   CreateHtmlTypeImap &
+  CreateHtmlTypeMa &
   CreateHtmlTypeMc &
   CreateHtmlTypeSelect &
   CreateHtmlTypeSort;
@@ -59,9 +62,22 @@ export class CreateHtml {
     return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
   };
   /////////////////////////////////////////////////////////////////////////////
+  //                             MA
+  /////////////////////////////////////////////////////////////////////////////
+  static readonly MA: CreateHtmlTypeMa = function (
+    question: string,
+    options: string[]
+  ) {
+    const mc = CreateHtml.MC(question,options);
+    const accum = new Array<string>(mc);
+    const button = makeButton('btn', 'done', 'done');
+    accum.push(`</div><br>\n${button}\n`);
+    return accum.join('\n');
+  }
+  /////////////////////////////////////////////////////////////////////////////
   //                             MC
   /////////////////////////////////////////////////////////////////////////////
-  // also used by VOCAB
+  // also used by MA, VOCAB
   static readonly MC: CreateHtmlTypeMc = function (
     question: string,
     options: string[]

@@ -7,7 +7,6 @@ import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMc(
   txt: string,
   options: string[],
-  multipleAnswerFlag: boolean,
   isExercise: boolean,
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
@@ -20,14 +19,9 @@ export function makeSlidesStrategyMc(
   createPageContent(html, doc);
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
-  // if(multipleAnswerFlag) {
-
-  // }
-  // else {
-    options.forEach((option, optionCtr) => {
-      addEventListener(doc, option, optionCtr, slide, txt);
-    });
-  // }
+  options.forEach((option, optionCtr) => {
+    addEventListener(doc, option, optionCtr, slide, txt);
+  });
 }
 function addEventListener(
   doc: Document,

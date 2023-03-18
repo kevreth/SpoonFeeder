@@ -27,7 +27,7 @@ units:
         txt: no1
         ans: 'no'
       exercises:
-      - type: mc
+      - type: ma
         txt: Choose A and C.
         o: [A, C, B, D]
         numans: 2
