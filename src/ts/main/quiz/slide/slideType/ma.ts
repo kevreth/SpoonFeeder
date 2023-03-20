@@ -1,4 +1,5 @@
 import { removeListener } from '../../../utilities';
+import {INDETERMINANT, CORRECT, INCORRECT} from '../../../MarkupColors';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
@@ -48,9 +49,6 @@ export class Ma extends Slide {
   }
   mark(isKey: boolean, btn:HTMLElement) {
     let selected = false;
-    const CORRECT = 'green';
-    const INCORRECT = 'red';
-    const INDETERMINANT  = 'blue'
     btn.style.border = 'none';
     if(btn.style.backgroundColor === INDETERMINANT) selected = true;
     if(isKey && selected) btn.style.backgroundColor = CORRECT;

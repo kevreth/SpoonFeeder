@@ -2,6 +2,7 @@ import { difference, intersection } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
+import { CORRECT, INCORRECT} from '../../../MarkupColors';
 export class Select extends Slide {
   inst = '';
   processJson(json: Select): void {
@@ -29,13 +30,13 @@ export class Select extends Slide {
     const _res = res as string[];
     // items that were not selected but should have been
     let diff = difference(_ans, _res);
-    this.style(diff, 'underline', 'red', doc);
+    this.style(diff, 'underline', INCORRECT, doc);
     // items that should not have been selected but were
     diff = difference(_res, _ans);
-    this.style(diff, 'line-through', 'red', doc);
+    this.style(diff, 'line-through', INCORRECT, doc);
     // correctly selected items
     diff = intersection(_res, _ans);
-    this.style(diff, 'underline', 'green', doc);
+    this.style(diff, 'underline', CORRECT, doc);
   }
   style(
     diff: AnswerType,

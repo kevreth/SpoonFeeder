@@ -3,6 +3,7 @@ import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
+import {INDETERMINANT} from '../../../../MarkupColors';
 export function makeSlidesStrategySelect(
   inst: string,
   txt: string,
@@ -39,10 +40,10 @@ function addEventListener1(ctr: number, doc: Document): void {
 }
 function selected(element: HTMLElement): void {
   let color = 'white';
-  if (element.style.backgroundColor === 'blue') {
+  if (element.style.backgroundColor === INDETERMINANT) {
     element.style.removeProperty('background-color');
     color = 'black';
-  } else element.style.backgroundColor = 'blue';
+  } else element.style.backgroundColor = INDETERMINANT;
   element.style.color = color;
 }
 function evaluate(doc: Document) {
@@ -53,7 +54,7 @@ function evaluate(doc: Document) {
     const id = 'w' + ctr.toString();
     const element = doc.getElementById(id);
     if (element !== null) {
-      if (element.style.backgroundColor === 'blue') responses.push(ctr);
+      if (element.style.backgroundColor === INDETERMINANT) responses.push(ctr);
     } else found = false;
     ctr++;
   }

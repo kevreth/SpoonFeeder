@@ -3,6 +3,7 @@ import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeMa } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
+import {INDETERMINANT, CORRECT, INCORRECT} from '../../../../MarkupColors';
 export function makeSlidesStrategyMa(
   txt: string,
   options: string[],
@@ -18,7 +19,7 @@ export function makeSlidesStrategyMa(
   maxWidthStrategy(numOptions, 'btn', doc);
   options.forEach((_option, optionCtr) => {
     const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
-    const color = 'blue';
+    const color = INDETERMINANT;
     btn.addEventListener('click', () => {
       if(btn.style.backgroundColor === color) {
         btn.style.backgroundColor = 'black';
@@ -30,14 +31,11 @@ export function makeSlidesStrategyMa(
   });
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
-    // retrieve all buttons in blue
+    // retrieve all INDETERMINANT buttons
     let answers: string[] = [];
     options.forEach((_option, optionCtr) => {
       const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
-      const color = 'blue';
-      if(btn.style.backgroundColor === color) {
-        answers.push(_option);
-      }
+      if(btn.style.backgroundColor === INDETERMINANT) answers.push(_option);
     });
     answers = answers.sort();
     done.remove();

@@ -3,6 +3,7 @@ import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
+import { CORRECT, INCORRECT} from '../../../MarkupColors';
 export class Mc extends Slide {
   o: string[] = [];
   processJson(json: Mc): void {
@@ -43,8 +44,8 @@ export class Mc extends Slide {
     return isCorrect;
   }
   mark(isCorrect: boolean, responseButton: HTMLElement, answerButton:HTMLElement) {
-    let color = 'red';
-    isCorrect ? color = 'green' : answerButton.style.borderColor = 'red';
+    let color = INCORRECT;
+    isCorrect ? color = CORRECT : answerButton.style.borderColor = INCORRECT;
     responseButton.style.backgroundColor = color;
   }
 }

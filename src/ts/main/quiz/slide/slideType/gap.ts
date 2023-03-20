@@ -1,6 +1,7 @@
 import { polyfill } from 'mobile-drag-drop';
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
+import { CORRECT, INCORRECT } from '../../../MarkupColors';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
@@ -43,7 +44,7 @@ export class Gap extends Slide {
   }
   mark(corrArr: boolean[], doc: Document) {
     corrArr.forEach((answer, ctr) => {
-      const color = answer ? 'green' : 'red';
+      const color = answer ? CORRECT : INCORRECT;
       const id = 'ans' + ctr;
       const eAns = doc.getElementById(id) as HTMLElement;
       eAns.style.backgroundColor = color;
