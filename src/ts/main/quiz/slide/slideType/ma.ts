@@ -48,7 +48,9 @@ export class Ma extends Slide {
     if(btn.style.backgroundColor === 'blue')
       selected = true;
     if(isCorrect && selected) btn.style.backgroundColor = 'green';
-    if(!isCorrect && selected) btn.style.backgroundColor = 'red';
+    if(!isCorrect && selected) {
+      btn.style.backgroundColor = 'red';
+    }
     if(isCorrect && !selected) btn.style.borderColor = 'red';
   }
 }

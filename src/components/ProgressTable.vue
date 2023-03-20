@@ -138,9 +138,9 @@ function myClass (pctCorrect, pctComplete) {
   } else if (pctCorrect >= 90 + '%') {
     return 'text-green';
   } else if(pctCorrect >=80 + '%') {
-    return 'text-blue';
+    return 'text-blue-3';
   } else {
-    return 'text-red-7';
+    return 'text-red-2';
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <q-btn
-    color="primary"
+    color="secondary"
     label="Exit"
     class="exitBtn q-mb-sm"
   />

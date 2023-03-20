@@ -47,6 +47,7 @@ function startOver() {
   height: 60%;
 }
 .progressBackground {
+  font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   height: 80%;
   border-radius: 10px;
   overflow: auto;

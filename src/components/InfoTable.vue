@@ -5,7 +5,7 @@
     :duration="1000">
     <q-overlay class="infoOverlay column">
       <template #body>
-        <div class="iconContainer fixed-center bg-accent" @keydown.esc="closeInfo" tabindex="0">
+        <div class="iconContainer fixed-center bg-primary" @keydown.esc="closeInfo" tabindex="0">
           <h5>Navigations:</h5>
           <p class="iconContent">
             COR: number correct <br>
