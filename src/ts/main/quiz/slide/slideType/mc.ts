@@ -33,8 +33,15 @@ export class Mc extends Slide {
     for (let i = 0; i < options.length; i++)
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
     const isCorrect = this.result() as boolean;
-    const optionCtr = options.indexOf(this.getRes() as string);
-    this.mark(isCorrect, optionCtr, doc);
+    const response = this.getRes() as string;
+    const responseOption = options.indexOf(response);
+    this.mark(isCorrect, responseOption, doc);
+    if(!isCorrect) {
+      const answer = this.ans as string;
+      const answerOption = options.indexOf(answer);
+      const answerButton = doc.getElementById('btn' + answerOption) as HTMLElement;
+      answerButton.style.borderColor = 'red';
+    }
     return isCorrect;
   }
   mark(isCorrect: boolean, optionCtr: number, doc: Document) {
