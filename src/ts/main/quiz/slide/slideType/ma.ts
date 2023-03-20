@@ -50,10 +50,19 @@ export class Ma extends Slide {
     let selected = false;
     if(btn.style.backgroundColor === 'blue')
       selected = true;
-    if(isCorrect && selected) btn.style.backgroundColor = 'green';
+    if(isCorrect && selected) {
+      btn.style.backgroundColor = 'green';
+      btn.style.borderColor = 'green';
+    }
     if(!isCorrect && selected) {
       btn.style.backgroundColor = 'red';
+      btn.style.borderColor = 'red';
     }
-    if(isCorrect && !selected) btn.style.borderColor = 'red';
+    if(isCorrect && !selected) {
+      btn.style.borderColor = 'red';
+    }
+    else {
+      btn.style.border = 'none';
+    }
   }
 }
