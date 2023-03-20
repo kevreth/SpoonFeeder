@@ -37,15 +37,6 @@ class SummaryLine implements ISummaryLine {
   }
 }
 export class Score {
-  public static getScore(slide: SlideInterface): number {
-    const result = slide.result();
-    let count = 0;
-    const isArray = Array.isArray(result);
-    if (isArray) {
-    } //count = exerciseGroupScore2(result);
-    else count = result ? 1 : 0;
-    return count;
-  }
   public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
