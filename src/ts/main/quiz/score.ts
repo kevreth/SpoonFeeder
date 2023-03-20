@@ -104,8 +104,8 @@ function createLine(
     const results = saves[idx].result;
     slides.setResults(results);
     const evaluation = slides.evaluate();
-    moduleLine.count += slides.getAnswerCount();
     moduleLine.score += evaluation.correct;
     moduleLine.complete += evaluation.responses;
   }
+  moduleLine.count += slides.getAnswerCount();
 }
