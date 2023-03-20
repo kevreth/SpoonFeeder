@@ -38,31 +38,23 @@ export class Ma extends Slide {
     for (let i = 0; i < options.length; i++) {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
       const option = options[i];
-      let isCorrect = false;
+      let isKey = false;
       if (this.answers.includes(option))
-        isCorrect = true;
-      this.mark(isCorrect, i, doc);
+        isKey = true;
+        const btn = doc.getElementById('btn' + i) as HTMLElement;
+      this.mark(isKey, btn);
     }
     return this.result() as boolean;
   }
-  mark(isCorrect: boolean, optionCtr: number, doc: Document) {
-    const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
+  mark(isKey: boolean, btn:HTMLElement) {
     let selected = false;
-    if(btn.style.backgroundColor === 'blue')
-      selected = true;
-    if(isCorrect && selected) {
-      btn.style.backgroundColor = 'green';
-      btn.style.borderColor = 'green';
-    }
-    if(!isCorrect && selected) {
-      btn.style.backgroundColor = 'red';
-      btn.style.borderColor = 'red';
-    }
-    if(isCorrect && !selected) {
-      btn.style.borderColor = 'red';
-    }
-    else {
-      btn.style.border = 'none';
-    }
+    const CORRECT = 'green';
+    const INCORRECT = 'red';
+    const INDETERMINANT  = 'blue'
+    btn.style.border = 'none';
+    if(btn.style.backgroundColor === INDETERMINANT) selected = true;
+    if(isKey && selected) btn.style.backgroundColor = CORRECT;
+    else if(!isKey && selected) btn.style.backgroundColor = INCORRECT;
+    else if(isKey && !selected) btn.style.border = `1px solid ${INCORRECT}`
   }
 }
