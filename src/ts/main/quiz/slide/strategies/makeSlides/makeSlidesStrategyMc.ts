@@ -1,4 +1,3 @@
-import { isRandom, shuffle } from '../../../../utilities';
 import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
@@ -13,8 +12,6 @@ export function makeSlidesStrategyMc(
   doc: Document,
   slide: SlideInterface
 ) {
-  const shuffleFlag = isExercise && isRandom();
-  if (shuffleFlag) options = shuffle(options);
   const html = createHtml(txt, options);
   createPageContent(html, doc);
   const numOptions = options.length;
