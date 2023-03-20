@@ -3,7 +3,7 @@ import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeMa } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
-import {INDETERMINANT, CORRECT, INCORRECT} from '../../../../MarkupColors';
+import {INDETERMINANT} from '../../../../MarkupColors';
 export function makeSlidesStrategyMa(
   txt: string,
   options: string[],
