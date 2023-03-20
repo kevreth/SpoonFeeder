@@ -117,7 +117,8 @@ export function intersection<T>(arrA: Array<T>, arrB: Array<T>): Array<T> {
   return _.intersection(arrA, arrB);
 }
 export function shuffle<T>(data: Array<T>): Array<T> {
-  return _.shuffle(data);
+  const shuffled = _.shuffle(data)
+  return shuffled;
 }
 export function escape(data: string): string {
   return _.escape(data);

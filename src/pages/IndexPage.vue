@@ -14,7 +14,7 @@ sessionStorage.clear();
 
 //===========================================================================
 // un-comment for TESTING
-sessionStorage.setItem('random', 'false');
+sessionStorage.setItem('random', 'true');
 //===========================================================================
 // const courseName = 'history';
 const courseName = 'test';

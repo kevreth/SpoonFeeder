@@ -39,6 +39,7 @@ export class ProcessJson {
     isExercise: boolean
   ): Array<SlideInterface> {
     if (typeof questions !== 'undefined') {
+      if (isRandom() && isExercise) questions = shuffle(questions);
       const processedSlides = new Array<SlideInterface>();
       questions.forEach((item) => {
         item.isExercise = isExercise;
@@ -46,7 +47,6 @@ export class ProcessJson {
         if (Array.isArray(slides)) processedSlides.push(...slides);
         else processedSlides.push(slides);
       });
-      if (isRandom() && isExercise) questions = shuffle(questions);
       slides = slides.concat(processedSlides);
     }
     return slides;
