@@ -1,12 +1,15 @@
 import { removeListener } from '../../../utilities';
+import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
-import type { MakeSlidesTypeMa } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Mc extends Slide {
   o: string[] = [];
   processJson(json: Mc): void {
     ({ txt: this.txt, o: this.o, isExercise: this.isExercise } = json);
     this.ans = this.o[0];
+    const shuffleFlag = this.isExercise && isRandom();
+    if (shuffleFlag) this.o = shuffle(this.o);
   }
   makeSlides(doc: Document): void {
     const isExercise = this.isExercise;
@@ -14,7 +17,7 @@ export class Mc extends Slide {
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt;
     const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMa;
+    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMc;
     makeSlidesStrategy(
       txt,
       options,

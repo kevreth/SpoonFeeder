@@ -2,6 +2,7 @@ import { removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
+import { isRandom, shuffle } from '../../../utilities';
 export class Ma extends Slide {
   o: string[] = [];
   numans = 0;
@@ -12,6 +13,8 @@ export class Ma extends Slide {
       this.answers.push(this.o[i]);
     }
     this.ans = this.answers.sort();
+    const shuffleFlag = this.isExercise && isRandom();
+    if (shuffleFlag) this.o = shuffle(this.o);
   }
   makeSlides(doc: Document): void {
     const isExercise = this.isExercise;
