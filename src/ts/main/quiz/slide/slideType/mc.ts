@@ -37,19 +37,14 @@ export class Mc extends Slide {
     const answer = this.ans as string;
     const responseOption = options.indexOf(response);
     const answerOption = options.indexOf(answer);
-    this.mark(isCorrect, responseOption, answerOption, doc);
+    const responseButton = doc.getElementById('btn' + responseOption) as HTMLElement;
+    const answerButton = doc.getElementById('btn' + answerOption) as HTMLElement;
+    this.mark(isCorrect, responseButton, answerButton);
     return isCorrect;
   }
-  mark(isCorrect: boolean, responseOption: number, answerOption:number, doc: Document) {
-    const optionButton = doc.getElementById('btn' + responseOption) as HTMLElement;
+  mark(isCorrect: boolean, responseButton: HTMLElement, answerButton:HTMLElement) {
     let color = 'red';
-    if(isCorrect) {
-      color = 'green';
-    }
-    else {
-      const answerButton = doc.getElementById('btn' + answerOption) as HTMLElement;
-      answerButton.style.borderColor = 'red';
-    }
-    optionButton.style.backgroundColor = color;
+    isCorrect ? color = 'green' : answerButton.style.borderColor = 'red';
+    responseButton.style.backgroundColor = color;
   }
 }
