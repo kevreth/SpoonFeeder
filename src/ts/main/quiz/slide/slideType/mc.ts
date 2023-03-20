@@ -31,8 +31,11 @@ export class Mc extends Slide {
   }
   decorate(doc: Document) {
     const options = this.o;
-    for (let i = 0; i < options.length; i++)
-      removeListener(doc.getElementById('btn' + i) as HTMLElement);
+    for (let i = 0; i < options.length; i++) {
+      const btn = doc.getElementById('btn' + i) as HTMLElement;
+      removeListener(btn);
+      btn.style.border = 'none';
+    }
     const isCorrect = this.result() as boolean;
     const response = this.getRes() as string;
     const answer = this.ans as string;
@@ -45,7 +48,7 @@ export class Mc extends Slide {
   }
   mark(isCorrect: boolean, responseButton: HTMLElement, answerButton:HTMLElement) {
     let color = INCORRECT;
-    isCorrect ? color = CORRECT : answerButton.style.borderColor = INCORRECT;
+    isCorrect ? color = CORRECT : answerButton.style.border = `1px solid ${INCORRECT}`;
     responseButton.style.backgroundColor = color;
   }
 }
