@@ -3,9 +3,8 @@ import type { CreateHtmlTypeInfo } from '../strategies/createHtmlStrategy';
 import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy';
 export class Info extends Slide {
   decorate(doc: Document): boolean {
-    this.getAns();
     doc.getRootNode();
-    throw new Error('Method not implemented.');
+    return true;
   }
   processJson(json: Info): void {
     ({ txt: this.txt } = json);
