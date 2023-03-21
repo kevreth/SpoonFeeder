@@ -17,6 +17,15 @@ sessionStorage.clear();
 sessionStorage.setItem('random', 'true');
 //===========================================================================
 // const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'history';
+// const courseName = 'aws-review';
 const courseName = 'test';
 Quiz.slides(courseName, document);
 </script>
