@@ -79,6 +79,10 @@ button {
     transform: translateX(0);
   }
 }
+/* .icon {
+  display: inline-block;
+  font-size: 25px;
+} */
 .continueBtn, .hljs, table, .container, .shape, #gaps, #fills, #text {
   animation: transitionIn 0.5s;
 }
