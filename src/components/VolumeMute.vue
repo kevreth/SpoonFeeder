@@ -31,9 +31,8 @@ function soundControl() {
   if (!props.volume) {
     muteCorrectAudio()
     muteWrongAudio()
-  } else if (props.volume) {
-    playCorrectAudio()
-    playWrongAudio()
+  } else {
+    return true;
   }
 }
 </script>
