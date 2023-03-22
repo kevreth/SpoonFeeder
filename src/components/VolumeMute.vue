@@ -11,7 +11,7 @@
 
 <script setup>
 // import { muteAudio } from '../ts/main/quiz/slide/audio';
-import { mute, muteAudio, playAudio } from '../ts/main/quiz/slide/audio';
+import { muteCorrectAudio, muteWrongAudio, playAudio, playCorrectAudio, playWrongAudio } from '../ts/main/quiz/slide/audio';
 // import { mute } from 'app/main/quiz/slide/audio';
 
 const props = defineProps({
@@ -29,7 +29,11 @@ function toggleVolume() {
 
 function soundControl() {
   if (!props.volume) {
-    muteAudio();
+    muteCorrectAudio()
+    muteWrongAudio()
+  } else if (props.volume) {
+    playCorrectAudio()
+    playWrongAudio()
   }
 }
 </script>
