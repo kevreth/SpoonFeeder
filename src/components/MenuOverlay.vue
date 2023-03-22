@@ -1,6 +1,8 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
 
+  <VolumeMute :volume="isMuted" @toggle-volume="toggleVolume" />
+
   <transition appear group
     enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
@@ -29,8 +31,15 @@ import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
+import VolumeMute from './VolumeMute.vue'
+
 
 const overlay = ref(false);
+const isMuted = ref(false);
+
+function toggleVolume() {
+  isMuted.value = !isMuted.value;
+}
 
 function handleOverlay() {
   overlay.value = !overlay.value;
