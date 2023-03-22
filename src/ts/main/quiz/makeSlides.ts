@@ -78,7 +78,7 @@ export function createContinueButton(
   return continue_btn;
 }
 export function makeIcon(): string {
-  return `<div class=icon>
+  return `<div id="icon" class="icon">
           <i class="material-icons" style="font-size:24px; display:flex; justify-content: space-between;">info</i>
           </div>`;
 }
