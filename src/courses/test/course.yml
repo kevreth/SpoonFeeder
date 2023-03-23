@@ -10,11 +10,23 @@ units:
       - type: info
         txt: "$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$$"
       - type: info
-        txt: "  <pre><code>class MyClass {\r\n    public static myValue: string;\r\n
-          \   constructor(init: string) {\r\n        this.myValue = init;\r\n    }\r\n}\r\nimport
-          fs = require(\"fs\");\r\nmodule MyModule {\r\n    export interface MyInterface
-          extends Other {\r\n        myProperty: any;\r\n    }\r\n}\r\ndeclare magicNumber
-          number;\r\nmyArray.forEach(() => { }); // fat arrow syntax</code></pre>"
+        txt: |
+          ----
+          class MyClass {
+            public static myValue: string;
+              constructor(init: string) {
+                this.myValue = init;
+              }
+          }
+          import fs = require(\"fs\");
+          module MyModule {
+            export interface MyInterface extends Other {
+              myProperty: any;
+            }
+          }
+          declare magicNumber number;
+          myArray.forEach(() => { }); // fat arrow syntax
+          ----
       - type: info
         txt: Sample table {{{table "english"}}}
       - type: bool
