@@ -79,7 +79,7 @@ export function createContinueButton(
 }
 export function makeIcon(): string {
   return `<div id="icon" class="icon">
-          <i class="material-icons" style="font-size:24px; display:flex; justify-content: space-between;">info</i>
+          <i class="info-icon material-icons">info</i>
           </div>`;
 }
 export function startOverButton(doc: Document) {

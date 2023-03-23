@@ -8,7 +8,7 @@ export function createPageContent(html: string, doc: Document): void {
   }
   const icon = doc.getElementById('icon') as HTMLElement | null;
   if (icon != null) {
-    icon.remove(); // Removes the div with the 'div-02' id
+    icon.remove();
   }
   empty('#content');
   append('#content', html);
