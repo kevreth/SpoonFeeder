@@ -1,6 +1,6 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
-
+  <ExplainIcon></ExplainIcon>
   <transition appear group
     enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
@@ -29,6 +29,7 @@ import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
+import ExplainIcon from './ExplainIcon.vue';
 
 const overlay = ref(false);
 
