@@ -6,6 +6,7 @@ import {
   intersection,
   isEqual,
   makeButton,
+  adoc2markdown
 } from '../main/utilities';
 const testArr1 = [1, 2];
 const testArr2 = [2, 3];
@@ -51,4 +52,22 @@ it('getChildIds', () => {
   expect(ids).not.to.be.empty;
   expect(ids.length).toBe(4);
   expect(ids[2]).toBe('div-no-3');
+});
+it('test adoc2markdown', () => {
+  const txt = `
+
+== Document Title
+
+  * This is a list item.
+  ** This is another list item.
+
+    . item1
+    . item2
+    . This is _italics_.
+    . This is *boldface*.
+  `;
+  const act = adoc2markdown(txt);
+  expect(act).not.toBeNull();
+  expect(act).toContain('## Document Title');
+  expect(act).toContain('4. This is **boldface**.');
 });

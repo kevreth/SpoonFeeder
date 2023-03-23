@@ -3,6 +3,7 @@ import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
 import type { Course } from './quiz/course';
+import downdoc from 'downdoc';
 export function getYaml(filename: string, f: (data: Course) => void) {
   Handlebars.registerHelper('table', function (aString) {
     return `<div id="table0"></div><script>$('#table0').load("src/courses/test/${aString}.html")</script>`;
@@ -82,6 +83,9 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
   const predicate = '#' + parent + ' [id]';
   const list: NodeListOf<Element> = doc.querySelectorAll(predicate);
   return Array.from(list).map(({ id }) => id);
+}
+export function adoc2markdown(text: string): string {
+  return downdoc(text);
 }
 // ================================ Date ======================================
 export function convertTwoDigits(dateItem: number) {
