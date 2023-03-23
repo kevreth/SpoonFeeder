@@ -9,7 +9,13 @@ export class Ma extends Slide {
   numans = 0;
   answers:string[] = [];
   processJson(json: Ma): void {
-    ({ txt: this.txt, o: this.o, isExercise: this.isExercise, numans: this.numans} = json);
+    ({
+      txt: this.txt,
+      o: this.o,
+      exp: this.exp,
+      ref: this.ref,
+      isExercise: this.isExercise,
+      numans: this.numans} = json);
     for(let i=0; i<this.numans; i++) {
       this.answers.push(this.o[i]);
     }

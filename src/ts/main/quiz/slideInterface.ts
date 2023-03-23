@@ -12,6 +12,8 @@ export interface SlideInterface {
   txt: string;
   type: string;
   cont: boolean;
+  exp: string;
+  ref: string;
   isExercise: boolean;
   pageTemplate: string;
   createHtml: CreateHtmlTypeIntersection;

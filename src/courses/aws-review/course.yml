@@ -19,7 +19,7 @@ units:
         - AWS Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser
         - AWS CodeDeploy is a deployment service that automates application deployments to Amazon EC2 instances, on-premises instances, or serverless Lambda functions
         ref:
-        - https://digita:lcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/
+        - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/additional-aws-services-tools/
         - https://aws.amazon.com/codecommit/
         - https://aws.amazon.com/codestar/
         - https://aws.amazon.com/cloud9/

@@ -17,6 +17,8 @@ export abstract class Slide implements SlideInterface {
   txt!: string;
   ans!: AnswerType;
   res!: AnswerType;
+  exp!: string;
+  ref!: string;
   cont = false;
   public pageTemplate = `
     <div id="slide">

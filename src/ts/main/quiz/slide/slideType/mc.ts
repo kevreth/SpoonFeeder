@@ -7,7 +7,13 @@ import { CORRECT, INCORRECT} from '../../../MarkupColors';
 export class Mc extends Slide {
   o: string[] = [];
   processJson(json: Mc): void {
-    ({ txt: this.txt, o: this.o, isExercise: this.isExercise } = json);
+    ({
+      txt: this.txt,
+      o: this.o,
+      exp: this.exp,
+      ref: this.ref,
+      isExercise: this.isExercise
+     } = json);
     this.ans = this.o[0];
     const shuffleFlag = this.isExercise && isRandom();
     if (shuffleFlag) this.o = shuffle(this.o);
