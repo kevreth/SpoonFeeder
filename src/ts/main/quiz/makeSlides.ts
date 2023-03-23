@@ -1,6 +1,6 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
-import { makeButton } from '../utilities';
+import { adoc2markdown, makeButton, markdown2html } from '../utilities';
 import { evaluate } from './evaluate';
 import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
@@ -10,7 +10,18 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-
+    if (typeof slide !== 'undefined') {
+      if(typeof slide.txt !== 'undefined') {
+        console.log(slide.txt);
+        slide.txt = adoc2markdown(slide.txt);
+        console.log(slide.txt);
+        slide.txt = markdown2html(slide.txt);
+        console.log(slide.txt);
+        if(typeof slide.exp !== 'undefined') slide.exp = adoc2markdown(slide.exp);
+        if(typeof slide.ref !== 'undefined') slide.ref = adoc2markdown(slide.ref);
+      }
+    }
+    //consider moving to else clause below
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     else {

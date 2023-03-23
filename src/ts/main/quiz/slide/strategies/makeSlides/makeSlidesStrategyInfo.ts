@@ -26,7 +26,7 @@ function conclude(slide: SlideInterface, doc: Document, txt: string) {
 //vertically.
 function showButton(doc: Document, txt: string): void {
   const container = 'content';
-  const continue_btn = createContinueButton(doc, container, '<br>');
+  const continue_btn = createContinueButton(doc, container, '');
   continue_btn.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
     MakeSlides.showSlides(doc);

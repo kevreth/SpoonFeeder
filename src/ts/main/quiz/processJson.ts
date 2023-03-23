@@ -31,7 +31,7 @@ export class ProcessJson {
   }
   private static titleSlideText(type: string, counter: number, name: string) {
     counter++;
-    return `${type} ${counter}:<br>${name}`;
+    return `${type} ${counter} +\n ${name}`;
   }
   private static loadQuestions(
     slides: Array<SlideInterface>, //the currently processed slides

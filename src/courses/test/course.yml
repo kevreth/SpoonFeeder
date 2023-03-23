@@ -18,7 +18,17 @@ units:
       - type: info
         txt: Sample table {{{table "english"}}}
       - type: bool
-        txt: 'yes'
+        txt: |
+          yes
+          == Document Title
+
+          * This is a list item.
+          ** This is another list item.
+
+          . item1
+          . item2
+          . This is _italics_.
+          . This is *boldface*.
         ans: 'yes'
       - type: bool
         txt: 'no'
