@@ -1,5 +1,12 @@
 import { parseQuery } from 'vue-router';
-import {existVisibleNotEmpty,elementContains,testButton,existAndVisible,continueButton,dragDrop} from './functions';
+import {
+  existVisibleNotEmpty,
+  elementContains,
+  testButton,
+  existAndVisible,
+  continueButton,
+  dragDrop
+} from './functions';
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
 describe('Cypress Testing', () => {
@@ -7,7 +14,7 @@ describe('Cypress Testing', () => {
     cy.visit('/');
     cy.title().should('eq', 'CyberLearning');
     //mute audio during testss
-    localStorage.setItem('mute','true');
+    sessionStorage.setItem('mute','true');
 
     //course title
     existVisibleNotEmpty('body');
