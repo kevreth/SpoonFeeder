@@ -49,6 +49,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/jsdom": "^21.1.0",
     "@types/lodash": "^4.14.191",
+    "@types/marked": "^4.0.8",
     "@types/node": "^18.15.5",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
