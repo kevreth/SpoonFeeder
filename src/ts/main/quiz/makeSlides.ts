@@ -1,6 +1,6 @@
 import reloadPage from '../../../composables/startOver';
 import { Json } from '../globals';
-import { adoc2markdown, makeButton, markdown2html } from '../utilities';
+import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
 import { Slide } from './slide';
 import { SaveData } from './slide/saveData';
@@ -10,18 +10,6 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    if (typeof slide !== 'undefined') {
-      if(typeof slide.txt !== 'undefined') {
-        console.log(slide.txt);
-        slide.txt = adoc2markdown(slide.txt);
-        console.log(slide.txt);
-        slide.txt = markdown2html(slide.txt);
-        console.log(slide.txt);
-        if(typeof slide.exp !== 'undefined') slide.exp = adoc2markdown(slide.exp);
-        if(typeof slide.ref !== 'undefined') slide.ref = adoc2markdown(slide.ref);
-      }
-    }
-    //consider moving to else clause below
     const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     else {
@@ -30,14 +18,19 @@ export class MakeSlides {
       let contFlag = false;
       if (savedFlag) contFlag = saves[idx].cont;
       if (contFlag) {
+        // console.log('reload ', slide.txt.slice(0, 6), Json.count());
         MakeSlides.reloadSlide(slide, idx);
         MakeSlides.showSlides(doc);
       } else if (savedFlag) {
+        // console.log('saved ', slide.txt.slice(0, 6), Json.count());
         MakeSlides.reloadSlide(slide, idx);
         slide.makeSlides(doc);
         slide.decorate(doc);
         showButton(doc, slide.txt);
-      } else slide.makeSlides(doc);
+      } else {
+        // console.log('make ', slide.txt.slice(0, 6), Json.count());
+        slide.makeSlides(doc);
+      }
     }
   }
   //The slide has already been presented to the user, as will happen on reload.

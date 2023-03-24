@@ -10,7 +10,6 @@
 import { Quiz } from '../ts/main/quiz';
 import '../css/style1.css';
 import '../css/quasar.css'
-import '../css/highlight.min.css'
 sessionStorage.clear();
 
 //===========================================================================
