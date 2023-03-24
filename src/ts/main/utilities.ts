@@ -55,14 +55,14 @@ export function setMute() {
 export function clearMute() {
   clearSessionStorageFlag('mute');
 }
+export function isMute(): boolean {
+  return checkSessionStorageFlag('mute');
+}
 export function setRandom() {
   setSessionStorageFlag('random');
 }
 export function clearRandom() {
   clearSessionStorageFlag('random');
-}
-export function isMute(): boolean {
-  return checkSessionStorageFlag('mute');
 }
 export function isRandom(): boolean {
   return checkSessionStorageFlag('random');
