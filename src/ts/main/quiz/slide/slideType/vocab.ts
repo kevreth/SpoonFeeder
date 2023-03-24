@@ -1,6 +1,7 @@
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
 import { CreateHtml } from '../strategies/createHtmlStrategy';
 import { Evaluate } from '../strategies/evaluateStrategy';
@@ -38,6 +39,10 @@ export class Vocab extends Slide {
       slide.isExercise = this.isExercise;
       this.set.push(slide);
     });
+    this.accept(new AdocVisitor())
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitVocab(this);
   }
   getSlideSet(): SlideInterface[] {
     return this.set;

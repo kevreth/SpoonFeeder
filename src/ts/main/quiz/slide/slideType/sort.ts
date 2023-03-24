@@ -1,8 +1,13 @@
 import { Slide } from '../../slide';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 import type { MakeSlidesTypeSort } from '../strategies/makeSlidesStrategy';
 export class Sort extends Slide {
   processJson(json: Sort): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+    this.accept(new AdocVisitor());
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitSort(this);
   }
   makeSlides(doc: Document): void {
     const txt = this.txt;

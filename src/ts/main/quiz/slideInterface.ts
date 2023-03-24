@@ -1,4 +1,5 @@
 import type { Evaluation } from './evaluate';
+import { AdocVisitorInterface } from './slide/adocVisitor';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -23,6 +24,7 @@ export interface SlideInterface {
   //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
   processJson(json: SlideInterface): void;
+  accept(visitor: AdocVisitorInterface): void
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;
   //Evaluate user responses at the end of quiz
