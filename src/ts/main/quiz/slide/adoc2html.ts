@@ -14,7 +14,7 @@ export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // 2) transform asciidoctor to markdown via downdoc
 // 3) transform markdown to HTML via marked
 // 4) restore the stored Handlebars templates
-// 5_ process the Handlebars templates
+// 5) process the Handlebars templates
 export function adoc2html(str: string): string {
   const arr = replaceMustache(str);
   let txt = arr.shift() as string;
