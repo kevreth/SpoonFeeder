@@ -7,7 +7,7 @@ describe('Cypress Testing', () => {
     cy.visit('/');
     cy.title().should('eq', 'CyberLearning');
     //mute audio during testss
-    localStorage.setItem('mute','true'); 
+    localStorage.setItem('mute','true');
 
     //course title
     existVisibleNotEmpty('body');
@@ -53,6 +53,11 @@ describe('Cypress Testing', () => {
     cy.get('#btn0').should('have.css', 'background-color', RED);
     testButton('#continueBtn');
 
+    //MA
+    existVisibleNotEmpty('body');
+    testButton('#btn'); //done
+    testButton('#continueBtn');
+
     //vocab
     testButton('#btn0');
     existVisibleNotEmpty('body');
@@ -65,7 +70,7 @@ describe('Cypress Testing', () => {
     testButton('#btn3');
     testButton('#continueBtn');
     testButton('#btn0');
-    continueButton(15);
+    continueButton(16);
 
     //sort
     existVisibleNotEmpty('body');
@@ -148,15 +153,15 @@ describe('Cypress Testing', () => {
     existVisibleNotEmpty('body');
     cy.contains('learn the periodic table');
     testButton('#btn0');
-    continueButton(22);
+    continueButton(23);
 
     //results
     existVisibleNotEmpty('body');
     cy.contains('b,a,c,d');
     cy.contains('blue');
-    cy.contains('NUMBER OF QUESTIONS: 16');
+    cy.contains('NUMBER OF QUESTIONS: 17');
     cy.contains('NUMBER CORRECT: 10');
-    cy.contains('PERCENT CORRECT: 63%');
+    cy.contains('PERCENT CORRECT: 59%');
     // cy.wait(20000);
     cy.contains('15.');
     cy.contains('ans');

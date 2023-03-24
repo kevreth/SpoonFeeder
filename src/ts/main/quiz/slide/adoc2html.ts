@@ -49,12 +49,24 @@ export function replaceMustache(str: string): string[] {
   return replacedStrings;
 }
 export function register(course: string) {
-  Handlebars.registerHelper('table', function (aString) {
-    return `<div id="table0"></div><script>$('#table0').load("src/courses/${course}/${aString}.html")</script>`;
-  });
-  Handlebars.registerHelper('svg', function (aString) {
-    return `<img src="src/courses/${course}/${aString}.svg" class="mcButton" width = "100" height="auto"/>`;
-  });
+  Handlebars.registerHelper('table', registerTable(course));
+  Handlebars.registerHelper('svg', registerSvg(course));
+}
+function registerTable(course: string): Handlebars.HelperDelegate {
+  return function (filename) {
+    return tableString(course, filename);
+  };
+}
+function tableString(course: string, filename: string): string {
+  return `<div id="table0"></div><script>$('#table0').load("src/courses/${course}/${filename}.html")</script>`;
+}
+function registerSvg(course: string): Handlebars.HelperDelegate {
+  return function (filename) {
+    return svgString(course, filename);
+  };
+}
+function svgString(course: string, filename: string): string {
+  return `<img src="src/courses/${course}/${filename}.svg" class="mcButton" width = "100" height="auto"/>`;
 }
 export function adoc2markdown(text: string): string {
   return downdoc(text);
