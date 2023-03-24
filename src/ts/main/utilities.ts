@@ -1,21 +1,13 @@
-import Handlebars from 'handlebars';
+// import Handlebars from 'handlebars';
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
 import type { Course } from './quiz/course';
 export function getYaml(filename: string, f: (data: Course) => void) {
-  Handlebars.registerHelper('table', function (aString) {
-    return `<div id="table0"></div><script>$('#table0').load("src/courses/test/${aString}.html")</script>`;
-  });
-  Handlebars.registerHelper('svg', function (aString) {
-    return `<img src="src/courses/test/${aString}.svg" class="mcButton" width = "100" height="auto"/>`;
-  });
   fetch(filename)
     .then((res) => res.blob())
     .then((blob) => blob.text())
     .then((yamlAsString) => {
-      const template = Handlebars.compile(yamlAsString);
-      yamlAsString = template({});
       const yml = yaml.load(yamlAsString) as Course;
       f(yml);
     })

@@ -57,13 +57,13 @@ function registerTable(course: string): Handlebars.HelperDelegate {
     return tableString(course, filename);
   };
 }
-function tableString(course: string, filename: string): string {
-  return `<div id="table0"></div><script>$('#table0').load("src/courses/${course}/${filename}.html")</script>`;
-}
 function registerSvg(course: string): Handlebars.HelperDelegate {
   return function (filename) {
     return svgString(course, filename);
   };
+}
+function tableString(course: string, filename: string): string {
+  return `<div id="table0"></div><script>$('#table0').load("src/courses/${course}/${filename}.html")</script>`;
 }
 function svgString(course: string, filename: string): string {
   return `<img src="src/courses/${course}/${filename}.svg" class="mcButton" width = "100" height="auto"/>`;
