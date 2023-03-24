@@ -7,12 +7,17 @@ import { CORRECT, INCORRECT } from '../../../MarkupColors';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide {
   processJson(json: Gap): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+    this.accept(new AdocVisitor())
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitGap(this);
   }
   makeSlides(doc: Document): void {
     const txt = this.txt;
