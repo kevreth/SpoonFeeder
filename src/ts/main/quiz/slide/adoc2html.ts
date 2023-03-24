@@ -26,7 +26,7 @@ export function adoc2html(str: string): string {
   return txt;
 }
 export function processMustache(txt: string) {
-  register();
+  register('test'); // BUG: needs to receive the course name
   const template = Handlebars.compile(txt);
   txt = template({});
   return txt;
@@ -48,13 +48,12 @@ export function replaceMustache(str: string): string[] {
   replacedStrings.unshift(outputString);
   return replacedStrings;
 }
-// BUG: needs to receive the course name
-export function register() {
+export function register(course: string) {
   Handlebars.registerHelper('table', function (aString) {
-    return `<div id="table0"></div><script>$('#table0').load("src/courses/test/${aString}.html")</script>`;
+    return `<div id="table0"></div><script>$('#table0').load("src/courses/${course}/${aString}.html")</script>`;
   });
   Handlebars.registerHelper('svg', function (aString) {
-    return `<img src="src/courses/test/${aString}.svg" class="mcButton" width = "100" height="auto"/>`;
+    return `<img src="src/courses/${course}/${aString}.svg" class="mcButton" width = "100" height="auto"/>`;
   });
 }
 export function adoc2markdown(text: string): string {
