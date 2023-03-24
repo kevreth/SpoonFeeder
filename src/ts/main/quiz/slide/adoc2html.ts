@@ -25,7 +25,6 @@ export function adoc2html(str: string): string {
   txt = processMustache(txt);
   return txt;
 }
-
 export function processMustache(txt: string) {
   register();
   const template = Handlebars.compile(txt);
@@ -49,6 +48,7 @@ export function replaceMustache(str: string): string[] {
   replacedStrings.unshift(outputString);
   return replacedStrings;
 }
+// BUG: needs to receive the course name
 export function register() {
   Handlebars.registerHelper('table', function (aString) {
     return `<div id="table0"></div><script>$('#table0').load("src/courses/test/${aString}.html")</script>`;
