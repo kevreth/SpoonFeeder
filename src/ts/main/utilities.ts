@@ -24,7 +24,6 @@ export function getYaml(filename: string, f: (data: Course) => void) {
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
-
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
