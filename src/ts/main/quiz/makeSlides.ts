@@ -71,17 +71,11 @@ export function createContinueButton(
   prefix: string
 ) {
   const button = makeButton('continueBtn', 'continueBtn', 'continue');
-  // const icon = makeIcon();
   const slide = doc.getElementById(container) as HTMLElement;
   slide.insertAdjacentHTML('beforeend', prefix + button);
   const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   return continue_btn;
 }
-// export function makeIcon(): string {
-//   return `<div id="icon" class="icon">
-//           <i class="info-icon material-icons">info</i>
-//           </div>`;
-// }
 export function startOverButton(doc: Document) {
   const startOverText = makeButton('startOver', 'startOver', 'Start Over');
   doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);

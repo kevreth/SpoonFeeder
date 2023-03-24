@@ -9,12 +9,11 @@
 <style>
 .explainIcon {
   position: absolute;
- /* display: flex; */
- top: 20px;
- right: 80px;
- /* margin-right: auto; */
- /* right: -16px; */
- /* z-index: 1; */
+ top: 25px;
+ right: 100px;
  cursor: pointer;
 }
+.explainIcon:hover {
+  transform: scale(1.7);
+} 
 </style>

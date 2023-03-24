@@ -1,6 +1,11 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
-  <ExplainIcon></ExplainIcon>
+  <ExplainIcon @click="handleExpOverlay"/>
+  <ExpTable 
+    v-model="expOverlay"
+    @closeInfo="expOverlay = false"
+  />
+
   <transition appear group
     enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
@@ -30,13 +35,20 @@ import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
 import ExplainIcon from './ExplainIcon.vue';
+import ExpTable from './ExpTable.vue';
 
 const overlay = ref(false);
+const expOverlay = ref(false);
 
+// handle overlay pages
+function handleExpOverlay() {
+  expOverlay.value = !expOverlay.value;
+}
 function handleOverlay() {
   overlay.value = !overlay.value;
 }
 
+// start over functionality
 function startOver() {
   const { clear, reload } = getStartOver();
   return { clear, reload };

@@ -15,7 +15,7 @@
             CPL: completion: COM/TOT * 100%
           </p>
   
-          <ExitBtn @click="closeInfo" />
+          <ExitBtn @click="closeInfo" color="secondary" />
         </div>
       </template>
     </q-overlay>
