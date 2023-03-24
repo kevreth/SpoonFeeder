@@ -1,19 +1,19 @@
 import Handlebars from 'handlebars';
 import downdoc from 'downdoc';
 import {marked} from 'marked';
-const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
-//Problems solved:
-//1) Asciidoctor.js will not run in Vue environment.
-//2) downdoc transforms asciidoctor to Markdown but
-//marked, the markdown transformer, transforms every
-//special character it sees to character references
-//3) #2 ruins Mustache templates
-//To solve this we
-//1) pull out every Handlebars template and store them in
-//an array with the transformed string in the first position
-//2) transform asciidoctor to markdown via downdoc
-//3) transform markdown to HTML via marked
-//4) restore the stored Handlebars templates.
+export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
+// Problems solved:
+// 1) Asciidoctor.js will not run in Vue environment.
+// 2) downdoc transforms asciidoctor to Markdown but
+// marked, the markdown transformer, transforms every
+// special character it sees to character references
+// 3) #2 ruins Mustache templates
+// To solve this we
+// 1) pull out every Handlebars template and store them in
+// an array with the transformed string in the first position
+// 2) transform asciidoctor to markdown via downdoc
+// 3) transform markdown to HTML via marked
+// 4) restore the stored Handlebars templates.
 export function adoc2html(str: string): string {
   const arr = replaceMustache(str);
   let txt = arr.shift() as string;
@@ -27,7 +27,7 @@ export function adoc2html(str: string): string {
 }
 //The first element is the string with replaced text.
 //The remainder are the replacements in order.
-function replaceMustache(str: string): string[] {
+export function replaceMustache(str: string): string[] {
   const replacedStrings = [];
   const outputString = str.replace(/{{{[\s\S]*?}}}/g, (match) => {
     replacedStrings.push(match);
