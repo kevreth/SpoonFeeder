@@ -13,14 +13,27 @@ export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // an array with the transformed string in the first position
 // 2) transform asciidoctor to markdown via downdoc
 // 3) transform markdown to HTML via marked
-// 4) restore the stored Handlebars templates.
+// 4) restore the stored Handlebars templates
+// 5_ process the Handlebars templates
 export function adoc2html(str: string): string {
   const arr = replaceMustache(str);
   let txt = arr.shift() as string;
   txt = adoc2markdown(txt as string);
   txt = markdown2html(txt);
+  txt = restoreMustache(arr, txt);
+  //consider adding a beautification step
+  txt = processMustache(txt);
+  return txt;
+}
+
+export function processMustache(txt: string) {
+  register();
+  const template = Handlebars.compile(txt);
+  txt = template({});
+  return txt;
+}
+export function restoreMustache(arr: string[], txt: string) {
   arr.forEach((item) => {
-    console.log(item);
     txt = txt.replace(RANDOM, item);
   });
   return txt;
