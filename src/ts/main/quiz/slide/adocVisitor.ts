@@ -34,7 +34,6 @@ export class AdocVisitor implements AdocVisitorInterface {
   visitMc(clazz: Mc): void {
     clazz.txt = adoc2html(clazz.txt);
     clazz.o = clazz.o.map((item) => {
-      console.log(item);
       if(typeof item === 'string')
         item = adoc2html(item);
       return item;

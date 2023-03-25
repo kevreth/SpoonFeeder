@@ -14,9 +14,9 @@ class Test extends SlideTest {
     const testable = test.getTestable() as Mc;
     testable.processJson(param);
     expect(testable.type).toEqual(param.type);
-    expect(testable.txt).toEqual(param.txt);
-    expect(testable.ans).toEqual(param.ans);
-    expect(testable.o).toEqual(param.o);
+    expect(testable.txt).toEqual(`<p>${param.txt}</p>\n`);
+    expect(testable.ans).toEqual(`<p>${param.ans}</p>\n`);
+    expect(testable.o).toEqual(['<p>yes</p>\n','<p>no</p>\n']);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide {

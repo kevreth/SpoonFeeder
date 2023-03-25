@@ -28,7 +28,7 @@ units:
           myArray.forEach(() => { }); // fat arrow syntax
           ----
       - type: info
-        txt: Sample table {{{table "english"}}}
+        txt: Sample table table=english
       - type: bool
         txt: 'yes'
         ans: 'yes'
@@ -47,23 +47,23 @@ units:
         list:
           active: something that is currently in use
           alley: a narrow road between buildings
-          award: {{{svg "award"}}}
+          award: svg=award
           beat: like win, but requires an object, the team or person who lost, when used in the active voice
           beginner: someone starting to learn a skill
       - type: sort
         txt: sort
         ans: [a, b, c, d]
       - type: imap
-        txt: choose blue {{{svg "blue"}}}
-        img: "src/courses/test/imap.svg"
+        txt: choose blue svg=blue
+        img: 'src/courses/test/imap.svg'
         ans: blue
       - type: mc
         txt: Choose the bus.
         o:
-        - {{{svg "bus"}}}
-        - {{{svg "car"}}}
-        - {{{svg "plane"}}}
-        - {{{svg "train"}}}
+        - svg=bus
+        - svg=car
+        - svg=plane
+        - svg=train
       - type: gap
         txt: text (1) text (2) text (3)
         ans: [ans1,ans2,ans3]

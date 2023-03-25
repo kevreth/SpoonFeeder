@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import downdoc from 'downdoc';
 import {marked} from 'marked';
+import { substitute } from './handlebars';
 export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // Problems solved:
 // 1) Asciidoctor.js will not run in Vue environment.
@@ -16,12 +17,14 @@ export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // 4) restore the stored Handlebars templates
 // 5) process the Handlebars templates
 export function adoc2html(str: string): string {
+  if(typeof str === 'undefined') return '';
   const arr = replaceMustache(str);
   let txt = arr.shift() as string;
   txt = adoc2markdown(txt as string);
   txt = markdown2html(txt);
   txt = restoreMustache(arr, txt);
   //consider adding a beautification step
+  txt = substitute(txt);
   txt = processMustache(txt);
   return txt;
 }

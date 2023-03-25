@@ -15,7 +15,7 @@ class Test extends SlideTest {
     testable.img = 'img';
     testable.processJson(param);
     expect(testable.type).toEqual(param.type);
-    expect(testable.txt).toEqual(param.txt);
+    expect(testable.txt).toEqual(`<p>${param.txt}</p>\n`);
     expect(testable.ans).toEqual(param.ans);
     expect(testable.img).toEqual(param.img);
     expect(testable.isExercise).toEqual(param.isExercise);
