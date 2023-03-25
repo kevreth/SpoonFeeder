@@ -75,5 +75,5 @@ export function adoc2markdown(text: string): string {
   return downdoc(text);
 }
 export function markdown2html(text: string): string {
-  return marked(text);
+  return marked.parseInline(text);
 }
