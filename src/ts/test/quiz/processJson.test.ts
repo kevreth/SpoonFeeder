@@ -49,6 +49,6 @@ it('testProcessSlides', () => {
   expect(slide).toBeDefined();
   expect(slide).not.to.be.empty;
   expect(slide).toBeInstanceOf(Mc);
-  expect((slide as Mc).o[0]).toBe('<p>o1</p>\n');
-  expect((slide as Mc).txt).toBe('<p>mc</p>\n');
+  expect((slide as Mc).o[0]).toBe('o1');
+  expect((slide as Mc).txt).toBe('mc');
 });

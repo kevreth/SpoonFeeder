@@ -13,7 +13,7 @@ class Test extends SlideTest {
     const testable = test.getTestable();
     testable.processJson(param);
     expect(testable.type).toEqual(param.type);
-    expect(testable.txt).toEqual(`<p>${param.txt}</p>\n`);
+    expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
