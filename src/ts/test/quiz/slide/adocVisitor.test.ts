@@ -1,4 +1,3 @@
-import { Arrow } from 'mathjax-full/ts/output/chtml/Notation';
 import { expect, it } from 'vitest';
 import { stdReplacement, optionsReplacement } from '../../../main/quiz/slide/adocVisitor';
 import { MA } from '../../../main/quiz/slideFactory';
