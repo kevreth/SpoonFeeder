@@ -5,7 +5,7 @@
     enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
     >
-    <q-overlay v-model="overlay" class="mainOverlay">
+    <q-overlay v-model="overlay">
       <template #body>        
         <div class="overlay fixed-center column">
           <div class="overlayBtn">
@@ -13,7 +13,7 @@
             <TrashBtn @click="startOver" />
           </div>
   
-          <div class="progressBackground bg-secondary">
+          <div class="progressBackground">
             <ProgressTable style="cursor: auto" />
           </div>
         </div>
@@ -44,7 +44,7 @@ function startOver() {
 
 <style>
 .overlay {
-  height: 60%;
+  height: 90%;
 }
 .progressBackground {
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -52,6 +52,7 @@ function startOver() {
   border-radius: 10px;
   overflow: auto;
 }
+
 .overlayBtn {
   color: #fc3d08;
   font-size: 25px;

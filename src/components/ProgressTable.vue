@@ -10,8 +10,9 @@
     />
 
     <q-hierarchy
-      class="progressTable"
+      class="progressTable center"
       dense
+      flat
       :columns="columns"
       :data="data"
       :classes="classes"
@@ -19,7 +20,7 @@
       :default-expand-all="(default_expand_all = true)"
     >
       <template v-slot:body="props">
-        <td class="text-left" data-th="Name">
+        <td class="text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
           <div v-bind:style="props.setPadding(props.item)"
                 :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
             <q-btn @click="props.toggle(props.item)" v-if="props.iconName(props.item)!='done'"
@@ -146,20 +147,26 @@ function myClass (pctCorrect, pctComplete) {
 </script>
 
 <style>
-.progressTable tbody {
-  display:contents;
-}
 .progressTable {
-  display: inline-block;
+  width: 80vw;
+  height: 80%;
   max-height: 100vh;
-  overflow: auto;
+  /* overflow: auto; */
   --scrollbarBG: #cfd8dc;
   --thumbBG: #686a6c;
   border-radius: 20px;
   margin: 0;
-}
-.progressTable {
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.progressTable thead tr th{
+  position: sticky;
+  z-index: 1;
+}
+thead tr:first-child th {
+  top: 0;
+}
+.progressTable tbody {
+  display:contents;
 }
 .progressTable::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
