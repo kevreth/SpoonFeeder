@@ -31,6 +31,7 @@ export class AdocVisitor implements AdocVisitorInterface {
   }
   visitMa(clazz: Ma): void {
     stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
   }
   visitMc(clazz: Mc): void {
     stdReplacement(clazz);
