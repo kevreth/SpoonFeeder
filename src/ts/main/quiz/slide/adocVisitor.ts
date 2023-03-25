@@ -34,11 +34,7 @@ export class AdocVisitor implements AdocVisitorInterface {
   }
   visitMc(clazz: Mc): void {
     stdReplacement(clazz);
-    clazz.o = clazz.o.map((item) => {
-      if(typeof item === 'string')
-        item = adoc2html(item);
-      return item;
-    });
+    clazz.o = optionsReplacement(clazz.o);
   }
   visitSelect(clazz: Select): void {
     stdReplacement(clazz);
@@ -57,4 +53,12 @@ export function stdReplacement(slide: SlideInterface) {
   slide.txt = adoc2html(slide.txt);
   slide.exp = adoc2html(slide.exp);
   slide.ref = adoc2html(slide.ref);
+}
+export function optionsReplacement(options: Array<string>) {
+  const retval = options.map((item) => {
+    if(typeof item === 'string')
+      item = adoc2html(item);
+    return item;
+  });
+  return retval;
 }

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { AdocVisitor } from '../../../main/quiz/slide/adocVisitor';
+import { stdReplacement } from '../../../main/quiz/slide/adocVisitor';
 import { MA } from '../../../main/quiz/slideFactory';
 it('testMa', () => {
   const clazz = MA();
@@ -16,7 +16,7 @@ it('testMa', () => {
   * ref 2
   * ref 3
   `
-  new AdocVisitor().visitMa(clazz);
+  stdReplacement(clazz);
   expect(clazz.exp).toContain('li');
   expect(clazz.exp).toContain('ol');
   expect(clazz.exp).toContain('ul');
