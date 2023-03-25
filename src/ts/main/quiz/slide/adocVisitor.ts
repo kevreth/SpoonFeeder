@@ -1,3 +1,4 @@
+import { SlideInterface } from '../slideInterface';
 import { adoc2html } from './adoc2html';
 import { Gap } from './slideType/gap';
 import { Imap } from './slideType/imap';
@@ -20,19 +21,19 @@ export interface AdocVisitorInterface {
 }
 export class AdocVisitor implements AdocVisitorInterface {
   visitGap(clazz: Gap): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
   }
   visitImap(clazz: Imap): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
   }
   visitInfo(clazz: Info): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
   }
   visitMa(clazz: Ma): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
   }
   visitMc(clazz: Mc): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
     clazz.o = clazz.o.map((item) => {
       if(typeof item === 'string')
         item = adoc2html(item);
@@ -40,10 +41,10 @@ export class AdocVisitor implements AdocVisitorInterface {
     });
   }
   visitSelect(clazz: Select): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
   }
   visitSort(clazz: Sort): void {
-    clazz.txt = adoc2html(clazz.txt);
+    stdReplacement(clazz);
   }
   visitVocab(clazz: Vocab): void {
     clazz.txt = clazz.txt;
@@ -51,4 +52,9 @@ export class AdocVisitor implements AdocVisitorInterface {
       map.set(key, adoc2html(value));
     });
   }
+}
+export function stdReplacement(slide: SlideInterface) {
+  slide.txt = adoc2html(slide.txt);
+  slide.exp = adoc2html(slide.exp);
+  slide.ref = adoc2html(slide.ref);
 }

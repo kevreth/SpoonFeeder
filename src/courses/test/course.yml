@@ -42,6 +42,16 @@ units:
       - type: ma
         txt: Choose A and C.
         o: [A, C, B, D]
+        exp: |
+          . Explanation:
+          * point 1
+          * point 2
+          * point 3
+        ref: |
+          . References:
+          * ref 1
+          * ref 2
+          * ref 3
         numans: 2
       - type: vocab
         list:
