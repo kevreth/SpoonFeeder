@@ -23,6 +23,7 @@ export class Vocab extends Slide {
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.isExercise = json.isExercise;
+    this.accept(new AdocVisitor())
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
       //using SlideFactory creates a circular dependency
@@ -39,7 +40,6 @@ export class Vocab extends Slide {
       slide.isExercise = this.isExercise;
       this.set.push(slide);
     });
-    this.accept(new AdocVisitor())
   }
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitVocab(this);
