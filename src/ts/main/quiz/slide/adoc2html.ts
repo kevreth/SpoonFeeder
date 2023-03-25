@@ -75,5 +75,9 @@ export function adoc2markdown(text: string): string {
   return downdoc(text);
 }
 export function markdown2html(text: string): string {
-  return marked.parseInline(text);
+  //marked(text) places text inside <p> tags which
+  //is usually not wanted but marked.parseInline(text)
+  //doesn't work with multi-line strings (undocumented).
+  if(text.includes('\n')) return marked(text);
+  else return marked.parseInline(text);
 }

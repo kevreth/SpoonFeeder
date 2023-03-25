@@ -47,10 +47,8 @@ export class AdocVisitor implements AdocVisitorInterface {
   }
   visitVocab(clazz: Vocab): void {
     clazz.txt = clazz.txt;
-    console.log(clazz.list);
     clazz.list.forEach((value, key, map) => {
       map.set(key, adoc2html(value));
     });
-    console.log(clazz.list);
   }
 }
