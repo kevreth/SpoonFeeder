@@ -12,13 +12,13 @@
     >
     <q-overlay v-model="overlay">
       <template #body>        
-        <div class="overlay fixed-center column">
+        <div class="overlay fixed-center column" style="display: flex; flex-direction: column;">
           <div class="overlayBtn">
             <OverlayCloseBtn @click="handleOverlay" />
             <TrashBtn @click="startOver" />
           </div>
   
-          <div class="progressBackground">
+          <div class="progressBackground" style="flex-grow: 1;">
             <ProgressTable style="cursor: auto" />
           </div>
         </div>
@@ -57,11 +57,11 @@ function startOver() {
 
 <style>
 .overlay {
-  height: 90%;
+  height: 60%;
 }
 .progressBackground {
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  height: 80%;
+  height: 70%;
   border-radius: 10px;
   overflow: auto;
 }

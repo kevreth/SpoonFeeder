@@ -144,8 +144,8 @@ function myClass (pctCorrect, pctComplete) {
 }
 </script>
 
-<style scope>
-/* make the icon - in the table smaller */
+<style>
+/* make the icon "-" in the table smaller */
 .q-btn .q-icon {
   font-size: none;
 }
