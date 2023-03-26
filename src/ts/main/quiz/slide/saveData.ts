@@ -1,5 +1,6 @@
 import { extend, isEqual } from '../../utilities';
 import type { AnswerType } from './strategies/resultStrategy';
+import {Json} from '../../globals';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
@@ -44,5 +45,14 @@ export class SaveData {
     const record0 = saves[idx];
     const record1 = new SaveData(record0.txt, record0.result, record0.ts, true);
     SaveData.replace(record1, idx, saves);
+  }
+  public static getCurrentSlide() {
+    const slide = Json.getCurrentSlide();
+    if(slide === undefined) return '';
+    const saves = SaveData.get();
+    const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
+    const save = saves[idx];
+    slide.res = save.result;
+    return (slide.txt + slide.ans + slide.res + slide.exp + slide.ref);
   }
 }

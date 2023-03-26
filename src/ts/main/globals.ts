@@ -25,6 +25,9 @@ export class Json {
     Json.counter++;
     return retval;
   }
+  public static getCurrentSlide() {
+    return Json.json[Json.counter];
+  }
   public static getPrevSlide() {
     //-2 because the counter is advanced during the last getSlide()
     const retval = Json.json[Json.counter - 2];

@@ -1,5 +1,5 @@
 <template>
-  <transition 
+  <transition
     enter-active-class="animated slideInDown"
     leave-active-class="animated slideOutUp"
     :duration="1000">
@@ -7,10 +7,10 @@
       <template #body>
         <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
           <h5>Explaination</h5>
-          <p>Content</p>
-  
+          <p>{{content}}</p>
+
           <ExitBtn
-            @click="closeInfo" 
+            @click="closeInfo"
             color="primary"/>
         </div>
       </template>
@@ -19,7 +19,12 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
+import {SaveData} from '../ts/main/quiz/slide/saveData';
+const slide = SaveData.getCurrentSlide();
+const content = ref(slide);
+
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {
