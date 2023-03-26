@@ -6,6 +6,8 @@
     @closeInfo="expOverlay = false"
   />
 
+  <VolumeMute :volume="isMuted" @toggle-volume="toggleVolume" />
+
   <transition appear group
     enter-active-class="animated zoomInUp"
     leave-active-class="animated zoomOutDown"
@@ -36,8 +38,15 @@ import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
+import VolumeMute from './VolumeMute.vue'
+
 
 const overlay = ref(false);
+const isMuted = ref(false);
+
+function toggleVolume() {
+  isMuted.value = !isMuted.value;
+}
 const expOverlay = ref(false);
 
 // handle overlay pages
