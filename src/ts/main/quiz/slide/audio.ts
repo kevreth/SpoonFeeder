@@ -18,11 +18,10 @@ export function playAudio(correct: boolean) {
   else playWrongAudio();
 }
 
-export const muteWrongAudio = () => {
-  audio.src = PATH;
+export const muteAudio = () => {
   audio.muted = true;
 };
-export const muteCorrectAudio = () => {
-  audio.src = PATH.replace('in', '');
-  audio.muted = true;
+export const playBack = () => {
+  audio.muted = false;
 };
+
