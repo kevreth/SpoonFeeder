@@ -1,6 +1,7 @@
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
 import { CreateHtml } from '../strategies/createHtmlStrategy';
 import { Evaluate } from '../strategies/evaluateStrategy';
@@ -22,6 +23,7 @@ export class Vocab extends Slide {
   processJson(json: Vocab): void {
     this.list = new Map(Object.entries(json.list));
     this.isExercise = json.isExercise;
+    this.accept(new AdocVisitor())
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
       //using SlideFactory creates a circular dependency
@@ -38,6 +40,9 @@ export class Vocab extends Slide {
       slide.isExercise = this.isExercise;
       this.set.push(slide);
     });
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitVocab(this);
   }
   getSlideSet(): SlideInterface[] {
     return this.set;

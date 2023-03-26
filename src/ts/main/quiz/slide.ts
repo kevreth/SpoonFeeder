@@ -1,5 +1,6 @@
 import { isEqual, timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
+import { AdocVisitorInterface } from './slide/adocVisitor';
 import { SaveData } from './slide/saveData';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
@@ -34,6 +35,7 @@ export abstract class Slide implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  abstract accept(visitor: AdocVisitorInterface): void;
   getSlideSet(): SlideInterface[] {
     return new Array<SlideInterface>();
   }

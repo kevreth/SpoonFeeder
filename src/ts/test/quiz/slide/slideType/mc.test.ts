@@ -16,7 +16,7 @@ class Test extends SlideTest {
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);
-    expect(testable.o).toEqual(param.o);
+    expect(testable.o).toEqual(['yes','no']);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide {

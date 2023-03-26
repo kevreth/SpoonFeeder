@@ -4,6 +4,7 @@ import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 import { isRandom, shuffle } from '../../../utilities';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 export class Ma extends Slide {
   o: string[] = [];
   numans = 0;
@@ -16,12 +17,16 @@ export class Ma extends Slide {
       ref: this.ref,
       isExercise: this.isExercise,
       numans: this.numans} = json);
+    this.accept(new AdocVisitor())
     for(let i=0; i<this.numans; i++) {
       this.answers.push(this.o[i]);
     }
     this.ans = this.answers.sort();
     const shuffleFlag = this.isExercise && isRandom();
     if (shuffleFlag) this.o = shuffle(this.o);
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitMa(this);
   }
   makeSlides(doc: Document): void {
     const isExercise = this.isExercise;
