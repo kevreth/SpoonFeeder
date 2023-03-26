@@ -62,10 +62,8 @@ import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
 
-
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);
-
 
 const _columns = [
     {
