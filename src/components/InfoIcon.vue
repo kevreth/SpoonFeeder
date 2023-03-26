@@ -8,11 +8,13 @@
 
 <style>
 .infoIcon {
- display: flex;
- top: 20px;
- margin-left: auto;
- right: 15px;
- z-index: 1;
- cursor: pointer;
+  position: sticky;
+  display: flex;
+  top: 6px;
+  width: 20px;
+  margin-left: auto;
+  padding-right: 15px;
+  z-index: 2;
+  cursor: pointer;
 }
 </style>

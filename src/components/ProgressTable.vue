@@ -144,33 +144,35 @@ function myClass (pctCorrect, pctComplete) {
 }
 </script>
 
-<style>
-.progressTable {
-  width: 80vw;
-  height: 80%;
-  max-height: 100vh;
-  /* overflow: auto; */
-  --scrollbarBG: #cfd8dc;
-  --thumbBG: #686a6c;
-  border-radius: 20px;
-  margin: 0;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+<style scope>
+/* make the icon - in the table smaller */
+.q-btn .q-icon {
+  font-size: none;
+}
+/* make the header sticky */
+.q-markup-table {
+  overflow: clip
 }
 .progressTable thead tr th{
+  background: #37363e;
   position: sticky;
   z-index: 1;
 }
-thead tr:first-child th {
+.q-table {
+  margin-top: -18px;
+}
+.progressTable thead tr:first-child th {
   top: 0;
+}
+.progressTable .q-table td:first-child {
+  padding-left: 8px;
+}
+.q-table td {
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .progressTable tbody {
   display:contents;
-}
-.progressTable::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-.progressTable::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
 }
 .award-icon {
   position: relative;

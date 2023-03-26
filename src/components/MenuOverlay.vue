@@ -65,7 +65,6 @@ function startOver() {
   border-radius: 10px;
   overflow: auto;
 }
-
 .overlayBtn {
   color: #fc3d08;
   font-size: 25px;
