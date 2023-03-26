@@ -10,13 +10,25 @@ units:
       - type: info
         txt: "$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$$"
       - type: info
-        txt: "  <pre><code>class MyClass {\r\n    public static myValue: string;\r\n
-          \   constructor(init: string) {\r\n        this.myValue = init;\r\n    }\r\n}\r\nimport
-          fs = require(\"fs\");\r\nmodule MyModule {\r\n    export interface MyInterface
-          extends Other {\r\n        myProperty: any;\r\n    }\r\n}\r\ndeclare magicNumber
-          number;\r\nmyArray.forEach(() => { }); // fat arrow syntax</code></pre>"
+        txt: |
+          ----
+          class MyClass {
+            public static myValue: string;
+              constructor(init: string) {
+                this.myValue = init;
+              }
+          }
+          import fs = require(\"fs\");
+          module MyModule {
+            export interface MyInterface extends Other {
+              myProperty: any;
+            }
+          }
+          declare magicNumber number;
+          myArray.forEach(() => { }); // fat arrow syntax
+          ----
       - type: info
-        txt: Sample table {{{table "english"}}}
+        txt: Sample table table=english
       - type: bool
         txt: 'yes'
         ans: 'yes'
@@ -30,28 +42,38 @@ units:
       - type: ma
         txt: Choose A and C.
         o: [A, C, B, D]
+        exp: |
+          . Explanation:
+          * point 1
+          * point 2
+          * point 3
+        ref: |
+          . References:
+          * ref 1
+          * ref 2
+          * ref 3
         numans: 2
       - type: vocab
         list:
           active: something that is currently in use
           alley: a narrow road between buildings
-          award: {{{svg "award"}}}
+          award: svg=award
           beat: like win, but requires an object, the team or person who lost, when used in the active voice
           beginner: someone starting to learn a skill
       - type: sort
         txt: sort
         ans: [a, b, c, d]
       - type: imap
-        txt: choose blue {{{svg "blue"}}}
-        img: "src/courses/test/imap.svg"
+        txt: choose blue svg=blue
+        img: 'src/courses/test/imap.svg'
         ans: blue
       - type: mc
         txt: Choose the bus.
         o:
-        - {{{svg "bus"}}}
-        - {{{svg "car"}}}
-        - {{{svg "plane"}}}
-        - {{{svg "train"}}}
+        - svg=bus
+        - svg=car
+        - svg=plane
+        - svg=train
       - type: gap
         txt: text (1) text (2) text (3)
         ans: [ans1,ans2,ans3]
