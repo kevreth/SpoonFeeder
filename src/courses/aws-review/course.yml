@@ -681,11 +681,11 @@ units:
         - Names must be formatted as a DNS domain name
         numans: 2
         exp: |
-          * Bucket names must follow the following rules
-            ** Names must be unique across all of AWS
-            ** Names must be 3 to 63 characters in length
-            ** Names can only contain lowercase letters, numbers and hyphens
-            ** Names cannot be formatted as an IP address
+          Bucket names must follow the following rules
+            * Names must be unique across all of AWS
+            * Names must be 3 to 63 characters in length
+            * Names can only contain lowercase letters, numbers and hyphens
+            * Names cannot be formatted as an IP address
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/
       - type: ma
@@ -1847,10 +1847,10 @@ units:
         - Partner AMIs
         numans: 2
         exp: |
-          * AMIs come in three main categories
-            ** Community AMIs - free to use, generally you just select the operating system you want
-            ** AWS Marketplace AMIs - pay to use, generally come packaged with additional, licensed software
-            ** My AMIs - AMIs that you create yourself
+          AMIs come in three main categories
+            * Community AMIs - free to use, generally you just select the operating system you want
+            * AWS Marketplace AMIs - pay to use, generally come packaged with additional, licensed software
+            * My AMIs - AMIs that you create yourself
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/
       - type: ma
@@ -1894,12 +1894,12 @@ units:
         - Amazon S3
         numans: 2
         exp: |
-          * Reservations apply to various services, including
-            ** EC2
-            ** DynamoDB
-            ** ElastiCache
-            ** RDS
-            ** RedShift
+          Reservations apply to various services, including
+            * EC2
+            * DynamoDB
+            * ElastiCache
+            * RDS
+            * RedShift
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-billing-and-pricing/
       - type: ma
@@ -2032,9 +2032,9 @@ units:
         - Accelerated consistency for all PUTS and DELETES
         numans: 2
         exp: |
-          * Data consistency models available are
-            ** Read after write consistency for PUTS of new objects
-            ** Eventual consistency for overwrite PUTS and DELETES (takes time to propagate)
+          Data consistency models available are
+            * Read after write consistency for PUTS of new objects
+            * Eventual consistency for overwrite PUTS and DELETES (takes time to propagate)
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/
       - type: mc
@@ -2915,11 +2915,11 @@ units:
         - AMI
         numans: 2
         exp: |
-          * Amazon S3 objects consist of
-            ** Key (name of the object)
-            ** Value (data made up of a sequence of bytes)
-            ** Version ID (used for versioning)
-            ** Metadata (data about the data that is stored)
+          Amazon S3 objects consist of
+            * Key (name of the object)
+            * Value (data made up of a sequence of bytes)
+            * Version ID (used for versioning)
+            * Metadata (data about the data that is stored)
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-storage/
       - type: mc
@@ -3201,11 +3201,11 @@ units:
         - VPC with a Private Subnet Only and Software VPN Access
         numans: 2
         exp: |
-          * The options available in the VPC Wizard are
-            ** VPC with a Single Public Subnet
-            ** VPC with Public and Private Subnets
-            ** VPC with Public and Private Subnets and Hardware VPN Access
-            ** VPC with a Private Subnet Only and Hardware VPN Access
+          The options available in the VPC Wizard are
+            * VPC with a Single Public Subnet
+            * VPC with Public and Private Subnets
+            * VPC with Public and Private Subnets and Hardware VPN Access
+            * VPC with a Private Subnet Only and Hardware VPN Access
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-networking/
       - type: mc
@@ -3740,11 +3740,11 @@ units:
         - Reserved instances for applications with flexible start and end times
         numans: 2
         exp: |
-          * Typical use cases for the pricing models listed are
-            ** On-demand&#58; Good for users that want the low cost and flexibility of EC2 without any up-front payment or long-term commitment. Applications with short term, spiky, or unpredictable workloads that cannot be interrupted
-            ** Reserved&#58; Applications with steady state or predictable usage or that require reserved capacity
-            ** Spot&#58; Applications that have flexible start and end times and that are only feasible at very low compute prices. May be terminated
-            ** Dedicated hosts&#58; Useful for regulatory requirements that may not support multi-tenant virtualization. Great for licensing which does not support multi-tenancy or cloud deployments
+          Typical use cases for the pricing models listed are
+            * On-demand&#58; Good for users that want the low cost and flexibility of EC2 without any up-front payment or long-term commitment. Applications with short term, spiky, or unpredictable workloads that cannot be interrupted
+            * Reserved&#58; Applications with steady state or predictable usage or that require reserved capacity
+            * Spot&#58; Applications that have flexible start and end times and that are only feasible at very low compute prices. May be terminated
+            * Dedicated hosts&#58; Useful for regulatory requirements that may not support multi-tenant virtualization. Great for licensing which does not support multi-tenancy or cloud deployments
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/aws-compute/
       - type: mc
@@ -4265,9 +4265,9 @@ units:
         - Zone
         numans: 2
         exp: |
-          * Placement groups are a logical grouping of instances in one of the following configurations
-            ** A cluster placement group is a logical grouping of instances within a single Availability Zone. Cluster placement groups are recommended for applications that benefit from low network latency, high network throughput, or both, and if the majority of the network traffic is between the instances in the group
-            ** A spread placement group is a group of instances that are each placed on distinct underlying hardware. Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other
+          Placement groups are a logical grouping of instances in one of the following configurations
+            * A cluster placement group is a logical grouping of instances within a single Availability Zone. Cluster placement groups are recommended for applications that benefit from low network latency, high network throughput, or both, and if the majority of the network traffic is between the instances in the group
+            * A spread placement group is a group of instances that are each placed on distinct underlying hardware. Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other
         ref:
         - https://digitalcloud.training/certification-training/aws-solutions-architect-associate/compute/amazon-ec2/
       - type: ma
@@ -4585,16 +4585,16 @@ units:
         - Disk write operations
         - Network packets in
         exp: |
-          * The AWS/EC2 namespace includes the following instance metrics
-            ** CPUUtilization
-            ** DiskReadOps
-            ** DiskWriteOps
-            ** DiskReadBytes
-            ** DiskWriteBytes
-            ** NetworkIn
-            ** NetworkOut
-            ** NetworkPacketsIn
-            ** NetworkPacketsOut
+          The AWS/EC2 namespace includes the following instance metrics
+            * CPUUtilization
+            * DiskReadOps
+            * DiskWriteOps
+            * DiskReadBytes
+            * DiskWriteBytes
+            * NetworkIn
+            * NetworkOut
+            * NetworkPacketsIn
+            * NetworkPacketsOut
         ref:
         - https://digitalcloud.training/certification-training/aws-solutions-architect-associate/management-tools/amazon-cloudwatch/
       - type: ma
@@ -4841,10 +4841,10 @@ units:
         - Tables
         numans: 2
         exp: |
-          * The core concepts of SNS are
-            ** Topics - how you label and group different endpoints that you send messages to
-            ** Subscriptions - the endpoints that a topic sends messages to
-            ** Publishers - the person/alarm/event that gives SNS the message that needs to be sent
+          The core concepts of SNS are
+            * Topics - how you label and group different endpoints that you send messages to
+            * Subscriptions - the endpoints that a topic sends messages to
+            * Publishers - the person/alarm/event that gives SNS the message that needs to be sent
         ref:
         - https://digitalcloud.training/certification-training/aws-certified-cloud-practitioner/notification-services/
       - type: ma
