@@ -1,5 +1,6 @@
 import { getChildIds, removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy';
 export class Imap extends Slide {
   img = '';
@@ -10,6 +11,10 @@ export class Imap extends Slide {
       ans: this.ans,
       isExercise: this.isExercise,
     } = json);
+    this.accept(new AdocVisitor())
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitImap(this);;
   }
   makeSlides(doc: Document): void {
     const txt = this.txt;

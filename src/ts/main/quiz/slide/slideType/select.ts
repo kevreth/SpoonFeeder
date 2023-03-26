@@ -3,6 +3,7 @@ import { Slide } from '../../slide';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
 import { CORRECT, INCORRECT} from '../../../MarkupColors';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 export class Select extends Slide {
   inst = '';
   processJson(json: Select): void {
@@ -12,6 +13,10 @@ export class Select extends Slide {
       ans: this.ans,
       isExercise: this.isExercise,
     } = json);
+    this.accept(new AdocVisitor())
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitSelect(this);
   }
   makeSlides(doc: Document): void {
     const inst = this.inst;

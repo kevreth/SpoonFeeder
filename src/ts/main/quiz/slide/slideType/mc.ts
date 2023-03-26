@@ -4,13 +4,24 @@ import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 import { CORRECT, INCORRECT} from '../../../MarkupColors';
+import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
 export class Mc extends Slide {
   o: string[] = [];
   processJson(json: Mc): void {
-    ({ txt: this.txt, o: this.o, isExercise: this.isExercise } = json);
+    ({
+      txt: this.txt,
+      o: this.o,
+      exp: this.exp,
+      ref: this.ref,
+      isExercise: this.isExercise
+     } = json);
+    this.accept(new AdocVisitor())
     this.ans = this.o[0];
     const shuffleFlag = this.isExercise && isRandom();
     if (shuffleFlag) this.o = shuffle(this.o);
+  }
+  accept(visitor: AdocVisitorInterface): void {
+    visitor.visitMc(this);
   }
   makeSlides(doc: Document): void {
     const isExercise = this.isExercise;

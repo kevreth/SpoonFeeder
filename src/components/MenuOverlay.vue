@@ -1,5 +1,10 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
+  <ExplainIcon @click="handleExpOverlay"/>
+  <ExpTable 
+    v-model="expOverlay"
+    @closeInfo="expOverlay = false"
+  />
 
   <VolumeMute :volume="isMuted" @toggle-volume="toggleVolume" />
 
@@ -31,6 +36,8 @@ import MenuBtn from './MenuBtn.vue';
 import ProgressTable from './ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../composables/startOver';
+import ExplainIcon from './ExplainIcon.vue';
+import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue'
 
 
@@ -40,11 +47,17 @@ const isMuted = ref(false);
 function toggleVolume() {
   isMuted.value = !isMuted.value;
 }
+const expOverlay = ref(false);
 
+// handle overlay pages
+function handleExpOverlay() {
+  expOverlay.value = !expOverlay.value;
+}
 function handleOverlay() {
   overlay.value = !overlay.value;
 }
 
+// start over functionality
 function startOver() {
   const { clear, reload } = getStartOver();
   return { clear, reload };
