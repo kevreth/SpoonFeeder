@@ -20,6 +20,7 @@
 import ExitBtn from './ExitBtn.vue';
 import { defineProps } from 'vue';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps({
   content: {
     required: true
