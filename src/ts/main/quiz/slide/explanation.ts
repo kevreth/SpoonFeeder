@@ -8,7 +8,6 @@ export function explanation(slide: SlideInterface):string {
   const ref = slide.ref;
   const answer = pluralize('Answer', answers.length);
   const distrator = pluralize('Distractor', distrators.length);
-  console.log(slide.ans);
   const retval = `
     = ${txt}
 
@@ -16,11 +15,13 @@ export function explanation(slide: SlideInterface):string {
 
     ${slide.ans}
 
-    ${distrator}
+    ${references(distrator, 'Explanation')}
 
-    == Explanation:
-    ${exp}
-    ${references(ref)}
+    ${references(slide.res === undefined ? '' : slide.res.toString(), 'Response')}
+
+    ${references(exp, 'Explanation')}
+
+    ${references(ref, 'Reference')}
   `
   return retval;
 }
@@ -28,10 +29,10 @@ function pluralize(str: string, length: number): string {
   length >= 1 ? '== ' + (str += 's') : str ='';
   return str;
 }
-function references(ref: string) {
+function references(ref: string, label: string) {
   let retval = '';
   if(ref !== undefined && ref.length > 0) retval = `
-    == Reference(s):
+    == ${label}(s):
     ${ref}
   `
   return retval;

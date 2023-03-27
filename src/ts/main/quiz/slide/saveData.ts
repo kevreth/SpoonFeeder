@@ -57,8 +57,6 @@ export class SaveData {
       slide.res = save.result;
     }
     const exp = explanation(slide);
-    const retval = adoc2html(exp);
-    return (retval);
+    return (exp);
   }
-
 }
