@@ -47,12 +47,15 @@ export class SaveData {
     SaveData.replace(record1, idx, saves);
   }
   public static getCurrentSlide() {
-    const slide = Json.getCurrentSlide();
-    if(slide === undefined) return '';
-    const saves = SaveData.get();
-    const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-    const save = saves[idx];
-    slide.res = save.result;
-    return (slide.txt + slide.ans + slide.res + slide.exp + slide.ref);
+    // const slide = Json.getCurrentSlide();
+    // if(slide === undefined) return '';
+    // const saves = SaveData.get();
+    // const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
+    // const save = saves[idx];
+    // slide.res = save.result;
+    // return (slide.txt + slide.ans + slide.res + slide.exp + slide.ref);
+    const currentDate = new Date();
+    const timestamp = currentDate.getTime();
+    return timestamp
   }
 }
