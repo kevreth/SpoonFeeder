@@ -12,11 +12,11 @@ export function explanation(slide: SlideInterface):string {
   const titleResponse = title(slide.res === undefined ? '' : slide.res.toString(), 'Response');
   const explanation = `
     <b>${slide.txt}</b> <br>
-    <b>${answer}</b> <br>
+    ${answer} <br>
     ${slide.ans.toString()} <br>
     ${titleDistractor} <br>
     ${titleResponse} <br>
-    ${slide.res.toString()} <br>
+    ${slide.res.toString()} <br><br>
     ${titleExplantion}
     ${exp === undefined ? '' : exp}
     ${titleReference}(s):
