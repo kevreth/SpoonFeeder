@@ -1,5 +1,6 @@
 import { isEqual } from '../utilities';
-import type { Course } from './course';
+import { Course, Division } from './course';
+import {DivisionProcessor, process} from './dataManager'
 import { percentCorrect } from './evaluate';
 import { SaveData } from './slide/saveData';
 import { initSlide } from './slideFactory';
@@ -16,6 +17,7 @@ export interface ISummaryLine {
   add(child: ISummaryLine): void;
   calculate(): void;
 }
+
 export class SummaryLine implements ISummaryLine {
   name = '';
   score = 0;
@@ -36,7 +38,54 @@ export class SummaryLine implements ISummaryLine {
     this.pctCorrect = percentCorrect(this.score, this.complete) + '%';
   }
 }
+export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLine,ISummaryLine> {
+  course_start(division: Division, retval: ISummaryLine): ISummaryLine {
+    return this.module_start(division, 0, retval, new SummaryLine());
+  }
+  unit_start(division: Division, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    return this.module_start(division, ctr, retval, parent);
+  }
+  lesson_start(division: Division, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    return this.module_start(division, ctr, retval, parent);
+  }
+  module_start(division: Division, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    const summary: ISummaryLine = new SummaryLine();
+    summary.name = division.name;
+    return summary;
+  }
+  inst(slide: SlideInterface, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    return parent;
+  }
+  exercises(slide: SlideInterface, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    const exerciseLine = Score.exercise(slide, getSavedDataArray());
+    parent.add(exerciseLine);
+    return parent;
+  }
+  module_end(child: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    delete child['children'];
+    return this.unit_end(child, parent);
+  }
+  lesson_end(child: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    return this.unit_end(child, parent);
+  }
+  unit_end(child: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+    child.calculate();
+    parent.add(child);
+    return parent;
+  }
+  course_end(course: ISummaryLine): ISummaryLine {
+    course.calculate();
+    return course;
+  }
+
+}
 export class Score {
+  public static summary2(_course: Course): Array<SummaryLine> {
+    const courseLine = process(_course, new ScoreProcessor(), new SummaryLine());
+    const courseLines = new Array<SummaryLine>();
+    courseLines.push(courseLine);
+    return courseLines;
+  }
   public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
@@ -48,12 +97,12 @@ export class Score {
         lessonLine.name = lesson.name;
         lesson.modules.forEach((module) => {
           const moduleLine: ISummaryLine = new SummaryLine();
+          moduleLine.name = module.name;
+          delete moduleLine['children'];
           module.exercises.forEach((exercise) => {
             const exerciseLine = Score.exercise(exercise, getSavedDataArray());
             moduleLine.add(exerciseLine);
           }); //exercise
-          moduleLine.name = module.name;
-          delete moduleLine['children'];
           moduleLine.calculate();
           lessonLine.add(moduleLine);
         }); //module

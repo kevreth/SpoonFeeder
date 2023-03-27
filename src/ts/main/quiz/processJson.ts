@@ -8,21 +8,16 @@ export class ProcessJson {
     let slides = new Array<SlideInterface>();
     ProcessJson.addNewInfoSlide(course.name, slides);
     course.units.forEach((unit, unit_ctr) => {
-      ProcessJson.addNewInfoSlide(
-        ProcessJson.titleSlideText('Unit', unit_ctr, unit.name),
-        slides
-      );
+      const title = ProcessJson.titleSlideText('Unit', unit_ctr, unit.name);
+      ProcessJson.addNewInfoSlide(title, slides);
       unit.lessons.forEach((lesson, lesson_ctr) => {
-        ProcessJson.addNewInfoSlide(
-          ProcessJson.titleSlideText('Lesson', lesson_ctr, lesson.name),
-          slides
-        );
+        const title = ProcessJson.titleSlideText('Lesson', lesson_ctr, lesson.name);
+        ProcessJson.addNewInfoSlide(title, slides);
         lesson.modules.forEach((module, module_ctr) => {
-          ProcessJson.addNewInfoSlide(
-            ProcessJson.titleSlideText('Module', module_ctr, module.name),
-            slides
-          );
+          const title = ProcessJson.titleSlideText('Module', module_ctr, module.name);
+          ProcessJson.addNewInfoSlide(title, slides);
           slides = ProcessJson.loadQuestions(slides, module.inst, false);
+          if (isRandom()) module.exercises = shuffle(module.exercises);
           slides = ProcessJson.loadQuestions(slides, module.exercises, true);
         });
       });
@@ -38,17 +33,14 @@ export class ProcessJson {
     questions: Array<SlideInterface>, //raw slides to add in object notation form
     isExercise: boolean
   ): Array<SlideInterface> {
-    if (typeof questions !== 'undefined') {
-      if (isRandom() && isExercise) questions = shuffle(questions);
-      const processedSlides = new Array<SlideInterface>();
-      questions.forEach((item) => {
-        item.isExercise = isExercise;
-        const slides = initSlide(item);
-        if (Array.isArray(slides)) processedSlides.push(...slides);
-        else processedSlides.push(slides);
-      });
-      slides = slides.concat(processedSlides);
-    }
+    const processedSlides = new Array<SlideInterface>();
+    questions.forEach((item) => {
+      item.isExercise = isExercise;
+      const slides = initSlide(item);
+      if (Array.isArray(slides)) processedSlides.push(...slides);
+      else processedSlides.push(slides);
+    });
+    slides = slides.concat(processedSlides);
     return slides;
   }
   public static addNewInfoSlide(text: string, slides: SlideInterface[]) {
