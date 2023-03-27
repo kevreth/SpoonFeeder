@@ -6,7 +6,7 @@
     <q-overlay class="column">
       <template #body>
         <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
-          <span v-html="content"></span>
+          <span class="scrollable-content" v-html="content"></span>
           <ExitBtn
             @click="closeInfo"
             color="primary"/>
@@ -40,11 +40,26 @@ function closeInfo() {
   width: 70%;
   box-sizing: border-box;
 }
-.expContainer h5 {
-  padding: 0px;
-  margin: 5px 0 0 0;
-  letter-spacing: 1px;
-  font-size: 18px;
+.scrollable-content {
+  font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  padding-left: 15px;
+  display: block;
+  position: relative;
+  overflow: auto;
+  max-height: 400px; /* Set the maximum height of the scrollable area */
+}
+@media screen and (max-width: 768px) {
+  .scrollable-content {
+    max-height: 100px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scrollable-content {
+    max-height: 50px;
+  }
 }
 </style>
 
