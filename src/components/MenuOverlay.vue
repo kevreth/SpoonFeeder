@@ -1,9 +1,9 @@
 <template>
   <MenuBtn @click="overlay = true" @keydown.esc="overlay = false"/>
   <ExplainIcon @click="handleExpOverlay"/>
-  <ExpTable 
+  <ExpTable
     v-model="expOverlay"
-    :timeStamp="timeStamp"
+    :content="content"
     @closeInfo="expOverlay = false"
   />
 
@@ -14,13 +14,13 @@
     leave-active-class="animated zoomOutDown"
     >
     <q-overlay v-model="overlay">
-      <template #body>        
+      <template #body>
         <div class="overlay fixed-center column" style="display: flex; flex-direction: column;">
           <div class="overlayBtn">
             <OverlayCloseBtn @click="handleOverlay" />
             <TrashBtn @click="startOver" />
           </div>
-  
+
           <div class="progressBackground" style="flex-grow: 1;">
             <ProgressTable style="cursor: auto" />
           </div>
@@ -49,12 +49,12 @@ function toggleVolume() {
   isMuted.value = !isMuted.value;
 }
 const expOverlay = ref(false);
-const timeStamp=ref('')
+const content=ref('')
 
 // handle overlay pages
 function handleExpOverlay() {
   expOverlay.value = !expOverlay.value;
-  timeStamp.value = SaveData.getCurrentSlide();
+  content.value = SaveData.getCurrentSlide();
 }
 function handleOverlay() {
   overlay.value = !overlay.value;

@@ -26,7 +26,7 @@ export class Json {
     return retval;
   }
   public static getCurrentSlide() {
-    return Json.json[Json.counter];
+    return Json.json[Json.counter-1];
   }
   public static getPrevSlide() {
     //-2 because the counter is advanced during the last getSlide()

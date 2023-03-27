@@ -1,6 +1,8 @@
 import { extend, isEqual } from '../../utilities';
 import type { AnswerType } from './strategies/resultStrategy';
 import {Json} from '../../globals';
+import { explanation } from './explanation';
+import { adoc2html } from './adoc2html';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
@@ -47,15 +49,19 @@ export class SaveData {
     SaveData.replace(record1, idx, saves);
   }
   public static getCurrentSlide() {
-    // const slide = Json.getCurrentSlide();
-    // if(slide === undefined) return '';
-    // const saves = SaveData.get();
-    // const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-    // const save = saves[idx];
-    // slide.res = save.result;
-    // return (slide.txt + slide.ans + slide.res + slide.exp + slide.ref);
-    const currentDate = new Date();
-    const timestamp = currentDate.getTime();
-    return timestamp
+    const slide = Json.getCurrentSlide();
+    console.log(slide);
+    const saves = SaveData.get();
+    const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
+    if(idx >= 0) {
+      const save = saves[idx];
+      slide.res = save.result;
+    }
+    const exp = explanation(slide);
+    console.log(exp)
+    const retval = adoc2html(exp);
+    console.log(retval)
+    return (retval);
   }
+
 }

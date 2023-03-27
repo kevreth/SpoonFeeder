@@ -6,9 +6,7 @@
     <q-overlay class="column">
       <template #body>
         <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
-          <h5>Explaination</h5>
-          <p>{{timeStamp}}</p>
-
+          <span v-html="content"></span>
           <ExitBtn
             @click="closeInfo"
             color="primary"/>
@@ -23,7 +21,7 @@ import ExitBtn from './ExitBtn.vue';
 import { defineProps } from 'vue';
 
 const props = defineProps({
-  timeStamp: {
+  content: {
     required: true
   }
 });
