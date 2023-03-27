@@ -7,7 +7,7 @@
       <template #body>
         <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
           <h5>Explaination</h5>
-          <p>{{content}}</p>
+          <p>{{timeStamp}}</p>
 
           <ExitBtn
             @click="closeInfo"
@@ -19,12 +19,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
-import {SaveData} from '../ts/main/quiz/slide/saveData';
-const slide = SaveData.getCurrentSlide();
-const content = ref(slide);
+import { defineProps } from 'vue';
 
+const props = defineProps({
+  timeStamp: {
+    required: true
+  }
+});
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {

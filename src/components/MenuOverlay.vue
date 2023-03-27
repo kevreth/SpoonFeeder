@@ -3,6 +3,7 @@
   <ExplainIcon @click="handleExpOverlay"/>
   <ExpTable 
     v-model="expOverlay"
+    :timeStamp="timeStamp"
     @closeInfo="expOverlay = false"
   />
 
@@ -39,7 +40,7 @@ import getStartOver from '../composables/startOver';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue'
-
+import {SaveData} from '../ts/main/quiz/slide/saveData';
 
 const overlay = ref(false);
 const isMuted = ref(false);
@@ -48,10 +49,12 @@ function toggleVolume() {
   isMuted.value = !isMuted.value;
 }
 const expOverlay = ref(false);
+const timeStamp=ref('')
 
 // handle overlay pages
 function handleExpOverlay() {
   expOverlay.value = !expOverlay.value;
+  timeStamp.value = SaveData.getCurrentSlide();
 }
 function handleOverlay() {
   overlay.value = !overlay.value;
