@@ -8,6 +8,7 @@
         <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
           <span class="scrollable-content" v-html="content"></span>
           <ExitBtn
+            class="q-mt-sm"
             @click="closeInfo"
             color="primary"/>
         </div>
@@ -44,22 +45,11 @@ function closeInfo() {
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   text-align: left;
-  padding-left: 15px;
+  padding: 10px 5px 5px 15px;
   display: block;
   position: relative;
   overflow: auto;
-  max-height: 400px; /* Set the maximum height of the scrollable area */
-}
-@media screen and (max-width: 768px) {
-  .scrollable-content {
-    max-height: 100px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .scrollable-content {
-    max-height: 50px;
-  }
+  max-height: 80vh; /* Set the maximum height of the scrollable area */
 }
 </style>
 

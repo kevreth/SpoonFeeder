@@ -17,7 +17,7 @@ sessionStorage.clear();
 sessionStorage.setItem('random', 'false');
 //===========================================================================
 // const courseName = 'aws';
-const courseName = 'aws-review';
+// const courseName = 'aws-review';
 // const courseName = 'android';
 // const courseName = 'docker';
 // const courseName = 'express';
@@ -33,6 +33,6 @@ const courseName = 'aws-review';
 // const courseName = 'spring';
 // const courseName = 'typescript';
 // const courseName = 'vue';
-// const courseName = 'test';
+const courseName = 'test';
 Quiz.slides(courseName, document);
 </script>
