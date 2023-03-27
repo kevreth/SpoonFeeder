@@ -1,9 +1,54 @@
 import { isRandom, shuffle } from '../utilities';
-import type { Course } from './course';
+import type { Course, Division, Module } from './course';
 import { INFO, initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
+import {DivisionProcessor, process} from './dataManager'
 //////////////// Phase 1: process Json
+export class ScoreProcessor implements DivisionProcessor<void,void,SlideInterface[]> {
+  private addNewInfoSlide(name: string, ctr: number, child: Division, retval: SlideInterface[]) {
+    const title = ProcessJson.titleSlideText(name, ctr, child.name);
+    ProcessJson.addNewInfoSlide(title, retval);
+  }
+  course_start(course: Division, retval: SlideInterface[]): void {
+    ProcessJson.addNewInfoSlide(course.name, retval);
+  }
+  unit_start(child: Division, ctr: number, retval: SlideInterface[], parent: void): void {
+    this.addNewInfoSlide('Unit', ctr, child, retval);
+  }
+  lesson_start(child: Division, ctr: number, retval: SlideInterface[], parent: void): void {
+    this.addNewInfoSlide('Lesson', ctr, child, retval);
+  }
+  module_start(child: Module, ctr: number, retval: SlideInterface[], parent: void): void {
+    this.addNewInfoSlide('Module', ctr, child, retval);
+    retval = ProcessJson.loadQuestions(retval, child.inst, false);
+    if (isRandom()) child.exercises = shuffle(child.exercises);
+    retval = ProcessJson.loadQuestions(retval, child.exercises, true);
+  }
+  inst(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: void): SlideInterface[] {
+    return new Array<SlideInterface>();
+  }
+  exercises(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: void): SlideInterface[] {
+    return new Array<SlideInterface>();
+  }
+  module_end(child: void, parent: void): void {
+    return;
+  }
+  lesson_end(child: void, parent: void): void {
+    return;
+  }
+  unit_end(child: void, parent: void): void {
+    return;
+  }
+  course_end(course: void): void {
+    return;
+  }
+}
 export class ProcessJson {
+  public static processJson2(course: Course) {
+    let slides = new Array<SlideInterface>();
+    slides = process(course, new ScoreProcessor(), slides);
+    return slides;
+  }
   public static processJson(course: Course) {
     let slides = new Array<SlideInterface>();
     ProcessJson.addNewInfoSlide(course.name, slides);

@@ -6,15 +6,15 @@ import {Division} from './course'
 
 export interface DivisionProcessor<C,D,T> {
   course_start(course: Division, retval: T): C;
-  unit_start(unit: Division, ctr: number, retval: T, course: C): D;
-  lesson_start(lesson: Division, ctr: number, retval: T, unit: D): D;
-  module_start(module: Division, ctr: number, retval: T, lesson: D): D;
-  inst(slide: SlideInterface, ctr: number, retval: T, module: D): T;
-  exercises(slide: SlideInterface, ctr: number, retval: T, module: D): T;
-  module_end(module: D, lesson: D): D;
-  lesson_end(lesson: D, unit: D): D;
-  unit_end(unit: D, course: C): D;
-  course_end(course: C): C;
+  unit_start(child: Division, ctr: number, retval: T, parent: C): D;
+  lesson_start(child: Division, ctr: number, retval: T, parent: D): D;
+  module_start(child: Division, ctr: number, retval: T, parent: D): D;
+  inst(slide: SlideInterface, ctr: number, retval: T, parent: D): T;
+  exercises(slide: SlideInterface, ctr: number, retval: T, parent: D): T;
+  module_end(child: D, parent: D): void;
+  lesson_end(child: D, parent: D): void;
+  unit_end(child: D, parent: C): void;
+  course_end(course: C): void;
 }
 
 export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C,D,T>, retval: T) {

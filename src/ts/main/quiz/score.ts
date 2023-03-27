@@ -38,54 +38,52 @@ export class SummaryLine implements ISummaryLine {
     this.pctCorrect = percentCorrect(this.score, this.complete) + '%';
   }
 }
-export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLine,ISummaryLine> {
-  course_start(division: Division, retval: ISummaryLine): ISummaryLine {
+export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLine,void> {
+  course_start(division: Division, retval: void): ISummaryLine {
     return this.module_start(division, 0, retval, new SummaryLine());
   }
-  unit_start(division: Division, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  unit_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     return this.module_start(division, ctr, retval, parent);
   }
-  lesson_start(division: Division, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  lesson_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     return this.module_start(division, ctr, retval, parent);
   }
-  module_start(division: Division, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  module_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     const summary: ISummaryLine = new SummaryLine();
     summary.name = division.name;
     return summary;
   }
-  inst(slide: SlideInterface, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  inst(slide: SlideInterface, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     return parent;
   }
-  exercises(slide: SlideInterface, ctr: number, retval: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  exercises(slide: SlideInterface, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     const exerciseLine = Score.exercise(slide, getSavedDataArray());
     parent.add(exerciseLine);
     return parent;
   }
-  module_end(child: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  module_end(child: ISummaryLine, parent: ISummaryLine): void {
     delete child['children'];
-    return this.unit_end(child, parent);
+    this.unit_end(child, parent);
   }
-  lesson_end(child: ISummaryLine, parent: ISummaryLine): ISummaryLine {
-    return this.unit_end(child, parent);
+  lesson_end(child: ISummaryLine, parent: ISummaryLine): void {
+    this.unit_end(child, parent);
   }
-  unit_end(child: ISummaryLine, parent: ISummaryLine): ISummaryLine {
+  unit_end(child: ISummaryLine, parent: ISummaryLine): void {
     child.calculate();
     parent.add(child);
-    return parent;
   }
-  course_end(course: ISummaryLine): ISummaryLine {
+  course_end(course: ISummaryLine): void {
     course.calculate();
-    return course;
   }
 
 }
 export class Score {
-  public static summary2(_course: Course): Array<SummaryLine> {
-    const courseLine = process(_course, new ScoreProcessor(), new SummaryLine());
-    const courseLines = new Array<SummaryLine>();
-    courseLines.push(courseLine);
-    return courseLines;
-  }
+  // public static summary2(_course: Course): Array<SummaryLine> {
+  //   const courseLine = process(_course, new ScoreProcessor(), new SummaryLine());
+  //   const courseLines = new Array<SummaryLine>();
+  //   courseLines.push(courseLine);
+  //   return courseLines;
+  // }
   public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
