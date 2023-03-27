@@ -1,39 +1,35 @@
 import { SlideInterface } from '../slideInterface';
-
 export function explanation(slide: SlideInterface):string {
-  const txt = slide.txt;
   const answers = slide.ans;
   const distrators = [];
   const exp = slide.exp;
   const ref = slide.ref;
   const answer = pluralize('Answer', answers.length);
   const distrator = pluralize('Distractor', distrators.length);
-  const retval = `
-    = ${txt}
-
-    == ${answer}
-
-    ${slide.ans}
-
-    ${references(distrator, 'Explanation')}
-
-    ${references(slide.res === undefined ? '' : slide.res.toString(), 'Response')}
-
-    ${references(exp, 'Explanation')}
-
-    ${references(ref, 'Reference')}
+  const titleExplantion = title(exp, 'Explanation');
+  const titleReference = title(ref, 'Reference');
+  const titleDistractor = title(distrator, 'Distractor');
+  const titleResponse = title(slide.res === undefined ? '' : slide.res.toString(), 'Response');
+  const explanation = `
+    <b>${slide.txt}</b> <br>
+    <b>${answer}</b> <br>
+    ${slide.ans.toString()} <br>
+    ${titleDistractor} <br>
+    ${titleResponse} <br>
+    ${slide.res.toString()} <br>
+    ${titleExplantion}
+    ${exp === undefined ? '' : exp}
+    ${titleReference}(s):
+    ${ref}
   `
-  return retval;
+  return explanation;
 }
 function pluralize(str: string, length: number): string {
   length >= 1 ? '== ' + (str += 's') : str ='';
   return str;
 }
-function references(ref: string, label: string) {
+function title(ref: string, label: string) {
   let retval = '';
-  if(ref !== undefined && ref.length > 0) retval = `
-    == ${label}(s):
-    ${ref}
-  `
+  if(ref !== undefined && ref.length > 0) retval = label;
   return retval;
 }

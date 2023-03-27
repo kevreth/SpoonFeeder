@@ -2,7 +2,6 @@ import { extend, isEqual } from '../../utilities';
 import type { AnswerType } from './strategies/resultStrategy';
 import {Json} from '../../globals';
 import { explanation } from './explanation';
-import { adoc2html } from './adoc2html';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
@@ -59,4 +58,5 @@ export class SaveData {
     const exp = explanation(slide);
     return (exp);
   }
+
 }
