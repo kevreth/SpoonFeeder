@@ -10,3 +10,11 @@ export function playAudio(correct: boolean) {
   if (correct) audio.src = CORRECT;
   audio.play();
 }
+
+export const muteAudio = () => {
+  audio.muted = true;
+};
+export const playBack = () => {
+  audio.muted = false;
+};
+
