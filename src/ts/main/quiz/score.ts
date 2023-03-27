@@ -5,7 +5,7 @@ import { SaveData } from './slide/saveData';
 import { initSlide } from './slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
-interface ISummaryLine {
+export interface ISummaryLine {
   name: string;
   score: number;
   complete: number;
@@ -16,7 +16,7 @@ interface ISummaryLine {
   add(child: ISummaryLine): void;
   calculate(): void;
 }
-class SummaryLine implements ISummaryLine {
+export class SummaryLine implements ISummaryLine {
   name = '';
   score = 0;
   complete = 0;
@@ -48,11 +48,12 @@ export class Score {
         lessonLine.name = lesson.name;
         lesson.modules.forEach((module) => {
           const moduleLine: ISummaryLine = new SummaryLine();
+          module.exercises.forEach((exercise) => {
+            const exerciseLine = Score.exercise(exercise, getSavedDataArray());
+            moduleLine.add(exerciseLine);
+          }); //exercise
           moduleLine.name = module.name;
           delete moduleLine['children'];
-          module.exercises.forEach((exercise) => {
-            Score.exercise(exercise, moduleLine, getSavedDataArray());
-          }); //exercise
           moduleLine.calculate();
           lessonLine.add(moduleLine);
         }); //module
@@ -69,34 +70,35 @@ export class Score {
     return courseLines;
   }
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
-  private static exercise(
+  public static exercise(
     exercise: SlideInterface,
-    moduleLine: ISummaryLine,
     saves: SaveData[]
   ) {
     const slides = initSlide(exercise);
     const isArray = Array.isArray(slides);
+    const exerciseLine = new SummaryLine();
     if (isArray) {
       slides.forEach((slide) => {
-        createLine(saves, slide, moduleLine);
+        createLine(saves, slide, exerciseLine);
       });
     } else {
-      createLine(saves, slides, moduleLine);
+      createLine(saves, slides, exerciseLine);
     }
+    return exerciseLine;
   }
 }
 function createLine(
   saves: SaveData[],
-  slides: SlideInterface,
-  moduleLine: ISummaryLine
+  slide: SlideInterface,
+  exerciseLine: ISummaryLine
 ) {
-  const idx = saves.findIndex((x) => isEqual(x.txt, slides.txt as string));
+  const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
   if (idx > -1) {
     const results = saves[idx].result;
-    slides.setResults(results);
-    const evaluation = slides.evaluate();
-    moduleLine.score += evaluation.correct;
-    moduleLine.complete += evaluation.responses;
+    slide.setResults(results);
+    const evaluation = slide.evaluate();
+    exerciseLine.score += evaluation.correct;
+    exerciseLine.complete += evaluation.responses;
   }
-  moduleLine.count += slides.getAnswerCount();
+  exerciseLine.count += slide.getAnswerCount();
 }

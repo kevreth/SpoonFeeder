@@ -29,11 +29,11 @@ export class ProcessJson {
     });
     return slides;
   }
-  private static titleSlideText(type: string, counter: number, name: string) {
+  public static titleSlideText(type: string, counter: number, name: string) {
     counter++;
     return `${type} ${counter}:<br>${name}`;
   }
-  private static loadQuestions(
+  public static loadQuestions(
     slides: Array<SlideInterface>, //the currently processed slides
     questions: Array<SlideInterface>, //raw slides to add in object notation form
     isExercise: boolean
@@ -51,7 +51,7 @@ export class ProcessJson {
     }
     return slides;
   }
-  private static addNewInfoSlide(text: string, slides: SlideInterface[]) {
+  public static addNewInfoSlide(text: string, slides: SlideInterface[]) {
     const slide = INFO() as SlideInterface;
     slide.txt = text;
     slides.push(slide);
