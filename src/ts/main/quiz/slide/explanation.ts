@@ -2,16 +2,19 @@ import { SlideInterface } from '../slideInterface';
 
 export function explanation(slide: SlideInterface):string {
   const txt = slide.txt;
-  const answers = [];
+  const answers = slide.ans;
   const distrators = [];
   const exp = slide.exp;
   const ref = slide.ref;
   const answer = pluralize('Answer', answers.length);
   const distrator = pluralize('Distractor', distrators.length);
+  console.log(slide.ans);
   const retval = `
     = ${txt}
 
     == ${answer}
+
+    ${slide.ans}
 
     ${distrator}
 

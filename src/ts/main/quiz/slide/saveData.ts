@@ -50,7 +50,6 @@ export class SaveData {
   }
   public static getCurrentSlide() {
     const slide = Json.getCurrentSlide();
-    console.log(slide);
     const saves = SaveData.get();
     const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
     if(idx >= 0) {
@@ -58,9 +57,7 @@ export class SaveData {
       slide.res = save.result;
     }
     const exp = explanation(slide);
-    console.log(exp)
     const retval = adoc2html(exp);
-    console.log(retval)
     return (retval);
   }
 
