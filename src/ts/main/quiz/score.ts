@@ -38,26 +38,26 @@ export class SummaryLine implements ISummaryLine {
     this.pctCorrect = percentCorrect(this.score, this.complete) + '%';
   }
 }
-export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLine,void> {
-  course_start(division: Division, retval: void): ISummaryLine {
+export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLine, ISummaryLine> {
+  course_start(division: Division, retval: SummaryLine): ISummaryLine {
     return this.module_start(division, 0, retval, new SummaryLine());
   }
-  unit_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
+  unit_start(division: Division, ctr: number, retval: SummaryLine, parent: ISummaryLine): ISummaryLine {
     return this.module_start(division, ctr, retval, parent);
   }
-  lesson_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
+  lesson_start(division: Division, ctr: number, retval: SummaryLine, parent: ISummaryLine): ISummaryLine {
     return this.module_start(division, ctr, retval, parent);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  module_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
+  module_start(division: Division, ctr: number, retval: SummaryLine, parent: ISummaryLine): ISummaryLine {
     const summary: ISummaryLine = new SummaryLine();
     summary.name = division.name;
     return summary;
   }
-  inst(slide: SlideInterface, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
+  inst(slide: SlideInterface, ctr: number, retval: SummaryLine, parent: ISummaryLine): ISummaryLine {
     return parent;
   }
-  exercises(slide: SlideInterface, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
+  exercises(slide: SlideInterface, ctr: number, retval: SummaryLine, parent: ISummaryLine): ISummaryLine {
     const exerciseLine = Score.exercise(slide, getSavedDataArray());
     parent.add(exerciseLine);
     return parent;
@@ -79,8 +79,8 @@ export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLi
 
 }
 export class Score {
-  // public static summary2(_course: Course): Array<SummaryLine> {
-  //   const courseLine = process(_course, new ScoreProcessor(), new SummaryLine());
+  // public static summary(_course: Course): Array<SummaryLine> {
+  //   const courseLine = process(_course, new ScoreProcessor(), Array<SummaryLine>);
   //   const courseLines = new Array<SummaryLine>();
   //   courseLines.push(courseLine);
   //   return courseLines;

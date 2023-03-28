@@ -36,19 +36,19 @@ export class JsonProcessor implements DivisionProcessor<void,void,SlideInterface
     return new Array<SlideInterface>();
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  module_end(child: void, parent: void): void {
+  module_end(child: void, retval: SlideInterface[], parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  lesson_end(child: void, parent: void): void {
+  lesson_end(child: void, retval: SlideInterface[], parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  unit_end(child: void, parent: void): void {
+  unit_end(child: void, retval: SlideInterface[], parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  course_end(course: void): void {
+  course_end(course: void, retval: SlideInterface[]): void {
     return;
   }
 }

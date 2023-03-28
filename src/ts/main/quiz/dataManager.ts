@@ -11,10 +11,10 @@ export interface DivisionProcessor<C,D,T> {
   module_start(child: Division, ctr: number, retval: T, parent: D): D;
   inst(slide: SlideInterface, ctr: number, retval: T, parent: D): T;
   exercises(slide: SlideInterface, ctr: number, retval: T, parent: D): T;
-  module_end(child: D, parent: D): void;
-  lesson_end(child: D, parent: D): void;
-  unit_end(child: D, parent: C): void;
-  course_end(course: C): void;
+  module_end(child: D, retval: T, parent: D): void;
+  lesson_end(child: D, retval: T, parent: D): void;
+  unit_end(child: D, retval: T, parent: C): void;
+  course_end(course: C, retval: T): void;
 }
 
 export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C,D,T>, retval: T) {
@@ -31,12 +31,12 @@ export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C
         module.inst.forEach((inst, inst_ctr) => {
           division.exercises(inst, inst_ctr, retval, _module);
         });
-        division.module_end(_module, _lesson);
+        division.module_end(_module, retval, _lesson);
       });
-      division.lesson_end(_lesson, _unit);
+      division.lesson_end(_lesson, retval, _unit);
     });
-    division.unit_end(_unit, _course);
+    division.unit_end(_unit, retval, _course);
   });
-  division.course_end(_course);
+  division.course_end(_course, retval);
   return retval;
 }
