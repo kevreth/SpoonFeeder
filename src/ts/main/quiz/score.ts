@@ -86,6 +86,12 @@ export class Score {
   //   return courseLines;
   // }
   public static summary(_course: Course): Array<SummaryLine> {
+    const courseLine: ISummaryLine = Score.summary3(_course);
+    const courseLines = new Array<SummaryLine>();
+    courseLines.push(courseLine);
+    return courseLines;
+  }
+  private static summary3(_course: Course) {
     const courseLine: ISummaryLine = new SummaryLine();
     courseLine.name = _course.name;
     _course.units.forEach((unit) => {
@@ -113,10 +119,9 @@ export class Score {
     }); //unit
     //course
     courseLine.calculate();
-    const courseLines = new Array<SummaryLine>();
-    courseLines.push(courseLine);
-    return courseLines;
+    return courseLine;
   }
+
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
   public static exercise(
     exercise: SlideInterface,

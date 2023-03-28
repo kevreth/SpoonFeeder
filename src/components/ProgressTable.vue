@@ -1,7 +1,7 @@
 <template>
   <q-card class="bg-secondary">
-    <InfoIcon 
-      @click="handleInfoOverlay" 
+    <InfoIcon
+      @click="handleInfoOverlay"
       @keydown.esc="infoOverlay = false" tabindex="0"
     />
     <InfoTable
@@ -41,7 +41,7 @@
           <a v-bind:href="props.item.summary">
             <SummaryIcon
               @click="summaryOverlay = true"
-              />    
+              />
             <SummaryTable
               v-model="summaryOverlay"
               @closeSummary="summaryOverlay = false"
@@ -116,6 +116,11 @@ const _columns = [
       align: 'right',
     },
   ];
+
+// const course = CourseFile.get();
+// const courseLine = Score.summary(course);
+// const courseLines = new Array<ISummaryLine>();
+// courseLines.push(courseLine);
 
 const course = CourseFile.get();
 let summary = Score.summary(course);
