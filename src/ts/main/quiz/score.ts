@@ -48,6 +48,7 @@ export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLi
   lesson_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     return this.module_start(division, ctr, retval, parent);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   module_start(division: Division, ctr: number, retval: void, parent: ISummaryLine): ISummaryLine {
     const summary: ISummaryLine = new SummaryLine();
     summary.name = division.name;

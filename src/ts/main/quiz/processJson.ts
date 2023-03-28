@@ -12,33 +12,42 @@ export class JsonProcessor implements DivisionProcessor<void,void,SlideInterface
   course_start(course: Division, retval: SlideInterface[]): void {
     ProcessJson.addNewInfoSlide(course.name, retval);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unit_start(child: Division, ctr: number, retval: SlideInterface[], parent: void): void {
     this.addNewInfoSlide('Unit', ctr, child, retval);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   lesson_start(child: Division, ctr: number, retval: SlideInterface[], parent: void): void {
     this.addNewInfoSlide('Lesson', ctr, child, retval);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   module_start(child: Module, ctr: number, retval: SlideInterface[], parent: void): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
     ProcessJson.loadQuestions(retval, child.inst, false);
     if (isRandom()) child.exercises = shuffle(child.exercises);
     ProcessJson.loadQuestions(retval, child.exercises, true);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   inst(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: void): SlideInterface[] {
     return new Array<SlideInterface>();
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exercises(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: void): SlideInterface[] {
     return new Array<SlideInterface>();
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   module_end(child: void, parent: void): void {
     return;
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   lesson_end(child: void, parent: void): void {
     return;
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unit_end(child: void, parent: void): void {
     return;
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   course_end(course: void): void {
     return;
   }
