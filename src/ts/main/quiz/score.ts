@@ -62,29 +62,29 @@ export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLi
     parent.add(exerciseLine);
     return parent;
   }
-  module_end(child: ISummaryLine, parent: ISummaryLine): void {
+  module_end(child: ISummaryLine, retval: SummaryLine, parent: ISummaryLine): void {
     delete child['children'];
-    this.unit_end(child, parent);
+    this.unit_end(child, retval, parent);
   }
-  lesson_end(child: ISummaryLine, parent: ISummaryLine): void {
-    this.unit_end(child, parent);
+  lesson_end(child: ISummaryLine, retval: SummaryLine, parent: ISummaryLine): void {
+    this.unit_end(child, retval, parent);
   }
-  unit_end(child: ISummaryLine, parent: ISummaryLine): void {
+  unit_end(child: ISummaryLine, retval: SummaryLine, parent: ISummaryLine): void {
     child.calculate();
     parent.add(child);
   }
-  course_end(course: ISummaryLine): void {
+  course_end(course: ISummaryLine, retval: SummaryLine): void {
     course.calculate();
+    retval = course;
   }
 
 }
 export class Score {
-  // public static summary(_course: Course): Array<SummaryLine> {
-  //   const courseLine = process(_course, new ScoreProcessor(), Array<SummaryLine>);
-  //   const courseLines = new Array<SummaryLine>();
-  //   courseLines.push(courseLine);
-  //   return courseLines;
-  // }
+  public static summary2(_course: Course): ISummaryLine {
+    let courseLine: ISummaryLine = new SummaryLine();
+    courseLine = process(_course, new ScoreProcessor(), courseLine);
+    return courseLine;
+  }
   public static summary(_course: Course): Array<SummaryLine> {
     const courseLine: ISummaryLine = Score.summary3(_course);
     const courseLines = new Array<SummaryLine>();
