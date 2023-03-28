@@ -26,10 +26,10 @@ export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C
       lesson.modules.forEach((module, module_ctr) => {
         const _module: D = division.module_start(module, module_ctr, retval, _lesson);
         module.exercises.forEach((exercise, exercise_ctr) => {
-          retval = division.exercises(exercise, exercise_ctr, retval, _module);
+          division.exercises(exercise, exercise_ctr, retval, _module);
         });
         module.inst.forEach((inst, inst_ctr) => {
-          retval = division.exercises(inst, inst_ctr, retval, _module);
+          division.exercises(inst, inst_ctr, retval, _module);
         });
         division.module_end(_module, _lesson);
       });
