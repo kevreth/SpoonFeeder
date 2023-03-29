@@ -1,9 +1,9 @@
 import reloadPage from '../../../composables/startOver';
-import { Json } from '../globals';
+import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
 import { Slide } from './slide';
-import { SaveData } from './slide/saveData';
+import { SaveData } from './datalayer/saveData';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 2: make slides

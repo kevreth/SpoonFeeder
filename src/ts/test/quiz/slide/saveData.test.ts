@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { SaveData } from '../../../main/quiz/slide/saveData';
+import { SaveData } from '../../../main/quiz/datalayer/saveData';
 const expected_saved = new Array<SaveData>();
 expected_saved.push(new SaveData('ans1', 'res1', '200001010000', false));
 expected_saved.push(new SaveData('ans2', 'res2', '200001010001', false));

@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
-import { Json } from '../main/globals';
-import { getInstance } from '../main/quiz/slideFactory';
+import { Json } from '../main/quiz/datalayer/globals';
+import { getInstance } from '../main/quiz/datalayer/slideFactory';
 import type { SlideInterface } from '../main/quiz/slideInterface';
 const slideTypes = [
   'bool',

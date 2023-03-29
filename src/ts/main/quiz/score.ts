@@ -1,9 +1,9 @@
 import { isEqual } from '../utilities';
-import { Course, Division } from './course';
-import {DivisionProcessor, process} from './dataManager'
+import { Course, Division } from './datalayer/course';
+import {DivisionProcessor, process} from './datalayer/dataManager'
 import { percentCorrect } from './evaluate';
-import { SaveData } from './slide/saveData';
-import { initSlide } from './slideFactory';
+import { SaveData } from './datalayer/saveData';
+import { initSlide } from './datalayer/slideFactory';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 export interface ISummaryLine {

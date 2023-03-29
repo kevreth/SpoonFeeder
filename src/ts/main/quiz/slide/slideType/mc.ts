@@ -4,7 +4,7 @@ import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 import { CORRECT, INCORRECT} from '../../../MarkupColors';
-import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
+import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
 export class Mc extends Slide {
   o: string[] = [];
   processJson(json: Mc): void {

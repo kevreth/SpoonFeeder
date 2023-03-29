@@ -1,7 +1,7 @@
-import { isRandom, shuffle } from '../utilities';
+import { isRandom, shuffle } from '../../utilities';
 import type { Course, Division, Module } from './course';
 import { INFO, initSlide } from './slideFactory';
-import type { SlideInterface } from './slideInterface';
+import type { SlideInterface } from '../slideInterface';
 import {DivisionProcessor, process} from './dataManager'
 //////////////// Phase 1: process Json
 export class JsonProcessor implements DivisionProcessor<void,void,SlideInterface[]> {

@@ -1,5 +1,5 @@
 import type { Course } from './course';
-import type { SlideInterface } from './slideInterface';
+import type { SlideInterface } from '../slideInterface';
 import {Division} from './course'
 
 

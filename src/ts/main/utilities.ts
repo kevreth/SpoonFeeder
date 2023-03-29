@@ -2,7 +2,7 @@
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
-import type { Course } from './quiz/course';
+import type { Course } from './quiz/datalayer/course';
 export function getYaml(filename: string, f: (data: Course) => void) {
   fetch(filename)
     .then((res) => res.blob())

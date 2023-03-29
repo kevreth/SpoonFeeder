@@ -1,6 +1,6 @@
 import { getChildIds, removeListener } from '../../../utilities';
 import { Slide } from '../../slide';
-import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
+import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy';
 export class Imap extends Slide {
   img = '';

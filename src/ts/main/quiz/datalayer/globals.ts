@@ -1,6 +1,6 @@
-import type { Course } from './quiz/course';
-import type { AnswerType } from './quiz/slide/strategies/resultStrategy';
-import type { SlideInterface } from './quiz/slideInterface';
+import type { Course } from './course';
+import type { AnswerType } from '../slide/strategies/resultStrategy';
+import type { SlideInterface } from '../slideInterface';
 //Should be replaced by a Pinia store
 export class CourseFile {
   private static json: Course;

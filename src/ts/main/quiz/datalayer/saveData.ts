@@ -1,7 +1,7 @@
 import { extend, isEqual } from '../../utilities';
-import type { AnswerType } from './strategies/resultStrategy';
-import {Json} from '../../globals';
-import { explanation } from './explanation';
+import type { AnswerType } from '../slide/strategies/resultStrategy';
+import {Json} from './globals';
+import { explanation } from '../slide/explanation';
 const KEY = 'savedata';
 export class SaveData {
   constructor(

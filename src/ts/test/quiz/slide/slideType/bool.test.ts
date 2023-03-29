@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Bool } from '../../../../main/quiz/slide/slideType/bool';
-import { BOOL } from '../../../../main/quiz/slideFactory';
+import { BOOL } from '../../../../main/quiz/datalayer/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'bool';

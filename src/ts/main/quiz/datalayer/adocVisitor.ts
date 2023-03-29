@@ -1,13 +1,13 @@
 import { SlideInterface } from '../slideInterface';
 import { adoc2html } from './adoc2html';
-import { Gap } from './slideType/gap';
-import { Imap } from './slideType/imap';
-import { Info } from './slideType/info';
-import { Ma } from './slideType/ma';
-import { Mc } from './slideType/mc';
-import { Select } from './slideType/select';
-import { Sort } from './slideType/sort';
-import { Vocab } from './slideType/vocab';
+import { Gap } from '../slide/slideType/gap';
+import { Imap } from '../slide/slideType/imap';
+import { Info } from '../slide/slideType/info';
+import { Ma } from '../slide/slideType/ma';
+import { Mc } from '../slide/slideType/mc';
+import { Select } from '../slide/slideType/select';
+import { Sort } from '../slide/slideType/sort';
+import { Vocab } from '../slide/slideType/vocab';
 
 export interface AdocVisitorInterface {
   visitGap(clazz: Gap): void;

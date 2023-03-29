@@ -40,7 +40,7 @@ import getStartOver from '../composables/startOver';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue'
-import {SaveData} from '../ts/main/quiz/slide/saveData';
+import {SaveData} from '../ts/main/quiz/datalayer/saveData';
 
 const overlay = ref(false);
 const isMuted = ref(false);
