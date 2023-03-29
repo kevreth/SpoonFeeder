@@ -39,6 +39,7 @@ export class SummaryLine implements ISummaryLine {
   }
 }
 export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLine, ISummaryLine> {
+  public retval: ISummaryLine = new SummaryLine();
   course_start(division: Division, retval: SummaryLine): ISummaryLine {
     return this.module_start(division, 0, retval, new SummaryLine());
   }
@@ -73,55 +74,26 @@ export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLi
     child.calculate();
     parent.add(child);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   course_end(course: ISummaryLine, retval: SummaryLine): void {
     course.calculate();
-    retval = course;
+    this.retval = course;
   }
 
 }
 export class Score {
   public static summary2(_course: Course): ISummaryLine {
-    let courseLine: ISummaryLine = new SummaryLine();
-    courseLine = process(_course, new ScoreProcessor(), courseLine);
-    return courseLine;
+    const courseLine: ISummaryLine = new SummaryLine();
+    const proc = new ScoreProcessor();
+    process(_course, proc, courseLine);
+    return proc.retval;
   }
   public static summary(_course: Course): Array<SummaryLine> {
-    const courseLine: ISummaryLine = Score.summary3(_course);
+    const courseLine: ISummaryLine = Score.summary2(_course);
     const courseLines = new Array<SummaryLine>();
     courseLines.push(courseLine);
     return courseLines;
   }
-  private static summary3(_course: Course) {
-    const courseLine: ISummaryLine = new SummaryLine();
-    courseLine.name = _course.name;
-    _course.units.forEach((unit) => {
-      const unitLine: ISummaryLine = new SummaryLine();
-      unitLine.name = unit.name;
-      unit.lessons.forEach((lesson) => {
-        const lessonLine: ISummaryLine = new SummaryLine();
-        lessonLine.name = lesson.name;
-        lesson.modules.forEach((module) => {
-          const moduleLine: ISummaryLine = new SummaryLine();
-          moduleLine.name = module.name;
-          delete moduleLine['children'];
-          module.exercises.forEach((exercise) => {
-            const exerciseLine = Score.exercise(exercise, getSavedDataArray());
-            moduleLine.add(exerciseLine);
-          }); //exercise
-          moduleLine.calculate();
-          lessonLine.add(moduleLine);
-        }); //module
-        lessonLine.calculate();
-        unitLine.add(lessonLine);
-      }); //lesson
-      unitLine.calculate();
-      courseLine.add(unitLine);
-    }); //unit
-    //course
-    courseLine.calculate();
-    return courseLine;
-  }
-
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
   public static exercise(
     exercise: SlideInterface,

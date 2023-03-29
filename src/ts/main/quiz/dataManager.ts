@@ -29,7 +29,7 @@ export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C
           division.exercises(exercise, exercise_ctr, retval, _module);
         });
         module.inst.forEach((inst, inst_ctr) => {
-          division.exercises(inst, inst_ctr, retval, _module);
+          division.inst(inst, inst_ctr, retval, _module);
         });
         division.module_end(_module, retval, _lesson);
       });
