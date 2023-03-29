@@ -17,7 +17,6 @@ export interface ISummaryLine {
   add(child: ISummaryLine): void;
   calculate(): void;
 }
-
 export class SummaryLine implements ISummaryLine {
   name = '';
   score = 0;
@@ -59,7 +58,7 @@ export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLi
     return parent;
   }
   exercises(slide: SlideInterface, ctr: number, retval: SummaryLine, parent: ISummaryLine): ISummaryLine {
-    const exerciseLine = Score.exercise(slide, getSavedDataArray());
+    const exerciseLine = Score.exercise(slide);
     parent.add(exerciseLine);
     return parent;
   }
@@ -79,7 +78,6 @@ export class ScoreProcessor implements DivisionProcessor<ISummaryLine,ISummaryLi
     course.calculate();
     this.retval = course;
   }
-
 }
 export class Score {
   public static summary2(_course: Course): ISummaryLine {
@@ -96,27 +94,26 @@ export class Score {
   }
   //correlated SavedData with Exercises; not 1 to 1 in the case of vocab
   public static exercise(
-    exercise: SlideInterface,
-    saves: SaveData[]
+    exercise: SlideInterface
   ) {
     const slides = initSlide(exercise);
     const isArray = Array.isArray(slides);
     const exerciseLine = new SummaryLine();
     if (isArray) {
       slides.forEach((slide) => {
-        createLine(saves, slide, exerciseLine);
+        createLine(slide, exerciseLine);
       });
     } else {
-      createLine(saves, slides, exerciseLine);
+      createLine(slides, exerciseLine);
     }
     return exerciseLine;
   }
 }
 function createLine(
-  saves: SaveData[],
   slide: SlideInterface,
   exerciseLine: ISummaryLine
 ) {
+  const saves = getSavedDataArray();
   const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
   if (idx > -1) {
     const results = saves[idx].result;

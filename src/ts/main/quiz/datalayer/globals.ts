@@ -1,5 +1,4 @@
 import type { Course } from './course';
-import type { AnswerType } from '../slide/strategies/resultStrategy';
 import type { SlideInterface } from '../slideInterface';
 //Should be replaced by a Pinia store
 export class CourseFile {
@@ -33,9 +32,6 @@ export class Json {
     const retval = Json.json[Json.counter - 2];
     Json.counter--;
     return retval;
-  }
-  public static getSlideByTxt(txt: AnswerType): SlideInterface {
-    return Json.json.find((x) => x.txt === txt) as SlideInterface;
   }
   public static getNumSlides(): number {
     return Json.json.length;
