@@ -1,8 +1,6 @@
 import type { Course } from './course';
 import type { SlideInterface } from '../slideInterface';
 import {Division} from './course'
-
-
 export interface DivisionProcessor<C,D,T> {
   course_start(course: Division, retval: T): C;
   unit_start(child: Division, ctr: number, retval: T, parent: C): D;
@@ -15,7 +13,6 @@ export interface DivisionProcessor<C,D,T> {
   unit_end(child: D, retval: T, parent: C): void;
   course_end(course: C, retval: T): void;
 }
-
 export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C,D,T>, retval: T) {
   const _course: C = division.course_start(courseData, retval);
   courseData.units.forEach((unit, unit_ctr) => {
