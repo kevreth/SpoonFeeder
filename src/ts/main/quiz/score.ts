@@ -113,7 +113,7 @@ function createLine(
   slide: SlideInterface,
   exerciseLine: ISummaryLine
 ) {
-  const results = SaveData.getResults(slide.txt)
+  const results = SaveData.getResults(slide)
   if (results !== '') {
     slide.setResults(results);
     const evaluation = slide.evaluate();

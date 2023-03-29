@@ -1,6 +1,7 @@
 import { extend, isEqual } from '../../utilities';
 import { explanation } from '../slide/explanation';
 import type { AnswerType } from '../slide/strategies/resultStrategy';
+import { SlideInterface } from '../slideInterface';
 import { Json } from './globals';
 const KEY = 'savedata';
 export class SaveData {
@@ -34,9 +35,9 @@ export class SaveData {
   public static find(txt: string, saves: Array<SaveData>): number {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));
   }
-  public static getResults(txt:string): AnswerType {
-    const saves = this.get()
-    const idx = this.find(txt,saves);
+  public static getResults(slide:SlideInterface): AnswerType {
+    const saves = SaveData.get()
+    const idx = SaveData.find(slide.txt,saves);
     let retval: AnswerType = '';
     if(idx >=0) retval = saves[idx].result;
     return retval;
@@ -57,12 +58,7 @@ export class SaveData {
   // Used only in Vue.
   public static getCurrentSlide() {
     const slide = Json.getCurrentSlide();
-    const saves = SaveData.get();
-    const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-    if(idx >= 0) {
-      const save = saves[idx];
-      slide.res = save.result;
-    }
+    slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
     return (exp);
   }
