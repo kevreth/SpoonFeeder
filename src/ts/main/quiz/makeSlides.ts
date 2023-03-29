@@ -10,9 +10,9 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    const saves = getSavedDataArray();
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     else {
+      const saves = getSavedDataArray();
       const idx = Slide.getSlideSavedIndex(saves, slide.txt);
       const savedFlag = idx > -1;
       let contFlag = false;

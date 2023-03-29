@@ -1,4 +1,3 @@
-// import Handlebars from 'handlebars';
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
