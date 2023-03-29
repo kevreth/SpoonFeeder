@@ -113,10 +113,8 @@ function createLine(
   slide: SlideInterface,
   exerciseLine: ISummaryLine
 ) {
-  const saves = getSavedDataArray();
-  const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-  if (idx > -1) {
-    const results = saves[idx].result;
+  const results = SaveData.getResults(slide.txt)
+  if (results !== '') {
     slide.setResults(results);
     const evaluation = slide.evaluate();
     exerciseLine.score += evaluation.correct;
