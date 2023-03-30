@@ -54,9 +54,7 @@ export class JsonProcessor implements DivisionProcessor<void,void,SlideInterface
 }
 export class ProcessJson {
   public static processJson(course: Course) {
-    let slides = new Array<SlideInterface>();
-    slides = process(course, new JsonProcessor(), slides);
-    return slides;
+    return process(course, new JsonProcessor(), new Array<SlideInterface>());
   }
   public static titleSlideText(type: string, counter: number, name: string) {
     counter++;
