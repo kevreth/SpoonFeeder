@@ -2,7 +2,6 @@ import reloadPage from '../../../composables/startOver';
 import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
-import { Slide } from './slide';
 import { SaveData } from './datalayer/saveData';
 import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
@@ -13,7 +12,7 @@ export class MakeSlides {
     if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
     else {
       const saves = getSavedDataArray();
-      const idx = Slide.getSlideSavedIndex(saves, slide.txt);
+      const idx = SaveData.find(slide.txt, saves);
       const savedFlag = idx > -1;
       let contFlag = false;
       if (savedFlag) contFlag = saves[idx].cont;

@@ -42,9 +42,6 @@ export abstract class Slide implements SlideInterface {
   public setContinue(): void {
     this.cont = true;
   }
-  static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
-    return saves.findIndex((x) => isEqual(x.txt, txt));
-  }
   getAnswerCount(): number {
     return 1;
   }
