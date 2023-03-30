@@ -39,24 +39,6 @@ it('testCount_GetSlide', () => {
   const actual = Json.count();
   expect(actual).toEqual(expected);
 });
-it('testGetNumSlides', () => {
-  reset();
-  const slides: SlideInterface[] = makeSlideArray();
-  Json.set(slides);
-  const expected = slides.length;
-  const actual = Json.getNumSlides();
-  expect(actual).toEqual(expected);
-});
-it('testPush', () => {
-  reset();
-  slideTypes.forEach((slideStr) => {
-    const slide = getInstance(slideStr) as SlideInterface;
-    Json.push(slide);
-  });
-  const expected = slideTypes.length;
-  const actual = Json.getNumSlides();
-  expect(actual).toEqual(expected);
-});
 it('testReset', () => {
   reset();
   const slides: SlideInterface[] = makeSlideArray();

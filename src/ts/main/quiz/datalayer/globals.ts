@@ -27,18 +27,6 @@ export class Json {
   public static getCurrentSlide() {
     return Json.json[Json.counter-1];
   }
-  public static getPrevSlide() {
-    //-2 because the counter is advanced during the last getSlide()
-    const retval = Json.json[Json.counter - 2];
-    Json.counter--;
-    return retval;
-  }
-  public static getNumSlides(): number {
-    return Json.json.length;
-  }
-  public static push(slide: SlideInterface) {
-    Json.json.push(slide);
-  }
   public static reset(): void {
     Json.counter = 0;
   }
