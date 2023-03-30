@@ -1,5 +1,6 @@
 .q-btn {
   box-shadow: none;
+  font-size: none;
 }
 .q-overlay {
   backdrop-filter: blur(5px);

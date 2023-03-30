@@ -3,15 +3,15 @@
   enter-active-class="animated zoomInUp"
   leave-active-class="animated zoomOutDown"
   >
-  <q-overlay>
+  <q-overlay id="overlay">
     <template #body>        
-      <div class="overlay fixed-center column" style="display: flex; flex-direction: column;">
+      <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
         <div class="overlayBtn">
-          <OverlayCloseBtn @click="$emit('handleOverlay')"/>
-          <TrashBtn @click="startOver" />
+          <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
+          <TrashBtn id="startOver" @click="startOver" />
         </div>
 
-        <div class="progressBackground" style="flex-grow: 1;">
+        <div id="progressBackground" class="progressBackground" style="flex-grow: 1;">
           <ProgressTable style="cursor: auto" />
         </div>
       </div>
@@ -32,6 +32,23 @@ function startOver() {
 const { clear, reload } = getStartOver();
 return { clear, reload };
 }
-
-
 </script>
+
+<style>
+.overlay {
+  height: 60%;
+}
+.progressBackground {
+  font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  height: 70%;
+  border-radius: 10px;
+  overflow: auto;
+}
+.overlayBtn {
+  color: #fc3d08;
+  font-size: 15px;
+}
+.animated {
+  animation-duration: 1s;
+}
+</style>

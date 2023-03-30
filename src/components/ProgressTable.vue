@@ -1,15 +1,18 @@
 <template>
   <q-card class="bg-secondary">
-    <InfoIcon 
+    <InfoIcon
+      id="infoIcon"
       @click="handleInfoOverlay" 
       @keydown.esc="infoOverlay = false" tabindex="0"
     />
     <InfoTable
+      id="infoTable"
       v-model="infoOverlay"
       @closeInfo="infoOverlay = false"
     />
 
     <q-hierarchy
+      id="progress"
       class="progressTable center"
       dense
       flat
@@ -20,29 +23,36 @@
       :default-expand-all="(default_expand_all = true)"
     >
       <template v-slot:body="props">
-        <td class="text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
-          <div v-bind:style="props.setPadding(props.item)"
-                :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
-            <q-btn @click="props.toggle(props.item)" v-if="props.iconName(props.item)!='done'"
-                    :icon="props.iconName(props.item)" flat
-                    dense>
+        <td id="firstCell" class="text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
+          <div
+            v-bind:style="props.setPadding(props.item)"
+            :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
+            <q-btn
+              id="expandIcon"
+              @click="props.toggle(props.item)"
+              v-if="props.iconName(props.item)!='done'"
+              :icon="props.iconName(props.item)"
+              flat
+              dense>
             </q-btn>
-            <span class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
+            <span id="name" class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
 
-            <img v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../courses/test/award.svg" width="20"/>
+            <img id="award" v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../courses/test/award.svg" width="20"/>
           </div>
         </td>
-        <td class="text-right">{{props.item.score}}</td>
-        <td class="text-right complete">{{props.item.complete}}</td>
-        <td class="text-right pctScore">{{props.item.pctCorrect}}</td>
-        <td class="text-right">{{props.item.count}}</td>
-        <td class="text-right pctComplete">{{props.item.pctComplete}}</td>
-        <td class="text-left">
+        <td id="score" class="text-right">{{props.item.score}}</td>
+        <td id="complete" class="text-right complete">{{props.item.complete}}</td>
+        <td id="pctCorrect" class="text-right pctScore">{{props.item.pctCorrect}}</td>
+        <td id="count" class="text-right">{{props.item.count}}</td>
+        <td id="pctComplete" class="text-right pctComplete">{{props.item.pctComplete}}</td>
+        <td id="summary" class="text-left">
           <a v-bind:href="props.item.summary">
             <SummaryIcon
+              id="summaryIcon"
               @click="summaryOverlay = true"
               />    
             <SummaryTable
+              id="summaryTable"
               v-model="summaryOverlay"
               @closeSummary="summaryOverlay = false"
               />
