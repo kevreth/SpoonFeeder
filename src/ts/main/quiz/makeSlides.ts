@@ -3,7 +3,6 @@ import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
 import { SaveData } from './datalayer/saveData';
-import type { SlideInterface } from './slideInterface';
 const { get: getSavedDataArray } = SaveData;
 ///////////////// PHASE 2: make slides
 export class MakeSlides {
@@ -15,24 +14,18 @@ export class MakeSlides {
       const idx = SaveData.find(slide.txt, saves);
       const savedFlag = idx > -1;
       let contFlag = false;
-      if (savedFlag) contFlag = saves[idx].cont;
+      const saved = saves[idx];
+      if (savedFlag) contFlag = saved.cont;
       if (contFlag) {
-        MakeSlides.reloadSlide(slide, idx);
+        slide.setResults(saved.result);
         MakeSlides.showSlides(doc);
       } else if (savedFlag) {
-        MakeSlides.reloadSlide(slide, idx);
+        slide.setResults(saved.result);
         slide.makeSlides(doc);
         slide.decorate(doc);
         showButton(doc, slide.txt);
       } else slide.makeSlides(doc);
     }
-  }
-  //The slide has already been presented to the user, as will happen on reload.
-  public static reloadSlide(slide: SlideInterface, idx: number) {
-    const saves = getSavedDataArray();
-    const savedSlide = saves[idx];
-    const result = savedSlide.result;
-    slide.setResults(result);
   }
   private static endQuiz(doc: Document) {
     Json.reset();
