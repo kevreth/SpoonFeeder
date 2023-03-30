@@ -1,4 +1,4 @@
-import { isEqual, timestampNow } from '../utilities';
+import { timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
 import { AdocVisitorInterface } from './datalayer/adocVisitor';
 import { SaveData } from './datalayer/saveData';
