@@ -1,4 +1,4 @@
-import { Json } from './quiz/datalayer/globals';
+import { CourseFile, Json } from './quiz/datalayer/globals';
 import type { Course } from './quiz/datalayer/course';
 import { MakeSlides } from './quiz/makeSlides';
 import { ProcessJson } from './quiz/datalayer/processJson';
@@ -14,6 +14,7 @@ export class Quiz {
     const yamlFilename = Quiz.makeYamlFilename(courseName);
     //test data
     getYaml(yamlFilename, (course: Course) => {
+      CourseFile.set(course);
       const slides = processJson(course);
       Json.set(slides);
       MakeSlides.showSlides(doc);
