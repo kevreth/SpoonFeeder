@@ -36,7 +36,7 @@ export class SaveData {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));
   }
   public static getResults(slide:SlideInterface): AnswerType {
-    const saves = SaveData.get()
+    const saves = SaveData.get();
     const idx = SaveData.find(slide.txt,saves);
     let retval: AnswerType = '';
     if(idx >=0) retval = saves[idx].result;
