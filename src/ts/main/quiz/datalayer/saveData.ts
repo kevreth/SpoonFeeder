@@ -6,7 +6,7 @@ import { Json } from './globals';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
-    public readonly txt: AnswerType,
+    public readonly txt: string,
     public readonly result: AnswerType,
     public readonly ts: string,
     public readonly cont: boolean
@@ -19,7 +19,7 @@ export class SaveData {
     return arr;
   }
   public static set(
-    txt: AnswerType,
+    txt: string,
     res: AnswerType,
     ts: string,
     cont: boolean
@@ -61,5 +61,16 @@ export class SaveData {
     slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
     return (exp);
+  }
+  public static getSlideByTxt(txt:string) {
+    const slides = Json.get();
+    const idx = slides.findIndex((slide) => isEqual(slide.txt, txt));
+    return slides[idx];
+  }
+  public static getSlideWithSavedDataByTxt(savedata: SaveData) {
+    const slide = SaveData.getSlideByTxt(savedata.txt);
+    slide.res = savedata.result;
+    slide.cont = savedata.cont;
+    return slide;
   }
 }
