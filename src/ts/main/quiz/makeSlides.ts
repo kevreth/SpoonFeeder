@@ -33,7 +33,7 @@ export class MakeSlides {
       else slide.makeSlides(doc);
     }
   }
-  private static endQuiz(doc: Document) {
+  public static endQuiz(doc: Document) {
     Json.reset();
     const json = Json.get();
     doc.body.innerHTML = evaluate(json); //EXECUTION ENDS

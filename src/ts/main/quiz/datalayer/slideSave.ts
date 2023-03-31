@@ -1,6 +1,7 @@
 import { SaveData } from './saveData';
-import { SlideInterfaceProperties } from '../slideInterface';
+import { SlideInterface, SlideInterfaceProperties } from '../slideInterface';
 import { isEqual, last } from '../../utilities';
+import { MakeSlides, showButton } from '../makeSlides';
 export class SlideSaveMethods {
   public fillMatchingSlide(slide: SlideInterfaceProperties, last: SaveData) {
     slide.cont = last.cont;
@@ -34,5 +35,35 @@ export class SlideSave {
     }
     return slide;
   }
+  public getSlide(slide: SlideInterfaceProperties, rules: MakeSlidesI) {
+    if(slide.cont && (this.slides.length === this.saves.length))
+      rules.finishQuiz();
+    else if (slide.cont)
+      rules.showUndecoratedSlide();
+    else
+      rules.showDecoratedSlide();
+  }
 }
+export interface MakeSlidesI {
+  finishQuiz(): void;
+  showDecoratedSlide(): void;
+  showUndecoratedSlide(): void;
+}
+export class MakeSlides2 implements MakeSlidesI {
+  constructor(
+    public slide:SlideInterface,
+    public doc:Document
+  ) {}
+  finishQuiz(): void {
+    MakeSlides.endQuiz(this.doc);
+  }
+  showDecoratedSlide(): void {
+    this.showUndecoratedSlide();
+    this.slide.decorate(this.doc);
+    showButton(this.doc, this.slide.txt);
+  }
+  showUndecoratedSlide(): void {
+    this.slide.makeSlides(this.doc);
+  }
 
+}
