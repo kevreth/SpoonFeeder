@@ -8,17 +8,20 @@ import type {
   ResultReturnType,
   ResultType,
 } from './slide/strategies/resultStrategy';
-
-export interface SlideInterface {
+export interface SlideInterfaceProperties {
   txt: string;
   type: string;
-  cont: boolean;
-  exp: string;
-  ref: string;
-  ans: AnswerType;
-  res: AnswerType;
-  isExercise: boolean;
-  pageTemplate: string;
+  cont?: boolean;
+  exp?: string;
+  ref?: string;
+  ans?: AnswerType;
+  res?: AnswerType;
+  o?: AnswerType;
+  numans?: number;
+  isExercise?: boolean;
+  pageTemplate?: string;
+}
+export interface SlideInterface extends SlideInterfaceProperties{
   createHtml: CreateHtmlTypeIntersection;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
