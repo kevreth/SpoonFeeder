@@ -1,21 +1,6 @@
 import { SaveData } from './saveData';
 import { SlideInterfaceProperties } from '../slideInterface';
 import { isEqual, last } from '../../utilities';
-
-export class SlideSave {
-  constructor(
-    public slides: SlideInterfaceProperties[],
-    public saves: SaveData[],
-    public methods: SlideSaveMethods
-  ) { }
-  public getCurrentSlide() {
-    const save = this.methods.getLastSave(this.saves) as SaveData;
-    const idx = this.methods.findMatchingSlide(this.slides, save);
-    const slide = this.methods.getMatchingSlide(this.slides, idx);
-    this.methods.fillMatchingSlide(slide, save);
-    return slide;
-  }
-}
 export class SlideSaveMethods {
   public fillMatchingSlide(slide: SlideInterfaceProperties, last: SaveData) {
     slide.cont = last.cont;
@@ -31,3 +16,22 @@ export class SlideSaveMethods {
     return last(saves);
   }
 }
+export class SlideSave {
+  constructor(
+    public slides: SlideInterfaceProperties[],
+    public saves: SaveData[],
+    public methods: SlideSaveMethods
+  ) { }
+  public getCurrentSlide() {
+    const save = this.methods.getLastSave(this.saves) as SaveData;
+    const idx = this.methods.findMatchingSlide(this.slides, save);
+    let retval = undefined;
+    if(idx > -1) {
+      const slide = this.methods.getMatchingSlide(this.slides, idx);
+      this.methods.fillMatchingSlide(slide, save);
+      retval = slide;
+    }
+    return retval;
+  }
+}
+

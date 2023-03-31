@@ -2,7 +2,7 @@ import { difference, intersection } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
-import { CORRECT, INCORRECT} from '../../../MarkupColors';
+import { CORRECT, INCORRECT} from '../../../markupColors';
 import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
 export class Select extends Slide {
   inst = '';

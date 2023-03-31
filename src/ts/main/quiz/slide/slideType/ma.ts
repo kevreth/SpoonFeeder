@@ -1,5 +1,5 @@
 import { removeListener } from '../../../utilities';
-import {INDETERMINANT, CORRECT, INCORRECT} from '../../../MarkupColors';
+import {INDETERMINANT, CORRECT, INCORRECT} from '../../../markupColors';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';

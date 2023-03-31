@@ -1,7 +1,7 @@
 import { polyfill } from 'mobile-drag-drop';
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
-import { CORRECT, INCORRECT } from '../../../MarkupColors';
+import { CORRECT, INCORRECT } from '../../../markupColors';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';

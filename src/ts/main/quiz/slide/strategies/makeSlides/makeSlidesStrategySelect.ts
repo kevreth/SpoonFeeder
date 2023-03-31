@@ -3,7 +3,7 @@ import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
-import {INDETERMINANT} from '../../../../MarkupColors';
+import {INDETERMINANT} from '../../../../markupColors';
 export function makeSlidesStrategySelect(
   inst: string,
   txt: string,
