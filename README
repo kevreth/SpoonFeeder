@@ -2,3 +2,9 @@
 ![SpoonFeeder logo](https://github.com/kevreth/SpoonFeeder/raw/main/spoon.feeder.jpg)
 
 SpoonFeeder is programmed instruction software that takes advantage of recent advances in gamification.
+
+Installation:
+
+git clone
+npm i -g @quasar/cli
+quasar dev
