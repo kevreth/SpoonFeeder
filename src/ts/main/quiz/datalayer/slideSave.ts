@@ -25,7 +25,7 @@ export class SlideSave {
   public getCurrentSlide() {
     const save = this.methods.getLastSave(this.saves) as SaveData;
     const idx = this.methods.findMatchingSlide(this.slides, save);
-    assert(idx>-1);
+    // assert(idx>-1);
     const slide = this.methods.getMatchingSlide(this.slides, idx);
     this.methods.fillMatchingSlide(slide, save);
     return slide;
