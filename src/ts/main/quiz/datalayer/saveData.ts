@@ -62,25 +62,4 @@ export class SaveData {
     const exp = explanation(slide);
     return (exp);
   }
-  public static getSlideByTxt(txt:string) {
-    const slides = Json.get();
-    const idx = slides.findIndex((slide) => isEqual(slide.txt, txt));
-    return slides[idx];
-  }
-  public static getSlideWithSavedDataByTxt(savedata: SaveData) {
-    const slide = SaveData.getSlideByTxt(savedata.txt);
-    slide.res = savedata.result;
-    slide.cont = savedata.cont;
-    return slide;
-  }
-  public static getCurrentSlideWithSavedData() {
-    const savedata = SaveData.getLastSavedData();
-    const slide = SaveData.getSlideWithSavedDataByTxt(savedata);
-    return slide;
-  }
-  public static getLastSavedData() {
-    const savedata = SaveData.get();
-    const last = savedata[savedata.length-1];
-    return last;
-  }
 }

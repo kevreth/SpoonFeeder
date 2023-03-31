@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { SaveData } from '../../../main/quiz/datalayer/saveData';
 import { SlideInterfaceProperties } from '../../../main/quiz/slideInterface';
-import { isEqual, last } from '../../../main/utilities';
+import { SlideSaveMethods, SlideSave } from '../../../main/quiz/datalayer/SlideSave';
 const expected_saved = new Array<SaveData>();
 expected_saved.push(new SaveData('ans1', 'res1', '200001010000', false));
 expected_saved.push(new SaveData('ans2', 'res2', '200001010001', false));
@@ -55,32 +55,4 @@ it('slidesave', () => {
   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
   expect(ss.getCurrentSlide().res).toEqual(['a','b','c','d']);
 });
-export class SlideSave {
-  constructor(
-    public slides:SlideInterfaceProperties[],
-    public saves: SaveData[],
-    public methods: SlideSaveMethods
-  ) {}
-  public getCurrentSlide() {
-    const save = this.methods.getLastSave(this.saves) as SaveData;
-    const idx = this.methods.findMatchingSlide(this.slides, save);
-    const slide = this.methods.getMatchingSlide(this.slides, idx);
-    this.methods.fillMatchingSlide(slide, save);
-    return slide;
-  }
-}
-export class SlideSaveMethods {
-  public fillMatchingSlide(slide: SlideInterfaceProperties, last: SaveData) {
-    slide.cont = last.cont;
-    slide.res = last.result;
-  }
-  public getMatchingSlide(slides: SlideInterfaceProperties[], idx: number) {
-    return slides[idx];
-  }
-  public findMatchingSlide(slides: SlideInterfaceProperties[], last: SaveData) {
-    return slides.findIndex((slide) => isEqual(slide.txt, last.txt));
-  }
-  public getLastSave(saves: SaveData[]) {
-    return last(saves);
-  }
-}
+
