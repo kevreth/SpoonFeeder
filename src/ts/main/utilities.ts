@@ -113,6 +113,9 @@ export function shuffle<T>(data: Array<T>): Array<T> {
 export function escape(data: string): string {
   return _.escape(data);
 }
+export function last<T>(data: Array<T>): T|undefined {
+  return _.last(data)
+}
 // =========================== Jquery wrappers ================================
 export function extend<T>(obj1: T, obj2: object) {
   return $.extend(obj1, obj2);
