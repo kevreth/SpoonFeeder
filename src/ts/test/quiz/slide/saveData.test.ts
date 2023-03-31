@@ -58,9 +58,9 @@ it('slidesave', () => {
   expect(ss.getCurrentSlide().res).toEqual(['a','b','c','d']);
 });
 it('finishQuiz', () => {
-  const testable = mock<MakeSlidesI>();
   const slide = GAP();
   slide.cont = true;
+  const testable = mock<MakeSlidesI>();
   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
   ss.getSlide(slide,testable);
   expect(testable.finishQuiz).toBeCalledTimes(1);
@@ -68,9 +68,9 @@ it('finishQuiz', () => {
   expect(testable.showDecoratedSlide).toBeCalledTimes(0);
 });
 it('showDecoratedSlide', () => {
-  const testable = mock<MakeSlidesI>();
   const slide = GAP();
   slide.cont = false;
+  const testable = mock<MakeSlidesI>();
   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
   ss.getSlide(slide,testable);
   expect(testable.finishQuiz).toBeCalledTimes(0);
@@ -78,10 +78,10 @@ it('showDecoratedSlide', () => {
   expect(testable.showDecoratedSlide).toBeCalledTimes(1);
 });
 it('showUndecoratedSlide', () => {
-  const testable = mock<MakeSlidesI>();
   const slide = GAP();
   slide.cont = true;
   savedata_test.pop();
+  const testable = mock<MakeSlidesI>();
   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
   ss.getSlide(slide,testable);
   expect(testable.finishQuiz).toBeCalledTimes(0);
