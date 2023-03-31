@@ -8,23 +8,29 @@ const { get: getSavedDataArray } = SaveData;
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const slide = Json.getSlide();
-    if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
-    else {
+    if (typeof slide === 'undefined') //no slides left
+      MakeSlides.endQuiz(doc);
+    else { //more slides to work
       const saves = getSavedDataArray();
       const idx = SaveData.find(slide.txt, saves);
       const savedFlag = idx > -1;
       let contFlag = false;
       const saved = saves[idx];
       if (savedFlag) contFlag = saved.cont;
-      if (contFlag) {
+      // saved and continued
+      if (contFlag) { // go to next slide
         slide.setResults(saved.result);
         MakeSlides.showSlides(doc);
-      } else if (savedFlag) {
+      }
+      // saved, not continued; show answered state of current slide
+      else if (savedFlag) {
         slide.setResults(saved.result);
         slide.makeSlides(doc);
         slide.decorate(doc);
         showButton(doc, slide.txt);
-      } else slide.makeSlides(doc);
+      }
+      // neither saved nor continued; show current slide awaiting answering
+      else slide.makeSlides(doc);
     }
   }
   private static endQuiz(doc: Document) {
