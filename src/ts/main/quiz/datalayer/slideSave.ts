@@ -23,11 +23,15 @@ export class SlideSave {
     public methods: SlideSaveMethods
   ) { }
   public getCurrentSlide() {
-    const save = this.methods.getLastSave(this.saves) as SaveData;
-    const idx = this.methods.findMatchingSlide(this.slides, save);
-    // assert(idx>-1);
-    const slide = this.methods.getMatchingSlide(this.slides, idx);
-    this.methods.fillMatchingSlide(slide, save);
+    // assert(slides.length > 0)
+    let slide = this.slides[0];
+    if(this.saves.length > 0) {
+      const save = this.methods.getLastSave(this.saves) as SaveData;
+      const idx = this.methods.findMatchingSlide(this.slides, save);
+      // assert(idx>-1);
+      slide = this.methods.getMatchingSlide(this.slides, idx);
+      this.methods.fillMatchingSlide(slide, save);
+    }
     return slide;
   }
 }
