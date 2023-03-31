@@ -67,7 +67,7 @@ it('finishQuiz', () => {
   expect(testable.showUndecoratedSlide).toBeCalledTimes(0);
   expect(testable.showDecoratedSlide).toBeCalledTimes(0);
 })
-it('finishQuiz', () => {
+it('showDecoratedSlide', () => {
   const testable = mock<MakeSlidesI>();
   const slide = GAP();
   slide.cont = false;
