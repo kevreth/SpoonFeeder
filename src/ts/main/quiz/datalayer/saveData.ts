@@ -73,4 +73,14 @@ export class SaveData {
     slide.cont = savedata.cont;
     return slide;
   }
+  public static getCurrentSlideWithSavedData() {
+    const savedata = SaveData.getLastSavedData();
+    const slide = SaveData.getSlideWithSavedDataByTxt(savedata);
+    return slide;
+  }
+  public static getLastSavedData() {
+    const savedata = SaveData.get();
+    const last = savedata[savedata.length-1];
+    return last;
+  }
 }
