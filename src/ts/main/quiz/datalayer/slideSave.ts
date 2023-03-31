@@ -36,7 +36,6 @@ export class SlideSave {
     return slide;
   }
   public getSlide(slide: SlideInterfaceProperties, rules: MakeSlidesI) {
-    console.log(slide.cont,this.slides.length, this.saves.length);
     if(slide.cont && (this.slides.length === this.saves.length))
       rules.finishQuiz();
     else if (slide.cont)

@@ -66,7 +66,7 @@ it('finishQuiz', () => {
   expect(testable.finishQuiz).toBeCalledTimes(1);
   expect(testable.showUndecoratedSlide).toBeCalledTimes(0);
   expect(testable.showDecoratedSlide).toBeCalledTimes(0);
-})
+});
 it('showDecoratedSlide', () => {
   const testable = mock<MakeSlidesI>();
   const slide = GAP();
@@ -76,4 +76,15 @@ it('showDecoratedSlide', () => {
   expect(testable.finishQuiz).toBeCalledTimes(0);
   expect(testable.showUndecoratedSlide).toBeCalledTimes(0);
   expect(testable.showDecoratedSlide).toBeCalledTimes(1);
-})
+});
+it('showUndecoratedSlide', () => {
+  const testable = mock<MakeSlidesI>();
+  const slide = GAP();
+  slide.cont = true;
+  savedata_test.pop();
+  const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
+  ss.getSlide(slide,testable);
+  expect(testable.finishQuiz).toBeCalledTimes(0);
+  expect(testable.showUndecoratedSlide).toBeCalledTimes(1);
+  expect(testable.showDecoratedSlide).toBeCalledTimes(0);
+});
