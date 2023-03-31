@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { SaveData } from '../../../main/quiz/datalayer/saveData';
-import { SlideInterfaceProperties } from '../../../main/quiz/slideInterface';
+import { SlideInterface } from '../../../main/quiz/slideInterface';
 import { SlideSaveMethods, SlideSave, MakeSlidesI } from '../../../main/quiz/datalayer/slideSave';
 import { mock } from 'vitest-mock-extended';
 import { GAP } from '../../../main/quiz/datalayer/slideFactory';
@@ -8,7 +8,8 @@ const expected_saved = new Array<SaveData>();
 expected_saved.push(new SaveData('ans1', 'res1', '200001010000', false));
 expected_saved.push(new SaveData('ans2', 'res2', '200001010001', false));
 expected_saved.push(new SaveData('ans3', 'res3', '200001010002', false));
-const slides_test: SlideInterfaceProperties[] =
+//change this to not use object literals
+const slides_test: SlideInterface[] =
 [
   {
     type: 'mc',

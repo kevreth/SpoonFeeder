@@ -3,35 +3,14 @@ import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
 import { SaveData } from './datalayer/saveData';
-const { get: getSavedDataArray } = SaveData;
+import { MakeSlides2, SlideSave, SlideSaveMethods } from './datalayer/slideSave';
 ///////////////// PHASE 2: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
-    const slide = Json.getSlide();
-    if (typeof slide === 'undefined') //no slides left
-      MakeSlides.endQuiz(doc);
-    else { //more slides to work
-      const saves = getSavedDataArray();
-      const idx = SaveData.find(slide.txt, saves);
-      const savedFlag = idx > -1;
-      let contFlag = false;
-      const saved = saves[idx];
-      if (savedFlag) contFlag = saved.cont;
-      // saved and continued
-      if (contFlag) { // go to next slide
-        slide.setResults(saved.result);
-        MakeSlides.showSlides(doc);
-      }
-      // saved, not continued; show answered state of current slide
-      else if (savedFlag) {
-        slide.setResults(saved.result);
-        slide.makeSlides(doc);
-        slide.decorate(doc);
-        showButton(doc, slide.txt);
-      }
-      // neither saved nor continued; show current slide awaiting answering
-      else slide.makeSlides(doc);
-    }
+    const ss = new SlideSave(Json.get(),SaveData.get(),new SlideSaveMethods());
+    const slide = ss.getCurrentSlide();
+    const makeSlides = new MakeSlides2(slide,doc);
+    ss.getSlide(slide,makeSlides);
   }
   public static endQuiz(doc: Document) {
     Json.reset();

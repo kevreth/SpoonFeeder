@@ -1,16 +1,16 @@
 import { SaveData } from './saveData';
-import { SlideInterface, SlideInterfaceProperties } from '../slideInterface';
+import { SlideInterface } from '../slideInterface';
 import { isEqual, last } from '../../utilities';
 import { MakeSlides, showButton } from '../makeSlides';
 export class SlideSaveMethods {
-  public fillMatchingSlide(slide: SlideInterfaceProperties, last: SaveData) {
+  public fillMatchingSlide(slide: SlideInterface, last: SaveData) {
     slide.cont = last.cont;
     slide.res = last.result;
   }
-  public getMatchingSlide(slides: SlideInterfaceProperties[], idx: number) {
+  public getMatchingSlide(slides: SlideInterface[], idx: number) {
     return slides[idx];
   }
-  public findMatchingSlide(slides: SlideInterfaceProperties[], last: SaveData) {
+  public findMatchingSlide(slides: SlideInterface[], last: SaveData) {
     return slides.findIndex((slide) => isEqual(slide.txt, last.txt));
   }
   public getLastSave(saves: SaveData[]) {
@@ -19,7 +19,7 @@ export class SlideSaveMethods {
 }
 export class SlideSave {
   constructor(
-    public slides: SlideInterfaceProperties[],
+    public slides: SlideInterface[],
     public saves: SaveData[],
     public methods: SlideSaveMethods
   ) { }
@@ -28,14 +28,15 @@ export class SlideSave {
     let slide = this.slides[0];
     if(this.saves.length > 0) {
       const save = this.methods.getLastSave(this.saves) as SaveData;
-      const idx = this.methods.findMatchingSlide(this.slides, save);
+      let idx = this.methods.findMatchingSlide(this.slides, save);
       // assert(idx>-1);
+      if(slide.cont && idx !== this.slides.length - 1) idx += 1;
       slide = this.methods.getMatchingSlide(this.slides, idx);
       this.methods.fillMatchingSlide(slide, save);
     }
     return slide;
   }
-  public getSlide(slide: SlideInterfaceProperties, rules: MakeSlidesI) {
+  public getSlide(slide: SlideInterface, rules: MakeSlidesI) {
     if(slide.cont && (this.slides.length === this.saves.length))
       rules.finishQuiz();
     else if (slide.cont)
