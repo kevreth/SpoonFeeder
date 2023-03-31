@@ -1,7 +1,9 @@
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { SaveData } from '../../../main/quiz/datalayer/saveData';
 import { SlideInterfaceProperties } from '../../../main/quiz/slideInterface';
-import { SlideSaveMethods, SlideSave } from '../../../main/quiz/datalayer/slideSave';
+import { SlideSaveMethods, SlideSave, MakeSlidesI } from '../../../main/quiz/datalayer/slideSave';
+// import { mock } from 'vitest-mock-extended';
+import { GAP } from '../../../main/quiz/datalayer/slideFactory';
 const expected_saved = new Array<SaveData>();
 expected_saved.push(new SaveData('ans1', 'res1', '200001010000', false));
 expected_saved.push(new SaveData('ans2', 'res2', '200001010001', false));
@@ -55,4 +57,13 @@ it('slidesave', () => {
   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
   expect(ss.getCurrentSlide().res).toEqual(['a','b','c','d']);
 });
+// it('getSlide', () => {
+//   const testable = mock<MakeSlidesI>();
+//   const slide = GAP();
+//   slide.cont = false;
+//   const spy = vi.spyOn(testable,'finishQuiz');
+//   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
+//   ss.getSlide(slide,testable);
+//   expect(spy).toHaveBeenCalledTimes(1);
+// })
 
