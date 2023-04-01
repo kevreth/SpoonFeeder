@@ -24,26 +24,15 @@ export function dispatch2<T>(actions: StateActions<T>, advance: boolean): T {
   const retval: T = dispatch(actions, state);
   return retval;
 }
-export function dispatch<T>(actions: StateActions<T>, state: RefreshState): T {
-  let retval: T;
-  switch (state) {
-    case RefreshState.BEGIN:
-      retval = actions.begin();
-      break;
-    case RefreshState.CURRENT:
-      retval = actions.current();
-      break;
-    case RefreshState.DECORATE:
-      retval = actions.decorate();
-      break;
-    case RefreshState.NEXT:
-      retval = actions.next();
-      break;
-    case RefreshState.END:
-      retval = actions.end();
-      break;
-  }
-  return retval;
+export function dispatch<T>(actions: StateActions<T>, state: RefreshState) {
+  const actionMap: { [key in RefreshState]: () => T } = {
+    [RefreshState.BEGIN]: actions.begin.bind(actions),
+    [RefreshState.CURRENT]: actions.current.bind(actions),
+    [RefreshState.DECORATE]: actions.decorate.bind(actions),
+    [RefreshState.NEXT]: actions.next.bind(actions),
+    [RefreshState.END]: actions.end.bind(actions),
+  };
+  return actionMap[state]();
 }
 export function getRefreshState(slides: SlideInterface[], saves: SaveData[], advance: boolean): RefreshState {
   let retval = RefreshState.DECORATE;
