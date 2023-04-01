@@ -1,5 +1,5 @@
 import type { Evaluation } from './evaluate';
-import { AdocVisitorInterface } from './datalayer/adocVisitor';
+import type { AdocVisitorInterface } from './datalayer/adocVisitor';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';

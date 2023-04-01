@@ -1,6 +1,6 @@
 import { timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
-import { AdocVisitorInterface } from './datalayer/adocVisitor';
+import type { AdocVisitorInterface } from './datalayer/adocVisitor';
 import { SaveData } from './datalayer/saveData';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';

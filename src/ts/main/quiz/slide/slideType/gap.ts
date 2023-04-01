@@ -7,7 +7,8 @@ import { CORRECT, INCORRECT } from '../../../markupColors';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
+import { AdocVisitor}from '../../datalayer/adocVisitor';
+import type {AdocVisitorInterface } from '../../datalayer/adocVisitor';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });

@@ -1,7 +1,7 @@
 import { SaveData } from './datalayer/saveData';
-import { SlideInterface } from './slideInterface';
+import type { SlideInterface } from './slideInterface';
 import { last } from '../utilities';
-import { StateActions } from './stateActionDispatcher';
+import type { StateActions } from './stateActionDispatcher';
 import { startOverButton } from './buttons';
 import { Json } from './datalayer/globals';
 import { evaluate } from './evaluate';

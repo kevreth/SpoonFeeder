@@ -1,9 +1,10 @@
-import { SlideInterface } from '../slideInterface';
+import type { SlideInterface } from '../slideInterface';
+import type { AnswerType } from './strategies/resultStrategy';
 export function explanation(slide: SlideInterface):string {
-  const answers = slide.ans;
+  const answers = slide.ans as AnswerType;
   const distrators = [];
-  const exp = slide.exp;
-  const ref = slide.ref;
+  const exp = slide.exp as string;
+  const ref = slide.ref as string;
   const answer = pluralize('Answer', answers.length);
   const distrator = pluralize('Distractor', distrators.length);
   const titleExplantion = title(exp, 'Explanation');
@@ -13,10 +14,10 @@ export function explanation(slide: SlideInterface):string {
   const explanation = `
   <center><b>${slide.txt}</b></center> <br>
     <b>${answer}</b> <br>
-    ${slide.ans.toString()} <br>
+    ${(slide.ans as string).toString()} <br>
     ${titleDistractor}  <br>
     <b>${titleResponse}</b> <br>
-    ${slide.res.toString()} <br><br>
+    ${(slide.res as string).toString()} <br><br>
     <b>${titleExplantion}</b>
     ${exp === undefined ? '' : exp}
     ${titleReference}(s):

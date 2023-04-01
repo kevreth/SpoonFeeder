@@ -3,7 +3,8 @@ import { Slide } from '../../slide';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
 import { CORRECT, INCORRECT} from '../../../markupColors';
-import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
+import { AdocVisitor}from '../../datalayer/adocVisitor';
+import type {AdocVisitorInterface } from '../../datalayer/adocVisitor';
 export class Select extends Slide {
   inst = '';
   processJson(json: Select): void {

@@ -4,7 +4,8 @@ import { Slide } from '../../slide';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 import { isRandom, shuffle } from '../../../utilities';
-import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
+import { AdocVisitor}from '../../datalayer/adocVisitor';
+import type {AdocVisitorInterface } from '../../datalayer/adocVisitor';
 export class Ma extends Slide {
   o: string[] = [];
   numans = 0;
