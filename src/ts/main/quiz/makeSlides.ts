@@ -13,7 +13,7 @@ export class MakeSlides {
     ss.getSlide(slide,makeSlides);
   }
   public static endQuiz(doc: Document) {
-    Json.reset();
+    // Json.reset();
     const json = Json.get();
     doc.body.innerHTML = evaluate(json); //EXECUTION ENDS
     startOverButton(doc);
