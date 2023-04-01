@@ -35,12 +35,14 @@ export abstract class Slide implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  setContinue(): void {
+    throw new Error('Method not implemented.');
+  }
+  o?: AnswerType | undefined;
+  numans?: number | undefined;
   abstract accept(visitor: AdocVisitorInterface): void;
   getSlideSet(): SlideInterface[] {
     return new Array<SlideInterface>();
-  }
-  public setContinue(): void {
-    this.cont = true;
   }
   getAnswerCount(): number {
     return 1;
