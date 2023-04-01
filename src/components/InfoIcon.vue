@@ -10,7 +10,7 @@
 .infoIcon {
   position: sticky;
   display: flex;
-  top: 6px;
+  top: 26px;
   width: 20px;
   margin-left: auto;
   padding-right: 15px;
