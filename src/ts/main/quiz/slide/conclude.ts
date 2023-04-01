@@ -10,7 +10,7 @@ export function conclude(
   txt: string
 ) {
   slide.setRes(res);
-  if(slide.type !== 'info') {
+  if (slide.type !== 'info') {
     const isCorrect = slide.decorate(doc);
     playAudio(isCorrect);
   }

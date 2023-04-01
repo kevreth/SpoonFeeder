@@ -1,8 +1,8 @@
 import { SlideInterface } from 'app/main/quiz/slideInterface';
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
-import type { Slide } from '../../main/quiz/slide';
 import { MC, VOCAB } from '../../main/quiz/datalayer/slideFactory';
+import type { Slide } from '../../main/quiz/slide';
 import type { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
 export abstract class SlideTest

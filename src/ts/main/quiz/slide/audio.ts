@@ -5,7 +5,7 @@ const INCORRECT = '/resources/audio/incorrect.mp3';
 const CORRECT = INCORRECT.replace('in', '');
 
 export function playAudio(correct: boolean) {
-  if(isMute()) return;
+  if (isMute()) return;
   audio.src = INCORRECT;
   if (correct) audio.src = CORRECT;
   audio.play();
@@ -17,4 +17,3 @@ export const muteAudio = () => {
 export const playBack = () => {
   audio.muted = false;
 };
-

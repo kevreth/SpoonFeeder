@@ -1,18 +1,18 @@
-import { SaveData } from './datalayer/saveData';
-import type { SlideInterface } from './slideInterface';
 import { last } from '../utilities';
-import type { StateActions } from './stateActionDispatcher';
 import { startOverButton } from './buttons';
 import { Json } from './datalayer/globals';
+import { SaveData } from './datalayer/saveData';
 import { evaluate } from './evaluate';
+import type { SlideInterface } from './slideInterface';
+import type { StateActions } from './stateActionDispatcher';
 import { dispatch2 } from './stateActionDispatcher';
 export function showSlides(doc: Document): void {
   const ss = new SlideDispatcher(Json.get(), SaveData.get(), doc);
-  dispatch2(ss,true);
+  dispatch2(ss, true);
 }
 export function fillMatchingSlide(slide: SlideInterface, last: SaveData) {
-    slide.cont = last.cont;
-    slide.res = last.result;
+  slide.cont = last.cont;
+  slide.res = last.result;
 }
 export class SlideDispatcher implements StateActions<void> {
   constructor(
@@ -20,7 +20,7 @@ export class SlideDispatcher implements StateActions<void> {
     public saves: SaveData[],
     public doc: Document
   ) {}
-  private getSlide(increment:number) {
+  private getSlide(increment: number) {
     const save = last(this.saves) as SaveData;
     const idx = Json.findMatchingSlide(this.slides, save.txt);
     const slide = Json.getMatchingSlide(this.slides, idx + increment);

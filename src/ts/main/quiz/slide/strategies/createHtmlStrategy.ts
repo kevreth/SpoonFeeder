@@ -68,12 +68,12 @@ export class CreateHtml {
     question: string,
     options: string[]
   ) {
-    const mc = CreateHtml.MC(question,options);
+    const mc = CreateHtml.MC(question, options);
     const accum = new Array<string>(mc);
     const button = makeButton('btn', 'done', 'done');
     accum.push(`</div><br>\n${button}\n`);
     return accum.join('\n');
-  }
+  };
   /////////////////////////////////////////////////////////////////////////////
   //                             MC
   /////////////////////////////////////////////////////////////////////////////

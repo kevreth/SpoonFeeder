@@ -1,7 +1,7 @@
 export enum MarkupColors {
   INDETERMINANT = 'blue',
   CORRECT = 'green',
-  INCORRECT = 'red'
+  INCORRECT = 'red',
 }
 export const INDETERMINANT = MarkupColors.INDETERMINANT;
 export const CORRECT = MarkupColors.CORRECT;

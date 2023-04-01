@@ -1,7 +1,7 @@
-import type { Course } from './course';
 import type { SlideInterface } from '../slideInterface';
-import {Division} from './course'
-export interface DivisionProcessor<C,D,T> {
+import type { Course } from './course';
+import { Division } from './course';
+export interface DivisionProcessor<C, D, T> {
   course_start(course: Division, retval: T): C;
   unit_start(child: Division, ctr: number, retval: T, parent: C): D;
   lesson_start(child: Division, ctr: number, retval: T, parent: D): D;
@@ -13,14 +13,28 @@ export interface DivisionProcessor<C,D,T> {
   unit_end(child: D, retval: T, parent: C): void;
   course_end(course: C, retval: T): void;
 }
-export function process<C,D,T>(courseData: Course, division: DivisionProcessor<C,D,T>, retval: T) {
+export function process<C, D, T>(
+  courseData: Course,
+  division: DivisionProcessor<C, D, T>,
+  retval: T
+) {
   const _course: C = division.course_start(courseData, retval);
   courseData.units.forEach((unit, unit_ctr) => {
     const _unit: D = division.unit_start(unit, unit_ctr, retval, _course);
     unit.lessons.forEach((lesson, lesson_ctr) => {
-      const _lesson: D = division.lesson_start(lesson, lesson_ctr, retval, _unit);
+      const _lesson: D = division.lesson_start(
+        lesson,
+        lesson_ctr,
+        retval,
+        _unit
+      );
       lesson.modules.forEach((module, module_ctr) => {
-        const _module: D = division.module_start(module, module_ctr, retval, _lesson);
+        const _module: D = division.module_start(
+          module,
+          module_ctr,
+          retval,
+          _lesson
+        );
         module.exercises.forEach((exercise, exercise_ctr) => {
           division.exercises(exercise, exercise_ctr, retval, _module);
         });

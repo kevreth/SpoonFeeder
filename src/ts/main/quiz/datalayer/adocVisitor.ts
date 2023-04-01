@@ -1,5 +1,3 @@
-import { SlideInterface } from '../slideInterface';
-import { adoc2html } from './adoc2html';
 import { Gap } from '../slide/slideType/gap';
 import { Imap } from '../slide/slideType/imap';
 import { Info } from '../slide/slideType/info';
@@ -8,6 +6,8 @@ import { Mc } from '../slide/slideType/mc';
 import { Select } from '../slide/slideType/select';
 import { Sort } from '../slide/slideType/sort';
 import { Vocab } from '../slide/slideType/vocab';
+import { SlideInterface } from '../slideInterface';
+import { adoc2html } from './adoc2html';
 
 export interface AdocVisitorInterface {
   visitGap(clazz: Gap): void;
@@ -57,8 +57,7 @@ export function stdReplacement(slide: SlideInterface) {
 }
 export function optionsReplacement(options: Array<string>) {
   const retval = options.map((item) => {
-    if(typeof item === 'string')
-      item = adoc2html(item);
+    if (typeof item === 'string') item = adoc2html(item);
     return item;
   });
   return retval;

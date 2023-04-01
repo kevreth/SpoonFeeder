@@ -1,5 +1,8 @@
 import { expect, it } from 'vitest';
-import { stdReplacement, optionsReplacement } from '../../../main/quiz/datalayer/adocVisitor';
+import {
+  optionsReplacement,
+  stdReplacement,
+} from '../../../main/quiz/datalayer/adocVisitor';
 import { MA } from '../../../main/quiz/datalayer/slideFactory';
 it('testMa', () => {
   const clazz = MA();
@@ -27,7 +30,7 @@ it('testMa', () => {
   expect(clazz.ref).toContain('ul');
 });
 it('testOptions', () => {
-  const exp = ['svg=test','table=test1','string']
+  const exp = ['svg=test', 'table=test1', 'string'];
   const arr = optionsReplacement(exp);
   expect(arr[0]).toContain('test.svg');
   expect(arr[1]).toContain('.load');

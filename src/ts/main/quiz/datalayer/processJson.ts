@@ -1,11 +1,18 @@
 import { isRandom, shuffle } from '../../utilities';
-import type { Course, Division, Module } from './course';
-import { INFO, initSlide } from './slideFactory';
 import type { SlideInterface } from '../slideInterface';
-import {DivisionProcessor, process} from './dataManager'
+import type { Course, Division, Module } from './course';
+import { DivisionProcessor, process } from './dataManager';
+import { INFO, initSlide } from './slideFactory';
 //////////////// Phase 1: process Json
-export class JsonProcessor implements DivisionProcessor<void,void,SlideInterface[]> {
-  private addNewInfoSlide(name: string, ctr: number, child: Division, retval: SlideInterface[]) {
+export class JsonProcessor
+  implements DivisionProcessor<void, void, SlideInterface[]>
+{
+  private addNewInfoSlide(
+    name: string,
+    ctr: number,
+    child: Division,
+    retval: SlideInterface[]
+  ) {
     const title = ProcessJson.titleSlideText(name, ctr, child.name);
     ProcessJson.addNewInfoSlide(title, retval);
   }
@@ -13,26 +20,51 @@ export class JsonProcessor implements DivisionProcessor<void,void,SlideInterface
     ProcessJson.addNewInfoSlide(course.name, retval);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  unit_start(child: Division, ctr: number, retval: SlideInterface[], parent: void): void {
+  unit_start(
+    child: Division,
+    ctr: number,
+    retval: SlideInterface[],
+    parent: void
+  ): void {
     this.addNewInfoSlide('Unit', ctr, child, retval);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  lesson_start(child: Division, ctr: number, retval: SlideInterface[], parent: void): void {
+  lesson_start(
+    child: Division,
+    ctr: number,
+    retval: SlideInterface[],
+    parent: void
+  ): void {
     this.addNewInfoSlide('Lesson', ctr, child, retval);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  module_start(child: Module, ctr: number, retval: SlideInterface[], parent: void): void {
+  module_start(
+    child: Module,
+    ctr: number,
+    retval: SlideInterface[],
+    parent: void
+  ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
     ProcessJson.loadQuestions(retval, child.inst, false);
     if (isRandom()) child.exercises = shuffle(child.exercises);
     ProcessJson.loadQuestions(retval, child.exercises, true);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  inst(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: void): SlideInterface[] {
+  inst(
+    slide: SlideInterface,
+    ctr: number,
+    retval: SlideInterface[],
+    parent: void
+  ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  exercises(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: void): SlideInterface[] {
+  exercises(
+    slide: SlideInterface,
+    ctr: number,
+    retval: SlideInterface[],
+    parent: void
+  ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

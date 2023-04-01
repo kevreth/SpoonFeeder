@@ -1,6 +1,6 @@
-import type { Course } from './course';
-import type { SlideInterface } from '../slideInterface';
 import { isEqual } from '../../utilities';
+import type { SlideInterface } from '../slideInterface';
+import type { Course } from './course';
 //Should be replaced by a Pinia store
 export class CourseFile {
   private static json: Course;
