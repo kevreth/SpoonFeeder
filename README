@@ -1,4 +1,15 @@
-
 ![SpoonFeeder logo](https://github.com/kevreth/SpoonFeeder/raw/main/spoon.feeder.jpg)
 
 SpoonFeeder is programmed instruction software that takes advantage of recent advances in gamification.
+
+Installation:
+1) Install node, platforms vary.
+2) Update node and npm if necessary:
+npm i -g npm
+npm i -g node
+3) Install quasar if not already installed:
+npm i -g @quasar/cli
+4) Clone the project
+git clone https://github.com/kevreth/SpoonFeeder.git
+5) Start the project
+quasar dev
