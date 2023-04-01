@@ -4,7 +4,7 @@ import {
   generateQuestions,
   Vocab,
 } from '../../../../main/quiz/slide/slideType/vocab';
-import { VOCAB } from '../../../../main/quiz/slideFactory';
+import { VOCAB } from '../../../../main/quiz/datalayer/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'vocab';

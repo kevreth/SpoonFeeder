@@ -1,7 +1,7 @@
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
+import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
 import { CreateHtml } from '../strategies/createHtmlStrategy';
 import { Evaluate } from '../strategies/evaluateStrategy';

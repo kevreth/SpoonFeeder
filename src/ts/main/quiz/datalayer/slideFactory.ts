@@ -1,18 +1,18 @@
-import { Bool } from './slide/slideType/bool';
-import { Gap } from './slide/slideType/gap';
-import { Imap } from './slide/slideType/imap';
-import { Info } from './slide/slideType/info';
-import { Ma } from './slide/slideType/ma';
-import { Mc } from './slide/slideType/mc';
-import { Select } from './slide/slideType/select';
-import { Sort } from './slide/slideType/sort';
-import { Vocab } from './slide/slideType/vocab';
-import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
-import { CreateHtml } from './slide/strategies/createHtmlStrategy';
-import { Evaluate } from './slide/strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from './slide/strategies/makeSlidesStrategy';
-import { Result } from './slide/strategies/resultStrategy';
-import type { SlideInterface } from './slideInterface';
+import { Bool } from '../slide/slideType/bool';
+import { Gap } from '../slide/slideType/gap';
+import { Imap } from '../slide/slideType/imap';
+import { Info } from '../slide/slideType/info';
+import { Ma } from '../slide/slideType/ma';
+import { Mc } from '../slide/slideType/mc';
+import { Select } from '../slide/slideType/select';
+import { Sort } from '../slide/slideType/sort';
+import { Vocab } from '../slide/slideType/vocab';
+import type { CreateHtmlTypeIntersection } from '../slide/strategies/createHtmlStrategy';
+import { CreateHtml } from '../slide/strategies/createHtmlStrategy';
+import { Evaluate } from '../slide/strategies/evaluateStrategy';
+import { MakeSlidesStrategy } from '../slide/strategies/makeSlidesStrategy';
+import { Result } from '../slide/strategies/resultStrategy';
+import type { SlideInterface } from '../slideInterface';
 abstract class SlideInitializer {
   constructor(public readonly type: string) {}
   public abstract instance(): SlideInterface;

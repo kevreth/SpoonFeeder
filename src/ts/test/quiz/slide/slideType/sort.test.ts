@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Sort } from '../../../../main/quiz/slide/slideType/sort';
-import { SORT } from '../../../../main/quiz/slideFactory';
+import { SORT } from '../../../../main/quiz/datalayer/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'sort';

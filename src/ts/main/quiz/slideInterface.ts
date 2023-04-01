@@ -1,5 +1,5 @@
 import type { Evaluation } from './evaluate';
-import { AdocVisitorInterface } from './slide/adocVisitor';
+import { AdocVisitorInterface } from './datalayer/adocVisitor';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -8,17 +8,20 @@ import type {
   ResultReturnType,
   ResultType,
 } from './slide/strategies/resultStrategy';
-
-export interface SlideInterface {
+export interface SlideInterfaceProperties {
   txt: string;
   type: string;
-  cont: boolean;
-  exp: string;
-  ref: string;
-  ans: AnswerType;
-  res: AnswerType;
-  isExercise: boolean;
-  pageTemplate: string;
+  cont?: boolean;
+  exp?: string;
+  ref?: string;
+  ans?: AnswerType;
+  res?: AnswerType;
+  o?: AnswerType;
+  numans?: number;
+  isExercise?: boolean;
+  pageTemplate?: string;
+}
+export interface SlideInterface extends SlideInterfaceProperties{
   createHtml: CreateHtmlTypeIntersection;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;

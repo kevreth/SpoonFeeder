@@ -1,8 +1,7 @@
-// import Handlebars from 'handlebars';
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
-import type { Course } from './quiz/course';
+import type { Course } from './quiz/datalayer/course';
 export function getYaml(filename: string, f: (data: Course) => void) {
   fetch(filename)
     .then((res) => res.blob())
@@ -113,6 +112,9 @@ export function shuffle<T>(data: Array<T>): Array<T> {
 }
 export function escape(data: string): string {
   return _.escape(data);
+}
+export function last<T>(data: Array<T>): T|undefined {
+  return _.last(data)
 }
 // =========================== Jquery wrappers ================================
 export function extend<T>(obj1: T, obj2: object) {

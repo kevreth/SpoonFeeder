@@ -2,7 +2,7 @@
   <q-card class="bg-secondary">
     <InfoIcon
       id="infoIcon"
-      @click="handleInfoOverlay" 
+      @click="handleInfoOverlay"
       @keydown.esc="infoOverlay = false" tabindex="0"
     />
     <InfoTable
@@ -50,7 +50,7 @@
             <SummaryIcon
               id="summaryIcon"
               @click="summaryOverlay = true"
-              />    
+              />
             <SummaryTable
               id="summaryTable"
               v-model="summaryOverlay"
@@ -66,7 +66,7 @@
 <script setup>
 import { ref } from 'vue';
 import {Score} from '../ts/main/quiz/score';
-import {CourseFile} from '../ts/main/globals'
+import {CourseFile} from '../ts/main/quiz/datalayer/globals'
 import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
@@ -126,6 +126,11 @@ const _columns = [
       align: 'right',
     },
   ];
+
+// const course = CourseFile.get();
+// const courseLine = Score.summary(course);
+// const courseLines = new Array<ISummaryLine>();
+// courseLines.push(courseLine);
 
 const course = CourseFile.get();
 let summary = Score.summary(course);

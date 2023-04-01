@@ -1,6 +1,5 @@
-import type { Course } from './quiz/course';
-import type { AnswerType } from './quiz/slide/strategies/resultStrategy';
-import type { SlideInterface } from './quiz/slideInterface';
+import type { Course } from './course';
+import type { SlideInterface } from '../slideInterface';
 //Should be replaced by a Pinia store
 export class CourseFile {
   private static json: Course;
@@ -27,21 +26,6 @@ export class Json {
   }
   public static getCurrentSlide() {
     return Json.json[Json.counter-1];
-  }
-  public static getPrevSlide() {
-    //-2 because the counter is advanced during the last getSlide()
-    const retval = Json.json[Json.counter - 2];
-    Json.counter--;
-    return retval;
-  }
-  public static getSlideByTxt(txt: AnswerType): SlideInterface {
-    return Json.json.find((x) => x.txt === txt) as SlideInterface;
-  }
-  public static getNumSlides(): number {
-    return Json.json.length;
-  }
-  public static push(slide: SlideInterface) {
-    Json.json.push(slide);
   }
   public static reset(): void {
     Json.counter = 0;

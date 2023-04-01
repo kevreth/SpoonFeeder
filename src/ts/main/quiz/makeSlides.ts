@@ -1,41 +1,18 @@
 import reloadPage from '../../../composables/startOver';
-import { Json } from '../globals';
+import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
-import { Slide } from './slide';
-import { SaveData } from './slide/saveData';
-import type { SlideInterface } from './slideInterface';
-const { get: getSavedDataArray } = SaveData;
+import { SaveData } from './datalayer/saveData';
+import { MakeSlides2, SlideSave, SlideSaveMethods } from './datalayer/slideSave';
 ///////////////// PHASE 2: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
-    const slide = Json.getSlide();
-    const saves = getSavedDataArray();
-    if (typeof slide === 'undefined') MakeSlides.endQuiz(doc);
-    else {
-      const idx = Slide.getSlideSavedIndex(saves, slide.txt);
-      const savedFlag = idx > -1;
-      let contFlag = false;
-      if (savedFlag) contFlag = saves[idx].cont;
-      if (contFlag) {
-        MakeSlides.reloadSlide(slide, idx);
-        MakeSlides.showSlides(doc);
-      } else if (savedFlag) {
-        MakeSlides.reloadSlide(slide, idx);
-        slide.makeSlides(doc);
-        slide.decorate(doc);
-        showButton(doc, slide.txt);
-      } else slide.makeSlides(doc);
-    }
+    const ss = new SlideSave(Json.get(),SaveData.get(),new SlideSaveMethods());
+    const slide = ss.getCurrentSlide();
+    const makeSlides = new MakeSlides2(slide,doc);
+    ss.getSlide(slide,makeSlides);
   }
-  //The slide has already been presented to the user, as will happen on reload.
-  public static reloadSlide(slide: SlideInterface, idx: number) {
-    const saves = getSavedDataArray();
-    const savedSlide = saves[idx];
-    const result = savedSlide.result;
-    slide.setResults(result);
-  }
-  private static endQuiz(doc: Document) {
+  public static endQuiz(doc: Document) {
     Json.reset();
     const json = Json.get();
     doc.body.innerHTML = evaluate(json); //EXECUTION ENDS

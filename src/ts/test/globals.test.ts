@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
-import { Json } from '../main/globals';
-import { getInstance } from '../main/quiz/slideFactory';
+import { Json } from '../main/quiz/datalayer/globals';
+import { getInstance } from '../main/quiz/datalayer/slideFactory';
 import type { SlideInterface } from '../main/quiz/slideInterface';
 const slideTypes = [
   'bool',
@@ -39,24 +39,6 @@ it('testCount_GetSlide', () => {
   const actual = Json.count();
   expect(actual).toEqual(expected);
 });
-it('testGetNumSlides', () => {
-  reset();
-  const slides: SlideInterface[] = makeSlideArray();
-  Json.set(slides);
-  const expected = slides.length;
-  const actual = Json.getNumSlides();
-  expect(actual).toEqual(expected);
-});
-it('testPush', () => {
-  reset();
-  slideTypes.forEach((slideStr) => {
-    const slide = getInstance(slideStr) as SlideInterface;
-    Json.push(slide);
-  });
-  const expected = slideTypes.length;
-  const actual = Json.getNumSlides();
-  expect(actual).toEqual(expected);
-});
 it('testReset', () => {
   reset();
   const slides: SlideInterface[] = makeSlideArray();
@@ -67,12 +49,4 @@ it('testReset', () => {
   const actual = Json.count();
   const expected = 0;
   expect(actual).toEqual(expected);
-});
-it('testGetSlideByTxt', () => {
-  reset();
-  const slides: SlideInterface[] = makeSlideArray();
-  slides[4].txt = 'A';
-  Json.set(slides);
-  const slide = Json.getSlideByTxt('A');
-  expect(slide).not.toBeNull();
 });

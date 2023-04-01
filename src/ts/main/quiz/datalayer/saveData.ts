@@ -1,11 +1,12 @@
 import { extend, isEqual } from '../../utilities';
-import type { AnswerType } from './strategies/resultStrategy';
-import {Json} from '../../globals';
-import { explanation } from './explanation';
+import { explanation } from '../slide/explanation';
+import type { AnswerType } from '../slide/strategies/resultStrategy';
+import { SlideInterface } from '../slideInterface';
+import { Json } from './globals';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
-    public readonly txt: AnswerType,
+    public readonly txt: string,
     public readonly result: AnswerType,
     public readonly ts: string,
     public readonly cont: boolean
@@ -18,7 +19,7 @@ export class SaveData {
     return arr;
   }
   public static set(
-    txt: AnswerType,
+    txt: string,
     res: AnswerType,
     ts: string,
     cont: boolean
@@ -34,6 +35,13 @@ export class SaveData {
   public static find(txt: string, saves: Array<SaveData>): number {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));
   }
+  public static getResults(slide:SlideInterface): AnswerType {
+    const saves = SaveData.get();
+    const idx = SaveData.find(slide.txt,saves);
+    let retval: AnswerType = '';
+    if(idx >=0) retval = saves[idx].result;
+    return retval;
+  }
   public static replace(save: SaveData, idx: number, saves: SaveData[]) {
     if (save == null || idx == null || saves == null) return;
     saves[idx] = save;
@@ -47,16 +55,11 @@ export class SaveData {
     const record1 = new SaveData(record0.txt, record0.result, record0.ts, true);
     SaveData.replace(record1, idx, saves);
   }
+  // Used only in Vue.
   public static getCurrentSlide() {
     const slide = Json.getCurrentSlide();
-    const saves = SaveData.get();
-    const idx = saves.findIndex((x) => isEqual(x.txt, slide.txt as string));
-    if(idx >= 0) {
-      const save = saves[idx];
-      slide.res = save.result;
-    }
+    slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
     return (exp);
   }
-
 }

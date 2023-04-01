@@ -1,13 +1,13 @@
 import { polyfill } from 'mobile-drag-drop';
 import { isRandom, shuffle } from '../../../utilities';
 import { Slide } from '../../slide';
-import { CORRECT, INCORRECT } from '../../../MarkupColors';
+import { CORRECT, INCORRECT } from '../../../markupColors';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-import { AdocVisitor, AdocVisitorInterface } from '../adocVisitor';
+import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });

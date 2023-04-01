@@ -1,7 +1,7 @@
-import { isEqual, timestampNow } from '../utilities';
+import { timestampNow } from '../utilities';
 import type { Evaluation } from './evaluate';
-import { AdocVisitorInterface } from './slide/adocVisitor';
-import { SaveData } from './slide/saveData';
+import { AdocVisitorInterface } from './datalayer/adocVisitor';
+import { SaveData } from './datalayer/saveData';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -41,9 +41,6 @@ export abstract class Slide implements SlideInterface {
   }
   public setContinue(): void {
     this.cont = true;
-  }
-  static getSlideSavedIndex(saves: Array<SaveData>, txt: AnswerType): number {
-    return saves.findIndex((x) => isEqual(x.txt, txt));
   }
   getAnswerCount(): number {
     return 1;

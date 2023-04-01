@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { adoc2markdown, replaceMustache, RANDOM, markdown2html, adoc2html, restoreMustache, processMustache} from '../../../main/quiz/slide/adoc2html';
+import { adoc2markdown, replaceMustache, RANDOM, markdown2html, adoc2html, restoreMustache, processMustache} from '../../../main/quiz/datalayer/adoc2html';
 const asciidoc = `
 == Document Title
 

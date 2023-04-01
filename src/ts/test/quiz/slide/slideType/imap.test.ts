@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Imap } from '../../../../main/quiz/slide/slideType/imap';
-import { IMAP } from '../../../../main/quiz/slideFactory';
+import { IMAP } from '../../../../main/quiz/datalayer/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'imap';
