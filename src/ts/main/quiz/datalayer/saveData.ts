@@ -2,7 +2,7 @@ import { extend, isEqual } from '../../utilities';
 import { explanation } from '../slide/explanation';
 import type { AnswerType } from '../slide/strategies/resultStrategy';
 import { SlideInterface } from '../slideInterface';
-import { Json } from './globals';
+import { slideSaveFactory } from './slideSave';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
@@ -57,7 +57,7 @@ export class SaveData {
   }
   // Used only in Vue.
   public static getCurrentSlide() {
-    const slide = Json.getCurrentSlide();
+    const slide = slideSaveFactory().getCurrentSlide();
     slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
     return (exp);
