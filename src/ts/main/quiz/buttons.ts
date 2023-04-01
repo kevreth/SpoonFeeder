@@ -1,29 +1,12 @@
 import reloadPage from '../../../composables/startOver';
-import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
-import { evaluate } from './evaluate';
 import { SaveData } from './datalayer/saveData';
-import { MakeSlides2, slideSaveFactory } from './datalayer/slideSave';
-///////////////// PHASE 2: make slides
-export class MakeSlides {
-  public static showSlides(doc: Document): void {
-    const ss = slideSaveFactory();
-    const slide = ss.getCurrentSlide(false);
-    const makeSlides = new MakeSlides2(slide,doc);
-    const refreshState = ss.getRefreshState(slide);
-    ss.getSlide(refreshState,makeSlides);
-  }
-  public static endQuiz(doc: Document) {
-    const json = Json.get();
-    doc.body.innerHTML = evaluate(json); //EXECUTION ENDS
-    startOverButton(doc);
-  }
-}
+import { showSlides } from './slideDispatcher';
 export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
-    MakeSlides.showSlides(doc);
+    showSlides(doc);
   });
   return continue_btn;
 }

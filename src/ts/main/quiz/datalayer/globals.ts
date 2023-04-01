@@ -1,5 +1,6 @@
 import type { Course } from './course';
 import type { SlideInterface } from '../slideInterface';
+import { isEqual } from '../../utilities';
 //Should be replaced by a Pinia store
 export class CourseFile {
   private static json: Course;
@@ -17,5 +18,11 @@ export class Json {
   }
   public static set(json: Array<SlideInterface>) {
     Json.json = json;
+  }
+  public static getMatchingSlide(slides: SlideInterface[], idx: number) {
+    return slides[idx];
+  }
+  public static findMatchingSlide(slides: SlideInterface[], txt: string) {
+    return slides.findIndex((slide) => isEqual(slide.txt, txt));
   }
 }

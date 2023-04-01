@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { SaveData } from '../../../main/quiz/datalayer/saveData';
 import { SlideInterface } from '../../../main/quiz/slideInterface';
-import { SlideSaveMethods, SlideSave, MakeSlidesI } from '../../../main/quiz/datalayer/slideSave';
+import { SlideDispatcherMethods, SlideSave, MakeSlidesI } from '../../../main/quiz/datalayer/slideSave';
 import { mock } from 'vitest-mock-extended';
 import { GAP, MC, SORT } from '../../../main/quiz/datalayer/slideFactory';
 const expected_saved = new Array<SaveData>();
@@ -37,7 +37,7 @@ it('find_scalar', () => {
 it('get current slide from saved data', () => {
   const slides = slides_test;
   const saves = savedata_test;
-  const ssm = new SlideSaveMethods();
+  const ssm = new SlideDispatcherMethods();
   const save = ssm.getLastSave(saves) as SaveData;
   expect(save.txt).toEqual('sort');
   const idx = ssm.findMatchingSlide(slides, save);
@@ -48,14 +48,14 @@ it('get current slide from saved data', () => {
   expect(slide.res).toEqual(['a','b','c','d']);
 })
 it('slidesave', () => {
-  const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
+  const ss = new SlideSave(slides_test,savedata_test,new SlideDispatcherMethods());
   expect(ss.getCurrentSlide(false).res).toEqual(['a','b','c','d']);
 });
 it('finishQuiz', () => {
   const slide = GAP();
   slide.cont = true;
   const testable = mock<MakeSlidesI>();
-  const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
+  const ss = new SlideSave(slides_test,savedata_test,new SlideDispatcherMethods());
   ss.getSlide(slide,testable);
   expect(testable.finishQuiz).toBeCalledTimes(1);
   expect(testable.showUndecoratedSlide).toBeCalledTimes(0);
@@ -65,7 +65,7 @@ it('showDecoratedSlide', () => {
   const slide = GAP();
   slide.cont = false;
   const testable = mock<MakeSlidesI>();
-  const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
+  const ss = new SlideSave(slides_test,savedata_test,new SlideDispatcherMethods());
   ss.getSlide(slide,testable);
   expect(testable.finishQuiz).toBeCalledTimes(0);
   expect(testable.showUndecoratedSlide).toBeCalledTimes(0);
@@ -76,7 +76,7 @@ it('showUndecoratedSlide', () => {
   slide.cont = true;
   savedata_test.pop();
   const testable = mock<MakeSlidesI>();
-  const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
+  const ss = new SlideSave(slides_test,savedata_test,new SlideDispatcherMethods());
   ss.getSlide(slide,testable);
   expect(testable.finishQuiz).toBeCalledTimes(0);
   expect(testable.showUndecoratedSlide).toBeCalledTimes(1);

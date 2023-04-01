@@ -1,6 +1,6 @@
+import { last } from '../utilities';
 import { Json } from './datalayer/globals';
 import { SaveData } from './datalayer/saveData';
-import { SlideSaveMethods } from './datalayer/slideSave';
 import { SlideInterface } from './slideInterface';
 
 export interface StateActions<T> {
@@ -50,7 +50,7 @@ export function getRefreshState(slides: SlideInterface[], saves: SaveData[], adv
   if(saves === undefined || saves.length === 0)
     retval = RefreshState.BEGIN;
   else {
-    const save = new SlideSaveMethods().getLastSave(saves) as SaveData;
+    const save = last(saves) as SaveData;
     if(save.cont && (slides.length === saves.length))
       retval = RefreshState.END;
     else if (save.cont && advance)

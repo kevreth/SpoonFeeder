@@ -1,4 +1,4 @@
-import { showButton } from '../makeSlides';
+import { showButton } from '../buttons';
 import type { SlideInterface } from '../slideInterface';
 import { playAudio } from './audio';
 import type { AnswerType } from './strategies/resultStrategy';

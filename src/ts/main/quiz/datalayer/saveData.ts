@@ -1,8 +1,10 @@
-import { extend, isEqual } from '../../utilities';
+import { extend, isEqual, last } from '../../utilities';
 import { explanation } from '../slide/explanation';
 import type { AnswerType } from '../slide/strategies/resultStrategy';
+import { fillMatchingSlide } from '../slideDispatcher';
 import { SlideInterface } from '../slideInterface';
-import { slideSaveFactory } from './slideSave';
+import { StateActions, dispatch2 } from '../stateActionDispatcher';
+import { Json } from './globals';
 const KEY = 'savedata';
 export class SaveData {
   constructor(
@@ -54,7 +56,6 @@ export class SaveData {
     const json = JSON.stringify(saves);
     localStorage.setItem(KEY, json);
   }
-  //this may be doing nothing
   public static setContinueTrue(txt: string) {
     const saves = SaveData.get();
     const idx = SaveData.find(txt, saves);
@@ -64,9 +65,42 @@ export class SaveData {
   }
   // Used only in Vue.
   public static getCurrentSlide() {
-    const slide = slideSaveFactory().getCurrentSlide(true);
+    const slide = getCurrentSlide();
     slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
     return (exp);
+  }
+}
+function getCurrentSlide(): SlideInterface {
+  const ss = new SlideDispatcher2(Json.get(), SaveData.get());
+  return dispatch2(ss,false);
+}
+export class SlideDispatcher2 implements StateActions<SlideInterface> {
+  constructor(
+    public slides: SlideInterface[],
+    public saves: SaveData[]
+  ) {}
+  //DUPLICATE CODE: slideDispatche.getSlide()
+  private getSlide(increment:number) {
+    const save = last(this.saves) as SaveData;
+    const idx = Json.findMatchingSlide(this.slides, save.txt);
+    const slide = Json.getMatchingSlide(this.slides, idx + increment);
+    fillMatchingSlide(slide, save);
+    return slide;
+  }
+  begin(): SlideInterface {
+    return this.slides[0];
+  }
+  current(): SlideInterface {
+    return this.getSlide(0);
+  }
+  decorate(): SlideInterface {
+    return this.getSlide(0);
+  }
+  next(): SlideInterface {
+    throw new Error('Method not implemented.');
+  }
+  end(): SlideInterface {
+    throw new Error('Method not implemented.');
   }
 }
