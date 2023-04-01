@@ -8,7 +8,7 @@ import { MakeSlides2, slideSaveFactory } from './datalayer/slideSave';
 export class MakeSlides {
   public static showSlides(doc: Document): void {
     const ss = slideSaveFactory();
-    const slide = ss.getCurrentSlide();
+    const slide = ss.getCurrentSlide(false);
     const makeSlides = new MakeSlides2(slide,doc);
     ss.getSlide(slide,makeSlides);
   }

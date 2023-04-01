@@ -56,7 +56,7 @@ it('get current slide from saved data', () => {
 })
 it('slidesave', () => {
   const ss = new SlideSave(slides_test,savedata_test,new SlideSaveMethods());
-  expect(ss.getCurrentSlide().res).toEqual(['a','b','c','d']);
+  expect(ss.getCurrentSlide(false).res).toEqual(['a','b','c','d']);
 });
 it('finishQuiz', () => {
   const slide = GAP();

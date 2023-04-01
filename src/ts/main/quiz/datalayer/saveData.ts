@@ -57,7 +57,7 @@ export class SaveData {
   }
   // Used only in Vue.
   public static getCurrentSlide() {
-    const slide = slideSaveFactory().getCurrentSlide();
+    const slide = slideSaveFactory().getCurrentSlide(true);
     slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
     return (exp);

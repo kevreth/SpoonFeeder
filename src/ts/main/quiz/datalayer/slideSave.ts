@@ -24,14 +24,14 @@ export class SlideSave {
     public saves: SaveData[],
     public methods: SlideSaveMethods
   ) { }
-  public getCurrentSlide() {
+  public getCurrentSlide(ignoreCont:boolean) {
     // assert(slides.length > 0)
     let slide = this.slides[0];
     if(this.saves.length > 0) {
       const save = this.methods.getLastSave(this.saves) as SaveData;
       let idx = this.methods.findMatchingSlide(this.slides, save);
       // assert(idx>-1);
-      if(slide.cont && idx !== this.slides.length - 1) idx += 1;
+      if(slide.cont && idx !== this.slides.length - 1 && !ignoreCont) idx += 1;
       slide = this.methods.getMatchingSlide(this.slides, idx);
       this.methods.fillMatchingSlide(slide, save);
     }
