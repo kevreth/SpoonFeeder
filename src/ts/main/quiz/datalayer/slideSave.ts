@@ -31,20 +31,38 @@ export class SlideSave {
       const save = this.methods.getLastSave(this.saves) as SaveData;
       let idx = this.methods.findMatchingSlide(this.slides, save);
       // assert(idx>-1);
-      if(slide.cont && idx !== this.slides.length - 1 && !ignoreCont) idx += 1;
+      if(save.cont && idx !== this.slides.length - 1 && !ignoreCont) idx += 1;
       slide = this.methods.getMatchingSlide(this.slides, idx);
       this.methods.fillMatchingSlide(slide, save);
     }
     return slide;
   }
-  public getSlide(slide: SlideInterface, rules: MakeSlidesI) {
+  public getRefreshState(slide: SlideInterface): RefreshState {
+    let retval = RefreshState.DECORATE;
     if(slide.cont && (this.slides.length === this.saves.length))
-      rules.finishQuiz();
+      retval = RefreshState.END;
     else if (slide.cont)
-      rules.showUndecoratedSlide();
-    else
-      rules.showDecoratedSlide();
+      retval = RefreshState.PLAIN;
+    return retval;
   }
+  public getSlide(state: RefreshState, rules: MakeSlidesI) {
+    switch(state) {
+      case RefreshState.DECORATE:
+        rules.showDecoratedSlide();
+        break;
+      case RefreshState.PLAIN:
+        rules.showUndecoratedSlide();
+        break;
+      case RefreshState.END:
+        rules.finishQuiz();
+        break;
+    }
+  }
+}
+export enum RefreshState {
+  END,
+  DECORATE,
+  PLAIN
 }
 export interface MakeSlidesI {
   finishQuiz(): void;

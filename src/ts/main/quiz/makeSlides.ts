@@ -10,7 +10,8 @@ export class MakeSlides {
     const ss = slideSaveFactory();
     const slide = ss.getCurrentSlide(false);
     const makeSlides = new MakeSlides2(slide,doc);
-    ss.getSlide(slide,makeSlides);
+    const refreshState = ss.getRefreshState(slide);
+    ss.getSlide(refreshState,makeSlides);
   }
   public static endQuiz(doc: Document) {
     const json = Json.get();
