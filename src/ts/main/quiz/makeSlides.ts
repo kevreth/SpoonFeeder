@@ -3,11 +3,11 @@ import { Json } from './datalayer/globals';
 import { makeButton } from '../utilities';
 import { evaluate } from './evaluate';
 import { SaveData } from './datalayer/saveData';
-import { MakeSlides2, SlideSave, SlideSaveMethods } from './datalayer/slideSave';
+import { MakeSlides2, slideSaveFactory } from './datalayer/slideSave';
 ///////////////// PHASE 2: make slides
 export class MakeSlides {
   public static showSlides(doc: Document): void {
-    const ss = new SlideSave(Json.get(),SaveData.get(),new SlideSaveMethods());
+    const ss = slideSaveFactory();
     const slide = ss.getCurrentSlide();
     const makeSlides = new MakeSlides2(slide,doc);
     ss.getSlide(slide,makeSlides);

@@ -2,6 +2,7 @@ import { SaveData } from './saveData';
 import { SlideInterface } from '../slideInterface';
 import { isEqual, last } from '../../utilities';
 import { MakeSlides } from '../makeSlides';
+import { Json } from './globals';
 export class SlideSaveMethods {
   public fillMatchingSlide(slide: SlideInterface, last: SaveData) {
     slide.cont = last.cont;
@@ -65,4 +66,7 @@ export class MakeSlides2 implements MakeSlidesI {
   showUndecoratedSlide(): void {
     this.slide.makeSlides(this.doc);
   }
+}
+export function slideSaveFactory() {
+  return new SlideSave(Json.get(),SaveData.get(),new SlideSaveMethods());
 }

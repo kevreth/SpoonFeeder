@@ -52,8 +52,8 @@ export class AdocVisitor implements AdocVisitorInterface {
 }
 export function stdReplacement(slide: SlideInterface) {
   slide.txt = adoc2html(slide.txt);
-  slide.exp = adoc2html(slide.exp);
-  slide.ref = adoc2html(slide.ref);
+  slide.exp = adoc2html(slide.exp as string);
+  slide.ref = adoc2html(slide.ref as string);
 }
 export function optionsReplacement(options: Array<string>) {
   const retval = options.map((item) => {
