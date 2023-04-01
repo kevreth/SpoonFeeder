@@ -1,4 +1,4 @@
-import type { SlideInterfaceProperties } from '../slideInterface';
+import type { SlideInterface } from '../slideInterface';
 export abstract class Division {
   name = '';
 }
@@ -12,6 +12,6 @@ export class Lesson extends Division {
   modules: Array<Module> = [];
 }
 export class Module extends Division {
-  inst: Array<SlideInterfaceProperties> = [];
-  exercises: Array<SlideInterfaceProperties> = [];
+  inst: Array<SlideInterface> = [];
+  exercises: Array<SlideInterface> = [];
 }
