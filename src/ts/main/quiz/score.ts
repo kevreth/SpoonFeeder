@@ -1,4 +1,4 @@
-import { Course, Division } from './datalayer/course';
+import type { Course, Division } from './datalayer/course';
 import {DivisionProcessor, process} from './datalayer/dataManager'
 import { percentCorrect } from './evaluate';
 import { SaveData } from './datalayer/saveData';

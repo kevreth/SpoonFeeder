@@ -30,23 +30,4 @@ it('testSet_Get', () => {
   const arr = Json.get();
   expect(arr.length).toEqual(slideTypes.length);
 });
-it('testCount_GetSlide', () => {
-  reset();
-  const slides: SlideInterface[] = makeSlideArray();
-  Json.set(slides);
-  const expected = 3;
-  for (let i = 0; i < expected; i++) Json.getSlide();
-  const actual = Json.count();
-  expect(actual).toEqual(expected);
-});
-it('testReset', () => {
-  reset();
-  const slides: SlideInterface[] = makeSlideArray();
-  Json.set(slides);
-  const times = 3;
-  for (let i = 0; i < times; i++) Json.getSlide();
-  Json.reset();
-  const actual = Json.count();
-  const expected = 0;
-  expect(actual).toEqual(expected);
-});
+

@@ -1,6 +1,6 @@
 import { CourseFile, Json } from './quiz/datalayer/globals';
 import type { Course } from './quiz/datalayer/course';
-import { MakeSlides } from './quiz/makeSlides';
+import { showSlides } from './quiz/slideDispatcher';
 import { ProcessJson } from './quiz/datalayer/processJson';
 import { getYaml } from './utilities';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
@@ -17,7 +17,7 @@ export class Quiz {
       CourseFile.set(course);
       const slides = processJson(course);
       Json.set(slides);
-      MakeSlides.showSlides(doc);
+      showSlides(doc);
     });
   }
   public static makeYamlFilename(courseName: string) {

@@ -1,5 +1,6 @@
 import { Slide } from '../../slide';
-import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
+import { AdocVisitor}from '../../datalayer/adocVisitor';
+import type {AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import type { CreateHtmlTypeInfo } from '../strategies/createHtmlStrategy';
 import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy';
 export class Info extends Slide {
