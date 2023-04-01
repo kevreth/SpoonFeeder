@@ -24,7 +24,7 @@ export class SaveData {
     ts: string,
     cont: boolean
   ) {
-    if (txt !== '') {
+    if (txt !== '' && SaveData.exists(txt) === false) {
       const save = new SaveData(txt, res, ts, cont);
       const arr = SaveData.get();
       arr.push(save);
@@ -34,6 +34,12 @@ export class SaveData {
   }
   public static find(txt: string, saves: Array<SaveData>): number {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));
+  }
+  public static doesExist(txt: string, saves: Array<SaveData>): boolean {
+    return SaveData.find(txt,saves) > -1 ? true : false;
+  }
+  public static exists(txt: string): boolean {
+    return SaveData.doesExist(txt,SaveData.get());
   }
   public static getResults(slide:SlideInterface): AnswerType {
     const saves = SaveData.get();
@@ -48,6 +54,7 @@ export class SaveData {
     const json = JSON.stringify(saves);
     localStorage.setItem(KEY, json);
   }
+  //this may be doing nothing
   public static setContinueTrue(txt: string) {
     const saves = SaveData.get();
     const idx = SaveData.find(txt, saves);
