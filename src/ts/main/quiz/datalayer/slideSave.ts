@@ -1,7 +1,7 @@
 import { SaveData } from './saveData';
 import { SlideInterface } from '../slideInterface';
 import { isEqual, last } from '../../utilities';
-import { MakeSlides, showButton } from '../makeSlides';
+import { MakeSlides } from '../makeSlides';
 export class SlideSaveMethods {
   public fillMatchingSlide(slide: SlideInterface, last: SaveData) {
     slide.cont = last.cont;
@@ -61,7 +61,6 @@ export class MakeSlides2 implements MakeSlidesI {
   showDecoratedSlide(): void {
     this.showUndecoratedSlide();
     this.slide.decorate(this.doc);
-    showButton(this.doc, this.slide.txt);
   }
   showUndecoratedSlide(): void {
     this.slide.makeSlides(this.doc);
