@@ -3,25 +3,18 @@ import { SaveData } from '../../../main/quiz/datalayer/saveData';
 import { SlideInterface } from '../../../main/quiz/slideInterface';
 import { SlideSaveMethods, SlideSave, MakeSlidesI } from '../../../main/quiz/datalayer/slideSave';
 import { mock } from 'vitest-mock-extended';
-import { GAP } from '../../../main/quiz/datalayer/slideFactory';
+import { GAP, MC, SORT } from '../../../main/quiz/datalayer/slideFactory';
 const expected_saved = new Array<SaveData>();
 expected_saved.push(new SaveData('ans1', 'res1', '200001010000', false));
 expected_saved.push(new SaveData('ans2', 'res2', '200001010001', false));
 expected_saved.push(new SaveData('ans3', 'res3', '200001010002', false));
-//change this to not use object literals
-const slides_test: SlideInterface[] =
-[
-  {
-    type: 'mc',
-    txt: 'Choose A.',
-    o: ['A','C','B','D']
-  },
-  {
-    type: 'sort',
-    txt: 'sort',
-    ans: ['a','b','c','d']
-  }
-]
+const slide1 = MC();
+const slide2 = SORT();
+slide1.txt = 'Choose A.';
+slide2.txt = 'sort';
+slide1.o = ['A','C','B','D'];
+slide2.ans = ['a','b','c','d'];
+const slides_test: SlideInterface[] = [slide1, slide2];
 const savedata_test: SaveData[] =
 [
   {
