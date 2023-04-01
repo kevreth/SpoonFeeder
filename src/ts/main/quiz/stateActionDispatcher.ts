@@ -15,7 +15,7 @@ export enum RefreshState {
   CURRENT,
   DECORATE,
   NEXT,
-  END
+  END,
 }
 export function dispatch2<T>(actions: StateActions<T>, advance: boolean): T {
   const slides = Json.get();
@@ -34,18 +34,18 @@ export function dispatch<T>(actions: StateActions<T>, state: RefreshState) {
   };
   return actionMap[state]();
 }
-export function getRefreshState(slides: SlideInterface[], saves: SaveData[], advance: boolean): RefreshState {
+export function getRefreshState(
+  slides: SlideInterface[],
+  saves: SaveData[],
+  advance: boolean
+): RefreshState {
   let retval = RefreshState.DECORATE;
-  if(saves === undefined || saves.length === 0)
-    retval = RefreshState.BEGIN;
+  if (saves === undefined || saves.length === 0) retval = RefreshState.BEGIN;
   else {
     const save = last(saves) as SaveData;
-    if(save.cont && (slides.length === saves.length))
-      retval = RefreshState.END;
-    else if (save.cont && advance)
-      retval = RefreshState.NEXT;
-    else if (save.cont)
-      retval = RefreshState.CURRENT;
+    if (save.cont && slides.length === saves.length) retval = RefreshState.END;
+    else if (save.cont && advance) retval = RefreshState.NEXT;
+    else if (save.cont) retval = RefreshState.CURRENT;
   }
   return retval;
 }

@@ -1,6 +1,6 @@
-import Handlebars from 'handlebars';
 import downdoc from 'downdoc';
-import {marked} from 'marked';
+import Handlebars from 'handlebars';
+import { marked } from 'marked';
 import { substitute } from './handlebars';
 export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // Problems solved:
@@ -17,7 +17,7 @@ export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // 4) restore the stored Handlebars templates
 // 5) process the Handlebars templates
 export function adoc2html(str: string): string {
-  if(typeof str === 'undefined') return '';
+  if (typeof str === 'undefined') return '';
   const arr = replaceMustache(str);
   let txt = arr.shift() as string;
   txt = adoc2markdown(txt as string);
@@ -78,6 +78,6 @@ export function markdown2html(text: string): string {
   //marked(text) places text inside <p> tags which
   //is usually not wanted but marked.parseInline(text)
   //doesn't work with multi-line strings (undocumented).
-  if(text.includes('\n')) return marked(text);
+  if (text.includes('\n')) return marked(text);
   else return marked.parseInline(text);
 }

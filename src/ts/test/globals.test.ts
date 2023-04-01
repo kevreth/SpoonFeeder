@@ -30,4 +30,3 @@ it('testSet_Get', () => {
   const arr = Json.get();
   expect(arr.length).toEqual(slideTypes.length);
 });
-

@@ -20,12 +20,7 @@ export class SaveData {
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
     return arr;
   }
-  public static set(
-    txt: string,
-    res: AnswerType,
-    ts: string,
-    cont: boolean
-  ) {
+  public static set(txt: string, res: AnswerType, ts: string, cont: boolean) {
     if (txt !== '' && SaveData.exists(txt) === false) {
       const save = new SaveData(txt, res, ts, cont);
       const arr = SaveData.get();
@@ -38,16 +33,16 @@ export class SaveData {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));
   }
   public static doesExist(txt: string, saves: Array<SaveData>): boolean {
-    return SaveData.find(txt,saves) > -1 ? true : false;
+    return SaveData.find(txt, saves) > -1 ? true : false;
   }
   public static exists(txt: string): boolean {
-    return SaveData.doesExist(txt,SaveData.get());
+    return SaveData.doesExist(txt, SaveData.get());
   }
-  public static getResults(slide:SlideInterface): AnswerType {
+  public static getResults(slide: SlideInterface): AnswerType {
     const saves = SaveData.get();
-    const idx = SaveData.find(slide.txt,saves);
+    const idx = SaveData.find(slide.txt, saves);
     let retval: AnswerType = '';
-    if(idx >=0) retval = saves[idx].result;
+    if (idx >= 0) retval = saves[idx].result;
     return retval;
   }
   public static replace(save: SaveData, idx: number, saves: SaveData[]) {
@@ -68,20 +63,17 @@ export class SaveData {
     const slide = getCurrentSlide();
     slide.res = SaveData.getResults(slide);
     const exp = explanation(slide);
-    return (exp);
+    return exp;
   }
 }
 function getCurrentSlide(): SlideInterface {
   const ss = new SlideDispatcher2(Json.get(), SaveData.get());
-  return dispatch2(ss,false);
+  return dispatch2(ss, false);
 }
 export class SlideDispatcher2 implements StateActions<SlideInterface> {
-  constructor(
-    public slides: SlideInterface[],
-    public saves: SaveData[]
-  ) {}
+  constructor(public slides: SlideInterface[], public saves: SaveData[]) {}
   //DUPLICATE CODE: slideDispatche.getSlide()
-  private getSlide(increment:number) {
+  private getSlide(increment: number) {
     const save = last(this.saves) as SaveData;
     const idx = Json.findMatchingSlide(this.slides, save.txt);
     const slide = Json.getMatchingSlide(this.slides, idx + increment);

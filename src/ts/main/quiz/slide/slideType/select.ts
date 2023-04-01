@@ -1,10 +1,10 @@
+import { CORRECT, INCORRECT } from '../../../markupColors';
 import { difference, intersection } from '../../../utilities';
+import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
-import { CORRECT, INCORRECT} from '../../../markupColors';
-import { AdocVisitor}from '../../datalayer/adocVisitor';
-import type {AdocVisitorInterface } from '../../datalayer/adocVisitor';
 export class Select extends Slide {
   inst = '';
   processJson(json: Select): void {
@@ -14,7 +14,7 @@ export class Select extends Slide {
       ans: this.ans,
       isExercise: this.isExercise,
     } = json);
-    this.accept(new AdocVisitor())
+    this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitSelect(this);

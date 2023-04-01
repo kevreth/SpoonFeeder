@@ -1,5 +1,5 @@
-import type { Evaluation } from './evaluate';
 import type { AdocVisitorInterface } from './datalayer/adocVisitor';
+import type { Evaluation } from './evaluate';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
@@ -21,7 +21,7 @@ export interface SlideInterfaceProperties {
   isExercise?: boolean;
   pageTemplate?: string;
 }
-export interface SlideInterface extends SlideInterfaceProperties{
+export interface SlideInterface extends SlideInterfaceProperties {
   createHtml: CreateHtmlTypeIntersection;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
@@ -29,7 +29,7 @@ export interface SlideInterface extends SlideInterfaceProperties{
   //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
   processJson(json: SlideInterface): void;
-  accept(visitor: AdocVisitorInterface): void
+  accept(visitor: AdocVisitorInterface): void;
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;
   //Evaluate user responses at the end of quiz

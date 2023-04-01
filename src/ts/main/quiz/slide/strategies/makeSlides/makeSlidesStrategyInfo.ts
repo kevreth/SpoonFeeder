@@ -13,4 +13,3 @@ export function makeSlidesStrategyInfo(
   slide.cont = true;
   conclude(doc, slide, '', txt);
 }
-

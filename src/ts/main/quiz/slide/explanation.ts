@@ -1,6 +1,6 @@
 import type { SlideInterface } from '../slideInterface';
 import type { AnswerType } from './strategies/resultStrategy';
-export function explanation(slide: SlideInterface):string {
+export function explanation(slide: SlideInterface): string {
   const answers = slide.ans as AnswerType;
   const distrators = [];
   const exp = slide.exp as string;
@@ -10,7 +10,10 @@ export function explanation(slide: SlideInterface):string {
   const titleExplantion = title(exp, 'Explanation');
   const titleReference = title(ref, 'Reference');
   const titleDistractor = title(distrator, 'Distractor');
-  const titleResponse = title(slide.res === undefined ? '' : slide.res.toString(), 'Response');
+  const titleResponse = title(
+    slide.res === undefined ? '' : slide.res.toString(),
+    'Response'
+  );
   const explanation = `
   <center><b>${slide.txt}</b></center> <br>
     <b>${answer}</b> <br>
@@ -22,15 +25,15 @@ export function explanation(slide: SlideInterface):string {
     ${exp === undefined ? '' : exp}
     ${titleReference}(s):
     ${ref}
-  `
+  `;
   return explanation;
 }
 function pluralize(str: string, length: number): string {
-  length >= 1 ? '== ' + (str += 's') : str ='';
+  length >= 1 ? '== ' + (str += 's') : (str = '');
   return str;
 }
 function title(ref: string, label: string) {
   let retval = '';
-  if(ref !== undefined && ref.length > 0) retval = label;
+  if (ref !== undefined && ref.length > 0) retval = label;
   return retval;
 }

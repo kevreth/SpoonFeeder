@@ -1,9 +1,9 @@
+import { INDETERMINANT } from '../../../../markupColors';
 import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude';
 import { createPageContent } from '../../createPageContent';
 import type { CreateHtmlTypeMa } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
-import {INDETERMINANT} from '../../../../markupColors';
 export function makeSlidesStrategyMa(
   txt: string,
   options: string[],
@@ -21,10 +21,9 @@ export function makeSlidesStrategyMa(
     const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
     const color = INDETERMINANT;
     btn.addEventListener('click', () => {
-      if(btn.style.backgroundColor === color) {
+      if (btn.style.backgroundColor === color) {
         btn.style.backgroundColor = 'black';
-      }
-      else {
+      } else {
         btn.style.backgroundColor = color;
       }
     });
@@ -35,7 +34,7 @@ export function makeSlidesStrategyMa(
     let answers: string[] = [];
     options.forEach((_option, optionCtr) => {
       const btn = doc.getElementById('btn' + optionCtr) as HTMLElement;
-      if(btn.style.backgroundColor === INDETERMINANT) answers.push(_option);
+      if (btn.style.backgroundColor === INDETERMINANT) answers.push(_option);
     });
     answers = answers.sort();
     done.remove();

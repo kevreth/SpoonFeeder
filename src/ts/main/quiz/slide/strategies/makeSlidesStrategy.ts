@@ -1,11 +1,11 @@
 import type { SlideInterface } from '../../slideInterface';
 import type {
+  CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeGap,
   CreateHtmlTypeImap,
   CreateHtmlTypeInfo,
   CreateHtmlTypeMa,
   CreateHtmlTypeMc,
-  CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeSort,
 } from './createHtmlStrategy';
 import { makeSlidesStrategyGap } from './makeSlides/makeSlidesStrategyGap';

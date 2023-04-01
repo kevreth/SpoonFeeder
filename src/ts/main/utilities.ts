@@ -107,14 +107,14 @@ export function intersection<T>(arrA: Array<T>, arrB: Array<T>): Array<T> {
   return _.intersection(arrA, arrB);
 }
 export function shuffle<T>(data: Array<T>): Array<T> {
-  const shuffled = _.shuffle(data)
+  const shuffled = _.shuffle(data);
   return shuffled;
 }
 export function escape(data: string): string {
   return _.escape(data);
 }
-export function last<T>(data: Array<T>): T|undefined {
-  return _.last(data)
+export function last<T>(data: Array<T>): T | undefined {
+  return _.last(data);
 }
 // =========================== Jquery wrappers ================================
 export function extend<T>(obj1: T, obj2: object) {

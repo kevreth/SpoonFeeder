@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
+import { MC } from '../../../../main/quiz/datalayer/slideFactory';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Mc } from '../../../../main/quiz/slide/slideType/mc';
-import { MC } from '../../../../main/quiz/datalayer/slideFactory';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'mc';
@@ -16,7 +16,7 @@ class Test extends SlideTest {
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);
-    expect(testable.o).toEqual(['yes','no']);
+    expect(testable.o).toEqual(['yes', 'no']);
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide {

@@ -1,7 +1,7 @@
 import { timestampNow } from '../utilities';
-import type { Evaluation } from './evaluate';
 import type { AdocVisitorInterface } from './datalayer/adocVisitor';
 import { SaveData } from './datalayer/saveData';
+import type { Evaluation } from './evaluate';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
 import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
