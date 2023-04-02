@@ -45,9 +45,11 @@ export class JsonProcessor
     parent: void
   ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
-    ProcessJson.loadQuestions(retval, child.inst, false);
-    if (isRandom()) child.exercises = shuffle(child.exercises);
-    ProcessJson.loadQuestions(retval, child.exercises, true);
+    if (child.inst !== undefined) ProcessJson.loadQuestions(retval, child.inst, false);
+    if (child.exercises !== undefined) {
+      if (isRandom()) child.exercises = shuffle(child.exercises);
+      ProcessJson.loadQuestions(retval, child.exercises, true);
+    }
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   inst(

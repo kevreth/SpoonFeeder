@@ -38,7 +38,6 @@ export interface SlideInterface extends SlideInterfaceProperties {
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
   getAnswerCount(): number;
-  setContinue(): void;
   getSlideSet(): SlideInterface[];
   setRes(res: AnswerType): void;
   getRes(): AnswerType;

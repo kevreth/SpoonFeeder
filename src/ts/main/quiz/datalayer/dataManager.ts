@@ -35,12 +35,14 @@ export function process<C, D, T>(
           retval,
           _lesson
         );
-        module.exercises.forEach((exercise, exercise_ctr) => {
-          division.exercises(exercise, exercise_ctr, retval, _module);
-        });
-        module.inst.forEach((inst, inst_ctr) => {
-          division.inst(inst, inst_ctr, retval, _module);
-        });
+        if(module.inst !== undefined)
+          module.inst.forEach((inst, inst_ctr) => {
+            division.inst(inst, inst_ctr, retval, _module);
+          });
+        if(module.exercises !== undefined)
+          module.exercises.forEach((exercise, exercise_ctr) => {
+            division.exercises(exercise, exercise_ctr, retval, _module);
+          });
         division.module_end(_module, retval, _lesson);
       });
       division.lesson_end(_lesson, retval, _unit);
