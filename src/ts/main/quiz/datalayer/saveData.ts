@@ -21,7 +21,7 @@ export class SaveData {
     return arr;
   }
   public static set(txt: string, res: AnswerType, ts: string, cont: boolean) {
-    if (txt !== '' && SaveData.exists(txt) === false) {
+    if (txt !== '' && !SaveData.exists(txt)) {
       const save = new SaveData(txt, res, ts, cont);
       const arr = SaveData.get();
       arr.push(save);
