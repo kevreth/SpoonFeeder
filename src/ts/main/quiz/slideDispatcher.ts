@@ -3,6 +3,8 @@ import { startOverButton } from './buttons';
 import { Json } from './datalayer/globals';
 import { SaveData } from './datalayer/saveData';
 import { evaluate } from './evaluate';
+import { conclude } from './slide/conclude';
+import type { AnswerType } from './slide/strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
 import type { StateActions } from './stateActionDispatcher';
 import { dispatch2 } from './stateActionDispatcher';
@@ -37,7 +39,7 @@ export class SlideDispatcher implements StateActions<void> {
   decorate(): void {
     const slide = this.getSlide(0);
     slide.makeSlides(this.doc);
-    slide.decorate(this.doc);
+    conclude(this.doc, slide, slide.res as AnswerType, slide.txt);
   }
   next(): void {
     const slide = this.getSlide(1);

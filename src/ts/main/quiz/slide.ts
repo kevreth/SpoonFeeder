@@ -64,8 +64,7 @@ export abstract class Slide implements SlideInterface {
   public saveData() {
     const txt = this.txt;
     const res = this.res;
-    const cont = this.cont;
-    saveData(txt, res, timestampNow(), cont);
+    saveData(txt, res, timestampNow(), false);
   }
   public result(): ResultReturnType {
     return this.resultType(this.ans, this.res);

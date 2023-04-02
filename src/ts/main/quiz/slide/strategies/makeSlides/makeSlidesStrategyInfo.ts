@@ -10,6 +10,5 @@ export function makeSlidesStrategyInfo(
 ) {
   const html = createHtml(txt);
   createPageContent(html, doc);
-  slide.cont = true;
   conclude(doc, slide, '', txt);
 }
