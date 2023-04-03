@@ -1,4 +1,4 @@
-import { CORRECT, INCORRECT, INDETERMINANT } from '../../../markupColors';
+import { CORRECT, INCORRECT } from '../../../markupColors';
 import { isRandom, removeListener, shuffle } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
@@ -9,6 +9,7 @@ export class Ma extends Slide {
   o: string[] = [];
   numans = 0;
   answers: string[] = [];
+  res: string[] = [];
   processJson(json: Ma): void {
     ({
       txt: this.txt,
@@ -52,16 +53,16 @@ export class Ma extends Slide {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
       const option = options[i];
       let isKey = false;
+      let selected = false;
       if (this.answers.includes(option)) isKey = true;
+      if (this.res.includes(option)) selected = true;
       const btn = doc.getElementById('btn' + i) as HTMLElement;
-      this.mark(isKey, btn);
+      this.mark(isKey, selected, btn);
     }
     return this.result() as boolean;
   }
-  mark(isKey: boolean, btn: HTMLElement) {
-    let selected = false;
+  mark(isKey: boolean, selected: boolean, btn: HTMLElement, ) {
     btn.style.border = 'none';
-    if (btn.style.backgroundColor === INDETERMINANT) selected = true;
     if (isKey && selected) btn.style.backgroundColor = CORRECT;
     else if (!isKey && selected) btn.style.backgroundColor = INCORRECT;
     else if (isKey && !selected) btn.style.border = `1px solid ${INCORRECT}`;
