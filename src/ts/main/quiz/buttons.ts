@@ -2,10 +2,13 @@ import reloadPage from '../../../composables/startOver';
 import { makeButton } from '../utilities';
 import { SaveData } from './datalayer/saveData';
 import { showSlides } from './slideDispatcher';
+import { SlideInterface } from './slideInterface';
 export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
+      const explain = doc.getElementById('explainIcon') as HTMLElement;
+      explain.style.visibility = 'hidden';
     showSlides(doc);
   });
   return continue_btn;
@@ -38,4 +41,14 @@ export function startOverButton(doc: Document) {
   startOver.addEventListener('click', () => {
     reloadPage();
   });
+}
+export function showExplainIcon(slide: SlideInterface, doc: Document) {
+  if (slide.exp !== undefined && slide.exp !== '') {
+    const explain = doc.getElementById('explainIcon') as HTMLElement;
+    explain.style.visibility = 'visible';
+  }
+}
+export function hideExplainIcon(doc: Document) {
+  const explain = doc.getElementById('explainIcon') as HTMLElement;
+  explain.style.visibility = 'hidden';
 }

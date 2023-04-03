@@ -1,4 +1,4 @@
-import { showButton } from '../buttons';
+import { showButton, showExplainIcon } from '../buttons';
 import type { SlideInterface } from '../slideInterface';
 import { playAudio } from './audio';
 import type { AnswerType } from './strategies/resultStrategy';
@@ -17,5 +17,6 @@ export function conclude(
   slide.saveData();
   const done = doc.getElementById('btn');
   if (done !== null) done.remove();
+  showExplainIcon(slide, doc);
   showButton(doc, txt);
 }

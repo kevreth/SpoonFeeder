@@ -1,5 +1,5 @@
 import { last } from '../utilities';
-import { startOverButton } from './buttons';
+import { hideExplainIcon, startOverButton } from './buttons';
 import { Json } from './datalayer/globals';
 import { SaveData } from './datalayer/saveData';
 import { evaluate } from './evaluate';
@@ -32,6 +32,7 @@ export class SlideDispatcher implements StateActions<void> {
   begin(): void {
     const slide = this.slides[0];
     slide.makeSlides(this.doc);
+    hideExplainIcon(this.doc);
   }
   current(): void {
     throw new Error('Method not implemented.');
@@ -39,12 +40,13 @@ export class SlideDispatcher implements StateActions<void> {
   decorate(): void {
     const slide = this.getSlide(0);
     slide.makeSlides(this.doc);
-    if(!slide.immediateConclusion)
+    if (!slide.immediateConclusion)
       conclude(this.doc, slide, slide.res as AnswerType, slide.txt);
   }
   next(): void {
     const slide = this.getSlide(1);
     slide.makeSlides(this.doc);
+    hideExplainIcon(this.doc);
   }
   end(): void {
     const json = Json.get();
