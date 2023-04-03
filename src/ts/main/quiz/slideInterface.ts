@@ -19,6 +19,7 @@ export interface SlideInterfaceProperties {
   o?: AnswerType;
   numans?: number;
   isExercise?: boolean;
+  immediateConclusion: boolean;
   pageTemplate?: string;
 }
 export interface SlideInterface extends SlideInterfaceProperties {

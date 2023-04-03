@@ -7,6 +7,7 @@ export class Info extends Slide {
   processJson(json: Info): void {
     ({ txt: this.txt } = json);
     this.accept(new AdocVisitor());
+    this.immediateConclusion = true;
   }
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitInfo(this);

@@ -39,7 +39,7 @@ export class SlideDispatcher implements StateActions<void> {
   decorate(): void {
     const slide = this.getSlide(0);
     slide.makeSlides(this.doc);
-    if(slide.type !== 'info')
+    if(!slide.immediateConclusion)
       conclude(this.doc, slide, slide.res as AnswerType, slide.txt);
   }
   next(): void {

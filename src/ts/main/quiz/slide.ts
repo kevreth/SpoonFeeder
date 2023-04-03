@@ -21,6 +21,7 @@ export abstract class Slide implements SlideInterface {
   exp!: string;
   ref!: string;
   cont = false;
+  immediateConclusion = false;
   public pageTemplate = `
     <div id="slide">
       <div id="content">

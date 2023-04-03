@@ -102,14 +102,15 @@ export class ProcessJson {
     const processedSlides = new Array<SlideInterface>();
     questions.forEach((item) => {
       item.isExercise = isExercise;
-      const slides = initSlide(item);
-      if (Array.isArray(slides)) processedSlides.push(...slides);
-      else processedSlides.push(slides);
+      const lides = initSlide(item);
+      if (Array.isArray(lides)) processedSlides.push(...lides);
+      else processedSlides.push(lides);
     });
     slides.push(...processedSlides);
   }
   public static addNewInfoSlide(text: string, slides: SlideInterface[]) {
     const slide = INFO() as SlideInterface;
+    slide.immediateConclusion = true;
     slide.txt = text;
     slides.push(slide);
   }
