@@ -15,5 +15,7 @@ export function conclude(
     playAudio(isCorrect);
   }
   slide.saveData();
+  const done = doc.getElementById('btn');
+  if (done !== null) done.remove();
   showButton(doc, txt);
 }
