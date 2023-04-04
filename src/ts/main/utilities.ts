@@ -1,13 +1,12 @@
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
-import type { Course } from './quiz/datalayer/course';
-export function getYaml(filename: string, f: (data: Course) => void) {
+export function getYaml<T>(filename: string, f: (data: T) => void) {
   fetch(filename)
     .then((res) => res.blob())
     .then((blob) => blob.text())
     .then((yamlAsString) => {
-      const yml = yaml.load(yamlAsString) as Course;
+      const yml = yaml.load(yamlAsString) as T;
       f(yml);
     })
     .catch((err) => console.log('yaml err:', err));
