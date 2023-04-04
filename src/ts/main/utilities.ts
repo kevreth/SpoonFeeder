@@ -34,6 +34,15 @@ function checkSessionStorageFlag(key: string): boolean {
   if (val === 'true') retval = true;
   return retval;
 }
+export function setCourseListing(value: Array<string>) {
+  const str = JSON.stringify(value);
+  sessionStorage.setItem('courses', str);
+}
+export function getCourseListing() {
+  const json = localStorage.getItem('courses') as string;
+  const str = JSON.parse(json);
+  return str;
+}
 export function setLocalStorage(key: string, value: string) {
   localStorage.setItem(key, value);
 }
