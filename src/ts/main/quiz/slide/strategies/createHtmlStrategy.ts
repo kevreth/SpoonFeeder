@@ -110,10 +110,10 @@ export class CreateHtml {
   static readonly SORT: CreateHtmlTypeSort = function createHtml(inst, ans) {
     const retval = inst + '<br>\n';
     let rev = '<div id="selection"></div>\n<section class="container">\n';
-    let list = ans;
+    let list = ans as string[];
     /////////  for testing
     if (isRandom()) list = shuffle(list as string[]);
-    else list = ['b', 'a', 'c', 'd'];
+    // else list = ['b', 'a', 'c', 'd'];
     //////////////////////////////////
     list.forEach((item) => {
       rev = rev.concat(`  <div class="list-item">${item}</div>\n`);

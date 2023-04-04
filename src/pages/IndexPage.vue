@@ -26,13 +26,13 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'kafka';
 // const courseName = 'kotlin';
 // const courseName = 'kubernetes';
-// const courseName = 'history';
+const courseName = 'history';
 // const courseName = 'node';
 // const courseName = 'quasar';
 // const courseName = 'react';
 // const courseName = 'spring';
 // const courseName = 'typescript';
 // const courseName = 'vue';
-const courseName = 'test';
+// const courseName = 'test';
 Quiz.slides(courseName, document);
 </script>
