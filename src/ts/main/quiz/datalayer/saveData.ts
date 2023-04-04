@@ -4,8 +4,7 @@ import type { AnswerType } from '../slide/strategies/resultStrategy';
 import { fillMatchingSlide } from '../slideDispatcher';
 import { SlideInterface } from '../slideInterface';
 import { StateActions, dispatch2 } from '../stateActionDispatcher';
-import { Json } from './globals';
-const KEY = 'savedata';
+import { Json, getCourseName } from './globals';
 export class SaveData {
   constructor(
     public readonly txt: string,
@@ -14,7 +13,7 @@ export class SaveData {
     public readonly cont: boolean
   ) {}
   public static get(): Array<SaveData> {
-    const data = localStorage.getItem(KEY) as string;
+    const data = localStorage.getItem(getCourseName()) as string;
     const data1 = JSON.parse(data);
     const arr1 = new Array<SaveData>();
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
@@ -26,7 +25,7 @@ export class SaveData {
       const arr = SaveData.get();
       arr.push(save);
       const json = JSON.stringify(arr);
-      localStorage.setItem(KEY, json);
+      localStorage.setItem(getCourseName(), json);
     }
   }
   public static find(txt: string, saves: Array<SaveData>): number {
@@ -49,7 +48,7 @@ export class SaveData {
     if (save == null || idx == null || saves == null) return;
     saves[idx] = save;
     const json = JSON.stringify(saves);
-    localStorage.setItem(KEY, json);
+    localStorage.setItem(getCourseName(), json);
   }
   public static setContinueTrue(txt: string) {
     const saves = SaveData.get();

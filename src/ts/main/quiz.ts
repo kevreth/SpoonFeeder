@@ -3,16 +3,13 @@ import { CourseFile, Json } from './quiz/datalayer/globals';
 import { ProcessJson } from './quiz/datalayer/processJson';
 import { showSlides } from './quiz/slideDispatcher';
 import { getYaml } from './utilities';
+import { setCourseName } from './quiz/datalayer/globals';
 const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
-    // Phase 1: process Json
-    // Phase 2: make slides
-    // Phase 3: evaluate
-    //TODO: add test for file existence
+    setCourseName(courseName);
     const yamlFilename = Quiz.makeYamlFilename(courseName);
-    //test data
     getYaml(yamlFilename, (course: Course) => {
       CourseFile.set(course);
       const slides = processJson(course);
