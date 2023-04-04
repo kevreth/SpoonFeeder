@@ -34,7 +34,7 @@ export function continueButton(ctr: number) {
     });
 }
 export function getLocalStorageArray() {
-  const data = localStorage.getItem('savedata') as string;
+  const data = localStorage.getItem('test') as string;
   const arr = JSON.parse(data);
   return arr;
 }

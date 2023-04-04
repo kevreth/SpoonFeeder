@@ -34,6 +34,18 @@ function checkSessionStorageFlag(key: string): boolean {
   if (val === 'true') retval = true;
   return retval;
 }
+export function setLocalStorage(key: string, value: string) {
+  localStorage.setItem(key, value);
+}
+export function getLocalStorage(key: string) {
+  return localStorage.getItem(key) as string;
+}
+export function setCourseName(value: string) {
+  setLocalStorage('courseName', value);
+}
+export function getCourseName() {
+  return localStorage.getItem('courseName') as string;
+}
 function setSessionStorageFlag(key: string) {
   sessionStorage.setItem(key, 'true');
 }
