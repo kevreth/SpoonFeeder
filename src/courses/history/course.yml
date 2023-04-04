@@ -30,7 +30,7 @@ units:
         ans: 'yes'
         exp: Science is essential to understanding topics such as how the Sun formed and how humans evolved.
       - type: bool
-        txt: Is _the alliance of Hittite king Telepinu with the Kizzuwatnas against the Mitannis_ a good topic for studying early in a big history course?
+        txt: Is _the alliance of the Hittites with the Kizzuwatnas_ a good topic for studying early in a big history course?
         ans: 'no'
         exp: This topic is too small and specific to include in big history, let alone early in the course.
       exercises:
@@ -120,13 +120,13 @@ units:
     - name: Progress Moves Faster
       inst:
       - type: mc
-        txt: This table summarizes the four major eras of big history and adds a column for the duration of each era. What do you notice about the third column? As we get closer to the present, the time periods table=big.history.timeline.html
+        txt: This table summarizes the four major eras of big history and adds a column for the duration of each era. What do you notice about the third column? As we get closer to the present, the time periods table=big.history.timeline
         o:
         - get shorter.
         - get longer.
         - stay about the same.
       - type: info
-        txt: Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present. table=big.history.timeline.html
+        txt: Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present. table=big.history.timeline
       - type: mc
         txt: As we go *further back* in time, the eras
         o:
@@ -143,18 +143,19 @@ units:
         - humans are biased to the present.
   - name: The Cosmological Era
     modules:
-    - name: Overview of th Cosmological Era
+    - name: Overview of the Cosmological Era
       inst:
       - type: info
-        txt: Recall in the last unit we divided all of history into four eras:<div
-          id="table0"></div><script>$('#table0').load("src/courses/history/big.history.timeline.html")</script>
+        txt: |
+          Recall in the last unit we divided all of history into four eras: table=big.history.timeline
       - type: info
         txt: |
           This lesson is about the *cosmological* era. The cosmological era, lasting from the beginning of the Universe 13.7 Ga to the formation of the solar system 4.6 Ga, is also divided into four eras:
           * the *promordial* era, beginning with the Big Bang, when the Universe contained only radiation and atomic nuclei;
           * the *atomic* era, when the Universe cooled enough for atoms to form, 380 ka;
           * the *stellar era*, when stars began to form 200 Ma after the Big Bang; and
-          * the *galactic* era, when galaxies formed, 1 Ga after the Big Bang.</ul>
+          * the *galactic* era, when galaxies formed, 1 Ga after the Big Bang.
       - type: info
-        txt: <div id="table0"></div><script>$('#table0').load("src/courses/history/cosmological.era.timeline.html")</script>
+        txt: |
+          table=cosmological.era.timeline
       exercises: []
