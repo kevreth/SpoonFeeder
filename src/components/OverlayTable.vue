@@ -29,8 +29,8 @@ import getStartOver from '../composables/startOver';
 
 // start over functionality
 function startOver() {
-const { clear, reload } = getStartOver();
-return { clear, reload };
+  const { clear, reload } = getStartOver();
+  return { clear, reload };
 }
 </script>
 

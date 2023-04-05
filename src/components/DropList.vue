@@ -5,6 +5,9 @@
           <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
         </q-item>
         <q-item clickable>
+          <q-item-section        @click="courseList = true">Courses</q-item-section>
+        </q-item>
+        <q-item clickable>
           <q-item-section>Settings</q-item-section>
         </q-item>
         <q-item clickable>
@@ -14,15 +17,17 @@
     </q-menu>
     
     <OverlayTable v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
-
-
+    <CourseSelector v-model="courseList" 
+    @closeInfo="courseList = false"></CourseSelector>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import OverlayTable from './OverlayTable.vue';
+import CourseSelector from './CourseSelector.vue';
 
 const overlay = ref(false);
+const courseList = ref(false);
 
 // handle overlay pages
 function handleOverlay() {
