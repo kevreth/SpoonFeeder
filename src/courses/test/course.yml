@@ -28,7 +28,7 @@ units:
           myArray.forEach(() => { }); // fat arrow syntax
           ----
       - type: info
-        txt: Sample table html=english
+        txt: Sample table html=big.history.timeline
       - type: bool
         txt: 'yes'
         ans: 'yes'
