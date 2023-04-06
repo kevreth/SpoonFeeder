@@ -2,6 +2,7 @@ import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
 import { marked } from 'marked';
 import { substitute } from './handlebars';
+import { getCourseName } from './globals';
 export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // Problems solved:
 // 1) Asciidoctor.js will not run in Vue environment.
@@ -29,7 +30,7 @@ export function adoc2html(str: string): string {
   return txt;
 }
 export function processMustache(txt: string) {
-  register('test'); // BUG: needs to receive the course name
+  register(getCourseName()); // BUG: needs to receive the course name
   const template = Handlebars.compile(txt);
   txt = template({});
   return txt;

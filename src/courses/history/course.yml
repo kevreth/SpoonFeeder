@@ -3,168 +3,188 @@ name: Big History
 units:
 - name: Introduction to Big History
   lessons:
-  - name: lesson 1
-    modules:
-    - name: What is Big History?
-      inst:
-      - type: info
-        txt: "<b>Big History</b> is the study of <i>history</i> <ul><li>from the beginning
-          of the universe</li><li>to the present moment.</li>"
-      - type: info
-        txt: Because most of history was caused by nature, such as the formation of
-          the Earth, <i>studying science</i> occurs while studying big history.
-      - type: info
-        txt: Big history initially examines <ul><li>large scale eras,</li><li>trends,
-          and</li><li>cause-and effect relationships,</li></ul>leaving details to
-          ordinary history and science courses.
-      - type: bool
-        txt: Is big history only concerned with human history?
-        ans: 'no'
-        exp: Big history studies the time before humans existed as well as human history
-          to the present day.
-      - type: bool
-        txt: Is science is essential to the study of big history?
-        ans: 'yes'
-        exp: Science is essential to understanding topics such as how the Sun formed
-          and how humans evolved.
-      - type: bool
-        txt: Is <i>the alliance of Hittite king Telepinu with the Kizzuwatnas against
-          the Mitannis</i> a good topic for studying early in a big history course?
-        ans: 'no'
-        exp: This topic is too small and specific to include in big history, let alone
-          early in the course.
-      exercises:
-      - type: gap
-        txt: Big history studies history from the beginning of the (1) to the present
-          day. Since humanity has only existed for a small time, much of big history
-          requires understanding (2) . Big history leaves the (3) to ordinary science
-          and history courses.
-        ans:
-        - universe
-        - science
-        - details
-    - name: Units of Time
-      inst:
-      - type: info
-        txt: 'Abbreviations indicate large units of time that has passed:<ul><li><i>ka</i>:
-          One <b>thousand</b> years ago (kilo years ago)</li><li><i>Ma</i>: One <b>million</b>
-          years ago (mega years ago), and</li><li><i>Ga</i>: One <b>billion</b> years
-          ago.</li>'
-      - type: info
-        txt: So, we can say, <q>Tyrannosaurus Rex roamed the Earth 65Ma</q> (65 million
-          years ago).
-      - type: bool
-        txt: Are <b>ka, Ma, and Ga</b> abbreviations?
-        ans: 'yes'
-      - type: bool
-        txt: Are <b>ka, Ma, and Ga</b> abbreviations for temperature?
-        ans: 'no'
-      exercises:
-      - type: sort
-        txt: Sort from furthest in the past to the most recent.
-        ans:
-        - Ga
-        - Ma
-        - ka
-      - type: gap
-        txt: A (1) is one-thousand years ago, a (2) is one million years ago, and
-          (3) is one billion years ago.
-        ans:
-        - ka
-        - Ma
-        - Ga
-      - type: mc
-        txt: To say <q>eight million years ago</q> we would write</q>
-        o:
-        - 8Ma
-        - 8ka
-        - 8Ga
-        - 8Ka
-    - name: The largest eras of big history
-      inst:
-      - type: sort
-        txt: Place the events in order from the earliest to the most recent
-        ans:
-        - The first stars appear
-        - The Earth cools and forms a solid surface
-        - A triceratops was injured defending itself from an attcking tyrannsaurus
-          rex but got away.
-        - The asassination of Archduke Franz Ferdinand led to World War I
-      - type: info
-        txt: The previous question describes events from the largest eras of history.
-          They are:<ol><li>The <b>cosmological</b> era, starting with the the Big
-          Bang 13.8 Ga;</li><li>The <b>solar</b> era starts with the formation of
-          the Solar System 4.6 Ga;</li></li><li>The <b>animal</b> era started about
-          600 Ma.</li><li>Finally, the <b>human</b> era started about 120 ka.</li></ol>
-      exercises:
-      - type: vocab
-        list:
-          Ga: one billion years
-          ka: one thousand years
-          Ma: one million years
-          cosmological era: The beginning of the universe until the Sun formed
-          solar era: The formation of the sun and planets
-          animal era: Started about 600 million years ago
-          human era: Started 120,000 years ago.
-      - type: gap
-        txt: The (1) era started 13.8Ga, the (2) era started 4.6Ga, the (3) era started
-          600Ma, and the (4) era started 120ka.
-        ans:
-        - cosmological
-        - solar
-        - animal
-        - human
-      - type: sort
-        txt: sort
-        ans:
-        - cosmological era
-        - solar era
-        - animal era
-        - human era
-    - name: Progress Moves Faster
-      inst:
-      - type: mc
-        txt: This table summarizes the four major eras of big history and adds a column
-          for the duration of each era.<div id="table0"></div>What do you notice about
-          the third column? As we get closer to the present, the time periods<script>$('#table0').load("src/courses/history/big.history.timeline.html")</script>
-        o:
-        - get shorter.
-        - get longer.
-        - stay about the same.
-      - type: info
-        txt: <div id="table0"></div>Time differences become shorter as we get closer
-          to the present. You will see this pattern often. Interesting events occur
-          more frequently as time approaches the present.<script>$('#table0').load("src/courses/history/big.history.timeline.html")</script>
-      - type: mc
-        txt: As we go <b>further back</b> in time, the eras
-        o:
-        - become longer.
-        - become shorter.
-        - do not change.
-      exercises:
-      - type: mc
-        txt: Eras become shorter as time goes on because
-        o:
-        - interesting events occur more frequently as we approach the present.
-        - time itself becomes shorter.
-        - we know more about recent history than distant history.
-        - humans are biased to the present.
+  # - name: lesson 1
+  #   modules:
+  #   - name: What is Big History?
+  #     inst:
+  #     - type: info
+  #       txt: |
+  #         *Big History* is the study of _history_
+  #         * from the beginning of the universe
+  #         * to the present moment.
+  #     - type: info
+  #       txt: Because most of history was caused by nature, such as the formation of the Earth, _studying science_ occurs while studying big history.
+  #     - type: info
+  #       txt: |
+  #         Big history initially examines
+  #         * large scale eras,
+  #         * trends, and
+  #         * cause-and effect relationships,
+  #         leaving details to ordinary history and science courses.
+  #     - type: bool
+  #       txt: Is big history only concerned with human history?
+  #       ans: 'no'
+  #       exp: Big history studies the time before humans existed as well as human history to the present day.
+  #     - type: bool
+  #       txt: Is science is essential to the study of big history?
+  #       ans: 'yes'
+  #       exp: Science is essential to understanding topics such as how the Sun formed and how humans evolved.
+  #     - type: bool
+  #       txt: Is _the alliance of the Hittites with the Kizzuwatnas_ a good topic for studying early in a big history course?
+  #       ans: 'no'
+  #       exp: This topic is too small and specific to include in big history, let alone early in the course.
+  #     exercises:
+  #     - type: gap
+  #       txt: Big history studies history from the beginning of the (1) to the present day. Since humanity has only existed for a small time, much of big history requires understanding (2) . Big history leaves the (3) to ordinary science and history courses.
+  #       ans:
+  #       - universe
+  #       - science
+  #       - details
+  #   - name: Units of Time
+  #     inst:
+  #     - type: info
+  #       txt: |
+  #         Abbreviations indicate large units of time that has passed:
+  #         * _ka_: One *thousand* years ago (kilo years ago)
+  #         * _Ma_: One *million* years ago (mega years ago), and
+  #         * _Ga_: One *billion* years ago.
+  #     - type: info
+  #       txt: So, we can say, _Tyrannosaurus Rex roamed the Earth 65Ma_ (65 million years ago).
+  #     - type: bool
+  #       txt: Are *ka*, *Ma*, and *Ga* abbreviations?
+  #       ans: 'yes'
+  #     - type: bool
+  #       txt: Are *ka*, *Ma*, and *Ga* abbreviations for temperature?
+  #       ans: 'no'
+  #     exercises:
+  #     - type: sort
+  #       txt: Sort from furthest in the past to the most recent.
+  #       ans:
+  #       - Ga
+  #       - Ma
+  #       - ka
+  #     - type: gap
+  #       txt: |
+  #         * A (1) is one-thousand years ago,
+  #         * a (2) is one million years ago, and
+  #         * a (3) is one billion years ago.
+  #       ans:
+  #       - ka
+  #       - Ma
+  #       - Ga
+  #     - type: mc
+  #       txt: To say _eight million years ago_ we would write
+  #       o:
+  #       - 8Ma
+  #       - 8ka
+  #       - 8Ga
+  #       - 8Ka
+  #   - name: The largest eras of big history
+  #     inst:
+  #     - type: sort
+  #       txt: Place the events in order from the earliest to the most recent
+  #       ans:
+  #       - The first stars appear
+  #       - The Earth cools and forms a solid surface
+  #       - A triceratops was injured defending itself from an attcking tyrannsaurus rex but got away.
+  #       - The asassination of Archduke Franz Ferdinand led to World War I
+  #     - type: info
+  #       txt: |
+  #         The previous question describes events from the largest eras of history.
+  #         They are:
+  #         * The *cosmological* era, starting with the the Big Bang 13.8 Ga;
+  #         * The *solar* era starts with the formation of the Solar System 4.6 Ga;
+  #         * The *animal* era started about 600 Ma.
+  #         * Finally, the *human* era started about 120 ka.
+  #     exercises:
+  #     - type: vocab
+  #       list:
+  #         Ga: one billion years
+  #         ka: one thousand years
+  #         Ma: one million years
+  #         cosmological era: The beginning of the universe until the Sun formed
+  #         solar era: The formation of the sun and planets
+  #         animal era: Started about 600 million years ago
+  #         human era: Started 120,000 years ago.
+  #     - type: gap
+  #       txt: |
+  #         * The (1) era started 13.8Ga,
+  #         * the (2) era started 4.6Ga,
+  #         * the (3) era started 600Ma, and
+  #         * the (4) era started 120ka.
+  #       ans:
+  #       - cosmological
+  #       - solar
+  #       - animal
+  #       - human
+  #     - type: sort
+  #       txt: sort
+  #       ans:
+  #       - cosmological era
+  #       - solar era
+  #       - animal era
+  #       - human era
+  #   - name: Progress Moves Faster
+  #     inst:
+  #     - type: mc
+  #       txt: This table summarizes the four major eras of big history and adds a column for the duration of each era. table=big.history.timeline What do you notice about the Duration (third column)? As we get closer to the present, the time periods
+  #       o:
+  #       - get shorter.
+  #       - get longer.
+  #       - stay about the same.
+  #     - type: info
+  #       txt: Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present. table=big.history.timeline
+  #     - type: mc
+  #       txt: As we go *further back* in time, the eras
+  #       o:
+  #       - become longer.
+  #       - become shorter.
+  #       - do not change.
+  #     exercises:
+  #     - type: mc
+  #       txt: Eras become shorter as time goes on because
+  #       o:
+  #       - interesting events occur more frequently as we approach the present.
+  #       - time itself becomes shorter.
+  #       - we know more about recent history than distant history.
+  #       - humans are biased to the present.
   - name: The Cosmological Era
     modules:
-    - name: Overview of th Cosmological Era
+    - name: Overview of the Cosmological Era
       inst:
+      # - type: info
+      #   txt: |
+      #     Recall in the last unit we divided all of history into four eras: table=big.history.timeline
       - type: info
-        txt: Recall in the last unit we divided all of history into four eras:<div
-          id="table0"></div><script>$('#table0').load("src/courses/history/big.history.timeline.html")</script>
+        txt: |
+          This lesson is about the *cosmological* era.
+          ++++
+            <div id='table0'></div>
+            <script>
+              $(function() {
+                $('#table0').load('src/courses/history/big.history.timeline.html', function() {
+                  let cn = $('#cosmological-name');
+                  console.log(cn);
+                  cn.css('border-left', 'thick solid red');
+                  cn.css('border-top', 'thick solid red');
+                  cn.css('border-bottom', 'thick solid red');
+                  cn = $('#cosmological-start');
+                  console.log(cn);
+                  cn.css('border-right', 'thick solid red');
+                  cn.css('border-top', 'thick solid red');
+                  cn.css('border-bottom', 'thick solid red');
+                });
+              });
+            </script>
+          ++++
+          The cosmological era, lasting from the beginning of the Universe 13.7 Ga to the formation of the solar system 4.6 Ga, is also divided into four eras:
+          * the *promordial* era, beginning with the Big Bang, when the Universe contained only radiation and atomic nuclei;
+          * the *atomic* era, when the Universe cooled enough for atoms to form, 380 ka;
+          * the *stellar era*, when stars began to form 200 Ma after the Big Bang; and
+          * the *galactic* era, when galaxies formed, 1 Ga after the Big Bang.
       - type: info
-        txt: This lesson is about the <b>cosmological</b> era. The cosmological era,
-          lasting from the beginning of the Universe 13.7 Ga to the formation of the
-          solar system 4.6 Ga, is also divided into four eras:<ul><li>the <b>promordial</b>
-          era, beginning with the Big Bang, when the Universe contained only radiation
-          and atomic nuclei;</li><li>the <b>atomic</b> era, when the Universe cooled
-          enough for atoms to form, 380 ka;</li><li>the <b>stellar era</b>, when stars
-          began to form 200 Ma after the Big Bang; and</li><li>the <b>galactic</b>
-          era, when galaxies formed, 1 Ga after the Big Bang.</ul>
+        txt: Because of the vast times involved, we will reverse the direction of time and count the beginning of the Universe as 0 and move forward. Previously, we counted now as zero and worked backwards.
       - type: info
-        txt: <div id="table0"></div><script>$('#table0').load("src/courses/history/cosmological.era.timeline.html")</script>
+        txt: |
+          table=cosmological.era.timeline
       exercises: []

@@ -27,7 +27,6 @@ export type CreateHtmlTypeIntersection = CreateHtmlTypeGap &
   CreateHtmlTypeMc &
   CreateHtmlTypeSelect &
   CreateHtmlTypeSort;
-
 export class CreateHtml {
   /////////////////////////////////////////////////////////////////////////////
   //                             DEFAULT
@@ -110,11 +109,8 @@ export class CreateHtml {
   static readonly SORT: CreateHtmlTypeSort = function createHtml(inst, ans) {
     const retval = inst + '<br>\n';
     let rev = '<div id="selection"></div>\n<section class="container">\n';
-    let list = ans;
-    /////////  for testing
+    let list = ans as string[];
     if (isRandom()) list = shuffle(list as string[]);
-    else list = ['b', 'a', 'c', 'd'];
-    //////////////////////////////////
     list.forEach((item) => {
       rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
     });

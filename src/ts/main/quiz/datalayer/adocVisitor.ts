@@ -1,3 +1,4 @@
+import { Bool } from '../slide/slideType/bool';
 import { Gap } from '../slide/slideType/gap';
 import { Imap } from '../slide/slideType/imap';
 import { Info } from '../slide/slideType/info';
@@ -10,6 +11,7 @@ import { SlideInterface } from '../slideInterface';
 import { adoc2html } from './adoc2html';
 
 export interface AdocVisitorInterface {
+  visitBool(clazz: Bool): void;
   visitGap(clazz: Gap): void;
   visitImap(clazz: Imap): void;
   visitInfo(clazz: Info): void;
@@ -20,6 +22,9 @@ export interface AdocVisitorInterface {
   visitVocab(clazz: Vocab): void;
 }
 export class AdocVisitor implements AdocVisitorInterface {
+  visitBool(clazz: Bool): void {
+    stdReplacement(clazz);
+  }
   visitGap(clazz: Gap): void {
     stdReplacement(clazz);
   }
