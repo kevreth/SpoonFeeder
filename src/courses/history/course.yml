@@ -127,13 +127,13 @@ units:
   #   - name: Progress Moves Faster
   #     inst:
   #     - type: mc
-  #       txt: This table summarizes the four major eras of big history and adds a column for the duration of each era. table=big.history.timeline What do you notice about the Duration (third column)? As we get closer to the present, the time periods
+  #       txt: This table summarizes the four major eras of big history and adds a column for the duration of each era. html=big.history.timeline What do you notice about the Duration (third column)? As we get closer to the present, the time periods
   #       o:
   #       - get shorter.
   #       - get longer.
   #       - stay about the same.
   #     - type: info
-  #       txt: Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present. table=big.history.timeline
+  #       txt: Time differences become shorter as we get closer to the present. You will see this pattern often. Interesting events occur more frequently as time approaches the present. html=big.history.timeline
   #     - type: mc
   #       txt: As we go *further back* in time, the eras
   #       o:
@@ -154,7 +154,7 @@ units:
       inst:
       # - type: info
       #   txt: |
-      #     Recall in the last unit we divided all of history into four eras: table=big.history.timeline
+      #     Recall in the last unit we divided all of history into four eras: html=big.history.timeline
       - type: info
         txt: |
           This lesson is about the *cosmological* era.
@@ -186,5 +186,5 @@ units:
         txt: Because of the vast times involved, we will reverse the direction of time and count the beginning of the Universe as 0 and move forward. Previously, we counted now as zero and worked backwards.
       - type: info
         txt: |
-          table=cosmological.era.timeline
+          html=cosmological.era.timeline
       exercises: []

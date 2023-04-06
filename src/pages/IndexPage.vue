@@ -21,7 +21,7 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'android';
 // const courseName = 'docker';
 // const courseName = 'express';
-const courseName = 'history';
+// const courseName = 'history';
 // const courseName = 'javascript';
 // const courseName = 'kafka';
 // const courseName = 'kotlin';
@@ -33,6 +33,7 @@ const courseName = 'history';
 // const courseName = 'spring';
 // const courseName = 'typescript';
 // const courseName = 'vue';
-// const courseName = 'test';
+const courseName = 'test';
+window.courseName = courseName;
 Quiz.slides(courseName, document);
 </script>
