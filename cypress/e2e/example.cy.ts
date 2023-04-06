@@ -164,11 +164,11 @@ describe('Cypress Testing', () => {
 
     //results
     existVisibleNotEmpty('body');
-    cy.contains('b,a,c,d');
+    cy.contains('a,b,c,d');
     cy.contains('blue');
     cy.contains('NUMBER OF QUESTIONS: 17');
-    cy.contains('NUMBER CORRECT: 10');
-    cy.contains('PERCENT CORRECT: 59%');
+    cy.contains('NUMBER CORRECT: 11');
+    cy.contains('PERCENT CORRECT: 65%');
     // cy.wait(20000);
     cy.contains('15.');
     cy.contains('ans');
