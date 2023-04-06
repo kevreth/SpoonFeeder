@@ -28,7 +28,7 @@ units:
           myArray.forEach(() => { }); // fat arrow syntax
           ----
       - type: info
-        txt: Sample table table=english
+        txt: Sample table html=english
       - type: bool
         txt: 'yes'
         ans: 'yes'

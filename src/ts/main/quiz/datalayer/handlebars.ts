@@ -1,4 +1,4 @@
-const KEYS = ['svg', 'table'];
+const KEYS = ['svg', 'html'];
 export function substitute(str: string) {
   const regex = /(\w+)=([A-Za-z0-9_.]+)/g;
   let match;
