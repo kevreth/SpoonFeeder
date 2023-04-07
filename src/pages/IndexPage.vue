@@ -10,7 +10,6 @@
 import { switchCourse } from '../ts/main/quiz';
 import '../css/style1.css';
 import '../css/quasar.css'
-// import { getCourseName, setCourseName } from '../ts/main/utilities';
 sessionStorage.clear();
 
 //===========================================================================
