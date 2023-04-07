@@ -1,0 +1,17 @@
+<script>
+$(function() {
+  const file = window.coursePath + 'big.history.timeline.html';
+  $('#html0').load(file, function() {
+    let cn = $('#cosmological-name');
+    cn.css('border-left', 'thick solid red');
+    cn.css('border-top', 'thick solid red');
+    cn.css('border-bottom', 'thick solid red');
+    cn.css('font-weight', 'bold');
+    cn = $('#cosmological-start');
+    cn.css('border-right', 'thick solid red');
+    cn.css('border-top', 'thick solid red');
+    cn.css('border-bottom', 'thick solid red');
+    cn.css('font-weight', 'bold');
+  });
+});
+</script>

@@ -34,5 +34,6 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'typescript';
 // const courseName = 'vue';
 const courseName = 'test';
+window.courseName = courseName;
 Quiz.slides(courseName, document);
 </script>

@@ -12,7 +12,7 @@ const RED = 'rgb(255, 0, 0)';
 describe('Cypress Testing', () => {
   it('visits the app root url', () => {
     cy.visit('/');
-    cy.title().should('eq', 'CyberLearning');
+    cy.title().should('eq', 'SpoonFeeder');
     //mute audio during testss
     sessionStorage.setItem('mute','true');
 
@@ -164,11 +164,11 @@ describe('Cypress Testing', () => {
 
     //results
     existVisibleNotEmpty('body');
-    cy.contains('b,a,c,d');
+    cy.contains('a,b,c,d');
     cy.contains('blue');
     cy.contains('NUMBER OF QUESTIONS: 17');
-    cy.contains('NUMBER CORRECT: 10');
-    cy.contains('PERCENT CORRECT: 59%');
+    cy.contains('NUMBER CORRECT: 11');
+    cy.contains('PERCENT CORRECT: 65%');
     // cy.wait(20000);
     cy.contains('15.');
     cy.contains('ans');

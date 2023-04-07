@@ -2,6 +2,7 @@ import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
 import { marked } from 'marked';
 import { substitute } from './handlebars';
+import { getCourseName } from './globals';
 export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // Problems solved:
 // 1) Asciidoctor.js will not run in Vue environment.
@@ -29,7 +30,7 @@ export function adoc2html(str: string): string {
   return txt;
 }
 export function processMustache(txt: string) {
-  register('test'); // BUG: needs to receive the course name
+  register(getCourseName()); // BUG: needs to receive the course name
   const template = Handlebars.compile(txt);
   txt = template({});
   return txt;
@@ -52,12 +53,12 @@ export function replaceMustache(str: string): string[] {
   return replacedStrings;
 }
 export function register(course: string) {
-  Handlebars.registerHelper('table', registerTable(course));
+  Handlebars.registerHelper('html', registerTable(course));
   Handlebars.registerHelper('svg', registerSvg(course));
 }
 function registerTable(course: string): Handlebars.HelperDelegate {
   return function (filename) {
-    return tableString(course, filename);
+    return htmlString(course, filename);
   };
 }
 function registerSvg(course: string): Handlebars.HelperDelegate {
@@ -65,8 +66,8 @@ function registerSvg(course: string): Handlebars.HelperDelegate {
     return svgString(course, filename);
   };
 }
-function tableString(course: string, filename: string): string {
-  return `<div id="table0"></div><script>$('#table0').load("src/courses/${course}/${filename}.html")</script>`;
+function htmlString(course: string, filename: string): string {
+  return `<div id="html0"></div><script>$('#html0').load("src/courses/${course}/${filename}.html")</script>`;
 }
 function svgString(course: string, filename: string): string {
   return `<img src="src/courses/${course}/${filename}.svg" class="mcButton" width = "100" height="auto"/>`;
