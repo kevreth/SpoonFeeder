@@ -2,7 +2,7 @@ import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
 import { marked } from 'marked';
 import { substitute } from './handlebars';
-import { getCourseName } from './globals';
+import { getCourseName } from '../../utilities';
 export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // Problems solved:
 // 1) Asciidoctor.js will not run in Vue environment.

@@ -2,8 +2,8 @@ import type { Course } from './quiz/datalayer/course';
 import { CourseFile, Json } from './quiz/datalayer/globals';
 import { ProcessJson } from './quiz/datalayer/processJson';
 import { showSlides } from './quiz/slideDispatcher';
-import { getYaml, setCourseListing } from './utilities';
-import { setCourseName } from './quiz/datalayer/globals';
+import { getCourseName, setCourseName, getYaml, setCourseListing } from './utilities';
+// import { setCourseName } from './quiz/datalayer/globals';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 // necessary for adding a property to the
@@ -13,6 +13,18 @@ interface Window {
   courseName: string;
 }
 declare const window: Window;
+export function switchCourse(courseName: string) {
+  setCourseName(courseName);
+  initCourse();
+}
+export function initCourse() {
+  const courseName = getCourseName();
+  if(courseName === null) {
+    //show course selection dialog
+    // courseName
+  }
+  Quiz.slides(courseName, document);
+}
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
     //make the course path accessible to course files

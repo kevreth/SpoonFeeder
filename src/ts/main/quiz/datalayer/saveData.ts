@@ -1,10 +1,10 @@
-import { extend, isEqual, last } from '../../utilities';
+import { extend, getCourseName, isEqual, last } from '../../utilities';
 import { explanation } from '../slide/explanation';
 import type { AnswerType } from '../slide/strategies/resultStrategy';
 import { fillMatchingSlide } from '../slideDispatcher';
 import { SlideInterface } from '../slideInterface';
 import { StateActions, dispatch2 } from '../stateActionDispatcher';
-import { Json, getCourseName } from './globals';
+import { Json } from './globals';
 export class SaveData {
   constructor(
     public readonly txt: string,

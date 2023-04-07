@@ -26,10 +26,3 @@ export class Json {
     return slides.findIndex((slide) => isEqual(slide.txt, txt));
   }
 }
-export const COURSE_NAME = { name: '' };
-export function getCourseName() {
-  return COURSE_NAME.name;
-}
-export function setCourseName(str: string) {
-  COURSE_NAME.name = str;
-}

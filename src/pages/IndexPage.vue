@@ -7,10 +7,10 @@
 </template>
 
 <script setup>
-import { Quiz } from '../ts/main/quiz';
+import { switchCourse } from '../ts/main/quiz';
 import '../css/style1.css';
 import '../css/quasar.css'
-import { getCourseName, setCourseName } from '../ts/main/utilities';
+// import { getCourseName, setCourseName } from '../ts/main/utilities';
 sessionStorage.clear();
 
 //===========================================================================
@@ -36,18 +36,4 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'vue';
 const courseName = 'test';
 switchCourse(courseName);
-
-function switchCourse(courseName) {
-  setCourseName(courseName);
-  initCourse();
-}
-
-function initCourse() {
-  const courseName = getCourseName();
-  if(courseName === null) {
-    //show course selection dialog
-    // courseName
-  }
-  Quiz.slides(courseName, document);
-}
 </script>
