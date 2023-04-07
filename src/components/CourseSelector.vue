@@ -4,7 +4,7 @@
   leave-active-class="animated zoomOutDown"
   >
   <q-overlay id="courseTable" @click.stop="">
-    <template #body>     
+    <template #body>
       <q-list id="courseList" class="smaller-font fixed-center bg-secondary courseList">
         <q-item :header="true" class="titleCourse" id="titleCourse">
           <q-item-label header>Course</q-item-label>
@@ -15,7 +15,7 @@
           </q-item>
         </div>
         <div class="exitCourse">
-          <ExitBtn              
+          <ExitBtn
               @click="closeInfo"
               color="primary"/>
         </div>
@@ -28,11 +28,11 @@
 <script setup>
 import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
-// import { getCourseListing } from 'app/main/utilities';
+import { getCourseListing } from '../ts/main/utilities';
 
-// const courses = getCourseListing();
+const courses = ref(getCourseListing());
 
-const courses = ref(['javascript','typescript','aws', 'vue', 1, 2, 3, 4, 5, 6, 7, 8, 9])
+// const courses = ref(['javascript','typescript','aws', 'vue', 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {

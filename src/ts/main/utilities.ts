@@ -38,7 +38,7 @@ export function setCourseListing(value: Array<string>) {
   sessionStorage.setItem('courses', str);
 }
 export function getCourseListing() {
-  const json = localStorage.getItem('courses') as string;
+  const json = sessionStorage.getItem('courses') as string;
   const str = JSON.parse(json);
   return str;
 }
