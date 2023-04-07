@@ -31,9 +31,6 @@ import ExitBtn from './ExitBtn.vue';
 // import { getCourseListing } from 'app/main/utilities';
 
 // const courses = getCourseListing();
-// function handleCourseList () {
-//   courses.value = getCourseListing();
-// };
 
 const courses = ref(['javascript','typescript','aws', 'vue', 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
