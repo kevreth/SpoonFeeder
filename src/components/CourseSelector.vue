@@ -3,21 +3,21 @@
   enter-active-class="animated zoomInUp"
   leave-active-class="animated zoomOutDown"
   >
-  <q-overlay id="courseList" @click.stop="">
+  <q-overlay id="courseTable" @click.stop="">
     <template #body>     
-      <q-list class="smaller-font fixed-center bg-secondary scrollable-course">
-        <q-item :header="true">
-          <q-item-label header class="q-pa-none" style="position: sticky;">Course</q-item-label>
+      <q-list id="courseList" class="smaller-font fixed-center bg-secondary courseList">
+        <q-item :header="true" class="titleCourse" id="titleCourse">
+          <q-item-label header>Course</q-item-label>
         </q-item>
-        <q-item clickable v-for="course in courses" :key="course" class="scrollable-course">
-          <q-item-section class="course">{{ course }}</q-item-section>
-        </q-item>
+        <div class="scrollable-course" id="courses">
+          <q-item clickable v-for="course in courses" :key="course" id="wrapCourses">
+            <q-item-section class="course" id="course">{{ course }}</q-item-section>
+          </q-item>
+        </div>
         <div class="exitCourse">
-          <ExitBtn
-              
+          <ExitBtn              
               @click="closeInfo"
               color="primary"/>
-
         </div>
       </q-list>
     </template>
@@ -44,22 +44,18 @@ function closeInfo() {
 </script>
 
 <style>
-.course {
-  padding: 0 !important;
-  margin: 0;
+.titleCourse {
+  padding: 0 0 0 16px;
+  position: sticky;
+  top: 0;
+}
+.courseList {
+  height: 85%;
+  border-radius: 10px;
 }
 .scrollable-course {
-  /* display: block; */
-  /* position:fixed; */
   overflow: auto;
+  height: 80%;
   max-height: 80vh;
-  border-radius: 10px;
-  padding-right: 0;
-  padding-left: 0;
-  margin: 0 15px;
-}
-.exitCourse {
-  position: sticky;
-  bottom: 0;
 }
 </style>
