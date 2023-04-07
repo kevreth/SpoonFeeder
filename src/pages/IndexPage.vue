@@ -10,6 +10,7 @@
 import { Quiz } from '../ts/main/quiz';
 import '../css/style1.css';
 import '../css/quasar.css'
+import { getCourseName, setCourseName } from '../ts/main/utilities';
 sessionStorage.clear();
 
 //===========================================================================
@@ -34,6 +35,19 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'typescript';
 // const courseName = 'vue';
 const courseName = 'test';
-window.courseName = courseName;
-Quiz.slides(courseName, document);
+switchCourse(courseName);
+
+function switchCourse(courseName) {
+  setCourseName(courseName);
+  initCourse();
+}
+
+function initCourse() {
+  const courseName = getCourseName();
+  if(courseName === null) {
+    //show course selection dialog
+    // courseName
+  }
+  Quiz.slides(courseName, document);
+}
 </script>

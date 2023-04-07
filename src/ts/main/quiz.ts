@@ -10,11 +10,13 @@ const { processJson } = ProcessJson;
 // DOM window object
 interface Window {
   coursePath: string;
+  courseName: string;
 }
 declare const window: Window;
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
     //make the course path accessible to course files
+    window.courseName = courseName;
     window.coursePath = PREFIX_COURSE_FILE + courseName + '/';
     setCourseName(courseName);
     const yamlFilename = Quiz.makeYamlFilename(courseName);
