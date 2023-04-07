@@ -32,8 +32,6 @@ import { getCourseListing } from '../ts/main/utilities';
 
 const courses = ref(getCourseListing());
 
-// const courses = ref(['javascript','typescript','aws', 'vue', 1, 2, 3, 4, 5, 6, 7, 8, 9])
-
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {
   emit('closeInfo')
