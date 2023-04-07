@@ -5,7 +5,7 @@
           <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
         </q-item>
         <q-item clickable>
-          <q-item-section        @click="courseList = true">Courses</q-item-section>
+          <q-item-section @click="courseList = true">Courses</q-item-section>
         </q-item>
         <q-item clickable>
           <q-item-section>Settings</q-item-section>
@@ -39,6 +39,7 @@ function handleOverlay() {
 .smaller-font {
   font-size: 16px;
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 0;
   /* background: #212026; */
 }
 </style>

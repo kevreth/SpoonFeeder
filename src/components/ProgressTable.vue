@@ -12,6 +12,7 @@
     />
 
     <q-hierarchy
+      @click.stop=""
       id="progress"
       class="progressTable center"
       dense
