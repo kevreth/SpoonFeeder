@@ -7,15 +7,10 @@
 </template>
 
 <script setup>
+import { getCourseName } from '../ts/main/utilities';
 import { switchCourse } from '../ts/main/quiz';
 import '../css/style1.css';
 import '../css/quasar.css'
-sessionStorage.clear();
-
-//===========================================================================
-// un-comment for TESTING
-sessionStorage.setItem('random', 'false');
-//===========================================================================
 // const courseName = 'aws';
 // const courseName = 'aws-review';
 // const courseName = 'android';
@@ -33,6 +28,12 @@ sessionStorage.setItem('random', 'false');
 // const courseName = 'spring';
 // const courseName = 'typescript';
 // const courseName = 'vue';
-const courseName = 'test';
+let courseName = getCourseName();
+if(courseName === null || courseName === undefined) {
+  // call course selector dialog instead
+  courseName = 'test';
+  //also need to verify the couseName against the course
+  //list, but that can be later.
+}
 switchCourse(courseName);
 </script>

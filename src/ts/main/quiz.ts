@@ -2,8 +2,7 @@ import type { Course } from './quiz/datalayer/course';
 import { CourseFile, Json } from './quiz/datalayer/globals';
 import { ProcessJson } from './quiz/datalayer/processJson';
 import { showSlides } from './quiz/slideDispatcher';
-import { getCourseName, setCourseName, getYaml, setCourseListing } from './utilities';
-// import { setCourseName } from './quiz/datalayer/globals';
+import { setCourseName, getYaml, setCourseListing } from './utilities';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 // necessary for adding a property to the
@@ -14,23 +13,19 @@ interface Window {
 }
 declare const window: Window;
 export function switchCourse(courseName: string) {
+  sessionStorage.clear();
+  //===========================================================================
+  // un-comment for TESTING
+  sessionStorage.setItem('random', 'false');
+  //===========================================================================
   setCourseName(courseName);
-  initCourse();
-}
-export function initCourse() {
-  const courseName = getCourseName();
-  if(courseName === null) {
-    //show course selection dialog
-    // courseName
-  }
+  //make the course path accessible to course files
+  window.courseName = courseName;
+  window.coursePath = PREFIX_COURSE_FILE + courseName + '/';
   Quiz.slides(courseName, document);
 }
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
-    //make the course path accessible to course files
-    window.courseName = courseName;
-    window.coursePath = PREFIX_COURSE_FILE + courseName + '/';
-    setCourseName(courseName);
     const yamlFilename = Quiz.makeYamlFilename(courseName);
     getYaml(PREFIX_COURSE_FILE + '/listing.yml', (listing: Array<string>) => {
       setCourseListing(listing);
