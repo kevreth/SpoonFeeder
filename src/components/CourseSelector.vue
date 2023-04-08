@@ -7,14 +7,15 @@
     <template #body>
       <q-list id="courseList" class="smaller-font fixed-center bg-secondary courseList">
         <q-item :header="true" class="titleCourse" id="titleCourse">
-          <q-item-label header>Course</q-item-label>
+          <q-item-label header class="headerCourse">Course</q-item-label>
         </q-item>
         <div class="scrollable-course" id="courses">
           <q-item clickable v-for="course in courses" :key="course" id="wrapCourses">
             <q-item-section class="course" id="course">{{ course }}</q-item-section>
           </q-item>
         </div>
-        <div class="exitCourse">
+        <div class="btnCourse">
+          <SwitchCourse></SwitchCourse>
           <ExitBtn
               @click="closeInfo"
               color="primary"/>
@@ -29,6 +30,7 @@
 import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
 import { getCourseListing } from '../ts/main/utilities';
+import SwitchCourse from './SwitchCourse.vue';
 
 const courses = ref(getCourseListing());
 
@@ -40,9 +42,15 @@ function closeInfo() {
 
 <style>
 .titleCourse {
-  padding: 0 0 0 16px;
+  padding: 0;
   position: sticky;
   top: 0;
+}
+.headerCourse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .courseList {
   height: 85%;
