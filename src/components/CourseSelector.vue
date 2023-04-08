@@ -61,16 +61,13 @@ const selectedCourse = ref(null);
 
 function selectCourse(course) {
   selectedCourse.value = course
-  console.log('selected course', selectedCourse)
+  console.log('You have selected course:', selectedCourse.value);
 }
 
-// function closeTable() {
-//   selectedCourse.value = null;
-// }
+const emit = defineEmits(['closeInfo']);
 
-const emit = defineEmits(['closeInfo'])
 function closeInfo() {
-  emit('closeInfo')
+  emit('closeInfo');
 }
 </script>
 

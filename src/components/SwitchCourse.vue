@@ -21,16 +21,19 @@
   })
   const emit = defineEmits(['closeInfo']);
 
-  const courseSelected = ref(false);
+  const courseSelected = ref(true);
 
   function switchCourse() {
-    props.selectCourse(props.selectedCourse);
-    emit('closeInfo');
+    if (props.selectedCourse) {
+      props.selectCourse(props.selectedCourse);
+      emit('closeInfo');
+      courseSelected.value = false;
+    }
   }
 
-  watchEffect(() => {
-    if(props.selectedCourse) {
-      courseSelected.value = true;
-    }
-  })
+  // watchEffect(() => {
+  //   if(props.selectedCourse) {
+  //     courseSelected.value = true;
+  //   }
+  // })
 </script>
