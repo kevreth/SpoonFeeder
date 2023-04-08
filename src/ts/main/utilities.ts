@@ -33,6 +33,21 @@ function checkSessionStorageFlag(key: string): boolean {
   if (val === 'true') retval = true;
   return retval;
 }
+export class CourseData {
+  public courseName: string;
+  public availableCourses: string[]
+  constructor() {
+    const course = getCourseName();
+    const list = getCourseListing();
+    if (course === null || course === undefined)
+      this.courseName = '';
+    else this.courseName = course;
+    this.availableCourses = remove(list, course);
+  }
+}
+export function getCourseData() {
+  return new CourseData();
+}
 export function setCourseListing(value: Array<string>) {
   const str = JSON.stringify(value);
   sessionStorage.setItem('courses', str);
@@ -112,6 +127,11 @@ export function createTimeStamp(d: Date) {
 }
 export function timestampNow() {
   return createTimeStamp(new Date(Date.now()));
+}
+export function remove<T>(arr:Array<T>, item:T) {
+  return arr.filter(function(value) {
+    return value !== item;
+  });
 }
 // =========================== Lodash wrappers ================================
 export function random(min: number, max: number): number {
