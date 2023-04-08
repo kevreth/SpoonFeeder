@@ -21,14 +21,14 @@ import '../css/quasar.css'
 // const courseName = 'kafka';
 // const courseName = 'kotlin';
 // const courseName = 'kubernetes';
-// const courseName = 'history';
+const courseName = 'history';
 // const courseName = 'node';
 // const courseName = 'quasar';
 // const courseName = 'react';
 // const courseName = 'spring';
 // const courseName = 'typescript';
 // const courseName = 'vue';
-let courseName = getCourseName();
+// let courseName = getCourseName();
 if(courseName === null || courseName === undefined) {
   // call course selector dialog instead
   courseName = 'test';
