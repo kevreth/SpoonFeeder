@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-import { getCourseName } from '../ts/main/utilities';
 import { switchCourse } from '../ts/main/quiz';
 import '../css/style1.css';
 import '../css/quasar.css'
