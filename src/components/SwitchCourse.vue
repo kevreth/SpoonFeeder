@@ -1,6 +1,5 @@
 <template>
   <q-btn
-    v-if="courseSelected"
     class="switchBtn q-mb-sm q-mr-sm q-ml-xs bg-primary"
     label="switch"
     @click="switchCourse()"
@@ -8,7 +7,7 @@
 </template>
 
 <script setup>
-  import { ref, watchEffect } from 'vue';
+  import { ref } from 'vue';
 
   const props = defineProps({
     selectCourse: {
@@ -21,19 +20,11 @@
   })
   const emit = defineEmits(['closeInfo']);
 
-  const courseSelected = ref(true);
-
   function switchCourse() {
     if (props.selectedCourse) {
       props.selectCourse(props.selectedCourse);
       emit('closeInfo');
-      courseSelected.value = false;
     }
   }
 
-  // watchEffect(() => {
-  //   if(props.selectedCourse) {
-  //     courseSelected.value = true;
-  //   }
-  // })
 </script>
