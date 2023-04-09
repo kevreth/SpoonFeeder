@@ -33,6 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
+          <SavedCourse :savedCourse="savedCourse"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -55,12 +56,15 @@ import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
 import { getCourseListing } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
+import SavedCourse from './SavedCourse.vue';
 
 const courses = ref(getCourseListing());
 const selectedCourse = ref(null);
+const savedCourse = ref('');
 
 function selectCourse(course) {
   selectedCourse.value = course
+  savedCourse.value = selectedCourse.value
   console.log('You have selected course:', selectedCourse.value);
 }
 
@@ -72,6 +76,19 @@ function closeInfo() {
 </script>
 
 <style>
+.savedCourse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+}
+.savedCourse span {
+  /* font-size: 16px; */
+  font-weight: bold;
+  color: #40b782;
+}
 .selected {
   background: #3c3b41;
   color: #f2c037;
@@ -93,7 +110,7 @@ function closeInfo() {
 }
 .scrollable-course {
   overflow: auto;
-  height: 80%;
+  height: 70%;
   max-height: 80vh;
 }
 </style>
