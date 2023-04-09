@@ -8,7 +8,6 @@
 <script setup>
   const props = defineProps({
     savedCourse: {
-      type: String,
       required: true,
     }
   })

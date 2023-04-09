@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse :savedCourse="savedCourse"></SavedCourse>
+          <SavedCourse :savedCourse="savedCourse.courseName"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -54,17 +54,17 @@
 <script setup>
 import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
-import { getCourseListing } from '../ts/main/utilities';
+import { getCourseData, getCourseListing } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
 
 const courses = ref(getCourseListing());
 const selectedCourse = ref(null);
-const savedCourse = ref('');
+const savedCourse = getCourseData();
 
 function selectCourse(course) {
   selectedCourse.value = course
-  savedCourse.value = selectedCourse.value
+  // savedCourse.value = selectedCourse.value
   console.log('You have selected course:', selectedCourse.value);
 }
 
