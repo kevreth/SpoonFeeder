@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeUpdate, onMounted } from 'vue';
+import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from './ExitBtn.vue';
 import { getCourseData } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
