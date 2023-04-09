@@ -8,6 +8,7 @@
 
 <script setup>
 import { switchCourse } from '../ts/main/quiz';
+import {getCourseName} from '../ts/main/utilities';
 import '../css/style1.css';
 import '../css/quasar.css'
 // const courseName = 'aws';
@@ -25,8 +26,16 @@ import '../css/quasar.css'
 // const courseName = 'quasar';
 // const courseName = 'react';
 // const courseName = 'spring';
-const courseName = 'test';
+
 // const courseName = 'typescript';
 // const courseName = 'vue';
-switchCourse(courseName);
+initialize();
+function initialize() {
+  let courseName = getCourseName();
+  if (!courseName) {
+    courseName = 'test'; //only keep next line coded
+    //start CourseSelector
+  }
+  switchCourse(courseName);
+}
 </script>
