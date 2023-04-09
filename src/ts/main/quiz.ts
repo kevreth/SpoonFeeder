@@ -2,7 +2,7 @@ import type { Course } from './quiz/datalayer/course';
 import { CourseFile, Json } from './quiz/datalayer/globals';
 import { ProcessJson } from './quiz/datalayer/processJson';
 import { showSlides } from './quiz/slideDispatcher';
-import { setCourseName, getYaml, setCourseListing } from './utilities';
+import { setCourseName, getYaml } from './utilities';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 // necessary for adding a property to the
@@ -27,9 +27,6 @@ export function switchCourse(courseName: string) {
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
     const yamlFilename = Quiz.makeYamlFilename(courseName);
-    getYaml(PREFIX_COURSE_FILE + '/listing.yml', (listing: Array<string>) => {
-      setCourseListing(listing);
-    });
     getYaml(yamlFilename, (course: Course) => {
       CourseFile.set(course);
       const slides = processJson(course);

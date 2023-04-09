@@ -1,41 +1,30 @@
 <template>
   <q-page class="row items-center justify-evenly">
+    <CourseSelector v-model="courseList" @closeInfo="courseList = false"/>
     <div id="slide">
       <div id="content"></div>
     </div>
   </q-page>
 </template>
 
-<script setup>
-import { switchCourse } from '../ts/main/quiz';
-import {getCourseName} from '../ts/main/utilities';
+<script setup lang='ts'>
+import { ref } from 'vue';
+import { PREFIX_COURSE_FILE, switchCourse } from '../ts/main/quiz';
+import {getCourseName, getYaml, setCourseListing, setCourseName} from '../ts/main/utilities';
 import '../css/style1.css';
 import '../css/quasar.css'
-// const courseName = 'aws';
-// const courseName = 'aws-review';
-// const courseName = 'android';
-// const courseName = 'docker';
-// const courseName = 'express';
-// const courseName = 'history';
-// const courseName = 'javascript';
-// const courseName = 'kafka';
-// const courseName = 'kotlin';
-// const courseName = 'kubernetes';
-// const courseName = 'history';
-// const courseName = 'node';
-// const courseName = 'quasar';
-// const courseName = 'react';
-// const courseName = 'spring';
-
-// const courseName = 'typescript';
-// const courseName = 'vue';
+import CourseSelector from 'src/components/CourseSelector.vue';
+const courseList = ref(false);
 initialize();
 function initialize() {
+  getYaml(PREFIX_COURSE_FILE + '/listing.yml', (listing: Array<string>) => {
+      setCourseListing(listing);
+    });
   let courseName = getCourseName();
-  if (!courseName) {
-    courseName = 'test'; //only keep next line coded
-    //start CourseSelector
+  if (courseName == null || courseName == 'null') {
+    courseList.value = true;
+    // setCourseName('');
   }
-  switchCourse(courseName);
+  else switchCourse(courseName);
 }
 </script>

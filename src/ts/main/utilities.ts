@@ -42,7 +42,9 @@ export class CourseData {
     if (course === null || course === undefined)
       this.courseName = '';
     else this.courseName = course;
-    this.availableCourses = remove(list, course);
+    if (list !== null && list !== undefined)
+      this.availableCourses = remove(list, course);
+    else this.availableCourses = new Array<string>();
   }
 }
 export function getCourseData() {
