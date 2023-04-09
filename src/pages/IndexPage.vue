@@ -20,19 +20,13 @@ import '../css/quasar.css'
 // const courseName = 'kafka';
 // const courseName = 'kotlin';
 // const courseName = 'kubernetes';
-const courseName = 'history';
+// const courseName = 'history';
 // const courseName = 'node';
 // const courseName = 'quasar';
 // const courseName = 'react';
 // const courseName = 'spring';
+const courseName = 'test';
 // const courseName = 'typescript';
 // const courseName = 'vue';
-// let courseName = getCourseName();
-if(courseName === null || courseName === undefined) {
-  // call course selector dialog instead
-  courseName = 'test';
-  //also need to verify the couseName against the course
-  //list, but that can be later.
-}
 switchCourse(courseName);
 </script>

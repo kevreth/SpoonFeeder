@@ -27,13 +27,13 @@
             >
               <q-item-section
                 class="course"
-                id="course"                
+                id="course"
               >
                 {{ course }}
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse :savedCourse="savedCourse.courseName"></SavedCourse>
+          <SavedCourse :savedCourse="courseData.courseName"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -54,18 +54,16 @@
 <script setup>
 import { ref } from 'vue';
 import ExitBtn from './ExitBtn.vue';
-import { getCourseData, getCourseListing } from '../ts/main/utilities';
+import { getCourseData } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
 
-const courses = ref(getCourseListing());
 const selectedCourse = ref(null);
-const savedCourse = getCourseData();
+const courseData = getCourseData();
+const courses = ref(courseData.availableCourses);
 
-function selectCourse(course) {
-  selectedCourse.value = course
-  // savedCourse.value = selectedCourse.value
-  console.log('You have selected course:', selectedCourse.value);
+function selectCourse(courseData) {
+  console.log('You have selected course:', courseData.courseName);
 }
 
 const emit = defineEmits(['closeInfo']);
