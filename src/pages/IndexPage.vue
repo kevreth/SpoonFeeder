@@ -17,7 +17,7 @@ import CourseSelector from 'src/components/CourseSelector.vue';
 const courseList = ref(false);
 initialize();
 function initialize() {
-  getYaml(PREFIX_COURSE_FILE + '/listing.yml', (listing: Array<string>) => {
+  getYaml( '../courses/listing.yml', (listing: Array<string>) => {
       setCourseListing(listing);
     });
   let courseName = getCourseName();

@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
+import { PREFIX_COURSE_FILE } from './quiz';
 export function getYaml<T>(filename: string, f: (data: T) => void) {
   fetch(filename)
     .then((res) => res.blob())
@@ -35,7 +36,7 @@ function checkSessionStorageFlag(key: string): boolean {
 }
 export class CourseData {
   public courseName: string;
-  public availableCourses: string[]
+  public availableCourses: string[] = []
   constructor() {
     const course = getCourseName();
     const list = getCourseListing();
@@ -44,7 +45,14 @@ export class CourseData {
     else this.courseName = course;
     if (list !== null && list !== undefined)
       this.availableCourses = remove(list, course);
-    else this.availableCourses = new Array<string>();
+    else {
+      const filename = PREFIX_COURSE_FILE + '/listing.yml'
+      console.log(filename);
+      getYaml(filename, (listing: Array<string>) => {
+        this.availableCourses = listing;
+        setCourseListing(listing);
+      });
+    }
   }
 }
 export function getCourseData() {
