@@ -57,13 +57,15 @@ import ExitBtn from './ExitBtn.vue';
 import { getCourseData } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
+import {switchCourse} from '../ts/main/quiz';
 
+const courseData = ref(getCourseData());
+const courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref(null);
-const courseData = getCourseData();
-const courses = ref(courseData.availableCourses);
 
-function selectCourse(courseData) {
-  console.log('You have selected course:', courseData.courseName);
+function selectCourse(course) {
+  selectedCourse.value = course
+  switchCourse(selectedCourse.value);
 }
 
 const emit = defineEmits(['closeInfo']);
