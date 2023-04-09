@@ -65,6 +65,7 @@ const selectedCourse = ref(null);
 
 function selectCourse(course) {
   selectedCourse.value = course
+  courseData.value.courseName = selectedCourse.value
   switchCourse(selectedCourse.value);
 }
 
