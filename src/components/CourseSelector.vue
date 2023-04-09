@@ -52,16 +52,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onBeforeUpdate, onMounted } from 'vue';
 import ExitBtn from './ExitBtn.vue';
 import { getCourseData } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
 import {switchCourse} from '../ts/main/quiz';
 
-const courseData = ref(getCourseData());
-const courses = ref(courseData.value.availableCourses);
+let courseData = ref(null);
+let courses = ref(null);
 const selectedCourse = ref(null);
+
+onBeforeUpdate(() => {
+  courseData = ref(getCourseData());
+  courses = ref(courseData.value.availableCourses);
+})
 
 function selectCourse(course) {
   selectedCourse.value = course
