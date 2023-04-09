@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse :savedCourse="courseData"></SavedCourse>
+          <SavedCourse :savedCourse="courseData.courseName"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -66,6 +66,7 @@ const selectedCourse = ref(null);
 function selectCourse(course) {
   selectedCourse.value = course
   courseData.value.courseName = selectedCourse.value
+  console.log(selectedCourse.value)
   switchCourse(selectedCourse.value);
 }
 
@@ -78,9 +79,9 @@ function closeInfo() {
 
 <style>
 .savedCourse {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   padding: 6px;
   margin-bottom: 6px;
   border-radius: 4px;
