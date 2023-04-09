@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse :savedCourse="courseData.courseName"></SavedCourse>
+          <SavedCourse :savedCourse="courseData"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -85,7 +85,7 @@ function closeInfo() {
   border-radius: 4px;
 }
 .savedCourse span {
-  /* font-size: 16px; */
+  font-size: 12px;
   font-weight: bold;
   color: #40b782;
 }
