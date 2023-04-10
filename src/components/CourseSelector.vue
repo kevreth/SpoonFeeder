@@ -1,7 +1,7 @@
 <template>
   <transition appear group
-    enter-active-class="animated zoomInUp"
-    leave-active-class="animated zoomOutDown">
+    enter-active-class="animated slideInDown"
+    leave-active-class="animated slideOutUp">
     <q-overlay
       id="courseTable"
       @click.stop="">

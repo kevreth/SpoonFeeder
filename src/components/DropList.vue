@@ -1,20 +1,25 @@
 <template>
-    <q-menu id="droplist" class=" text-white" style="background: black;">
-      <q-list style="min-width: 30px" class="smaller-font bg-secondary">
-        <q-item clickable>
-          <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
-        </q-item>
-        <q-item clickable>
-          <q-item-section @click="courseList = true">Courses</q-item-section>
-        </q-item>
-        <q-item clickable>
-          <q-item-section>Settings</q-item-section>
-        </q-item>
-        <q-item clickable>
-          <q-item-section>Help</q-item-section>
-        </q-item>
-      </q-list>
-    </q-menu>
+  <q-menu
+    id="droplist"
+    class=" text-white"
+    style="background: black;"
+    v-model="droplist"
+  >
+    <q-list style="min-width: 30px" class="smaller-font bg-secondary" @click="droplist = false">
+      <q-item clickable>
+        <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
+      </q-item>
+      <q-item clickable>
+        <q-item-section @click="courseList = true">Courses</q-item-section>
+      </q-item>
+      <q-item clickable>
+        <q-item-section>Settings</q-item-section>
+      </q-item>
+      <q-item clickable>
+        <q-item-section>Help</q-item-section>
+      </q-item>
+    </q-list>
+  </q-menu>
     
     <OverlayTable v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
     <CourseSelector v-model="courseList" 
@@ -25,6 +30,7 @@
 import { ref } from 'vue';
 import OverlayTable from './OverlayTable.vue';
 import CourseSelector from './CourseSelector.vue';
+const droplist = ref(false);
 
 const overlay = ref(false);
 const courseList = ref(false);
