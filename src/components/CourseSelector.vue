@@ -41,6 +41,7 @@
               @closeInfo="closeInfo"
             />
             <ExitBtn
+                v-if="disableExit"
                 @click="closeInfo"
                 color="primary"
             />
@@ -62,7 +63,8 @@ import {switchCourse} from '../ts/main/quiz';
 let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref(null);
-const savedCourse = ref('')
+const savedCourse = ref('');
+const disableExit = ref(false);
 
 onBeforeUpdate(() => {
   courseData = ref(getCourseData());
@@ -70,9 +72,14 @@ onBeforeUpdate(() => {
 })
 
 function selectCourse(course) {
-  selectedCourse.value = course
-  savedCourse.value = selectedCourse.value
-  switchCourse(selectedCourse.value);
+  if(courseData.value.courseName === null || courseData.value.courseName === undefined) {
+    disableExit.value = false;
+  } else {
+    disableExit.value = true;
+    selectedCourse.value = course
+    savedCourse.value = selectedCourse.value
+    switchCourse(selectedCourse.value);
+  }
 }
 
 const emit = defineEmits(['closeInfo']);
