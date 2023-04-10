@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <!-- <SavedCourse :savedCourse="courseData.courseName"></SavedCourse> -->
+          <SavedCourse :savedCourse="savedCourse"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -56,12 +56,13 @@ import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from './ExitBtn.vue';
 import { getCourseData } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
-// import SavedCourse from './SavedCourse.vue';
+import SavedCourse from './SavedCourse.vue';
 import {switchCourse} from '../ts/main/quiz';
 
 let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref(null);
+const savedCourse = ref('')
 
 onBeforeUpdate(() => {
   courseData = ref(getCourseData());
@@ -70,8 +71,7 @@ onBeforeUpdate(() => {
 
 function selectCourse(course) {
   selectedCourse.value = course
-  courseData.value.courseName = selectedCourse.value
-  console.log(selectedCourse.value)
+  savedCourse.value = selectedCourse.value
   switchCourse(selectedCourse.value);
 }
 
