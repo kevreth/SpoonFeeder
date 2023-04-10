@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse :savedCourse="courseData.courseName"></SavedCourse>
+          <SavedCourse id="savedCourse" class="savedCourse" :savedCourse="savedCourse"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -72,8 +72,14 @@ onBeforeUpdate(() => {
 })
 
 function selectCourse(course) {
-  selectedCourse.value = course
-  switchCourse(selectedCourse.value);
+  if(courseData.value.courseName === null || courseData.value.courseName === undefined) {
+    disableExit.value = false;
+  } else {
+    disableExit.value = true;
+    selectedCourse.value = course
+    savedCourse.value = selectedCourse.value
+    switchCourse(selectedCourse.value);
+  }
 }
 
 const emit = defineEmits(['closeInfo']);
