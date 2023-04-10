@@ -33,11 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-<<<<<<< Updated upstream
           <SavedCourse id="savedCourse" class="savedCourse" :savedCourse="savedCourse"></SavedCourse>
-=======
-          <SavedCourse :savedCourse="courseData.courseName"></SavedCourse>
->>>>>>> Stashed changes
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -76,7 +72,6 @@ onBeforeUpdate(() => {
 })
 
 function selectCourse(course) {
-<<<<<<< Updated upstream
   if(courseData.value.courseName === null || courseData.value.courseName === undefined) {
     disableExit.value = false;
   } else {
@@ -85,10 +80,6 @@ function selectCourse(course) {
     savedCourse.value = selectedCourse.value
     switchCourse(selectedCourse.value);
   }
-=======
-  selectedCourse.value = course
-  switchCourse(selectedCourse.value);
->>>>>>> Stashed changes
 }
 
 const emit = defineEmits(['closeInfo']);
