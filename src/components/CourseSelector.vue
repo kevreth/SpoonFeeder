@@ -1,7 +1,7 @@
 <template>
   <transition appear group
-    enter-active-class="animated zoomInUp"
-    leave-active-class="animated zoomOutDown">
+    enter-active-class="animated slideInDown"
+    leave-active-class="animated slideOutUp">
     <q-overlay
       id="courseTable"
       @click.stop="">
@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <!-- <SavedCourse :savedCourse="courseData.courseName"></SavedCourse> -->
+          <SavedCourse id="savedCourse" class="savedCourse" :savedCourse="savedCourse"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -41,6 +41,7 @@
               @closeInfo="closeInfo"
             />
             <ExitBtn
+                v-if="disableExit"
                 @click="closeInfo"
                 color="primary"
             />
@@ -56,12 +57,14 @@ import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from './ExitBtn.vue';
 import { getCourseData } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
-// import SavedCourse from './SavedCourse.vue';
+import SavedCourse from './SavedCourse.vue';
 import {switchCourse} from '../ts/main/quiz';
 
 let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref(null);
+const savedCourse = ref('');
+const disableExit = ref(false);
 
 onBeforeUpdate(() => {
   courseData = ref(getCourseData());
@@ -69,10 +72,14 @@ onBeforeUpdate(() => {
 })
 
 function selectCourse(course) {
-  selectedCourse.value = course
-  courseData.value.courseName = selectedCourse.value
-  console.log(selectedCourse.value)
-  switchCourse(selectedCourse.value);
+  if(courseData.value.courseName === null || courseData.value.courseName === undefined) {
+    disableExit.value = false;
+  } else {
+    disableExit.value = true;
+    selectedCourse.value = course
+    savedCourse.value = selectedCourse.value
+    switchCourse(selectedCourse.value);
+  }
 }
 
 const emit = defineEmits(['closeInfo']);
@@ -83,13 +90,15 @@ function closeInfo() {
 </script>
 
 <style>
+.btnCourse {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
 .savedCourse {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  padding: 6px;
-  margin-bottom: 6px;
-  border-radius: 4px;
+  margin-top: 8px;
 }
 .savedCourse span {
   font-size: 12px;
@@ -114,6 +123,7 @@ function closeInfo() {
 .courseList {
   height: 85%;
   border-radius: 10px;
+  padding: 0 15px;
 }
 .scrollable-course {
   overflow: auto;
