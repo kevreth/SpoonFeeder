@@ -8,7 +8,7 @@
         <div class="justify-evenly summaryContainer">
           <!-- {{ content }} -->
         </div>
-  
+
         <ExitBtn @click="closeSummary" />
       </template>
     </q-overlay>
@@ -17,16 +17,12 @@
 
 <script setup>
 import ExitBtn from './ExitBtn.vue';
-// import { Json } from '../ts/main/globals'
-// import { evaluate } from '../ts/main/quiz/evaluate/evaluate.support'
 
 const emit = defineEmits(['closeSummary'])
 function closeSummary() {
   emit('closeSummary')
 }
 
-// const json = Json.get();
-// const content = evaluate(json)
 </script>
 
 <style>
