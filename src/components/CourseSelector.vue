@@ -33,7 +33,7 @@
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse :savedCourse="savedCourse"></SavedCourse>
+          <SavedCourse id="savedCourse" class="savedCourse" :savedCourse="savedCourse"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               :selectCourse="selectCourse"
@@ -90,13 +90,15 @@ function closeInfo() {
 </script>
 
 <style>
+.btnCourse {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
 .savedCourse {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  padding: 6px;
-  margin-bottom: 6px;
-  border-radius: 4px;
+  margin-top: 8px;
 }
 .savedCourse span {
   font-size: 12px;
@@ -121,6 +123,7 @@ function closeInfo() {
 .courseList {
   height: 85%;
   border-radius: 10px;
+  padding: 0 15px;
 }
 .scrollable-course {
   overflow: auto;
