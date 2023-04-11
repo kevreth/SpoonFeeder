@@ -29,7 +29,7 @@
                 class="course"
                 id="course"
               >
-                {{ course }}
+                {{ course.toUpperCase() }}
               </q-item-section>
             </q-item>
           </div>
