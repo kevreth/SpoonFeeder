@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import {
   fills,
   gaps,
-} from '../../../../../main/quiz/slide/strategies/makeSlides/makeSlidesStrategyGap';
+} from '../../../../../main/quiz/slide/strategies/makeSlidesStrategy/makeSlidesStrategyGap';
 const question = 'text (1) text (2) text (3)';
 const ans = ['ans1', 'ans2', 'ans3'];
 it('fills', () => {

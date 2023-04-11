@@ -8,13 +8,13 @@ import type {
   CreateHtmlTypeMc,
   CreateHtmlTypeSort,
 } from './createHtmlStrategy';
-import { makeSlidesStrategyGap } from './makeSlides/makeSlidesStrategyGap';
-import { makeSlidesStrategyImap } from './makeSlides/makeSlidesStrategyImap';
-import { makeSlidesStrategyInfo } from './makeSlides/makeSlidesStrategyInfo';
-import { makeSlidesStrategyMa } from './makeSlides/makeSlidesStrategyMa';
-import { makeSlidesStrategyMc } from './makeSlides/makeSlidesStrategyMc';
-import { makeSlidesStrategySelect } from './makeSlides/makeSlidesStrategySelect';
-import { makeSlidesStrategySort } from './makeSlides/makeSlidesStrategySort';
+import { makeSlidesStrategyGap } from './makeSlidesStrategy/makeSlidesStrategyGap';
+import { makeSlidesStrategyImap } from './makeSlidesStrategy/makeSlidesStrategyImap';
+import { makeSlidesStrategyInfo } from './makeSlidesStrategy/makeSlidesStrategyInfo';
+import { makeSlidesStrategyMa } from './makeSlidesStrategy/makeSlidesStrategyMa';
+import { makeSlidesStrategyMc } from './makeSlidesStrategy/makeSlidesStrategyMc';
+import { makeSlidesStrategySelect } from './makeSlidesStrategy/makeSlidesStrategySelect';
+import { makeSlidesStrategySort } from './makeSlidesStrategy/makeSlidesStrategySort';
 import type { AnswerType } from './resultStrategy';
 import type {
   SetWidthTypeComplex,
