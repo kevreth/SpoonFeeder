@@ -11,6 +11,13 @@ export function getYaml<T>(filename: string, f: (data: T) => void) {
     })
     .catch((err) => console.log('yaml err:', err));
 }
+export async function getYaml2<T>(filename: string): Promise<T> {
+    const res = await fetch(filename);
+    const blob = await res.blob();
+    const yamlAsString = await blob.text();
+    const yml = yaml.load(yamlAsString) as T;
+    return yml; // Return the YAML as a string
+}
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
