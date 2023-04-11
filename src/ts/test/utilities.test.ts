@@ -6,6 +6,7 @@ import {
   intersection,
   isEqual,
   makeButton,
+  remove,
 } from '../main/utilities';
 const testArr1 = [1, 2];
 const testArr2 = [2, 3];
@@ -52,3 +53,9 @@ it('getChildIds', () => {
   expect(ids.length).toBe(4);
   expect(ids[2]).toBe('div-no-3');
 });
+it('remove', () => {
+  const arr = ['1', '2', '3']
+  const actual = remove(arr, '2');
+  const expected = ['1', '3']
+  expect(actual).toEqual(expected);
+})

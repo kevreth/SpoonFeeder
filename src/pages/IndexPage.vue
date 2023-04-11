@@ -1,39 +1,32 @@
 <template>
   <q-page class="row items-center justify-evenly">
+    <CourseSelector v-model="courseList" @closeInfo="courseList = false"/>
     <div id="slide">
       <div id="content"></div>
     </div>
   </q-page>
 </template>
 
-<script setup>
-import { Quiz } from '../ts/main/quiz';
+<script setup lang='ts'>
+import { ref } from 'vue';
+import { loadCourseListing, switchCourse } from '../ts/main/quiz';
+import {getCourseName, setCourseListing} from '../ts/main/utilities';
 import '../css/style1.css';
 import '../css/quasar.css'
-sessionStorage.clear();
+import CourseSelector from 'src/components/CourseSelector.vue';
+const courseList = ref(false);
 
-//===========================================================================
-// un-comment for TESTING
-sessionStorage.setItem('random', 'false');
-//===========================================================================
-// const courseName = 'aws';
-// const courseName = 'aws-review';
-// const courseName = 'android';
-// const courseName = 'docker';
-// const courseName = 'express';
-// const courseName = 'history';
-// const courseName = 'javascript';
-// const courseName = 'kafka';
-// const courseName = 'kotlin';
-// const courseName = 'kubernetes';
-// const courseName = 'history';
-// const courseName = 'node';
-// const courseName = 'quasar';
-// const courseName = 'react';
-// const courseName = 'spring';
-// const courseName = 'typescript';
-// const courseName = 'vue';
-const courseName = 'test';
-window.courseName = courseName;
-Quiz.slides(courseName, document);
+//This should probably be moved to App.vue.
+loadCourseListing((yml) => {
+  setCourseListing(yml);
+  initialize();
+});
+function initialize() {
+  let courseName = getCourseName();
+  if (courseName == null || courseName == 'null') {
+    courseList.value = true;
+    // setCourseName('');
+  }
+  else switchCourse(courseName);
+}
 </script>
