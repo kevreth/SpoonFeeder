@@ -24,7 +24,6 @@ export class Mc extends Slide {
     visitor.visitMc(this);
   }
   makeSlides(doc: Document): void {
-    const isExercise = this.isExercise;
     const createHtml = this.createHtml;
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt;
@@ -33,7 +32,6 @@ export class Mc extends Slide {
     makeSlidesStrategy(
       txt,
       options,
-      isExercise,
       createHtml,
       maxWidthStrategy,
       doc,
