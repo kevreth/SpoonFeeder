@@ -2,7 +2,7 @@ import type { Course } from './quiz/datalayer/course';
 import { CourseFile, Json } from './quiz/datalayer/globals';
 import { ProcessJson } from './quiz/datalayer/processJson';
 import { showSlides } from './quiz/slideDispatcher';
-import { getYaml2, setCourseName, getYaml, setCourseListing } from './utilities';
+import { getYaml2, setCourseName, getYaml } from './utilities';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 // necessary for adding a property to the
