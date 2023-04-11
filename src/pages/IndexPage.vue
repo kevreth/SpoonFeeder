@@ -16,6 +16,7 @@ import '../css/quasar.css'
 import CourseSelector from 'src/components/CourseSelector.vue';
 const courseList = ref(false);
 
+//This should probably be moved to App.vue.
 loadCourseListing((yml) => {
   setCourseListing(yml);
   initialize();
