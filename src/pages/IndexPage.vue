@@ -9,17 +9,18 @@
 
 <script setup lang='ts'>
 import { ref } from 'vue';
-import { PREFIX_COURSE_FILE, switchCourse } from '../ts/main/quiz';
-import {getCourseName, getYaml, setCourseListing, setCourseName} from '../ts/main/utilities';
+import { loadCourseListing, switchCourse } from '../ts/main/quiz';
+import {getCourseName, setCourseListing} from '../ts/main/utilities';
 import '../css/style1.css';
 import '../css/quasar.css'
 import CourseSelector from 'src/components/CourseSelector.vue';
 const courseList = ref(false);
-initialize();
+
+loadCourseListing((yml) => {
+  setCourseListing(yml);
+  initialize();
+});
 function initialize() {
-  getYaml( '../src/courses/listing.yml', (listing: Array<string>) => {
-      setCourseListing(listing);
-    });
   let courseName = getCourseName();
   if (courseName == null || courseName == 'null') {
     courseList.value = true;

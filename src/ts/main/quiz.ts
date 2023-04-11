@@ -44,8 +44,10 @@ export function loadCourse(yamlFilename: string, doc: Document) {
     showSlides(doc);
   });
 }
-export function loadCourseListing() {
-  const filename = PREFIX_COURSE_FILE + '/listing.yml';
-  const listing = getYaml2<string[]>(filename);
-  listing.then(list => setCourseListing(list));
+export const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';
+export function loadFile<T>(filename:string, f: (data: T) => void) {
+  getYaml2<T>(filename).then(list => f(list));
+}
+export function loadCourseListing(f: (data: string[]) => void) {
+  loadFile<string[]>(LISTING_FILE_NAME, f);
 }
