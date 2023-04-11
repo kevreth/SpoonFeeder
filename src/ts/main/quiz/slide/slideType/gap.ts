@@ -7,7 +7,7 @@ import { Slide } from '../../slide';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
-import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,

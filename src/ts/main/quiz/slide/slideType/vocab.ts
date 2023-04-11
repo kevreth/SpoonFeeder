@@ -6,7 +6,7 @@ import type { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
 import { CreateHtml } from '../strategies/createHtmlStrategy';
 import { Evaluate } from '../strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy';
+import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { Result } from '../strategies/resultStrategy';
 import { Mc } from './mc';
 export const CHOICES = 4;

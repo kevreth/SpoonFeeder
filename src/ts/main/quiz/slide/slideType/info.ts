@@ -2,7 +2,7 @@ import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import type { CreateHtmlTypeInfo } from '../strategies/createHtmlStrategy';
-import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 export class Info extends Slide {
   processJson(json: Info): void {
     ({ txt: this.txt } = json);

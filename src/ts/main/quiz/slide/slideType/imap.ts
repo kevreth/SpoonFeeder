@@ -2,7 +2,7 @@ import { getChildIds, removeListener } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
-import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 export class Imap extends Slide {
   img = '';
   processJson(json: Imap): void {

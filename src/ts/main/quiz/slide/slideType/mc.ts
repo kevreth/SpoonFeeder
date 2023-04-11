@@ -3,7 +3,7 @@ import { isRandom, removeListener, shuffle } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
-import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Mc extends Slide {
   o: string[] = [];

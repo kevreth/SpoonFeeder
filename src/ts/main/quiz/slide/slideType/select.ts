@@ -3,7 +3,7 @@ import { difference, intersection } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
-import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
 export class Select extends Slide {
   inst = '';
