@@ -4,6 +4,14 @@ import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeGap } from '../../strategies/createHtmlStrategy';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+export type MakeSlidesTypeGap = (
+  txt: string,
+  ans: AnswerType,
+  createHtml: CreateHtmlTypeGap,
+  maxWidthStrategy: SetWidthTypeComplex,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to

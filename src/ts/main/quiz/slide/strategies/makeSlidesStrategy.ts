@@ -1,11 +1,10 @@
-import { makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
+import { MakeSlidesTypeGap, makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
 import { MakeSlidesTypeImap, makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
 import { MakeSlidesTypeInfo, makeSlidesStrategyInfo } from '../slideType/info/makeSlidesStrategyInfo';
 import { MakeSlidesTypeMa, makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
 import { MakeSlidesTypeMc, makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
 import { MakeSlidesTypeSelect, makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
 import { MakeSlidesTypeSort, makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
-import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 import { MakeSlidesTypeVocab } from '../slideType/vocab/makeSlidesStrategyVocab';
 export type MakeSlidesType =
   | MakeSlidesTypeGap
