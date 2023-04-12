@@ -1,4 +1,4 @@
-import { Info } from './slideTypeInfo';
+import { Info, } from './slideTypeInfo';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -20,3 +20,4 @@ export class InfoFactory extends SlideInitializer {
     );
   }
 }
+export const INFO = () => new InfoFactory().instance() as Info;

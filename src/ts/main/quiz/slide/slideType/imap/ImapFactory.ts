@@ -21,3 +21,4 @@ export class ImapFactory extends SlideInitializer {
     );
   }
 }
+export const IMAP = () => new ImapFactory().instance() as Imap;

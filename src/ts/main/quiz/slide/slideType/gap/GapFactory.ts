@@ -1,4 +1,5 @@
-import { Gap } from './slideTypeGap';
+import { GapFactory } from "./GapFactory";
+import { Gap, Gap } from './slideTypeGap';
 import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
@@ -21,3 +22,4 @@ export class GapFactory extends SlideInitializer {
     );
   }
 }
+export const GAP = () => new GapFactory().instance() as Gap;

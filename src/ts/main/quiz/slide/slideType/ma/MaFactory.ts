@@ -21,3 +21,4 @@ export class MaFactory extends SlideInitializer {
     );
   }
 }
+export const MA = () => new MaFactory().instance() as Ma;

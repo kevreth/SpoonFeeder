@@ -21,3 +21,4 @@ export class SelectFactory extends SlideInitializer {
     );
   }
 }
+export const SELECT = () => new SelectFactory().instance() as Select;

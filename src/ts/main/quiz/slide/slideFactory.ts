@@ -8,15 +8,15 @@ import { Select } from './slideType/select/slideTypeSelect';
 import { Sort } from './slideType/sort/slideTypeSort';
 import { Vocab } from './slideType/vocab/slideTypeVocab';
 import type { SlideInterface } from '../slideInterface';
-import { BoolFactory } from './slideType/bool/BoolFactory';
-import { ImapFactory } from './slideType/imap/ImapFactory';
-import { InfoFactory } from './slideType/info/InfoFactory';
-import { MaFactory } from './slideType/ma/MaFactory';
-import { McFactory } from './slideType/mc/McFactory';
-import { SelectFactory } from './slideType/select/SelectFactory';
-import { SortFactory } from './slideType/sort/SortFactory';
-import { VocabFactory } from './slideType/vocab/VocabFactory';
-import { GapFactory } from './slideType/gap/GapFactory';
+import { BoolFactory, BOOL } from './slideType/bool/BoolFactory';
+import { ImapFactory, IMAP } from './slideType/imap/ImapFactory';
+import { InfoFactory, INFO } from './slideType/info/InfoFactory';
+import { MaFactory, MA } from './slideType/ma/MaFactory';
+import { McFactory, MC } from './slideType/mc/McFactory';
+import { SelectFactory, SELECT } from './slideType/select/SelectFactory';
+import { SortFactory, SORT } from './slideType/sort/SortFactory';
+import { VocabFactory, VOCAB } from './slideType/vocab/VocabFactory';
+import { GapFactory, GAP } from './slideType/gap/GapFactory';
 const values = [
   new BoolFactory(),
   new GapFactory(),
@@ -45,12 +45,12 @@ export function initSlide(exercise: SlideInterface) {
   if (slides.length > 0) return slides;
   return slide;
 }
-export const BOOL = () => new BoolFactory().instance() as Bool;
-export const GAP = () => new GapFactory().instance() as Gap;
-export const IMAP = () => new ImapFactory().instance() as Imap;
-export const INFO = () => new InfoFactory().instance() as Info;
-export const MA = () => new McFactory().instance() as Ma;
-export const MC = () => new McFactory().instance() as Mc;
-export const SELECT = () => new SelectFactory().instance() as Select;
-export const SORT = () => new SortFactory().instance() as Sort;
-export const VOCAB = () => new VocabFactory().instance() as Vocab;
+export { BOOL };
+export { GAP };
+export { IMAP };
+export { INFO };
+export { MA };
+export { MC };
+export { SELECT };
+export { SORT };
+export { VOCAB };

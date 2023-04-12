@@ -1,4 +1,5 @@
-import { Bool } from './slideTypeBool';
+import { BoolFactory } from "./BoolFactory";
+import { Bool, Bool } from './slideTypeBool';
 import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
@@ -21,3 +22,4 @@ export class BoolFactory extends SlideInitializer {
     );
   }
 }
+export const BOOL = () => new BoolFactory().instance() as Bool;

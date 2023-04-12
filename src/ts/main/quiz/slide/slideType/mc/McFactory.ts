@@ -21,3 +21,4 @@ export class McFactory extends SlideInitializer {
     );
   }
 }
+export const MC = () => new McFactory().instance() as Mc;

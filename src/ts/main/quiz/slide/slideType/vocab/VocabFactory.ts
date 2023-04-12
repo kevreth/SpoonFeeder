@@ -21,3 +21,4 @@ export class VocabFactory extends SlideInitializer {
     );
   }
 }
+export const VOCAB = () => new VocabFactory().instance() as Vocab;

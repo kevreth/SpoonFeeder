@@ -21,3 +21,4 @@ export class SortFactory extends SlideInitializer {
     );
   }
 }
+export const SORT = () => new SortFactory().instance() as Sort;
