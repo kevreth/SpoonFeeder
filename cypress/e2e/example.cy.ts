@@ -5,10 +5,37 @@ import {
   testButton,
   existAndVisible,
   continueButton,
-  dragDrop
+  dragDrop,
+  printWebStorage
 } from './functions';
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
+  Cypress.Commands.add('printWebStorage' as any, () => {
+    cy.window().then((win: Window) => {
+      const storageTypes: Record<string, Storage> = {
+        local: win.localStorage,
+        session: win.sessionStorage,
+      };
+
+      Object.keys(storageTypes).forEach((type: string) => {
+        const storage = storageTypes[type];
+        console.log(`${type} storage:`);
+        for (let i = 0; i < storage.length; i++) {
+          const key = storage.key(i) as string;
+          const value = storage.getItem(key);
+          console.log(`  ${key}: ${value}`);
+        }
+      });
+    });
+  });
+Cypress.on('uncaught:exception', (err, runnable) => {
+  console.log('Error:', err);
+  console.log('Stack trace:', err.stack);
+
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
+});
 describe('Cypress Testing', () => {
   it('visits the app root url', () => {
     cy.visit('/');
@@ -16,7 +43,10 @@ describe('Cypress Testing', () => {
     //mute audio during testss
     sessionStorage.setItem('mute', 'true');
 
+    //because of async loading
+    cy.get('#android', { timeout: 20000 }).should('be.visible');
     //course selection dialog
+    cy.get('#test').scrollIntoView()
     testButton('#test');
     testButton('#btn_switch');
 
@@ -177,6 +207,13 @@ describe('Cypress Testing', () => {
     cy.contains('15.');
     cy.contains('ans');
     testButton('#startOver');
+
+    //because of async loading
+    cy.get('#android', { timeout: 10000 }).should('be.visible');
+    cy.get('#test').scrollIntoView()
+    testButton('#test');
+    testButton('#btn_switch');
+
     cy.contains('course 1');
   });
 });

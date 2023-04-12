@@ -3,7 +3,7 @@ import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSort } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-import type { SlideType } from './slideType'
+import type { MarkTypeSort, SlideType } from './slideType'
 export class Sort extends Slide implements SlideType  {
   processJson(json: SlideInterface): void {
     const json1 = json as Sort
@@ -25,7 +25,7 @@ export class Sort extends Slide implements SlideType  {
     this.mark(isCorrect, doc);
     return isCorrect;
   }
-  mark(isCorrect: boolean, doc: Document) {
+  mark: MarkTypeSort = (isCorrect, doc) => {
     const msg = isCorrect ? 'correct' : 'incorrect';
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);

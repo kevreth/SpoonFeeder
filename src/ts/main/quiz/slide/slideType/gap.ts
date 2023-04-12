@@ -10,7 +10,7 @@ import { AdocVisitor } from '../../datalayer/adocVisitor';
 import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 import type { SlideInterface } from '../../slideInterface';
-import type { SlideType } from './slideType';
+import type { MarkTypeGap, SlideType } from './slideType';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -51,7 +51,7 @@ export class Gap extends Slide implements SlideType {
     const responseElem = doc.getElementById('response') as HTMLElement;
     responseElem.innerHTML = response;
   }
-  mark(corrArr: boolean[], doc: Document) {
+  mark: MarkTypeGap = (corrArr, doc) => {
     corrArr.forEach((answer, ctr) => {
       const color = answer ? CORRECT : INCORRECT;
       const id = 'ans' + ctr;

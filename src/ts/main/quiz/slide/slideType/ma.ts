@@ -6,7 +6,7 @@ import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-import type { SlideType } from './slideType';
+import type { MarkTypeMa, SlideType } from './slideType';
 export class Ma extends Slide implements SlideType  {
   o: string[] = [];
   numans = 0;
@@ -62,7 +62,7 @@ export class Ma extends Slide implements SlideType  {
     }
     return this.result() as boolean;
   }
-  mark(isKey: boolean, selected: boolean, btn: HTMLElement, ) {
+  mark: MarkTypeMa = (isKey, selected, btn) => {
     btn.style.border = 'none';
     if (isKey && selected) btn.style.backgroundColor = CORRECT;
     else if (!isKey && selected) btn.style.backgroundColor = INCORRECT;

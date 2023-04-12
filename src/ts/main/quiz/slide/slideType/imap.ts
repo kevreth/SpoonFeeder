@@ -3,7 +3,7 @@ import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import type { SlideType } from './slideType';
+import type { MarkTypeImap, SlideType } from './slideType';
 import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 export class Imap extends Slide implements SlideType {
   img = '';
@@ -39,7 +39,7 @@ export class Imap extends Slide implements SlideType {
     this.mark(isCorrect, res, doc);
     return isCorrect;
   }
-  mark(isCorrect: boolean, id: string, doc: Document) {
+  mark: MarkTypeImap = (isCorrect, id, doc) => {
     const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
     const element = doc.getElementById(id) as HTMLElement;
     element.classList.add(classname);

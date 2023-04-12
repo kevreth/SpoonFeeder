@@ -38,3 +38,23 @@ export function getLocalStorageArray() {
   const arr = JSON.parse(data);
   return arr;
 }
+export function printWebStorage() {
+  Cypress.Commands.add('printWebStorage' as any, () => {
+    cy.window().then((win: Window) => {
+      const storageTypes: Record<string, Storage> = {
+        local: win.localStorage,
+        session: win.sessionStorage,
+      };
+
+      Object.keys(storageTypes).forEach((type: string) => {
+        const storage = storageTypes[type];
+        console.log(`${type} storage:`);
+        for (let i = 0; i < storage.length; i++) {
+          const key = storage.key(i) as string;
+          const value = storage.getItem(key);
+          console.log(`  ${key}: ${value}`);
+        }
+      });
+    });
+  });
+}
