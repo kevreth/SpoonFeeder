@@ -57,7 +57,7 @@ import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from '../../../../common/ExitBtn.vue';
 import { getCourseData, createValidHtmlId } from '../../../../../../ts/main/utilities';
 import SwitchCourse from '../../../../SwitchCourse.vue'
-import SavedCourse from '../../../../SavedCourse.vue';
+import SavedCourse from './SavedCourse.vue';
 import {switchCourse} from '../../../../../../ts/main/quiz';
 
 let courseData = ref(getCourseData());
