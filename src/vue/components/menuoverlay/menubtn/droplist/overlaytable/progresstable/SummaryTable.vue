@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import ExitBtn from './ExitBtn.vue';
+import ExitBtn from '../../../../../common/ExitBtn.vue';
 
 const emit = defineEmits(['closeSummary'])
 function closeSummary() {

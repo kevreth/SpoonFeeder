@@ -38,7 +38,7 @@
             </q-btn>
             <span id="name" class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
 
-            <img id="award" v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../../courses/test/award.svg" width="20"/>
+            <img id="award" v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../../../../../../../courses/test/award.svg" width="20"/>
           </div>
         </td>
         <td id="score" class="text-right">{{props.item.score}}</td>
@@ -66,8 +66,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import {Score} from '../../ts/main/quiz/score';
-import {CourseFile} from '../../ts/main/quiz/datalayer/globals'
+import {Score} from '../../../../../../../ts/main/quiz/score';
+import {CourseFile} from '../../../../../../../ts/main/quiz/datalayer/globals'
 import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';

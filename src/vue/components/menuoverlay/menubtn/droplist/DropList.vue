@@ -20,16 +20,16 @@
       </q-item>
     </q-list>
   </q-menu>
-    
+
     <OverlayTable v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
-    <CourseSelector v-model="courseList" 
+    <CourseSelector v-model="courseList"
     @closeInfo="courseList = false"></CourseSelector>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import OverlayTable from './OverlayTable.vue';
-import CourseSelector from './CourseSelector.vue';
+import OverlayTable from './overlaytable/OverlayTable.vue';
+import CourseSelector from './courseselector/CourseSelector.vue';
 const droplist = ref(false);
 
 const overlay = ref(false);

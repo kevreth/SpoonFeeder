@@ -4,7 +4,7 @@
   leave-active-class="animated zoomOutDown"
   >
   <q-overlay id="overlay">
-    <template #body>        
+    <template #body>
       <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
         <div class="overlayBtn">
           <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
@@ -22,9 +22,9 @@
 
 <script setup>
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
-import ProgressTable from './ProgressTable.vue';
+import ProgressTable from './progresstable/ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
-import getStartOver from '../composables/startOver';
+import getStartOver from '../../../../../composables/startOver';
 
 
 // start over functionality

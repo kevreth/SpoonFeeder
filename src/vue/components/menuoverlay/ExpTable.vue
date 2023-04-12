@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import ExitBtn from './ExitBtn.vue';
+import ExitBtn from '../common/ExitBtn.vue';
 
 defineProps({
   content: {

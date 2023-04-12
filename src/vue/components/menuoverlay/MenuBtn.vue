@@ -3,7 +3,7 @@
     flat
     dense
     size="200%"
-    icon="menu" 
+    icon="menu"
     class="menuBtn q-mt-xs q-mr-sm q-pt-xs">
 
     <DropList></DropList>
@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-import DropList from './DropList.vue';
+import DropList from './menubtn/droplist/DropList.vue';
 </script>
