@@ -11,7 +11,6 @@ import type {
   ResultType,
 } from './slide/strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
-const { set: saveData } = SaveData;
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
@@ -65,7 +64,7 @@ export abstract class Slide implements SlideInterface {
   public saveData() {
     const txt = this.txt;
     const res = this.res;
-    saveData(txt, res, timestampNow(), false);
+    SaveData.set(txt, res, timestampNow(), false);
   }
   public result(): ResultReturnType {
     return this.resultType(this.ans, this.res);
