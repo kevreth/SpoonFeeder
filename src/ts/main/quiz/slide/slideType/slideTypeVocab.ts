@@ -8,7 +8,7 @@ import { CreateHtml } from '../strategies/createHtmlStrategy';
 import { Evaluate } from '../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { Result } from '../strategies/resultStrategy';
-import { Mc } from './mc';
+import { Mc } from './slideTypeMc';
 import type { MarkType, SlideType } from './slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [

@@ -4,7 +4,7 @@ import type { Slide } from '../../../../main/quiz/slide';
 import {
   Vocab,
   generateQuestions,
-} from '../../../../main/quiz/slide/slideType/vocab';
+} from '../../../../main/quiz/slide/slideType/slideTypeVocab';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'vocab';

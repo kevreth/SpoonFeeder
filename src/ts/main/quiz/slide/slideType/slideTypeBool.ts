@@ -2,7 +2,7 @@ import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import type { SlideInterface } from '../../slideInterface';
 
-import { Mc } from './mc';
+import { Mc } from './slideTypeMc';
 import { SlideType } from './slideType';
 //bool is a special case of Mc.
 export class Bool extends Mc implements SlideType  {
