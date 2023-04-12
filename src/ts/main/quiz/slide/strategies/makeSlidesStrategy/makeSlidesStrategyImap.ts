@@ -1,8 +1,8 @@
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds } from '../../../../utilities';
 import type { SlideInterface } from '../../../slideInterface';
-import { conclude } from '../../conclude';
-import { createPageContent } from '../../createPageContent';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeImap } from '../createHtmlStrategy';
 export function makeSlidesStrategyImap(
   txt: string,

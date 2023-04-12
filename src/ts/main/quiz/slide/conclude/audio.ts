@@ -1,4 +1,4 @@
-import { isMute } from '../../../main/utilities';
+import { isMute } from '../../../utilities';
 
 const audio = new Audio();
 const INCORRECT = '/resources/audio/incorrect.mp3';

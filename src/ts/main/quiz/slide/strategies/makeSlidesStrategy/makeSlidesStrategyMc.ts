@@ -1,6 +1,6 @@
 import type { SlideInterface } from '../../../slideInterface';
-import { conclude } from '../../conclude';
-import { createPageContent } from '../../createPageContent';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeMc } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMc(

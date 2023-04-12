@@ -1,7 +1,7 @@
 import { INDETERMINANT } from '../../../../markupColors';
 import type { SlideInterface } from '../../../slideInterface';
-import { conclude } from '../../conclude';
-import { createPageContent } from '../../createPageContent';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeMa } from '../createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMa(

@@ -1,7 +1,7 @@
-import { showButton, showExplainIcon } from '../buttons';
-import type { SlideInterface } from '../slideInterface';
+import { showButton, showExplainIcon } from '../../buttons';
+import type { SlideInterface } from '../../slideInterface';
 import { playAudio } from './audio';
-import type { AnswerType } from './strategies/resultStrategy';
+import type { AnswerType } from '../strategies/resultStrategy';
 
 export function conclude(
   doc: Document,
