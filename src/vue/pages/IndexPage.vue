@@ -13,7 +13,6 @@ import { loadCourseListing, switchCourse } from '../../ts/main/quiz';
 import {getCourseName, setCourseListing} from '../../ts/main/utilities';
 import '../../css/style1.css';
 import '../../css/quasar.css'
-// import { CourseSelector } from '../components/CourseSelector.vue';
 import CourseSelector from '../components/CourseSelector.vue';
 
 const courseList = ref(false);
@@ -25,10 +24,8 @@ loadCourseListing((yml) => {
 });
 function initialize() {
   let courseName = getCourseName();
-  if (courseName == null || courseName == 'null') {
+  if (courseName == null || courseName == 'null')
     courseList.value = true;
-    // setCourseName('');
-  }
   else switchCourse(courseName);
 }
 </script>
