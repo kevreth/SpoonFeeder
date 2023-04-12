@@ -1,11 +1,13 @@
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
+import { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeInfo } from '../strategies/createHtmlStrategy';
 import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 export class Info extends Slide {
-  processJson(json: Info): void {
-    ({ txt: this.txt } = json);
+  processJson(json: SlideInterface): void {
+    const json1 = json as Info
+    ({ txt: this.txt } = json1);
     this.accept(new AdocVisitor());
     this.immediateConclusion = true;
   }

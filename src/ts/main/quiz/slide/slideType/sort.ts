@@ -1,10 +1,12 @@
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
+import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSort } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 export class Sort extends Slide {
-  processJson(json: Sort): void {
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+  processJson(json: SlideInterface): void {
+    const json1 = json as Sort
+    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json1);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {

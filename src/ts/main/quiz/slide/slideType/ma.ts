@@ -3,6 +3,7 @@ import { isRandom, removeListener, shuffle } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
+import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 export class Ma extends Slide {
@@ -10,7 +11,8 @@ export class Ma extends Slide {
   numans = 0;
   answers: string[] = [];
   res: string[] = [];
-  processJson(json: Ma): void {
+  processJson(json: SlideInterface): void {
+    const json1 = json as Ma
     ({
       txt: this.txt,
       o: this.o,
@@ -18,7 +20,7 @@ export class Ma extends Slide {
       ref: this.ref,
       isExercise: this.isExercise,
       numans: this.numans,
-    } = json);
+    } = json1);
     this.accept(new AdocVisitor());
     for (let i = 0; i < this.numans; i++) {
       this.answers.push(this.o[i]);

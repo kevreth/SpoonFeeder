@@ -21,9 +21,10 @@ export class Vocab extends Slide {
   list = new Map<string, string>();
   res = new Array<string>();
   set = new Array<SlideInterface>();
-  processJson(json: Vocab): void {
-    this.list = new Map(Object.entries(json.list));
-    this.isExercise = json.isExercise;
+  processJson(json: SlideInterface): void {
+    const json1 = json as Vocab
+    this.list = new Map(Object.entries(json1.list));
+    this.isExercise = json1.isExercise;
     this.accept(new AdocVisitor());
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
