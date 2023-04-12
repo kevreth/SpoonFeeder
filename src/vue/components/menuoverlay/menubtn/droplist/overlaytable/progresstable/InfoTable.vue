@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import ExitBtn from './common/ExitBtn.vue';
+import ExitBtn from '../../../../../common/ExitBtn.vue';
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {

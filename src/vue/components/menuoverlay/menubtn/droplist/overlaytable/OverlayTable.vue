@@ -22,7 +22,7 @@
 
 <script setup>
 import OverlayCloseBtn from '../../../../OverlayCloseBtn.vue';
-import ProgressTable from '../../../../ProgressTable.vue';
+import ProgressTable from './progresstable/ProgressTable.vue';
 import TrashBtn from '../../../../TrashBtn.vue';
 import getStartOver from '../../../../../composables/startOver';
 
