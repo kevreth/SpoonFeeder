@@ -9,11 +9,13 @@
 
 <script setup lang='ts'>
 import { ref } from 'vue';
-import { loadCourseListing, switchCourse } from '../ts/main/quiz';
-import {getCourseName, setCourseListing} from '../ts/main/utilities';
-import '../css/style1.css';
-import '../css/quasar.css'
-import CourseSelector from 'src/components/CourseSelector.vue';
+import { loadCourseListing, switchCourse } from '../../ts/main/quiz';
+import {getCourseName, setCourseListing} from '../../ts/main/utilities';
+import '../../css/style1.css';
+import '../../css/quasar.css'
+// import { CourseSelector } from '../components/CourseSelector.vue';
+import CourseSelector from '../components/CourseSelector.vue';
+
 const courseList = ref(false);
 
 //This should probably be moved to App.vue.
