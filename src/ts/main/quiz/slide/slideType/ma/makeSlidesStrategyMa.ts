@@ -4,6 +4,14 @@ import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeMa } from '../../strategies/createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+export type MakeSlidesTypeMa = (
+  txt: string,
+  options: string[],
+  createHtml: CreateHtmlTypeMa,
+  maxWidthStrategy: SetWidthTypeSimple,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 export function makeSlidesStrategyMa(
   txt: string,
   options: string[],

@@ -1,14 +1,13 @@
 import type { SlideInterface } from '../../slideInterface';
 import type {
   CreateHtmlTypeSelect as CreateHtmlSelectType,
-  CreateHtmlTypeMa,
   CreateHtmlTypeMc,
   CreateHtmlTypeSort,
 } from './createHtmlStrategy';
 import { makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
 import { MakeSlidesTypeImap, makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
 import { MakeSlidesTypeInfo, makeSlidesStrategyInfo } from '../slideType/info/makeSlidesStrategyInfo';
-import { makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
+import { MakeSlidesTypeMa, makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
 import { makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
@@ -20,14 +19,6 @@ import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
-export type MakeSlidesTypeMa = (
-  txt: string,
-  options: string[],
-  createHtml: CreateHtmlTypeMa,
-  maxWidthStrategy: SetWidthTypeSimple,
-  doc: Document,
-  setValues: SlideInterface
-) => void;
 export type MakeSlidesTypeMc = (
   txt: string,
   options: string[],
@@ -63,6 +54,7 @@ export type MakeSlidesType =
   | MakeSlidesTypeGap
   | MakeSlidesTypeImap
   | MakeSlidesTypeInfo
+  | MakeSlidesTypeMa
   | MakeSlidesTypeMc
   | MakeSlidesTypeSelect
   | MakeSlidesTypeSort
