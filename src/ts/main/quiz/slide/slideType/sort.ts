@@ -3,7 +3,8 @@ import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSort } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-export class Sort extends Slide {
+import { SlideType } from './slideType'
+export class Sort extends Slide implements SlideType  {
   processJson(json: SlideInterface): void {
     const json1 = json as Sort
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json1);

@@ -6,7 +6,8 @@ import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
-export class Select extends Slide {
+import { SlideType } from './slideType';
+export class Select extends Slide implements SlideType  {
   inst = '';
   processJson(json: SlideInterface): void {
     const json1 = json as Select

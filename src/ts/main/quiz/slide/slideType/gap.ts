@@ -10,10 +10,11 @@ import { AdocVisitor } from '../../datalayer/adocVisitor';
 import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
 import { SlideInterface } from '../../slideInterface';
+import { SlideType } from './slideType';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
-export class Gap extends Slide {
+export class Gap extends Slide implements SlideType {
   processJson(json: SlideInterface): void {
     const json1 = json as Gap
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json1);

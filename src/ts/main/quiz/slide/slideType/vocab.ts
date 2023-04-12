@@ -9,6 +9,7 @@ import { Evaluate } from '../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { Result } from '../strategies/resultStrategy';
 import { Mc } from './mc';
+import { SlideType } from './slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -17,7 +18,7 @@ export type vocabTuplesType = [
 ][];
 //Vocab is different than the other slide types because it concisely
 //represents a group of mc questions.
-export class Vocab extends Slide {
+export class Vocab extends Slide implements SlideType  {
   list = new Map<string, string>();
   res = new Array<string>();
   set = new Array<SlideInterface>();

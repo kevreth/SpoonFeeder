@@ -6,7 +6,8 @@ import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-export class Ma extends Slide {
+import { SlideType } from './slideType';
+export class Ma extends Slide implements SlideType  {
   o: string[] = [];
   numans = 0;
   answers: string[] = [];

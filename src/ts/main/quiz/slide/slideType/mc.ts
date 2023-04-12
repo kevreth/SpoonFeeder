@@ -6,7 +6,8 @@ import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-export class Mc extends Slide {
+import { SlideType } from './slideType';
+export class Mc extends Slide implements SlideType  {
   o: string[] = [];
   processJson(json: SlideInterface): void {
     const json1 = json as Mc

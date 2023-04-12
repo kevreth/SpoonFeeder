@@ -4,7 +4,8 @@ import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeInfo } from '../strategies/createHtmlStrategy';
 import type { MakeSlidesTypeInfo } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-export class Info extends Slide {
+import { SlideType } from './slideType';
+export class Info extends Slide implements SlideType  {
   processJson(json: SlideInterface): void {
     const json1 = json as Info
     ({ txt: this.txt } = json1);

@@ -1,8 +1,9 @@
 import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { SlideInterface } from '../../slideInterface';
 import { Mc } from './mc';
+import { SlideType } from './slideType';
 //bool is a special case of Mc.
-export class Bool extends Mc {
+export class Bool extends Mc implements SlideType  {
   o = ['yes', 'no'];
   processJson(json: SlideInterface): void {
     const json1 = json as Mc

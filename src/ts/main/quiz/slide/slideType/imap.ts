@@ -3,8 +3,9 @@ import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
+import { SlideType } from './slideType';
 import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-export class Imap extends Slide {
+export class Imap extends Slide implements SlideType {
   img = '';
   processJson(json: SlideInterface): void {
     const json1 = json as Imap
