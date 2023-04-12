@@ -3,8 +3,8 @@ import { AdocVisitor } from '../../../datalayer/adocVisitor';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
 import type { CreateHtmlTypeInfo } from '../../strategies/createHtmlStrategy';
-import type { MakeSlidesTypeInfo } from '../../strategies/makeSlidesStrategy';
 import type { MarkType, SlideType } from '../slideType';
+import { MakeSlidesTypeInfo } from './makeSlidesStrategyInfo';
 export class Info extends Slide implements SlideType  {
   mark!: MarkType;
   processJson(json: SlideInterface): void {
