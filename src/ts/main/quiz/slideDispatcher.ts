@@ -3,7 +3,7 @@ import { hideExplainIcon, startOverButton } from './buttons';
 import { Json } from './datalayer/globals';
 import { SaveData } from './datalayer/saveData';
 import { evaluate } from './evaluate';
-import { conclude } from './slide/conclude';
+import { conclude } from './slide/conclude/conclude';
 import type { AnswerType } from './slide/strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
 import type { StateActions } from './stateActionDispatcher';

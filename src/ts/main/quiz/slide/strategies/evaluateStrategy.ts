@@ -33,12 +33,6 @@ export type EvaluateTypeSimple = (
   ans: string,
   result: boolean
 ) => Evaluation;
-export type EvaluateTypeVocab = (
-  txt: string[],
-  res: AnswerType,
-  ans: AnswerType,
-  result: Array<boolean>
-) => Evaluation;
 export type EvaluateTypeGap = (
   txt: string,
   res: AnswerType,
@@ -51,7 +45,6 @@ export type EvaluateTypeGap = (
 ///////////////////////////////////////////////////////////////////////////////
 export type EvaluateType =
   | EvaluateTypeSimple
-  | EvaluateTypeVocab
   | EvaluateTypeGap;
 export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
