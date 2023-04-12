@@ -5,7 +5,7 @@ import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-import { SetWidths } from '../strategies/setWidthsStrategy';
+import { SetWidths } from '../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMc, SlideType } from './slideType';
 export class Mc extends Slide implements SlideType  {
   o: string[] = [];

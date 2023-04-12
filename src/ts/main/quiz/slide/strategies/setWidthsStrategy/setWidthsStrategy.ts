@@ -1,4 +1,4 @@
-import { MaxWidth } from '../maxWidth';
+import { MaxWidth } from './maxWidth';
 export type SetWidthTypeSimple = (
   num: number,
   str: string,

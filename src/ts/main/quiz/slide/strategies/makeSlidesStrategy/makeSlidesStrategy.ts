@@ -19,7 +19,7 @@ import type { AnswerType } from '../resultStrategy';
 import type {
   SetWidthTypeComplex,
   SetWidthTypeSimple,
-} from '../setWidthsStrategy';
+} from '../setWidthsStrategy/setWidthsStrategy';
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
