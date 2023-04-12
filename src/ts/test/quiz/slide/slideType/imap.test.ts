@@ -1,5 +1,5 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import { IMAP } from '../../../../main/quiz/datalayer/slideFactory';
+import { IMAP } from '../../../../main/quiz/slide/slideFactory';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Imap } from '../../../../main/quiz/slide/slideType/imap/slideTypeImap';
 import { SlideTest } from '../../slide.test';

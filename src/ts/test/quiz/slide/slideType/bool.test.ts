@@ -1,5 +1,5 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import { BOOL } from '../../../../main/quiz/datalayer/slideFactory';
+import { BOOL } from '../../../../main/quiz/slide/slideFactory';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Bool } from '../../../../main/quiz/slide/slideType/bool/slideTypeBool';
 import { SlideTest } from '../../slide.test';

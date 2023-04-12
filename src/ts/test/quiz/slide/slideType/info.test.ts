@@ -1,5 +1,5 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import { INFO } from '../../../../main/quiz/datalayer/slideFactory';
+import { INFO } from '../../../../main/quiz/slide/slideFactory';
 import type { Slide } from '../../../../main/quiz/slide';
 import { Info } from '../../../../main/quiz/slide/slideType/info/slideTypeInfo';
 import { SlideTest } from '../../slide.test';
