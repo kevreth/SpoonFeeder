@@ -1,7 +1,6 @@
 import type { SlideInterface } from '../../slideInterface';
 import type {
   CreateHtmlTypeSelect as CreateHtmlSelectType,
-  CreateHtmlTypeGap,
   CreateHtmlTypeImap,
   CreateHtmlTypeInfo,
   CreateHtmlTypeMa,
@@ -17,20 +16,13 @@ import { makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategy
 import { makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
 import type { AnswerType } from './resultStrategy';
 import type {
-  SetWidthTypeComplex,
   SetWidthTypeSimple,
 } from './setWidthsStrategy/setWidthsStrategy';
+import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
-export type MakeSlidesTypeGap = (
-  txt: string,
-  ans: AnswerType,
-  createHtml: CreateHtmlTypeGap,
-  maxWidthStrategy: SetWidthTypeComplex,
-  doc: Document,
-  setValues: SlideInterface
-) => void;
+
 export type MakeSlidesTypeImap = (
   txt: string,
   img: string,

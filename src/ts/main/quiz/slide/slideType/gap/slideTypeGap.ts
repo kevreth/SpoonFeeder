@@ -7,10 +7,19 @@ import { Slide } from '../../../slide';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../../datalayer/adocVisitor';
-import type { MakeSlidesTypeGap } from '../../strategies/makeSlidesStrategy';
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import { SetWidthTypeComplex, SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { SlideInterface } from '../../../slideInterface';
 import type { MarkTypeGap, SlideType } from '../slideType';
+import { AnswerType } from '../../strategies/resultStrategy';
+import { CreateHtmlTypeGap } from '../../strategies/createHtmlStrategy';
+export type MakeSlidesTypeGap = (
+  txt: string,
+  ans: AnswerType,
+  createHtml: CreateHtmlTypeGap,
+  maxWidthStrategy: SetWidthTypeComplex,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
