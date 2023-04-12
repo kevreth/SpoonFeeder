@@ -1,5 +1,5 @@
 import { isRandom, shuffle } from '../../../utilities';
-import { makeButton } from '../../buttons';
+import { doneButton, makeButton } from '../../buttons';
 import type { AnswerType } from './resultStrategy';
 export type CreateHtmlTypeGap = (
   remaining: string,
@@ -70,8 +70,7 @@ export class CreateHtml {
   ) {
     const mc = CreateHtml.MC(question, options);
     const accum = new Array<string>(mc);
-    const button = makeButton('btn', 'done', 'done');
-    accum.push(`</div><br>\n${button}\n`);
+    accum.push(`</div><br>\n${doneButton()}\n`);
     return accum.join('\n');
   };
   /////////////////////////////////////////////////////////////////////////////
@@ -100,8 +99,7 @@ export class CreateHtml {
     txt.forEach((item, idx) => {
       accum.push(`<span id="w${idx + 1}">${item}</span> `);
     });
-    const button = makeButton('btn', 'done', 'done');
-    accum.push(`</div><br>\n${button}\n`);
+    accum.push(`</div><br>\n${doneButton()}\n`);
     return accum.join('\n');
   };
   /////////////////////////////////////////////////////////////////////////////
@@ -117,6 +115,6 @@ export class CreateHtml {
     });
     rev = rev.trimEnd();
     rev = rev.concat('\n</section>');
-    return retval + rev + '\n</div><br>\n' + makeButton('btn', 'done', 'done');
+    return retval + rev + '\n</div><br>\n' + doneButton();
   };
 }
