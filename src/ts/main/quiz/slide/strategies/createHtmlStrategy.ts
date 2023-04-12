@@ -22,12 +22,16 @@ export type CreateHtmlTypeUnion =
   | CreateHtmlTypeMc
   | CreateHtmlTypeSelect
   | CreateHtmlTypeSort;
-export type CreateHtmlTypeIntersection = CreateHtmlTypeGap &
+export type CreateHtmlTypeIntersection =
+  CreateHtmlTypeGap &
   CreateHtmlTypeImap &
   CreateHtmlTypeMa &
   CreateHtmlTypeMc &
   CreateHtmlTypeSelect &
   CreateHtmlTypeSort;
+export interface CreateHtmlI {
+  createHtml: CreateHtmlTypeUnion;
+}
 export class CreateHtml {
   /////////////////////////////////////////////////////////////////////////////
   //                             DEFAULT
@@ -52,6 +56,17 @@ export class CreateHtml {
       '\n<div id="response"></div>';
     return html;
   };
+  static GAP_c = class CreateHtmlGap implements CreateHtmlI {
+    createHtml: CreateHtmlTypeGap = (remaining, fills, gaps) => {
+    const html =
+      `\n<div id="fills">${fills}\n</div>` +
+      `\n<div id="gaps">${gaps}\n</div>` +
+      `\n<div id="remaining">${remaining}</div>` +
+      '\n<div id="response"></div>';
+    return html;
+  };
+
+  }
   /////////////////////////////////////////////////////////////////////////////
   //                             IMAP
   /////////////////////////////////////////////////////////////////////////////

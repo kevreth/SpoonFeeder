@@ -1,12 +1,12 @@
-import { Bool } from '../slide/slideType/slideTypeBool';
-import { Gap } from '../slide/slideType/slideTypeGap';
-import { Imap } from '../slide/slideType/slideTypeImap';
-import { Info } from '../slide/slideType/slideTypeInfo';
-import { Ma } from '../slide/slideType/slideTypeMa';
-import { Mc } from '../slide/slideType/slideTypeMc';
-import { Select } from '../slide/slideType/slideTypeSelect';
-import { Sort } from '../slide/slideType/slideTypeSort';
-import { Vocab } from '../slide/slideType/slideTypeVocab';
+import { Bool } from '../slide/slideType/bool/slideTypeBool';
+import { Gap } from '../slide/slideType/gap/slideTypeGap';
+import { Imap } from '../slide/slideType/imap/slideTypeImap';
+import { Info } from '../slide/slideType/info/slideTypeInfo';
+import { Ma } from '../slide/slideType/ma/slideTypeMa';
+import { Mc } from '../slide/slideType/mc/slideTypeMc';
+import { Select } from '../slide/slideType/select/slideTypeSelect';
+import { Sort } from '../slide/slideType/sort/slideTypeSort';
+import { Vocab } from '../slide/slideType/vocab/slideTypeVocab';
 import type { SlideInterface } from '../slideInterface';
 import { adoc2html } from './adoc2html';
 

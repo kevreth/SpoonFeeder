@@ -1,16 +1,16 @@
 import { polyfill } from 'mobile-drag-drop';
-import { CORRECT, INCORRECT } from '../../../markupColors';
-import { isRandom, shuffle } from '../../../utilities';
-import { Slide } from '../../slide';
+import { CORRECT, INCORRECT } from '../../../../markupColors';
+import { isRandom, shuffle } from '../../../../utilities';
+import { Slide } from '../../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
-import { AdocVisitor } from '../../datalayer/adocVisitor';
-import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-import { SetWidths } from '../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import type { MarkTypeGap, SlideType } from './slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../../datalayer/adocVisitor';
+import type { MakeSlidesTypeGap } from '../../strategies/makeSlidesStrategy';
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { SlideInterface } from '../../../slideInterface';
+import type { MarkTypeGap, SlideType } from '../slideType';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });

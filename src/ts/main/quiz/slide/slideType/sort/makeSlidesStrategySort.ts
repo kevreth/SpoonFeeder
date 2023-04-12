@@ -3,8 +3,8 @@ import { Draggable } from 'gsap/dist/Draggable';
 import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeSort } from '../createHtmlStrategy';
-import type { AnswerType } from '../resultStrategy';
+import type { CreateHtmlTypeSort } from '../../strategies/createHtmlStrategy';
+import type { AnswerType } from '../../strategies/resultStrategy';
 export function makeSlidesStrategySort(
   txt: string,
   ans: AnswerType,

@@ -3,7 +3,7 @@ import { removeListener } from '../../../../utilities';
 import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeSelect } from '../createHtmlStrategy';
+import type { CreateHtmlTypeSelect } from '../../strategies/createHtmlStrategy';
 export function makeSlidesStrategySelect(
   inst: string,
   txt: string,

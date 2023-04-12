@@ -1,9 +1,9 @@
 import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeGap } from '../createHtmlStrategy';
-import type { AnswerType } from '../resultStrategy';
-import type { SetWidthTypeComplex } from '../setWidthsStrategy/setWidthsStrategy';
+import type { CreateHtmlTypeGap } from '../../strategies/createHtmlStrategy';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to

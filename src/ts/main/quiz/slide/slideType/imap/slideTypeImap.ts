@@ -1,10 +1,10 @@
-import { getChildIds, removeListener } from '../../../utilities';
-import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
-import { AdocVisitor } from '../../datalayer/adocVisitor';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { MarkTypeImap, SlideType } from './slideType';
-import type { MakeSlidesTypeImap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
+import { getChildIds, removeListener } from '../../../../utilities';
+import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../../datalayer/adocVisitor';
+import { Slide } from '../../../slide';
+import type { SlideInterface } from '../../../slideInterface';
+import type { MarkTypeImap, SlideType } from '../slideType';
+import type { MakeSlidesTypeImap } from '../../strategies/makeSlidesStrategy';
 export class Imap extends Slide implements SlideType {
   img = '';
   processJson(json: SlideInterface): void {

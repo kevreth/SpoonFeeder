@@ -1,12 +1,12 @@
-import { CORRECT, INCORRECT } from '../../../markupColors';
-import { difference, intersection } from '../../../utilities';
-import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
-import { AdocVisitor } from '../../datalayer/adocVisitor';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-import type { AnswerType } from '../strategies/resultStrategy';
-import type { MarkTypeSelect, SlideType } from './slideType';
+import { CORRECT, INCORRECT } from '../../../../markupColors';
+import { difference, intersection } from '../../../../utilities';
+import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../../datalayer/adocVisitor';
+import { Slide } from '../../../slide';
+import type { SlideInterface } from '../../../slideInterface';
+import type { MakeSlidesTypeSelect } from '../../strategies/makeSlidesStrategy';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { MarkTypeSelect, SlideType } from '../slideType';
 export class Select extends Slide implements SlideType  {
   inst = '';
   processJson(json: SlideInterface): void {

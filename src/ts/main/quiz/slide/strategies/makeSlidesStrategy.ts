@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type {
   CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeGap,
@@ -7,19 +7,19 @@ import type {
   CreateHtmlTypeMa,
   CreateHtmlTypeMc,
   CreateHtmlTypeSort,
-} from '../createHtmlStrategy';
-import { makeSlidesStrategyGap } from './makeSlidesStrategyGap';
-import { makeSlidesStrategyImap } from './makeSlidesStrategyImap';
-import { makeSlidesStrategyInfo } from './makeSlidesStrategyInfo';
-import { makeSlidesStrategyMa } from './makeSlidesStrategyMa';
-import { makeSlidesStrategyMc } from './makeSlidesStrategyMc';
-import { makeSlidesStrategySelect } from './makeSlidesStrategySelect';
-import { makeSlidesStrategySort } from './makeSlidesStrategySort';
-import type { AnswerType } from '../resultStrategy';
+} from './createHtmlStrategy';
+import { makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
+import { makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
+import { makeSlidesStrategyInfo } from '../slideType/info/makeSlidesStrategyInfo';
+import { makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
+import { makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
+import { makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
+import { makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
+import type { AnswerType } from './resultStrategy';
 import type {
   SetWidthTypeComplex,
   SetWidthTypeSimple,
-} from '../setWidthsStrategy/setWidthsStrategy';
+} from './setWidthsStrategy/setWidthsStrategy';
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////

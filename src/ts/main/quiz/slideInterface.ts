@@ -2,7 +2,7 @@ import type { AdocVisitorInterface } from './datalayer/adocVisitor';
 import type { Evaluation } from './evaluate';
 import type { CreateHtmlTypeIntersection } from './slide/strategies/createHtmlStrategy';
 import type { EvaluateType } from './slide/strategies/evaluateStrategy';
-import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy/makeSlidesStrategy';
+import type { MakeSlidesType } from './slide/strategies/makeSlidesStrategy';
 import type {
   AnswerType,
   ResultReturnType,

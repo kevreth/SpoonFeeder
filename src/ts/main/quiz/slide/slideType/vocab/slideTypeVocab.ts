@@ -1,15 +1,15 @@
-import { isRandom, shuffle } from '../../../utilities';
-import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
-import { AdocVisitor } from '../../datalayer/adocVisitor';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
-import { CreateHtml } from '../strategies/createHtmlStrategy';
-import { Evaluate } from '../strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-import { Result } from '../strategies/resultStrategy';
-import { Mc } from './slideTypeMc';
-import type { MarkType, SlideType } from './slideType';
+import { isRandom, shuffle } from '../../../../utilities';
+import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../../datalayer/adocVisitor';
+import { Slide } from '../../../slide';
+import type { SlideInterface } from '../../../slideInterface';
+import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
+import { CreateHtml } from '../../strategies/createHtmlStrategy';
+import { Evaluate } from '../../strategies/evaluateStrategy';
+import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
+import { Result } from '../../strategies/resultStrategy';
+import { Mc } from '../mc/slideTypeMc';
+import type { MarkType, SlideType } from '../slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,

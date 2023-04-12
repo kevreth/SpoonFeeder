@@ -1,12 +1,12 @@
-import { CORRECT, INCORRECT } from '../../../markupColors';
-import { isRandom, removeListener, shuffle } from '../../../utilities';
-import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
-import { AdocVisitor } from '../../datalayer/adocVisitor';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
-import { SetWidths } from '../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { MarkTypeMa, SlideType } from './slideType';
+import { CORRECT, INCORRECT } from '../../../../markupColors';
+import { isRandom, removeListener, shuffle } from '../../../../utilities';
+import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../../datalayer/adocVisitor';
+import { Slide } from '../../../slide';
+import type { SlideInterface } from '../../../slideInterface';
+import type { MakeSlidesTypeMc } from '../../strategies/makeSlidesStrategy';
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { MarkTypeMa, SlideType } from '../slideType';
 export class Ma extends Slide implements SlideType  {
   o: string[] = [];
   numans = 0;
