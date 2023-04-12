@@ -17,7 +17,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import MenuBtn from '../MenuBtn.vue';
+import MenuBtn from './MenuBtn.vue';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from '../VolumeMute.vue'

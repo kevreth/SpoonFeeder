@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-import DropList from './menuoverlay/menubtn/droplist/DropList.vue';
+import DropList from './menubtn/droplist/DropList.vue';
 </script>
