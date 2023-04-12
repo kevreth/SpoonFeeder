@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
-import _ from 'lodash';
 import { PREFIX_COURSE_FILE } from './quiz';
 export function getYaml<T>(filename: string, f: (data: T) => void) {
   fetch(filename)
@@ -70,7 +69,6 @@ export class CourseData {
       this.availableCourses = remove(list, course);
     else {
       const filename = PREFIX_COURSE_FILE + '/listing.yml'
-      console.log(filename);
       getYaml(filename, (listing: Array<string>) => {
         this.availableCourses = listing;
         setCourseListing(listing);
@@ -167,28 +165,24 @@ export function remove<T>(arr:Array<T>, item:T) {
   });
 }
 // =========================== Lodash wrappers ================================
-export function random(min: number, max: number): number {
-  return _.random(min, max);
-}
-export function isEqual<T>(obj1: T, obj2: T): boolean {
-  return _.isEqual(obj1, obj2);
-}
-export function difference<T>(arrA: Array<T>, arrB: Array<T>): Array<T> {
-  return _.difference(arrA, arrB);
-}
-export function intersection<T>(arrA: Array<T>, arrB: Array<T>): Array<T> {
-  return _.intersection(arrA, arrB);
-}
-export function shuffle<T>(data: Array<T>): Array<T> {
-  const shuffled = _.shuffle(data);
-  return shuffled;
-}
-export function escape(data: string): string {
-  return _.escape(data);
-}
-export function last<T>(data: Array<T>): T | undefined {
-  return _.last(data);
-}
+import {
+  random as _random,
+  isEqual as _isEqual,
+  difference as _difference,
+  intersection as _intersection,
+  shuffle as _shuffle,
+  escape as _escape,
+  last as _last
+} from 'lodash';
+export const
+  random = _random,
+  isEqual = _isEqual,
+  difference = _difference,
+  intersection = _intersection,
+  shuffle = _shuffle,
+  escape = _escape,
+  last = _last
+;
 // =========================== Jquery wrappers ================================
 export function extend<T>(obj1: T, obj2: object) {
   return $.extend(obj1, obj2);
