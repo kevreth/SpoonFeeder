@@ -27,7 +27,7 @@
             >
               <q-item-section
                 class="course"
-                id="course"
+                :id="createValidHtmlId(course)"
               >
                 {{ course.toUpperCase() }}
               </q-item-section>
@@ -55,7 +55,7 @@
 <script setup>
 import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from './ExitBtn.vue';
-import { getCourseData } from '../ts/main/utilities';
+import { getCourseData, createValidHtmlId } from '../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
 import {switchCourse} from '../ts/main/quiz';

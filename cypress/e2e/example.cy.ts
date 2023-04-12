@@ -14,7 +14,11 @@ describe('Cypress Testing', () => {
     cy.visit('/');
     cy.title().should('eq', 'SpoonFeeder');
     //mute audio during testss
-    sessionStorage.setItem('mute','true');
+    sessionStorage.setItem('mute', 'true');
+
+    //course selection dialog
+    testButton('#test');
+    testButton('#btn_switch');
 
     //course title
     existVisibleNotEmpty('body');
