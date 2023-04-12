@@ -1,14 +1,13 @@
 import type { SlideInterface } from '../../slideInterface';
 import type {
   CreateHtmlTypeSelect as CreateHtmlSelectType,
-  CreateHtmlTypeImap,
   CreateHtmlTypeInfo,
   CreateHtmlTypeMa,
   CreateHtmlTypeMc,
   CreateHtmlTypeSort,
 } from './createHtmlStrategy';
 import { makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
-import { makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
+import { MakeSlidesTypeImap, makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
 import { makeSlidesStrategyInfo } from '../slideType/info/makeSlidesStrategyInfo';
 import { makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
 import { makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
@@ -22,14 +21,6 @@ import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
-
-export type MakeSlidesTypeImap = (
-  txt: string,
-  img: string,
-  createHtml: CreateHtmlTypeImap,
-  doc: Document,
-  setValues: SlideInterface
-) => void;
 export type MakeSlidesTypeInfo = (
   txt: string,
   createHtml: CreateHtmlTypeInfo,

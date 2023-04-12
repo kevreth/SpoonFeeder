@@ -4,6 +4,13 @@ import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeImap } from '../../strategies/createHtmlStrategy';
+export type MakeSlidesTypeImap = (
+  txt: string,
+  img: string,
+  createHtml: CreateHtmlTypeImap,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 export function makeSlidesStrategyImap(
   txt: string,
   img: string,
