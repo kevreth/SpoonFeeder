@@ -13,7 +13,7 @@ import { loadCourseListing, switchCourse } from '../../ts/main/quiz';
 import {getCourseName, setCourseListing} from '../../ts/main/utilities';
 import '../../css/style1.css';
 import '../../css/quasar.css'
-import CourseSelector from '../components/CourseSelector.vue';
+import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
 const courseList = ref(false);
 
