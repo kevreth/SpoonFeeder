@@ -8,7 +8,7 @@ import { makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
 import { MakeSlidesTypeImap, makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
 import { MakeSlidesTypeInfo, makeSlidesStrategyInfo } from '../slideType/info/makeSlidesStrategyInfo';
 import { MakeSlidesTypeMa, makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
-import { makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
+import { MakeSlidesTypeMc, makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
 import { makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
 import type { AnswerType } from './resultStrategy';
@@ -19,14 +19,7 @@ import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 /////////////////////////////////////////////////////////////////////////////
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
-export type MakeSlidesTypeMc = (
-  txt: string,
-  options: string[],
-  createHtml: CreateHtmlTypeMc,
-  maxWidthStrategy: SetWidthTypeSimple,
-  doc: Document,
-  setValues: SlideInterface
-) => void;
+
 export type MakeSlidesTypeSelect = (
   inst: string,
   txt: string,

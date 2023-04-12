@@ -4,9 +4,9 @@ import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../../datalayer/adocVisitor';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
-import type { MakeSlidesTypeMc } from '../../strategies/makeSlidesStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMc, SlideType } from '../slideType';
+import { MakeSlidesTypeMc } from './makeSlidesStrategyMc';
 export class Mc extends Slide implements SlideType  {
   o: string[] = [];
   processJson(json: SlideInterface): void {

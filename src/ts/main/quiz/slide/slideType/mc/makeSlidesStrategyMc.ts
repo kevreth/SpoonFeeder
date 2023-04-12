@@ -3,6 +3,14 @@ import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeMc } from '../../strategies/createHtmlStrategy';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+export type MakeSlidesTypeMc = (
+  txt: string,
+  options: string[],
+  createHtml: CreateHtmlTypeMc,
+  maxWidthStrategy: SetWidthTypeSimple,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 export function makeSlidesStrategyMc(
   txt: string,
   options: string[],
