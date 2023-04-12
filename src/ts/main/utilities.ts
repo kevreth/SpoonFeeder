@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import * as yaml from 'js-yaml';
 import _ from 'lodash';
-import { PREFIX_COURSE_FILE } from './quiz';
+export const { random, isEqual, difference, intersection, shuffle, escape, last } = _;
 export function getYaml<T>(filename: string, f: (data: T) => void) {
   fetch(filename)
     .then((res) => res.blob())
@@ -19,9 +19,6 @@ export async function getYaml2<T>(filename: string): Promise<T> {
     const yml = yaml.load(yamlAsString) as T;
     return yml; // Return the YAML as a string
 }
-export function makeButton(id: string, clazz: string, content: string): string {
-  return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
-}
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
@@ -38,16 +35,13 @@ export function createValidHtmlId(str: string): string {
   // Remove any characters that are not alphanumeric, underscore, or hyphen
   const validCharacters = /[^\w-]/g;
   const sanitizedStr = str.replace(validCharacters, '');
-
   // Replace any remaining spaces with hyphens
   const hyphenatedStr = sanitizedStr.replace(/\s+/g, '-');
-
   // Make sure the ID starts with a letter
   const startsWithLetter = /^[A-Za-z]/;
   const finalStr = hyphenatedStr.replace(startsWithLetter, (match) =>
     match.toLowerCase()
   );
-
   return finalStr;
 }
 function checkSessionStorageFlag(key: string): boolean {
@@ -56,30 +50,6 @@ function checkSessionStorageFlag(key: string): boolean {
   let retval = false;
   if (val === 'true') retval = true;
   return retval;
-}
-export class CourseData {
-  public courseName: string;
-  public availableCourses: string[] = []
-  constructor() {
-    const course = getCourseName();
-    const list = getCourseListing();
-    if (course === null || course === undefined)
-      this.courseName = '';
-    else this.courseName = course;
-    if (list !== null && list !== undefined)
-      this.availableCourses = remove(list, course);
-    else {
-      const filename = PREFIX_COURSE_FILE + '/listing.yml'
-      console.log(filename);
-      getYaml(filename, (listing: Array<string>) => {
-        this.availableCourses = listing;
-        setCourseListing(listing);
-      });
-    }
-  }
-}
-export function getCourseData() {
-  return new CourseData();
 }
 export function setCourseListing(value: Array<string>) {
   const str = JSON.stringify(value);
@@ -141,53 +111,10 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
   const list: NodeListOf<Element> = doc.querySelectorAll(predicate);
   return Array.from(list).map(({ id }) => id);
 }
-// ================================ Date ======================================
-export function convertTwoDigits(dateItem: number) {
-  return dateItem.toLocaleString('en-US', {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  });
-}
-export function createTimeStamp(d: Date) {
-  const str =
-    d.getUTCFullYear().toString() +
-    convertTwoDigits(d.getUTCMonth()) +
-    convertTwoDigits(d.getUTCDate()) +
-    convertTwoDigits(d.getUTCHours()) +
-    convertTwoDigits(d.getUTCMinutes()) +
-    convertTwoDigits(d.getUTCSeconds());
-  return str;
-}
-export function timestampNow() {
-  return createTimeStamp(new Date(Date.now()));
-}
 export function remove<T>(arr:Array<T>, item:T) {
   return arr.filter(function(value) {
     return value !== item;
   });
-}
-// =========================== Lodash wrappers ================================
-export function random(min: number, max: number): number {
-  return _.random(min, max);
-}
-export function isEqual<T>(obj1: T, obj2: T): boolean {
-  return _.isEqual(obj1, obj2);
-}
-export function difference<T>(arrA: Array<T>, arrB: Array<T>): Array<T> {
-  return _.difference(arrA, arrB);
-}
-export function intersection<T>(arrA: Array<T>, arrB: Array<T>): Array<T> {
-  return _.intersection(arrA, arrB);
-}
-export function shuffle<T>(data: Array<T>): Array<T> {
-  const shuffled = _.shuffle(data);
-  return shuffled;
-}
-export function escape(data: string): string {
-  return _.escape(data);
-}
-export function last<T>(data: Array<T>): T | undefined {
-  return _.last(data);
 }
 // =========================== Jquery wrappers ================================
 export function extend<T>(obj1: T, obj2: object) {

@@ -1,8 +1,13 @@
 import reloadPage from '../../../vue/composables/startOver';
-import { makeButton } from '../utilities';
 import { SaveData } from './datalayer/saveData';
 import { showSlides } from './slideDispatcher';
 import type { SlideInterface } from './slideInterface';
+export function makeButton(id: string, clazz: string, content: string): string {
+  return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
+}
+export function doneButton() {
+  return makeButton('btn', 'done', 'done');
+}
 export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
