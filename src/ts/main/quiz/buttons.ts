@@ -1,4 +1,4 @@
-import reloadPage from '../../../composables/startOver';
+import reloadPage from '../../../vue/composables/startOver';
 import { makeButton } from '../utilities';
 import { SaveData } from './datalayer/saveData';
 import { showSlides } from './slideDispatcher';
