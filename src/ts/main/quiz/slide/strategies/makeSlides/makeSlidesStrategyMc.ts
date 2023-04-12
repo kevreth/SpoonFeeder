@@ -6,7 +6,6 @@ import type { SetWidthTypeSimple } from '../setWidthsStrategy';
 export function makeSlidesStrategyMc(
   txt: string,
   options: string[],
-  isExercise: boolean,
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,

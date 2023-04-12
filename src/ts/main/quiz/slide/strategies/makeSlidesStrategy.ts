@@ -47,7 +47,6 @@ export type MakeSlidesTypeInfo = (
 export type MakeSlidesTypeMa = (
   txt: string,
   options: string[],
-  isExercise: boolean,
   createHtml: CreateHtmlTypeMa,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
@@ -56,7 +55,6 @@ export type MakeSlidesTypeMa = (
 export type MakeSlidesTypeMc = (
   txt: string,
   options: string[],
-  isExercise: boolean,
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
@@ -143,7 +141,6 @@ export class MakeSlidesStrategy {
   public static readonly MA = function (
     txt: string,
     options: string[],
-    isExercise: boolean,
     createHtml: CreateHtmlTypeMa,
     maxWidthStrategy: SetWidthTypeSimple,
     doc: Document,
@@ -152,7 +149,6 @@ export class MakeSlidesStrategy {
     makeSlidesStrategyMa(
       txt,
       options,
-      isExercise,
       createHtml,
       maxWidthStrategy,
       doc,
@@ -165,7 +161,6 @@ export class MakeSlidesStrategy {
   public static readonly MC = function (
     txt: string,
     options: string[],
-    isExercise: boolean,
     createHtml: CreateHtmlTypeMc,
     maxWidthStrategy: SetWidthTypeSimple,
     doc: Document,
@@ -174,7 +169,6 @@ export class MakeSlidesStrategy {
     makeSlidesStrategyMc(
       txt,
       options,
-      isExercise,
       createHtml,
       maxWidthStrategy,
       doc,
