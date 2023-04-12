@@ -6,7 +6,7 @@ import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
-import { SlideType } from './slideType';
+import { MarkTypeSelect, SlideType } from './slideType';
 export class Select extends Slide implements SlideType  {
   inst = '';
   processJson(json: SlideInterface): void {
@@ -34,7 +34,7 @@ export class Select extends Slide implements SlideType  {
     this.mark(this.getAns(), this.getRes(), doc);
     return isCorrect;
   }
-  mark(ans: AnswerType, res: AnswerType, doc: Document) {
+  mark: MarkTypeSelect = (ans, res, doc) => {
     const _ans = ans as string[];
     const _res = res as string[];
     // items that were not selected but should have been

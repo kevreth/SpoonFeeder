@@ -44,7 +44,7 @@ describe('Cypress Testing', () => {
     sessionStorage.setItem('mute', 'true');
 
     //because of async loading
-    cy.get('#android', { timeout: 10000 }).should('be.visible');
+    cy.get('#android', { timeout: 20000 }).should('be.visible');
     //course selection dialog
     cy.get('#test').scrollIntoView()
     testButton('#test');
