@@ -3,14 +3,14 @@
     flat
     dense
     size="200%"
-    :icon="volume ? 'volume_off' : 'volume_up'" 
+    :icon="volume ? 'volume_off' : 'volume_up'"
     class="volumeMute q-ml-sm q-pt-md"
     @click="toggleVolume"
   />
 </template>
 
 <script setup>
-import { muteAudio, playBack } from '../../ts/main/quiz/slide/audio';
+import { muteAudio, playBack } from '../../../ts/main/quiz/slide/audio';
 
 const props = defineProps({
   volume: {
