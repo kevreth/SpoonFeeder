@@ -1,4 +1,4 @@
-import { SlideInterface } from 'app/main/quiz/slideInterface';
+import type { SlideInterface } from '../../main/quiz/slideInterface';
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
 import { MC, VOCAB } from '../../main/quiz/datalayer/slideFactory';

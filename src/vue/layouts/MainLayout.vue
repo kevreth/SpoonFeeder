@@ -11,7 +11,8 @@
 </template>
 
 <script setup>
-import MenuOverlay from 'src/components/MenuOverlay.vue';
+import MenuOverlay from '../components/MenuOverlay.vue'
+
 import { onBeforeUnmount, onMounted } from 'vue'
 import { useQuasar } from 'quasar'
 

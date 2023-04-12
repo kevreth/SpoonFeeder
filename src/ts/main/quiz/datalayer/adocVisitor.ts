@@ -7,7 +7,7 @@ import { Mc } from '../slide/slideType/mc';
 import { Select } from '../slide/slideType/select';
 import { Sort } from '../slide/slideType/sort';
 import { Vocab } from '../slide/slideType/vocab';
-import { SlideInterface } from '../slideInterface';
+import type { SlideInterface } from '../slideInterface';
 import { adoc2html } from './adoc2html';
 
 export interface AdocVisitorInterface {

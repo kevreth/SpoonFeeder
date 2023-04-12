@@ -1,5 +1,6 @@
 import type { Course, Division } from './datalayer/course';
-import { DivisionProcessor, process } from './datalayer/courseFileProcessor';
+import type { DivisionProcessor } from './datalayer/courseFileProcessor';
+import { process } from './datalayer/courseFileProcessor';
 import { SaveData } from './datalayer/saveData';
 import { initSlide } from './datalayer/slideFactory';
 import { percentCorrect } from './evaluate';

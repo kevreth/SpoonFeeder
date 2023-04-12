@@ -1,5 +1,7 @@
-import { AdocVisitor, AdocVisitorInterface } from '../../datalayer/adocVisitor';
-import { SlideInterface } from '../../slideInterface';
+import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
+import { AdocVisitor } from '../../datalayer/adocVisitor';
+import type { SlideInterface } from '../../slideInterface';
+
 import { Mc } from './mc';
 import { SlideType } from './slideType';
 //bool is a special case of Mc.
