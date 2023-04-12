@@ -21,7 +21,7 @@ import MenuBtn from './MenuBtn.vue';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue'
-import {SaveData} from '../../../ts/main/quiz/datalayer/saveData';
+import {SaveData} from '../../mediator';
 
 const isMuted = ref(false);
 
