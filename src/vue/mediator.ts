@@ -5,9 +5,16 @@ import {SaveData} from '../ts/main/quiz/datalayer/saveData';
 import { loadCourseListing, switchCourse } from '../ts/main/quiz';
 import {getCourseName, setCourseListing,getCourseData, createValidHtmlId } from '../ts/main/utilities';
 
-export {Score};
-export {CourseFile};
-export { muteAudio, playBack };
-export {SaveData};
-export { loadCourseListing, switchCourse };
-export {getCourseName, setCourseListing,getCourseData, createValidHtmlId };
+export {
+  Score,
+  CourseFile,
+  muteAudio,
+  playBack,
+  SaveData,
+  loadCourseListing,
+  switchCourse,
+  getCourseName,
+  setCourseListing,
+  getCourseData,
+  createValidHtmlId
+};
