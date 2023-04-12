@@ -92,111 +92,11 @@ export type MakeSlidesType =
   | MakeSlidesTypeSort
   | MakeSlidesTypeVocab;
 export class MakeSlidesStrategy {
-  /////////////////////////////////////////////////////////////////////////////
-  //                             GAP
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly GAP: MakeSlidesTypeGap = function (
-    txt,
-    ans,
-    createHtml,
-    maxWidthStrategy,
-    doc,
-    setValues
-  ) {
-    makeSlidesStrategyGap(
-      txt,
-      ans,
-      createHtml,
-      maxWidthStrategy,
-      doc,
-      setValues
-    );
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             IMAP
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly IMAP: MakeSlidesTypeImap = function (
-    txt: string,
-    img: string,
-    createHtml: CreateHtmlTypeImap,
-    doc: Document,
-    setValues: SlideInterface
-  ) {
-    makeSlidesStrategyImap(txt, img, createHtml, doc, setValues);
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             INFO
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly INFO = function (
-    txt: string,
-    createHtml: CreateHtmlTypeInfo,
-    doc: Document,
-    setValues: SlideInterface
-  ) {
-    makeSlidesStrategyInfo(txt, createHtml, doc, setValues);
-  };
-  // /////////////////////////////////////////////////////////////////////////////
-  // //                             MA
-  // /////////////////////////////////////////////////////////////////////////////
-  public static readonly MA = function (
-    txt: string,
-    options: string[],
-    createHtml: CreateHtmlTypeMa,
-    maxWidthStrategy: SetWidthTypeSimple,
-    doc: Document,
-    setValues: SlideInterface
-  ) {
-    makeSlidesStrategyMa(
-      txt,
-      options,
-      createHtml,
-      maxWidthStrategy,
-      doc,
-      setValues
-    );
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             MC
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly MC = function (
-    txt: string,
-    options: string[],
-    createHtml: CreateHtmlTypeMc,
-    maxWidthStrategy: SetWidthTypeSimple,
-    doc: Document,
-    setValues: SlideInterface
-  ) {
-    makeSlidesStrategyMc(
-      txt,
-      options,
-      createHtml,
-      maxWidthStrategy,
-      doc,
-      setValues
-    );
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             SELECT
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly SELECT = function (
-    inst: string,
-    txt: string,
-    createHtml: CreateHtmlSelectType,
-    doc: Document,
-    setValues: SlideInterface
-  ) {
-    makeSlidesStrategySelect(inst, txt, createHtml, doc, setValues);
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             SORT
-  /////////////////////////////////////////////////////////////////////////////
-  public static readonly SORT = function (
-    txt: string,
-    ans: AnswerType,
-    createHtml: CreateHtmlTypeSort,
-    doc: Document,
-    setValues: SlideInterface
-  ) {
-    makeSlidesStrategySort(txt, ans, createHtml, doc, setValues);
-  };
+  public static readonly GAP: MakeSlidesTypeGap = makeSlidesStrategyGap
+  public static readonly IMAP: MakeSlidesTypeImap = makeSlidesStrategyImap;
+  public static readonly INFO: MakeSlidesTypeInfo = makeSlidesStrategyInfo;
+  public static readonly MA: MakeSlidesTypeMa = makeSlidesStrategyMa;
+  public static readonly MC: MakeSlidesTypeMc = makeSlidesStrategyMc;
+  public static readonly SELECT: MakeSlidesTypeSelect = makeSlidesStrategySelect;
+  public static readonly SORT: MakeSlidesTypeSort = makeSlidesStrategySort;
 }
