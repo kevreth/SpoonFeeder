@@ -1,5 +1,5 @@
 <template>
-  <transition 
+  <transition
     enter-active-class="animated slideInDown"
     leave-active-class="animated slideOutUp"
     :duration="1000">
@@ -14,7 +14,7 @@
             SCO: score; COR/COM * 100% <br>
             CPL: completion: COM/TOT * 100%
           </p>
-  
+
           <ExitBtn @click="closeInfo" color="secondary" />
         </div>
       </template>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import ExitBtn from './ExitBtn.vue';
+import ExitBtn from './common/ExitBtn.vue';
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {

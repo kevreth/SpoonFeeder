@@ -54,7 +54,7 @@
 
 <script setup>
 import { ref, onBeforeUpdate } from 'vue';
-import ExitBtn from './ExitBtn.vue';
+import ExitBtn from './common/ExitBtn.vue';
 import { getCourseData, createValidHtmlId } from '../../ts/main/utilities';
 import SwitchCourse from './SwitchCourse.vue'
 import SavedCourse from './SavedCourse.vue';
