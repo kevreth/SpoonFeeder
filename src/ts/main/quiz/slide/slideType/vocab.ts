@@ -6,9 +6,10 @@ import type { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeIntersection } from '../strategies/createHtmlStrategy';
 import { CreateHtml } from '../strategies/createHtmlStrategy';
 import { Evaluate } from '../strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy';
+import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { Result } from '../strategies/resultStrategy';
 import { Mc } from './mc';
+import { SlideType } from './slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -17,13 +18,14 @@ export type vocabTuplesType = [
 ][];
 //Vocab is different than the other slide types because it concisely
 //represents a group of mc questions.
-export class Vocab extends Slide {
+export class Vocab extends Slide implements SlideType  {
   list = new Map<string, string>();
   res = new Array<string>();
   set = new Array<SlideInterface>();
-  processJson(json: Vocab): void {
-    this.list = new Map(Object.entries(json.list));
-    this.isExercise = json.isExercise;
+  processJson(json: SlideInterface): void {
+    const json1 = json as Vocab
+    this.list = new Map(Object.entries(json1.list));
+    this.isExercise = json1.isExercise;
     this.accept(new AdocVisitor());
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {

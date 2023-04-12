@@ -10,7 +10,7 @@ import { Vocab } from '../slide/slideType/vocab';
 import type { CreateHtmlTypeIntersection } from '../slide/strategies/createHtmlStrategy';
 import { CreateHtml } from '../slide/strategies/createHtmlStrategy';
 import { Evaluate } from '../slide/strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from '../slide/strategies/makeSlidesStrategy';
+import { MakeSlidesStrategy } from '../slide/strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { Result } from '../slide/strategies/resultStrategy';
 import type { SlideInterface } from '../slideInterface';
 abstract class SlideInitializer {

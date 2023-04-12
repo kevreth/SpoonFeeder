@@ -3,18 +3,21 @@ import { isRandom, removeListener, shuffle } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
-import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy';
+import { SlideInterface } from '../../slideInterface';
+import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-export class Mc extends Slide {
+import { SlideType } from './slideType';
+export class Mc extends Slide implements SlideType  {
   o: string[] = [];
-  processJson(json: Mc): void {
+  processJson(json: SlideInterface): void {
+    const json1 = json as Mc
     ({
       txt: this.txt,
       o: this.o,
       exp: this.exp,
       ref: this.ref,
       isExercise: this.isExercise,
-    } = json);
+    } = json1);
     this.accept(new AdocVisitor());
     this.ans = this.o[0];
     const shuffleFlag = this.isExercise && isRandom();

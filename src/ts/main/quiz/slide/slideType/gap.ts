@@ -7,14 +7,17 @@ import { Slide } from '../../slide';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
-import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy';
+import type { MakeSlidesTypeGap } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
+import { SlideInterface } from '../../slideInterface';
+import { SlideType } from './slideType';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
-export class Gap extends Slide {
-  processJson(json: Gap): void {
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+export class Gap extends Slide implements SlideType {
+  processJson(json: SlideInterface): void {
+    const json1 = json as Gap
+    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json1);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {
