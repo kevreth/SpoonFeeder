@@ -32,6 +32,16 @@ export type CreateHtmlTypeIntersection =
 export interface CreateHtmlI {
   createHtml: CreateHtmlTypeUnion;
 }
+export class CreateHtmlGap implements CreateHtmlI {
+    createHtml: CreateHtmlTypeGap = (remaining, fills, gaps) => {
+    const html =
+      `\n<div id="fills">${fills}\n</div>` +
+      `\n<div id="gaps">${gaps}\n</div>` +
+      `\n<div id="remaining">${remaining}</div>` +
+      '\n<div id="response"></div>';
+    return html;
+  };
+}
 export class CreateHtml {
   /////////////////////////////////////////////////////////////////////////////
   //                             DEFAULT
@@ -56,17 +66,6 @@ export class CreateHtml {
       '\n<div id="response"></div>';
     return html;
   };
-  static GAP_c = class CreateHtmlGap implements CreateHtmlI {
-    createHtml: CreateHtmlTypeGap = (remaining, fills, gaps) => {
-    const html =
-      `\n<div id="fills">${fills}\n</div>` +
-      `\n<div id="gaps">${gaps}\n</div>` +
-      `\n<div id="remaining">${remaining}</div>` +
-      '\n<div id="response"></div>';
-    return html;
-  };
-
-  }
   /////////////////////////////////////////////////////////////////////////////
   //                             IMAP
   /////////////////////////////////////////////////////////////////////////////
@@ -91,7 +90,7 @@ export class CreateHtml {
   /////////////////////////////////////////////////////////////////////////////
   //                             MC
   /////////////////////////////////////////////////////////////////////////////
-  // also used by MA, VOCAB
+  // also used by BOOL, MA, VOCAB
   static readonly MC: CreateHtmlTypeMc = function (
     question: string,
     options: string[]
