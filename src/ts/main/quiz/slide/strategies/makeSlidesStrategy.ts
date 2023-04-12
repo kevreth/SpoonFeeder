@@ -1,7 +1,6 @@
 import type { SlideInterface } from '../../slideInterface';
 import type {
-  CreateHtmlTypeMc,
-  CreateHtmlTypeSort,
+  CreateHtmlTypeMc
 } from './createHtmlStrategy';
 import { makeSlidesStrategyGap } from '../slideType/gap/makeSlidesStrategyGap';
 import { MakeSlidesTypeImap, makeSlidesStrategyImap } from '../slideType/imap/makeSlidesStrategyImap';
@@ -9,7 +8,7 @@ import { MakeSlidesTypeInfo, makeSlidesStrategyInfo } from '../slideType/info/ma
 import { MakeSlidesTypeMa, makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
 import { MakeSlidesTypeMc, makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
 import { MakeSlidesTypeSelect, makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
-import { makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
+import { MakeSlidesTypeSort, makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
 import type { AnswerType } from './resultStrategy';
 import type {
   SetWidthTypeSimple,
@@ -20,13 +19,7 @@ import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 /////////////////////////////////////////////////////////////////////////////
 
 
-export type MakeSlidesTypeSort = (
-  txt: string,
-  ans: AnswerType,
-  createHtml: CreateHtmlTypeSort,
-  doc: Document,
-  setValues: SlideInterface
-) => void;
+
 export type MakeSlidesTypeVocab = (
   list: Map<string, string>,
   res: AnswerType,

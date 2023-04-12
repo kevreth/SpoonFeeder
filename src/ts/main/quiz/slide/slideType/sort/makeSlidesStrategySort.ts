@@ -5,6 +5,13 @@ import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeSort } from '../../strategies/createHtmlStrategy';
 import type { AnswerType } from '../../strategies/resultStrategy';
+export type MakeSlidesTypeSort = (
+  txt: string,
+  ans: AnswerType,
+  createHtml: CreateHtmlTypeSort,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 export function makeSlidesStrategySort(
   txt: string,
   ans: AnswerType,

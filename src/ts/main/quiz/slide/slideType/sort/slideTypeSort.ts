@@ -2,8 +2,8 @@ import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../../datalayer/adocVisitor';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
-import type { MakeSlidesTypeSort } from '../../strategies/makeSlidesStrategy';
 import type { MarkTypeSort, SlideType } from '../slideType'
+import { MakeSlidesTypeSort } from './makeSlidesStrategySort';
 export class Sort extends Slide implements SlideType  {
   processJson(json: SlideInterface): void {
     const json1 = json as Sort
