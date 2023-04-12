@@ -19,9 +19,6 @@ export async function getYaml2<T>(filename: string): Promise<T> {
     const yml = yaml.load(yamlAsString) as T;
     return yml; // Return the YAML as a string
 }
-export function makeButton(id: string, clazz: string, content: string): string {
-  return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
-}
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
