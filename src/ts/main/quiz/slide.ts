@@ -1,4 +1,4 @@
-import { timestampNow } from '../utilities';
+import { timestampNow } from '../date';
 import type { AdocVisitorInterface } from './datalayer/adocVisitor';
 import { SaveData } from './datalayer/saveData';
 import type { Evaluation } from './evaluate';
