@@ -1,5 +1,4 @@
-import { GapFactory } from "./GapFactory";
-import { Gap, Gap } from './slideTypeGap';
+import { Gap } from './slideTypeGap';
 import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
