@@ -66,8 +66,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import {Score} from '../../../../../../../ts/main/quiz/score';
-import {CourseFile} from '../../../../../../../ts/main/quiz/datalayer/globals'
+import {Score, CourseFile} from '../../../../../../mediator';
 import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';

@@ -9,8 +9,7 @@
 
 <script setup lang='ts'>
 import { ref } from 'vue';
-import { loadCourseListing, switchCourse } from '../../ts/main/quiz';
-import {getCourseName, setCourseListing} from '../../ts/main/utilities';
+import { loadCourseListing, switchCourse, getCourseName, setCourseListing } from '../mediator';
 import '../../css/style1.css';
 import '../../css/quasar.css'
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';

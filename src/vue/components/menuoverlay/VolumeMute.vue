@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { muteAudio, playBack } from '../../../ts/main/quiz/slide/audio';
+import { muteAudio, playBack } from '../../mediator';
 
 const props = defineProps({
   volume: {
