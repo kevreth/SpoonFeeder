@@ -28,7 +28,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import OverlayTable from '../../../OverlayTable.vue';
+import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
 const droplist = ref(false);
 
