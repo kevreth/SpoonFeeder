@@ -1,6 +1,6 @@
 import { Course } from '../datalayer/course';
-import { ISummaryLine } from '../score';
-import { SlideInterface } from '../slideInterface';
+import type { ISummaryLine } from '../score';
+import type { SlideInterface } from '../slideInterface';
 
 export interface DataModel {
   model: Array<SlideInterface>;

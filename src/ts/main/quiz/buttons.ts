@@ -2,7 +2,7 @@ import reloadPage from '../../../vue/composables/startOver';
 import { makeButton } from '../utilities';
 import { SaveData } from './datalayer/saveData';
 import { showSlides } from './slideDispatcher';
-import { SlideInterface } from './slideInterface';
+import type { SlideInterface } from './slideInterface';
 export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {

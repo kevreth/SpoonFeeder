@@ -9,7 +9,7 @@ import { Evaluate } from '../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { Result } from '../strategies/resultStrategy';
 import { Mc } from './mc';
-import { SlideType } from './slideType';
+import type { SlideType } from './slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,

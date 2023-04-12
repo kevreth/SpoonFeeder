@@ -1,7 +1,8 @@
 import { isRandom, shuffle } from '../../utilities';
 import type { SlideInterface } from '../slideInterface';
 import type { Course, Division, Module } from './course';
-import { DivisionProcessor, process } from './courseFileProcessor';
+import type { DivisionProcessor } from './courseFileProcessor';
+import { process } from './courseFileProcessor';
 import { INFO, initSlide } from './slideFactory';
 //////////////// Phase 1: process Json
 export class JsonProcessor
