@@ -6,7 +6,7 @@ import { Slide } from '../../slide';
 import { SlideInterface } from '../../slideInterface';
 import type { MakeSlidesTypeMc } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import { SetWidths } from '../strategies/setWidthsStrategy';
-import { SlideType } from './slideType';
+import { MarkTypeMc, SlideType } from './slideType';
 export class Mc extends Slide implements SlideType  {
   o: string[] = [];
   processJson(json: SlideInterface): void {
@@ -62,15 +62,11 @@ export class Mc extends Slide implements SlideType  {
     this.mark(isCorrect, responseButton, answerButton);
     return isCorrect;
   }
-  mark(
-    isCorrect: boolean,
-    responseButton: HTMLElement,
-    answerButton: HTMLElement
-  ) {
+  mark: MarkTypeMc = (isCorrect, responseButton, answerButton) => {
     let color = INCORRECT;
     isCorrect
       ? (color = CORRECT)
       : (answerButton.style.border = `1px solid ${INCORRECT}`);
     responseButton.style.backgroundColor = color;
-  }
+  };
 }
