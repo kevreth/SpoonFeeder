@@ -3,17 +3,20 @@ import { difference, intersection } from '../../../utilities';
 import type { AdocVisitorInterface } from '../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../datalayer/adocVisitor';
 import { Slide } from '../../slide';
-import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy';
+import { SlideInterface } from '../../slideInterface';
+import type { MakeSlidesTypeSelect } from '../strategies/makeSlidesStrategy/makeSlidesStrategy';
 import type { AnswerType } from '../strategies/resultStrategy';
-export class Select extends Slide {
+import { SlideType } from './slideType';
+export class Select extends Slide implements SlideType  {
   inst = '';
-  processJson(json: Select): void {
+  processJson(json: SlideInterface): void {
+    const json1 = json as Select
     ({
       inst: this.inst,
       txt: this.txt,
       ans: this.ans,
       isExercise: this.isExercise,
-    } = json);
+    } = json1);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {
