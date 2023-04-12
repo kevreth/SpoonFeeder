@@ -1,6 +1,5 @@
 import type { SlideInterface } from '../../slideInterface';
 import type {
-  CreateHtmlTypeSelect as CreateHtmlSelectType,
   CreateHtmlTypeMc,
   CreateHtmlTypeSort,
 } from './createHtmlStrategy';
@@ -9,7 +8,7 @@ import { MakeSlidesTypeImap, makeSlidesStrategyImap } from '../slideType/imap/ma
 import { MakeSlidesTypeInfo, makeSlidesStrategyInfo } from '../slideType/info/makeSlidesStrategyInfo';
 import { MakeSlidesTypeMa, makeSlidesStrategyMa } from '../slideType/ma/makeSlidesStrategyMa';
 import { MakeSlidesTypeMc, makeSlidesStrategyMc } from '../slideType/mc/makeSlidesStrategyMc';
-import { makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
+import { MakeSlidesTypeSelect, makeSlidesStrategySelect } from '../slideType/select/makeSlidesStrategySelect';
 import { makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
 import type { AnswerType } from './resultStrategy';
 import type {
@@ -20,13 +19,7 @@ import { MakeSlidesTypeGap } from '../slideType/gap/slideTypeGap';
 //                             TYPES
 /////////////////////////////////////////////////////////////////////////////
 
-export type MakeSlidesTypeSelect = (
-  inst: string,
-  txt: string,
-  createHtml: CreateHtmlSelectType,
-  doc: Document,
-  setValues: SlideInterface
-) => void;
+
 export type MakeSlidesTypeSort = (
   txt: string,
   ans: AnswerType,

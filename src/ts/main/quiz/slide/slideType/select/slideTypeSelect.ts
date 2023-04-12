@@ -4,9 +4,9 @@ import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
 import { AdocVisitor } from '../../../datalayer/adocVisitor';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
-import type { MakeSlidesTypeSelect } from '../../strategies/makeSlidesStrategy';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import type { MarkTypeSelect, SlideType } from '../slideType';
+import { MakeSlidesTypeSelect } from './makeSlidesStrategySelect';
 export class Select extends Slide implements SlideType  {
   inst = '';
   processJson(json: SlideInterface): void {

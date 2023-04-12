@@ -4,6 +4,13 @@ import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeSelect } from '../../strategies/createHtmlStrategy';
+export type MakeSlidesTypeSelect = (
+  inst: string,
+  txt: string,
+  createHtml: CreateHtmlTypeSelect,
+  doc: Document,
+  setValues: SlideInterface
+) => void;
 export function makeSlidesStrategySelect(
   inst: string,
   txt: string,
