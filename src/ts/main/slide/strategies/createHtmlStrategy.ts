@@ -44,48 +44,13 @@ export class CreateHtmlGap implements CreateHtmlI {
   };
 }
 export class CreateHtml {
-    //                             DEFAULT
-    static readonly DEFAULT = function () {
-    return '';
-  };
-    //                             INFO
-    static readonly INFO: CreateHtmlTypeInfo = function (txt: string) {
-    return createHtmlInfo(txt);
-  };
-    //                             GAP
-    static readonly GAP: CreateHtmlTypeGap = function (remaining, fills, gaps) {
-    return createHtmlGap(fills, gaps, remaining);
-  };
-    //                             IMAP
-    static readonly IMAP: CreateHtmlTypeImap = function (
-    inst: string,
-    img: string
-  ) {
-    return createHtmlImap(inst, img);
-  };
-    //                             MA
-    static readonly MA: CreateHtmlTypeMa = function (
-    question: string,
-    options: string[]
-  ) {
-    return createHtmlMa(question, options);
-  };
-    //                             MC
-    // also used by BOOL, MA, VOCAB
-  static readonly MC: CreateHtmlTypeMc = function (
-    question: string,
-    options: string[]
-  ) {
-    return createHtmlMc(question, options);
-  };
-    //                             SELECT
-    static readonly SELECT: CreateHtmlTypeSelect = function (instructions, txt) {
-    return createHtmlSelect(instructions, txt);
-  };
-    //                             SORT
-    static readonly SORT: CreateHtmlTypeSort = function createHtml(inst, ans) {
-    return createHtmlSort(inst, ans);
-  };
+    static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
+    static readonly GAP: CreateHtmlTypeGap = createHtmlGap;
+    static readonly IMAP: CreateHtmlTypeImap = createHtmlImap;
+    static readonly MA: CreateHtmlTypeMa = createHtmlMa;
+    static readonly MC: CreateHtmlTypeMc = createHtmlMc;
+    static readonly SELECT: CreateHtmlTypeSelect = createHtmlSelect;
+    static readonly SORT: CreateHtmlTypeSort = createHtmlSort;
 }
 function createHtmlSort(inst: string, ans: AnswerType) {
   const retval = inst + '<br>\n';
@@ -133,7 +98,7 @@ function createHtmlImap(inst: string, img: string): string {
   return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
 }
 
-function createHtmlGap(fills: string, gaps: string, remaining: string) {
+function createHtmlGap(remaining: string, fills: string, gaps: string) {
   const html = `\n<div id="fills">${fills}\n</div>` +
     `\n<div id="gaps">${gaps}\n</div>` +
     `\n<div id="remaining">${remaining}</div>` +
