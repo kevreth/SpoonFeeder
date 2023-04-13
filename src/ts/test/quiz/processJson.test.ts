@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
-import { ProcessJson } from '../../main/quiz/datalayer/courseData/processJson';
-import { Mc } from '../../main/quiz/slide/slideType/mc/slideTypeMc';
+import { ProcessJson } from '../../main/datalayer/courseData/processJson';
+import { Mc } from '../../main/slide/slideType/mc/slideTypeMc';
 export const testjson = `
   {
     "name": "course 1",

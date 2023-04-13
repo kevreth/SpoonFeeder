@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-// import {MakeSlides} from '../../main/quiz/makeSlides';
+// import {MakeSlides} from '../../main/makeSlides';
 // import { JSDOM } from 'jsdom';
 // const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 

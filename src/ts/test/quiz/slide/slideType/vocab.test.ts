@@ -1,10 +1,10 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import { VOCAB } from '../../../../main/quiz/slide/slideFactory';
-import type { Slide } from '../../../../main/quiz/slide/slide';
+import { VOCAB } from '../../../../main/slide/slideFactory';
+import type { Slide } from '../../../../main/slide/slide';
 import {
   Vocab,
   generateQuestions,
-} from '../../../../main/quiz/slide/slideType/vocab/slideTypeVocab';
+} from '../../../../main/slide/slideType/vocab/slideTypeVocab';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'vocab';
