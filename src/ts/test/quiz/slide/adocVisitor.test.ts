@@ -2,8 +2,8 @@ import { expect, it } from 'vitest';
 import {
   optionsReplacement,
   stdReplacement,
-} from '../../../main/quiz/datalayer/adocVisitor';
-import { MA } from '../../../main/quiz/slide/slideFactory';
+} from '../../../main/datalayer/courseData/adocVisitor';
+import { MA } from '../../../main/slide/slideFactory';
 it('testMa', () => {
   const clazz = MA();
   clazz.txt = 'svg=test';

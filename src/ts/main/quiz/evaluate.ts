@@ -1,6 +1,6 @@
 export const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
-import type { AnswerType } from './slide/strategies/resultStrategy';
-import type { SlideInterface } from './slideInterface';
+import type { AnswerType } from '../slide/strategies/resultStrategy';
+import type { SlideInterface } from '../slide/slideInterface';
 export class Evaluation {
   constructor(
     public responses: number,

@@ -1,7 +1,7 @@
 import reloadPage from '../../../vue/composables/startOver';
-import { SaveData } from './datalayer/saveData';
-import { showSlides } from './slideDispatcher';
-import type { SlideInterface } from './slideInterface';
+import { SaveData } from '../datalayer/mediator';
+import { showSlides } from '../slide/slideDispatcher';
+import type { SlideInterface } from '../slide/slideInterface';
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }

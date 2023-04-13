@@ -4,7 +4,7 @@ import {
   adoc2markdown,
   markdown2html,
   processHandlebars
-} from '../../../main/quiz/datalayer/adoc2html';
+} from '../../../main/datalayer/courseData/adoc2html';
 const asciidoc = `
 == Document Title
 

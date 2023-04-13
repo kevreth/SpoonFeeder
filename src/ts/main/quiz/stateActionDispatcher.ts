@@ -1,7 +1,6 @@
-import { last } from '../utilities';
-import { Json } from './datalayer/globals';
-import { SaveData } from './datalayer/saveData';
-import type { SlideInterface } from './slideInterface';
+import { last } from './utilities';
+import { Json, SaveData } from '../datalayer/mediator';
+import type { SlideInterface } from '../slide/slideInterface';
 
 export interface StateActions<T> {
   begin(): T;

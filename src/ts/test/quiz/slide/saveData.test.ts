@@ -1,13 +1,13 @@
 // import { expect, it } from 'vitest';
 // import { mock } from 'vitest-mock-extended';
-// import { SaveData } from '../../../main/quiz/datalayer/saveData';
-// import { GAP, MC, SORT } from '../../../main/quiz/datalayer/slideFactory';
+// import { SaveData } from '../../../main/datalayer/saveData';
+// import { GAP, MC, SORT } from '../../../main/datalayer/slideFactory';
 // import {
 //   MakeSlidesI,
 //   SlideDispatcherMethods,
 //   SlideSave,
-// } from '../../../main/quiz/datalayer/saveData';
-// import { SlideInterface } from '../../../main/quiz/slideInterface';
+// } from '../../../main/datalayer/saveData';
+// import { SlideInterface } from '../../../main/slideInterface';
 // const expected_saved = new Array<SaveData>();
 // expected_saved.push(new SaveData('ans1', 'res1', '200001010000', false));
 // expected_saved.push(new SaveData('ans2', 'res2', '200001010001', false));
