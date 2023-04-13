@@ -22,14 +22,13 @@
   </transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ExitBtn from '../../../../../common/ExitBtn.vue';
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {
   emit('closeInfo')
 }
-
 </script>
 
 <style>

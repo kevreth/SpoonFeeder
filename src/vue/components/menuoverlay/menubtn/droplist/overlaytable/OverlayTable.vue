@@ -20,7 +20,7 @@
 </transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import ProgressTable from './progresstable/ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';

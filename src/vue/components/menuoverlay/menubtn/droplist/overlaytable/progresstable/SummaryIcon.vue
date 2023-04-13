@@ -6,8 +6,6 @@
   </q-icon>   
 </template>
 
-<script setup></script>
-
 <style>
 .summary:hover {
   color: #999;

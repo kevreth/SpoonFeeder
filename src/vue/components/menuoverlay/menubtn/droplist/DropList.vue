@@ -26,7 +26,7 @@
     @closeInfo="courseList = false"></CourseSelector>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';

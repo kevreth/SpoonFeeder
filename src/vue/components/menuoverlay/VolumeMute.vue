@@ -9,7 +9,7 @@
   />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { muteAudio, playBack } from '../../mediator';
 
 const props = defineProps({

@@ -15,7 +15,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import MenuBtn from './MenuBtn.vue';
 import ExplainIcon from './ExplainIcon.vue';

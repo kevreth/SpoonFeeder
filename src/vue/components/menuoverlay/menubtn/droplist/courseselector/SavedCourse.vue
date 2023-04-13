@@ -5,11 +5,10 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   defineProps({
     savedCourse: {
       required: true,
     }
   })
-
 </script>

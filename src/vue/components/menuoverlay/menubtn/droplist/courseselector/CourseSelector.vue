@@ -52,7 +52,7 @@
   </transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from '../../../../common/ExitBtn.vue';
 import { getCourseData, createValidHtmlId, switchCourse } from '../../../../../mediator';
@@ -61,8 +61,8 @@ import SavedCourse from './SavedCourse.vue';
 
 let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
-const selectedCourse = ref(null);
-const savedCourse = ref('');
+const selectedCourse = ref<string | null>(null);
+const savedCourse = ref<string>('');
 const disableExit = ref(false);
 
 onBeforeUpdate(() => {
@@ -70,7 +70,7 @@ onBeforeUpdate(() => {
   courses = ref(courseData.value.availableCourses);
 })
 
-function selectCourse(course) {
+function selectCourse(course: string): void {
   if(courseData.value.courseName === null || courseData.value.courseName === undefined) {
     disableExit.value = false;
   } else {
