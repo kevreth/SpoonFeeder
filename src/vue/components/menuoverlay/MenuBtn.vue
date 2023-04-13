@@ -8,9 +8,8 @@
 
     <DropList></DropList>
   </q-btn>
-
 </template>
 
-<script setup>
+<script setup lang="ts">
 import DropList from './menubtn/droplist/DropList.vue';
 </script>

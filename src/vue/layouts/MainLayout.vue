@@ -10,7 +10,7 @@
   </q-layout>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import MenuOverlay from '../components/menuoverlay/MenuOverlay.vue'
 
 import { onBeforeUnmount, onMounted } from 'vue'
@@ -18,7 +18,7 @@ import { useQuasar } from 'quasar'
 
 // loading page
 const $q = useQuasar()
-let timer
+let timer: ReturnType<typeof setTimeout> | undefined
 
 onBeforeUnmount(() => {
   if (timer !== void 0) {

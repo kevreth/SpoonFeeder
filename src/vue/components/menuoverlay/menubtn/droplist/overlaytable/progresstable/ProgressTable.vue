@@ -64,7 +64,7 @@
   </q-card>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import {Score, CourseFile} from '../../../../../../mediator';
 import SummaryIcon from './SummaryIcon.vue'
@@ -127,11 +127,6 @@ const _columns = [
     },
   ];
 
-// const course = CourseFile.get();
-// const courseLine = Score.summary(course);
-// const courseLines = new Array<ISummaryLine>();
-// courseLines.push(courseLine);
-
 const course = CourseFile.get();
 let summary = Score.summary(course);
 const columns = ref(_columns);
@@ -143,7 +138,7 @@ function handleInfoOverlay() {
   infoOverlay.value = !infoOverlay.value
 }
 
-function myClass (pctCorrect, pctComplete) {
+function myClass (pctCorrect: string, pctComplete: string) {
   if(pctComplete < 100 + '%') {
     return 'text-white';
   }

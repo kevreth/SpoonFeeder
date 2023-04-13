@@ -7,8 +7,8 @@
   />
 </template>
 
-<script setup>
-import { onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { onMounted, Ref, ref } from 'vue';
 
   const props = defineProps({
     selectCourse: {
@@ -20,7 +20,8 @@ import { onMounted, ref } from 'vue';
     }
   })
   const emit = defineEmits(['closeInfo']);
-  const prevSelectedCourse = ref(null);
+  const prevSelectedCourse: Ref<unknown> = ref(null);
+    
   onMounted(() => {
     prevSelectedCourse.value = props.selectedCourse
   })
@@ -31,5 +32,4 @@ import { onMounted, ref } from 'vue';
       emit('closeInfo');
     }
   }
-
 </script>
