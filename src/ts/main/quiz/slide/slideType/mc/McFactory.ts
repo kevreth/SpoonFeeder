@@ -5,7 +5,7 @@ import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
 import type { SlideInterface } from '../../../slideInterface';
-import { SlideInitializer } from '../../SlideInitializer';
+import { SlideInitializer } from '../../slideInitializer';
 
 export class McFactory extends SlideInitializer {
   constructor() {
