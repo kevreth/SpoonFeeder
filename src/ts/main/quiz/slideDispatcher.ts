@@ -1,6 +1,6 @@
 import { last } from '../utilities';
 import { hideExplainIcon, startOverButton } from './buttons';
-import { Json, SaveData } from './datalayer/mediatorDataLayer';
+import { Json, SaveData } from './datalayer/mediator';
 import { evaluate } from './evaluate';
 import { conclude } from './slide/conclude/conclude';
 import type { AnswerType } from './slide/strategies/resultStrategy';

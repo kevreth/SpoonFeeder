@@ -1,6 +1,6 @@
 import { getChildIds, removeListener } from '../../../../utilities';
-import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
-import { AdocVisitor } from '../../../datalayer/mediatorDataLayer';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';

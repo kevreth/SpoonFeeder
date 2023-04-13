@@ -1,13 +1,13 @@
 import { polyfill } from 'mobile-drag-drop';
 import { CORRECT, INCORRECT } from '../../markupColors';
 import { shuffle } from '../../../../utilities';
-import { isRandom } from '../../../datalayer/mediatorDataLayer';
+import { isRandom } from '../../../datalayer/mediator';
 import { Slide } from '../../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
-import { AdocVisitor } from '../../../datalayer/mediatorDataLayer';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor } from '../../../datalayer/mediator';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { SlideInterface } from '../../../slideInterface';
 import type { MarkTypeGap, SlideType } from '../slideType';

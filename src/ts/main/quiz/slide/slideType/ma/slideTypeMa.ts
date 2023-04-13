@@ -1,5 +1,5 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
-import { AdocVisitor, isRandom } from '../../../datalayer/mediatorDataLayer';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { CORRECT, INCORRECT } from '../../markupColors';
 import { removeListener, shuffle } from '../../../../utilities';
 import { Slide } from '../../../slide';

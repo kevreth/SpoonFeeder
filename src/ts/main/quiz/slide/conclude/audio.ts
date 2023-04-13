@@ -1,4 +1,4 @@
-import { isMute } from '../../datalayer/mediatorDataLayer';
+import { isMute } from '../../datalayer/mediator';
 
 const audio = new Audio();
 const INCORRECT = '/resources/audio/incorrect.mp3';
