@@ -5,3 +5,9 @@ export function createHtmlGap(remaining: string, fills: string, gaps: string) {
     '\n<div id="response"></div>';
   return html;
 }
+
+export type CreateHtmlTypeGap = (
+  remaining: string,
+  fills: string,
+  gaps: string
+) => string;

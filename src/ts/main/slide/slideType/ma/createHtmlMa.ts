@@ -7,3 +7,4 @@ export function createHtmlMa(question: string, options: string[]) {
   accum.push(`</div><br>\n${doneButton()}\n`);
   return accum.join('\n');
 }
+export type CreateHtmlTypeMa = (question: string, options: string[]) => string;

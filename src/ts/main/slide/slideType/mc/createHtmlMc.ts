@@ -9,3 +9,4 @@ export function createHtmlMc(question: string, options: string[]) {
   });
   return accum.join('\n');
 }
+export type CreateHtmlTypeMc = (question: string, options: string[]) => string;

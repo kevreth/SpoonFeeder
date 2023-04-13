@@ -1,3 +1,4 @@
+import { AnswerType } from '../../kev/resultStrategy';
 import { shuffle } from '../../../quiz/utilities';
 import { isRandom } from '../../../datalayer/mediator';
 import { doneButton } from '../../../quiz/buttons';
@@ -16,3 +17,4 @@ export function createHtmlSort(inst: string, ans: AnswerType) {
   rev = rev.concat('\n</section>');
   return retval + rev + '\n</div><br>\n' + doneButton();
 }
+export type CreateHtmlTypeSort = (inst: string, ans: AnswerType) => string;

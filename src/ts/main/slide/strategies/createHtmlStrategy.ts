@@ -1,25 +1,18 @@
 import type { AnswerType } from './resultStrategy';
-import { createHtmlSort } from '../slideType/sort/createHtmlSort';
-import { createHtmlSelect } from '../slideType/select/createHtmlSelect';
-import { createHtmlMc } from '../slideType/mc/createHtmlMc';
-import { createHtmlImap } from '../slideType/imap/createHtmlImap';
-import { createHtmlMa } from '../slideType/ma/createHtmlMa';
-import { createHtmlGap } from '../slideType/gap/createHtmlGap';
-import { createHtmlInfo } from '../slideType/info/createHtmlInfo';
-export type CreateHtmlTypeGap = (
-  remaining: string,
-  fills: string,
-  gaps: string
-) => string;
-export type CreateHtmlTypeInfo = (txt: string) => string;
-export type CreateHtmlTypeImap = (inst: string, img: string) => string;
-export type CreateHtmlTypeMa = (question: string, options: string[]) => string;
-export type CreateHtmlTypeMc = (question: string, options: string[]) => string;
-export type CreateHtmlTypeSelect = (
-  instructions: string,
-  txt: string[]
-) => string;
-export type CreateHtmlTypeSort = (inst: string, ans: AnswerType) => string;
+import { createHtmlSort, CreateHtmlTypeSort } from '../slideType/sort/createHtmlSort';
+import { createHtmlSelect, CreateHtmlTypeSelect } from '../slideType/select/createHtmlSelect';
+import { createHtmlMc, CreateHtmlTypeMc } from '../slideType/mc/createHtmlMc';
+import { createHtmlImap, CreateHtmlTypeImap } from '../slideType/imap/createHtmlImap';
+import { createHtmlMa, CreateHtmlTypeMa } from '../slideType/ma/createHtmlMa';
+import { createHtmlGap, CreateHtmlTypeGap } from '../slideType/gap/createHtmlGap';
+import { createHtmlInfo, CreateHtmlTypeInfo } from '../slideType/info/createHtmlInfo';
+export type { CreateHtmlTypeGap };
+export type { CreateHtmlTypeInfo };
+export type { CreateHtmlTypeImap };
+export type { CreateHtmlTypeMa };
+export type { CreateHtmlTypeMc };
+export type { CreateHtmlTypeSelect };
+export type { CreateHtmlTypeSort };
 export type CreateHtmlTypeUnion =
   | CreateHtmlTypeGap
   | CreateHtmlTypeImap

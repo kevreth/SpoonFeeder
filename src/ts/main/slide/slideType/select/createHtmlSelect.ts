@@ -10,3 +10,8 @@ export function createHtmlSelect(instructions: string, txt: string[]) {
   accum.push(`</div><br>\n${doneButton()}\n`);
   return accum.join('\n');
 }
+
+export type CreateHtmlTypeSelect = (
+  instructions: string,
+  txt: string[]
+) => string;
