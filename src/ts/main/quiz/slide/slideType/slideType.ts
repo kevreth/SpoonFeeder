@@ -1,4 +1,4 @@
-import type { AdocVisitorInterface } from '../../datalayer/courseData/adocVisitor';
+import type { AdocVisitorInterface } from '../../datalayer/mediatorDataLayer';
 import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../strategies/resultStrategy';
 export type MarkTypeGap=(corrArr: boolean[], doc: Document)=> void;

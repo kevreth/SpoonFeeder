@@ -1,4 +1,5 @@
 import type { AdocVisitorInterface } from './courseData/adocVisitor';
+import { AdocVisitor } from './courseData/adocVisitor'
 import type { Course, Division } from './courseData/course';
 import { ProcessJson } from './courseData/processJson';
 import { CourseFile, Json } from './globals';
@@ -18,5 +19,6 @@ export {
   loadCourse,
   process,
   SaveData,
-  DivisionProcessor
+  DivisionProcessor,
+  AdocVisitor
 }

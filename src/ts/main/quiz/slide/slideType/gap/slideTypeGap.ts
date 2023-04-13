@@ -5,8 +5,8 @@ import { Slide } from '../../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { AdocVisitorInterface } from '../../../datalayer/courseData/adocVisitor';
-import { AdocVisitor } from '../../../datalayer/courseData/adocVisitor';
+import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
+import { AdocVisitor } from '../../../datalayer/mediatorDataLayer';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { SlideInterface } from '../../../slideInterface';
 import type { MarkTypeGap, SlideType } from '../slideType';

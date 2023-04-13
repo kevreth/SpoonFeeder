@@ -1,5 +1,5 @@
-import type { AdocVisitorInterface } from '../../../datalayer/courseData/adocVisitor';
-import { AdocVisitor } from '../../../datalayer/courseData/adocVisitor';
+import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
+import { AdocVisitor } from '../../../datalayer/mediatorDataLayer';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
 import type { MarkTypeSort, SlideType } from '../slideType'
