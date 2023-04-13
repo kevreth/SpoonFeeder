@@ -1,7 +1,8 @@
 import type { Course } from './course';
-import { CourseFile, Json } from '../globals';
+import { Json } from '../saveData/saveFile';
+import { CourseFile } from './courseFile';
 import { showSlides } from '../../slideDispatcher';
-import { getYaml2, getYaml } from '../fileUtilties';
+import { getYaml2, getYaml } from '../utilities/fileUtilties';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 import { ProcessJson } from './processJson';
 const { processJson } = ProcessJson;

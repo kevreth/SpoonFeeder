@@ -1,6 +1,6 @@
 import { remove } from '../../../utilities';
-import { getCourseListing, getCourseName, setCourseListing } from '../webStorage';
-import { getYaml } from '../fileUtilties';
+import { getCourseListing, getCourseName, setCourseListing } from '../webstorage/webStorage';
+import { getYaml } from '../utilities/fileUtilties';
 import { PREFIX_COURSE_FILE } from './loadCourse';
 //Vue interface to Course data.
 export class CourseData {

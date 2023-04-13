@@ -1,5 +1,5 @@
 import { shuffle } from '../../../utilities';
-import { isRandom } from '../webStorage';
+import { isRandom } from '../webstorage/webStorage';
 import type { SlideInterface } from '../../slideInterface';
 import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';

@@ -1,12 +1,11 @@
-import { extend, isEqual, last } from '../../../utilities';
-import { getCourseName } from '../webStorage';
+import { extend, isEqual } from '../../../utilities';
+import { getCourseName } from '../webstorage/webStorage';
 import { explanation } from '../../slide/explanation';
 import type { AnswerType } from '../../slide/strategies/resultStrategy';
-import { fillMatchingSlide } from '../../slideDispatcher';
 import type { SlideInterface } from '../../slideInterface';
-import type { StateActions } from '../../stateActionDispatcher';
 import { dispatch2 } from '../../stateActionDispatcher';
-import { Json } from '../globals';
+import { Json } from './saveFile';
+import { SlideDispatcher2 } from './slideDispatcher2';
 
 export class SaveData {
   constructor(
@@ -72,29 +71,4 @@ function getCurrentSlide(): SlideInterface {
   const ss = new SlideDispatcher2(Json.get(), SaveData.get());
   return dispatch2(ss, false);
 }
-export class SlideDispatcher2 implements StateActions<SlideInterface> {
-  constructor(public slides: SlideInterface[], public saves: SaveData[]) {}
-  //DUPLICATE CODE: slideDispatche.getSlide()
-  private getSlide(increment: number) {
-    const save = last(this.saves) as SaveData;
-    const idx = Json.findMatchingSlide(this.slides, save.txt);
-    const slide = Json.getMatchingSlide(this.slides, idx + increment);
-    fillMatchingSlide(slide, save);
-    return slide;
-  }
-  begin(): SlideInterface {
-    return this.slides[0];
-  }
-  current(): SlideInterface {
-    return this.getSlide(0);
-  }
-  decorate(): SlideInterface {
-    return this.getSlide(0);
-  }
-  next(): SlideInterface {
-    throw new Error('Method not implemented.');
-  }
-  end(): SlideInterface {
-    throw new Error('Method not implemented.');
-  }
-}
+
