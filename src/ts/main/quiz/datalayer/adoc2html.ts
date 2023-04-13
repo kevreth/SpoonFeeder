@@ -19,11 +19,8 @@ export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // 5) process the Handlebars templates
 export function adoc2html(str: string): string {
   if (typeof str === 'undefined') return '';
-  const arr = replaceMustache(str);
-  let txt = arr.shift() as string;
-  txt = adoc2markdown(txt as string);
+  let txt = adoc2markdown(str as string);
   txt = markdown2html(txt);
-  txt = restoreMustache(arr, txt);
   //consider adding a beautification step
   txt = substitute(txt);
   txt = processMustache(txt);
@@ -40,17 +37,6 @@ export function restoreMustache(arr: string[], txt: string) {
     txt = txt.replace(RANDOM, item);
   });
   return txt;
-}
-//The first element is the string with replaced text.
-//The remainder are the replacements in order.
-export function replaceMustache(str: string): string[] {
-  const replacedStrings = [];
-  const outputString = str.replace(/{{{[\s\S]*?}}}/g, (match) => {
-    replacedStrings.push(match);
-    return RANDOM;
-  });
-  replacedStrings.unshift(outputString);
-  return replacedStrings;
 }
 export function register(course: string) {
   Handlebars.registerHelper('html', registerTable(course));
