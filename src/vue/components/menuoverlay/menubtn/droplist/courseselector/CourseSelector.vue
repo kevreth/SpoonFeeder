@@ -4,7 +4,8 @@
     leave-active-class="animated slideOutUp">
     <q-overlay
       id="courseTable"
-      @click.stop="">
+      @click.stop=""
+      z-index="7000">
       <template #body>
         <q-list
           id="courseList"
