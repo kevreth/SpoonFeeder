@@ -1,4 +1,4 @@
-export enum MarkupColors {
+enum MarkupColors {
   INDETERMINANT = 'blue',
   CORRECT = 'green',
   INCORRECT = 'red',

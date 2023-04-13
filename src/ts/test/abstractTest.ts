@@ -1,6 +1,6 @@
 import { fail } from 'assert';
 import { expect } from 'vitest';
-export const MSG_PREFIX = 'Problem creating test instance in test class ';
+const MSG_PREFIX = 'Problem creating test instance in test class ';
 export abstract class AbstractTest<T extends object> {
   private testable!: T;
   protected abstract factory(): T;
