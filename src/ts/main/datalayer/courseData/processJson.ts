@@ -5,7 +5,7 @@ import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';
 import { process } from './courseFileProcessor';
 import { initSlide } from '../../slide/slideFactory';
-import { INFO } from '../../slide/slideType/info/InfoFactory';
+import { INFO } from '../../slide/slideType/info/factoryInfo';
 //////////////// Phase 1: process Json
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>

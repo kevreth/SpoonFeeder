@@ -1,13 +1,13 @@
 import type { SlideInterface } from './slideInterface';
 import { BoolFactory } from './slideType/bool/BoolFactory';
-import { ImapFactory } from './slideType/imap/ImapFactory';
-import { InfoFactory } from './slideType/info/InfoFactory';
-import { MaFactory } from './slideType/ma/MaFactory';
-import { McFactory } from './slideType/mc/McFactory';
-import { SelectFactory } from './slideType/select/SelectFactory';
-import { SortFactory } from './slideType/sort/SortFactory';
-import { VocabFactory } from './slideType/vocab/VocabFactory';
-import { GapFactory } from './slideType/gap/GapFactory';
+import { ImapFactory } from './slideType/imap/factoryImap';
+import { InfoFactory } from './slideType/info/factoryInfo';
+import { MaFactory } from './slideType/ma/factoryMa';
+import { McFactory } from './slideType/mc/factoryMc';
+import { SelectFactory } from './slideType/select/factorySelect';
+import { SortFactory } from './slideType/sort/factorySort';
+import { VocabFactory } from './slideType/vocab/factoryVocab';
+import { GapFactory } from './slideType/gap/factoryGap';
 const values = [
   new BoolFactory(),
   new GapFactory(),
