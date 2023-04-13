@@ -1,4 +1,4 @@
-import { remove } from '../../../utilities';
+import { remove } from '../../quiz/utilities';
 import { getCourseListing, getCourseName, setCourseListing } from '../webstorage/webStorage';
 import { getYaml } from '../persistence/filePersistence';
 import { PREFIX_COURSE_FILE } from './loadCourse';

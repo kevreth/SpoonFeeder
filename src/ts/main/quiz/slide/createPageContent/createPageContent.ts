@@ -1,4 +1,4 @@
-import { append, empty } from '../../../utilities';
+import { append, empty } from '../../quiz/utilities';
 import { postRender } from './postRender';
 //small file but broken out to solve circular dependencies
 export function createPageContent(html: string, doc: Document): void {

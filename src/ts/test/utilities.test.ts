@@ -6,7 +6,7 @@ import {
   intersection,
   isEqual,
   remove,
-} from '../main/utilities';
+} from '../main/quiz/quiz/utilities';
 const testArr1 = [1, 2];
 const testArr2 = [2, 3];
 it('difference', () => {

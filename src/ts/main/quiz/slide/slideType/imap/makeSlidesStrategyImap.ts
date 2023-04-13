@@ -1,6 +1,6 @@
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds } from '../../../../utilities';
-import type { SlideInterface } from '../../../slideInterface';
+import { getChildIds } from '../../../quiz/utilities';
+import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeImap } from '../../strategies/createHtmlStrategy';

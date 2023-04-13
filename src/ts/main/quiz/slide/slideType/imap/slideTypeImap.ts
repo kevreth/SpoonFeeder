@@ -1,8 +1,8 @@
-import { getChildIds, removeListener } from '../../../../utilities';
+import { getChildIds, removeListener } from '../../../quiz/utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
-import { Slide } from '../../../slide';
-import type { SlideInterface } from '../../../slideInterface';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';
 import { MakeSlidesTypeImap } from './makeSlidesStrategyImap';
 export class Imap extends Slide implements SlideType {

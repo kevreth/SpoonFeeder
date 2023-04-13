@@ -1,9 +1,9 @@
-import { extend, isEqual } from '../../../utilities';
+import { extend, isEqual } from '../../quiz/utilities';
 import { getCourseName } from '../webstorage/webStorage';
 import { explanation } from '../../slide/explanation';
 import type { AnswerType } from '../../slide/strategies/resultStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import { dispatch2 } from '../../stateActionDispatcher';
+import type { SlideInterface } from '../../slide/slideInterface';
+import { dispatch2 } from '../../quiz/stateActionDispatcher';
 import { Json } from './saveFile';
 import { SlideDispatcher2 } from './slideDispatcher2';
 import { getLocalStorage, setLocalStorage } from '../persistence/webPersistence';

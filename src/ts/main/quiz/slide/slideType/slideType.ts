@@ -1,5 +1,5 @@
 import type { AdocVisitorInterface } from '../../datalayer/mediator';
-import type { SlideInterface } from '../../slideInterface';
+import type { SlideInterface } from '../slideInterface';
 import type { AnswerType } from '../strategies/resultStrategy';
 export type MarkTypeGap=(corrArr: boolean[], doc: Document)=> void;
 export type MarkTypeImap=(isCorrect: boolean, id: string, doc: Document)=> void;

@@ -1,5 +1,5 @@
-import { showButton, showExplainIcon } from '../../buttons';
-import type { SlideInterface } from '../../slideInterface';
+import { showButton, showExplainIcon } from '../../quiz/buttons';
+import type { SlideInterface } from '../slideInterface';
 import { playAudio } from './audio';
 import type { AnswerType } from '../strategies/resultStrategy';
 

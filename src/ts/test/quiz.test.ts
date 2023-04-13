@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { Quiz } from '../main/quiz';
+import { Quiz } from '../main/quiz/quiz/quiz';
 // import { JSDOM } from 'jsdom';
 // const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 

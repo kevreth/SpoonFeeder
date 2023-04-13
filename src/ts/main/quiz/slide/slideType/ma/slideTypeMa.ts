@@ -1,9 +1,9 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { CORRECT, INCORRECT } from '../../markupColors';
-import { removeListener, shuffle } from '../../../../utilities';
-import { Slide } from '../../../slide';
-import type { SlideInterface } from '../../../slideInterface';
+import { removeListener, shuffle } from '../../../quiz/utilities';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMa, SlideType } from '../slideType';
 import { MakeSlidesTypeMa } from './makeSlidesStrategyMa';

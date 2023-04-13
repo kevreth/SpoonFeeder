@@ -1,7 +1,7 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
-import { Slide } from '../../../slide';
-import type { SlideInterface } from '../../../slideInterface';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeInfo } from '../../strategies/createHtmlStrategy';
 import type { MarkType, SlideType } from '../slideType';
 import { MakeSlidesTypeInfo } from './makeSlidesStrategyInfo';

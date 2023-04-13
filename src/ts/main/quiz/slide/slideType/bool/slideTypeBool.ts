@@ -1,6 +1,6 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
-import type { SlideInterface } from '../../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 
 import { Mc } from '../mc/slideTypeMc';
 import { SlideType } from '../slideType';

@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import { VOCAB } from '../../../../main/quiz/slide/slideFactory';
-import type { Slide } from '../../../../main/quiz/slide';
+import type { Slide } from '../../../../main/quiz/slide/slide';
 import {
   Vocab,
   generateQuestions,

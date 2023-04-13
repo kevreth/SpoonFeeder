@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import { BOOL } from '../../../../main/quiz/slide/slideFactory';
-import type { Slide } from '../../../../main/quiz/slide';
+import type { Slide } from '../../../../main/quiz/slide/slide';
 import { Bool } from '../../../../main/quiz/slide/slideType/bool/slideTypeBool';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {

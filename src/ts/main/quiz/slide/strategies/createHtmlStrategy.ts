@@ -1,6 +1,6 @@
-import { shuffle } from '../../../utilities';
+import { shuffle } from '../../quiz/utilities';
 import { isRandom } from '../../datalayer/mediator';
-import { doneButton, makeButton } from '../../buttons';
+import { doneButton, makeButton } from '../../quiz/buttons';
 import type { AnswerType } from './resultStrategy';
 export type CreateHtmlTypeGap = (
   remaining: string,

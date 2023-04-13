@@ -1,7 +1,7 @@
-import { last } from '../../../utilities';
-import { fillMatchingSlide } from '../../slideDispatcher';
-import type { SlideInterface } from '../../slideInterface';
-import type { StateActions } from '../../stateActionDispatcher';
+import { last } from '../../quiz/utilities';
+import { fillMatchingSlide } from '../../slide/slideDispatcher';
+import type { SlideInterface } from '../../slide/slideInterface';
+import type { StateActions } from '../../quiz/stateActionDispatcher';
 import { Json } from './saveFile';
 import { SaveData } from './saveData';
 

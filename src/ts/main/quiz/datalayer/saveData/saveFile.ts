@@ -1,5 +1,5 @@
-import { isEqual } from '../../../utilities';
-import type { SlideInterface } from '../../slideInterface';
+import { isEqual } from '../../quiz/utilities';
+import type { SlideInterface } from '../../slide/slideInterface';
 export class Json {
   private static json: Array<SlideInterface> = [];
   public static get() {

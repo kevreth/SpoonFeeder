@@ -1,8 +1,8 @@
-import { shuffle } from '../../../../utilities';
+import { shuffle } from '../../../quiz/utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
-import { Slide } from '../../../slide';
-import type { SlideInterface } from '../../../slideInterface';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
 import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';

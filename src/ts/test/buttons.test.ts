@@ -1,4 +1,4 @@
-import { makeButton } from '../main/quiz/buttons';
+import { makeButton } from '../main/quiz/quiz/buttons';
 import { expect, it } from 'vitest';
 it('makeButton', () => {
   const str = makeButton('ABC', 'DEF', 'HIJ');

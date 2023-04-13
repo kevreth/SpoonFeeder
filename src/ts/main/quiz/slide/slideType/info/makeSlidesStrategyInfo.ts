@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeInfo } from '../../strategies/createHtmlStrategy';

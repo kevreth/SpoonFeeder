@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import type { SlideInterface } from '../../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
 import type { CreateHtmlTypeSort } from '../../strategies/createHtmlStrategy';
