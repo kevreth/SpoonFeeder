@@ -2,7 +2,6 @@ import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
 import { marked } from 'marked';
 import { getCourseName } from '../../utilities';
-export const RANDOM = 'bnGUn33pN22T$A8$*6pQquvHs5eE#34GrUtB%$jQFDmQQVbXS';
 // Asciidoctor.js will not run in Vue environment so we
 // use *downdoc* to transform to markdown and then *marked*
 // to transform to HTML.

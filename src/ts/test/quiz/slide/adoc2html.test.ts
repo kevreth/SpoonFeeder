@@ -1,6 +1,5 @@
 import { expect, it } from 'vitest';
 import {
-  RANDOM,
   adoc2html,
   adoc2markdown,
   markdown2html,
