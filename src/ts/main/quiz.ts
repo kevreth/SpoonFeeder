@@ -1,6 +1,6 @@
-import type { Course } from './quiz/datalayer/course';
+import type { Course } from './quiz/datalayer/courseData/course';
 import { CourseFile, Json } from './quiz/datalayer/globals';
-import { ProcessJson } from './quiz/datalayer/processJson';
+import { ProcessJson } from './quiz/datalayer/courseData/processJson';
 import { showSlides } from './quiz/slideDispatcher';
 import { getYaml2, setCourseName, getYaml } from './utilities';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';

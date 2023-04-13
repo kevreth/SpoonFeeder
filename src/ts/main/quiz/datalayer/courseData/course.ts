@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 export abstract class Division {
   name = '';
 }

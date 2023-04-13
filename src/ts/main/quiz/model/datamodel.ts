@@ -1,4 +1,4 @@
-import { Course } from '../datalayer/course';
+import { Course } from '../datalayer/courseData/course';
 import type { ISummaryLine } from '../score';
 import type { SlideInterface } from '../slideInterface';
 

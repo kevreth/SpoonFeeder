@@ -1,7 +1,7 @@
 import { CORRECT, INCORRECT } from '../../../../markupColors';
 import { isRandom, removeListener, shuffle } from '../../../../utilities';
-import type { AdocVisitorInterface } from '../../../datalayer/adocVisitor';
-import { AdocVisitor } from '../../../datalayer/adocVisitor';
+import type { AdocVisitorInterface } from '../../../datalayer/courseData/adocVisitor';
+import { AdocVisitor } from '../../../datalayer/courseData/adocVisitor';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';

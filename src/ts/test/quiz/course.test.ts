@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { Course, Lesson, Module, Unit } from '../../main/quiz/datalayer/course';
+import { Course, Lesson, Module, Unit } from '../../main/quiz/datalayer/courseData/course';
 it('test course', () => {
   const division = new Course();
   const children = division.units;

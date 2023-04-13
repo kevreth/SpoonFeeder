@@ -1,10 +1,10 @@
-import { isRandom, shuffle } from '../../utilities';
-import type { SlideInterface } from '../slideInterface';
+import { isRandom, shuffle } from '../../../utilities';
+import type { SlideInterface } from '../../slideInterface';
 import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';
 import { process } from './courseFileProcessor';
-import { initSlide } from '../slide/slideFactory';
-import { INFO } from '../slide/slideType/info/InfoFactory';
+import { initSlide } from '../../slide/slideFactory';
+import { INFO } from '../../slide/slideType/info/InfoFactory';
 //////////////// Phase 1: process Json
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>
