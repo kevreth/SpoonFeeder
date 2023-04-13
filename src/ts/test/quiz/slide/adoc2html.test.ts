@@ -1,12 +1,9 @@
 import { expect, it } from 'vitest';
 import {
-  RANDOM,
   adoc2html,
   adoc2markdown,
   markdown2html,
-  processMustache,
-  replaceMustache,
-  restoreMustache,
+  processHandlebars
 } from '../../../main/quiz/datalayer/adoc2html';
 const asciidoc = `
 == Document Title
@@ -35,25 +32,8 @@ const asciidocMustache =
   {{{svg 'test1'}}}
   {{{table 'test2'}}}
 `;
-const PATTERN = "{{{'test'}}}";
-const template = `A ${PATTERN} B ${PATTERN} C`;
-const exp = `A ${RANDOM} B ${RANDOM} C`;
-it('test replaceMustache', () => {
-  const act = replaceMustache(template);
-  expect(act).not.toBeNull();
-  expect(act).toHaveLength(3); //template + 2 patterns
-  expect(act[0]).toEqual(exp);
-  expect(act[1]).toEqual(PATTERN);
-  expect(act[2]).toEqual(PATTERN);
-});
-it('test restoreMustache', () => {
-  const arr = [PATTERN, PATTERN];
-  const act = restoreMustache(arr, exp);
-  expect(act).not.toBeNull();
-  expect(act).toEqual(template);
-});
 it('test processMustache', () => {
-  const act = processMustache("{{{svg 'test1'}}}");
+  const act = processHandlebars("{{{svg 'test1'}}}");
   expect(act).not.toBeNull();
   expect(act).toContain('img');
   expect(act).toContain('test1');
