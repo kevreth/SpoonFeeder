@@ -8,22 +8,25 @@ import { PREFIX_COURSE_FILE, loadCourse } from './courseData/loadCourse';
 import type { DivisionProcessor } from './courseData/courseFileProcessor';
 import { process } from './courseData/courseFileProcessor';
 import { SaveData } from './saveData/saveData';
-import { isMute, isRandom, setCourseName } from './webstorage/webStorage';
+import { isMute, isRandom, setCourseName,clearRandom } from './webstorage/webStorage';
+import { clearSessionStorage } from './persistence/webPersistence';
 
 export {
+  PREFIX_COURSE_FILE,
   Course,
   Division,
   AdocVisitorInterface,
   ProcessJson,
   CourseFile,
   Json,
-  PREFIX_COURSE_FILE,
-  loadCourse,
-  process,
   SaveData,
   DivisionProcessor,
   AdocVisitor,
+  loadCourse,
+  process,
   setCourseName,
   isRandom,
-  isMute
+  isMute,
+  clearRandom,
+  clearSessionStorage
 }

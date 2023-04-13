@@ -1,4 +1,4 @@
-import { PREFIX_COURSE_FILE, loadCourse, setCourseName } from './quiz/datalayer/mediator';
+import { PREFIX_COURSE_FILE, clearRandom, clearSessionStorage, loadCourse, setCourseName } from './quiz/datalayer/mediator';
 // necessary for adding a property to the
 // DOM window object
 interface Window {
@@ -7,10 +7,10 @@ interface Window {
 }
 declare const window: Window;
 export function switchCourse(courseName: string) {
-  sessionStorage.clear();
+  clearSessionStorage();
   //===========================================================================
   // un-comment for TESTING
-  sessionStorage.setItem('random', 'false');
+  clearRandom()
   //===========================================================================
   setCourseName(courseName);
   //make the course path accessible to course files

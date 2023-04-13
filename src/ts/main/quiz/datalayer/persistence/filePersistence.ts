@@ -1,5 +1,5 @@
 import * as yaml from 'js-yaml';
-
+// Read-only.
 export function getYaml<T>(filename: string, f: (data: T) => void) {
   fetch(filename)
     .then((res) => res.blob())

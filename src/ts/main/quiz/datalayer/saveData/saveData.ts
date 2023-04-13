@@ -6,6 +6,7 @@ import type { SlideInterface } from '../../slideInterface';
 import { dispatch2 } from '../../stateActionDispatcher';
 import { Json } from './saveFile';
 import { SlideDispatcher2 } from './slideDispatcher2';
+import { getLocalStorage, setLocalStorage } from '../persistence/webPersistence';
 
 export class SaveData {
   constructor(
@@ -15,7 +16,7 @@ export class SaveData {
     public readonly cont: boolean
   ) {}
   public static get(): Array<SaveData> {
-    const data = localStorage.getItem(getCourseName()) as string;
+    const data = getLocalStorage(getCourseName()) as string;
     const data1 = JSON.parse(data);
     const arr1 = new Array<SaveData>();
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
@@ -27,7 +28,7 @@ export class SaveData {
       const arr = SaveData.get();
       arr.push(save);
       const json = JSON.stringify(arr);
-      localStorage.setItem(getCourseName(), json);
+      setLocalStorage(getCourseName(), json);
     }
   }
   public static find(txt: string, saves: Array<SaveData>): number {
@@ -50,7 +51,7 @@ export class SaveData {
     if (save == null || idx == null || saves == null) return;
     saves[idx] = save;
     const json = JSON.stringify(saves);
-    localStorage.setItem(getCourseName(), json);
+    setLocalStorage(getCourseName(), json);
   }
   public static setContinueTrue(txt: string) {
     const saves = SaveData.get();

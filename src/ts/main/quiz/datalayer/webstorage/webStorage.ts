@@ -1,5 +1,7 @@
+import { getLocalStorage, getSessionStorage, setLocalStorage, setSessionStorage } from '../persistence/webPersistence';
+
 function checkSessionStorageFlag(key: string): boolean {
-  const val = sessionStorage.getItem(key);
+  const val = getSessionStorage(key);
   //assume key not existing is false
   let retval = false;
   if (val === 'true')
@@ -8,30 +10,24 @@ function checkSessionStorageFlag(key: string): boolean {
 }
 export function setCourseListing(value: Array<string>) {
   const str = JSON.stringify(value);
-  sessionStorage.setItem('courses', str);
+  setSessionStorage('courses', str);
 }
 export function getCourseListing() {
-  const json = sessionStorage.getItem('courses') as string;
+  const json = getSessionStorage('courses') as string;
   const str = JSON.parse(json);
   return str;
-}
-export function setLocalStorage(key: string, value: string) {
-  localStorage.setItem(key, value);
-}
-export function getLocalStorage(key: string) {
-  return localStorage.getItem(key) as string;
 }
 export function setCourseName(value: string) {
   setLocalStorage('courseName', value);
 }
 export function getCourseName() {
-  return localStorage.getItem('courseName') as string;
+  return getLocalStorage('courseName') as string;
 }
 function setSessionStorageFlag(key: string) {
-  sessionStorage.setItem(key, 'true');
+  setSessionStorage(key, 'true');
 }
 function clearSessionStorageFlag(key: string) {
-  sessionStorage.setItem(key, 'false');
+  setSessionStorage(key, 'false');
 }
 export function setMute() {
   setSessionStorageFlag('mute');
