@@ -1,7 +1,7 @@
-import { CORRECT, INCORRECT } from '../../markupColors';
-import { isRandom, removeListener, shuffle } from '../../../../utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
-import { AdocVisitor } from '../../../datalayer/mediatorDataLayer';
+import { AdocVisitor, isRandom } from '../../../datalayer/mediatorDataLayer';
+import { CORRECT, INCORRECT } from '../../markupColors';
+import { removeListener, shuffle } from '../../../../utilities';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';

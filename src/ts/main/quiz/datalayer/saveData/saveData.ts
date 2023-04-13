@@ -1,4 +1,5 @@
-import { extend, getCourseName, isEqual, last } from '../../../utilities';
+import { extend, isEqual, last } from '../../../utilities';
+import { getCourseName } from '../webStorage';
 import { explanation } from '../../slide/explanation';
 import type { AnswerType } from '../../slide/strategies/resultStrategy';
 import { fillMatchingSlide } from '../../slideDispatcher';

@@ -7,6 +7,7 @@ import { PREFIX_COURSE_FILE, loadCourse } from './courseData/loadCourse';
 import type { DivisionProcessor } from './courseData/courseFileProcessor';
 import { process } from './courseData/courseFileProcessor';
 import { SaveData } from './saveData/saveData';
+import { isMute, isRandom, setCourseName } from './webStorage';
 
 export {
   Course,
@@ -20,5 +21,8 @@ export {
   process,
   SaveData,
   DivisionProcessor,
-  AdocVisitor
+  AdocVisitor,
+  setCourseName,
+  isRandom,
+  isMute
 }

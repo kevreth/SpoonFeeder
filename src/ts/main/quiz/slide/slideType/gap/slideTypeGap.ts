@@ -1,6 +1,7 @@
 import { polyfill } from 'mobile-drag-drop';
 import { CORRECT, INCORRECT } from '../../markupColors';
-import { isRandom, shuffle } from '../../../../utilities';
+import { shuffle } from '../../../../utilities';
+import { isRandom } from '../../../datalayer/mediatorDataLayer';
 import { Slide } from '../../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.

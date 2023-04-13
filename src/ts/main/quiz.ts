@@ -1,5 +1,4 @@
-import { PREFIX_COURSE_FILE, loadCourse } from './quiz/datalayer/mediatorDataLayer';
-import { setCourseName } from './utilities';
+import { PREFIX_COURSE_FILE, loadCourse, setCourseName } from './quiz/datalayer/mediatorDataLayer';
 // necessary for adding a property to the
 // DOM window object
 interface Window {

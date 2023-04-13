@@ -1,6 +1,6 @@
-import { isRandom, shuffle } from '../../../../utilities';
+import { shuffle } from '../../../../utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/mediatorDataLayer';
-import { AdocVisitor } from '../../../datalayer/mediatorDataLayer';
+import { AdocVisitor, isRandom } from '../../../datalayer/mediatorDataLayer';
 import { Slide } from '../../../slide';
 import type { SlideInterface } from '../../../slideInterface';
 import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';

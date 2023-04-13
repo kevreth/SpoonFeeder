@@ -1,4 +1,5 @@
-import { isRandom, shuffle } from '../../../utilities';
+import { shuffle } from '../../../utilities';
+import { isRandom } from '../../datalayer/mediatorDataLayer';
 import { doneButton, makeButton } from '../../buttons';
 import type { AnswerType } from './resultStrategy';
 export type CreateHtmlTypeGap = (

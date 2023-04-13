@@ -1,4 +1,5 @@
-import { getCourseListing, getCourseName, remove, setCourseListing } from '../../../utilities';
+import { remove } from '../../../utilities';
+import { getCourseListing, getCourseName, setCourseListing } from '../webStorage';
 import { getYaml } from '../fileUtilties';
 import { PREFIX_COURSE_FILE } from './loadCourse';
 //Vue interface to Course data.
