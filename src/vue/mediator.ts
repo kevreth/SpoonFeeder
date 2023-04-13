@@ -2,9 +2,10 @@ import {Score} from '../ts/main/quiz/score';
 import {CourseFile} from '../ts/main/quiz/datalayer/globals'
 import { muteAudio, playBack } from '../ts/main/quiz/slide/conclude/audio';
 import {SaveData} from '../ts/main/quiz/datalayer/saveData/saveData';
-import { loadCourseListing, switchCourse } from '../ts/main/quiz';
+import { switchCourse } from '../ts/main/quiz';
+import { loadCourseListing } from '../ts/main/quiz/datalayer/courseData/loadCourse';
 import {getCourseName, setCourseListing,createValidHtmlId } from '../ts/main/utilities';
-import { getCourseData } from '../ts/main/courseData';
+import { getCourseData } from '../ts/main/quiz/datalayer/courseData/courseData';
 
 export {
   Score,

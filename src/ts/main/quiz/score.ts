@@ -1,7 +1,5 @@
-import type { Course, Division } from './datalayer/courseData/course';
-import type { DivisionProcessor } from './datalayer/courseData/courseFileProcessor';
-import { process } from './datalayer/courseData/courseFileProcessor';
-import { SaveData } from './datalayer/saveData/saveData';
+import type { Course, Division, DivisionProcessor } from './datalayer/mediatorDataLayer';
+import { SaveData, process } from './datalayer/mediatorDataLayer';
 import { initSlide } from './slide/slideFactory';
 import { percentCorrect } from './evaluate';
 import type { SlideInterface } from './slideInterface';

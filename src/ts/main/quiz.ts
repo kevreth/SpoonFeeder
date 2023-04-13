@@ -1,10 +1,5 @@
-import type { Course } from './quiz/datalayer/courseData/course';
-import { CourseFile, Json } from './quiz/datalayer/globals';
-import { ProcessJson } from './quiz/datalayer/courseData/processJson';
-import { showSlides } from './quiz/slideDispatcher';
-import { getYaml2, setCourseName, getYaml } from './utilities';
-export const PREFIX_COURSE_FILE = '../../../src/courses/';
-const { processJson } = ProcessJson;
+import { PREFIX_COURSE_FILE, loadCourse } from './quiz/datalayer/mediatorDataLayer';
+import { setCourseName } from './utilities';
 // necessary for adding a property to the
 // DOM window object
 interface Window {
@@ -36,18 +31,4 @@ export class Quiz {
     return PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
   }
 }
-export function loadCourse(yamlFilename: string, doc: Document) {
-  getYaml(yamlFilename, (course: Course) => {
-    CourseFile.set(course);
-    const slides = processJson(course);
-    Json.set(slides);
-    showSlides(doc);
-  });
-}
-export const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';
-export function loadFile<T>(filename:string, f: (data: T) => void) {
-  getYaml2<T>(filename).then(list => f(list));
-}
-export function loadCourseListing(f: (data: string[]) => void) {
-  loadFile<string[]>(LISTING_FILE_NAME, f);
-}
+

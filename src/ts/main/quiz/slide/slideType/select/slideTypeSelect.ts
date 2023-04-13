@@ -1,4 +1,4 @@
-import { CORRECT, INCORRECT } from '../../../../markupColors';
+import { CORRECT, INCORRECT } from '../../markupColors';
 import { difference, intersection } from '../../../../utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/courseData/adocVisitor';
 import { AdocVisitor } from '../../../datalayer/courseData/adocVisitor';

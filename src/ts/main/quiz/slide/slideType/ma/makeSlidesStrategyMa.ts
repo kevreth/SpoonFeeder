@@ -1,4 +1,4 @@
-import { INDETERMINANT } from '../../../../markupColors';
+import { INDETERMINANT } from '../../markupColors';
 import type { SlideInterface } from '../../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';

@@ -1,4 +1,4 @@
-import { timestampNow } from '../date';
+import { timestampNow } from './slide/date';
 import type { AdocVisitorInterface } from './datalayer/courseData/adocVisitor';
 import { SaveData } from './datalayer/saveData/saveData';
 import type { Evaluation } from './evaluate';

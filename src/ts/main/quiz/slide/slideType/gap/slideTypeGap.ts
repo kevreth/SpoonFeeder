@@ -1,5 +1,5 @@
 import { polyfill } from 'mobile-drag-drop';
-import { CORRECT, INCORRECT } from '../../../../markupColors';
+import { CORRECT, INCORRECT } from '../../markupColors';
 import { isRandom, shuffle } from '../../../../utilities';
 import { Slide } from '../../../slide';
 //Despite the documentation, "scroll behaviour" is required, not optional,
