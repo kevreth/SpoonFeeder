@@ -1,6 +1,9 @@
 import { shuffle } from '../../quiz/utilities';
 import { initSlide } from '../../slide/slideFactory';
-import type { SlideInterface } from '../../slide/slideInterface';
+import type {
+  SlideInterface,
+  SlideInterfaceProperties,
+} from '../../slide/slideInterface';
 import { INFO } from '../../slide/slideType/info/factoryInfo';
 import { isRandom } from '../webstorage/webStorage';
 import type { Course, Division, Module } from './course';
@@ -99,11 +102,11 @@ export class ProcessJson {
     return `${type} ${counter}:<br>${name}`;
   }
   public static loadQuestions(
-    slides: Array<SlideInterface>, //the currently processed slides
-    questions: Array<SlideInterface>, //raw slides to add in object notation form
+    slides: Array<SlideInterfaceProperties>, //the currently processed slides
+    questions: Array<SlideInterfaceProperties>, //raw slides to add in object notation form
     isExercise: boolean
   ): void {
-    const processedSlides = new Array<SlideInterface>();
+    const processedSlides = new Array<SlideInterfaceProperties>();
     questions.forEach((item) => {
       item.isExercise = isExercise;
       const lides = initSlide(item);

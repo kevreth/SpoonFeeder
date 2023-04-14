@@ -31,7 +31,7 @@ export interface SlideInterface extends SlideInterfaceProperties {
   resultType: ResultType;
   //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
-  processJson(json: SlideInterface): void;
+  processJson(json: SlideInterfaceProperties): void;
   accept(visitor: AdocVisitorInterface): void;
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;
