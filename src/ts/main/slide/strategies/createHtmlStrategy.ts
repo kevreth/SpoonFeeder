@@ -1,135 +1,30 @@
-import { shuffle } from '../../quiz/utilities';
-import { isRandom } from '../../datalayer/mediator';
-import { doneButton, makeButton } from '../../quiz/buttons';
-import type { AnswerType } from './resultStrategy';
-export type CreateHtmlTypeGap = (
-  remaining: string,
-  fills: string,
-  gaps: string
-) => string;
-export type CreateHtmlTypeInfo = (txt: string) => string;
-export type CreateHtmlTypeImap = (inst: string, img: string) => string;
-export type CreateHtmlTypeMa = (question: string, options: string[]) => string;
-export type CreateHtmlTypeMc = (question: string, options: string[]) => string;
-export type CreateHtmlTypeSelect = (
-  instructions: string,
-  txt: string[]
-) => string;
-export type CreateHtmlTypeSort = (inst: string, ans: AnswerType) => string;
-export type CreateHtmlTypeUnion =
-  | CreateHtmlTypeGap
-  | CreateHtmlTypeImap
-  | CreateHtmlTypeMa
-  | CreateHtmlTypeMc
-  | CreateHtmlTypeSelect
-  | CreateHtmlTypeSort;
-export type CreateHtmlTypeIntersection =
+import type { CreateHtmlTypeGap } from '../slideType/gap/createHtmlGap';
+import { createHtmlGap } from '../slideType/gap/createHtmlGap';
+import type { CreateHtmlTypeImap } from '../slideType/imap/createHtmlImap';
+import { createHtmlImap } from '../slideType/imap/createHtmlImap';
+import type { CreateHtmlTypeInfo } from '../slideType/info/createHtmlInfo';
+import { createHtmlInfo } from '../slideType/info/createHtmlInfo';
+import type { CreateHtmlTypeMa } from '../slideType/ma/createHtmlMa';
+import { createHtmlMa } from '../slideType/ma/createHtmlMa';
+import type { CreateHtmlTypeMc } from '../slideType/mc/createHtmlMc';
+import { createHtmlMc } from '../slideType/mc/createHtmlMc';
+import type { CreateHtmlTypeSelect } from '../slideType/select/createHtmlSelect';
+import { createHtmlSelect } from '../slideType/select/createHtmlSelect';
+import type { CreateHtmlTypeSort } from '../slideType/sort/createHtmlSort';
+import { createHtmlSort } from '../slideType/sort/createHtmlSort';
+export type CreateHtmlType = CreateHtmlTypeInfo &
   CreateHtmlTypeGap &
   CreateHtmlTypeImap &
   CreateHtmlTypeMa &
   CreateHtmlTypeMc &
   CreateHtmlTypeSelect &
   CreateHtmlTypeSort;
-export interface CreateHtmlI {
-  createHtml: CreateHtmlTypeUnion;
-}
-export class CreateHtmlGap implements CreateHtmlI {
-    createHtml: CreateHtmlTypeGap = (remaining, fills, gaps) => {
-    const html =
-      `\n<div id="fills">${fills}\n</div>` +
-      `\n<div id="gaps">${gaps}\n</div>` +
-      `\n<div id="remaining">${remaining}</div>` +
-      '\n<div id="response"></div>';
-    return html;
-  };
-}
 export class CreateHtml {
-  /////////////////////////////////////////////////////////////////////////////
-  //                             DEFAULT
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly DEFAULT = function () {
-    return '';
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             INFO
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly INFO: CreateHtmlTypeInfo = function (txt: string) {
-    return `\n${txt}`;
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             GAP
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly GAP: CreateHtmlTypeGap = function (remaining, fills, gaps) {
-    const html =
-      `\n<div id="fills">${fills}\n</div>` +
-      `\n<div id="gaps">${gaps}\n</div>` +
-      `\n<div id="remaining">${remaining}</div>` +
-      '\n<div id="response"></div>';
-    return html;
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             IMAP
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly IMAP: CreateHtmlTypeImap = function (
-    inst: string,
-    img: string
-  ) {
-    return `${inst}<br><div id="imagemap" data-src="${img}"></div>`;
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             MA
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly MA: CreateHtmlTypeMa = function (
-    question: string,
-    options: string[]
-  ) {
-    const mc = CreateHtml.MC(question, options);
-    const accum = new Array<string>(mc);
-    accum.push(`</div><br>\n${doneButton()}\n`);
-    return accum.join('\n');
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             MC
-  /////////////////////////////////////////////////////////////////////////////
-  // also used by BOOL, MA, VOCAB
-  static readonly MC: CreateHtmlTypeMc = function (
-    question: string,
-    options: string[]
-  ) {
-    const accum = new Array<string>(
-      `\n${question}<span style="display: block; margin-bottom: .5em;"></span>\n`
-    );
-    options.forEach((option, i) => {
-      accum.push(makeButton('btn' + i, 'questionBtn', option) + '<br/>\n');
-    });
-    return accum.join('\n');
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             SELECT
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly SELECT: CreateHtmlTypeSelect = function (instructions, txt) {
-    const accum = new Array<string>(
-      `${instructions}<span style="display: block; margin-bottom: .5em;"></span>\n<div id="text">\n`
-    );
-    txt.forEach((item, idx) => {
-      accum.push(`<span id="w${idx + 1}">${item}</span> `);
-    });
-    accum.push(`</div><br>\n${doneButton()}\n`);
-    return accum.join('\n');
-  };
-  /////////////////////////////////////////////////////////////////////////////
-  //                             SORT
-  /////////////////////////////////////////////////////////////////////////////
-  static readonly SORT: CreateHtmlTypeSort = function createHtml(inst, ans) {
-    const retval = inst + '<br>\n';
-    let rev = '<div id="selection"></div>\n<section class="container">\n';
-    let list = ans as string[];
-    if (isRandom()) list = shuffle(list as string[]);
-    list.forEach((item) => {
-      rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
-    });
-    rev = rev.trimEnd();
-    rev = rev.concat('\n</section>');
-    return retval + rev + '\n</div><br>\n' + doneButton();
-  };
+  static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
+  static readonly GAP: CreateHtmlTypeGap = createHtmlGap;
+  static readonly IMAP: CreateHtmlTypeImap = createHtmlImap;
+  static readonly MA: CreateHtmlTypeMa = createHtmlMa;
+  static readonly MC: CreateHtmlTypeMc = createHtmlMc;
+  static readonly SELECT: CreateHtmlTypeSelect = createHtmlSelect;
+  static readonly SORT: CreateHtmlTypeSort = createHtmlSort;
 }

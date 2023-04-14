@@ -1,12 +1,12 @@
-import { last } from '../quiz/utilities';
-import { hideExplainIcon, startOverButton } from '../quiz/buttons';
 import { Json, SaveData } from '../datalayer/mediator';
+import { hideExplainIcon, startOverButton } from '../quiz/buttons';
 import { evaluate } from '../quiz/evaluate';
-import { conclude } from './conclude/conclude';
-import type { AnswerType } from './strategies/resultStrategy';
-import type { SlideInterface } from './slideInterface';
 import type { StateActions } from '../quiz/stateActionDispatcher';
 import { dispatch2 } from '../quiz/stateActionDispatcher';
+import { last } from '../quiz/utilities';
+import { conclude } from './conclude/conclude';
+import type { SlideInterface } from './slideInterface';
+import type { AnswerType } from './strategies/resultStrategy';
 export function showSlides(doc: Document): void {
   const ss = new SlideDispatcher(Json.get(), SaveData.get(), doc);
   dispatch2(ss, true);

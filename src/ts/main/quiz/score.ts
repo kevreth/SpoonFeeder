@@ -1,8 +1,12 @@
-import type { Course, Division, DivisionProcessor } from '../datalayer/mediator';
+import type {
+  Course,
+  Division,
+  DivisionProcessor,
+} from '../datalayer/mediator';
 import { SaveData, process } from '../datalayer/mediator';
 import { initSlide } from '../slide/slideFactory';
-import { percentCorrect } from './evaluate';
 import type { SlideInterface } from '../slide/slideInterface';
+import { percentCorrect } from './evaluate';
 export interface ISummaryLine {
   name: string;
   score: number;

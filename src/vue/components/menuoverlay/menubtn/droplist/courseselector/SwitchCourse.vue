@@ -8,7 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, Ref, ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import type { Ref } from 'vue';
 
   const props = defineProps({
     selectCourse: {
@@ -21,7 +22,7 @@ import { onMounted, Ref, ref } from 'vue';
   })
   const emit = defineEmits(['closeInfo']);
   const prevSelectedCourse: Ref<unknown> = ref(null);
-    
+
   onMounted(() => {
     prevSelectedCourse.value = props.selectedCourse
   })

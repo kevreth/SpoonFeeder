@@ -1,14 +1,10 @@
-import { shuffle } from '../../../quiz/utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
+import { shuffle } from '../../../quiz/utilities';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
-import { CreateHtml } from '../../strategies/createHtmlStrategy';
-import { Evaluate } from '../../strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
-import { Result } from '../../strategies/resultStrategy';
-import { Mc } from '../mc/slideTypeMc';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import { McFactory } from '../mc/factoryMc';
 import type { MarkType, SlideType } from '../slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [
@@ -18,28 +14,19 @@ export type vocabTuplesType = [
 ][];
 //Vocab is different than the other slide types because it concisely
 //represents a group of mc questions.
-export class Vocab extends Slide implements SlideType  {
+export class Vocab extends Slide implements SlideType {
   mark!: MarkType;
   list = new Map<string, string>();
-  res = new Array<string>();
   set = new Array<SlideInterface>();
   processJson(json: SlideInterface): void {
-    const json1 = json as Vocab
-    this.list = new Map(Object.entries(json1.list));
-    this.isExercise = json1.isExercise;
+    this.list = new Map(Object.entries(json.list));
+    this.isExercise = json.isExercise;
     this.accept(new AdocVisitor());
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
-      //using SlideFactory creates a circular dependency
-      const slide = new Mc(
-        this.type,
-        CreateHtml.MC as CreateHtmlTypeIntersection,
-        MakeSlidesStrategy.MC,
-        Evaluate.SIMPLE,
-        Result.SIMPLE
-      );
+      const slide = new McFactory().instance();
       slide.txt = vtuple[0];
-      slide.ans = vtuple[1];
+      slide.ans = vtuple[1] as AnswerType;
       slide.o = vtuple[2];
       slide.isExercise = this.isExercise;
       this.set.push(slide);

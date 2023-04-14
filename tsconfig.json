@@ -1,7 +1,15 @@
 {
+  "compileOnSave": true,
   "extends": "@quasar/app-vite/tsconfig-preset",
   "compilerOptions": {
     "baseUrl": "src/ts",
-    "sourceMap": false
+    "sourceMap": false,
+    "watch": true,
+    "target": "ES2021",
+    "lib": ["ES2021"]
+    // "lib": [
+    //   "ES2021"
+    // ]
   }
+
 }

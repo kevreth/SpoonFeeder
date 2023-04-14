@@ -44,8 +44,8 @@ it('getChildIds', () => {
   expect(ids[2]).toBe('div-no-3');
 });
 it('remove', () => {
-  const arr = ['1', '2', '3']
+  const arr = ['1', '2', '3'];
   const actual = remove(arr, '2');
-  const expected = ['1', '3']
+  const expected = ['1', '3'];
   expect(actual).toEqual(expected);
-})
+});

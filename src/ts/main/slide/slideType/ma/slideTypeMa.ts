@@ -1,19 +1,14 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
-import { CORRECT, INCORRECT } from '../../markupColors';
 import { removeListener, shuffle } from '../../../quiz/utilities';
+import { CORRECT, INCORRECT } from '../../markupColors';
 import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
+import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMa, SlideType } from '../slideType';
-import { MakeSlidesTypeMa } from './makeSlidesStrategyMa';
-export class Ma extends Slide implements SlideType  {
-  o: string[] = [];
-  numans = 0;
-  answers: string[] = [];
-  res: string[] = [];
-  processJson(json: SlideInterface): void {
-    const json1 = json as Ma
+export class Ma extends Slide implements SlideType {
+  processJson(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       o: this.o,
@@ -21,14 +16,19 @@ export class Ma extends Slide implements SlideType  {
       ref: this.ref,
       isExercise: this.isExercise,
       numans: this.numans,
-    } = json1);
+    } = json);
     this.accept(new AdocVisitor());
-    for (let i = 0; i < this.numans; i++) {
-      this.answers.push(this.o[i]);
+    const answers: string[] = [];
+    const numans = this.numans as number;
+    const o = this.o as string[];
+    for (let i = 0; i < numans; i++) {
+      answers.push(o[i]);
     }
-    this.ans = this.answers.sort();
+    this.ans = answers.sort() as AnswerType;
+    this.o = o;
+    this.numans = numans;
     const shuffleFlag = this.isExercise && isRandom();
-    if (shuffleFlag) this.o = shuffle(this.o);
+    if (shuffleFlag) this.o = shuffle(o);
   }
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitMa(this);
@@ -38,10 +38,10 @@ export class Ma extends Slide implements SlideType  {
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt;
     const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMa;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(
       txt,
-      options,
+      options as AnswerType,
       createHtml,
       maxWidthStrategy,
       doc,
@@ -49,14 +49,14 @@ export class Ma extends Slide implements SlideType  {
     );
   }
   decorate(doc: Document) {
-    const options = this.o;
+    const options = this.o as AnswerType;
     for (let i = 0; i < options.length; i++) {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
       const option = options[i];
       let isKey = false;
       let selected = false;
-      if (this.answers.includes(option)) isKey = true;
-      if (this.res.includes(option)) selected = true;
+      if (this.ans.includes(option)) isKey = true;
+      if ((this.res as AnswerType).includes(option)) selected = true;
       const btn = doc.getElementById('btn' + i) as HTMLElement;
       this.mark(isKey, selected, btn);
     }
@@ -67,5 +67,5 @@ export class Ma extends Slide implements SlideType  {
     if (isKey && selected) btn.style.backgroundColor = CORRECT;
     else if (!isKey && selected) btn.style.backgroundColor = INCORRECT;
     else if (isKey && !selected) btn.style.border = `1px solid ${INCORRECT}`;
-  }
+  };
 }

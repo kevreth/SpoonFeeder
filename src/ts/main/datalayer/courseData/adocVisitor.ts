@@ -1,3 +1,4 @@
+import type { SlideInterface } from '../../slide/slideInterface';
 import { Bool } from '../../slide/slideType/bool/slideTypeBool';
 import { Gap } from '../../slide/slideType/gap/slideTypeGap';
 import { Imap } from '../../slide/slideType/imap/slideTypeImap';
@@ -7,7 +8,6 @@ import { Mc } from '../../slide/slideType/mc/slideTypeMc';
 import { Select } from '../../slide/slideType/select/slideTypeSelect';
 import { Sort } from '../../slide/slideType/sort/slideTypeSort';
 import { Vocab } from '../../slide/slideType/vocab/slideTypeVocab';
-import type { SlideInterface } from '../../slide/slideInterface';
 import { adoc2html } from './adoc2html';
 
 export interface AdocVisitorInterface {
@@ -36,7 +36,7 @@ export class AdocVisitor implements AdocVisitorInterface {
   }
   visitMa(clazz: Ma): void {
     stdReplacement(clazz);
-    clazz.o = optionsReplacement(clazz.o);
+    clazz.o = optionsReplacement(clazz.o as string[]);
   }
   visitMc(clazz: Mc): void {
     stdReplacement(clazz);

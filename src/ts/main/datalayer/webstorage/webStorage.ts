@@ -1,11 +1,15 @@
-import { getLocalStorage, getSessionStorage, setLocalStorage, setSessionStorage } from '../persistence/webPersistence';
+import {
+  getLocalStorage,
+  getSessionStorage,
+  setLocalStorage,
+  setSessionStorage,
+} from '../persistence/webPersistence';
 
 function checkSessionStorageFlag(key: string): boolean {
   const val = getSessionStorage(key);
   //assume key not existing is false
   let retval = false;
-  if (val === 'true')
-    retval = true;
+  if (val === 'true') retval = true;
   return retval;
 }
 export function setCourseListing(value: Array<string>) {

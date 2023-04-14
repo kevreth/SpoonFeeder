@@ -6,7 +6,9 @@ export function explanation(slide: SlideInterface): string {
   const exp = slide.exp as string;
   const ref = slide.ref as string;
   const answer = removeLinebreaks(pluralize('<b>Answer</b>', answers.length));
-  const distrator = removeLinebreaks(pluralize('Distractor', distrators.length));
+  const distrator = removeLinebreaks(
+    pluralize('Distractor', distrators.length)
+  );
   const titleExplanation = title(exp, '<b>Explanation</b>');
   const titleReference = title(ref, '<br>Reference(s)');
   const titleDistractor = title(distrator, 'Distractor');

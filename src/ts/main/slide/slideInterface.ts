@@ -1,6 +1,6 @@
 import type { AdocVisitorInterface } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
-import type { CreateHtmlTypeIntersection } from './strategies/createHtmlStrategy';
+import type { CreateHtmlType } from './strategies/createHtmlStrategy';
 import type { EvaluateType } from './strategies/evaluateStrategy';
 import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 import type {
@@ -11,19 +11,19 @@ import type {
 export interface SlideInterfaceProperties {
   txt: string;
   type: string;
-  cont?: boolean;
+  ans: AnswerType;
+  cont: boolean;
   exp?: string;
   ref?: string;
-  ans?: AnswerType;
   res?: AnswerType;
-  o?: AnswerType;
+  o?: string[];
   numans?: number;
-  isExercise?: boolean;
+  list?: Map<string, string>;
+  isExercise: boolean;
   immediateConclusion: boolean;
-  pageTemplate?: string;
 }
 export interface SlideInterface extends SlideInterfaceProperties {
-  createHtml: CreateHtmlTypeIntersection;
+  createHtml: CreateHtmlType;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
   resultType: ResultType;
