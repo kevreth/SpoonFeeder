@@ -11,18 +11,18 @@ import type {
 export interface SlideInterfaceProperties {
   txt: string;
   type: string;
-  ans: AnswerType;
   cont: boolean;
   exp?: string;
   ref?: string;
+  isExercise: boolean;
+  immediateConclusion: boolean;
+  ans: AnswerType;
   res?: AnswerType;
   o?: string[];
   inst?: string;
   img?: string;
   numans?: number;
   list?: Map<string, string>;
-  isExercise: boolean;
-  immediateConclusion: boolean;
 }
 export interface SlideInterface extends SlideInterfaceProperties {
   createHtml: CreateHtmlType;
