@@ -1,16 +1,19 @@
-import type { AdocVisitorInterface } from '../datalayer/mediator'
-import { SaveData } from '../datalayer/mediator'
-import type { Evaluation } from '../quiz/evaluate'
-import { timestampNow } from './date'
-import type { SlideInterface, SlideInterfaceProperties } from './slideInterface'
-import type { CreateHtmlType } from './strategies/createHtmlStrategy'
-import type { EvaluateType } from './strategies/evaluateStrategy'
-import type { MakeSlidesType } from './strategies/makeSlidesStrategy'
+import type { AdocVisitorInterface } from '../datalayer/mediator';
+import { SaveData } from '../datalayer/mediator';
+import type { Evaluation } from '../quiz/evaluate';
+import { timestampNow } from './date';
+import type {
+  SlideInterface,
+  SlideInterfaceProperties,
+} from './slideInterface';
+import type { CreateHtmlType } from './strategies/createHtmlStrategy';
+import type { EvaluateType } from './strategies/evaluateStrategy';
+import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './strategies/resultStrategy'
+} from './strategies/resultStrategy';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt!: string;

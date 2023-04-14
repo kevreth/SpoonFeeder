@@ -1,15 +1,15 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator'
-import { AdocVisitor } from '../../../datalayer/mediator'
-import { getChildIds, removeListener } from '../../../quiz/utilities'
-import { Slide } from '../../slide'
-import type { SlideInterfaceProperties } from '../../slideInterface'
-import type { MarkTypeImap, SlideType } from '../slideType'
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor } from '../../../datalayer/mediator';
+import { getChildIds, removeListener } from '../../../quiz/utilities';
+import { Slide } from '../../slide';
+import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { MarkTypeImap, SlideType } from '../slideType';
 export class Imap extends Slide implements SlideType {
   img = '';
   processJson(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
-      img: this.img as string|undefined,
+      img: this.img as string | undefined,
       ans: this.ans,
       isExercise: this.isExercise,
     } = json);

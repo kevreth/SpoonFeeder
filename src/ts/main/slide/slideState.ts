@@ -10,7 +10,7 @@ export enum SlideState {
   READ,
   RESPONDED,
   GRADED,
-  CONTINUED
+  CONTINUED,
 }
 export function dispatch<T>(actions: SlideStateActions<T>, state: SlideState) {
   const actionMap: { [key in SlideState]: () => T } = {
