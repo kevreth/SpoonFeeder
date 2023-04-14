@@ -1,5 +1,4 @@
 import { Bool } from './slideTypeBool';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class BoolFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Bool(
       this.type,
-      CreateHtml.MC as CreateHtmlTypeIntersection,
+      CreateHtml.MC,
       MakeSlidesStrategy.MC,
       Evaluate.SIMPLE,
       Result.SIMPLE

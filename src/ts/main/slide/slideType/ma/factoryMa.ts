@@ -1,5 +1,4 @@
 import { Ma } from './slideTypeMa';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class MaFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Ma(
       this.type,
-      CreateHtml.MA as CreateHtmlTypeIntersection,
+      CreateHtml.MA,
       MakeSlidesStrategy.MA,
       Evaluate.SIMPLE,
       Result.SIMPLE

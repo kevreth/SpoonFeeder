@@ -1,5 +1,4 @@
 import { Sort } from './slideTypeSort';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class SortFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Sort(
       this.type,
-      CreateHtml.SORT as CreateHtmlTypeIntersection,
+      CreateHtml.SORT,
       MakeSlidesStrategy.SORT,
       Evaluate.SIMPLE,
       Result.SIMPLE

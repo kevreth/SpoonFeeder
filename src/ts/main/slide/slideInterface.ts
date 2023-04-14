@@ -1,6 +1,6 @@
 import type { AdocVisitorInterface } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
-import type { CreateHtmlTypeIntersection } from './strategies/createHtmlStrategy';
+import type { CreateHtmlTypeUnion } from './strategies/createHtmlStrategy';
 import type { EvaluateType } from './strategies/evaluateStrategy';
 import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 import type {
@@ -23,7 +23,7 @@ export interface SlideInterfaceProperties {
   pageTemplate?: string;
 }
 export interface SlideInterface extends SlideInterfaceProperties {
-  createHtml: CreateHtmlTypeIntersection;
+  createHtml: CreateHtmlTypeUnion;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
   resultType: ResultType;

@@ -1,5 +1,4 @@
 import { Imap } from './slideTypeImap';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class ImapFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Imap(
       this.type,
-      CreateHtml.IMAP as CreateHtmlTypeIntersection,
+      CreateHtml.IMAP,
       MakeSlidesStrategy.IMAP,
       Evaluate.SIMPLE,
       Result.SIMPLE

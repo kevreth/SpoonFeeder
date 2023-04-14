@@ -3,7 +3,6 @@ import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -33,7 +32,7 @@ export class Vocab extends Slide implements SlideType  {
       //using SlideFactory creates a circular dependency
       const slide = new Mc(
         this.type,
-        CreateHtml.MC as CreateHtmlTypeIntersection,
+        CreateHtml.MC,
         MakeSlidesStrategy.MC,
         Evaluate.SIMPLE,
         Result.SIMPLE

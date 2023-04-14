@@ -2,7 +2,6 @@ import { timestampNow } from './date';
 import type { AdocVisitorInterface } from '../datalayer/mediator';
 import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
-import type { CreateHtmlTypeIntersection } from './strategies/createHtmlStrategy';
 import type { EvaluateType } from './strategies/evaluateStrategy';
 import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 import type {
@@ -11,6 +10,7 @@ import type {
   ResultType,
 } from './strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
+import { CreateHtmlTypeUnion } from './strategies/createHtmlStrategy';
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
@@ -30,7 +30,7 @@ export abstract class Slide implements SlideInterface {
   isExercise = false;
   constructor(
     public readonly type: string,
-    public readonly createHtml: CreateHtmlTypeIntersection,
+    public readonly createHtml: CreateHtmlTypeUnion,
     public readonly makeSlidesStrategy: MakeSlidesType,
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType

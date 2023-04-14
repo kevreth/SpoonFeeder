@@ -1,5 +1,4 @@
 import { Gap } from './slideTypeGap';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class GapFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Gap(
       this.type,
-      CreateHtml.GAP as CreateHtmlTypeIntersection,
+      CreateHtml.GAP,
       MakeSlidesStrategy.GAP,
       Evaluate.GAP,
       Result.CORRELATED

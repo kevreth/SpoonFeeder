@@ -12,16 +12,6 @@ export type CreateHtmlTypeUnion =
   | CreateHtmlTypeMc
   | CreateHtmlTypeSelect
   | CreateHtmlTypeSort;
-export type CreateHtmlTypeIntersection =
-  CreateHtmlTypeGap &
-  CreateHtmlTypeImap &
-  CreateHtmlTypeMa &
-  CreateHtmlTypeMc &
-  CreateHtmlTypeSelect &
-  CreateHtmlTypeSort;
-export interface CreateHtmlI {
-  createHtml: CreateHtmlTypeUnion;
-}
 export class CreateHtml {
     static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
     static readonly GAP: CreateHtmlTypeGap = createHtmlGap;

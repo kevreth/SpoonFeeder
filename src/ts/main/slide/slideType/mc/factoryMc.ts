@@ -1,5 +1,4 @@
 import { Mc } from './slideTypeMc';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class McFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Mc(
       this.type,
-      CreateHtml.MC as CreateHtmlTypeIntersection,
+      CreateHtml.MC,
       MakeSlidesStrategy.MC,
       Evaluate.SIMPLE,
       Result.SIMPLE

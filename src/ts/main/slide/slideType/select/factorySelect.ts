@@ -1,5 +1,4 @@
 import { Select } from './slideTypeSelect';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
@@ -14,7 +13,7 @@ export class SelectFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Select(
       this.type,
-      CreateHtml.SELECT as CreateHtmlTypeIntersection,
+      CreateHtml.SELECT,
       MakeSlidesStrategy.SELECT,
       Evaluate.SIMPLE,
       Result.SIMPLE
