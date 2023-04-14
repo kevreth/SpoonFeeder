@@ -19,6 +19,7 @@ export abstract class Slide implements SlideInterface {
   exp?: string;
   ref?: string;
   o?: string[];
+  list?: ArrayLike<string> | { [ s: string ]: string }
   numans?: number;
   cont = false;
   isExercise = false;
