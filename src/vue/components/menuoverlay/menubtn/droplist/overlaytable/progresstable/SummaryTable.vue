@@ -1,18 +1,13 @@
 <template>
-  <transition
-    enter-active-class="animated fadeInLeft"
-    leave-active-class="animated fadeOutRight"
-    :duration="1000">
-    <q-overlay class="summaryOverlay bg-secondary">
-      <template #body>
-        <div class="justify-evenly summaryContainer">
-          <!-- {{ content }} -->
-        </div>
+  <q-overlay class="summaryOverlay bg-secondary">
+    <template #body>
+      <div class="justify-evenly summaryContainer">
+        <!-- {{ content }} -->
+      </div>
 
-        <ExitBtn @click="closeSummary" />
-      </template>
-    </q-overlay>
-  </transition>
+      <ExitBtn @click="closeSummary" />
+    </template>
+  </q-overlay>
 </template>
 
 <script setup lang="ts">

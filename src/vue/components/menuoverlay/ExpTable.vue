@@ -1,20 +1,15 @@
 <template>
-  <transition
-    enter-active-class="animated slideInDown"
-    leave-active-class="animated slideOutUp"
-    :duration="1000">
-    <q-overlay class="column">
-      <template #body>
-        <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
-          <span class="scrollable-content" v-html="content"></span>
-          <ExitBtn
-            class="q-mt-sm"
-            @click="closeInfo"
-            color="primary"/>
-        </div>
-      </template>
-    </q-overlay>
-  </transition>
+  <q-overlay class="column">
+    <template #body>
+      <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
+        <span class="scrollable-content" v-html="content"></span>
+        <ExitBtn
+          class="q-mt-sm"
+          @click="closeInfo"
+          color="primary"/>
+      </div>
+    </template>
+  </q-overlay>
 </template>
 
 <script setup lang="ts">

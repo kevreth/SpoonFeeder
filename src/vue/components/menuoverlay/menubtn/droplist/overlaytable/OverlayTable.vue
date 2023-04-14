@@ -1,23 +1,18 @@
 <template>
-  <transition appear group
-  enter-active-class="animated zoomInUp"
-  leave-active-class="animated zoomOutDown"
-  >
-  <q-overlay id="overlay">
-    <template #body>
-      <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
-        <div class="overlayBtn">
-          <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
-          <TrashBtn id="startOver" @click="startOver" />
-        </div>
-
-        <div id="progressBackground" class="progressBackground" style="flex-grow: 1;">
-          <ProgressTable style="cursor: auto" />
-        </div>
+<q-overlay id="overlay">
+  <template #body>
+    <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
+      <div class="overlayBtn">
+        <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
+        <TrashBtn id="startOver" @click="startOver" />
       </div>
-    </template>
-  </q-overlay>
-</transition>
+
+      <div id="progressBackground" class="progressBackground" style="flex-grow: 1;">
+        <ProgressTable style="cursor: auto" />
+      </div>
+    </div>
+  </template>
+</q-overlay>
 </template>
 
 <script setup lang="ts">
