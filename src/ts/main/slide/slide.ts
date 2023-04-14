@@ -18,7 +18,7 @@ export abstract class Slide implements SlideInterface {
   res?: AnswerType;
   exp?: string;
   ref?: string;
-  o?: AnswerType;
+  o?: string[];
   numans?: number;
   cont = false;
   isExercise = false;
