@@ -1,13 +1,13 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
-import { difference, intersection } from '../../../quiz/utilities';
-import { CORRECT, INCORRECT } from '../../markupColors';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { MarkTypeSelect, SlideType } from '../slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor } from '../../../datalayer/mediator'
+import { difference, intersection } from '../../../quiz/utilities'
+import { CORRECT, INCORRECT } from '../../markupColors'
+import { Slide } from '../../slide'
+import type { SlideInterfaceProperties } from '../../slideInterface'
+import type { MarkTypeSelect, SlideType } from '../slideType'
 export class Select extends Slide implements SlideType {
   inst = '';
-  processJson(json: SlideInterface): void {
+  processJson(json: SlideInterfaceProperties): void {
     const json1 = json as Select;
     ({
       inst: this.inst,

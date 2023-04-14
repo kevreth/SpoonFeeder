@@ -1,11 +1,11 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { MarkType, SlideType } from '../slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor } from '../../../datalayer/mediator'
+import { Slide } from '../../slide'
+import type { SlideInterfaceProperties } from '../../slideInterface'
+import type { MarkType, SlideType } from '../slideType'
 export class Info extends Slide implements SlideType {
   mark!: MarkType;
-  processJson(json: SlideInterface): void {
+  processJson(json: SlideInterfaceProperties): void {
     const json1 = json as Info;
     ({ txt: this.txt } = json1);
     this.accept(new AdocVisitor());

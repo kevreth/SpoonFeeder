@@ -1,19 +1,18 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
-import { getChildIds, removeListener } from '../../../quiz/utilities';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { MarkTypeImap, SlideType } from '../slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor } from '../../../datalayer/mediator'
+import { getChildIds, removeListener } from '../../../quiz/utilities'
+import { Slide } from '../../slide'
+import type { SlideInterfaceProperties } from '../../slideInterface'
+import type { MarkTypeImap, SlideType } from '../slideType'
 export class Imap extends Slide implements SlideType {
   img = '';
-  processJson(json: SlideInterface): void {
-    const json1 = json as Imap;
+  processJson(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
-      img: this.img,
+      img: this.img as string|undefined,
       ans: this.ans,
       isExercise: this.isExercise,
-    } = json1);
+    } = json);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {

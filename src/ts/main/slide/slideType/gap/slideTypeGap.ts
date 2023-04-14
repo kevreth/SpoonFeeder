@@ -1,24 +1,23 @@
-import { polyfill } from 'mobile-drag-drop';
-import { isRandom } from '../../../datalayer/mediator';
-import { shuffle } from '../../../quiz/utilities';
-import { CORRECT, INCORRECT } from '../../markupColors';
-import { Slide } from '../../slide';
+import { polyfill } from 'mobile-drag-drop'
+import { isRandom } from '../../../datalayer/mediator'
+import { shuffle } from '../../../quiz/utilities'
+import { CORRECT, INCORRECT } from '../../markupColors'
+import { Slide } from '../../slide'
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
-import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
-import type { SlideInterface } from '../../slideInterface';
-import type { AnswerType } from '../../strategies/resultStrategy';
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { MarkTypeGap, SlideType } from '../slideType';
+import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour'
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor } from '../../../datalayer/mediator'
+import type { SlideInterfaceProperties } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
+import type { MarkTypeGap, SlideType } from '../slideType'
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide implements SlideType {
-  processJson(json: SlideInterface): void {
-    const json1 = json as Gap;
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json1);
+  processJson(json: SlideInterfaceProperties): void {
+    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {

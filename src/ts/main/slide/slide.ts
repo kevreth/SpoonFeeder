@@ -1,16 +1,16 @@
-import type { AdocVisitorInterface } from '../datalayer/mediator';
-import { SaveData } from '../datalayer/mediator';
-import type { Evaluation } from '../quiz/evaluate';
-import { timestampNow } from './date';
-import type { SlideInterface } from './slideInterface';
-import type { CreateHtmlType } from './strategies/createHtmlStrategy';
-import type { EvaluateType } from './strategies/evaluateStrategy';
-import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
+import type { AdocVisitorInterface } from '../datalayer/mediator'
+import { SaveData } from '../datalayer/mediator'
+import type { Evaluation } from '../quiz/evaluate'
+import { timestampNow } from './date'
+import type { SlideInterface, SlideInterfaceProperties } from './slideInterface'
+import type { CreateHtmlType } from './strategies/createHtmlStrategy'
+import type { EvaluateType } from './strategies/evaluateStrategy'
+import type { MakeSlidesType } from './strategies/makeSlidesStrategy'
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './strategies/resultStrategy';
+} from './strategies/resultStrategy'
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt!: string;
@@ -38,8 +38,8 @@ export abstract class Slide implements SlideInterface {
   setContinue(): void {
     throw new Error('Method not implemented.');
   }
-  getSlideSet(): SlideInterface[] {
-    return new Array<SlideInterface>();
+  getSlideSet(): SlideInterfaceProperties[] {
+    return new Array<SlideInterfaceProperties>();
   }
   getAnswerCount(): number {
     return 1;

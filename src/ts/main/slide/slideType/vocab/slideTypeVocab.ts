@@ -1,11 +1,11 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
-import { shuffle } from '../../../quiz/utilities';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import type { AnswerType } from '../../strategies/resultStrategy';
-import { McFactory } from '../mc/factoryMc';
-import type { MarkType, SlideType } from '../slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator'
+import { shuffle } from '../../../quiz/utilities'
+import { Slide } from '../../slide'
+import type { SlideInterfaceProperties } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import { McFactory } from '../mc/factoryMc'
+import type { MarkType, SlideType } from '../slideType'
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -17,9 +17,9 @@ export type vocabTuplesType = [
 export class Vocab extends Slide implements SlideType {
   mark!: MarkType;
   list = new Map<string, string>();
-  set = new Array<SlideInterface>();
-  processJson(json: SlideInterface): void {
-    this.list = new Map(Object.entries(json.list));
+  set = new Array<SlideInterfaceProperties>();
+  processJson(json: SlideInterfaceProperties): void {
+    this.list = new Map(Object.entries(json.list as Map<string,string>));
     this.isExercise = json.isExercise;
     this.accept(new AdocVisitor());
     const vocabTuples = generateQuestions(this.list);
@@ -35,7 +35,7 @@ export class Vocab extends Slide implements SlideType {
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitVocab(this);
   }
-  getSlideSet(): SlideInterface[] {
+  getSlideSet(): SlideInterfaceProperties[] {
     return this.set;
   }
   makeSlides(): void {

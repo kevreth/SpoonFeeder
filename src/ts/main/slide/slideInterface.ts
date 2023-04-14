@@ -1,13 +1,13 @@
-import type { AdocVisitorInterface } from '../datalayer/mediator';
-import type { Evaluation } from '../quiz/evaluate';
-import type { CreateHtmlType } from './strategies/createHtmlStrategy';
-import type { EvaluateType } from './strategies/evaluateStrategy';
-import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
+import type { AdocVisitorInterface } from '../datalayer/mediator'
+import type { Evaluation } from '../quiz/evaluate'
+import type { CreateHtmlType } from './strategies/createHtmlStrategy'
+import type { EvaluateType } from './strategies/evaluateStrategy'
+import type { MakeSlidesType } from './strategies/makeSlidesStrategy'
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './strategies/resultStrategy';
+} from './strategies/resultStrategy'
 export interface SlideInterfaceProperties {
   txt: string;
   type: string;
@@ -17,6 +17,7 @@ export interface SlideInterfaceProperties {
   ref?: string;
   res?: AnswerType;
   o?: string[];
+  img?: string;
   numans?: number;
   list?: Map<string, string>;
   isExercise: boolean;
@@ -39,7 +40,7 @@ export interface SlideInterface extends SlideInterfaceProperties {
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
   getAnswerCount(): number;
-  getSlideSet(): SlideInterface[];
+  getSlideSet(): SlideInterfaceProperties[];
   setRes(res: AnswerType): void;
   getRes(): AnswerType;
   getAns(): AnswerType;
