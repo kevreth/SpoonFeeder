@@ -1,14 +1,14 @@
-import { shuffle } from '../../quiz/utilities';
-import { initSlide } from '../../slide/slideFactory';
+import { shuffle } from '../../quiz/utilities'
+import { initSlide } from '../../slide/slideFactory'
 import type {
   SlideInterface,
   SlideInterfaceProperties,
-} from '../../slide/slideInterface';
-import { INFO } from '../../slide/slideType/info/factoryInfo';
-import { isRandom } from '../webstorage/webStorage';
-import type { Course, Division, Module } from './course';
-import type { DivisionProcessor } from './courseFileProcessor';
-import { process } from './courseFileProcessor';
+} from '../../slide/slideInterface'
+import { INFO } from '../../slide/slideType/info/factoryInfo'
+import { isRandom } from '../webstorage/webStorage'
+import type { Course, Division, Module } from './course'
+import type { DivisionProcessor } from './courseFileProcessor'
+import { process } from './courseFileProcessor'
 //////////////// Phase 1: process Json
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>
@@ -110,8 +110,7 @@ export class ProcessJson {
     questions.forEach((item) => {
       item.isExercise = isExercise;
       const lides = initSlide(item);
-      if (Array.isArray(lides)) processedSlides.push(...lides);
-      else processedSlides.push(lides);
+      processedSlides.push(...(Array.isArray(lides) ? lides : [lides]));
     });
     slides.push(...processedSlides);
   }
