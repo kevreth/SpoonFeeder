@@ -9,13 +9,13 @@ export type MakeSlidesTypeInfo = (
   doc: Document,
   setValues: SlideInterface
 ) => void;
-export function makeSlidesStrategyInfo(
-  txt: string,
-  createHtml: CreateHtmlTypeInfo,
-  doc: Document,
-  slide: SlideInterface
+export const makeSlidesStrategyInfo: MakeSlidesTypeInfo = function (
+  txt,
+  createHtml,
+  doc,
+  slide
 ) {
   const html = createHtml(txt);
   createPageContent(html, doc);
   conclude(doc, slide, '' as AnswerType, txt);
-}
+};

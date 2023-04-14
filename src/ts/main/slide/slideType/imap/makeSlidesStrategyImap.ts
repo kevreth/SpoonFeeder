@@ -1,10 +1,10 @@
-import { SVGInjector } from '@tanem/svg-injector'
-import { getChildIds } from '../../../quiz/utilities'
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { CreateHtmlTypeImap } from './createHtmlImap'
+import { SVGInjector } from '@tanem/svg-injector';
+import { getChildIds } from '../../../quiz/utilities';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { CreateHtmlTypeImap } from './createHtmlImap';
 export type MakeSlidesTypeImap = (
   txt: string,
   img: string,
@@ -12,12 +12,12 @@ export type MakeSlidesTypeImap = (
   doc: Document,
   slide: SlideInterface
 ) => void;
-export function makeSlidesStrategyImap(
-  txt: string,
-  img: string,
-  createHtml: CreateHtmlTypeImap,
-  doc: Document,
-  slide: SlideInterface
+export const makeSlidesStrategyImap: MakeSlidesTypeImap = function (
+  txt,
+  img,
+  createHtml,
+  doc,
+  slide
 ) {
   const html = createHtml(txt, img);
   createPageContent(html, doc);
@@ -28,7 +28,7 @@ export function makeSlidesStrategyImap(
       addEventListener(slide, doc, txt);
     },
   });
-}
+};
 function addEventListener(slide: SlideInterface, doc: Document, txt: string) {
   const ids = getChildIds(doc, 'imagemap');
   ids.forEach((id) => {

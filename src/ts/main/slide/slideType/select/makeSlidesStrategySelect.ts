@@ -1,10 +1,10 @@
-import { removeListener } from '../../../quiz/utilities'
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import { INDETERMINANT } from '../../markupColors'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { CreateHtmlTypeSelect } from './createHtmlSelect'
+import { removeListener } from '../../../quiz/utilities';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import { INDETERMINANT } from '../../markupColors';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { CreateHtmlTypeSelect } from './createHtmlSelect';
 export type MakeSlidesTypeSelect = (
   inst: string,
   txt: string,
@@ -12,19 +12,19 @@ export type MakeSlidesTypeSelect = (
   doc: Document,
   slide: SlideInterface
 ) => void;
-export function makeSlidesStrategySelect(
-  inst: string,
-  txt: string,
-  createHtml: CreateHtmlTypeSelect,
-  doc: Document,
-  slide: SlideInterface
+export const makeSlidesStrategySelect: MakeSlidesTypeSelect = function (
+  inst,
+  txt,
+  createHtml,
+  doc,
+  slide
 ) {
   const txtarr = txt.split(' ');
   const html = createHtml(inst, txtarr);
   createPageContent(html, doc);
   for (let ctr = 0; ctr < txtarr.length; ctr++) addEventListener1(ctr + 1, doc);
   addEventListener(doc, txtarr, slide, txt);
-}
+};
 function addEventListener(
   doc: Document,
   txtarr: string[],

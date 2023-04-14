@@ -1,10 +1,10 @@
-import { gsap } from 'gsap'
-import { Draggable } from 'gsap/dist/Draggable'
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { CreateHtmlTypeSort } from './createHtmlSort'
+import { gsap } from 'gsap';
+import { Draggable } from 'gsap/dist/Draggable';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { CreateHtmlTypeSort } from './createHtmlSort';
 export type MakeSlidesTypeSort = (
   txt: string,
   ans: AnswerType,
@@ -12,12 +12,12 @@ export type MakeSlidesTypeSort = (
   doc: Document,
   slide: SlideInterface
 ) => void;
-export function makeSlidesStrategySort(
-  txt: string,
-  ans: AnswerType,
-  createHtml: CreateHtmlTypeSort,
-  doc: Document,
-  slide: SlideInterface
+export const makeSlidesStrategySort: MakeSlidesTypeSort = function (
+  txt,
+  ans,
+  createHtml,
+  doc,
+  slide
 ): void {
   const html = createHtml(txt, ans);
   createPageContent(html, doc);
@@ -100,7 +100,7 @@ export function makeSlidesStrategySort(
     }
     return sortable;
   }
-}
+};
 function evaluate(sortables: { element: Element }[]) {
   return sortables.map((x) => x.element.innerHTML);
 }

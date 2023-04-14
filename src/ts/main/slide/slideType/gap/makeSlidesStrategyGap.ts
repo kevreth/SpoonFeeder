@@ -1,9 +1,9 @@
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
-import type { CreateHtmlTypeGap } from './createHtmlGap'
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { CreateHtmlTypeGap } from './createHtmlGap';
 export type MakeSlidesTypeGap = (
   txt: string,
   ans: AnswerType,
@@ -35,7 +35,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
     setgap(ctr, doc, txt, slide);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
-}
+};
 export function fills(ans: AnswerType): string {
   let fill_accum = '';
   (ans as string[]).forEach((currentFills, ctr) => {
