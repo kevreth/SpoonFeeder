@@ -1,7 +1,7 @@
 import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeGap } from '../../strategies/createHtmlStrategy';
+import type { CreateHtmlTypeGap } from './createHtmlGap';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 export type MakeSlidesTypeGap = (

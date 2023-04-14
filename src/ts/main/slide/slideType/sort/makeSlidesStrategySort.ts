@@ -3,7 +3,7 @@ import { Draggable } from 'gsap/dist/Draggable';
 import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeSort } from '../../strategies/createHtmlStrategy';
+import type { CreateHtmlTypeSort } from './createHtmlSort';
 import type { AnswerType } from '../../strategies/resultStrategy';
 export type MakeSlidesTypeSort = (
   txt: string,

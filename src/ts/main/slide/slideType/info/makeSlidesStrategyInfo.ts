@@ -1,7 +1,7 @@
 import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeInfo } from '../../strategies/createHtmlStrategy';
+import type { CreateHtmlTypeInfo } from './createHtmlInfo';
 export type MakeSlidesTypeInfo = (
   txt: string,
   createHtml: CreateHtmlTypeInfo,

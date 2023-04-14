@@ -1,5 +1,5 @@
 import { SlideInterface } from '../../slideInterface';
-import { CreateHtmlTypeMc } from '../../strategies/createHtmlStrategy';
+import { CreateHtmlTypeMc } from '../mc/createHtmlMc';
 import { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 

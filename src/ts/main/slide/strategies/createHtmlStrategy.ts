@@ -1,4 +1,3 @@
-import type { AnswerType } from './resultStrategy';
 import { createHtmlSort, CreateHtmlTypeSort } from '../slideType/sort/createHtmlSort';
 import { createHtmlSelect, CreateHtmlTypeSelect } from '../slideType/select/createHtmlSelect';
 import { createHtmlMc, CreateHtmlTypeMc } from '../slideType/mc/createHtmlMc';

@@ -3,7 +3,7 @@ import { getChildIds } from '../../../quiz/utilities';
 import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeImap } from '../../strategies/createHtmlStrategy';
+import type { CreateHtmlTypeImap } from './createHtmlImap';
 export type MakeSlidesTypeImap = (
   txt: string,
   img: string,

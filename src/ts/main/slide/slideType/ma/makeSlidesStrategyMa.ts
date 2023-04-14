@@ -2,7 +2,7 @@ import { INDETERMINANT } from '../../markupColors';
 import type { SlideInterface } from '../../slideInterface';
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeMa } from '../../strategies/createHtmlStrategy';
+import type { CreateHtmlTypeMa } from './createHtmlMa';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 export type MakeSlidesTypeMa = (
   txt: string,
