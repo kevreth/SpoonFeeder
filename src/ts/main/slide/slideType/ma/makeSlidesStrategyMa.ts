@@ -11,15 +11,15 @@ export type MakeSlidesTypeMa = (
   createHtml: CreateHtmlTypeMa,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SlideInterface
-) => void;
-export function makeSlidesStrategyMa(
-  txt: string,
-  options: string[],
-  createHtml: CreateHtmlTypeMa,
-  maxWidthStrategy: SetWidthTypeSimple,
-  doc: Document,
   slide: SlideInterface
+) => void;
+export const makeSlidesStrategyMa: MakeSlidesTypeMa = function (
+  txt,
+  options,
+  createHtml,
+  maxWidthStrategy,
+  doc,
+  slide
 ) {
   const html = createHtml(txt, options);
   createPageContent(html, doc);
@@ -48,4 +48,4 @@ export function makeSlidesStrategyMa(
     done.remove();
     conclude(doc, slide, answers as AnswerType, txt);
   });
-}
+};

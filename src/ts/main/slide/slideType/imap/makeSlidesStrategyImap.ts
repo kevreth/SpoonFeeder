@@ -1,16 +1,16 @@
-import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds } from '../../../quiz/utilities';
-import { conclude } from '../../conclude/conclude';
-import { createPageContent } from '../../createPageContent/createPageContent';
-import type { SlideInterface } from '../../slideInterface';
-import type { AnswerType } from '../../strategies/resultStrategy';
-import type { CreateHtmlTypeImap } from './createHtmlImap';
+import { SVGInjector } from '@tanem/svg-injector'
+import { getChildIds } from '../../../quiz/utilities'
+import { conclude } from '../../conclude/conclude'
+import { createPageContent } from '../../createPageContent/createPageContent'
+import type { SlideInterface } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import type { CreateHtmlTypeImap } from './createHtmlImap'
 export type MakeSlidesTypeImap = (
   txt: string,
   img: string,
   createHtml: CreateHtmlTypeImap,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) => void;
 export function makeSlidesStrategyImap(
   txt: string,

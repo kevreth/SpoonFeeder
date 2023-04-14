@@ -1,29 +1,29 @@
-import { conclude } from '../../conclude/conclude';
-import { createPageContent } from '../../createPageContent/createPageContent';
-import type { SlideInterface } from '../../slideInterface';
-import type { AnswerType } from '../../strategies/resultStrategy';
-import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { CreateHtmlTypeGap } from './createHtmlGap';
+import { conclude } from '../../conclude/conclude'
+import { createPageContent } from '../../createPageContent/createPageContent'
+import type { SlideInterface } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
+import type { CreateHtmlTypeGap } from './createHtmlGap'
 export type MakeSlidesTypeGap = (
   txt: string,
   ans: AnswerType,
   createHtml: CreateHtmlTypeGap,
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) => void;
 //===the main divs are
 //fills: the strings to drag into the gaps
 //gaps: the blanks to drag strings to
 //remaining: the number of remaining gaps
 //response: grading after the last drop
-export function makeSlidesStrategyGap(
-  txt: string,
-  ans: AnswerType,
-  createHtml: CreateHtmlTypeGap,
-  maxWidthStrategy: SetWidthTypeComplex,
-  doc: Document,
-  slide: SlideInterface
+export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
+  txt,
+  ans,
+  createHtml,
+  maxWidthStrategy,
+  doc,
+  slide
 ): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);

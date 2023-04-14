@@ -1,24 +1,24 @@
-import { conclude } from '../../conclude/conclude';
-import { createPageContent } from '../../createPageContent/createPageContent';
-import type { SlideInterface } from '../../slideInterface';
-import type { AnswerType } from '../../strategies/resultStrategy';
-import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { CreateHtmlTypeMc } from './createHtmlMc';
+import { conclude } from '../../conclude/conclude'
+import { createPageContent } from '../../createPageContent/createPageContent'
+import type { SlideInterface } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
+import type { CreateHtmlTypeMc } from './createHtmlMc'
 export type MakeSlidesTypeMc = (
   txt: string,
   options: string[],
   createHtml: CreateHtmlTypeMc,
   maxWidthStrategy: SetWidthTypeSimple,
   doc: Document,
-  setValues: SlideInterface
-) => void;
-export function makeSlidesStrategyMc(
-  txt: string,
-  options: string[],
-  createHtml: CreateHtmlTypeMc,
-  maxWidthStrategy: SetWidthTypeSimple,
-  doc: Document,
   slide: SlideInterface
+) => void;
+export const makeSlidesStrategyMc: MakeSlidesTypeMc = function (
+  txt,
+  options,
+  createHtml,
+  maxWidthStrategy,
+  doc,
+  slide
 ) {
   const html = createHtml(txt, options);
   createPageContent(html, doc);
@@ -27,7 +27,7 @@ export function makeSlidesStrategyMc(
   options.forEach((option, optionCtr) => {
     addEventListener(doc, option, optionCtr, slide, txt);
   });
-}
+};
 function addEventListener(
   doc: Document,
   option: string,

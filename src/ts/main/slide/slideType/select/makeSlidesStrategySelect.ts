@@ -1,16 +1,16 @@
-import { removeListener } from '../../../quiz/utilities';
-import { conclude } from '../../conclude/conclude';
-import { createPageContent } from '../../createPageContent/createPageContent';
-import { INDETERMINANT } from '../../markupColors';
-import type { SlideInterface } from '../../slideInterface';
-import type { AnswerType } from '../../strategies/resultStrategy';
-import type { CreateHtmlTypeSelect } from './createHtmlSelect';
+import { removeListener } from '../../../quiz/utilities'
+import { conclude } from '../../conclude/conclude'
+import { createPageContent } from '../../createPageContent/createPageContent'
+import { INDETERMINANT } from '../../markupColors'
+import type { SlideInterface } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import type { CreateHtmlTypeSelect } from './createHtmlSelect'
 export type MakeSlidesTypeSelect = (
   inst: string,
   txt: string,
   createHtml: CreateHtmlTypeSelect,
   doc: Document,
-  setValues: SlideInterface
+  slide: SlideInterface
 ) => void;
 export function makeSlidesStrategySelect(
   inst: string,
