@@ -11,7 +11,6 @@ import type {
 } from './strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
 import { CreateHtmlType } from './strategies/createHtmlStrategy';
-type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt!: string;
@@ -55,9 +54,9 @@ export abstract class Slide implements SlideInterface {
     this.res = res;
   }
   evaluate(): Evaluation {
-    const txt = this.txt as AnswerTypeIntersection;
-    const res = this.res as AnswerTypeIntersection;
-    const ans = this.ans as AnswerTypeIntersection;
+    const txt = this.txt as AnswerType;
+    const res = this.res as AnswerType;
+    const ans = this.ans as AnswerType;
     const result = this.result() as ResultTypeIntersection;
     return this.evaluateStrategy(txt, ans, res, result);
   }
