@@ -1,11 +1,12 @@
-import { Gap } from './slideTypeGap';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
+import { SlideInitializer } from '../../slideInitializer';
+import type { SlideInterface } from '../../slideInterface';
+import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
+import type { MakeSlidesType } from '../../strategies/makeSlidesStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import { SlideInitializer } from '../../slideInitializer';
+import { Gap } from './slideTypeGap';
 
 export class GapFactory extends SlideInitializer {
   constructor() {
@@ -14,8 +15,8 @@ export class GapFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Gap(
       this.type,
-      CreateHtml.GAP as CreateHtmlTypeIntersection,
-      MakeSlidesStrategy.GAP,
+      CreateHtml.GAP as CreateHtmlType,
+      MakeSlidesStrategy.GAP as MakeSlidesType,
       Evaluate.GAP,
       Result.CORRELATED
     );

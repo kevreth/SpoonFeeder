@@ -1,4 +1,10 @@
-import { PREFIX_COURSE_FILE, clearRandom, clearSessionStorage, loadCourse, setCourseName } from '../datalayer/mediator';
+import {
+  PREFIX_COURSE_FILE,
+  clearRandom,
+  clearSessionStorage,
+  loadCourse,
+  setCourseName,
+} from '../datalayer/mediator';
 // necessary for adding a property to the
 // DOM window object
 interface Window {
@@ -10,7 +16,7 @@ export function switchCourse(courseName: string) {
   clearSessionStorage();
   //===========================================================================
   // un-comment for TESTING
-  clearRandom()
+  clearRandom();
   //===========================================================================
   setCourseName(courseName);
   //make the course path accessible to course files
@@ -30,4 +36,3 @@ export class Quiz {
     return PREFIX_COURSE_FILE.concat(courseName, '/course.yml');
   }
 }
-

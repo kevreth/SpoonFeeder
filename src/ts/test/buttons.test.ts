@@ -1,5 +1,5 @@
-import { makeButton } from '../main/quiz/buttons';
 import { expect, it } from 'vitest';
+import { makeButton } from '../main/quiz/buttons';
 it('makeButton', () => {
   const str = makeButton('ABC', 'DEF', 'HIJ');
   expect(str).toContain('id="ABC"');

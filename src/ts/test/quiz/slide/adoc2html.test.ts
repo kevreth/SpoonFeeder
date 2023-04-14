@@ -3,7 +3,7 @@ import {
   adoc2html,
   adoc2markdown,
   markdown2html,
-  processHandlebars
+  processHandlebars,
 } from '../../../main/datalayer/courseData/adoc2html';
 const asciidoc = `
 == Document Title

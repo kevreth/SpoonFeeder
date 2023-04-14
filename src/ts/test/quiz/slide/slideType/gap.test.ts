@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import { GAP } from '../../../../main/slide/slideFactory';
 import type { Slide } from '../../../../main/slide/slide';
+import { GAP } from '../../../../main/slide/slideFactory';
 import { Gap } from '../../../../main/slide/slideType/gap/slideTypeGap';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {

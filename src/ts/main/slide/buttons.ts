@@ -12,8 +12,8 @@ export function showButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = continueButton(doc);
   continue_btn?.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
-      const explain = doc.getElementById('explainIcon') as HTMLElement;
-      explain.style.visibility = 'hidden';
+    const explain = doc.getElementById('explainIcon') as HTMLElement;
+    explain.style.visibility = 'hidden';
     showSlides(doc);
   });
   return continue_btn;

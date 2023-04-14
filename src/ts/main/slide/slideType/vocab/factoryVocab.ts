@@ -1,11 +1,12 @@
-import { Vocab } from './slideTypeVocab';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
+import { SlideInitializer } from '../../slideInitializer';
+import type { SlideInterface } from '../../slideInterface';
+import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
+import type { MakeSlidesType } from '../../strategies/makeSlidesStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import { SlideInitializer } from '../../slideInitializer';
+import { Vocab } from './slideTypeVocab';
 
 export class VocabFactory extends SlideInitializer {
   constructor() {
@@ -14,8 +15,8 @@ export class VocabFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Vocab(
       this.type,
-      CreateHtml.MC as CreateHtmlTypeIntersection,
-      MakeSlidesStrategy.MC,
+      CreateHtml.MC as CreateHtmlType,
+      MakeSlidesStrategy.MC as MakeSlidesType,
       Evaluate.SIMPLE,
       Result.CORRELATED
     );

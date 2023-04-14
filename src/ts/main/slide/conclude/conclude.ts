@@ -1,7 +1,7 @@
 import { showButton, showExplainIcon } from '../../quiz/buttons';
 import type { SlideInterface } from '../slideInterface';
-import { playAudio } from './audio';
 import type { AnswerType } from '../strategies/resultStrategy';
+import { playAudio } from './audio';
 
 export function conclude(
   doc: Document,

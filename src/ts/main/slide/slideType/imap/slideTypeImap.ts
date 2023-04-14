@@ -1,14 +1,13 @@
-import { getChildIds, removeListener } from '../../../quiz/utilities';
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
+import { getChildIds, removeListener } from '../../../quiz/utilities';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';
-import { MakeSlidesTypeImap } from './makeSlidesStrategyImap';
 export class Imap extends Slide implements SlideType {
   img = '';
   processJson(json: SlideInterface): void {
-    const json1 = json as Imap
+    const json1 = json as Imap;
     ({
       txt: this.txt,
       img: this.img,
@@ -24,7 +23,7 @@ export class Imap extends Slide implements SlideType {
     const txt = this.txt;
     const img = this.img;
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeImap;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(txt, img, createHtml, doc, this);
   }
   decorate(doc: Document) {
@@ -43,5 +42,5 @@ export class Imap extends Slide implements SlideType {
     const classname = isCorrect ? 'shape_correct' : 'shape_incorrect';
     const element = doc.getElementById(id) as HTMLElement;
     element.classList.add(classname);
-  }
+  };
 }

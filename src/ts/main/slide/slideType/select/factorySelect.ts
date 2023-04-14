@@ -1,11 +1,12 @@
-import { Select } from './slideTypeSelect';
-import type { CreateHtmlTypeIntersection } from '../../strategies/createHtmlStrategy';
+import { SlideInitializer } from '../../slideInitializer';
+import type { SlideInterface } from '../../slideInterface';
+import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
+import type { MakeSlidesType } from '../../strategies/makeSlidesStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import { SlideInitializer } from '../../slideInitializer';
+import { Select } from './slideTypeSelect';
 
 export class SelectFactory extends SlideInitializer {
   constructor() {
@@ -14,8 +15,8 @@ export class SelectFactory extends SlideInitializer {
   public instance(): SlideInterface {
     return new Select(
       this.type,
-      CreateHtml.SELECT as CreateHtmlTypeIntersection,
-      MakeSlidesStrategy.SELECT,
+      CreateHtml.SELECT as CreateHtmlType,
+      MakeSlidesStrategy.SELECT as MakeSlidesType,
       Evaluate.SIMPLE,
       Result.SIMPLE
     );
