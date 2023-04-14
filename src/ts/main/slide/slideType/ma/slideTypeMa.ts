@@ -8,10 +8,7 @@ import { AnswerType } from '../../strategies/resultStrategy'
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
 import type { MarkTypeMa, SlideType } from '../slideType'
 export class Ma extends Slide implements SlideType  {
-  // o: string[] = [];
-  // numans = 0;
   processJson(json: SlideInterfaceProperties): void {
-    // const json1 = json as Ma
     ({
       txt: this.txt,
       o: this.o,
