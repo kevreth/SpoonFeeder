@@ -13,12 +13,12 @@ export type CreateHtmlTypeUnion =
   | CreateHtmlTypeSelect
   | CreateHtmlTypeSort;
 export class CreateHtml {
-    static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
-    static readonly GAP: CreateHtmlTypeGap = createHtmlGap;
-    static readonly IMAP: CreateHtmlTypeImap = createHtmlImap;
-    static readonly MA: CreateHtmlTypeMa = createHtmlMa;
-    static readonly MC: CreateHtmlTypeMc = createHtmlMc;
-    static readonly SELECT: CreateHtmlTypeSelect = createHtmlSelect;
-    static readonly SORT: CreateHtmlTypeSort = createHtmlSort;
+  static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
+  static readonly GAP: CreateHtmlTypeGap = createHtmlGap;
+  static readonly IMAP: CreateHtmlTypeImap = createHtmlImap;
+  static readonly MA: CreateHtmlTypeMa = createHtmlMa;
+  static readonly MC: CreateHtmlTypeMc = createHtmlMc;
+  static readonly SELECT: CreateHtmlTypeSelect = createHtmlSelect;
+  static readonly SORT: CreateHtmlTypeSort = createHtmlSort;
 }
 
