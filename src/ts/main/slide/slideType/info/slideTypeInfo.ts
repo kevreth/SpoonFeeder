@@ -2,7 +2,7 @@ import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import type { CreateHtmlTypeInfo } from '../../strategies/createHtmlStrategy';
+import type { CreateHtmlTypeInfo } from './createHtmlInfo';
 import type { MarkType, SlideType } from '../slideType';
 import { MakeSlidesTypeInfo } from './makeSlidesStrategyInfo';
 export class Info extends Slide implements SlideType  {
