@@ -1,12 +1,15 @@
-import { extend, isEqual } from '../../quiz/utilities';
-import { getCourseName } from '../webstorage/webStorage';
-import { explanation } from '../../slide/explanation';
-import type { AnswerType } from '../../slide/strategies/resultStrategy';
-import type { SlideInterface } from '../../slide/slideInterface';
 import { dispatch2 } from '../../quiz/stateActionDispatcher';
+import { extend, isEqual } from '../../quiz/utilities';
+import { explanation } from '../../slide/explanation';
+import type { SlideInterface } from '../../slide/slideInterface';
+import type { AnswerType } from '../../slide/strategies/resultStrategy';
+import {
+  getLocalStorage,
+  setLocalStorage,
+} from '../persistence/webPersistence';
+import { getCourseName } from '../webstorage/webStorage';
 import { Json } from './saveFile';
 import { SlideDispatcher2 } from './slideDispatcher2';
-import { getLocalStorage, setLocalStorage } from '../persistence/webPersistence';
 
 export class SaveData {
   constructor(
@@ -72,4 +75,3 @@ function getCurrentSlide(): SlideInterface {
   const ss = new SlideDispatcher2(Json.get(), SaveData.get());
   return dispatch2(ss, false);
 }
-

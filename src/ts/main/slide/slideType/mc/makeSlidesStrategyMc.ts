@@ -1,9 +1,9 @@
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
-import type { CreateHtmlTypeMc } from './createHtmlMc'
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { CreateHtmlTypeMc } from './createHtmlMc';
 export type MakeSlidesTypeMc = (
   txt: string,
   options: string[],
@@ -37,6 +37,6 @@ function addEventListener(
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
   element.addEventListener('click', () => {
-    conclude(doc, slide, (option as AnswerType), txt);
+    conclude(doc, slide, option as AnswerType, txt);
   });
 }

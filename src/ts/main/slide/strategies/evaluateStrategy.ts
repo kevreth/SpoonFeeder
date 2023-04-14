@@ -9,8 +9,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Another evaluation class, but evaluates an entire set of questions.
-import { Evaluation, makeRow } from '../../quiz/evaluate'
-import type { AnswerType } from './resultStrategy'
+import { Evaluation, makeRow } from '../../quiz/evaluate';
+import type { AnswerType } from './resultStrategy';
 // Only makeRow from Evaluation is required.
 export type FunctionType = (
   response: AnswerType,
@@ -43,9 +43,7 @@ export type EvaluateTypeGap = (
 // Unification of all evaluation strategy types. Necessary for polymorphically
 // referring to any evaluation strategy.
 ///////////////////////////////////////////////////////////////////////////////
-export type EvaluateType =
-  | EvaluateTypeSimple
-  | EvaluateTypeGap;
+export type EvaluateType = EvaluateTypeSimple | EvaluateTypeGap;
 export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //
@@ -123,7 +121,13 @@ export class Evaluate {
       length = ans.length;
       (ans as string[]).forEach((answer, idx) => {
         const response = res[idx];
-        const row = rowFunction(response, answer as AnswerType, txt, idx, length);
+        const row = rowFunction(
+          response,
+          answer as AnswerType,
+          txt,
+          idx,
+          length
+        );
         rows.push(row);
       });
     }

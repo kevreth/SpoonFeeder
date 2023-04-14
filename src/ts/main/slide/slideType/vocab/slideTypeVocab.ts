@@ -1,11 +1,11 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator'
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator'
-import { shuffle } from '../../../quiz/utilities'
-import { Slide } from '../../slide'
-import type { SlideInterface } from '../../slideInterface'
-import { AnswerType } from '../../strategies/resultStrategy'
-import { McFactory } from '../mc/factoryMc'
-import type { MarkType, SlideType } from '../slideType'
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
+import { shuffle } from '../../../quiz/utilities';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
+import { AnswerType } from '../../strategies/resultStrategy';
+import { McFactory } from '../mc/factoryMc';
+import type { MarkType, SlideType } from '../slideType';
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -14,7 +14,7 @@ export type vocabTuplesType = [
 ][];
 //Vocab is different than the other slide types because it concisely
 //represents a group of mc questions.
-export class Vocab extends Slide implements SlideType  {
+export class Vocab extends Slide implements SlideType {
   mark!: MarkType;
   list = new Map<string, string>();
   set = new Array<SlideInterface>();

@@ -1,13 +1,13 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator'
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator'
-import { removeListener, shuffle } from '../../../quiz/utilities'
-import { CORRECT, INCORRECT } from '../../markupColors'
-import { Slide } from '../../slide'
-import type { SlideInterfaceProperties } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
-import type { MarkTypeMa, SlideType } from '../slideType'
-export class Ma extends Slide implements SlideType  {
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
+import { removeListener, shuffle } from '../../../quiz/utilities';
+import { CORRECT, INCORRECT } from '../../markupColors';
+import { Slide } from '../../slide';
+import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { MarkTypeMa, SlideType } from '../slideType';
+export class Ma extends Slide implements SlideType {
   processJson(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
@@ -67,5 +67,5 @@ export class Ma extends Slide implements SlideType  {
     if (isKey && selected) btn.style.backgroundColor = CORRECT;
     else if (!isKey && selected) btn.style.backgroundColor = INCORRECT;
     else if (isKey && !selected) btn.style.border = `1px solid ${INCORRECT}`;
-  }
+  };
 }

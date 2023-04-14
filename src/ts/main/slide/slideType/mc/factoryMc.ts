@@ -1,10 +1,10 @@
-import { Mc } from './slideTypeMc';
+import { SlideInitializer } from '../../slideInitializer';
+import type { SlideInterface } from '../../slideInterface';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
 import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import { SlideInitializer } from '../../slideInitializer';
+import { Mc } from './slideTypeMc';
 
 export class McFactory extends SlideInitializer {
   constructor() {

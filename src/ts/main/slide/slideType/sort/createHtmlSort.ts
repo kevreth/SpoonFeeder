@@ -1,14 +1,13 @@
-import { isRandom } from '../../../datalayer/mediator'
-import { doneButton } from '../../../quiz/buttons'
-import { shuffle } from '../../../quiz/utilities'
-import type { AnswerType } from '../../strategies/resultStrategy'
+import { isRandom } from '../../../datalayer/mediator';
+import { doneButton } from '../../../quiz/buttons';
+import { shuffle } from '../../../quiz/utilities';
+import type { AnswerType } from '../../strategies/resultStrategy';
 
 export function createHtmlSort(inst: string, ans: AnswerType) {
   const retval = inst + '<br>\n';
   let rev = '<div id="selection"></div>\n<section class="container">\n';
   let list = ans as string[];
-  if (isRandom())
-    list = shuffle(list as string[]);
+  if (isRandom()) list = shuffle(list as string[]);
   list.forEach((item) => {
     rev = rev.concat(`  <div class="list-item">${item}</div>\n`);
   });

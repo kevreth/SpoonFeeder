@@ -1,12 +1,12 @@
+import type { StateActions } from '../../quiz/stateActionDispatcher';
 import { last } from '../../quiz/utilities';
 import { fillMatchingSlide } from '../../slide/slideDispatcher';
 import type { SlideInterface } from '../../slide/slideInterface';
-import type { StateActions } from '../../quiz/stateActionDispatcher';
-import { Json } from './saveFile';
 import { SaveData } from './saveData';
+import { Json } from './saveFile';
 
 export class SlideDispatcher2 implements StateActions<SlideInterface> {
-  constructor(public slides: SlideInterface[], public saves: SaveData[]) { }
+  constructor(public slides: SlideInterface[], public saves: SaveData[]) {}
   //DUPLICATE CODE: slideDispatche.getSlide()
   private getSlide(increment: number) {
     const save = last(this.saves) as SaveData;

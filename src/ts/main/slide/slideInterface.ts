@@ -1,13 +1,13 @@
-import type { AdocVisitorInterface } from '../datalayer/mediator'
-import type { Evaluation } from '../quiz/evaluate'
-import type { CreateHtmlType } from './strategies/createHtmlStrategy'
-import type { EvaluateType } from './strategies/evaluateStrategy'
-import type { MakeSlidesType } from './strategies/makeSlidesStrategy'
+import type { AdocVisitorInterface } from '../datalayer/mediator';
+import type { Evaluation } from '../quiz/evaluate';
+import type { CreateHtmlType } from './strategies/createHtmlStrategy';
+import type { EvaluateType } from './strategies/evaluateStrategy';
+import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './strategies/resultStrategy'
+} from './strategies/resultStrategy';
 export interface SlideInterfaceProperties {
   txt: string;
   type: string;

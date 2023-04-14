@@ -1,9 +1,9 @@
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
-import type { CreateHtmlTypeGap } from './createHtmlGap'
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { CreateHtmlTypeGap } from './createHtmlGap';
 export type MakeSlidesTypeGap = (
   txt: string,
   ans: AnswerType,
@@ -94,7 +94,7 @@ function setgap(
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
     if (fillsRemaining === 0) {
       const res = evaluate(doc);
-      conclude(doc, slide, (res as AnswerType), txt);
+      conclude(doc, slide, res as AnswerType, txt);
     }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');

@@ -1,10 +1,10 @@
-import { gsap } from 'gsap'
-import { Draggable } from 'gsap/dist/Draggable'
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { CreateHtmlTypeSort } from './createHtmlSort'
+import { gsap } from 'gsap';
+import { Draggable } from 'gsap/dist/Draggable';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { CreateHtmlTypeSort } from './createHtmlSort';
 export type MakeSlidesTypeSort = (
   txt: string,
   ans: AnswerType,
@@ -32,7 +32,7 @@ export function makeSlidesStrategySort(
   done.addEventListener('click', () => {
     done.remove();
     const res = evaluate(sortables);
-    conclude(doc, slide, (res as AnswerType), txt);
+    conclude(doc, slide, res as AnswerType, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {

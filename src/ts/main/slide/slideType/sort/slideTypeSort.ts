@@ -2,10 +2,10 @@ import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import type { MarkTypeSort, SlideType } from '../slideType'
-export class Sort extends Slide implements SlideType  {
+import type { MarkTypeSort, SlideType } from '../slideType';
+export class Sort extends Slide implements SlideType {
   processJson(json: SlideInterface): void {
-    const json1 = json as Sort
+    const json1 = json as Sort;
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json1);
     this.accept(new AdocVisitor());
   }
@@ -28,5 +28,5 @@ export class Sort extends Slide implements SlideType  {
     const msg = isCorrect ? 'correct' : 'incorrect';
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
-  }
+  };
 }

@@ -1,18 +1,32 @@
-import { createHtmlSort, CreateHtmlTypeSort } from '../slideType/sort/createHtmlSort';
-import { createHtmlSelect, CreateHtmlTypeSelect } from '../slideType/select/createHtmlSelect';
-import { createHtmlMc, CreateHtmlTypeMc } from '../slideType/mc/createHtmlMc';
-import { createHtmlImap, CreateHtmlTypeImap } from '../slideType/imap/createHtmlImap';
+import {
+  createHtmlGap,
+  CreateHtmlTypeGap,
+} from '../slideType/gap/createHtmlGap';
+import {
+  createHtmlImap,
+  CreateHtmlTypeImap,
+} from '../slideType/imap/createHtmlImap';
+import {
+  createHtmlInfo,
+  CreateHtmlTypeInfo,
+} from '../slideType/info/createHtmlInfo';
 import { createHtmlMa, CreateHtmlTypeMa } from '../slideType/ma/createHtmlMa';
-import { createHtmlGap, CreateHtmlTypeGap } from '../slideType/gap/createHtmlGap';
-import { createHtmlInfo, CreateHtmlTypeInfo } from '../slideType/info/createHtmlInfo';
-export type CreateHtmlType =
-  & CreateHtmlTypeInfo
-  & CreateHtmlTypeGap
-  & CreateHtmlTypeImap
-  & CreateHtmlTypeMa
-  & CreateHtmlTypeMc
-  & CreateHtmlTypeSelect
-  & CreateHtmlTypeSort;
+import { createHtmlMc, CreateHtmlTypeMc } from '../slideType/mc/createHtmlMc';
+import {
+  createHtmlSelect,
+  CreateHtmlTypeSelect,
+} from '../slideType/select/createHtmlSelect';
+import {
+  createHtmlSort,
+  CreateHtmlTypeSort,
+} from '../slideType/sort/createHtmlSort';
+export type CreateHtmlType = CreateHtmlTypeInfo &
+  CreateHtmlTypeGap &
+  CreateHtmlTypeImap &
+  CreateHtmlTypeMa &
+  CreateHtmlTypeMc &
+  CreateHtmlTypeSelect &
+  CreateHtmlTypeSort;
 export class CreateHtml {
   static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
   static readonly GAP: CreateHtmlTypeGap = createHtmlGap;
@@ -22,4 +36,3 @@ export class CreateHtml {
   static readonly SELECT: CreateHtmlTypeSelect = createHtmlSelect;
   static readonly SORT: CreateHtmlTypeSort = createHtmlSort;
 }
-

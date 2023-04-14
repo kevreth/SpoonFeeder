@@ -1,6 +1,14 @@
 import $ from 'jquery';
 import _ from 'lodash';
-export const { random, isEqual, difference, intersection, shuffle, escape, last } = _;
+export const {
+  random,
+  isEqual,
+  difference,
+  intersection,
+  shuffle,
+  escape,
+  last,
+} = _;
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
@@ -41,8 +49,8 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
   const list: NodeListOf<Element> = doc.querySelectorAll(predicate);
   return Array.from(list).map(({ id }) => id);
 }
-export function remove<T>(arr:Array<T>, item:T) {
-  return arr.filter(function(value) {
+export function remove<T>(arr: Array<T>, item: T) {
+  return arr.filter(function (value) {
     return value !== item;
   });
 }

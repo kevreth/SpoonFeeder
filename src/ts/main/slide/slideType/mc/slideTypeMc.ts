@@ -1,16 +1,16 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator'
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator'
-import { removeListener, shuffle } from '../../../quiz/utilities'
-import { CORRECT, INCORRECT } from '../../markupColors'
-import { Slide } from '../../slide'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
-import type { MarkTypeMc, SlideType } from '../slideType'
-export class Mc extends Slide implements SlideType  {
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
+import { removeListener, shuffle } from '../../../quiz/utilities';
+import { CORRECT, INCORRECT } from '../../markupColors';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { MarkTypeMc, SlideType } from '../slideType';
+export class Mc extends Slide implements SlideType {
   o: string[] = [];
   processJson(json: SlideInterface): void {
-    const json1 = json as Mc
+    const json1 = json as Mc;
     ({
       txt: this.txt,
       o: this.o,
@@ -32,14 +32,7 @@ export class Mc extends Slide implements SlideType  {
     const txt = this.txt;
     const options = this.o;
     const makeSlidesStrategy = this.makeSlidesStrategy;
-    makeSlidesStrategy(
-      txt,
-      options,
-      createHtml,
-      maxWidthStrategy,
-      doc,
-      this
-    );
+    makeSlidesStrategy(txt, options, createHtml, maxWidthStrategy, doc, this);
   }
   decorate(doc: Document) {
     const options = this.o;

@@ -1,11 +1,11 @@
 import { shuffle } from '../../quiz/utilities';
-import { isRandom } from '../webstorage/webStorage';
+import { initSlide } from '../../slide/slideFactory';
 import type { SlideInterface } from '../../slide/slideInterface';
+import { INFO } from '../../slide/slideType/info/factoryInfo';
+import { isRandom } from '../webstorage/webStorage';
 import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';
 import { process } from './courseFileProcessor';
-import { initSlide } from '../../slide/slideFactory';
-import { INFO } from '../../slide/slideType/info/factoryInfo';
 //////////////// Phase 1: process Json
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>
@@ -48,7 +48,8 @@ export class JsonProcessor
     parent: void
   ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
-    if (child.inst !== undefined) ProcessJson.loadQuestions(retval, child.inst, false);
+    if (child.inst !== undefined)
+      ProcessJson.loadQuestions(retval, child.inst, false);
     if (child.exercises !== undefined) {
       if (isRandom()) child.exercises = shuffle(child.exercises);
       ProcessJson.loadQuestions(retval, child.exercises, true);

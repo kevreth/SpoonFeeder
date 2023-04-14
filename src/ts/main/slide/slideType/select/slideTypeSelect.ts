@@ -1,14 +1,14 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator'
-import { AdocVisitor } from '../../../datalayer/mediator'
-import { difference, intersection } from '../../../quiz/utilities'
-import { CORRECT, INCORRECT } from '../../markupColors'
-import { Slide } from '../../slide'
-import type { SlideInterface } from '../../slideInterface'
-import type { MarkTypeSelect, SlideType } from '../slideType'
-export class Select extends Slide implements SlideType  {
+import type { AdocVisitorInterface } from '../../../datalayer/mediator';
+import { AdocVisitor } from '../../../datalayer/mediator';
+import { difference, intersection } from '../../../quiz/utilities';
+import { CORRECT, INCORRECT } from '../../markupColors';
+import { Slide } from '../../slide';
+import type { SlideInterface } from '../../slideInterface';
+import type { MarkTypeSelect, SlideType } from '../slideType';
+export class Select extends Slide implements SlideType {
   inst = '';
   processJson(json: SlideInterface): void {
-    const json1 = json as Select
+    const json1 = json as Select;
     ({
       inst: this.inst,
       txt: this.txt,
@@ -44,7 +44,7 @@ export class Select extends Slide implements SlideType  {
     // correctly selected items
     diff = intersection(_res, _ans);
     this.style(diff, 'underline', CORRECT, doc);
-  }
+  };
   style(
     diff: string[],
     decoration: string,

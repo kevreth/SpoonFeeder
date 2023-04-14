@@ -1,5 +1,6 @@
 import type { SlideInterface } from './slideInterface';
 import { BoolFactory } from './slideType/bool/factoryBool';
+import { GapFactory } from './slideType/gap/factoryGap';
 import { ImapFactory } from './slideType/imap/factoryImap';
 import { InfoFactory } from './slideType/info/factoryInfo';
 import { MaFactory } from './slideType/ma/factoryMa';
@@ -7,7 +8,6 @@ import { McFactory } from './slideType/mc/factoryMc';
 import { SelectFactory } from './slideType/select/factorySelect';
 import { SortFactory } from './slideType/sort/factorySort';
 import { VocabFactory } from './slideType/vocab/factoryVocab';
-import { GapFactory } from './slideType/gap/factoryGap';
 const values = [
   new BoolFactory(),
   new GapFactory(),
@@ -36,4 +36,3 @@ export function initSlide(exercise: SlideInterface) {
   if (slides.length > 0) return slides;
   return slide;
 }
-

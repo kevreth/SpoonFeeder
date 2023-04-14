@@ -1,8 +1,8 @@
-import type { SlideInterface } from '../../main/slide/slideInterface';
 import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
-import { MC, VOCAB } from '../../main/slide/slideFactory';
 import type { Slide } from '../../main/slide/slide';
+import { MC, VOCAB } from '../../main/slide/slideFactory';
+import type { SlideInterface } from '../../main/slide/slideInterface';
 import type { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
 import { AbstractTest } from '../abstractTest';
 export abstract class SlideTest

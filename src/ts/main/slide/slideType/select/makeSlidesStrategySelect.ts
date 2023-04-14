@@ -1,10 +1,10 @@
-import { removeListener } from '../../../quiz/utilities'
-import { conclude } from '../../conclude/conclude'
-import { createPageContent } from '../../createPageContent/createPageContent'
-import { INDETERMINANT } from '../../markupColors'
-import type { SlideInterface } from '../../slideInterface'
-import type { AnswerType } from '../../strategies/resultStrategy'
-import type { CreateHtmlTypeSelect } from './createHtmlSelect'
+import { removeListener } from '../../../quiz/utilities';
+import { conclude } from '../../conclude/conclude';
+import { createPageContent } from '../../createPageContent/createPageContent';
+import { INDETERMINANT } from '../../markupColors';
+import type { SlideInterface } from '../../slideInterface';
+import type { AnswerType } from '../../strategies/resultStrategy';
+import type { CreateHtmlTypeSelect } from './createHtmlSelect';
 export type MakeSlidesTypeSelect = (
   inst: string,
   txt: string,
@@ -37,7 +37,7 @@ function addEventListener(
     removeEventListeners(numWords, doc);
     element.remove();
     const res = evaluate(doc);
-    conclude(doc, slide, (res as AnswerType), txt);
+    conclude(doc, slide, res as AnswerType, txt);
   });
 }
 function addEventListener1(ctr: number, doc: Document): void {
