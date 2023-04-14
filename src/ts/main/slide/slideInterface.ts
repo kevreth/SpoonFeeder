@@ -18,7 +18,7 @@ export interface SlideInterfaceProperties {
   res?: AnswerType;
   o?: string[];
   numans?: number;
-  list?: ArrayLike<string> | { [ s: string ]: string }
+  list?: Map<string, string>;
   isExercise: boolean;
   immediateConclusion: boolean;
 }

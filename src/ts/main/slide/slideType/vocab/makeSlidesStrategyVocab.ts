@@ -1,7 +1,7 @@
-import { SlideInterface } from '../../slideInterface';
-import { CreateHtmlTypeMc } from '../mc/createHtmlMc';
-import { AnswerType } from '../../strategies/resultStrategy';
-import { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import { SlideInterface } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
+import { CreateHtmlTypeMc } from '../mc/createHtmlMc'
 
 export type MakeSlidesTypeVocab = (
   list: Map<string, string>,

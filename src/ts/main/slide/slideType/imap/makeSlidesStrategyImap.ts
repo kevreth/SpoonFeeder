@@ -1,9 +1,10 @@
-import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds } from '../../../quiz/utilities';
-import type { SlideInterface } from '../../slideInterface';
-import { conclude } from '../../conclude/conclude';
-import { createPageContent } from '../../createPageContent/createPageContent';
-import type { CreateHtmlTypeImap } from './createHtmlImap';
+import { SVGInjector } from '@tanem/svg-injector'
+import { getChildIds } from '../../../quiz/utilities'
+import { conclude } from '../../conclude/conclude'
+import { createPageContent } from '../../createPageContent/createPageContent'
+import type { SlideInterface } from '../../slideInterface'
+import type { AnswerType } from '../../strategies/resultStrategy'
+import type { CreateHtmlTypeImap } from './createHtmlImap'
 export type MakeSlidesTypeImap = (
   txt: string,
   img: string,
@@ -33,7 +34,7 @@ function addEventListener(slide: SlideInterface, doc: Document, txt: string) {
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.addEventListener('click', () => {
-      conclude(doc, slide, id, txt);
+      conclude(doc, slide, (id as AnswerType), txt);
     });
   });
 }

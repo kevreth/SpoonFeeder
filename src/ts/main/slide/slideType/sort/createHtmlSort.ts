@@ -1,8 +1,7 @@
-import { AnswerType } from '../../kev/resultStrategy';
-import { shuffle } from '../../../quiz/utilities';
-import { isRandom } from '../../../datalayer/mediator';
-import { doneButton } from '../../../quiz/buttons';
-import type { AnswerType } from '../../strategies/resultStrategy';
+import { isRandom } from '../../../datalayer/mediator'
+import { doneButton } from '../../../quiz/buttons'
+import { shuffle } from '../../../quiz/utilities'
+import type { AnswerType } from '../../strategies/resultStrategy'
 
 export function createHtmlSort(inst: string, ans: AnswerType) {
   const retval = inst + '<br>\n';

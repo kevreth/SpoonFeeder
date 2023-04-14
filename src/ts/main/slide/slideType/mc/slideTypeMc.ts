@@ -4,7 +4,7 @@ import { removeListener, shuffle } from '../../../quiz/utilities'
 import { CORRECT, INCORRECT } from '../../markupColors'
 import { Slide } from '../../slide'
 import type { SlideInterface } from '../../slideInterface'
-import { AnswerType } from '../../strategies/resultStrategy'
+import type { AnswerType } from '../../strategies/resultStrategy'
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
 import type { MarkTypeMc, SlideType } from '../slideType'
 export class Mc extends Slide implements SlideType  {

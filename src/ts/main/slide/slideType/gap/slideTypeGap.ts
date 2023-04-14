@@ -9,7 +9,7 @@ import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scro
 import type { AdocVisitorInterface } from '../../../datalayer/mediator'
 import { AdocVisitor } from '../../../datalayer/mediator'
 import type { SlideInterface } from '../../slideInterface'
-import { AnswerType } from '../../strategies/resultStrategy'
+import type { AnswerType } from '../../strategies/resultStrategy'
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
 import type { MarkTypeGap, SlideType } from '../slideType'
 polyfill({
