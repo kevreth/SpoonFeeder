@@ -5,5 +5,11 @@
     "baseUrl": "src/ts",
     "sourceMap": false,
     "watch": true,
+    "target": "ES2021",
+    "lib": ["ES2021"]
+    // "lib": [
+    //   "ES2021"
+    // ]
   }
+
 }

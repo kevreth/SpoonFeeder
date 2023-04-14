@@ -14,14 +14,11 @@ import {
   setCourseName,
 } from './webstorage/webStorage';
 
+export type { Course, Division, AdocVisitorInterface, DivisionProcessor };
 export {
   PREFIX_COURSE_FILE,
-  Course,
-  Division,
-  AdocVisitorInterface,
   Json,
   SaveData,
-  DivisionProcessor,
   AdocVisitor,
   loadCourse,
   process,

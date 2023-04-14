@@ -3,7 +3,7 @@ import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
 import { timestampNow } from './date';
 import type { SlideInterface } from './slideInterface';
-import { CreateHtmlType } from './strategies/createHtmlStrategy';
+import type { CreateHtmlType } from './strategies/createHtmlStrategy';
 import type { EvaluateType } from './strategies/evaluateStrategy';
 import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 import type {

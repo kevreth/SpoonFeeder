@@ -46,7 +46,7 @@ export class SaveData {
   public static getResults(slide: SlideInterface): AnswerType {
     const saves = SaveData.get();
     const idx = SaveData.find(slide.txt, saves);
-    let retval: AnswerType = '';
+    let retval = '' as AnswerType;
     if (idx >= 0) retval = saves[idx].result;
     return retval;
   }

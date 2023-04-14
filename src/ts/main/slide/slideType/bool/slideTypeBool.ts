@@ -1,9 +1,8 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
 import type { SlideInterface } from '../../slideInterface';
-
 import { Mc } from '../mc/slideTypeMc';
-import { SlideType } from '../slideType';
+import type { SlideType } from '../slideType';
 //bool is a special case of Mc.
 export class Bool extends Mc implements SlideType {
   o = ['yes', 'no'];
