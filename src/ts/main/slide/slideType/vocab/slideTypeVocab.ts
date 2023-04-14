@@ -3,7 +3,7 @@ import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { shuffle } from '../../../quiz/utilities';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
-import { AnswerType } from '../../strategies/resultStrategy';
+import type { AnswerType } from '../../strategies/resultStrategy';
 import { McFactory } from '../mc/factoryMc';
 import type { MarkType, SlideType } from '../slideType';
 export const CHOICES = 4;
