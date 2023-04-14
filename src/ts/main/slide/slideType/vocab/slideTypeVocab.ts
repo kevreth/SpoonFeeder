@@ -1,14 +1,11 @@
-import { shuffle } from '../../../quiz/utilities';
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import { CreateHtml } from '../../strategies/createHtmlStrategy';
-import { Evaluate } from '../../strategies/evaluateStrategy';
-import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
-import { Result } from '../../strategies/resultStrategy';
-import { Mc } from '../mc/slideTypeMc';
-import type { MarkType, SlideType } from '../slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator'
+import { shuffle } from '../../../quiz/utilities'
+import { Slide } from '../../slide'
+import type { SlideInterface } from '../../slideInterface'
+import { AnswerType } from '../../strategies/resultStrategy'
+import { McFactory } from '../mc/factoryMc'
+import type { MarkType, SlideType } from '../slideType'
 export const CHOICES = 4;
 export type vocabTuplesType = [
   txt: string,
@@ -29,16 +26,9 @@ export class Vocab extends Slide implements SlideType  {
     this.accept(new AdocVisitor());
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {
-      //using SlideFactory creates a circular dependency
-      const slide = new Mc(
-        this.type,
-        CreateHtml.MC,
-        MakeSlidesStrategy.MC,
-        Evaluate.SIMPLE,
-        Result.SIMPLE
-      );
+      const slide = new McFactory().instance();
       slide.txt = vtuple[0];
-      slide.ans = vtuple[1];
+      slide.ans = vtuple[1] as AnswerType;
       slide.o = vtuple[2];
       slide.isExercise = this.isExercise;
       this.set.push(slide);
