@@ -3,7 +3,6 @@ import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { MarkTypeSort, SlideType } from '../slideType'
-import { MakeSlidesTypeSort } from './makeSlidesStrategySort';
 export class Sort extends Slide implements SlideType  {
   processJson(json: SlideInterface): void {
     const json1 = json as Sort
@@ -17,7 +16,7 @@ export class Sort extends Slide implements SlideType  {
     const txt = this.txt;
     const ans = this.ans;
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSort;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(txt, ans, createHtml, doc, this);
   }
   decorate(doc: Document) {

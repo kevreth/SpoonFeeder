@@ -6,12 +6,13 @@ import { createHtmlMa, CreateHtmlTypeMa } from '../slideType/ma/createHtmlMa';
 import { createHtmlGap, CreateHtmlTypeGap } from '../slideType/gap/createHtmlGap';
 import { createHtmlInfo, CreateHtmlTypeInfo } from '../slideType/info/createHtmlInfo';
 export type CreateHtmlType =
-  | CreateHtmlTypeGap
-  | CreateHtmlTypeImap
-  | CreateHtmlTypeMa
-  | CreateHtmlTypeMc
-  | CreateHtmlTypeSelect
-  | CreateHtmlTypeSort;
+  & CreateHtmlTypeInfo
+  & CreateHtmlTypeGap
+  & CreateHtmlTypeImap
+  & CreateHtmlTypeMa
+  & CreateHtmlTypeMc
+  & CreateHtmlTypeSelect
+  & CreateHtmlTypeSort;
 export class CreateHtml {
   static readonly INFO: CreateHtmlTypeInfo = createHtmlInfo;
   static readonly GAP: CreateHtmlTypeGap = createHtmlGap;

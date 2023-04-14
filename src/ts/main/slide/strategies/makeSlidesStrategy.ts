@@ -7,14 +7,14 @@ import { MakeSlidesTypeSelect, makeSlidesStrategySelect } from '../slideType/sel
 import { MakeSlidesTypeSort, makeSlidesStrategySort } from '../slideType/sort/makeSlidesStrategySort';
 import { MakeSlidesTypeVocab } from '../slideType/vocab/makeSlidesStrategyVocab';
 export type MakeSlidesType =
-  | MakeSlidesTypeGap
-  | MakeSlidesTypeImap
-  | MakeSlidesTypeInfo
-  | MakeSlidesTypeMa
-  | MakeSlidesTypeMc
-  | MakeSlidesTypeSelect
-  | MakeSlidesTypeSort
-  | MakeSlidesTypeVocab;
+  & MakeSlidesTypeGap
+  & MakeSlidesTypeImap
+  & MakeSlidesTypeInfo
+  & MakeSlidesTypeMa
+  & MakeSlidesTypeMc
+  & MakeSlidesTypeSelect
+  & MakeSlidesTypeSort
+  & MakeSlidesTypeVocab;
 export class MakeSlidesStrategy {
   public static readonly GAP: MakeSlidesTypeGap = makeSlidesStrategyGap
   public static readonly IMAP: MakeSlidesTypeImap = makeSlidesStrategyImap;

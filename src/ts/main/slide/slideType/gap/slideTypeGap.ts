@@ -11,7 +11,6 @@ import { AdocVisitor } from '../../../datalayer/mediator';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { SlideInterface } from '../../slideInterface';
 import type { MarkTypeGap, SlideType } from '../slideType';
-import { MakeSlidesTypeGap } from './makeSlidesStrategyGap';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -30,7 +29,7 @@ export class Gap extends Slide implements SlideType {
     const createHtml = this.createHtml;
     let ans = this.ans;
     if (isRandom()) ans = shuffle(ans as string[]);
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeGap;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, this);
   }
   getAnswerCount(): number {

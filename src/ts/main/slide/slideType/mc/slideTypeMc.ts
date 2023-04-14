@@ -6,7 +6,6 @@ import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMc, SlideType } from '../slideType';
-import { MakeSlidesTypeMc } from './makeSlidesStrategyMc';
 export class Mc extends Slide implements SlideType  {
   o: string[] = [];
   processJson(json: SlideInterface): void {
@@ -31,7 +30,7 @@ export class Mc extends Slide implements SlideType  {
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt;
     const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMc;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(
       txt,
       options,

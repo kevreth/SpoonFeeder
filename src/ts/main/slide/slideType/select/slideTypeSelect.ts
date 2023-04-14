@@ -6,7 +6,6 @@ import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import type { MarkTypeSelect, SlideType } from '../slideType';
-import { MakeSlidesTypeSelect } from './makeSlidesStrategySelect';
 export class Select extends Slide implements SlideType  {
   inst = '';
   processJson(json: SlideInterface): void {
@@ -26,7 +25,7 @@ export class Select extends Slide implements SlideType  {
     const inst = this.inst;
     const txt = this.txt;
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeSelect;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(inst, txt, createHtml, doc, this);
   }
   decorate(doc: Document) {

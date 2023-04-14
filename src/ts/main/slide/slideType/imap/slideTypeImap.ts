@@ -4,7 +4,6 @@ import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';
-import { MakeSlidesTypeImap } from './makeSlidesStrategyImap';
 export class Imap extends Slide implements SlideType {
   img = '';
   processJson(json: SlideInterface): void {
@@ -24,7 +23,7 @@ export class Imap extends Slide implements SlideType {
     const txt = this.txt;
     const img = this.img;
     const createHtml = this.createHtml;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeImap;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(txt, img, createHtml, doc, this);
   }
   decorate(doc: Document) {

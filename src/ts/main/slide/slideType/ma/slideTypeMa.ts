@@ -6,7 +6,6 @@ import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMa, SlideType } from '../slideType';
-import { MakeSlidesTypeMa } from './makeSlidesStrategyMa';
 export class Ma extends Slide implements SlideType  {
   o: string[] = [];
   numans = 0;
@@ -38,7 +37,7 @@ export class Ma extends Slide implements SlideType  {
     const maxWidthStrategy = SetWidths.SIMPLE;
     const txt = this.txt;
     const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy as MakeSlidesTypeMa;
+    const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(
       txt,
       options,
