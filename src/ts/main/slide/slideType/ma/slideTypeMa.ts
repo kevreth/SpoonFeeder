@@ -1,18 +1,18 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
-import { CORRECT, INCORRECT } from '../../markupColors';
-import { removeListener, shuffle } from '../../../quiz/utilities';
-import { Slide } from '../../slide';
-import type { SlideInterface } from '../../slideInterface';
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { MarkTypeMa, SlideType } from '../slideType';
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor, isRandom } from '../../../datalayer/mediator'
+import { removeListener, shuffle } from '../../../quiz/utilities'
+import { CORRECT, INCORRECT } from '../../markupColors'
+import { Slide } from '../../slide'
+import type { SlideInterfaceProperties } from '../../slideInterface'
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
+import type { MarkTypeMa, SlideType } from '../slideType'
 export class Ma extends Slide implements SlideType  {
   o: string[] = [];
   numans = 0;
   answers: string[] = [];
   res: string[] = [];
-  processJson(json: SlideInterface): void {
-    const json1 = json as Ma
+  processJson(json: SlideInterfaceProperties): void {
+    // const json1 = json as Ma
     ({
       txt: this.txt,
       o: this.o,
@@ -20,7 +20,7 @@ export class Ma extends Slide implements SlideType  {
       ref: this.ref,
       isExercise: this.isExercise,
       numans: this.numans,
-    } = json1);
+    } = json);
     this.accept(new AdocVisitor());
     for (let i = 0; i < this.numans; i++) {
       this.answers.push(this.o[i]);

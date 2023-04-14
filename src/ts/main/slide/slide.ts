@@ -1,32 +1,28 @@
-import { timestampNow } from './date';
-import type { AdocVisitorInterface } from '../datalayer/mediator';
-import { SaveData } from '../datalayer/mediator';
-import type { Evaluation } from '../quiz/evaluate';
-import type { EvaluateType } from './strategies/evaluateStrategy';
-import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
+import type { AdocVisitorInterface } from '../datalayer/mediator'
+import { SaveData } from '../datalayer/mediator'
+import type { Evaluation } from '../quiz/evaluate'
+import { timestampNow } from './date'
+import type { SlideInterface } from './slideInterface'
+import { CreateHtmlType } from './strategies/createHtmlStrategy'
+import type { EvaluateType } from './strategies/evaluateStrategy'
+import type { MakeSlidesType } from './strategies/makeSlidesStrategy'
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './strategies/resultStrategy';
-import type { SlideInterface } from './slideInterface';
-import { CreateHtmlType } from './strategies/createHtmlStrategy';
+} from './strategies/resultStrategy'
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt!: string;
   ans!: AnswerType;
-  res!: AnswerType;
-  exp!: string;
-  ref!: string;
+  res?: AnswerType;
+  exp?: string;
+  ref?: string;
+  o?: AnswerType;
+  numans?: number;
   cont = false;
-  immediateConclusion = false;
-  public pageTemplate = `
-    <div id="slide">
-      <div id="content">
-      </div>
-    </div>
-  `;
   isExercise = false;
+  immediateConclusion = false;
   constructor(
     public readonly type: string,
     public readonly createHtml: CreateHtmlType,
@@ -34,21 +30,19 @@ export abstract class Slide implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
+  abstract accept(visitor: AdocVisitorInterface): void;
+  abstract decorate(doc: Document): boolean;
+  abstract processJson(json: SlideInterface): void;
+  abstract makeSlides(doc: Document): void;
   setContinue(): void {
     throw new Error('Method not implemented.');
   }
-  o?: AnswerType | undefined;
-  numans?: number | undefined;
-  abstract accept(visitor: AdocVisitorInterface): void;
   getSlideSet(): SlideInterface[] {
     return new Array<SlideInterface>();
   }
   getAnswerCount(): number {
     return 1;
   }
-  abstract decorate(doc: Document): boolean;
-  abstract processJson(json: SlideInterface): void;
-  abstract makeSlides(doc: Document): void;
   //necessary to load results from save file
   setResults(res: AnswerType): void {
     this.res = res;
@@ -63,16 +57,16 @@ export abstract class Slide implements SlideInterface {
   public saveData() {
     const txt = this.txt;
     const res = this.res;
-    SaveData.set(txt, res, timestampNow(), false);
+    SaveData.set(txt, res as AnswerType, timestampNow(), false);
   }
   public result(): ResultReturnType {
-    return this.resultType(this.ans, this.res);
+    return this.resultType(this.ans, this.res as AnswerType);
   }
   public setRes(res: AnswerType): void {
     this.res = res;
   }
   public getRes(): AnswerType {
-    return this.res;
+    return this.res as AnswerType;
   }
   public getAns(): AnswerType {
     return this.ans;
