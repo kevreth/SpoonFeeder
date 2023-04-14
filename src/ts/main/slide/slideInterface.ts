@@ -20,6 +20,7 @@ export interface SlideInterfaceProperties {
   numans?: number;
   isExercise: boolean;
   immediateConclusion: boolean;
+  list: ArrayLike<string> | { [ s: string ]: string }
 }
 export interface SlideInterface extends SlideInterfaceProperties {
   createHtml: CreateHtmlType;
