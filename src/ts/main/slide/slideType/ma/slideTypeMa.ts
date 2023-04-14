@@ -4,13 +4,12 @@ import { removeListener, shuffle } from '../../../quiz/utilities'
 import { CORRECT, INCORRECT } from '../../markupColors'
 import { Slide } from '../../slide'
 import type { SlideInterfaceProperties } from '../../slideInterface'
+import { AnswerType } from '../../strategies/resultStrategy'
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
 import type { MarkTypeMa, SlideType } from '../slideType'
 export class Ma extends Slide implements SlideType  {
-  o: string[] = [];
-  numans = 0;
-  answers: string[] = [];
-  res: string[] = [];
+  // o: string[] = [];
+  // numans = 0;
   processJson(json: SlideInterfaceProperties): void {
     // const json1 = json as Ma
     ({
@@ -22,12 +21,17 @@ export class Ma extends Slide implements SlideType  {
       numans: this.numans,
     } = json);
     this.accept(new AdocVisitor());
-    for (let i = 0; i < this.numans; i++) {
-      this.answers.push(this.o[i]);
+    const answers: string[] = [];
+    const numans = this.numans as number;
+    const o = this.o as string[];
+    for (let i = 0; i < numans; i++) {
+      answers.push(o[i]);
     }
-    this.ans = this.answers.sort();
+    this.ans = answers.sort() as AnswerType;
+    this.o = o;
+    this.numans = numans;
     const shuffleFlag = this.isExercise && isRandom();
-    if (shuffleFlag) this.o = shuffle(this.o);
+    if (shuffleFlag) this.o = shuffle(o);
   }
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitMa(this);
@@ -54,7 +58,7 @@ export class Ma extends Slide implements SlideType  {
       const option = options[i];
       let isKey = false;
       let selected = false;
-      if (this.answers.includes(option)) isKey = true;
+      if (this.ans.includes(option)) isKey = true;
       if (this.res.includes(option)) selected = true;
       const btn = doc.getElementById('btn' + i) as HTMLElement;
       this.mark(isKey, selected, btn);
