@@ -1,16 +1,17 @@
-import { polyfill } from 'mobile-drag-drop';
-import { CORRECT, INCORRECT } from '../../markupColors';
-import { shuffle } from '../../../quiz/utilities';
-import { isRandom } from '../../../datalayer/mediator';
-import { Slide } from '../../slide';
+import { polyfill } from 'mobile-drag-drop'
+import { isRandom } from '../../../datalayer/mediator'
+import { shuffle } from '../../../quiz/utilities'
+import { CORRECT, INCORRECT } from '../../markupColors'
+import { Slide } from '../../slide'
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
-import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
-import type { SlideInterface } from '../../slideInterface';
-import type { MarkTypeGap, SlideType } from '../slideType';
+import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour'
+import type { AdocVisitorInterface } from '../../../datalayer/mediator'
+import { AdocVisitor } from '../../../datalayer/mediator'
+import type { SlideInterface } from '../../slideInterface'
+import { AnswerType } from '../../strategies/resultStrategy'
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
+import type { MarkTypeGap, SlideType } from '../slideType'
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
@@ -28,7 +29,7 @@ export class Gap extends Slide implements SlideType {
     const maxWidthStrategy = SetWidths.TARGETED;
     const createHtml = this.createHtml;
     let ans = this.ans;
-    if (isRandom()) ans = shuffle(ans as string[]);
+    if (isRandom()) ans = shuffle(ans as string[]) as AnswerType;
     const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, this);
   }
