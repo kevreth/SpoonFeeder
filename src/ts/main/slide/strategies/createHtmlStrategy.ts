@@ -5,13 +5,6 @@ import { createHtmlImap, CreateHtmlTypeImap } from '../slideType/imap/createHtml
 import { createHtmlMa, CreateHtmlTypeMa } from '../slideType/ma/createHtmlMa';
 import { createHtmlGap, CreateHtmlTypeGap } from '../slideType/gap/createHtmlGap';
 import { createHtmlInfo, CreateHtmlTypeInfo } from '../slideType/info/createHtmlInfo';
-export type { CreateHtmlTypeGap };
-export type { CreateHtmlTypeInfo };
-export type { CreateHtmlTypeImap };
-export type { CreateHtmlTypeMa };
-export type { CreateHtmlTypeMc };
-export type { CreateHtmlTypeSelect };
-export type { CreateHtmlTypeSort };
 export type CreateHtmlTypeUnion =
   | CreateHtmlTypeGap
   | CreateHtmlTypeImap

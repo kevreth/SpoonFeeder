@@ -1,5 +1,5 @@
 import type { SlideInterface } from './slideInterface';
-import { BoolFactory } from './slideType/bool/BoolFactory';
+import { BoolFactory } from './slideType/bool/factoryBool';
 import { ImapFactory } from './slideType/imap/factoryImap';
 import { InfoFactory } from './slideType/info/factoryInfo';
 import { MaFactory } from './slideType/ma/factoryMa';
