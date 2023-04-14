@@ -5,7 +5,7 @@ import { createHtmlImap, CreateHtmlTypeImap } from '../slideType/imap/createHtml
 import { createHtmlMa, CreateHtmlTypeMa } from '../slideType/ma/createHtmlMa';
 import { createHtmlGap, CreateHtmlTypeGap } from '../slideType/gap/createHtmlGap';
 import { createHtmlInfo, CreateHtmlTypeInfo } from '../slideType/info/createHtmlInfo';
-export type CreateHtmlTypeUnion =
+export type CreateHtmlType =
   | CreateHtmlTypeGap
   | CreateHtmlTypeImap
   | CreateHtmlTypeMa

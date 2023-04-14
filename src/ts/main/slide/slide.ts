@@ -10,7 +10,7 @@ import type {
   ResultType,
 } from './strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
-import { CreateHtmlTypeUnion } from './strategies/createHtmlStrategy';
+import { CreateHtmlType } from './strategies/createHtmlStrategy';
 type AnswerTypeIntersection = string & string[];
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
@@ -30,7 +30,7 @@ export abstract class Slide implements SlideInterface {
   isExercise = false;
   constructor(
     public readonly type: string,
-    public readonly createHtml: CreateHtmlTypeUnion,
+    public readonly createHtml: CreateHtmlType,
     public readonly makeSlidesStrategy: MakeSlidesType,
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
