@@ -1,6 +1,6 @@
 import { isRandom } from '../../../datalayer/mediator';
 import { doneButton } from '../../../quiz/buttons';
-import { shuffle } from '../../../quiz/utilities';
+import { shuffle } from '../../../quiz/mediator';
 import type { AnswerType } from '../../strategies/resultStrategy';
 
 export function createHtmlSort(inst: string, ans: AnswerType) {
