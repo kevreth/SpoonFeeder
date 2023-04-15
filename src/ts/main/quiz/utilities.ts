@@ -1,17 +1,16 @@
 import $ from 'jquery';
 import { shuffle } from 'lodash';
 export {
-  difference, escape, intersection, isEqual, last, random, shuffle
+  difference, escape, intersection, isEqual, last, random
 } from 'lodash';
+export { shuffle };
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
   parent.replaceChild(elClone, element);
   element.addEventListener(
     'click',
-    (event) => {
-      event.stopImmediatePropagation();
-    },
+    (event) => event.stopImmediatePropagation(),
     true
   );
 }
@@ -44,9 +43,7 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
   return Array.from(list).map(({ id }) => id);
 }
 export function remove<T>(arr: Array<T>, item: T) {
-  return arr.filter(function (value) {
-    return value !== item;
-  });
+  return arr.filter((value) => value !== item);
 }
 // =========================== Jquery wrappers ================================
 export function extend<T>(obj1: T, obj2: object) {
