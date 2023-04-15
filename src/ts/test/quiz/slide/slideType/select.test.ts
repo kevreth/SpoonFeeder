@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { SELECT } from '../../../../main/slide/slideFactory';
-import { Select } from '../../../../main/slide/slideType/select/slideTypeSelect';
+import { SELECT } from '../../../../main/slidetype/types/select/factorySelect';
+import { Select } from '../../../../main/slidetype/types/select/slideTypeSelect';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'select';
@@ -11,7 +11,7 @@ class Test extends SlideTest {
     param.ans = [1];
     param.isExercise = true;
     const testable = test.getTestable() as Select;
-    testable.processJson(param);
+    testable.setProperties(param);
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);

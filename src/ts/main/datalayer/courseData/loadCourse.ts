@@ -1,4 +1,4 @@
-import { showSlides } from '../../slide/slideDispatcher';
+import { showSlides } from '../../quiz/mediator';
 import { getYaml, getYaml2 } from '../persistence/filePersistence';
 import { Json } from '../saveData/saveFile';
 import type { Course } from './course';

@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { INFO } from '../../../../main/slide/slideFactory';
-import { Info } from '../../../../main/slide/slideType/info/slideTypeInfo';
+import { INFO } from '../../../../main/slidetype/types/info/factoryInfo';
+import { Info } from '../../../../main/slidetype/types/info/slideTypeInfo';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'info';
@@ -9,7 +9,7 @@ class Test extends SlideTest {
     const param = INFO();
     param.txt = 'no';
     const testable = test.getTestable();
-    testable.processJson(param);
+    testable.setProperties(param);
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
   }

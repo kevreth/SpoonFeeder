@@ -1,10 +1,10 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { VOCAB } from '../../../../main/slide/slideFactory';
+import { VOCAB } from '../../../../main/slidetype/types/vocab/factoryVocab';
 import {
   Vocab,
   generateQuestions,
-} from '../../../../main/slide/slideType/vocab/slideTypeVocab';
+} from '../../../../main/slidetype/types/vocab/slideTypeVocab';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {
   type = 'vocab';
@@ -16,7 +16,7 @@ class Test extends SlideTest {
     >;
     param.isExercise = true;
     const testable = test.getTestable() as Vocab;
-    testable.processJson(param);
+    testable.setProperties(param);
     expect(testable.type).toEqual('vocab');
     expect(testable.isExercise).toEqual(param.isExercise);
   }

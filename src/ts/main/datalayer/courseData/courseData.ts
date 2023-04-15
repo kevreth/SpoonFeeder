@@ -1,4 +1,4 @@
-import { remove } from '../../quiz/utilities';
+import { remove } from '../../quiz/mediator';
 import { getYaml } from '../persistence/filePersistence';
 import {
   getCourseListing,

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { MaxWidth } from '../../../main/slide/strategies/setWidthsStrategy/maxWidth';
+import { MaxWidth } from '../../../main/slidetype/strategies/setWidthsStrategy/maxWidth';
 it('getIdsAsArray', () => {
   const arr = MaxWidth.getIdsAsArray(3, 'btn');
   expect(arr.length).toEqual(3);

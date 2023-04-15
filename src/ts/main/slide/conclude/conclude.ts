@@ -1,9 +1,9 @@
-import { showButton, showExplainIcon } from '../../quiz/buttons';
+import { showButton, showExplainIcon } from '../../quiz/mediator';
+import type { AnswerType } from '../../slidetype/mediator';
 import type { SlideInterface } from '../slideInterface';
-import type { AnswerType } from '../strategies/resultStrategy';
 import { playAudio } from './audio';
 
-export function conclude(
+export function conclude2(
   doc: Document,
   slide: SlideInterface,
   res: AnswerType,

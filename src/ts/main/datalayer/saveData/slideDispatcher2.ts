@@ -1,7 +1,5 @@
-import type { StateActions } from '../../quiz/stateActionDispatcher';
-import { last } from '../../quiz/utilities';
-import { fillMatchingSlide } from '../../slide/slideDispatcher';
-import type { SlideInterface } from '../../slide/slideInterface';
+import type { SlideInterface, StateActions } from '../../quiz/mediator';
+import { fillMatchingSlide, last } from '../../quiz/mediator';
 import { SaveData } from './saveData';
 import { Json } from './saveFile';
 
@@ -10,8 +8,8 @@ export class SlideDispatcher2 implements StateActions<SlideInterface> {
   //DUPLICATE CODE: slideDispatche.getSlide()
   private getSlide(increment: number) {
     const save = last(this.saves) as SaveData;
-    const idx = Json.findMatchingSlide(this.slides, save.txt);
-    const slide = Json.getMatchingSlide(this.slides, idx + increment);
+    const idx = Json.findMatchingSlide(save.txt);
+    const slide = Json.getMatchingSlide(idx + increment);
     fillMatchingSlide(slide, save);
     return slide;
   }

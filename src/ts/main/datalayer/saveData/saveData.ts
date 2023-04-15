@@ -1,13 +1,17 @@
-import { dispatch2 } from '../../quiz/stateActionDispatcher';
-import { extend, isEqual } from '../../quiz/utilities';
-import { explanation } from '../../slide/explanation';
-import type { SlideInterface } from '../../slide/slideInterface';
-import type { AnswerType } from '../../slide/strategies/resultStrategy';
+import type { AnswerType, SlideInterface } from '../../quiz/mediator';
+import {
+  dispatch2,
+  explanation,
+  extend,
+  isEqual,
+  last,
+} from '../../quiz/mediator';
 import {
   getLocalStorage,
   setLocalStorage,
 } from '../persistence/webPersistence';
 import { getCourseName } from '../webstorage/webStorage';
+import { timestampNow } from './date';
 import { Json } from './saveFile';
 import { SlideDispatcher2 } from './slideDispatcher2';
 
@@ -25,14 +29,17 @@ export class SaveData {
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
     return arr;
   }
-  public static set(txt: string, res: AnswerType, ts: string, cont: boolean) {
+  public static set(txt: string, res: AnswerType, cont: boolean) {
     if (txt !== '' && !SaveData.exists(txt)) {
-      const save = new SaveData(txt, res, ts, cont);
+      const save = new SaveData(txt, res, timestampNow(), cont);
       const arr = SaveData.get();
       arr.push(save);
       const json = JSON.stringify(arr);
       setLocalStorage(getCourseName(), json);
     }
+  }
+  public static lastSavedItem() {
+    return last(SaveData.get()) as SaveData;
   }
   public static find(txt: string, saves: Array<SaveData>): number {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));

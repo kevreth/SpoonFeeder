@@ -1,7 +1,5 @@
-import { shuffle } from '../../quiz/utilities';
-import { initSlide } from '../../slide/slideFactory';
-import type { SlideInterface } from '../../slide/slideInterface';
-import { INFO } from '../../slide/slideType/info/factoryInfo';
+import type { SlideInterface } from '../../quiz/mediator';
+import { INFO, initSlide, shuffle } from '../../quiz/mediator';
 import { isRandom } from '../webstorage/webStorage';
 import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';
@@ -107,8 +105,7 @@ export class ProcessJson {
     questions.forEach((item) => {
       item.isExercise = isExercise;
       const lides = initSlide(item);
-      if (Array.isArray(lides)) processedSlides.push(...lides);
-      else processedSlides.push(lides);
+      processedSlides.push(...(Array.isArray(lides) ? lides : [lides]));
     });
     slides.push(...processedSlides);
   }
