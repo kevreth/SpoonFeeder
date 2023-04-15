@@ -18,37 +18,35 @@ export function process<C, D, T>(
   division: DivisionProcessor<C, D, T>,
   retval: T
 ) {
-  const _course: C = division.course_start(courseData, retval);
-  courseData.units.forEach((unit, unit_ctr) => {
-    const _unit: D = division.unit_start(unit, unit_ctr, retval, _course);
-    unit.lessons.forEach((lesson, lesson_ctr) => {
+  const _course: C = division.course_start( courseData, retval );
+  for (const [unit_ctr, unit] of courseData.units.entries()) {
+    const _unit: D = division.unit_start( unit, unit_ctr, retval, _course );
+    for (const [lesson_ctr, lesson] of unit.lessons.entries()) {
       const _lesson: D = division.lesson_start(
         lesson,
         lesson_ctr,
         retval,
         _unit
       );
-      lesson.modules.forEach((module, module_ctr) => {
+      for (const [module_ctr, module] of lesson.modules.entries()) {
         const _module: D = division.module_start(
           module,
           module_ctr,
           retval,
           _lesson
         );
-        if (module.inst !== undefined)
-          module.inst.forEach((inst, inst_ctr) => {
+        if ( module.inst !== undefined )
+          for (const [inst_ctr, inst] of module.inst.entries())
             division.inst(inst, inst_ctr, retval, _module);
-          });
-        if (module.exercises !== undefined)
-          module.exercises.forEach((exercise, exercise_ctr) => {
+        if ( module.exercises !== undefined )
+          for (const [exercise_ctr, exercise] of module.exercises.entries())
             division.exercises(exercise, exercise_ctr, retval, _module);
-          });
         division.module_end(_module, retval, _lesson);
-      });
+      };
       division.lesson_end(_lesson, retval, _unit);
-    });
+    }
     division.unit_end(_unit, retval, _course);
-  });
+  }
   division.course_end(_course, retval);
   return retval;
 }
