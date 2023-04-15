@@ -1,8 +1,8 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
 import { difference, intersection } from '../../../quiz/utilities';
-import { Slide } from '../../../slide/slide';
+import { Slide } from '../../../slide/mediator';
 import type { SlideInterface } from '../../../slide/slideInterface';
+import type { AdocVisitorInterface } from '../../misc/adocVisitor';
+import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';
 import type { MarkTypeSelect, SlideType } from '../../misc/slideType';
 export class Select extends Slide implements SlideType {

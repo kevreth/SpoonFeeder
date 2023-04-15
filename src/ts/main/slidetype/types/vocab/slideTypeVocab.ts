@@ -1,8 +1,9 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
+import { isRandom } from '../../../datalayer/mediator';
 import { shuffle } from '../../../quiz/utilities';
-import { Slide } from '../../../slide/slide';
-import type { SlideInterface } from '../../../slide/slideInterface';
+import type { SlideInterface } from '../../../slide/mediator';
+import { Slide } from '../../../slide/mediator';
+import type { AdocVisitorInterface } from '../../misc/adocVisitor';
+import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkType, SlideType } from '../../misc/slideType';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import { McFactory } from '../mc/factoryMc';

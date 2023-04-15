@@ -1,7 +1,7 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
-import { Slide } from '../../../slide/slide';
+import { Slide } from '../../../slide/mediator';
 import type { SlideInterface } from '../../../slide/slideInterface';
+import type { AdocVisitorInterface } from '../../misc/adocVisitor';
+import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeSort, SlideType } from '../../misc/slideType';
 export class Sort extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {

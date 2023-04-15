@@ -1,5 +1,3 @@
-export { AdocVisitor } from '../slidetype/misc/adocVisitor';
-export type { AdocVisitorInterface } from '../slidetype/misc/adocVisitor';
 export type { Course, Division } from './courseData/course';
 export { process } from './courseData/courseFileProcessor';
 export type { DivisionProcessor } from './courseData/courseFileProcessor';

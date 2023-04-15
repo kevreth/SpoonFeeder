@@ -1,7 +1,7 @@
-import type { AdocVisitorInterface } from '../datalayer/mediator';
 import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
 import type {
+  AdocVisitorInterface,
   AnswerType, CreateHtmlType, EvaluateType, MakeSlidesType, ResultReturnType,
   ResultType
 } from '../slidetype/mediator';

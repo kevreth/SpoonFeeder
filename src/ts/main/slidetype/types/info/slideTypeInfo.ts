@@ -1,7 +1,7 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../../slide/slide';
 import type { SlideInterface } from '../../../slide/slideInterface';
+import type { AdocVisitorInterface } from '../../misc/adocVisitor';
+import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkType, SlideType } from '../../misc/slideType';
 export class Info extends Slide implements SlideType {
   mark!: MarkType;

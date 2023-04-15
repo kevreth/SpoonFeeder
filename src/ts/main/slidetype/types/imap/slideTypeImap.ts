@@ -1,8 +1,8 @@
-import type { AdocVisitorInterface } from '../../../datalayer/mediator';
-import { AdocVisitor } from '../../../datalayer/mediator';
 import { getChildIds, removeListener } from '../../../quiz/utilities';
-import { Slide } from '../../../slide/slide';
+import { Slide } from '../../../slide/mediator';
 import type { SlideInterface } from '../../../slide/slideInterface';
+import type { AdocVisitorInterface } from '../../misc/adocVisitor';
+import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeImap, SlideType } from '../../misc/slideType';
 export class Imap extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
