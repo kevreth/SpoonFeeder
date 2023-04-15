@@ -1,4 +1,3 @@
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
@@ -36,7 +35,7 @@ function addEventListener(
   txt: string
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-  element.addEventListener('click', () => {
-    conclude(doc, slide, option as AnswerType, txt);
+  element.addEventListener( 'click', () => {
+     slide.conclude(doc, option as AnswerType, txt);
   });
 }

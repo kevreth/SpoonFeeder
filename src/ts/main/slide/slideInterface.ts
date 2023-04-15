@@ -1,7 +1,6 @@
-import type { AdocVisitorInterface } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
 import type {
-  AnswerType, CreateHtmlType, EvaluateType, MakeSlidesType, ResultReturnType,
+  AdocVisitorInterface, AnswerType, CreateHtmlType, EvaluateType, MakeSlidesType, ResultReturnType,
   ResultType
 } from '../slidetype/mediator';
 export interface SlideInterface {
@@ -36,5 +35,6 @@ export interface SlideInterface {
   getRes(): AnswerType;
   getAns(): AnswerType;
   saveData(): void;
-  decorate(doc: Document): boolean;
+  decorate( doc: Document ): boolean;
+  conclude( doc: Document, res: AnswerType, txt: string ): void;
 }

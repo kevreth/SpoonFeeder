@@ -1,6 +1,5 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
@@ -31,8 +30,8 @@ export const makeSlidesStrategySort: MakeSlidesTypeSort = function (
   const done = doc.getElementById('btn') as HTMLElement;
   done.addEventListener('click', () => {
     done.remove();
-    const res = evaluate(sortables);
-    conclude(doc, slide, res as AnswerType, txt);
+    const res = evaluate( sortables );
+    slide.conclude(doc, res as AnswerType, txt);
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {

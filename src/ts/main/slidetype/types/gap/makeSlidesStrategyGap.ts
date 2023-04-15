@@ -1,4 +1,3 @@
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
@@ -94,7 +93,7 @@ function setgap(
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
     if (fillsRemaining === 0) {
       const res = evaluate(doc);
-      conclude(doc, slide, res as AnswerType, txt);
+      slide.conclude(doc, res as AnswerType, txt);
     }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');

@@ -1,6 +1,5 @@
 import { SVGInjector } from '@tanem/svg-injector';
 import { getChildIds } from '../../../quiz/utilities';
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
@@ -34,7 +33,7 @@ function addEventListener(slide: SlideInterface, doc: Document, txt: string) {
   ids.forEach((id) => {
     const element = doc.getElementById(id) as HTMLElement;
     element.addEventListener('click', () => {
-      conclude(doc, slide, id as AnswerType, txt);
+      slide.conclude(doc, id as AnswerType, txt);
     });
   });
 }

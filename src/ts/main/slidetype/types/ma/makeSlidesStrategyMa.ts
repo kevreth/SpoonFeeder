@@ -1,4 +1,3 @@
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import { INDETERMINANT } from '../../misc/markupColors';
@@ -46,6 +45,6 @@ export const makeSlidesStrategyMa: MakeSlidesTypeMa = function (
     });
     answers = answers.sort();
     done.remove();
-    conclude(doc, slide, answers as AnswerType, txt);
+    slide.conclude(doc, answers as AnswerType, txt);
   });
 };

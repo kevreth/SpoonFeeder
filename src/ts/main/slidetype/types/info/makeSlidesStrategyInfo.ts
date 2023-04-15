@@ -1,4 +1,3 @@
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
@@ -16,6 +15,6 @@ export const makeSlidesStrategyInfo: MakeSlidesTypeInfo = function (
   slide
 ) {
   const html = createHtml(txt);
-  createPageContent(html, doc);
-  conclude(doc, slide, '' as AnswerType, txt);
+  createPageContent( html, doc );
+  slide.conclude(doc, '' as AnswerType, txt);
 };

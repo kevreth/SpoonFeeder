@@ -1,5 +1,4 @@
 import { removeListener } from '../../../quiz/utilities';
-import { conclude } from '../../../slide/conclude/conclude';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
 import type { SlideInterface } from '../../../slide/slideInterface';
 import { INDETERMINANT } from '../../misc/markupColors';
@@ -36,8 +35,8 @@ function addEventListener(
   element.addEventListener('click', () => {
     removeEventListeners(numWords, doc);
     element.remove();
-    const res = evaluate(doc);
-    conclude(doc, slide, res, txt);
+    const res = evaluate( doc );
+    slide.conclude(doc, res, txt);
   });
 }
 function addEventListener1(ctr: number, doc: Document): void {

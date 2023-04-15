@@ -1,6 +1,5 @@
 import { Json, SaveData } from '../datalayer/mediator';
 import type { SlideInterface } from '../slide/mediator';
-import { conclude } from '../slide/mediator';
 import type { AnswerType } from '../slidetype/mediator';
 import { hideExplainIcon, startOverButton } from './buttons';
 import { evaluate } from './evaluate';
@@ -34,8 +33,8 @@ export class SlideDispatcher implements StateActions<void> {
   decorate(): void {
     const slide = this.getSlide(0);
     slide.makeSlides(this.doc);
-    if (!slide.immediateConclusion)
-      conclude(this.doc, slide, slide.res as AnswerType, slide.txt);
+    if ( !slide.immediateConclusion )
+      slide.conclude(this.doc, slide.res as AnswerType, slide.txt);
   }
   next(): void {
     const slide = this.getSlide(1);

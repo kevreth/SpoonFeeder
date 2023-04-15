@@ -3,7 +3,7 @@ import type { AnswerType } from '../../slidetype/mediator';
 import type { SlideInterface } from '../slideInterface';
 import { playAudio } from './audio';
 
-export function conclude(
+export function conclude2(
   doc: Document,
   slide: SlideInterface,
   res: AnswerType,
