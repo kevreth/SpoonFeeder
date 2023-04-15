@@ -1,6 +1,6 @@
 <template>
   <div id="summary" class="sumNavigation q-mt-xs q-ml-sm">
-    <table class="naviTable bg-secondary q-pb-sm">
+    <table class="naviTable bg-secondary q-pl-sm q-pb-sm">
       <tbody>
         <tr>
           <th></th>
@@ -41,13 +41,20 @@
 .sumNavigation {
   position: fixed;
   left: 0px;
+  width: 200px;
+  max-width: 35%;
+  overflow: auto;
 }
 .naviTable {
   display: grid;
-  font-size: 1em;
   border-collapse: collapse;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.naviTable tbody {
+  display: inline-table;
+  font-size: 0.8em;
+  position: relative;
 }
 
 </style>
