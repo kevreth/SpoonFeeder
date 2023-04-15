@@ -1,5 +1,5 @@
 import { dispatch2 } from '../../quiz/stateActionDispatcher';
-import { extend, isEqual } from '../../quiz/utilities';
+import { extend, isEqual, last } from '../../quiz/utilities';
 import { explanation } from '../../slide/explanation';
 import type { SlideInterface } from '../../slide/slideInterface';
 import type { AnswerType } from '../../slide/strategies/resultStrategy';
@@ -33,6 +33,9 @@ export class SaveData {
       const json = JSON.stringify(arr);
       setLocalStorage(getCourseName(), json);
     }
+  }
+  public static lastSavedItem() {
+    return last(SaveData.get()) as SaveData;
   }
   public static find(txt: string, saves: Array<SaveData>): number {
     return saves.findIndex((saved) => isEqual(saved.txt, txt));

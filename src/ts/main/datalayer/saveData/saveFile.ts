@@ -8,10 +8,13 @@ export class Json {
   public static set(json: Array<SlideInterface>) {
     Json.json = json;
   }
-  public static getMatchingSlide(slides: SlideInterface[], idx: number) {
-    return slides[idx];
+  public static getMatchingSlide(idx: number) {
+    return Json.get()[idx];
   }
-  public static findMatchingSlide(slides: SlideInterface[], txt: string) {
-    return slides.findIndex((slide) => isEqual(slide.txt, txt));
+  public static findMatchingSlide(txt: string) {
+    return Json.get().findIndex((slide) => isEqual(slide.txt, txt));
+  }
+  public static getFirstSlide() {
+    return Json.get()[ 0 ];
   }
 }

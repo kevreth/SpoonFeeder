@@ -3,12 +3,11 @@ import { hideExplainIcon, startOverButton } from '../quiz/buttons';
 import { evaluate } from '../quiz/evaluate';
 import type { StateActions } from '../quiz/stateActionDispatcher';
 import { dispatch2 } from '../quiz/stateActionDispatcher';
-import { last } from '../quiz/utilities';
 import { conclude } from './conclude/conclude';
 import type { SlideInterface } from './slideInterface';
 import type { AnswerType } from './strategies/resultStrategy';
 export function showSlides(doc: Document): void {
-  const ss = new SlideDispatcher(Json.get(), SaveData.get(), doc);
+  const ss = new SlideDispatcher(doc);
   dispatch2(ss, true);
 }
 export function fillMatchingSlide(slide: SlideInterface, last: SaveData) {
@@ -16,20 +15,17 @@ export function fillMatchingSlide(slide: SlideInterface, last: SaveData) {
   slide.res = last.result;
 }
 export class SlideDispatcher implements StateActions<void> {
-  constructor(
-    public slides: SlideInterface[],
-    public saves: SaveData[],
-    public doc: Document
+  constructor(public doc: Document
   ) {}
   private getSlide(increment: number) {
-    const save = last(this.saves) as SaveData;
-    const idx = Json.findMatchingSlide(this.slides, save.txt);
-    const slide = Json.getMatchingSlide(this.slides, idx + increment);
+    const save = SaveData.lastSavedItem();
+    const idx = Json.findMatchingSlide(save.txt);
+    const slide = Json.getMatchingSlide(idx + increment);
     fillMatchingSlide(slide, save);
     return slide;
   }
   begin(): void {
-    const slide = this.slides[0];
+    const slide = Json.getFirstSlide();
     slide.makeSlides(this.doc);
     hideExplainIcon(this.doc);
   }
