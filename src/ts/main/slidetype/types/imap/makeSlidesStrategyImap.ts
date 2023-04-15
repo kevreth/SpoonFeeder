@@ -1,5 +1,5 @@
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds } from '../../../quiz/utilities';
+import { getChildIds } from '../../../quiz/mediator';
 import type { SlideInterface } from '../../../slide/mediator';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import type { AnswerType } from '../../strategies/resultStrategy';

@@ -7,13 +7,13 @@ export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
 export {
-  difference,
-  extend,
+  append, difference, empty, extend,
   getChildIds,
   intersection,
   isEqual,
   last,
   remove,
   removeListener,
-  shuffle,
+  shuffle
 } from './utilities';
+

@@ -1,4 +1,4 @@
-import { removeListener } from '../../../quiz/utilities';
+import { removeListener } from '../../../quiz/mediator';
 import type { SlideInterface } from '../../../slide/mediator';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import { INDETERMINANT } from '../../misc/markupColors';
