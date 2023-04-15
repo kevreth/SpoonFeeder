@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../slide/slideInterface';
+import type { SlideInterface } from '../../slide/mediator';
 import { BoolFactory } from '../types/bool/factoryBool';
 import { GapFactory } from '../types/gap/factoryGap';
 import { ImapFactory } from '../types/imap/factoryImap';

@@ -1,5 +1,5 @@
 import { adoc2html } from '../../datalayer/courseData/adoc2html';
-import type { SlideInterface } from '../../slide/slideInterface';
+import type { SlideInterface } from '../../slide/mediator';
 import { Bool } from '../types/bool/slideTypeBool';
 import { Gap } from '../types/gap/slideTypeGap';
 import { Imap } from '../types/imap/slideTypeImap';

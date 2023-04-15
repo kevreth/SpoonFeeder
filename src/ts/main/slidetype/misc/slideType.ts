@@ -1,6 +1,6 @@
-import type { AdocVisitorInterface } from '../../datalayer/mediator';
-import type { SlideInterface } from '../../slide/slideInterface';
+import type { SlideInterface } from '../../slide/mediator';
 import type { AnswerType } from '../strategies/resultStrategy';
+import { AdocVisitorInterface } from './adocVisitor';
 export type MarkTypeGap = (corrArr: boolean[], doc: Document) => void;
 export type MarkTypeImap = (
   isCorrect: boolean,
