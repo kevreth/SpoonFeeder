@@ -15,8 +15,7 @@ export function fillMatchingSlide(slide: SlideInterface, last: SaveData) {
   slide.res = last.result;
 }
 export class SlideDispatcher implements StateActions<void> {
-  constructor(public doc: Document
-  ) {}
+  constructor(public doc: Document) {}
   private getSlide(increment: number) {
     const save = SaveData.lastSavedItem();
     const idx = Json.findMatchingSlide(save.txt);

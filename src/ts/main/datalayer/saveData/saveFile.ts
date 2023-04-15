@@ -15,6 +15,6 @@ export class Json {
     return Json.get().findIndex((slide) => isEqual(slide.txt, txt));
   }
   public static getFirstSlide() {
-    return Json.get()[ 0 ];
+    return Json.get()[0];
   }
 }

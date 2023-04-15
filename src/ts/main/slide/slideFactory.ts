@@ -21,11 +21,12 @@ const values = [
 ];
 export function getInstance(type: string): SlideInterface {
   let retval = new InfoFactory().instance();
-  values.forEach((value) => {
-    if (type == value.type) {
+  for (const value of values) {
+    if ( type == value.type ) {
       retval = value.instance();
+      break;
     }
-  });
+  };
   return retval;
 }
 export function initSlide(exercise: SlideInterface) {
