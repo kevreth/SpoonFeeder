@@ -7,12 +7,13 @@
     :content="content"
     @closeInfo="expOverlay = false"
   />
-  <VolumeMute
-    id="volume"
-    :volume="isMuted"
-    @toggle-volume="toggleVolume"
-    :style="{ zIndex: -1 }"/>
-  <SumNavigation/>
+  <div class="leftRowMenu">
+    <SumNavigation/>
+      <VolumeMute
+      id="volume"
+      :volume="isMuted"
+      @toggle-volume="toggleVolume"/>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -38,4 +39,12 @@ function handleExpOverlay() {
   content.value = SaveData.getCurrentSlide();
 }
 </script>
+
+<style>
+.leftRowMenu {
+  position: absolute;
+  width: 300px;
+  background: red;
+}
+</style>
 
