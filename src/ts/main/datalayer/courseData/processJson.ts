@@ -15,10 +15,12 @@ export class JsonProcessor
     retval: SlideInterface[]
   ) {
     const title = ProcessJson.titleSlideText(name, ctr, child.name);
-    ProcessJson.addNewInfoSlide(title, retval);
+    const slide = ProcessJson.addNewInfoSlide( title );
+    retval.push(slide);
   }
   course_start(course: Division, retval: SlideInterface[]): void {
-    ProcessJson.addNewInfoSlide(course.name, retval);
+    const slide = ProcessJson.addNewInfoSlide( course.name );
+    retval.push(slide);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unit_start(
@@ -109,10 +111,10 @@ export class ProcessJson {
     });
     slides.push(...processedSlides);
   }
-  public static addNewInfoSlide(text: string, slides: SlideInterface[]) {
+  public static addNewInfoSlide(text: string) {
     const slide = INFO() as SlideInterface;
     slide.immediateConclusion = true;
     slide.txt = text;
-    slides.push(slide);
+    return slide;
   }
 }
