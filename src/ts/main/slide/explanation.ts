@@ -3,8 +3,8 @@ import type { AnswerType } from './strategies/resultStrategy';
 export function explanation(slide: SlideInterface): string {
   const answers = slide.ans as AnswerType;
   const distrators = [];
-  const exp = slide.exp as string;
-  const ref = slide.ref as string;
+  const exp = slide.exp;
+  const ref = slide.ref;
   const answer = removeLinebreaks(pluralize('<b>Answer</b>', answers.length));
   const distrator = removeLinebreaks(
     pluralize('Distractor', distrators.length)
