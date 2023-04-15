@@ -28,14 +28,9 @@ export interface SlideInterface {
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
   resultType: ResultType;
-  //Transform human-created YML into computer-friendly JSON
-  //Run before quiz starts
   setProperties(properties: SlideInterface): void;
   accept(visitor: AdocVisitorInterface): void;
-  //Create slide HTML during quiz
   makeSlides(doc: Document): void;
-  //Evaluate user responses at the end of quiz
-  //evaluation during quiz is NOT here
   evaluate(): Evaluation;
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
