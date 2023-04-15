@@ -1,4 +1,4 @@
-import type { Evaluation } from '../quiz/evaluate';
+import type { Evaluation } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,
   AnswerType,

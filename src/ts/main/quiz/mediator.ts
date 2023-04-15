@@ -4,7 +4,7 @@ export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
 export { AdocVisitor } from '../slidetype/misc/adocVisitor';
 export type { AdocVisitorInterface } from '../slidetype/misc/adocVisitor';
-export { doneButton, makeButton } from './buttons';
+export { doneButton, makeButton, showButton, showExplainIcon } from './buttons';
 export { Evaluation, makeRow } from './evaluate';
 export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
@@ -20,5 +20,6 @@ export {
   last,
   remove,
   removeListener,
-  shuffle,
+  shuffle
 } from './utilities';
+

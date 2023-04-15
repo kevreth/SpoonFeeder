@@ -1,4 +1,4 @@
-import { showButton, showExplainIcon } from '../../quiz/buttons';
+import { showButton, showExplainIcon } from '../../quiz/mediator';
 import type { AnswerType } from '../../slidetype/mediator';
 import type { SlideInterface } from '../slideInterface';
 import { playAudio } from './audio';
