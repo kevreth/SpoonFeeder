@@ -1,7 +1,7 @@
 import { shuffle } from '../../quiz/utilities';
 import type { SlideInterface } from '../../slide/slideInterface';
-import { INFO } from '../../slide/slideType/info/factoryInfo';
-import { initSlide } from '../../slide/slideType/slideFactory';
+import { initSlide } from '../../slidetype/misc/slideFactory';
+import { INFO } from '../../slidetype/types/info/factoryInfo';
 import { isRandom } from '../webstorage/webStorage';
 import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';

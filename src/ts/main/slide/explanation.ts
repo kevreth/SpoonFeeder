@@ -1,5 +1,5 @@
+import type { AnswerType } from '../slidetype/strategies/resultStrategy';
 import type { SlideInterface } from './slideInterface';
-import type { AnswerType } from './strategies/resultStrategy';
 export function explanation(slide: SlideInterface): string {
   const answers = slide.ans as AnswerType;
   const distrators = [];

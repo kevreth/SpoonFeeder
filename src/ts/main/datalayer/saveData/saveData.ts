@@ -2,7 +2,7 @@ import { dispatch2 } from '../../quiz/stateActionDispatcher';
 import { extend, isEqual, last } from '../../quiz/utilities';
 import { explanation } from '../../slide/explanation';
 import type { SlideInterface } from '../../slide/slideInterface';
-import type { AnswerType } from '../../slide/strategies/resultStrategy';
+import type { AnswerType } from '../../slidetype/strategies/resultStrategy';
 import {
   getLocalStorage,
   setLocalStorage,

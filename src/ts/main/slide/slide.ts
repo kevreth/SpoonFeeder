@@ -1,15 +1,15 @@
 import type { AdocVisitorInterface } from '../datalayer/mediator';
 import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
-import type { SlideInterface } from './slideInterface';
-import type { CreateHtmlType } from './strategies/createHtmlStrategy';
-import type { EvaluateType } from './strategies/evaluateStrategy';
-import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
+import type { CreateHtmlType } from '../slidetype/strategies/createHtmlStrategy';
+import type { EvaluateType } from '../slidetype/strategies/evaluateStrategy';
+import type { MakeSlidesType } from '../slidetype/strategies/makeSlidesStrategy';
 import type {
   AnswerType,
   ResultReturnType,
   ResultType,
-} from './strategies/resultStrategy';
+} from '../slidetype/strategies/resultStrategy';
+import type { SlideInterface } from './slideInterface';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt = '';
