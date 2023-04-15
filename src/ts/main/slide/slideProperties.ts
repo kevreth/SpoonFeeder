@@ -31,11 +31,11 @@ export type SlidePropertiesSort = SlidePropertiesResponsive;
 export interface SlidePropertiesVocab extends SlidePropertiesResponsive {
   list: Map<string, string>;
 }
-export type SlidePropertiesType = SlidePropertiesGap &
-  SlidePropertiesImap &
-  SlidePropertiesInfo &
-  SlidePropertiesMc &
-  SlidePropertiesMa &
-  SlidePropertiesSelect &
-  SlidePropertiesSort &
+export type SlidePropertiesType = SlidePropertiesGap |
+  SlidePropertiesImap |
+  SlidePropertiesInfo |
+  SlidePropertiesMc |
+  SlidePropertiesMa |
+  SlidePropertiesSelect |
+  SlidePropertiesSort |
   SlidePropertiesVocab;
