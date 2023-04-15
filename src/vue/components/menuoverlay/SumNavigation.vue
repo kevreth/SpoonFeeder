@@ -1,5 +1,4 @@
 <template>
-  <div id="summary" class="sumNavigation q-mt-xs q-ml-sm">
     <table class="naviTable bg-secondary q-pl-sm q-pb-sm">
       <tbody>
         <tr>
@@ -34,17 +33,10 @@
         </tr>
       </tbody>
     </table>
-  </div>
 </template>
 
 <style>
-.sumNavigation {
-  position: fixed;
-  left: 0px;
-  width: 200px;
-  max-width: 35%;
-  overflow: auto;
-}
+
 .naviTable {
   display: grid;
   border-collapse: collapse;

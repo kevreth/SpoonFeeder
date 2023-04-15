@@ -7,12 +7,12 @@
     :content="content"
     @closeInfo="expOverlay = false"
   />
-  <div class="leftRowMenu">
+  <div id="summary" class="sumNavigation q-mt-xs q-ml-sm">
     <SumNavigation/>
-      <VolumeMute
-      id="volume"
-      :volume="isMuted"
-      @toggle-volume="toggleVolume"/>
+    <VolumeMute
+    id="volume"
+    :volume="isMuted"
+    @toggle-volume="toggleVolume"/>
   </div>
 </template>
 
@@ -41,10 +41,21 @@ function handleExpOverlay() {
 </script>
 
 <style>
-.leftRowMenu {
+/* .leftRowMenu {
   position: absolute;
   width: 300px;
   background: red;
+} */
+.sumNavigation {
+  position: fixed;
+  /* position: absolute; */
+  display: flex;
+  top: 0;
+  left: 0px;
+  /* width: 250px; */
+  /* max-width: 35%; */
+  /* overflow: auto; */
+  /* background: red; */
 }
 </style>
 

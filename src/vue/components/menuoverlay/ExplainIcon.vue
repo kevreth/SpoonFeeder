@@ -8,7 +8,7 @@
 
 <style>
 .explainIcon {
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 100px;
   cursor: pointer;
