@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../slide/slideInterface';
+import type { SlideInterface } from '../../quiz/mediator';
 import type { Course } from './course';
 import { Division } from './course';
 export interface DivisionProcessor<C, D, T> {
