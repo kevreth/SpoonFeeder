@@ -1,14 +1,8 @@
 import $ from 'jquery';
-import _ from 'lodash';
-export const {
-  random,
-  isEqual,
-  difference,
-  intersection,
-  shuffle,
-  escape,
-  last,
-} = _;
+import { shuffle } from 'lodash';
+export {
+  difference, escape, intersection, isEqual, last, random, shuffle
+} from 'lodash';
 export function removeListener(element: Node): void {
   const elClone = element.cloneNode(true) as Node;
   const parent = element.parentNode as Node;
