@@ -1,4 +1,4 @@
-import { doneButton } from '../../../quiz/buttons';
+import { doneButton } from '../../../quiz/mediator';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 
 export function createHtmlMa(question: string, options: string[]) {

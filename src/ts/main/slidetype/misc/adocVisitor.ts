@@ -1,4 +1,4 @@
-import { adoc2html } from '../../datalayer/courseData/adoc2html';
+import { adoc2html } from '../../quiz/mediator';
 import type { SlideInterface } from '../../slide/mediator';
 import { Bool } from '../types/bool/slideTypeBool';
 import { Gap } from '../types/gap/slideTypeGap';
