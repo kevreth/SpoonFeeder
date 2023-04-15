@@ -8,7 +8,7 @@ import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMa, SlideType } from '../slideType';
 export class Ma extends Slide implements SlideType {
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       o: this.o,

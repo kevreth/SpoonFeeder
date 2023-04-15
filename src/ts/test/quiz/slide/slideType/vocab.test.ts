@@ -16,7 +16,7 @@ class Test extends SlideTest {
     >;
     param.isExercise = true;
     const testable = test.getTestable() as Vocab;
-    testable.processJson(param);
+    testable.setProperties(param);
     expect(testable.type).toEqual('vocab');
     expect(testable.isExercise).toEqual(param.isExercise);
   }

@@ -6,7 +6,7 @@ import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';
 export class Imap extends Slide implements SlideType {
   img = '';
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       img: this.img as string | undefined,

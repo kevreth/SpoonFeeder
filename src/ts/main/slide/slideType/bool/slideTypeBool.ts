@@ -6,7 +6,7 @@ import type { SlideType } from '../slideType';
 //bool is a special case of Mc.
 export class Bool extends Mc implements SlideType {
   o = ['yes', 'no'];
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
     this.accept(new AdocVisitor());
   }

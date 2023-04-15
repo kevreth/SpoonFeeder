@@ -4,7 +4,7 @@ import { Slide } from '../../slide';
 import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkTypeSort, SlideType } from '../slideType';
 export class Sort extends Slide implements SlideType {
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
     this.accept(new AdocVisitor());
   }

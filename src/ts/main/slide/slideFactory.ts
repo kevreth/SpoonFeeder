@@ -34,7 +34,7 @@ export function getInstance(type: string): SlideInterface {
 export function initSlide(exercise: SlideInterfaceProperties) {
   const type = exercise.type;
   const slide = getInstance(type);
-  slide.processJson(exercise);
+  slide.setProperties(exercise);
   const slides = slide.getSlideSet();
   if (slides.length > 0) return slides;
   return slide;

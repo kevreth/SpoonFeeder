@@ -13,7 +13,7 @@ class Test extends SlideTest {
     param.isExercise = true;
     const testable = test.getTestable() as Imap;
     testable.img = 'img';
-    testable.processJson(param);
+    testable.setProperties(param);
     expect(testable.type).toEqual(param.type);
     expect(testable.txt).toEqual(param.txt);
     expect(testable.ans).toEqual(param.ans);

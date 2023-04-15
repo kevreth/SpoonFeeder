@@ -16,17 +16,20 @@ import type {
 } from './strategies/resultStrategy';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
-  txt!: string;
-  ans!: AnswerType;
-  res?: AnswerType;
-  exp?: string;
-  ref?: string;
-  o?: string[];
-  list?: Map<string, string>;
-  numans?: number;
+  txt = '';
   cont = false;
+  exp = '';
+  ref = '';
   isExercise = false;
   immediateConclusion = false;
+  ans = '' as AnswerType;
+  res = '' as AnswerType;
+  o: string[] = [];
+  inst = '';
+  img = '';
+  numans = 0;
+  list: Map<string, string> = new Map<string, string>();
+  set: Array<SlideInterfaceProperties> = [];
   constructor(
     public readonly type: string,
     public readonly createHtml: CreateHtmlType,
@@ -36,7 +39,7 @@ export abstract class Slide implements SlideInterface {
   ) {}
   abstract accept(visitor: AdocVisitorInterface): void;
   abstract decorate(doc: Document): boolean;
-  abstract processJson(json: SlideInterface): void;
+  abstract setProperties(properties: SlideInterfaceProperties): void;
   abstract makeSlides(doc: Document): void;
   setContinue(): void {
     throw new Error('Method not implemented.');

@@ -12,17 +12,18 @@ export interface SlideInterfaceProperties {
   txt: string;
   type: string;
   cont: boolean;
-  exp?: string;
-  ref?: string;
+  exp: string;
+  ref: string;
   isExercise: boolean;
   immediateConclusion: boolean;
   ans: AnswerType;
-  res?: AnswerType;
-  o?: string[];
-  inst?: string;
-  img?: string;
-  numans?: number;
-  list?: Map<string, string>;
+  res: AnswerType;
+  o: string[];
+  inst: string;
+  img: string;
+  numans: number;
+  list: Map<string, string>;
+  set: Array<SlideInterfaceProperties>;
 }
 export interface SlideInterface extends SlideInterfaceProperties {
   createHtml: CreateHtmlType;
@@ -31,7 +32,7 @@ export interface SlideInterface extends SlideInterfaceProperties {
   resultType: ResultType;
   //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
-  processJson(json: SlideInterfaceProperties): void;
+  setProperties(properties: SlideInterfaceProperties): void;
   accept(visitor: AdocVisitorInterface): void;
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;

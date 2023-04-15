@@ -9,7 +9,7 @@ import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
 import type { MarkTypeMc, SlideType } from '../slideType';
 export class Mc extends Slide implements SlideType {
   o: string[] = [];
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       o: this.o as string[] | undefined,

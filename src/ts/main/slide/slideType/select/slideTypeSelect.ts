@@ -7,7 +7,7 @@ import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkTypeSelect, SlideType } from '../slideType';
 export class Select extends Slide implements SlideType {
   inst = '';
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     ({
       inst: this.inst as string | undefined,
       txt: this.txt,

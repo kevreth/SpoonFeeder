@@ -18,7 +18,7 @@ export class Vocab extends Slide implements SlideType {
   mark!: MarkType;
   list = new Map<string, string>();
   set = new Array<SlideInterfaceProperties>();
-  processJson(json: SlideInterfaceProperties): void {
+  setProperties(json: SlideInterfaceProperties): void {
     this.list = new Map(Object.entries(json.list as Map<string, string>));
     this.isExercise = json.isExercise;
     this.accept(new AdocVisitor());
