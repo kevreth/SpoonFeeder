@@ -1,5 +1,5 @@
-import { SlideInitializer } from '../../../slide/slideInitializer';
 import type { SlideInterface } from '../../../slide/slideInterface';
+import { SlideInitializer } from '../../misc/slideInitializer';
 import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';

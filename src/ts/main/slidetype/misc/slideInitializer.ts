@@ -1,4 +1,4 @@
-import type { SlideInterface } from './slideInterface';
+import type { SlideInterface } from '../../slide/slideInterface';
 
 export abstract class SlideInitializer {
   constructor(public readonly type: string) {}
