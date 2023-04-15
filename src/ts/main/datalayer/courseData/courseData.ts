@@ -1,11 +1,10 @@
 import { remove } from '../../quiz/mediator';
-import { getYaml } from '../persistence/filePersistence';
 import {
   getCourseListing,
   getCourseName,
   setCourseListing,
 } from '../webstorage/webStorage';
-import { PREFIX_COURSE_FILE } from './loadCourse';
+import { PREFIX_COURSE_FILE, loadFile } from './loadCourse';
 //Vue interface to Course data.
 export class CourseData {
   public courseName: string;
@@ -19,7 +18,7 @@ export class CourseData {
       this.availableCourses = remove(list, course);
     else {
       const filename = PREFIX_COURSE_FILE + '/listing.yml';
-      getYaml(filename, (listing: Array<string>) => {
+      loadFile(filename, (listing: Array<string>) => {
         this.availableCourses = listing;
         setCourseListing(listing);
       });
