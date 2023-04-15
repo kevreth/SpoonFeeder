@@ -45,7 +45,7 @@ export class SlideDispatcher implements StateActions<void> {
   }
   end(): void {
     const json = Json.get();
-    this.doc.body.innerHTML = evaluate(json); //EXECUTION ENDS
+    this.doc.body.innerHTML = evaluate(json);
     startOverButton(this.doc);
   }
 }
