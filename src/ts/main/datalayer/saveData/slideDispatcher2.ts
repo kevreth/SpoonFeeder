@@ -3,7 +3,7 @@ import { fillMatchingSlide, last } from '../../quiz/mediator';
 import { SaveData } from './saveData';
 import { Json } from './saveFile';
 
-export class SlideDispatcher2 implements StateActions<SlideInterface> {
+export class SaveDataDispatcher implements StateActions<SlideInterface> {
   constructor(public slides: SlideInterface[], public saves: SaveData[]) {}
   //DUPLICATE CODE: slideDispatche.getSlide()
   private getSlide(increment: number) {
