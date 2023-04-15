@@ -5,7 +5,7 @@ import type {
 } from '../datalayer/mediator';
 import { SaveData, process } from '../datalayer/mediator';
 import type { SlideInterface } from '../slide/slideInterface';
-import { initSlide } from '../slidetype/misc/slideFactory';
+import { initSlide } from '../slidetype/mediator';
 import { percentCorrect } from './evaluate';
 export interface ISummaryLine {
   name: string;

@@ -1,4 +1,4 @@
-import type { AnswerType } from '../slidetype/strategies/resultStrategy';
+import type { AnswerType } from '../slidetype/mediator';
 import type { SlideInterface } from './slideInterface';
 export function explanation(slide: SlideInterface): string {
   const answers = slide.ans as AnswerType;

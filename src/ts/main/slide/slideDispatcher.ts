@@ -3,7 +3,7 @@ import { hideExplainIcon, startOverButton } from '../quiz/buttons';
 import { evaluate } from '../quiz/evaluate';
 import type { StateActions } from '../quiz/stateActionDispatcher';
 import { dispatch2 } from '../quiz/stateActionDispatcher';
-import type { AnswerType } from '../slidetype/strategies/resultStrategy';
+import type { AnswerType } from '../slidetype/mediator';
 import { conclude } from './conclude/conclude';
 import type { SlideInterface } from './slideInterface';
 export function showSlides(doc: Document): void {
