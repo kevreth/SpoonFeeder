@@ -41,21 +41,11 @@ function handleExpOverlay() {
 </script>
 
 <style>
-/* .leftRowMenu {
-  position: absolute;
-  width: 300px;
-  background: red;
-} */
 .sumNavigation {
   position: fixed;
-  /* position: absolute; */
   display: flex;
   top: 0;
   left: 0px;
-  /* width: 250px; */
-  /* max-width: 35%; */
-  /* overflow: auto; */
-  /* background: red; */
 }
 </style>
 
