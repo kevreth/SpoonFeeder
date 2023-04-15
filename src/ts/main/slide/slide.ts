@@ -1,7 +1,6 @@
 import type { AdocVisitorInterface } from '../datalayer/mediator';
 import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
-import { timestampNow } from './date';
 import type { SlideInterface } from './slideInterface';
 import type { CreateHtmlType } from './strategies/createHtmlStrategy';
 import type { EvaluateType } from './strategies/evaluateStrategy';
@@ -61,7 +60,7 @@ export abstract class Slide implements SlideInterface {
   public saveData() {
     const txt = this.txt;
     const res = this.res;
-    SaveData.set(txt, res as AnswerType, timestampNow(), false);
+    SaveData.set(txt, res as AnswerType, false);
   }
   public result(): ResultReturnType {
     return this.resultType(this.ans, this.res as AnswerType);

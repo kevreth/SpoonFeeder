@@ -8,6 +8,7 @@ import {
   setLocalStorage,
 } from '../persistence/webPersistence';
 import { getCourseName } from '../webstorage/webStorage';
+import { timestampNow } from './date';
 import { Json } from './saveFile';
 import { SlideDispatcher2 } from './slideDispatcher2';
 
@@ -25,9 +26,9 @@ export class SaveData {
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
     return arr;
   }
-  public static set(txt: string, res: AnswerType, ts: string, cont: boolean) {
+  public static set(txt: string, res: AnswerType, cont: boolean) {
     if (txt !== '' && !SaveData.exists(txt)) {
-      const save = new SaveData(txt, res, ts, cont);
+      const save = new SaveData(txt, res, timestampNow(), cont);
       const arr = SaveData.get();
       arr.push(save);
       const json = JSON.stringify(arr);

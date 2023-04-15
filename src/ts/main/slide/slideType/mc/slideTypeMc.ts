@@ -1,11 +1,11 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { removeListener, shuffle } from '../../../quiz/utilities';
-import { CORRECT, INCORRECT } from '../../markupColors';
 import { Slide } from '../../slide';
 import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import { CORRECT, INCORRECT } from '../markupColors';
 import type { MarkTypeMc, SlideType } from '../slideType';
 export class Mc extends Slide implements SlideType {
   o: string[] = [];

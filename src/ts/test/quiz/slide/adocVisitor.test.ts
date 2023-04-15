@@ -3,7 +3,7 @@ import {
   optionsReplacement,
   stdReplacement,
 } from '../../../main/datalayer/courseData/adocVisitor';
-import { MA } from '../../../main/slide/slideFactory';
+import { MA } from '../../../main/slide/slideType/ma/factoryMa';
 it('testMa', () => {
   const clazz = MA();
   clazz.txt = 'svg=test';

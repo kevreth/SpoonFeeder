@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { IMAP } from '../../../../main/slide/slideFactory';
+import { IMAP } from '../../../../main/slide/slideType/imap/factoryImap';
 import { Imap } from '../../../../main/slide/slideType/imap/slideTypeImap';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {

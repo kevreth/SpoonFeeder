@@ -1,9 +1,9 @@
 import { conclude } from '../../conclude/conclude';
 import { createPageContent } from '../../createPageContent/createPageContent';
-import { INDETERMINANT } from '../../markupColors';
 import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import { INDETERMINANT } from '../markupColors';
 import type { CreateHtmlTypeMa } from './createHtmlMa';
 export type MakeSlidesTypeMa = (
   txt: string,

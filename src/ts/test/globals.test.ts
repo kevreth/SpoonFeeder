@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { Json } from '../main/datalayer/saveData/saveFile';
-import { getInstance } from '../main/slide/slideFactory';
 import type { SlideInterface } from '../main/slide/slideInterface';
+import { getInstance } from '../main/slide/slideType/slideFactory';
 const slideTypes = [
   'bool',
   'gap',
