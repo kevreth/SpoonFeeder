@@ -1,7 +1,5 @@
-import type { SlideInterface } from '../../quiz/mediator';
-import { fillMatchingSlide } from '../../quiz/slideDispatcher';
-import type { StateActions } from '../../quiz/stateActionDispatcher';
-import { last } from '../../quiz/utilities';
+import type { SlideInterface, StateActions } from '../../quiz/mediator';
+import { fillMatchingSlide, last } from '../../quiz/mediator';
 import { SaveData } from './saveData';
 import { Json } from './saveFile';
 

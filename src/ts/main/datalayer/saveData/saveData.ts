@@ -1,6 +1,6 @@
 import type { AnswerType, SlideInterface } from '../../quiz/mediator';
+import { extend, isEqual, last } from '../../quiz/mediator';
 import { dispatch2 } from '../../quiz/stateActionDispatcher';
-import { extend, isEqual, last } from '../../quiz/utilities';
 import { explanation } from '../../slide/explanation';
 import {
   getLocalStorage,
