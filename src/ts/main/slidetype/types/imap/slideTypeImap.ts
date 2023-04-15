@@ -1,6 +1,6 @@
 import { getChildIds, removeListener } from '../../../quiz/utilities';
+import type { SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
-import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeImap, SlideType } from '../../misc/slideType';

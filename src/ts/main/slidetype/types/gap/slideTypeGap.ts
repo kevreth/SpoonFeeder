@@ -6,7 +6,7 @@ import { CORRECT, INCORRECT } from '../../misc/markupColors';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
-import type { SlideInterface } from '../../../slide/slideInterface';
+import type { SlideInterface } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeGap, SlideType } from '../../misc/slideType';

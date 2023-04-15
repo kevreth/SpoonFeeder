@@ -1,7 +1,7 @@
 import { isRandom } from '../../../datalayer/mediator';
 import { removeListener, shuffle } from '../../../quiz/utilities';
+import type { SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
-import type { SlideInterface } from '../../../slide/slideInterface';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';

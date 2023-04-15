@@ -1,6 +1,6 @@
 import { removeListener } from '../../../quiz/utilities';
 import { createPageContent } from '../../../slide/createPageContent/createPageContent';
-import type { SlideInterface } from '../../../slide/slideInterface';
+import type { SlideInterface } from '../../../slide/mediator';
 import { INDETERMINANT } from '../../misc/markupColors';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import type { CreateHtmlTypeSelect } from './createHtmlSelect';

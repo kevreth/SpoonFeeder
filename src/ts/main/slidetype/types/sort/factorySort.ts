@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../../slide/slideInterface';
+import type { SlideInterface } from '../../../slide/mediator';
 import { SlideInitializer } from '../../misc/slideInitializer';
 import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
 import { CreateHtml } from '../../strategies/createHtmlStrategy';

@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../../slide/slideInterface';
+import type { SlideInterface } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { SlideType } from '../../misc/slideType';
