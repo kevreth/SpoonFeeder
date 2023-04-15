@@ -3,9 +3,9 @@ import Handlebars from 'handlebars';
 import { marked } from 'marked';
 import { getCourseName } from '../webstorage/webStorage';
 // Asciidoctor.js will not run in Vue environment so we
-// use *downdoc* to transform to markdown and then *marked*
+// use DOWNDOC to transform to MARKDOWN and then MARKED
 // to transform to HTML.
-// After that, we use mustache to import the code to display
+// After that, we use HANDLEBARS to import the code to display
 // external files (svg and html).
 export function adoc2html(str: string): string {
   if (typeof str === 'undefined') return '';
