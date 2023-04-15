@@ -10,8 +10,8 @@ export class SlideDispatcher2 implements StateActions<SlideInterface> {
   //DUPLICATE CODE: slideDispatche.getSlide()
   private getSlide(increment: number) {
     const save = last(this.saves) as SaveData;
-    const idx = Json.findMatchingSlide(this.slides, save.txt);
-    const slide = Json.getMatchingSlide(this.slides, idx + increment);
+    const idx = Json.findMatchingSlide(save.txt);
+    const slide = Json.getMatchingSlide(idx + increment);
     fillMatchingSlide(slide, save);
     return slide;
   }
