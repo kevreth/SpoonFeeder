@@ -1,5 +1,5 @@
 import type { AdocVisitorInterface } from '../../datalayer/mediator';
-import type { SlideInterfaceProperties } from '../slideInterface';
+import type { SlideInterface } from '../slideInterface';
 import type { AnswerType } from '../strategies/resultStrategy';
 export type MarkTypeGap = (corrArr: boolean[], doc: Document) => void;
 export type MarkTypeImap = (
@@ -31,7 +31,7 @@ export type MarkType =
   | MarkTypeSelect
   | MarkTypeSort;
 export interface SlideType {
-  setProperties(props: SlideInterfaceProperties): void;
+  setProperties(props: SlideInterface): void;
   accept(visitor: AdocVisitorInterface): void;
   makeSlides(doc: Document): void;
   decorate(doc: Document): boolean;

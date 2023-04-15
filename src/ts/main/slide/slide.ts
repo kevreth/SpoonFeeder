@@ -2,10 +2,7 @@ import type { AdocVisitorInterface } from '../datalayer/mediator';
 import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
 import { timestampNow } from './date';
-import type {
-  SlideInterface,
-  SlideInterfaceProperties,
-} from './slideInterface';
+import type { SlideInterface } from './slideInterface';
 import type { CreateHtmlType } from './strategies/createHtmlStrategy';
 import type { EvaluateType } from './strategies/evaluateStrategy';
 import type { MakeSlidesType } from './strategies/makeSlidesStrategy';
@@ -29,7 +26,7 @@ export abstract class Slide implements SlideInterface {
   img = '';
   numans = 0;
   list: Map<string, string> = new Map<string, string>();
-  set: Array<SlideInterfaceProperties> = [];
+  set: Array<SlideInterface> = [];
   constructor(
     public readonly type: string,
     public readonly createHtml: CreateHtmlType,
@@ -39,13 +36,13 @@ export abstract class Slide implements SlideInterface {
   ) {}
   abstract accept(visitor: AdocVisitorInterface): void;
   abstract decorate(doc: Document): boolean;
-  abstract setProperties(properties: SlideInterfaceProperties): void;
+  abstract setProperties(properties: SlideInterface): void;
   abstract makeSlides(doc: Document): void;
   setContinue(): void {
     throw new Error('Method not implemented.');
   }
-  getSlideSet(): SlideInterfaceProperties[] {
-    return new Array<SlideInterfaceProperties>();
+  getSlideSet(): SlideInterface[] {
+    return new Array<SlideInterface>();
   }
   getAnswerCount(): number {
     return 1;

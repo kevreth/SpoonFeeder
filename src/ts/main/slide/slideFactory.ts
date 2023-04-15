@@ -1,4 +1,4 @@
-import type { SlideInterface, SlideInterfaceProperties } from './slideInterface';
+import type { SlideInterface } from './slideInterface';
 import { BoolFactory } from './slideType/bool/factoryBool';
 import { GapFactory } from './slideType/gap/factoryGap';
 import { ImapFactory } from './slideType/imap/factoryImap';
@@ -28,7 +28,7 @@ export function getInstance(type: string): SlideInterface {
   });
   return retval;
 }
-export function initSlide(exercise: SlideInterfaceProperties) {
+export function initSlide(exercise: SlideInterface) {
   const type = exercise.type;
   const slide = getInstance(type);
   slide.setProperties(exercise);

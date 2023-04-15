@@ -2,7 +2,7 @@ import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { shuffle } from '../../../quiz/utilities';
 import { Slide } from '../../slide';
-import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import { McFactory } from '../mc/factoryMc';
 import type { MarkType, SlideType } from '../slideType';
@@ -17,8 +17,8 @@ export type vocabTuplesType = [
 export class Vocab extends Slide implements SlideType {
   mark!: MarkType;
   list = new Map<string, string>();
-  set = new Array<SlideInterfaceProperties>();
-  setProperties(props: SlideInterfaceProperties): void {
+  set = new Array<SlideInterface>();
+  setProperties(props: SlideInterface): void {
     this.list = new Map(Object.entries(props.list as Map<string, string>));
     this.isExercise = props.isExercise;
     this.accept(new AdocVisitor());
@@ -35,7 +35,7 @@ export class Vocab extends Slide implements SlideType {
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitVocab(this);
   }
-  getSlideSet(): SlideInterfaceProperties[] {
+  getSlideSet(): SlideInterface[] {
     return this.set;
   }
   makeSlides(): void {

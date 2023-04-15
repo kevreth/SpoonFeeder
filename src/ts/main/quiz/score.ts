@@ -137,7 +137,10 @@ export class Score {
     const slides = initSlide(exercise);
     const isArray = Array.isArray(slides);
     const exerciseLine = new SummaryLine();
-    if (isArray) slides.forEach((slide) => createLine(slide as SlideInterface, exerciseLine));
+    if (isArray)
+      slides.forEach((slide) =>
+        createLine(slide as SlideInterface, exerciseLine)
+      );
     else createLine(slides, exerciseLine);
     return exerciseLine;
   }

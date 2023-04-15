@@ -3,11 +3,11 @@ import { AdocVisitor } from '../../../datalayer/mediator';
 import { difference, intersection } from '../../../quiz/utilities';
 import { CORRECT, INCORRECT } from '../../markupColors';
 import { Slide } from '../../slide';
-import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { MarkTypeSelect, SlideType } from '../slideType';
 export class Select extends Slide implements SlideType {
   inst = '';
-  setProperties(props: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterface): void {
     ({
       inst: this.inst,
       txt: this.txt,

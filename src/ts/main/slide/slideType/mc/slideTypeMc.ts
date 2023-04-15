@@ -3,13 +3,13 @@ import { AdocVisitor, isRandom } from '../../../datalayer/mediator';
 import { removeListener, shuffle } from '../../../quiz/utilities';
 import { CORRECT, INCORRECT } from '../../markupColors';
 import { Slide } from '../../slide';
-import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMc, SlideType } from '../slideType';
 export class Mc extends Slide implements SlideType {
   o: string[] = [];
-  setProperties(props: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterface): void {
     ({
       txt: this.txt,
       o: this.o,

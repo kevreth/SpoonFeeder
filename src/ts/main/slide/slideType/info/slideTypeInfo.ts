@@ -1,11 +1,11 @@
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
 import { Slide } from '../../slide';
-import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { MarkType, SlideType } from '../slideType';
 export class Info extends Slide implements SlideType {
   mark!: MarkType;
-  setProperties(props: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterface): void {
     ({ txt: this.txt } = props);
     this.accept(new AdocVisitor());
     this.immediateConclusion = true;

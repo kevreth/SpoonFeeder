@@ -8,7 +8,7 @@ import { Slide } from '../../slide';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
 import type { AdocVisitorInterface } from '../../../datalayer/mediator';
 import { AdocVisitor } from '../../../datalayer/mediator';
-import type { SlideInterfaceProperties } from '../../slideInterface';
+import type { SlideInterface } from '../../slideInterface';
 import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeGap, SlideType } from '../slideType';
@@ -16,7 +16,7 @@ polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide implements SlideType {
-  setProperties(props: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterface): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = props);
     this.accept(new AdocVisitor());
   }

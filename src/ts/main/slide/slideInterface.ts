@@ -8,7 +8,7 @@ import type {
   ResultReturnType,
   ResultType,
 } from './strategies/resultStrategy';
-export interface SlideInterfaceProperties {
+export interface SlideInterface {
   txt: string;
   type: string;
   cont: boolean;
@@ -23,16 +23,14 @@ export interface SlideInterfaceProperties {
   img: string;
   numans: number;
   list: Map<string, string>;
-  set: Array<SlideInterfaceProperties>;
-}
-export interface SlideInterface extends SlideInterfaceProperties {
+  set: Array<SlideInterface>;
   createHtml: CreateHtmlType;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
   resultType: ResultType;
   //Transform human-created YML into computer-friendly JSON
   //Run before quiz starts
-  setProperties(properties: SlideInterfaceProperties): void;
+  setProperties(properties: SlideInterface): void;
   accept(visitor: AdocVisitorInterface): void;
   //Create slide HTML during quiz
   makeSlides(doc: Document): void;
@@ -42,7 +40,7 @@ export interface SlideInterface extends SlideInterfaceProperties {
   setResults(res: AnswerType): void;
   result(): ResultReturnType;
   getAnswerCount(): number;
-  getSlideSet(): SlideInterfaceProperties[];
+  getSlideSet(): SlideInterface[];
   setRes(res: AnswerType): void;
   getRes(): AnswerType;
   getAns(): AnswerType;
