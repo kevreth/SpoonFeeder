@@ -35,7 +35,7 @@ function addEventListener(
   txt: string
 ): void {
   const element = doc.getElementById('btn' + optionCtr) as HTMLElement;
-  element.addEventListener( 'click', () => {
-     slide.conclude(doc, option as AnswerType, txt);
+  element.addEventListener('click', () => {
+    slide.conclude(doc, option as AnswerType, txt);
   });
 }

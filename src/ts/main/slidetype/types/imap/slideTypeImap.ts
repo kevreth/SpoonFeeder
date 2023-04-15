@@ -1,4 +1,4 @@
-import { getChildIds, removeListener } from '../../../quiz/utilities';
+import { getChildIds, removeListener } from '../../../quiz/mediator';
 import type { SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';

@@ -1,6 +1,6 @@
 import { polyfill } from 'mobile-drag-drop';
 import { isRandom } from '../../../datalayer/mediator';
-import { shuffle } from '../../../quiz/utilities';
+import { shuffle } from '../../../quiz/mediator';
 import { Slide } from '../../../slide/mediator';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';
 //Despite the documentation, "scroll behaviour" is required, not optional,

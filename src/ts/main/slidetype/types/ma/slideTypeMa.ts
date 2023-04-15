@@ -1,5 +1,5 @@
 import { isRandom } from '../../../datalayer/mediator';
-import { removeListener, shuffle } from '../../../quiz/utilities';
+import { removeListener, shuffle } from '../../../quiz/mediator';
 import type { SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';

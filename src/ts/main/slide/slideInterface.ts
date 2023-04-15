@@ -1,7 +1,12 @@
 import type { Evaluation } from '../quiz/evaluate';
 import type {
-  AdocVisitorInterface, AnswerType, CreateHtmlType, EvaluateType, MakeSlidesType, ResultReturnType,
-  ResultType
+  AdocVisitorInterface,
+  AnswerType,
+  CreateHtmlType,
+  EvaluateType,
+  MakeSlidesType,
+  ResultReturnType,
+  ResultType,
 } from '../slidetype/mediator';
 export interface SlideInterface {
   txt: string;
@@ -35,6 +40,6 @@ export interface SlideInterface {
   getRes(): AnswerType;
   getAns(): AnswerType;
   saveData(): void;
-  decorate( doc: Document ): boolean;
-  conclude( doc: Document, res: AnswerType, txt: string ): void;
+  decorate(doc: Document): boolean;
+  conclude(doc: Document, res: AnswerType, txt: string): void;
 }

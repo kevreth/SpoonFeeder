@@ -2,8 +2,12 @@ import { SaveData } from '../datalayer/mediator';
 import type { Evaluation } from '../quiz/evaluate';
 import type {
   AdocVisitorInterface,
-  AnswerType, CreateHtmlType, EvaluateType, MakeSlidesType, ResultReturnType,
-  ResultType
+  AnswerType,
+  CreateHtmlType,
+  EvaluateType,
+  MakeSlidesType,
+  ResultReturnType,
+  ResultType,
 } from '../slidetype/mediator';
 import { conclude2 } from './conclude/conclude';
 import type { SlideInterface } from './slideInterface';
@@ -30,8 +34,8 @@ export abstract class Slide implements SlideInterface {
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
-  conclude( doc: Document, res: AnswerType, txt: string ): void {
-    conclude2( doc, this, res, txt );
+  conclude(doc: Document, res: AnswerType, txt: string): void {
+    conclude2(doc, this, res, txt);
   }
   abstract accept(visitor: AdocVisitorInterface): void;
   abstract decorate(doc: Document): boolean;

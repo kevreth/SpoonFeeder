@@ -35,7 +35,7 @@ function addEventListener(
   element.addEventListener('click', () => {
     removeEventListeners(numWords, doc);
     element.remove();
-    const res = evaluate( doc );
+    const res = evaluate(doc);
     slide.conclude(doc, res, txt);
   });
 }

@@ -22,11 +22,11 @@ const values = [
 export function getInstance(type: string): SlideInterface {
   let retval = new InfoFactory().instance();
   for (const value of values) {
-    if ( type == value.type ) {
+    if (type == value.type) {
       retval = value.instance();
       break;
     }
-  };
+  }
   return retval;
 }
 export function initSlide(exercise: SlideInterface) {

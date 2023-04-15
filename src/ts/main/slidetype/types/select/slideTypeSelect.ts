@@ -1,4 +1,4 @@
-import { difference, intersection } from '../../../quiz/utilities';
+import { difference, intersection } from '../../../quiz/mediator';
 import type { SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';

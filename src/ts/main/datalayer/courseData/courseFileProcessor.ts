@@ -18,9 +18,9 @@ export function process<C, D, T>(
   division: DivisionProcessor<C, D, T>,
   retval: T
 ) {
-  const _course: C = division.course_start( courseData, retval );
+  const _course: C = division.course_start(courseData, retval);
   for (const [unit_ctr, unit] of courseData.units.entries()) {
-    const _unit: D = division.unit_start( unit, unit_ctr, retval, _course );
+    const _unit: D = division.unit_start(unit, unit_ctr, retval, _course);
     for (const [lesson_ctr, lesson] of unit.lessons.entries()) {
       const _lesson: D = division.lesson_start(
         lesson,
@@ -35,14 +35,14 @@ export function process<C, D, T>(
           retval,
           _lesson
         );
-        if ( module.inst !== undefined )
+        if (module.inst !== undefined)
           for (const [inst_ctr, inst] of module.inst.entries())
             division.inst(inst, inst_ctr, retval, _module);
-        if ( module.exercises !== undefined )
+        if (module.exercises !== undefined)
           for (const [exercise_ctr, exercise] of module.exercises.entries())
             division.exercises(exercise, exercise_ctr, retval, _module);
         division.module_end(_module, retval, _lesson);
-      };
+      }
       division.lesson_end(_lesson, retval, _unit);
     }
     division.unit_end(_unit, retval, _course);
