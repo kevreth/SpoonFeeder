@@ -1,11 +1,11 @@
 import { Json, SaveData } from '../datalayer/mediator';
-import { hideExplainIcon, startOverButton } from '../quiz/buttons';
-import { evaluate } from '../quiz/evaluate';
-import type { StateActions } from '../quiz/stateActionDispatcher';
-import { dispatch2 } from '../quiz/stateActionDispatcher';
+import type { SlideInterface } from '../slide/mediator';
+import { conclude } from '../slide/mediator';
 import type { AnswerType } from '../slidetype/mediator';
-import { conclude } from './conclude/conclude';
-import type { SlideInterface } from './slideInterface';
+import { hideExplainIcon, startOverButton } from './buttons';
+import { evaluate } from './evaluate';
+import type { StateActions } from './stateActionDispatcher';
+import { dispatch2 } from './stateActionDispatcher';
 export function showSlides(doc: Document): void {
   const ss = new SlideDispatcher(doc);
   dispatch2(ss, true);
