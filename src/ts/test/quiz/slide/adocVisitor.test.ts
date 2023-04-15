@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import {
   optionsReplacement,
   stdReplacement,
-} from '../../../main/datalayer/courseData/adocVisitor';
+} from '../../../main/slidetype/misc/adocVisitor';
 import { MA } from '../../../main/slidetype/types/ma/factoryMa';
 it('testMa', () => {
   const clazz = MA();

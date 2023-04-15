@@ -1,5 +1,5 @@
-import type { AdocVisitorInterface } from './courseData/adocVisitor';
-import { AdocVisitor } from './courseData/adocVisitor';
+import type { AdocVisitorInterface } from '../slidetype/misc/adocVisitor';
+import { AdocVisitor } from '../slidetype/misc/adocVisitor';
 import type { Course, Division } from './courseData/course';
 import type { DivisionProcessor } from './courseData/courseFileProcessor';
 import { process } from './courseData/courseFileProcessor';
@@ -28,3 +28,4 @@ export {
   clearRandom,
   clearSessionStorage,
 };
+
