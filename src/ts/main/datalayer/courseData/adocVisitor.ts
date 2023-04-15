@@ -36,7 +36,7 @@ export class AdocVisitor implements AdocVisitorInterface {
   }
   visitMa(clazz: Ma): void {
     stdReplacement(clazz);
-    clazz.o = optionsReplacement(clazz.o as string[]);
+    clazz.o = optionsReplacement(clazz.o);
   }
   visitMc(clazz: Mc): void {
     stdReplacement(clazz);
@@ -57,8 +57,8 @@ export class AdocVisitor implements AdocVisitorInterface {
 }
 export function stdReplacement(slide: SlideInterface) {
   slide.txt = adoc2html(slide.txt);
-  slide.exp = adoc2html(slide.exp as string);
-  slide.ref = adoc2html(slide.ref as string);
+  slide.exp = adoc2html(slide.exp);
+  slide.ref = adoc2html(slide.ref);
 }
 export function optionsReplacement(options: Array<string>) {
   const retval = options.map((item) => {

@@ -12,7 +12,7 @@ export class Mc extends Slide implements SlideType {
   setProperties(props: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
-      o: this.o as string[] | undefined,
+      o: this.o,
       exp: this.exp,
       ref: this.ref,
       isExercise: this.isExercise,

@@ -37,7 +37,7 @@ function addEventListener(
     removeEventListeners(numWords, doc);
     element.remove();
     const res = evaluate(doc);
-    conclude(doc, slide, res as AnswerType, txt);
+    conclude(doc, slide, res, txt);
   });
 }
 function addEventListener1(ctr: number, doc: Document): void {
@@ -66,7 +66,7 @@ function evaluate(doc: Document) {
     } else found = false;
     ctr++;
   }
-  return responses;
+  return responses as AnswerType;
 }
 function removeEventListeners(numWords: number, doc: Document) {
   for (let i = 1; i <= numWords; i++) {

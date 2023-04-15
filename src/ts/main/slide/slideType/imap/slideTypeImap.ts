@@ -5,11 +5,10 @@ import { Slide } from '../../slide';
 import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';
 export class Imap extends Slide implements SlideType {
-  img = '';
   setProperties(props: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
-      img: this.img as string | undefined,
+      img: this.img,
       ans: this.ans,
       isExercise: this.isExercise,
     } = props);

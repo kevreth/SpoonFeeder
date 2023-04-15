@@ -9,7 +9,7 @@ export class Select extends Slide implements SlideType {
   inst = '';
   setProperties(props: SlideInterfaceProperties): void {
     ({
-      inst: this.inst as string | undefined,
+      inst: this.inst,
       txt: this.txt,
       ans: this.ans,
       isExercise: this.isExercise,
