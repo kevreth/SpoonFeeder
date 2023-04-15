@@ -6,13 +6,13 @@ import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkTypeImap, SlideType } from '../slideType';
 export class Imap extends Slide implements SlideType {
   img = '';
-  setProperties(json: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       img: this.img as string | undefined,
       ans: this.ans,
       isExercise: this.isExercise,
-    } = json);
+    } = props);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {

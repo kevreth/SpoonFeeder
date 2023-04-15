@@ -9,14 +9,14 @@ import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy'
 import type { MarkTypeMc, SlideType } from '../slideType';
 export class Mc extends Slide implements SlideType {
   o: string[] = [];
-  setProperties(json: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       o: this.o as string[] | undefined,
       exp: this.exp,
       ref: this.ref,
       isExercise: this.isExercise,
-    } = json);
+    } = props);
     this.accept(new AdocVisitor());
     this.ans = this.o[0] as AnswerType;
     const shuffleFlag = this.isExercise && isRandom();

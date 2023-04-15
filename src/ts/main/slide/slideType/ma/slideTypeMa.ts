@@ -8,7 +8,7 @@ import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { MarkTypeMa, SlideType } from '../slideType';
 export class Ma extends Slide implements SlideType {
-  setProperties(json: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterfaceProperties): void {
     ({
       txt: this.txt,
       o: this.o,
@@ -16,7 +16,7 @@ export class Ma extends Slide implements SlideType {
       ref: this.ref,
       isExercise: this.isExercise,
       numans: this.numans,
-    } = json);
+    } = props);
     this.accept(new AdocVisitor());
     const answers: string[] = [];
     const numans = this.numans as number;

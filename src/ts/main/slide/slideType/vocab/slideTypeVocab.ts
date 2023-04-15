@@ -18,9 +18,9 @@ export class Vocab extends Slide implements SlideType {
   mark!: MarkType;
   list = new Map<string, string>();
   set = new Array<SlideInterfaceProperties>();
-  setProperties(json: SlideInterfaceProperties): void {
-    this.list = new Map(Object.entries(json.list as Map<string, string>));
-    this.isExercise = json.isExercise;
+  setProperties(props: SlideInterfaceProperties): void {
+    this.list = new Map(Object.entries(props.list as Map<string, string>));
+    this.isExercise = props.isExercise;
     this.accept(new AdocVisitor());
     const vocabTuples = generateQuestions(this.list);
     vocabTuples.forEach((vtuple) => {

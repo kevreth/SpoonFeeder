@@ -5,8 +5,8 @@ import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkType, SlideType } from '../slideType';
 export class Info extends Slide implements SlideType {
   mark!: MarkType;
-  setProperties(json: SlideInterfaceProperties): void {
-    ({ txt: this.txt } = json);
+  setProperties(props: SlideInterfaceProperties): void {
+    ({ txt: this.txt } = props);
     this.accept(new AdocVisitor());
     this.immediateConclusion = true;
   }

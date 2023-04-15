@@ -16,8 +16,8 @@ polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
 });
 export class Gap extends Slide implements SlideType {
-  setProperties(json: SlideInterfaceProperties): void {
-    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = json);
+  setProperties(props: SlideInterfaceProperties): void {
+    ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = props);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {

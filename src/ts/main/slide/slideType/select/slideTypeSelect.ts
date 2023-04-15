@@ -7,13 +7,13 @@ import type { SlideInterfaceProperties } from '../../slideInterface';
 import type { MarkTypeSelect, SlideType } from '../slideType';
 export class Select extends Slide implements SlideType {
   inst = '';
-  setProperties(json: SlideInterfaceProperties): void {
+  setProperties(props: SlideInterfaceProperties): void {
     ({
       inst: this.inst as string | undefined,
       txt: this.txt,
       ans: this.ans,
       isExercise: this.isExercise,
-    } = json);
+    } = props);
     this.accept(new AdocVisitor());
   }
   accept(visitor: AdocVisitorInterface): void {
