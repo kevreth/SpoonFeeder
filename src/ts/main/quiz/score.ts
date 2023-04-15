@@ -4,7 +4,7 @@ import type {
   DivisionProcessor,
 } from '../datalayer/mediator';
 import { SaveData, process } from '../datalayer/mediator';
-import type { SlideInterface } from '../slide/slideInterface';
+import type { SlideInterface } from '../slide/mediator';
 import { initSlide } from '../slidetype/mediator';
 import { percentCorrect } from './evaluate';
 export interface ISummaryLine {

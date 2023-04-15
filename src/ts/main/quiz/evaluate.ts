@@ -1,5 +1,5 @@
 const ROW = '<tr><td>%Q%</td><td>%N%.</td><td>%A%</td><td>%C%</td></tr>';
-import type { SlideInterface } from '../slide/slideInterface';
+import type { SlideInterface } from '../slide/mediator';
 import type { AnswerType } from '../slidetype/mediator';
 export class Evaluation {
   constructor(
