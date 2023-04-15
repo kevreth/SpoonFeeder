@@ -12,7 +12,7 @@
     :volume="isMuted"
     @toggle-volume="toggleVolume"
     :style="{ zIndex: -1 }"/>
-
+  <SumNavigation/>
 </template>
 
 <script setup lang="ts">
@@ -22,6 +22,7 @@ import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue'
 import {SaveData} from '../../mediator';
+import SumNavigation from './SumNavigation.vue';
 
 const isMuted = ref(false);
 
