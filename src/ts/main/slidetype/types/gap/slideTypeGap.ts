@@ -1,7 +1,7 @@
 import { polyfill } from 'mobile-drag-drop';
 import { isRandom } from '../../../datalayer/mediator';
 import { shuffle } from '../../../quiz/mediator';
-import { Slide } from '../../../slide/mediator';
+import { AnswerType, Slide } from '../../../slide/mediator';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';
 //Despite the documentation, "scroll behaviour" is required, not optional,
 //for basic mobile drag-and-drop ability.
@@ -10,7 +10,6 @@ import type { SlideInterface } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeGap, SlideType } from '../../misc/slideType';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,

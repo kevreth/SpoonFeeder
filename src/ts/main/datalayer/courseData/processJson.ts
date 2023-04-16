@@ -15,11 +15,11 @@ export class JsonProcessor
     retval: SlideInterface[]
   ) {
     const title = ProcessJson.titleSlideText(name, ctr, child.name);
-    const slide = ProcessJson.addNewInfoSlide( title );
+    const slide = ProcessJson.addNewInfoSlide(title);
     retval.push(slide);
   }
   course_start(course: Division, retval: SlideInterface[]): void {
-    const slide = ProcessJson.addNewInfoSlide( course.name );
+    const slide = ProcessJson.addNewInfoSlide(course.name);
     retval.push(slide);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

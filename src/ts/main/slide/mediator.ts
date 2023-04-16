@@ -1,3 +1,7 @@
-export type { AnswerType } from '../slidetype/mediator';
 export { Slide } from './slide';
-export type { SlideInterface } from './slideInterface';
+export type {
+  AnswerType,
+  ResultReturnType,
+  ResultType,
+  SlideInterface,
+} from './slideInterface';

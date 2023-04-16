@@ -8,11 +8,11 @@ export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 export const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';
 export function loadCourse(yamlFilename: string, doc: Document) {
-  const load = ( course: Course ) => {
-    CourseFile.set( course );
-    const slides = processJson( course );
-    Json.set( slides );
-    showSlides( doc );
+  const load = (course: Course) => {
+    CourseFile.set(course);
+    const slides = processJson(course);
+    Json.set(slides);
+    showSlides(doc);
   };
   loadFile(yamlFilename, load);
 }

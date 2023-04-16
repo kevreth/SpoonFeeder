@@ -1,6 +1,5 @@
-import type { SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { CreateHtmlTypeMc } from './createHtmlMc';
 export type MakeSlidesTypeMc = (

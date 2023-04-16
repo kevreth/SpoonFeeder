@@ -1,8 +1,7 @@
 import { removeListener } from '../../../quiz/mediator';
-import type { SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import { INDETERMINANT } from '../../misc/markupColors';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import type { CreateHtmlTypeSelect } from './createHtmlSelect';
 export type MakeSlidesTypeSelect = (
   inst: string,

@@ -1,11 +1,10 @@
 import { isRandom } from '../../../datalayer/mediator';
 import { shuffle } from '../../../quiz/mediator';
-import type { SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkType, SlideType } from '../../misc/slideType';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import { McFactory } from '../mc/factoryMc';
 export const CHOICES = 4;
 export type vocabTuplesType = [
@@ -31,7 +30,7 @@ export class Vocab extends Slide implements SlideType {
       slide.o = vtuple[2];
       slide.isExercise = this.isExercise;
       this.set.push(slide);
-    } );
+    });
     //TODO: check isRandom() and if true randomize this.set.
   }
   accept(visitor: AdocVisitorInterface): void {

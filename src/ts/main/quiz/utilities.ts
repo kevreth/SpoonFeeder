@@ -1,7 +1,12 @@
 import $ from 'jquery';
 import { shuffle } from 'lodash';
 export {
-  difference, escape, intersection, isEqual, last, random
+  difference,
+  escape,
+  intersection,
+  isEqual,
+  last,
+  random,
 } from 'lodash';
 export { shuffle };
 export function removeListener(element: Node): void {

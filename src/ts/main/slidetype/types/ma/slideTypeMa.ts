@@ -1,12 +1,11 @@
 import { isRandom } from '../../../datalayer/mediator';
 import { removeListener, shuffle } from '../../../quiz/mediator';
-import type { SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
 import { Slide } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';
 import type { MarkTypeMa, SlideType } from '../../misc/slideType';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 export class Ma extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
