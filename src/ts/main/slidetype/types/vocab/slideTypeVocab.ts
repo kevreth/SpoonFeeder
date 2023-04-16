@@ -31,7 +31,8 @@ export class Vocab extends Slide implements SlideType {
       slide.o = vtuple[2];
       slide.isExercise = this.isExercise;
       this.set.push(slide);
-    });
+    } );
+    //TODO: check isRandom() and if true randomize this.set.
   }
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitVocab(this);
