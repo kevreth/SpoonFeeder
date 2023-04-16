@@ -10,6 +10,5 @@ export {
   clearRandom,
   isMute,
   isRandom,
-  setCourseName
+  setCourseName,
 } from './webstorage/webStorage';
-

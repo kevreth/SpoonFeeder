@@ -3,4 +3,3 @@ export { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 export { TeX } from 'mathjax-full/ts/input/tex';
 export { mathjax } from 'mathjax-full/ts/mathjax';
 export { CHTML } from 'mathjax-full/ts/output/chtml';
-

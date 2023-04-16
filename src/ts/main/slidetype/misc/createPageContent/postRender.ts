@@ -1,5 +1,11 @@
 import hljs from 'highlight.js';
-import { browserAdaptor, CHTML, mathjax, RegisterHTMLHandler, TeX } from '../../../mediator';
+import {
+  browserAdaptor,
+  CHTML,
+  mathjax,
+  RegisterHTMLHandler,
+  TeX,
+} from '../../../mediator';
 RegisterHTMLHandler(browserAdaptor());
 export function postRender(doc: Document) {
   hljs.highlightAll();

@@ -21,6 +21,5 @@ export {
   last,
   remove,
   removeListener,
-  shuffle
+  shuffle,
 } from './utilities';
-
