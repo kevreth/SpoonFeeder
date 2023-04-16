@@ -1,10 +1,10 @@
-import { remove } from '../../quiz/mediator';
+import { PREFIX_COURSE_FILE, loadFile } from '../../ts/main/dataaccess/courseData/loadCourse';
 import {
   getCourseListing,
   getCourseName,
   setCourseListing,
-} from '../webstorage/webStorage';
-import { PREFIX_COURSE_FILE, loadFile } from './loadCourse';
+} from '../../ts/main/dataaccess/webstorage/webStorage';
+import { remove } from '../../ts/main/quiz/mediator';
 //Vue interface to Course data.
 export class CourseData {
   public courseName: string;
