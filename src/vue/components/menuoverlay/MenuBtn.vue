@@ -13,3 +13,10 @@
 <script setup lang="ts">
 import DropList from './menubtn/droplist/DropList.vue';
 </script>
+
+<style>
+.menuBtn {
+  position: fixed;
+  right: 0;
+}
+</style>
