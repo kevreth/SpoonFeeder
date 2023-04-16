@@ -1,5 +1,5 @@
 import { SaveData } from '../dataaccess/mediator';
-import type { Evaluation } from '../quiz/mediator';
+import { Evaluation, adoc2html } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,
   AnswerType,
@@ -40,7 +40,14 @@ export abstract class Slide implements SlideInterface {
   abstract accept(visitor: AdocVisitorInterface): void;
   abstract decorate(doc: Document): boolean;
   abstract setProperties(properties: SlideInterface): void;
-  abstract makeSlides(doc: Document): void;
+  abstract makeSlides( doc: Document ): void;
+  //currently unused, awaiting removal of adocVisitor
+  applyAdoc(): void {
+    this.txt = adoc2html(this.txt);
+    this.exp = adoc2html(this.exp);
+    this.ref = adoc2html(this.ref);
+    this.o = this.o.map((item) => adoc2html(item));
+  }
   setContinue(): void {
     throw new Error('Method not implemented.');
   }

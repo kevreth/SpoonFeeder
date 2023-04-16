@@ -24,6 +24,8 @@ export interface SlideInterface {
   numans: number;
   list: Map<string, string>;
   set: Array<SlideInterface>;
+  //currently unused, awaiting removal of adocVisitor
+  applyAdoc(): void;
   createHtml: CreateHtmlType;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;
