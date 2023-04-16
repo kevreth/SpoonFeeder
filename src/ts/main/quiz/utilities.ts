@@ -14,19 +14,6 @@ export function removeListener(element: Node): void {
     true
   );
 }
-export function createValidHtmlId(str: string): string {
-  // Remove any characters that are not alphanumeric, underscore, or hyphen
-  const validCharacters = /[^\w-]/g;
-  const sanitizedStr = str.replace(validCharacters, '');
-  // Replace any remaining spaces with hyphens
-  const hyphenatedStr = sanitizedStr.replace(/\s+/g, '-');
-  // Make sure the ID starts with a letter
-  const startsWithLetter = /^[A-Za-z]/;
-  const finalStr = hyphenatedStr.replace(startsWithLetter, (match) =>
-    match.toLowerCase()
-  );
-  return finalStr;
-}
 export function shuffleMap<K, V>(map: Map<K, V>): Map<K, V> {
   let keys = Array.from(map.keys());
   keys = shuffle(keys);

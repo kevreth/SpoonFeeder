@@ -56,9 +56,10 @@
 <script setup lang="ts">
 import { ref, onBeforeUpdate } from 'vue';
 import ExitBtn from '../../../../common/ExitBtn.vue';
-import { getCourseData, createValidHtmlId, switchCourse } from '../../../../../mediator';
+import { getCourseData, switchCourse } from '../../../../../mediator';
 import SwitchCourse from './SwitchCourse.vue'
 import SavedCourse from './SavedCourse.vue';
+import { createValidHtmlId } from '../../../../../composables/createValidHtmlId';
 
 let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
