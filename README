@@ -3,8 +3,8 @@
 SpoonFeeder is programmed instruction software that takes advantage of recent advances in gamification.
 
 Installation:
-1) Install node, platforms vary.
-2) Update node and npm if necessary:
+1) Install Node if not already installed, platforms vary.
+2) Update Node and npm:
 npm i -g npm
 npm i -g node
 3) Install quasar if not already installed:
