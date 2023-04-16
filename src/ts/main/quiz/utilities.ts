@@ -14,16 +14,6 @@ export function removeListener(element: Node): void {
     true
   );
 }
-export function shuffleMap<K, V>(map: Map<K, V>): Map<K, V> {
-  let keys = Array.from(map.keys());
-  keys = shuffle(keys);
-  const newmap: Map<K, V> = new Map();
-  for (const key of keys) {
-    const value = map.get(key) as V;
-    newmap.set(key, value);
-  }
-  return newmap;
-}
 export function getChildIds(doc: Document, parent: string): Array<string> {
   const predicate = '#' + parent + ' [id]';
   const list: NodeListOf<Element> = doc.querySelectorAll(predicate);
