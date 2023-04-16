@@ -1,8 +1,7 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import type { SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import type { CreateHtmlTypeSort } from './createHtmlSort';
 export type MakeSlidesTypeSort = (
   txt: string,

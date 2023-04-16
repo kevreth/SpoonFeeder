@@ -1,13 +1,13 @@
 import type { Evaluation } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,
-  AnswerType,
   CreateHtmlType,
   EvaluateType,
   MakeSlidesType,
-  ResultReturnType,
-  ResultType,
 } from '../slidetype/mediator';
+export type AnswerType = string & Array<string> & Array<number>;
+export type ResultReturnType = boolean | Array<boolean>;
+export type ResultType = (ans: AnswerType, res: AnswerType) => ResultReturnType;
 export interface SlideInterface {
   txt: string;
   type: string;
@@ -24,6 +24,8 @@ export interface SlideInterface {
   numans: number;
   list: Map<string, string>;
   set: Array<SlideInterface>;
+  //currently unused, awaiting removal of adocVisitor
+  applyAdoc(): void;
   createHtml: CreateHtmlType;
   makeSlidesStrategy: MakeSlidesType;
   evaluateStrategy: EvaluateType;

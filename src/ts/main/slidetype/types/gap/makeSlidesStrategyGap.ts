@@ -1,6 +1,5 @@
-import type { SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
-import type { AnswerType } from '../../strategies/resultStrategy';
 import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { CreateHtmlTypeGap } from './createHtmlGap';
 export type MakeSlidesTypeGap = (

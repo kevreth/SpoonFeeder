@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { ProcessJson } from '../../main/datalayer/courseData/processJson';
+import { ProcessJson } from '../../main/dataaccess/courseData/processJson';
 import { Mc } from '../../main/slidetype/types/mc/slideTypeMc';
 const testjson = `
   {

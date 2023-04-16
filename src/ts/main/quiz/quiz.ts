@@ -4,7 +4,7 @@ import {
   clearSessionStorage,
   loadCourse,
   setCourseName,
-} from '../datalayer/mediator';
+} from '../dataaccess/mediator';
 // necessary for adding a property to the
 // DOM window object
 interface Window {

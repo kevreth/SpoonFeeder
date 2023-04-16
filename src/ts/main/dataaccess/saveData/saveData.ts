@@ -13,7 +13,7 @@ import {
 import { getCourseName } from '../webstorage/webStorage';
 import { timestampNow } from './date';
 import { Json } from './saveFile';
-import { SlideDispatcher2 } from './slideDispatcher2';
+import { SaveDataDispatcher } from './slideDispatcher2';
 
 export class SaveData {
   constructor(
@@ -79,6 +79,6 @@ export class SaveData {
   }
 }
 function getCurrentSlide(): SlideInterface {
-  const ss = new SlideDispatcher2(Json.get(), SaveData.get());
+  const ss = new SaveDataDispatcher(Json.get(), SaveData.get());
   return dispatch2(ss, false);
 }

@@ -1,9 +1,11 @@
 import hljs from 'highlight.js';
-import { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
-import { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
-import { TeX } from 'mathjax-full/ts/input/tex';
-import { mathjax } from 'mathjax-full/ts/mathjax';
-import { CHTML } from 'mathjax-full/ts/output/chtml';
+import {
+  browserAdaptor,
+  CHTML,
+  mathjax,
+  RegisterHTMLHandler,
+  TeX,
+} from '../../../mediator';
 RegisterHTMLHandler(browserAdaptor());
 export function postRender(doc: Document) {
   hljs.highlightAll();

@@ -1,4 +1,4 @@
-import { isRandom } from '../../../datalayer/mediator';
+import { isRandom } from '../../../dataaccess/mediator';
 import { doneButton, shuffle } from '../../../quiz/mediator';
 import type { AnswerType } from '../../strategies/resultStrategy';
 

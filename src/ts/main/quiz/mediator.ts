@@ -1,4 +1,6 @@
-export { adoc2html } from '../datalayer/courseData/adoc2html';
+//quiz mediator
+export { adoc2html, isRandom } from '../dataaccess/mediator';
+export { difference, intersection, isEqual, last, shuffle } from '../mediator';
 export { explanation } from '../slide/explanation';
 export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
@@ -11,15 +13,9 @@ export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
 export {
   append,
-  difference,
   empty,
   extend,
   getChildIds,
-  intersection,
-  isEqual,
-  last,
   remove,
   removeListener,
-  shuffle
 } from './utilities';
-
