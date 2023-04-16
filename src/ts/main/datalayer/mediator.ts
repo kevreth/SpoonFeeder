@@ -1,3 +1,4 @@
+//datalayer mediator;
 export type { Course, Division } from './courseData/course';
 export { process } from './courseData/courseFileProcessor';
 export type { DivisionProcessor } from './courseData/courseFileProcessor';
@@ -9,5 +10,6 @@ export {
   clearRandom,
   isMute,
   isRandom,
-  setCourseName,
+  setCourseName
 } from './webstorage/webStorage';
+
