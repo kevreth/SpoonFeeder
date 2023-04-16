@@ -9,8 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Another evaluation class, but evaluates an entire set of questions.
-import { Evaluation, makeRow } from '../../quiz/mediator';
-import type { AnswerType } from './resultStrategy';
+import { AnswerType, Evaluation, makeRow } from '../../quiz/mediator';
 // Only makeRow from Evaluation is required.
 export type FunctionType = (
   response: AnswerType,

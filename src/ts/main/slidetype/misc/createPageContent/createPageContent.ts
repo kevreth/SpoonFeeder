@@ -1,4 +1,4 @@
-import { append, empty } from '../../../quiz/mediator';
+import { append, empty } from '../../mediator';
 import { postRender } from './postRender';
 //small file but broken out to solve circular dependencies
 export function createPageContent(html: string, doc: Document): void {

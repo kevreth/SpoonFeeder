@@ -1,4 +1,5 @@
 //slidetype mediator
+export { append, empty } from '../quiz/mediator';
 export { Slide } from '../slide/slide';
 export type {
   AnswerType,
@@ -12,4 +13,3 @@ export type { CreateHtmlType } from './strategies/createHtmlStrategy';
 export type { EvaluateType } from './strategies/evaluateStrategy';
 export type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 export { INFO } from './types/info/factoryInfo';
-
