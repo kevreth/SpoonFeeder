@@ -1,4 +1,4 @@
-import { Json, SaveData } from '../datalayer/mediator';
+import { Json, SaveData } from '../dataaccess/mediator';
 import type { SlideInterface } from '../slide/mediator';
 import { last } from './utilities';
 

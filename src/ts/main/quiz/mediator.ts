@@ -1,5 +1,5 @@
 //quiz mediator
-export { adoc2html } from '../datalayer/courseData/adoc2html';
+export { adoc2html } from '../dataaccess/courseData/adoc2html';
 export { explanation } from '../slide/explanation';
 export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
@@ -21,5 +21,6 @@ export {
   last,
   remove,
   removeListener,
-  shuffle,
+  shuffle
 } from './utilities';
+

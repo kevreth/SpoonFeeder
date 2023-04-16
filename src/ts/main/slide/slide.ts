@@ -1,4 +1,4 @@
-import { SaveData } from '../datalayer/mediator';
+import { SaveData } from '../dataaccess/mediator';
 import type { Evaluation } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,

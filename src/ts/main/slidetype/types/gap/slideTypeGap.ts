@@ -1,5 +1,5 @@
 import { polyfill } from 'mobile-drag-drop';
-import { isRandom } from '../../../datalayer/mediator';
+import { isRandom } from '../../../dataaccess/mediator';
 import { shuffle } from '../../../quiz/mediator';
 import { AnswerType, Slide } from '../../../slide/mediator';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';

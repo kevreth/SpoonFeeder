@@ -2,8 +2,8 @@ import type {
   Course,
   Division,
   DivisionProcessor,
-} from '../datalayer/mediator';
-import { SaveData, process } from '../datalayer/mediator';
+} from '../dataaccess/mediator';
+import { SaveData, process } from '../dataaccess/mediator';
 import type { SlideInterface } from '../slide/mediator';
 import { initSlide } from '../slidetype/mediator';
 import { percentCorrect } from './evaluate';
