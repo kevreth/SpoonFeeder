@@ -3,7 +3,7 @@
   enter-active-class="animated zoomInUp"
   leave-active-class="animated zoomOutDown"
   >
-  <q-overlay id="overlay">
+  <q-overlay id="overlay" @click.stop="">
     <template #body>
       <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
         <div class="overlayBtn">
