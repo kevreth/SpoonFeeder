@@ -5,7 +5,7 @@ export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface
+  SlideInterface,
 } from '../slide/mediator';
 export { AdocVisitor } from './misc/adocVisitor';
 export type { AdocVisitorInterface } from './misc/adocVisitor';
@@ -14,4 +14,3 @@ export type { CreateHtmlType } from './strategies/createHtmlStrategy';
 export type { EvaluateType } from './strategies/evaluateStrategy';
 export type { MakeSlidesType } from './strategies/makeSlidesStrategy';
 export { INFO } from './types/info/factoryInfo';
-

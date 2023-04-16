@@ -1,9 +1,9 @@
 import { expect, it } from 'vitest';
 import {
-    adoc2html,
-    adoc2markdown,
-    markdown2html,
-    processHandlebars,
+  adoc2html,
+  adoc2markdown,
+  markdown2html,
+  processHandlebars,
 } from '../../../main/dataaccess/courseData/adoc2html';
 const asciidoc = `
 == Document Title

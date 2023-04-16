@@ -1,9 +1,9 @@
 import { expect, it } from 'vitest';
 import {
-    Course,
-    Lesson,
-    Module,
-    Unit,
+  Course,
+  Lesson,
+  Module,
+  Unit,
 } from '../../main/dataaccess/courseData/course';
 it('test course', () => {
   const division = new Course();
