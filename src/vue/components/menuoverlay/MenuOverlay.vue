@@ -7,12 +7,13 @@
     :content="content"
     @closeInfo="expOverlay = false"
   />
-  <VolumeMute
+  <div id="summary" class="sumNavigation q-mt-xs q-ml-sm">
+    <SumNavigation/>
+    <VolumeMute
     id="volume"
     :volume="isMuted"
-    @toggle-volume="toggleVolume"
-    :style="{ zIndex: -1 }"/>
-
+    @toggle-volume="toggleVolume"/>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -22,6 +23,7 @@ import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue'
 import {SaveData} from '../../mediator';
+import SumNavigation from './SumNavigation.vue';
 
 const isMuted = ref(false);
 
@@ -37,4 +39,13 @@ function handleExpOverlay() {
   content.value = SaveData.getCurrentSlide();
 }
 </script>
+
+<style>
+.sumNavigation {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0px;
+}
+</style>
 
