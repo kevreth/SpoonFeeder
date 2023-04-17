@@ -1,8 +1,5 @@
 <template>
-  <transition appear group
-  enter-active-class="animated zoomInUp"
-  leave-active-class="animated zoomOutDown"
-  >
+  <transition appear group name="transitions-zoom">
   <q-overlay id="overlay" @click.stop="">
     <template #body>
       <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">

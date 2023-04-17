@@ -6,3 +6,22 @@
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0) !important;
 }
+.transitions-enter-from,
+.transitions-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+.transitions-enter-active,
+.transitions-leave-active {
+  transition: all 1s ease;
+}
+
+.transitions-zoom-enter-from,
+.transitions-zoom-leave-to {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.transitions-zoom-enter-active,
+.transitions-zoom-leave-active {
+  transition: all 1s ease;
+}

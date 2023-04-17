@@ -89,15 +89,6 @@ function closeInfo() {
 </script>
 
 <style>
-.transitions-enter-from,
-.transitions-leave-to {
-  opacity: 0;
-  transform: translateY(-60px);
-}
-.transitions-enter-active,
-.transitions-leave-active {
-  transition: all 1s ease;
-}
 .btnCourse {
   position: absolute;
   display: flex;

@@ -1,7 +1,5 @@
 <template>
-  <transition
-    enter-active-class="animated fadeInLeft"
-    leave-active-class="animated fadeOutRight"
+  <transition name="transitions"
     :duration="1000">
     <q-overlay class="summaryOverlay bg-secondary">
       <template #body>

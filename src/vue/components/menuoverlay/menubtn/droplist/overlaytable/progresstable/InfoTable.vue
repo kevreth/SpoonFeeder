@@ -1,7 +1,5 @@
 <template>
-  <transition
-    enter-active-class="animated slideInDown"
-    leave-active-class="animated slideOutUp"
+  <transition name="transitions"
     :duration="1000">
     <q-overlay class="infoOverlay column">
       <template #body>
