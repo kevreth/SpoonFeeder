@@ -1,7 +1,5 @@
 <template>
-  <transition appear group
-    enter-active-class="animated slideInDown"
-    leave-active-class="animated slideOutUp">
+  <transition appear group name="transitions">
     <q-overlay
       id="courseTable"
       @click.stop=""
@@ -91,6 +89,15 @@ function closeInfo() {
 </script>
 
 <style>
+.transitions-enter-from,
+.transitions-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+.transitions-enter-active,
+.transitions-leave-active {
+  transition: all 1s ease;
+}
 .btnCourse {
   position: absolute;
   display: flex;

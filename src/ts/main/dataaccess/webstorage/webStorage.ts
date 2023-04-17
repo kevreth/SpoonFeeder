@@ -39,6 +39,15 @@ export function setMute() {
 export function clearMute() {
   clearSessionStorageFlag('mute');
 }
+export function setTransitions() {
+  setSessionStorageFlag('transitions');
+}
+export function clearTransitions() {
+  clearSessionStorageFlag('transitions');
+}
+export function isTransitions(): boolean {
+  return checkSessionStorageFlag('transitions');
+}
 export function isMute(): boolean {
   return checkSessionStorageFlag('mute');
 }

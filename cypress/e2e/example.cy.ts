@@ -42,6 +42,7 @@ describe('Cypress Testing', () => {
     cy.title().should('eq', 'SpoonFeeder');
     //mute audio during testss
     sessionStorage.setItem('mute', 'true');
+    sessionStorage.setItem('transitons', 'true');
 
     //because of async loading
     cy.get('#android', { timeout: 20000 }).should('be.visible');
