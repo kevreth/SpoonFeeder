@@ -15,8 +15,8 @@ import '../../css/quasar.css'
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
 const courseList = ref(false);
+// const isEnable = ref(false);
 const isEnable = ref(false);
-// const disableTransitions = ref(false);
 
 //This should probably be moved to App.vue.
 loadCourseListing((yml) => {
