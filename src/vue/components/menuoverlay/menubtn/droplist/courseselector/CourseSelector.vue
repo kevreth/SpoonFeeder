@@ -1,5 +1,5 @@
 <template>
-  <transition appear group name="transitions">
+  <transition appear group :name="disable ? '' : 'transitions'">
     <q-overlay
       id="courseTable"
       @click.stop=""
@@ -64,6 +64,13 @@ let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref<string | null>(null);
 const savedCourse = ref<string>('');
 const disableExit = ref(false);
+// const disable = ref(false);
+defineProps({
+  disable: {
+    type: Boolean,
+    default: false
+  }
+})
 
 onBeforeUpdate(() => {
   courseData = ref(getCourseData());
