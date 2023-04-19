@@ -16,3 +16,13 @@
 .transitions-leave-active {
   transition: all 1s ease;
 }
+
+.transitions-zoom-enter-from,
+.transitions-zoom-leave-to {
+  opacity: 0;
+  transform: scale(1.2);
+}
+.transitions-zoom-enter-active,
+.transitions-zoom-leave-active {
+  transition: all 1s ease;
+}

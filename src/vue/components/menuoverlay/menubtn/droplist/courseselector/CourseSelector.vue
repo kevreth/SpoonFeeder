@@ -1,5 +1,5 @@
 <template>
-  <transition appear group :name="disable ? '' : 'transitions'">
+  <transition appear group :name="disableTransitions ? '' : 'transitions'">
     <q-overlay
       id="courseTable"
       @click.stop=""
@@ -66,7 +66,7 @@ const savedCourse = ref<string>('');
 const disableExit = ref(false);
 // const disable = ref(false);
 defineProps({
-  disable: {
+  disableTransitions: {
     type: Boolean,
     default: false
   }

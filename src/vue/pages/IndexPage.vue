@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <CourseSelector v-model="courseList" @closeInfo="courseList = false" :disable="disable"/>
+    <CourseSelector v-model="courseList" @closeInfo="courseList = false" :disableTransitions="disableTransitions"/>
     <div id="slide">
       <div id="content"></div>
     </div>
@@ -15,7 +15,8 @@ import '../../css/quasar.css'
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
 const courseList = ref(false);
-const disable = ref(true);
+const disableTransitions = ref(true);
+// const disableTransitions = ref(false);
 
 //This should probably be moved to App.vue.
 loadCourseListing((yml) => {
