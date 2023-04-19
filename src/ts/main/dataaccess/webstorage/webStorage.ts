@@ -1,17 +1,8 @@
 import {
-  getLocalStorage,
   getSessionStorage,
-  setLocalStorage,
-  setSessionStorage,
+  setSessionStorage
 } from '../persistence/webPersistence';
-
-function checkSessionStorageFlag(key: string): boolean {
-  const val = getSessionStorage(key);
-  //assume key not existing is false
-  let retval = false;
-  if (val === 'true') retval = true;
-  return retval;
-}
+import { COURSE_NAME, MUTE, RANDOM } from './webStorageVariable';
 export function setCourseListing(value: Array<string>) {
   const str = JSON.stringify(value);
   setSessionStorage('courses', str);
@@ -21,33 +12,27 @@ export function getCourseListing() {
   const str = JSON.parse(json);
   return str;
 }
-export function setCourseName(value: string) {
-  setLocalStorage('courseName', value);
+export function setCourseName( value: string ) {
+  COURSE_NAME.set( value );
 }
 export function getCourseName() {
-  return getLocalStorage('courseName') as string;
-}
-function setSessionStorageFlag(key: string) {
-  setSessionStorage(key, 'true');
-}
-function clearSessionStorageFlag(key: string) {
-  setSessionStorage(key, 'false');
+  return COURSE_NAME.get( );
 }
 export function setMute() {
-  setSessionStorageFlag('mute');
+  MUTE.set();
 }
 export function clearMute() {
-  clearSessionStorageFlag('mute');
+  MUTE.clear();
 }
 export function isMute(): boolean {
-  return checkSessionStorageFlag('mute');
+  return MUTE.is();
 }
 export function setRandom() {
-  setSessionStorageFlag('random');
+  RANDOM.set();
 }
 export function clearRandom() {
-  clearSessionStorageFlag('random');
+  RANDOM.clear();
 }
 export function isRandom(): boolean {
-  return checkSessionStorageFlag('random');
+  return RANDOM.is();
 }
