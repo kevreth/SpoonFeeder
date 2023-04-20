@@ -1,7 +1,10 @@
 // set, get, and remove a variable ("item") from the WebStorage API
 // "target" is either "localStorage" or "sessionStorage" without quotes.
 export class WebStorageVariable {
-  constructor(private readonly item: string, private readonly target: Storage) {}
+  constructor(
+    private readonly item: string,
+    private readonly target: Storage
+  ) {}
   public set(val: string) {
     this.target.setItem(this.item, val);
   }

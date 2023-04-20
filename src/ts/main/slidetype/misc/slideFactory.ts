@@ -32,7 +32,7 @@ export function getInstance(type: string): SlideInterface {
 export function initSlide(exercise: SlideInterface) {
   const type = exercise.type;
   const slide = getInstance(type);
-  slide.setProperties( exercise );
+  slide.setProperties(exercise);
   // placeholder for removal of adocVisitor
   // slide.applyAdoc();
   const slides = slide.getSlideSet();

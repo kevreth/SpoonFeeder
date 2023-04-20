@@ -14,7 +14,9 @@ export {
   TRANSITION,
   clearRandom,
   clearSessionStorage,
-  getCourseListing, getSaveData, isRandom,
-  setCourseListing, setSaveData
+  getCourseListing,
+  getSaveData,
+  isRandom,
+  setCourseListing,
+  setSaveData,
 } from './webstorage/webStorage';
-
