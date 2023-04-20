@@ -5,6 +5,5 @@ export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface
+  SlideInterface,
 } from './slideInterface';
-

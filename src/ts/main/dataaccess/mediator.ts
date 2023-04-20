@@ -15,6 +15,5 @@ export {
   getCourseListing,
   getSaveData,
   setCourseListing,
-  setSaveData
+  setSaveData,
 } from './webstorage/webStorage';
-

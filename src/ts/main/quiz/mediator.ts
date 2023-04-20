@@ -17,6 +17,5 @@ export {
   extend,
   getChildIds,
   remove,
-  removeListener
+  removeListener,
 } from './utilities';
-
