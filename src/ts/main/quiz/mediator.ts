@@ -1,6 +1,6 @@
 //quiz mediator
 export {
-  COURSE_NAME, Json, PREFIX_COURSE_FILE, RANDOM, SaveData, adoc2html, clearSessionStorage,
+  COURSE_NAME, Json, MUTE, PREFIX_COURSE_FILE, RANDOM, SaveData, adoc2html, clearSessionStorage,
   loadCourse, process
 } from '../dataaccess/mediator';
 export type {
