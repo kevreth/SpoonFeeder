@@ -16,9 +16,6 @@ export function setCourseListing(value: Array<string>) {
 export function getCourseListing() {
   return JSON.parse(COURSES.get() as string);
 }
-export function getCourseName() {
-  return COURSE_NAME.get();
-}
 export function isRandom(): boolean {
   return RANDOM.is();
 }

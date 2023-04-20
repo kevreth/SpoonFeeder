@@ -1,7 +1,7 @@
 import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
 import { marked } from 'marked';
-import { getCourseName } from '../webstorage/webStorage';
+import { COURSE_NAME } from '../mediator';
 // Asciidoctor.js will not run in Vue environment so we
 // use DOWNDOC to transform to MARKDOWN and then MARKED
 // to transform to HTML.
@@ -27,7 +27,7 @@ export function markdown2html(text: string): string {
   else return marked.parseInline(text);
 }
 export function processHandlebars(txt: string) {
-  register(getCourseName());
+  register(COURSE_NAME.get() as string);
   const template = Handlebars.compile(txt);
   txt = template({});
   return txt;
