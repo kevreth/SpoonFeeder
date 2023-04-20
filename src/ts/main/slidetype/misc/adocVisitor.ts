@@ -1,15 +1,16 @@
-import { adoc2html } from '../../quiz/mediator';
-import type { SlideInterface } from '../../slide/mediator';
-import { Bool } from '../types/bool/slideTypeBool';
-import { Gap } from '../types/gap/slideTypeGap';
-import { Imap } from '../types/imap/slideTypeImap';
-import { Info } from '../types/info/slideTypeInfo';
-import { Ma } from '../types/ma/slideTypeMa';
-import { Mc } from '../types/mc/slideTypeMc';
-import { Select } from '../types/select/slideTypeSelect';
-import { Sort } from '../types/sort/slideTypeSort';
-import { Vocab } from '../types/vocab/slideTypeVocab';
-
+import type { SlideInterface } from '../mediator';
+import {
+  Bool,
+  Gap,
+  Imap,
+  Info,
+  Ma,
+  Mc,
+  Select,
+  Sort,
+  Vocab,
+  adoc2html,
+} from '../mediator';
 export interface AdocVisitorInterface {
   visitBool(clazz: Bool): void;
   visitGap(clazz: Gap): void;

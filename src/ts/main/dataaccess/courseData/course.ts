@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../../quiz/mediator';
+import type { SlideInterface } from '../mediator';
 export abstract class Division {
   name = '';
 }

@@ -1,6 +1,6 @@
-import { Json, SaveData } from '../dataaccess/mediator';
 import { last } from '../mediator';
-import type { SlideInterface } from '../slide/mediator';
+import type { SlideInterface } from './mediator';
+import { Json, SaveData } from './mediator';
 
 export interface StateActions<T> {
   begin(): T;

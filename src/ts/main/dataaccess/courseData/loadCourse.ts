@@ -1,9 +1,11 @@
-import { showSlides } from '../../quiz/mediator';
-import { getYaml2 } from '../persistence/filePersistence';
-import { Json } from '../saveData/saveFile';
-import type { Course } from './course';
-import { CourseFile } from './courseFile';
-import { ProcessJson } from './processJson';
+import {
+  Course,
+  CourseFile,
+  Json,
+  ProcessJson,
+  getYaml2,
+  showSlides,
+} from '../mediator';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 export const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';

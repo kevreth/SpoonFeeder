@@ -10,7 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import { muteAudio, playBack } from '../../mediator';
+import { MUTE } from '../../../ts/main/dataaccess/mediator';
+import { AudioPlayer } from '../../mediator';
 
 const props = defineProps({
   volume: {
@@ -26,10 +27,11 @@ function toggleVolume() {
 }
 
 function soundControl() {
+  const player = new AudioPlayer(new Audio, MUTE);
   if (!props.volume) {
-    muteAudio()
+    player.muteAudio();
   } else if (props.volume) {
-    playBack();
+    player.playBack();
   }
 }
 </script>

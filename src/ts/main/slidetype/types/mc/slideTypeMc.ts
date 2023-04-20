@@ -1,12 +1,6 @@
 import { removeListener, shuffle } from '../../../quiz/mediator';
-import type {
-  AnswerType,
-  SlideInterface,
-} from '../../../slide/mediator';
-import {
-  RANDOM,
-  Slide,
-} from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import { RANDOM, Slide } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';

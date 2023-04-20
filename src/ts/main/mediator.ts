@@ -7,8 +7,11 @@ export {
   random,
   shuffle,
 } from 'lodash';
+export { marked } from 'marked';
 export { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 export { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';
 export { TeX } from 'mathjax-full/ts/input/tex';
 export { mathjax } from 'mathjax-full/ts/mathjax';
 export { CHTML } from 'mathjax-full/ts/output/chtml';
+export { polyfill } from 'mobile-drag-drop';
+export { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';

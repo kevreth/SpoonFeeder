@@ -1,16 +1,17 @@
-import type { AnswerType, SlideInterface } from '../../quiz/mediator';
+import type { AnswerType, SlideInterface } from '../mediator';
 import {
+  COURSE_NAME,
+  Json,
+  SaveDataDispatcher,
   dispatch2,
   explanation,
   extend,
+  getSaveData,
   isEqual,
   last,
-} from '../../quiz/mediator';
-import { COURSE_NAME, getSaveData, setSaveData } from '../mediator';
-import { timestampNow } from './date';
-import { Json } from './saveFile';
-import { SaveDataDispatcher } from './slideDispatcher2';
-
+  setSaveData,
+  timestampNow,
+} from '../mediator';
 export class SaveData {
   constructor(
     public readonly txt: string,
