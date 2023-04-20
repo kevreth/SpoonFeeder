@@ -1,9 +1,8 @@
 <template>
   <transition
-    enter-active-class="animated fadeInLeft"
-    leave-active-class="animated fadeOutRight"
+    :name="isEnable ? 'transitions' : ''"
     :duration="1000">
-    <q-overlay class="summaryOverlay bg-secondary">
+    <q-overlay class="summaryOverlay bg-secondary" :class="{'transition': isEnable}">
       <template #body>
         <div class="justify-evenly summaryContainer">
           <!-- {{ content }} -->
@@ -17,6 +16,13 @@
 
 <script setup lang="ts">
 import ExitBtn from '../../../../../common/ExitBtn.vue';
+
+defineProps({
+  isEnable: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const emit = defineEmits(['closeSummary'])
 function closeSummary() {
