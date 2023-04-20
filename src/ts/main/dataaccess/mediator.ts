@@ -22,7 +22,11 @@ export type { Course, Division, Module } from './courseData/course';
 export { CourseFile } from './courseData/courseFile';
 export { process } from './courseData/courseFileProcessor';
 export type { DivisionProcessor } from './courseData/courseFileProcessor';
-export { PREFIX_COURSE_FILE, loadCourse } from './courseData/loadCourse';
+export {
+  PREFIX_COURSE_FILE,
+  loadCourse,
+  loadCourseListing,
+} from './courseData/loadCourse';
 export { ProcessJson } from './courseData/processJson';
 export { getYaml2 } from './persistence/filePersistence';
 export {

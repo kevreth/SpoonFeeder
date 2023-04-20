@@ -5,6 +5,8 @@ export {
   TeX,
   browserAdaptor,
   mathjax,
+  polyfill,
+  scrollBehaviourDragImageTranslateOverride,
 } from '../mediator';
 export {
   Evaluation,
@@ -29,7 +31,7 @@ export type { AdocVisitorInterface } from './misc/adocVisitor';
 export { postRender } from './misc/createPageContent/postRender';
 export { CORRECT, INCORRECT } from './misc/markupColors';
 export { initSlide } from './misc/slideFactory';
-export type { MarkTypeMa, SlideType } from './misc/slideType';
+export type { MarkTypeGap, MarkTypeMa, SlideType } from './misc/slideType';
 export type { CreateHtmlType } from './strategies/createHtmlStrategy';
 export type { EvaluateType } from './strategies/evaluateStrategy';
 export type { MakeSlidesType } from './strategies/makeSlidesStrategy';
