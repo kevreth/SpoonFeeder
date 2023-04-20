@@ -9,16 +9,6 @@ export function doneButton() {
   return makeButton('btn', 'done', 'done');
 }
 export function showButton(doc: Document, txt: string): HTMLElement {
-  const continue_btn = continueButton(doc);
-  continue_btn?.addEventListener('click', (): void => {
-    SaveData.setContinueTrue(txt);
-    const explain = doc.getElementById('explainIcon') as HTMLElement;
-    explain.style.visibility = 'hidden';
-    showSlides(doc);
-  });
-  return continue_btn;
-}
-export function continueButton(doc: Document): HTMLElement {
   const button = makeButton('continueBtn', 'continueBtn', 'continue');
   const slide = doc.getElementById('slide') as HTMLElement;
   slide.insertAdjacentHTML('beforeend', button);
@@ -28,6 +18,12 @@ export function continueButton(doc: Document): HTMLElement {
   continue_btn.style.position = 'absolute';
   continue_btn.style.marginTop = 10 + 'px';
   continue_btn.style.marginLeft = -2.3 + 'em';
+  continue_btn?.addEventListener('click', (): void => {
+    SaveData.setContinueTrue(txt);
+    const explain = doc.getElementById('explainIcon') as HTMLElement;
+    explain.style.visibility = 'hidden';
+    showSlides(doc);
+  });
   return continue_btn;
 }
 export function startOverButton(doc: Document) {
