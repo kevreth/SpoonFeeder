@@ -1,16 +1,14 @@
-import {
-  dispatch2,
-  explanation,
-  extend,
-  isEqual,
-  last,
-} from '../../quiz/mediator';
 import type { AnswerType, SlideInterface } from '../mediator';
 import {
   COURSE_NAME,
   Json,
   SaveDataDispatcher,
+  dispatch2,
+  explanation,
+  extend,
   getSaveData,
+  isEqual,
+  last,
   setSaveData,
   timestampNow,
 } from '../mediator';

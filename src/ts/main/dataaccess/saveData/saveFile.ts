@@ -1,5 +1,5 @@
-import type { SlideInterface } from '../../quiz/mediator';
-import { isEqual } from '../../quiz/mediator';
+import type { SlideInterface } from '../mediator';
+import { isEqual } from '../mediator';
 export class Json {
   private static json: Array<SlideInterface> = [];
   public static get() {
