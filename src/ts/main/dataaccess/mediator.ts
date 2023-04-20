@@ -15,7 +15,6 @@ export {
   clearSessionStorage,
   getCourseListing,
   getSaveData,
-  isRandom,
   setCourseListing,
   setSaveData
 } from './webstorage/webStorage';

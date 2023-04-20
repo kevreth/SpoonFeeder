@@ -1,9 +1,10 @@
 //slide mediator
-export { isRandom } from '../dataaccess/mediator';
+export { RANDOM } from '../dataaccess/mediator';
 export { Slide } from './slide';
 export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface,
+  SlideInterface
 } from './slideInterface';
+

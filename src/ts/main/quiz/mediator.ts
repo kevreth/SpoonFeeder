@@ -1,5 +1,5 @@
 //quiz mediator
-export { adoc2html, isRandom } from '../dataaccess/mediator';
+export { RANDOM, adoc2html } from '../dataaccess/mediator';
 export { difference, intersection, isEqual, last, shuffle } from '../mediator';
 export { explanation } from '../slide/explanation';
 export type { AnswerType, SlideInterface } from '../slide/mediator';
@@ -17,5 +17,6 @@ export {
   extend,
   getChildIds,
   remove,
-  removeListener,
+  removeListener
 } from './utilities';
+

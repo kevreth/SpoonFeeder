@@ -16,9 +16,6 @@ export function setCourseListing(value: Array<string>) {
 export function getCourseListing() {
   return JSON.parse(COURSES.get() as string);
 }
-export function isRandom(): boolean {
-  return RANDOM.is();
-}
 export function setSaveData(courseName: string, json: string) {
   new WebStorageVariable(courseName, localStorage).set(json);
 }

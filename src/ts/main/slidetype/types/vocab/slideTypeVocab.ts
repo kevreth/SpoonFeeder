@@ -1,7 +1,5 @@
-import { isRandom } from '../../../dataaccess/mediator';
 import { shuffle } from '../../../quiz/mediator';
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
-import { Slide } from '../../../slide/mediator';
+import { AnswerType, RANDOM, Slide, SlideInterface } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkType, SlideType } from '../../misc/slideType';
@@ -59,7 +57,7 @@ export function generateQuestions(map: Map<string, string>) {
     //if correct answer is not in "options",
     //replace the first entry with it.
     if (!options.includes(key)) options[0] = key;
-    if (isRandom()) options = shuffle(options);
+    if (RANDOM.is()) options = shuffle(options);
     const quest = map.get(key) as string;
     vocabTuples.push([quest, key, options]);
   }
