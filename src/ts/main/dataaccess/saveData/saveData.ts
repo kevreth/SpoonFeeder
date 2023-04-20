@@ -1,4 +1,3 @@
-import type { AnswerType, SlideInterface } from '../../quiz/mediator';
 import {
   dispatch2,
   explanation,
@@ -6,11 +5,15 @@ import {
   isEqual,
   last,
 } from '../../quiz/mediator';
-import { COURSE_NAME, getSaveData, setSaveData } from '../mediator';
-import { timestampNow } from './date';
-import { Json } from './saveFile';
-import { SaveDataDispatcher } from './slideDispatcher2';
-
+import type { AnswerType, SlideInterface } from '../mediator';
+import {
+  COURSE_NAME,
+  Json,
+  SaveDataDispatcher,
+  getSaveData,
+  setSaveData,
+  timestampNow,
+} from '../mediator';
 export class SaveData {
   constructor(
     public readonly txt: string,

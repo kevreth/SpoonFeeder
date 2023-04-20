@@ -1,4 +1,4 @@
-export function showExplainIcon(exp:string, doc: Document) {
+export function showExplainIcon(exp: string, doc: Document) {
   if (exp !== undefined && exp !== '' && exp) {
     setExplainIconVisibility(doc, Visibility.VISIBLE);
   }

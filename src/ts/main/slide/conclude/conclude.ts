@@ -9,7 +9,7 @@ export function conclude(
   res: AnswerType,
   txt: string,
   audioPlayer: AudioPlayer,
-  _showExplainIcon: (exp:string, doc: Document) => void,
+  _showExplainIcon: (exp: string, doc: Document) => void,
   _continueButton: (doc: Document, txt: string) => void
 ) {
   slide.setRes(res);
