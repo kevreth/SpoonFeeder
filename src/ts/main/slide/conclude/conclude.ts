@@ -1,4 +1,4 @@
-import { showButton, showExplainIcon } from '../../quiz/mediator';
+import { continueButton, showExplainIcon } from '../../quiz/mediator';
 import type { AnswerType } from '../../slidetype/mediator';
 import type { SlideInterface } from '../slideInterface';
 import { AudioPlayer } from './audio';
@@ -8,9 +8,9 @@ export function conclude(
   slide: SlideInterface,
   res: AnswerType,
   txt: string,
-  audioPlayer: AudioPlayer, //: ( isCorrect: boolean ) => void,
+  audioPlayer: AudioPlayer,
   _showExplainIcon: (exp:string, doc: Document) => void,
-  _showButton: (doc: Document, txt: string) => void
+  _continueButton: (doc: Document, txt: string) => void
 ) {
   slide.setRes(res);
   if (!slide.immediateConclusion) {
@@ -21,7 +21,7 @@ export function conclude(
   const done = doc.getElementById('btn');
   if (done !== null) done.remove();
   _showExplainIcon(slide.exp, doc);
-  _showButton(doc, txt);
+  _continueButton(doc, txt);
 }
 export function conclude2(
   doc: Document,
@@ -30,5 +30,5 @@ export function conclude2(
   txt: string,
   audioPlayer: AudioPlayer
 ) {
-  conclude(doc, slide, res, txt, audioPlayer, showExplainIcon, showButton);
+  conclude(doc, slide, res, txt, audioPlayer, showExplainIcon, continueButton);
 }

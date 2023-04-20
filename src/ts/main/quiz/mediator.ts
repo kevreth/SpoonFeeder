@@ -6,7 +6,7 @@ export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
 export { AdocVisitor } from '../slidetype/misc/adocVisitor';
 export type { AdocVisitorInterface } from '../slidetype/misc/adocVisitor';
-export { doneButton, makeButton, continueButton as showButton } from './buttons';
+export { continueButton, doneButton, makeButton } from './buttons';
 export { Evaluation, makeRow } from './evaluate';
 export { showExplainIcon } from './explainIcon';
 export { fillMatchingSlide, showSlides } from './slideDispatcher';
