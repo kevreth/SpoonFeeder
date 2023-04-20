@@ -19,23 +19,15 @@ export function showButton(doc: Document, txt: string): HTMLElement {
   return continue_btn;
 }
 export function continueButton(doc: Document): HTMLElement {
-  const container = 'slide';
-  const continue_btn = createContinueButton(doc, container);
+  const button = makeButton('continueBtn', 'continueBtn', 'continue');
+  const slide = doc.getElementById('slide') as HTMLElement;
+  slide.insertAdjacentHTML('beforeend', button);
+  const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   //as an HTMLElement we can assign styles
   //this wouldn't work when using a stylesheet, not sure why.
   continue_btn.style.position = 'absolute';
   continue_btn.style.marginTop = 10 + 'px';
   continue_btn.style.marginLeft = -2.3 + 'em';
-  return continue_btn;
-}
-export function createContinueButton(
-  doc: Document,
-  container: string
-) {
-  const button = makeButton('continueBtn', 'continueBtn', 'continue');
-  const slide = doc.getElementById(container) as HTMLElement;
-  slide.insertAdjacentHTML('beforeend', button);
-  const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   return continue_btn;
 }
 export function startOverButton(doc: Document) {
