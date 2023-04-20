@@ -1,7 +1,7 @@
 <template>
   <transition appear group :name="isEnable ? 'transitions' : ''">
     <q-overlay
-      :class="{'active': isEnable}"
+      :class="{'transition': isEnable}"
       id="courseTable"
       @click.stop=""
       z-index="7000">

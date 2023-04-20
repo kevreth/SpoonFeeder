@@ -1,6 +1,6 @@
 <template>
   <transition appear group :name="isEnable ? 'transitions-zoom' : ''">
-  <q-overlay id="overlay" @click.stop="" :class="{'active': isEnable}">
+  <q-overlay id="overlay" @click.stop="" :class="{'transition': isEnable}">
     <template #body>
       <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
         <div class="overlayBtn">
