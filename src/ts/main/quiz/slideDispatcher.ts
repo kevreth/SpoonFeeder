@@ -1,5 +1,12 @@
 import type { AnswerType, SlideInterface, StateActions } from './mediator';
-import { Json, SaveData, dispatch2, evaluate, hideExplainIcon, startOverButton } from './mediator';
+import {
+  Json,
+  SaveData,
+  dispatch2,
+  evaluate,
+  hideExplainIcon,
+  startOverButton,
+} from './mediator';
 export function showSlides(doc: Document): void {
   const ss = new SlideDispatcher(doc);
   dispatch2(ss, true);

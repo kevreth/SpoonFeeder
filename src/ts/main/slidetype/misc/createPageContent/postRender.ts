@@ -5,7 +5,7 @@ import {
   mathjax,
   RegisterHTMLHandler,
   TeX,
-} from '../../../mediator';
+} from '../../mediator';
 RegisterHTMLHandler(browserAdaptor());
 export function postRender(doc: Document) {
   hljs.highlightAll();

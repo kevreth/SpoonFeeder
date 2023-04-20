@@ -1,4 +1,3 @@
-import { Evaluation, MUTE, SaveData, adoc2html } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,
   AnswerType,
@@ -9,7 +8,14 @@ import type {
   ResultType,
 } from '../slidetype/mediator';
 import type { SlideInterface } from './mediator';
-import { AudioPlayer, conclude2 } from './mediator';
+import {
+  AudioPlayer,
+  Evaluation,
+  MUTE,
+  SaveData,
+  adoc2html,
+  conclude2,
+} from './mediator';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt = '';

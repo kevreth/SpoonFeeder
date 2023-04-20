@@ -1,7 +1,9 @@
 import type {
   AdocVisitorInterface,
   CreateHtmlType,
-  EvaluateType, Evaluation, MakeSlidesType
+  EvaluateType,
+  Evaluation,
+  MakeSlidesType,
 } from './mediator';
 export type AnswerType = string & Array<string> & Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
