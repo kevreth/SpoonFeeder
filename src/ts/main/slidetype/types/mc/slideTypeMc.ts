@@ -1,7 +1,12 @@
-import { isRandom } from '../../../dataaccess/mediator';
 import { removeListener, shuffle } from '../../../quiz/mediator';
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
-import { Slide } from '../../../slide/mediator';
+import type {
+  AnswerType,
+  SlideInterface,
+} from '../../../slide/mediator';
+import {
+  RANDOM,
+  Slide,
+} from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';
@@ -19,7 +24,7 @@ export class Mc extends Slide implements SlideType {
     } = props);
     this.accept(new AdocVisitor());
     this.ans = this.o[0] as AnswerType;
-    const shuffleFlag = this.isExercise && isRandom();
+    const shuffleFlag = this.isExercise && RANDOM.is();
     if (shuffleFlag) this.o = shuffle(this.o);
   }
   accept(visitor: AdocVisitorInterface): void {

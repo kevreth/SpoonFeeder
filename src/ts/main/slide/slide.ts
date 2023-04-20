@@ -40,7 +40,7 @@ export abstract class Slide implements SlideInterface {
   abstract accept(visitor: AdocVisitorInterface): void;
   abstract decorate(doc: Document): boolean;
   abstract setProperties(properties: SlideInterface): void;
-  abstract makeSlides( doc: Document ): void;
+  abstract makeSlides(doc: Document): void;
   //currently unused, awaiting removal of adocVisitor
   applyAdoc(): void {
     this.txt = adoc2html(this.txt);

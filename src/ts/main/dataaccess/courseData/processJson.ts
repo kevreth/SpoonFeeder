@@ -1,6 +1,6 @@
 import type { SlideInterface } from '../../quiz/mediator';
 import { INFO, initSlide, shuffle } from '../../quiz/mediator';
-import { isRandom } from '../webstorage/webStorage';
+import { RANDOM } from '../webstorage/webStorage';
 import type { Course, Division, Module } from './course';
 import type { DivisionProcessor } from './courseFileProcessor';
 import { process } from './courseFileProcessor';
@@ -51,7 +51,7 @@ export class JsonProcessor
     if (child.inst !== undefined)
       ProcessJson.loadQuestions(retval, child.inst, false);
     if (child.exercises !== undefined) {
-      if (isRandom()) child.exercises = shuffle(child.exercises);
+      if (RANDOM.is()) child.exercises = shuffle(child.exercises);
       ProcessJson.loadQuestions(retval, child.exercises, true);
     }
   }

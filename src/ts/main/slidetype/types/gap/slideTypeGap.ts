@@ -1,6 +1,6 @@
 import { shuffle } from '../../../quiz/mediator';
 import type { AnswerType, SlideInterface } from '../../external';
-import { Slide, isRandom } from '../../external';
+import { RANDOM, Slide } from '../../external';
 import {
   AdocVisitor,
   AdocVisitorInterface,
@@ -29,7 +29,7 @@ export class Gap extends Slide implements SlideType {
     const maxWidthStrategy = SetWidths.TARGETED;
     const createHtml = this.createHtml;
     let ans = this.ans;
-    if (isRandom()) ans = shuffle(ans as string[]) as AnswerType;
+    if (RANDOM.is()) ans = shuffle(ans as string[]) as AnswerType;
     const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, this);
   }
