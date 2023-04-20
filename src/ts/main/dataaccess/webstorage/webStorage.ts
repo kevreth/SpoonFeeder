@@ -19,9 +19,6 @@ export function getCourseListing() {
 export function getCourseName() {
   return COURSE_NAME.get();
 }
-export function clearRandom() {
-  RANDOM.clear();
-}
 export function isRandom(): boolean {
   return RANDOM.is();
 }

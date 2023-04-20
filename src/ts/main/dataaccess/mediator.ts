@@ -12,11 +12,11 @@ export {
   MUTE,
   RANDOM,
   TRANSITION,
-  clearRandom,
   clearSessionStorage,
   getCourseListing,
   getSaveData,
   isRandom,
   setCourseListing,
-  setSaveData,
+  setSaveData
 } from './webstorage/webStorage';
+

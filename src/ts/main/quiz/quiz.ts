@@ -1,7 +1,7 @@
 import {
   COURSE_NAME,
   PREFIX_COURSE_FILE,
-  clearRandom,
+  RANDOM,
   clearSessionStorage,
   loadCourse,
 } from '../dataaccess/mediator';
@@ -16,7 +16,7 @@ export function switchCourse(courseName: string) {
   clearSessionStorage();
   //===========================================================================
   // un-comment for TESTING
-  clearRandom();
+  RANDOM.clear();
   //===========================================================================
   COURSE_NAME.set(courseName);
   //make the course path accessible to course files
