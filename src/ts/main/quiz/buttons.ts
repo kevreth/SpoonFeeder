@@ -42,10 +42,8 @@ export function createContinueButton(
 export function startOverButton(doc: Document) {
   const startOverText = makeButton('startOver', 'startOver', 'Start Over');
   doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);
-  const startOver = document.getElementById('startOver') as HTMLElement;
-  startOver.addEventListener('click', () => {
-    reloadPage();
-  });
+  const startOver = doc.getElementById('startOver') as HTMLElement;
+  startOver.addEventListener('click', () => reloadPage());
 }
 export function showExplainIcon(slide: SlideInterface, doc: Document) {
   if (slide.exp !== undefined && slide.exp !== '') {
