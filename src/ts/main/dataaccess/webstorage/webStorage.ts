@@ -2,7 +2,7 @@ import {
   WebStorageFlag,
   WebStorageVariable,
 } from '../persistence/webPersistence';
-export const COURSES = new WebStorageVariable('courses', sessionStorage);
+const COURSES = new WebStorageVariable('courses', sessionStorage);
 export const RANDOM = new WebStorageFlag('random', sessionStorage);
 export const TRANSITION = new WebStorageFlag('transition', sessionStorage);
 export const MUTE = new WebStorageFlag('mute', sessionStorage);

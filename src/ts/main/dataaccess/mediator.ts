@@ -7,7 +7,6 @@ export { PREFIX_COURSE_FILE, loadCourse } from './courseData/loadCourse';
 export { SaveData } from './saveData/saveData';
 export { Json } from './saveData/saveFile';
 export {
-  COURSES,
   COURSE_NAME,
   MUTE,
   RANDOM,
