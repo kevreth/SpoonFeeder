@@ -16,7 +16,7 @@ export function switchCourse(courseName: string) {
   clearSessionStorage();
   //===========================================================================
   // un-comment for TESTING
-  RANDOM.clear();
+  RANDOM.set();
   //===========================================================================
   COURSE_NAME.set(courseName);
   //make the course path accessible to course files
