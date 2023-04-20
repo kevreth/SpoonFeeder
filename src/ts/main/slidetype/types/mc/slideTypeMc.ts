@@ -1,9 +1,11 @@
 import { removeListener, shuffle } from '../../../quiz/mediator';
-import {
+import type {
   AnswerType,
+  SlideInterface,
+} from '../../../slide/mediator';
+import {
   RANDOM,
   Slide,
-  SlideInterface,
 } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
