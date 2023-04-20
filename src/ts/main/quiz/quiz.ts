@@ -1,9 +1,9 @@
 import {
+  COURSE_NAME,
   PREFIX_COURSE_FILE,
   clearRandom,
   clearSessionStorage,
-  loadCourse,
-  setCourseName,
+  loadCourse
 } from '../dataaccess/mediator';
 // necessary for adding a property to the
 // DOM window object
@@ -18,7 +18,7 @@ export function switchCourse(courseName: string) {
   // un-comment for TESTING
   clearRandom();
   //===========================================================================
-  setCourseName(courseName);
+  COURSE_NAME.set( courseName );
   //make the course path accessible to course files
   window.courseName = courseName;
   window.coursePath = PREFIX_COURSE_FILE + courseName + '/';
@@ -28,7 +28,7 @@ export class Quiz {
   public static slides(courseName: string, doc: Document): void {
     //make the course path accessible to course files
     window.coursePath = PREFIX_COURSE_FILE + courseName + '/';
-    setCourseName(courseName);
+    COURSE_NAME.set( courseName );
     const yamlFilename = Quiz.makeYamlFilename(courseName);
     loadCourse(yamlFilename, doc);
   }

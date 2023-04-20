@@ -1,15 +1,37 @@
-export function setLocalStorage(key: string, value: string) {
-  localStorage.setItem(key, value);
+// set, get, and remove a variable ("item") from the WebStorage API
+// "target" is either "localStorage" or "sessionStorage" without quotes.
+export class WebStorageVariable {
+  constructor(private readonly item: string, private readonly target: Storage) {}
+  public set(val: string) {
+    this.target.setItem(this.item, val);
+  }
+  public get() {
+    return this.target.getItem(this.item);
+  }
+  public remove() {
+    this.target.removeItem(this.item);
+  }
 }
-export function getLocalStorage(key: string) {
-  return localStorage.getItem(key) as string;
-}
-export function setSessionStorage(key: string, value: string) {
-  sessionStorage.setItem(key, value);
-}
-export function getSessionStorage(key: string) {
-  return sessionStorage.getItem(key) as string;
-}
-export function clearSessionStorage() {
-  sessionStorage.clear();
+//Specializes WebStorageVariable for boolean (flag) values for simpler use
+export class WebStorageFlag {
+  private superd;
+  constructor(item: string, target: Storage) {
+    this.superd = new WebStorageVariable(item, target);
+  }
+  public set() {
+    this.superd.set('true');
+  }
+  public clear() {
+    this.superd.set('false');
+  }
+  public is() {
+    const val = this.superd.get();
+    //assume key not existing is false
+    let retval = false;
+    if (val === 'true') retval = true;
+    return retval;
+  }
+  public remove() {
+    this.superd.remove();
+  }
 }
