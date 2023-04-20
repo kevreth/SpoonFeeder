@@ -9,7 +9,7 @@ export function conclude(
   res: AnswerType,
   txt: string,
   audioPlayer: AudioPlayer, //: ( isCorrect: boolean ) => void,
-  _showExplainIcon: (slide: SlideInterface, doc: Document) => void,
+  _showExplainIcon: (exp:string, doc: Document) => void,
   _showButton: (doc: Document, txt: string) => void
 ) {
   slide.setRes(res);
@@ -20,7 +20,7 @@ export function conclude(
   slide.saveData();
   const done = doc.getElementById('btn');
   if (done !== null) done.remove();
-  _showExplainIcon(slide, doc);
+  _showExplainIcon(slide.exp, doc);
   _showButton(doc, txt);
 }
 export function conclude2(

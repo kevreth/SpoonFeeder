@@ -1,7 +1,5 @@
-import type { SlideInterface } from '../slide/mediator';
-
-export function showExplainIcon(slide: SlideInterface, doc: Document) {
-  if (slide.exp !== undefined && slide.exp !== '' && slide.exp) {
+export function showExplainIcon(exp:string, doc: Document) {
+  if (exp !== undefined && exp !== '' && exp) {
     setExplainIconVisibility(doc, Visibility.VISIBLE);
   }
 }
