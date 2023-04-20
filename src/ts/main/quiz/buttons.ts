@@ -1,6 +1,5 @@
 import reloadPage from '../../../vue/composables/startOver';
 import { SaveData } from '../dataaccess/mediator';
-import type { SlideInterface } from '../slide/mediator';
 import { showSlides } from './slideDispatcher';
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
@@ -8,7 +7,7 @@ export function makeButton(id: string, clazz: string, content: string): string {
 export function doneButton() {
   return makeButton('btn', 'done', 'done');
 }
-export function showButton(doc: Document, txt: string): HTMLElement {
+export function continueButton(doc: Document, txt: string): HTMLElement {
   const button = makeButton('continueBtn', 'continueBtn', 'continue');
   const slide = doc.getElementById('slide') as HTMLElement;
   slide.insertAdjacentHTML('beforeend', button);
@@ -31,16 +30,4 @@ export function startOverButton(doc: Document) {
   doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);
   const startOver = doc.getElementById('startOver') as HTMLElement;
   startOver.addEventListener('click', () => reloadPage());
-}
-export function showExplainIcon(slide: SlideInterface, doc: Document) {
-  if (slide.exp !== undefined && slide.exp !== '' && slide.exp) {
-    setExplainIconVisibility( doc, 'visible' );
-  }
-}
-export function hideExplainIcon(doc: Document) {
-  setExplainIconVisibility( doc, 'hidden' );
-}
-function setExplainIconVisibility( doc: Document, visibility: string ) {
-  const explain = doc.getElementById( 'explainIcon' ) as HTMLElement;
-  explain.style.visibility = visibility;
 }

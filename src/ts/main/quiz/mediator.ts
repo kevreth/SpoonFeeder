@@ -6,8 +6,9 @@ export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
 export { AdocVisitor } from '../slidetype/misc/adocVisitor';
 export type { AdocVisitorInterface } from '../slidetype/misc/adocVisitor';
-export { doneButton, makeButton, showButton, showExplainIcon } from './buttons';
+export { doneButton, makeButton, continueButton as showButton } from './buttons';
 export { Evaluation, makeRow } from './evaluate';
+export { showExplainIcon } from './explainIcon';
 export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
@@ -17,5 +18,6 @@ export {
   extend,
   getChildIds,
   remove,
-  removeListener,
+  removeListener
 } from './utilities';
+

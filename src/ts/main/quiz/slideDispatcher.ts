@@ -1,8 +1,9 @@
 import { Json, SaveData } from '../dataaccess/mediator';
 import type { SlideInterface } from '../slide/mediator';
 import type { AnswerType } from '../slidetype/mediator';
-import { hideExplainIcon, startOverButton } from './buttons';
+import { startOverButton } from './buttons';
 import { evaluate } from './evaluate';
+import { hideExplainIcon } from './explainIcon';
 import type { StateActions } from './stateActionDispatcher';
 import { dispatch2 } from './stateActionDispatcher';
 export function showSlides(doc: Document): void {
