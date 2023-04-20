@@ -25,11 +25,8 @@ export class WebStorageFlag {
     this.superd.set('false');
   }
   public is() {
-    const val = this.superd.get();
     //assume key not existing is false
-    let retval = false;
-    if (val === 'true') retval = true;
-    return retval;
+    return this.superd.get() === 'true' ? true : false;
   }
   public remove() {
     this.superd.remove();
