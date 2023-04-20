@@ -20,7 +20,7 @@ export function showButton(doc: Document, txt: string): HTMLElement {
 }
 export function continueButton(doc: Document): HTMLElement {
   const container = 'slide';
-  const continue_btn = createContinueButton(doc, container, '');
+  const continue_btn = createContinueButton(doc, container);
   //as an HTMLElement we can assign styles
   //this wouldn't work when using a stylesheet, not sure why.
   continue_btn.style.position = 'absolute';
@@ -30,12 +30,11 @@ export function continueButton(doc: Document): HTMLElement {
 }
 export function createContinueButton(
   doc: Document,
-  container: string,
-  prefix: string
+  container: string
 ) {
   const button = makeButton('continueBtn', 'continueBtn', 'continue');
   const slide = doc.getElementById(container) as HTMLElement;
-  slide.insertAdjacentHTML('beforeend', prefix + button);
+  slide.insertAdjacentHTML('beforeend', button);
   const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   return continue_btn;
 }
