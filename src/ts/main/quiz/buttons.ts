@@ -33,12 +33,14 @@ export function startOverButton(doc: Document) {
   startOver.addEventListener('click', () => reloadPage());
 }
 export function showExplainIcon(slide: SlideInterface, doc: Document) {
-  if (slide.exp !== undefined && slide.exp !== '') {
-    const explain = doc.getElementById('explainIcon') as HTMLElement;
-    explain.style.visibility = 'visible';
+  if (slide.exp !== undefined && slide.exp !== '' && slide.exp) {
+    setExplainIconVisibility( doc, 'visible' );
   }
 }
 export function hideExplainIcon(doc: Document) {
-  const explain = doc.getElementById('explainIcon') as HTMLElement;
-  explain.style.visibility = 'hidden';
+  setExplainIconVisibility( doc, 'hidden' );
+}
+function setExplainIconVisibility( doc: Document, visibility: string ) {
+  const explain = doc.getElementById( 'explainIcon' ) as HTMLElement;
+  explain.style.visibility = visibility;
 }
