@@ -1,7 +1,6 @@
 //quiz mediator
 export {
-  COURSE_NAME,
-  PREFIX_COURSE_FILE, RANDOM, SaveData, adoc2html, clearSessionStorage,
+  COURSE_NAME, Json, PREFIX_COURSE_FILE, RANDOM, SaveData, adoc2html, clearSessionStorage,
   loadCourse, process
 } from '../dataaccess/mediator';
 export type {
@@ -15,9 +14,9 @@ export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
 export { AdocVisitor } from '../slidetype/misc/adocVisitor';
 export type { AdocVisitorInterface } from '../slidetype/misc/adocVisitor';
-export { continueButton, doneButton, makeButton } from './buttons';
-export { Evaluation, makeRow, percentCorrect } from './evaluate';
-export { showExplainIcon } from './explainIcon';
+export { continueButton, doneButton, makeButton, startOverButton } from './buttons';
+export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
+export { hideExplainIcon, showExplainIcon } from './explainIcon';
 export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
