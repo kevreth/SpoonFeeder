@@ -6,11 +6,7 @@ import {
   isEqual,
   last,
 } from '../../quiz/mediator';
-import {
-  getLocalStorage,
-  setLocalStorage,
-} from '../persistence/webPersistence';
-import { getCourseName } from '../webstorage/webStorage';
+import { COURSE_NAME, getSaveData, setSaveData } from '../mediator';
 import { timestampNow } from './date';
 import { Json } from './saveFile';
 import { SaveDataDispatcher } from './slideDispatcher2';
@@ -23,7 +19,7 @@ export class SaveData {
     public readonly cont: boolean
   ) {}
   public static get(): Array<SaveData> {
-    const data = getLocalStorage(getCourseName()) as string;
+    const data = getSaveData(COURSE_NAME.get() as string) as string;
     const data1 = JSON.parse(data);
     const arr1 = new Array<SaveData>();
     const arr: Array<SaveData> = extend<Array<SaveData>>(arr1, data1);
@@ -35,7 +31,7 @@ export class SaveData {
       const arr = SaveData.get();
       arr.push(save);
       const json = JSON.stringify(arr);
-      setLocalStorage(getCourseName(), json);
+      setSaveData(COURSE_NAME.get() as string, json);
     }
   }
   public static lastSavedItem() {
@@ -61,7 +57,7 @@ export class SaveData {
     if (save == null || idx == null || saves == null) return;
     saves[idx] = save;
     const json = JSON.stringify(saves);
-    setLocalStorage(getCourseName(), json);
+    setSaveData(COURSE_NAME.get() as string, json);
   }
   public static setContinueTrue(txt: string) {
     const saves = SaveData.get();

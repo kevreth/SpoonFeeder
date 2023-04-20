@@ -9,7 +9,7 @@
 
 <script setup lang='ts'>
 import { ref } from 'vue';
-import { loadCourseListing, switchCourse, getCourseName, setCourseListing } from '../mediator';
+import { loadCourseListing, switchCourse, COURSE_NAME, setCourseListing } from '../mediator';
 import '../../css/style1.css';
 import '../../css/quasar.css'
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
@@ -22,7 +22,7 @@ loadCourseListing((yml) => {
   initialize();
 });
 function initialize() {
-  let courseName = getCourseName();
+  let courseName = COURSE_NAME.get();
   if (courseName == null || courseName == 'null')
     courseList.value = true;
   else switchCourse(courseName);
