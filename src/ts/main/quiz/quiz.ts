@@ -1,7 +1,9 @@
+
 import {
   COURSE_NAME,
   PREFIX_COURSE_FILE,
   RANDOM,
+  TRANSITION,
   clearSessionStorage,
   loadCourse,
 } from './mediator';
@@ -16,7 +18,8 @@ export function switchCourse(courseName: string) {
   clearSessionStorage();
   //===========================================================================
   // un-comment for TESTING
-  RANDOM.set();
+  RANDOM.clear();
+  TRANSITION.clear();
   //===========================================================================
   COURSE_NAME.set(courseName);
   //make the course path accessible to course files

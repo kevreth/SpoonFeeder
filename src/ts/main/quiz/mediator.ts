@@ -5,8 +5,7 @@ export {
   MUTE,
   PREFIX_COURSE_FILE,
   RANDOM,
-  SaveData,
-  adoc2html,
+  SaveData, TRANSITION, adoc2html,
   clearSessionStorage,
   loadCourse,
   process
