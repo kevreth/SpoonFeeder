@@ -24,11 +24,11 @@ export class JsonProcessor
     const slide = ProcessJson.addNewInfoSlide(course.name);
     retval.push(slide);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unit_start(
     child: Division,
     ctr: number,
     retval: SlideInterface[],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parent: void
   ): void {
     this.addNewInfoSlide('Unit', ctr, child, retval);
@@ -38,6 +38,7 @@ export class JsonProcessor
     child: Division,
     ctr: number,
     retval: SlideInterface[],
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parent: void
   ): void {
     this.addNewInfoSlide('Lesson', ctr, child, retval);
@@ -47,6 +48,7 @@ export class JsonProcessor
     child: Module,
     ctr: number,
     retval: SlideInterface[],
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parent: void
   ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
@@ -57,20 +59,26 @@ export class JsonProcessor
       ProcessJson.loadQuestions(retval, child.exercises, true);
     }
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   inst(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     slide: SlideInterface,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ctr: number,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     retval: SlideInterface[],
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exercises(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     slide: SlideInterface,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ctr: number,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     retval: SlideInterface[],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
