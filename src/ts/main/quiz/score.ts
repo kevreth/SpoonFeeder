@@ -59,11 +59,13 @@ export class ScoreProcessor
   ): ISummaryLine {
     return this.module_start(division, ctr, retval, parent);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   module_start(
     division: Division,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ctr: number,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     retval: SummaryLine,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parent: ISummaryLine
   ): ISummaryLine {
     const summary: ISummaryLine = new SummaryLine();
