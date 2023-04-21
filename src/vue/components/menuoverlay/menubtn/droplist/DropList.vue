@@ -31,8 +31,8 @@ import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
 // setting transition disable
-const isEnable = ref(true);
-// const isEnable = ref(false);
+// const isEnable = ref(true);
+const isEnable = ref(false);
 
 const droplist = ref(false);
 const overlay = ref(false);

@@ -73,8 +73,14 @@ import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
 
-const isEnable = ref(true);
+// const isEnable = ref(true);
 // const isEnable = ref(false);
+defineProps({
+  isEnable: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);
