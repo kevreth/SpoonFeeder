@@ -83,7 +83,7 @@ export class JsonProcessor
     return new Array<SlideInterface>();
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  module_end(child: void, retval: SlideInterface[], parent: void): void {
+  module_end(_child: void, _retval: SlideInterface[], _parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
