@@ -1,5 +1,3 @@
-import { SaveData } from '../dataaccess/mediator';
-import { Evaluation, adoc2html } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,
   AnswerType,
@@ -9,8 +7,15 @@ import type {
   ResultReturnType,
   ResultType,
 } from '../slidetype/mediator';
-import { conclude2 } from './conclude/conclude';
-import type { SlideInterface } from './slideInterface';
+import type { SlideInterface } from './mediator';
+import {
+  AudioPlayer,
+  Evaluation,
+  MUTE,
+  SaveData,
+  adoc2html,
+  conclude2,
+} from './mediator';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt = '';
@@ -35,7 +40,7 @@ export abstract class Slide implements SlideInterface {
     public readonly resultType: ResultType
   ) {}
   conclude(doc: Document, res: AnswerType, txt: string): void {
-    conclude2(doc, this, res, txt);
+    conclude2(doc, this, res, txt, new AudioPlayer(new Audio(), MUTE));
   }
   abstract accept(visitor: AdocVisitorInterface): void;
   abstract decorate(doc: Document): boolean;

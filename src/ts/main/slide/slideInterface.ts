@@ -1,10 +1,10 @@
-import type { Evaluation } from '../quiz/mediator';
 import type {
   AdocVisitorInterface,
   CreateHtmlType,
   EvaluateType,
+  Evaluation,
   MakeSlidesType,
-} from '../slidetype/mediator';
+} from './mediator';
 export type AnswerType = string & Array<string> & Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
 export type ResultType = (ans: AnswerType, res: AnswerType) => ResultReturnType;

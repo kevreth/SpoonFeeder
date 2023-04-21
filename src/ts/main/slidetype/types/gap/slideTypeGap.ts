@@ -1,17 +1,18 @@
-import { shuffle } from '../../../quiz/mediator';
-import type { AnswerType, SlideInterface } from '../../external';
-import { RANDOM, Slide } from '../../external';
+import type { AnswerType, SlideInterface } from '../../mediator';
 import {
   AdocVisitor,
   AdocVisitorInterface,
   CORRECT,
   INCORRECT,
   MarkTypeGap,
+  RANDOM,
   SetWidths,
+  Slide,
   SlideType,
   polyfill,
   scrollBehaviourDragImageTranslateOverride,
-} from '../../internal';
+  shuffle,
+} from '../../mediator';
 
 polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,

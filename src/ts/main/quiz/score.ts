@@ -2,11 +2,9 @@ import type {
   Course,
   Division,
   DivisionProcessor,
-} from '../dataaccess/mediator';
-import { SaveData, process } from '../dataaccess/mediator';
-import type { SlideInterface } from '../slide/mediator';
-import { initSlide } from '../slidetype/mediator';
-import { percentCorrect } from './evaluate';
+  SlideInterface,
+} from './mediator';
+import { SaveData, initSlide, percentCorrect, process } from './mediator';
 export interface ISummaryLine {
   name: string;
   score: number;

@@ -4,7 +4,7 @@ import {
   RANDOM,
   clearSessionStorage,
   loadCourse,
-} from '../dataaccess/mediator';
+} from './mediator';
 // necessary for adding a property to the
 // DOM window object
 interface Window {

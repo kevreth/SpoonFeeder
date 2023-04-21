@@ -1,7 +1,5 @@
-import type { SlideInterface, StateActions } from '../../quiz/mediator';
-import { fillMatchingSlide, last } from '../../quiz/mediator';
-import { SaveData } from './saveData';
-import { Json } from './saveFile';
+import type { SlideInterface, StateActions } from '../mediator';
+import { Json, SaveData, fillMatchingSlide, last } from '../mediator';
 
 export class SaveDataDispatcher implements StateActions<SlideInterface> {
   constructor(public slides: SlideInterface[], public saves: SaveData[]) {}

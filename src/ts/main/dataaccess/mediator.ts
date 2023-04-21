@@ -1,11 +1,42 @@
 //datalayer mediator;
+export {
+  INFO,
+  dispatch2,
+  explanation,
+  extend,
+  fillMatchingSlide,
+  initSlide,
+  isEqual,
+  last,
+  marked,
+  showSlides,
+  shuffle,
+} from '../quiz/mediator';
+export type {
+  AnswerType,
+  SlideInterface,
+  StateActions,
+} from '../quiz/mediator';
 export { adoc2html } from './courseData/adoc2html';
-export type { Course, Division } from './courseData/course';
+export type { Course, Division, Module } from './courseData/course';
+export { CourseFile } from './courseData/courseFile';
 export { process } from './courseData/courseFileProcessor';
 export type { DivisionProcessor } from './courseData/courseFileProcessor';
-export { PREFIX_COURSE_FILE, loadCourse } from './courseData/loadCourse';
+export {
+  PREFIX_COURSE_FILE,
+  loadCourse,
+  loadCourseListing,
+} from './courseData/loadCourse';
+export { ProcessJson } from './courseData/processJson';
+export { getYaml2 } from './persistence/filePersistence';
+export {
+  WebStorageFlag,
+  WebStorageVariable,
+} from './persistence/webPersistence';
+export { timestampNow } from './saveData/date';
 export { SaveData } from './saveData/saveData';
 export { Json } from './saveData/saveFile';
+export { SaveDataDispatcher } from './saveData/slideDispatcher2';
 export {
   COURSE_NAME,
   MUTE,

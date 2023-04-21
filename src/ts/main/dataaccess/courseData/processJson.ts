@@ -1,9 +1,11 @@
-import type { SlideInterface } from '../../quiz/mediator';
-import { INFO, initSlide, shuffle } from '../../quiz/mediator';
-import { RANDOM } from '../webstorage/webStorage';
-import type { Course, Division, Module } from './course';
-import type { DivisionProcessor } from './courseFileProcessor';
-import { process } from './courseFileProcessor';
+import type {
+  Course,
+  Division,
+  DivisionProcessor,
+  Module,
+  SlideInterface,
+} from '../mediator';
+import { INFO, RANDOM, initSlide, process, shuffle } from '../mediator';
 //////////////// Phase 1: process Json
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>
