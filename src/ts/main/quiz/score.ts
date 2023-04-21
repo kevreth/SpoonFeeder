@@ -62,14 +62,15 @@ export class ScoreProcessor
   module_start(
     division: Division,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ctr: number,
+    _ctr: number,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    retval: SummaryLine,
+    _retval: SummaryLine,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    parent: ISummaryLine
+    _parent: ISummaryLine
   ): ISummaryLine {
     const summary: ISummaryLine = new SummaryLine();
     summary.name = division.name;
+
     return summary;
   }
   inst(
@@ -114,7 +115,7 @@ export class ScoreProcessor
     parent.add(child);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  course_end(course: ISummaryLine, retval: SummaryLine): void {
+  course_end(course: ISummaryLine, _retval: SummaryLine): void {
     course.calculate();
     this.retval = course;
   }

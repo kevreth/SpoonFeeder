@@ -29,7 +29,7 @@ export class JsonProcessor
     ctr: number,
     retval: SlideInterface[],
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    parent: void
+    _parent: void
   ): void {
     this.addNewInfoSlide('Unit', ctr, child, retval);
   }
@@ -39,17 +39,16 @@ export class JsonProcessor
     ctr: number,
     retval: SlideInterface[],
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    parent: void
+    _parent: void
   ): void {
     this.addNewInfoSlide('Lesson', ctr, child, retval);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   module_start(
     child: Module,
     ctr: number,
     retval: SlideInterface[],
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    parent: void
+    _parent: void
   ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
     if (child.inst !== undefined)
@@ -61,25 +60,25 @@ export class JsonProcessor
   }
   inst(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    slide: SlideInterface,
+    _slide: SlideInterface,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ctr: number,
+    _ctr: number,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    retval: SlideInterface[],
+    _retval: SlideInterface[],
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    parent: void
+    _parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
   exercises(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    slide: SlideInterface,
+    _slide: SlideInterface,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ctr: number,
+    _ctr: number,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    retval: SlideInterface[],
+    _retval: SlideInterface[],
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    parent: void
+    _parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
@@ -88,15 +87,15 @@ export class JsonProcessor
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  lesson_end(child: void, retval: SlideInterface[], parent: void): void {
+  lesson_end(_child: void, _retval: SlideInterface[], _parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  unit_end(child: void, retval: SlideInterface[], parent: void): void {
+  unit_end(_child: void, _retval: SlideInterface[], _parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  course_end(course: void, retval: SlideInterface[]): void {
+  course_end(_course: void, _retval: SlideInterface[]): void {
     return;
   }
 }
