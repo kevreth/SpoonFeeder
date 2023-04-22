@@ -6,7 +6,7 @@ export function showExplainIcon(exp: string, doc: Document) {
 export function hideExplainIcon(doc: Document) {
   setExplainIconVisibility(doc, Visibility.HIDDEN);
 }
-export enum Visibility {
+enum Visibility {
   VISIBLE = 'visible',
   HIDDEN = 'hidden',
 }

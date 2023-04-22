@@ -56,7 +56,7 @@ export function evaluate(slidesArr: SlideInterface[]): string {
   const txt1 = evalStats(correct, responses);
   return txt0.concat(txt1);
 }
-export function getEvaluationArray(slidesArr: SlideInterface[]) {
+function getEvaluationArray(slidesArr: SlideInterface[]) {
   const size = slidesArr.length;
   const evals = new Array<Evaluation>();
   for (let i = 0; i < size; i++) {

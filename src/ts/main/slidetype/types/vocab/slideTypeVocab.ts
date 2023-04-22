@@ -9,8 +9,8 @@ import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkType, SlideType } from '../../misc/slideType';
 import { McFactory } from '../mc/factoryMc';
-export const CHOICES = 4;
-export type vocabTuplesType = [
+const CHOICES = 4;
+type vocabTuplesType = [
   txt: string,
   ans: string,
   options: Array<string>
