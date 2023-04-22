@@ -1,11 +1,9 @@
 //datalayer mediator;
-export { extend, isEqual, last, shuffle } from '../mediator';
+export { extend, isEqual, last } from '../mediator';
 export {
-  INFO,
   dispatch2,
   explanation,
   fillMatchingSlide,
-  initSlide,
   marked,
   showSlides,
 } from '../quiz/mediator';
