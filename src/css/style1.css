@@ -67,10 +67,6 @@ button {
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-.continueBtn, .hljs, table, .container, .shape, #gaps, #fills, #text {
-  animation: transitionIn 0.5s;
-}
-
 @keyframes transitionIn {
   from {
     opacity: 0;
@@ -81,7 +77,19 @@ button {
     transform: translateX(0);
   }
 }
-
+@keyframes transitionProgress {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.hljs {
+  animation: transitionIn 0.5s;
+}
 button:hover {
   border-color: #6CAEF8;
 }
