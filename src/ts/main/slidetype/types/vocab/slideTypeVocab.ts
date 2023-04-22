@@ -10,11 +10,7 @@ import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkType, SlideType } from '../../misc/slideType';
 import { McFactory } from '../mc/factoryMc';
 const CHOICES = 4;
-type vocabTuplesType = [
-  txt: string,
-  ans: string,
-  options: Array<string>
-][];
+type vocabTuplesType = [txt: string, ans: string, options: Array<string>][];
 //Vocab is different than the other slide types because it concisely
 //represents a group of mc questions.
 export class Vocab extends Slide implements SlideType {
