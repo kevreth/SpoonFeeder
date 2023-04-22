@@ -1,12 +1,14 @@
 import type {
-  Division,
   DivisionProcessor,
-  SlideInterface
+  ISummaryLine,
+  SlideInterface,
 } from '../mediator';
-import { SaveData } from '../mediator';
-import { Score } from './score';
-import { ISummaryLine, SummaryLine } from './summaryLine';
-
+import {
+  Division,
+  SaveData,
+  Score,
+  SummaryLine,
+} from '../mediator';
 export class ScoreProcessor
   implements DivisionProcessor<ISummaryLine, ISummaryLine, ISummaryLine>
 {

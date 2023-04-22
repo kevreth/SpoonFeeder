@@ -1,5 +1,4 @@
 import { percentCorrect } from '../mediator';
-
 export interface ISummaryLine {
   name: string;
   score: number;
