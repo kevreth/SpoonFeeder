@@ -16,4 +16,3 @@ export function getChildIds(doc: Document, parent: string): Array<string> {
 export function remove<T>(arr: Array<T>, item: T) {
   return arr.filter((value) => value !== item);
 }
-

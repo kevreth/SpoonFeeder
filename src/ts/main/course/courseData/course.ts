@@ -1,4 +1,4 @@
-import type { SlideInterface } from '../mediator';
+import type { SlideInterface } from '../../dataaccess/mediator';
 export abstract class Division {
   name = '';
 }

@@ -4,7 +4,7 @@ import {
   Lesson,
   Module,
   Unit,
-} from '../../main/dataaccess/courseData/course';
+} from '../../main/course/courseData/course';
 it('test course', () => {
   const division = new Course();
   const children = division.units;

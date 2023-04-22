@@ -1,4 +1,4 @@
-import { PREFIX_COURSE_FILE, loadFile } from '../../ts/main/dataaccess/courseData/loadCourse';
+import { PREFIX_COURSE_FILE, loadFile } from '../../ts/main/course/courseData/loadCourse';
 import {
   COURSE_NAME,
   getCourseListing,

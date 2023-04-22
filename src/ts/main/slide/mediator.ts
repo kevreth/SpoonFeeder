@@ -4,18 +4,17 @@ export {
   MUTE,
   RANDOM,
   SaveData,
-  adoc2html,
   continueButton,
   makeRow,
-  removeListener,
-  showExplainIcon
+  showExplainIcon,
 } from '../quiz/mediator';
 export type {
   AdocVisitorInterface,
   CreateHtmlType,
   EvaluateType,
-  MakeSlidesType
+  MakeSlidesType,
 } from '../slidetype/mediator';
+export { adoc2html } from './adoc2html';
 export { AudioPlayer } from './conclude/audio';
 export { conclude2 } from './conclude/conclude';
 export { Slide } from './slide';
@@ -23,6 +22,5 @@ export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface
+  SlideInterface,
 } from './slideInterface';
-
