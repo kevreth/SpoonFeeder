@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { insertHandlebars } from '../../../main/dataaccess/courseData/adoc2html';
+import { insertHandlebars } from '../../../main/course/courseData/adoc2html';
 it('substitute', () => {
   const txt = 'A svg=asdf B table=qwerty C dist=zxcv D';
   const exp = "A {{{svg 'asdf'}}} B {{{table 'qwerty'}}} C dist=zxcv D";

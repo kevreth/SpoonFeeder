@@ -1,12 +1,11 @@
 import {
   AnswerType,
   Course,
-  ISummaryLine,
-  ScoreProcessor,
   SlideInterface,
-  SummaryLine,
-  initSlide, process,
-} from '../mediator';
+  initSlide,
+  process,
+} from '../../dataaccess/mediator';
+import { ISummaryLine, ScoreProcessor, SummaryLine } from '../../quiz/mediator';
 export class Score {
   private static summary2(_course: Course): ISummaryLine {
     const courseLine: ISummaryLine = new SummaryLine();
@@ -29,7 +28,9 @@ export class Score {
     const isArray = Array.isArray(slides);
     const exerciseLine = new SummaryLine();
     if (isArray)
-      slides.forEach((slide) => Score.createLine(slide, exerciseLine, getResults));
+      slides.forEach((slide) =>
+        Score.createLine(slide, exerciseLine, getResults)
+      );
     else Score.createLine(slides, exerciseLine, getResults);
     return exerciseLine;
   }
