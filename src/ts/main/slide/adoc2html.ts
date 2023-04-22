@@ -1,6 +1,6 @@
 import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
-import { COURSE_NAME, marked } from '../../dataaccess/mediator';
+import { COURSE_NAME, marked } from '../dataaccess/mediator';
 // Asciidoctor.js will not run in Vue environment so we
 // use DOWNDOC to transform to MARKDOWN and then MARKED
 // to transform to HTML.

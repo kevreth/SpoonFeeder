@@ -6,9 +6,8 @@ export {
   PREFIX_COURSE_FILE,
   RANDOM,
   SaveData,
-  adoc2html,
   clearSessionStorage,
-  loadCourse,
+  loadCourse
 } from '../course/mediator';
 export type { Division } from '../course/mediator';
 export { Score } from '../course/score/score';
@@ -19,12 +18,12 @@ export { difference, intersection, marked, shuffle } from '../mediator';
 export { explanation } from '../slide/explanation';
 export type { AnswerType, SlideInterface } from '../slide/mediator';
 export { INFO, initSlide } from '../slidetype/mediator';
-export type {} from '../slidetype/misc/adocVisitor';
+export type { } from '../slidetype/misc/adocVisitor';
 export {
   continueButton,
   doneButton,
   makeButton,
-  startOverButton,
+  startOverButton
 } from './buttons';
 export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
 export { hideExplainIcon, showExplainIcon } from './explainIcon';
@@ -33,3 +32,4 @@ export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
 export { getChildIds, remove, removeListener } from './utilities';
+
