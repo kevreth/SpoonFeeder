@@ -5,14 +5,8 @@ export {
   MUTE,
   PREFIX_COURSE_FILE,
   RANDOM,
-<<<<<<< HEAD
-  SaveData, TRANSITION, adoc2html,
-  clearSessionStorage,
-  loadCourse,
-=======
   SaveData, TRANSITION, clearSessionStorage,
   loadCourse
->>>>>>> 1e9adcf69f29933799a2526d7dac984fc605e604
 } from '../course/mediator';
 export type { Division } from '../course/mediator';
 export { Score } from '../course/score/score';
