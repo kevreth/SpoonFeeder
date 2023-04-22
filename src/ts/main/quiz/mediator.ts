@@ -5,14 +5,10 @@ export {
   MUTE,
   PREFIX_COURSE_FILE,
   RANDOM,
-  SaveData, TRANSITION, clearSessionStorage,
+  SaveData, Score, ScoreProcessor, SummaryLine, TRANSITION, clearSessionStorage,
   loadCourse
 } from '../course/mediator';
-export type { Division } from '../course/mediator';
-export { Score } from '../course/score/score';
-export { ScoreProcessor } from '../course/score/scoreProcessor';
-export { SummaryLine } from '../course/score/summaryLine';
-export type { ISummaryLine } from '../course/score/summaryLine';
+export type { Division, ISummaryLine } from '../course/mediator';
 export { difference, intersection, marked, shuffle } from '../mediator';
 export { explanation } from '../slide/explanation';
 export type { AnswerType, SlideInterface } from '../slide/mediator';
