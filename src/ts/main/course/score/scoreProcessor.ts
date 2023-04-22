@@ -4,10 +4,9 @@ import {
   Division,
   DivisionProcessor,
   initSlide,
-  ISummaryLine,
-  SaveData,
+  ISummaryLine, percentCorrect, SaveData,
   Score,
-  SummaryLine,
+  SummaryLine
 } from '../mediator';
 export class ScoreProcessor
   implements DivisionProcessor<ISummaryLine, ISummaryLine, ISummaryLine>
@@ -84,12 +83,12 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): void {
-    child.calculate();
+    child.calculate(percentCorrect);
     parent.add(child);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   course_end(course: ISummaryLine, _retval: SummaryLine): void {
-    course.calculate();
+    course.calculate(percentCorrect);
     this.retval = course;
   }
   private static createLine(

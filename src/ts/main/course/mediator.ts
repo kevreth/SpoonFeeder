@@ -6,10 +6,10 @@ export {
   SaveData,
   TRANSITION,
   clearSessionStorage,
-  getYaml2,
+  getYaml2
 } from '../dataaccess/mediator';
 export { shuffle } from '../mediator';
-export { INFO, initSlide, showSlides } from '../quiz/mediator';
+export { INFO, initSlide, percentCorrect, showSlides } from '../quiz/mediator';
 export type { AnswerType, SlideInterface } from '../quiz/mediator';
 export type { Course, Division, Module } from './courseData/course';
 export { CourseFile } from './courseData/courseFile';
@@ -22,3 +22,4 @@ export { Score } from './score/score';
 export { ScoreProcessor } from './score/scoreProcessor';
 export { SummaryLine } from './score/summaryLine';
 export type { ISummaryLine } from './score/summaryLine';
+
