@@ -1,9 +1,6 @@
 <template>
-  <transition appear group
-  enter-active-class="animated zoomInUp"
-  leave-active-class="animated zoomOutDown"
-  >
-  <q-overlay id="overlay" @click.stop="">
+  <transition appear group :name="isEnable ? 'transitions-zoom' : ''">
+  <q-overlay id="overlay" @click.stop="" :class="{'transition': isEnable}">
     <template #body>
       <div id="overlayTable" class="overlay fixed-center column" style="display: flex; flex-direction: column;">
         <div class="overlayBtn">
@@ -25,6 +22,15 @@ import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import ProgressTable from './progresstable/ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../../../../../composables/startOver';
+// import { ref } from 'vue';
+
+defineProps({
+  isEnable: {
+    type: Boolean,
+    default: true
+  }
+})
+// const isEnable = ref(true);
 
 
 // start over functionality

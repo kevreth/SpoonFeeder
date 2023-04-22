@@ -1,9 +1,8 @@
 <template>
   <transition
-    enter-active-class="animated slideInDown"
-    leave-active-class="animated slideOutUp"
+    :name="isEnable ? 'transitions' : ''"
     :duration="1000">
-    <q-overlay class="infoOverlay column">
+    <q-overlay class="infoOverlay column" :class="{'transition': isEnable}">
       <template #body>
         <div class="iconContainer fixed-center bg-primary" @keydown.esc="closeInfo" tabindex="0">
           <h5>Navigations:</h5>
@@ -24,6 +23,13 @@
 
 <script setup lang="ts">
 import ExitBtn from '../../../../../common/ExitBtn.vue';
+
+defineProps({
+  isEnable: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const emit = defineEmits(['closeInfo'])
 function closeInfo() {

@@ -21,8 +21,8 @@
     </q-list>
   </q-menu>
 
-    <OverlayTable v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
-    <CourseSelector v-model="courseList"
+    <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
+    <CourseSelector :isEnable="isEnable" v-model="courseList"
     @closeInfo="courseList = false"></CourseSelector>
 </template>
 
@@ -30,8 +30,11 @@
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
-const droplist = ref(false);
+// setting transition disable
+// const isEnable = ref(true);
+const isEnable = ref(false);
 
+const droplist = ref(false);
 const overlay = ref(false);
 const courseList = ref(false);
 

@@ -6,6 +6,7 @@
       @keydown.esc="infoOverlay = false" tabindex="0"
     />
     <InfoTable
+      :isEnable="isEnable"
       id="infoTable"
       v-model="infoOverlay"
       @closeInfo="infoOverlay = false"
@@ -52,6 +53,7 @@
               @click="summaryOverlay = true"
               />
             <SummaryTable
+              :isEnable="isEnable"
               id="summaryTable"
               v-model="summaryOverlay"
               @closeSummary="summaryOverlay = false"
@@ -70,6 +72,15 @@ import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
+
+// const isEnable = ref(true);
+// const isEnable = ref(false);
+defineProps({
+  isEnable: {
+    type: Boolean,
+    default: true
+  }
+})
 
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);

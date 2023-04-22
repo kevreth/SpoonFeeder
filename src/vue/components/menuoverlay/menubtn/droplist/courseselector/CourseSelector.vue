@@ -1,8 +1,7 @@
 <template>
-  <transition appear group
-    enter-active-class="animated slideInDown"
-    leave-active-class="animated slideOutUp">
+  <transition appear group :name="isEnable ? 'transitions' : ''">
     <q-overlay
+      :class="{'transition': isEnable}"
       id="courseTable"
       @click.stop=""
       z-index="7000">
@@ -66,6 +65,13 @@ let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref<string | null>(null);
 const savedCourse = ref<string>('');
 const disableExit = ref(false);
+// const disable = ref(false);
+defineProps({
+  isEnable: {
+    type: Boolean,
+    default: true
+  }
+})
 
 onBeforeUpdate(() => {
   courseData = ref(getCourseData());

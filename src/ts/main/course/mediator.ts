@@ -3,9 +3,8 @@ export {
   Json,
   MUTE,
   RANDOM,
-  SaveData,
-  clearSessionStorage,
-  getYaml2,
+  SaveData, TRANSITION, clearSessionStorage,
+  getYaml2
 } from '../dataaccess/mediator';
 export { shuffle } from '../mediator';
 export { INFO, initSlide, showSlides } from '../quiz/mediator';
@@ -16,3 +15,4 @@ export { PREFIX_COURSE_FILE, loadCourse } from './courseData/loadCourse';
 export { ProcessJson } from './courseData/processJson';
 export { process } from './courseFileProcessor';
 export type { DivisionProcessor } from './courseFileProcessor';
+
