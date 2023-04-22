@@ -4,7 +4,7 @@ import {
   adoc2markdown,
   markdown2html,
   processHandlebars,
-} from '../../../main/dataaccess/courseData/adoc2html';
+} from '../../../main/slide/adoc2html';
 const asciidoc = `
 == Document Title
 

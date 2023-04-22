@@ -18,7 +18,6 @@ export {
   Slide,
   adoc2html,
   makeRow,
-  removeListener,
 } from '../slide/mediator';
 export type {
   AnswerType,

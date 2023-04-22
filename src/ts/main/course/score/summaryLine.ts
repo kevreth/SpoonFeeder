@@ -1,4 +1,4 @@
-import { percentCorrect } from '../mediator';
+import { percentCorrect } from '../../quiz/mediator';
 export interface ISummaryLine {
   name: string;
   score: number;
@@ -7,7 +7,7 @@ export interface ISummaryLine {
   count: number;
   pctComplete: string;
   children?: Array<ISummaryLine>;
-  add( child: ISummaryLine ): void;
+  add(child: ISummaryLine): void;
   calculate(): void;
 }
 export class SummaryLine implements ISummaryLine {
@@ -18,15 +18,15 @@ export class SummaryLine implements ISummaryLine {
   count = 0;
   pctComplete = '';
   children?: ISummaryLine[] = new Array<SummaryLine>();
-  add( child: ISummaryLine ): void {
+  add(child: ISummaryLine): void {
     this.score += child.score;
     this.complete += child.complete;
     this.count += child.count;
     this.calculate();
-    this.children?.push( child );
+    this.children?.push(child);
   }
   calculate(): void {
-    this.pctComplete = percentCorrect( this.complete, this.count ) + '%';
-    this.pctCorrect = percentCorrect( this.score, this.complete ) + '%';
+    this.pctComplete = percentCorrect(this.complete, this.count) + '%';
+    this.pctCorrect = percentCorrect(this.score, this.complete) + '%';
   }
 }
