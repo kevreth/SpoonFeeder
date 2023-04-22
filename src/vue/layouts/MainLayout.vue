@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr">
+  <q-layout>
     <q-header class="headerMain">
       <q-toolbar>
         <MenuOverlay />
@@ -42,8 +42,8 @@ onMounted(() => {
 .headerMain {
   /* height: 25%; */
 }
-.q-page-container {
-  padding-top: calc(50px + env(safe-area-inset-top, 0)) !important;
-}
+/* .q-page-container {
+  padding-top: calc(80px + env(safe-area-inset-top, 0)) !important;
+} */
 
 </style>

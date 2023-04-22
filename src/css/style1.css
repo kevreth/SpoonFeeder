@@ -42,8 +42,9 @@
   }
 }
 #content {
-  width: 100%;
-  height: 60%;
+  /* width: 100%; */
+  /* height: 60%; */
+  margin-left: 35px;
 }
 ol,ul {
   text-align: left;
