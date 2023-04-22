@@ -24,12 +24,12 @@ export class JsonProcessor
     const slide = ProcessJson.addNewInfoSlide(course.name);
     retval.push(slide);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unit_start(
     child: Division,
     ctr: number,
     retval: SlideInterface[],
-    parent: void
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _parent: void
   ): void {
     this.addNewInfoSlide('Unit', ctr, child, retval);
   }
@@ -38,16 +38,17 @@ export class JsonProcessor
     child: Division,
     ctr: number,
     retval: SlideInterface[],
-    parent: void
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _parent: void
   ): void {
     this.addNewInfoSlide('Lesson', ctr, child, retval);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   module_start(
     child: Module,
     ctr: number,
     retval: SlideInterface[],
-    parent: void
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _parent: void
   ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
     if (child.inst !== undefined)
@@ -57,38 +58,44 @@ export class JsonProcessor
       ProcessJson.loadQuestions(retval, child.exercises, true);
     }
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   inst(
-    slide: SlideInterface,
-    ctr: number,
-    retval: SlideInterface[],
-    parent: void
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _slide: SlideInterface,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _ctr: number,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _retval: SlideInterface[],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exercises(
-    slide: SlideInterface,
-    ctr: number,
-    retval: SlideInterface[],
-    parent: void
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _slide: SlideInterface,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _ctr: number,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _retval: SlideInterface[],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  module_end(child: void, retval: SlideInterface[], parent: void): void {
+  module_end(_child: void, _retval: SlideInterface[], _parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  lesson_end(child: void, retval: SlideInterface[], parent: void): void {
+  lesson_end(_child: void, _retval: SlideInterface[], _parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  unit_end(child: void, retval: SlideInterface[], parent: void): void {
+  unit_end(_child: void, _retval: SlideInterface[], _parent: void): void {
     return;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  course_end(course: void, retval: SlideInterface[]): void {
+  course_end(_course: void, _retval: SlideInterface[]): void {
     return;
   }
 }

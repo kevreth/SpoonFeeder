@@ -8,13 +8,13 @@ export {
   continueButton,
   makeRow,
   removeListener,
-  showExplainIcon
+  showExplainIcon,
 } from '../quiz/mediator';
 export type {
   AdocVisitorInterface,
   CreateHtmlType,
   EvaluateType,
-  MakeSlidesType
+  MakeSlidesType,
 } from '../slidetype/mediator';
 export { AudioPlayer } from './conclude/audio';
 export { conclude2 } from './conclude/conclude';
@@ -23,6 +23,5 @@ export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface
+  SlideInterface,
 } from './slideInterface';
-

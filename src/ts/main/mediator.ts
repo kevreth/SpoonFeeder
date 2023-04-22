@@ -5,7 +5,7 @@ export {
   isEqual,
   last,
   random,
-  shuffle
+  shuffle,
 } from 'lodash';
 export { marked } from 'marked';
 export { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';

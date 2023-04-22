@@ -2,9 +2,15 @@
 export {
   CHTML,
   RegisterHTMLHandler,
-  TeX, append, browserAdaptor, empty, isEqual, mathjax,
+  TeX,
+  append,
+  browserAdaptor,
+  empty,
+  isEqual,
+  mathjax,
   polyfill,
-  scrollBehaviourDragImageTranslateOverride, shuffle
+  scrollBehaviourDragImageTranslateOverride,
+  shuffle,
 } from '../mediator';
 export {
   Evaluation,
@@ -12,13 +18,13 @@ export {
   Slide,
   adoc2html,
   makeRow,
-  removeListener
+  removeListener,
 } from '../slide/mediator';
 export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface
+  SlideInterface,
 } from '../slide/mediator';
 export { AdocVisitor } from './misc/adocVisitor';
 export type { AdocVisitorInterface } from './misc/adocVisitor';
@@ -78,4 +84,3 @@ export { Sort } from './types/sort/slideTypeSort';
 export { VocabFactory } from './types/vocab/factoryVocab';
 export type { MakeSlidesTypeVocab } from './types/vocab/makeSlidesStrategyVocab';
 export { Vocab } from './types/vocab/slideTypeVocab';
-

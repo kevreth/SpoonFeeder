@@ -38,13 +38,12 @@ export {
 export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
 export { hideExplainIcon, showExplainIcon } from './explainIcon';
 export { switchCourse } from './quiz';
-export { Score } from './score';
+export { Score } from './score/score';
+export { ScoreProcessor } from './score/scoreProcessor';
+export { SummaryLine } from './score/summaryLine';
+export type { ISummaryLine } from './score/summaryLine';
 export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
-export {
-  getChildIds,
-  remove,
-  removeListener
-} from './utilities';
+export { getChildIds, remove, removeListener } from './utilities';
 
