@@ -4,8 +4,9 @@ import {
   Json,
   ProcessJson,
   getYaml2,
-  showSlides,
-} from '../../dataaccess/mediator';
+  showSlides
+} from '../mediator';
+export { getYaml2 } from '../../dataaccess/persistence/filePersistence';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const { processJson } = ProcessJson;
 export const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';

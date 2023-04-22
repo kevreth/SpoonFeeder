@@ -2,7 +2,7 @@ import type {
   Course,
   Division,
   SlideInterface,
-} from '../../dataaccess/mediator';
+} from '../mediator';
 export interface DivisionProcessor<C, D, T> {
   course_start(course: Division, retval: T): C;
   unit_start(child: Division, ctr: number, retval: T, parent: C): D;
