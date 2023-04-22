@@ -1,6 +1,8 @@
 import type { SlideInterface } from '../../dataaccess/mediator';
 import {
+  AnswerType,
   Division,
+  initSlide,
   ISummaryLine,
   SaveData,
   Score,
@@ -58,7 +60,7 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): ISummaryLine {
-    const exerciseLine = Score.exercise(slide, this.getResults);
+    const exerciseLine = Score.exercise(slide, this.getResults, initSlide, ScoreProcessor.createLine);
     parent.add(exerciseLine);
     return parent;
   }
@@ -89,5 +91,19 @@ export class ScoreProcessor
   course_end(course: ISummaryLine, _retval: SummaryLine): void {
     course.calculate();
     this.retval = course;
+  }
+  private static createLine(
+    slide: SlideInterface,
+    exerciseLine: ISummaryLine,
+    getResults: (slide: SlideInterface) => AnswerType
+  ) {
+    const results = getResults(slide);
+    if (results !== '') {
+      slide.setResults(results);
+      const evaluation = slide.evaluate();
+      exerciseLine.score += evaluation.correct;
+      exerciseLine.complete += evaluation.responses;
+      exerciseLine.count += slide.getAnswerCount();
+    }
   }
 }
