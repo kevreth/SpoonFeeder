@@ -7,17 +7,17 @@ export {
   fillMatchingSlide,
   initSlide,
   marked,
-  showSlides
+  showSlides,
 } from '../quiz/mediator';
 export type {
   AnswerType,
   SlideInterface,
-  StateActions
+  StateActions,
 } from '../quiz/mediator';
 export { getYaml2 } from './persistence/filePersistence';
 export {
   WebStorageFlag,
-  WebStorageVariable
+  WebStorageVariable,
 } from './persistence/webPersistence';
 export { timestampNow } from './saveData/date';
 export { SaveData } from './saveData/saveData';
@@ -32,6 +32,5 @@ export {
   getCourseListing,
   getSaveData,
   setCourseListing,
-  setSaveData
+  setSaveData,
 } from './webstorage/webStorage';
-

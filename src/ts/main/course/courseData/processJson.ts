@@ -5,13 +5,7 @@ import type {
   Module,
   SlideInterface,
 } from '../mediator';
-import {
-  INFO,
-  RANDOM,
-  initSlide,
-  process,
-  shuffle,
-} from '../mediator';
+import { INFO, RANDOM, initSlide, process, shuffle } from '../mediator';
 //////////////// Phase 1: process Json
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>

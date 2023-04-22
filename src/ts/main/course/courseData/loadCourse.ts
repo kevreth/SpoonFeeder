@@ -4,7 +4,7 @@ import {
   Json,
   ProcessJson,
   getYaml2,
-  showSlides
+  showSlides,
 } from '../mediator';
 export { getYaml2 } from '../../dataaccess/persistence/filePersistence';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
