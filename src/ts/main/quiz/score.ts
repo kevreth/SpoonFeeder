@@ -1,4 +1,5 @@
 import type {
+  AnswerType,
   Course,
   Division,
   DivisionProcessor,
@@ -143,13 +144,18 @@ export class Score {
     return exerciseLine;
   }
 }
+function createLine2(
+  slide: SlideInterface,
+  exerciseLine: ISummaryLine,
+  results: AnswerType
+) {
+  slide.setResults(results);
+  const evaluation = slide.evaluate();
+  exerciseLine.score += evaluation.correct;
+  exerciseLine.complete += evaluation.responses;
+  exerciseLine.count += slide.getAnswerCount();
+}
 function createLine(slide: SlideInterface, exerciseLine: ISummaryLine) {
   const results = SaveData.getResults(slide);
-  if (results !== '') {
-    slide.setResults(results);
-    const evaluation = slide.evaluate();
-    exerciseLine.score += evaluation.correct;
-    exerciseLine.complete += evaluation.responses;
-  }
-  exerciseLine.count += slide.getAnswerCount();
+  if (results !== '') createLine2(slide, exerciseLine, results);
 }

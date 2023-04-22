@@ -38,7 +38,7 @@ export class JsonProcessor
     child: Division,
     ctr: number,
     retval: SlideInterface[],
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _parent: void
   ): void {
     this.addNewInfoSlide('Lesson', ctr, child, retval);
@@ -47,7 +47,7 @@ export class JsonProcessor
     child: Module,
     ctr: number,
     retval: SlideInterface[],
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _parent: void
   ): void {
     this.addNewInfoSlide('Module', ctr, child, retval);
@@ -59,13 +59,13 @@ export class JsonProcessor
     }
   }
   inst(
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _slide: SlideInterface,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _ctr: number,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _retval: SlideInterface[],
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _parent: void
   ): SlideInterface[] {
     return new Array<SlideInterface>();
