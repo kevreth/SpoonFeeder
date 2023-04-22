@@ -43,9 +43,9 @@ function handleExpOverlay() {
 <style>
 .iconHamburger {
   /* max-height: 0px; */
-  top: 5px;
-  display: flex;
-  float: right;
+  /* top: 5px; */
+  /* display: flex; */
+  /* float: right; */
 }
 .sumNavigation {
   /* position: fixed; */
