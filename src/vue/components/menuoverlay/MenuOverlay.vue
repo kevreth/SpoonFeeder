@@ -1,5 +1,5 @@
 <template>
-  <MenuBtn id="menuBtn"/>
+  <MenuBtn id="menuBtn" class="iconHamburger z-top"/>
   <ExplainIcon id="explainIcon" @click="handleExpOverlay" :style="{ zIndex: -1 }"/>
   <ExpTable
     id="explainTable"
@@ -41,11 +41,17 @@ function handleExpOverlay() {
 </script>
 
 <style>
-.sumNavigation {
-  position: fixed;
+.iconHamburger {
+  /* max-height: 0px; */
+  top: 5px;
   display: flex;
-  top: 0;
-  left: 0px;
+  float: right;
+}
+.sumNavigation {
+  /* position: fixed; */
+  display: flex;
+  /* top: 0; */
+  /* left: 0px; */
 }
 </style>
 

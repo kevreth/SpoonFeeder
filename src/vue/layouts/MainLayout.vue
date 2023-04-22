@@ -1,8 +1,10 @@
 <template>
-  <q-layout>
-    <q-card class="iconHamburger z-top">
-      <MenuOverlay />
-    </q-card>
+  <q-layout view="lHh Lpr">
+    <q-header class="headerMain">
+      <q-toolbar>
+        <MenuOverlay />
+      </q-toolbar>
+    </q-header>
 
     <q-page-container>
       <router-view />
@@ -37,12 +39,11 @@ onMounted(() => {
 </script>
 
 <style>
+.headerMain {
+  /* height: 25%; */
+}
 .q-page-container {
-  padding-top: calc(0px + env(safe-area-inset-top, 0)) !important;
+  padding-top: calc(50px + env(safe-area-inset-top, 0)) !important;
 }
-.iconHamburger {
-  max-height: 0px;
-  display: flex;
-  float: right;
-}
+
 </style>
