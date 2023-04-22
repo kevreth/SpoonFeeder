@@ -9,7 +9,7 @@ export interface StateActions<T> {
   next(): T;
   end(): T;
 }
-export enum RefreshState {
+enum RefreshState {
   BEGIN,
   CURRENT,
   DECORATE,
@@ -23,7 +23,7 @@ export function dispatch2<T>(actions: StateActions<T>, advance: boolean): T {
   const retval: T = dispatch(actions, state);
   return retval;
 }
-export function dispatch<T>(actions: StateActions<T>, state: RefreshState) {
+function dispatch<T>(actions: StateActions<T>, state: RefreshState) {
   const actionMap: { [key in RefreshState]: () => T } = {
     [RefreshState.BEGIN]: actions.begin.bind(actions),
     [RefreshState.CURRENT]: actions.current.bind(actions),
@@ -33,7 +33,7 @@ export function dispatch<T>(actions: StateActions<T>, state: RefreshState) {
   };
   return actionMap[state]();
 }
-export function getRefreshState(
+function getRefreshState(
   slides: SlideInterface[],
   saves: SaveData[],
   advance: boolean

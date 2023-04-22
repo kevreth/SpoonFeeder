@@ -8,7 +8,7 @@ export interface ISummaryLine {
   pctComplete: string;
   children?: Array<ISummaryLine>;
   add(child: ISummaryLine): void;
-  calculate(): void;
+  calculate: (percentCorrect2: (correctCtr: number, responseCtr: number) => string) => void;
 }
 export class SummaryLine implements ISummaryLine {
   name = '';
@@ -22,11 +22,13 @@ export class SummaryLine implements ISummaryLine {
     this.score += child.score;
     this.complete += child.complete;
     this.count += child.count;
-    this.calculate();
+    this.calculate(percentCorrect);
     this.children?.push(child);
   }
-  calculate(): void {
-    this.pctComplete = percentCorrect(this.complete, this.count) + '%';
-    this.pctCorrect = percentCorrect(this.score, this.complete) + '%';
+  calculate(
+    percentCorrect2: (correctCtr: number, responseCtr: number) => string
+  ): void {
+    this.pctComplete = percentCorrect2(this.complete, this.count) + '%';
+    this.pctCorrect = percentCorrect2(this.score, this.complete) + '%';
   }
 }

@@ -1,10 +1,10 @@
-export function convertTwoDigits(dateItem: number) {
+function convertTwoDigits(dateItem: number) {
   return dateItem.toLocaleString('en-US', {
     minimumIntegerDigits: 2,
     useGrouping: false,
   });
 }
-export function createTimeStamp(d: Date) {
+function createTimeStamp(d: Date) {
   const str =
     d.getUTCFullYear().toString() +
     convertTwoDigits(d.getUTCMonth()) +
