@@ -1,4 +1,3 @@
-
 import {
   COURSE_NAME,
   PREFIX_COURSE_FILE,
