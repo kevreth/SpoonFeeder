@@ -9,12 +9,12 @@ export {
   adoc2html,
   clearSessionStorage,
   loadCourse,
-  process
+  process,
 } from '../dataaccess/mediator';
 export type {
   Course,
   Division,
-  DivisionProcessor
+  DivisionProcessor,
 } from '../dataaccess/mediator';
 export {
   difference,
@@ -22,7 +22,7 @@ export {
   isEqual,
   last,
   marked,
-  shuffle
+  shuffle,
 } from '../mediator';
 export { explanation } from '../slide/explanation';
 export type { AnswerType, SlideInterface } from '../slide/mediator';
@@ -33,7 +33,7 @@ export {
   continueButton,
   doneButton,
   makeButton,
-  startOverButton
+  startOverButton,
 } from './buttons';
 export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
 export { hideExplainIcon, showExplainIcon } from './explainIcon';
@@ -43,4 +43,3 @@ export { fillMatchingSlide, showSlides } from './slideDispatcher';
 export { dispatch2 } from './stateActionDispatcher';
 export type { StateActions } from './stateActionDispatcher';
 export { getChildIds, remove, removeListener } from './utilities';
-
