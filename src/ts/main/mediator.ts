@@ -1,10 +1,4 @@
-export {
-  difference,
-  intersection,
-  isEqual,
-  last,
-  shuffle
-} from 'lodash';
+export { difference, intersection, isEqual, last, shuffle } from 'lodash';
 export { marked } from 'marked';
 export { browserAdaptor } from 'mathjax-full/ts/adaptors/browserAdaptor';
 export { RegisterHTMLHandler } from 'mathjax-full/ts/handlers/html';

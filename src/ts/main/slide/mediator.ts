@@ -6,13 +6,13 @@ export {
   SaveData,
   continueButton,
   makeRow,
-  showExplainIcon
+  showExplainIcon,
 } from '../quiz/mediator';
 export type {
   AdocVisitorInterface,
   CreateHtmlType,
   EvaluateType,
-  MakeSlidesType
+  MakeSlidesType,
 } from '../slidetype/mediator';
 export { adoc2html } from './adoc2html';
 export { AudioPlayer } from './conclude/audio';
@@ -22,6 +22,5 @@ export type {
   AnswerType,
   ResultReturnType,
   ResultType,
-  SlideInterface
+  SlideInterface,
 } from './slideInterface';
-
