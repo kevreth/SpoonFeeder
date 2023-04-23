@@ -31,7 +31,7 @@ export function processHandlebars(txt: string) {
   txt = template({});
   return txt;
 }
-export function register(course: string) {
+function register(course: string) {
   Handlebars.registerHelper('html', registerTable(course));
   Handlebars.registerHelper('svg', registerSvg(course));
 }

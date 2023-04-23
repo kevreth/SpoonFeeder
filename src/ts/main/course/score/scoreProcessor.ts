@@ -1,12 +1,13 @@
-import type { SlideInterface } from '../../dataaccess/mediator';
+import type { SlideInterface } from '../mediator';
 import {
+  AnswerType,
   Division,
-  ISummaryLine,
-  SaveData,
+  DivisionProcessor,
+  initSlide,
+  ISummaryLine, percentCorrect, SaveData,
   Score,
-  SummaryLine,
-} from '../../quiz/mediator';
-import { DivisionProcessor } from '../mediator';
+  SummaryLine
+} from '../mediator';
 export class ScoreProcessor
   implements DivisionProcessor<ISummaryLine, ISummaryLine, ISummaryLine>
 {
@@ -58,7 +59,7 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): ISummaryLine {
-    const exerciseLine = Score.exercise(slide, this.getResults);
+    const exerciseLine = Score.exercise(slide, this.getResults, initSlide, ScoreProcessor.createLine);
     parent.add(exerciseLine);
     return parent;
   }
@@ -82,12 +83,26 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): void {
-    child.calculate();
+    child.calculate(percentCorrect);
     parent.add(child);
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   course_end(course: ISummaryLine, _retval: SummaryLine): void {
-    course.calculate();
+    course.calculate(percentCorrect);
     this.retval = course;
+  }
+  private static createLine(
+    slide: SlideInterface,
+    exerciseLine: ISummaryLine,
+    getResults: (slide: SlideInterface) => AnswerType
+  ) {
+    const results = getResults(slide);
+    if (results !== '') {
+      slide.setResults(results);
+      const evaluation = slide.evaluate();
+      exerciseLine.score += evaluation.correct;
+      exerciseLine.complete += evaluation.responses;
+      exerciseLine.count += slide.getAnswerCount();
+    }
   }
 }

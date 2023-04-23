@@ -1,7 +1,6 @@
 import type { AnswerType, SlideInterface } from '../mediator';
 import { AudioPlayer, continueButton, showExplainIcon } from '../mediator';
-
-export function conclude(
+function conclude(
   doc: Document,
   slide: SlideInterface,
   res: AnswerType,

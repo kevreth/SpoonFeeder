@@ -11,7 +11,7 @@
 // Another evaluation class, but evaluates an entire set of questions.
 import { AnswerType, Evaluation, makeRow } from '../mediator';
 // Only makeRow from Evaluation is required.
-export type FunctionType = (
+type FunctionType = (
   response: AnswerType,
   answer: AnswerType,
   text: string | string[],
@@ -25,14 +25,14 @@ export type FunctionType = (
 // ans: The correct answers to the quesion
 // result: The evaluated responses to the question after comparing res and ans.
 ///////////////////////////////////////////////////////////////////////////////
-export type EvaluateTypeDefault = () => Evaluation;
-export type EvaluateTypeSimple = (
+type EvaluateTypeDefault = () => Evaluation;
+type EvaluateTypeSimple = (
   txt: string,
   res: AnswerType,
   ans: AnswerType,
   result: boolean
 ) => Evaluation;
-export type EvaluateTypeGap = (
+type EvaluateTypeGap = (
   txt: string,
   res: AnswerType,
   ans: AnswerType,
