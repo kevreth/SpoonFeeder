@@ -38,9 +38,10 @@ function soundControl() {
 
 <style>
 .volumeMute {
-  top: 0;
-  height: 10px;
+  margin-top: 20px;
+  height: 20px;
   z-index: 1;
+  padding: 2px;
   font-size: 1em !important;
 }
 </style>
