@@ -38,46 +38,64 @@
 </template>
 
 <style>
-
 .naviTable {
   /* display: grid; */
   border-collapse: collapse;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
   grid-template-rows: repeat(auto-fit, minmax(10px, 0.7fr));
-  /* height: 25%; */
+  margin-right: 5px;
+  margin-top: 10px;
 }
 .naviTable tbody {
   display: inline-table;
-  /* font-size: 0.5em; */
   position: relative;
   height: 20vh;
-  min-height: 5vh;
 }
-.naviTable th {
-  font-size: 0.99rem; /* bigger font size for the first cell in each row */
-}
+
+/* smaller font size for smaller screens */
 @media (max-width: 768px) {
-  .naviTable td {
-    font-size: 0.8rem; /* smaller font size for smaller screens */
+  .naviTable {
+    margin-right: 0px;
   }
-  .naviTable th {
-    font-size: 0.9rem; /* smaller font size for smaller screens */
+  .naviTable tbody {
+    height: 15vh;
+  }
+  .naviTable th, .naviTable td {
+    font-size: 0.7rem; 
+  }
+  .volumeMute {
+    top: -20px;
+    font-size: 0.8em;
   }
   .menuBtn {
     font-size: 2rem;
   }
+  .explainIcon {
+    top: 25px;
+    font-size: 1rem;
+    right: 90px;
+  }
+  .explainIcon:hover {
+    transform: scale(1.5);
+  }
 }
 
+/* larger font size for larger screens */
 @media (min-width: 768px) {
-  .naviTable td {
-    font-size: 1rem; /* larger font size for larger screens */
+  .naviTable th, .naviTable td {
+    font-size: 1rem; 
   }
-  .naviTable th {
-    font-size: 1rem; /* smaller font size for smaller screens */
+  .volumeMute {
+    top: -30px;
+    font-size: 1em;
   }
   .menuBtn {
-    font-size: 3rem;
+    height: 3rem;
+  }
+  .explainIcon {
+    font-size: 1.2rem;
+    right: 120px;
   }
 }
 </style>

@@ -1,19 +1,18 @@
 <template>
   <MenuBtn id="menuBtn" class="iconHamburger z-top"/>
-  <ExplainIcon id="explainIcon" @click="handleExpOverlay" :style="{ zIndex: -1 }"/>
+  <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
   <ExpTable
     id="explainTable"
     v-model="expOverlay"
     :content="content"
     @closeInfo="expOverlay = false"
   />
-  <div id="summary" class="sumNavigation q-mt-xs q-ml-sm">
-    <SumNavigation/>
-    <VolumeMute
-    id="volume"
-    :volume="isMuted"
-    @toggle-volume="toggleVolume"/>
-  </div>
+
+  <SumNavigation/>
+  <VolumeMute
+  id="volume"
+  :volume="isMuted"
+  @toggle-volume="toggleVolume"/>
 </template>
 
 <script setup lang="ts">
@@ -39,19 +38,4 @@ function handleExpOverlay() {
   content.value = SaveData.getCurrentSlide();
 }
 </script>
-
-<style>
-.iconHamburger {
-  /* max-height: 0px; */
-  /* top: 5px; */
-  /* display: flex; */
-  /* float: right; */
-}
-.sumNavigation {
-  /* position: fixed; */
-  display: flex;
-  /* top: 0; */
-  /* left: 0px; */
-}
-</style>
 

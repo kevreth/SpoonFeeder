@@ -3,8 +3,8 @@
     flat
     dense
     icon="menu"
-    class="menuBtn q-mt-xs q-mr-sm q-pt-xs">
-
+    class="menuBtn q-mt-xs q-mr-sm q-pt-xs"
+  >
     <DropList></DropList>
   </q-btn>
 </template>
@@ -17,8 +17,7 @@ import DropList from './menubtn/droplist/DropList.vue';
 .menuBtn {
   position: fixed;
   right: 0;
-  font-size: 3rem;
+  /* font-size: 3rem; */
   top: 0;
-  margin-right: 2px;
 }
 </style>
