@@ -10,7 +10,7 @@
 .explainIcon {
   position: fixed;
   top: 25px;
-  right: 100px;
+  right: 120px;
   cursor: pointer;
 }
 .explainIcon:hover {

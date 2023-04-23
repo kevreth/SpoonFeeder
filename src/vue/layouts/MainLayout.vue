@@ -40,7 +40,6 @@ onMounted(() => {
 
 <style>
 .q-page-container {
-  padding-top: calc(50px + env(safe-area-inset-top, 0)) !important;
+  padding-top: calc(100px + env(safe-area-inset-top, 0)) !important;
 }
-
 </style>

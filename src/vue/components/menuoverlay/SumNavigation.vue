@@ -49,8 +49,35 @@
 }
 .naviTable tbody {
   display: inline-table;
-  font-size: 0.5em;
+  /* font-size: 0.5em; */
   position: relative;
+  height: 20vh;
+  min-height: 5vh;
+}
+.naviTable th {
+  font-size: 0.99rem; /* bigger font size for the first cell in each row */
+}
+@media (max-width: 768px) {
+  .naviTable td {
+    font-size: 0.8rem; /* smaller font size for smaller screens */
+  }
+  .naviTable th {
+    font-size: 0.9rem; /* smaller font size for smaller screens */
+  }
+  .menuBtn {
+    font-size: 2rem;
+  }
 }
 
+@media (min-width: 768px) {
+  .naviTable td {
+    font-size: 1rem; /* larger font size for larger screens */
+  }
+  .naviTable th {
+    font-size: 1rem; /* smaller font size for smaller screens */
+  }
+  .menuBtn {
+    font-size: 3rem;
+  }
+}
 </style>
