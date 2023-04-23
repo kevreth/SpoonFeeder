@@ -91,7 +91,7 @@
     font-size: 1em;
   }
   .menuBtn {
-    height: 3rem;
+    font-size: 3rem;
   }
   .explainIcon {
     font-size: 1.2rem;
