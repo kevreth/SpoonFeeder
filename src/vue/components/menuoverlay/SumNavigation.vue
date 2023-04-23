@@ -56,7 +56,7 @@
 /* smaller font size for smaller screens */
 @media (max-width: 768px) {
   .naviTable {
-    margin-right: 0px;
+    margin: 15px 0 0 10px;
   }
   .naviTable tbody {
     height: 15vh;
@@ -83,8 +83,11 @@
 
 /* larger font size for larger screens */
 @media (min-width: 768px) {
+  .naviTable {
+    margin: 20px 10px 0 10px;
+  }
   .naviTable th, .naviTable td {
-    font-size: 1rem; 
+    font-size: 1.1rem; 
   }
   .volumeMute {
     top: -30px;
@@ -92,6 +95,7 @@
   }
   .menuBtn {
     font-size: 3rem;
+    margin: 0 15px 0 0;
   }
   .explainIcon {
     font-size: 1.2rem;
