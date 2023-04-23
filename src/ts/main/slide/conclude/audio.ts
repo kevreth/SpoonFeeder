@@ -16,5 +16,6 @@ export class AudioPlayer {
   }
   public playBack(): void {
     this.audio.muted = false;
+    this.mute.clear();
   }
 }
