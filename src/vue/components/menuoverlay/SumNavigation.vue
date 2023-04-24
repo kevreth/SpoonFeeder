@@ -39,23 +39,26 @@
 
 <style>
 .naviTable {
-  /* display: grid; */
   border-collapse: collapse;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
   grid-template-rows: repeat(auto-fit, minmax(10px, 0.7fr));
-  margin-right: 5px;
-  margin-top: 10px;
+  margin: 15px 15px 0 15px;
 }
 .naviTable tbody {
   display: inline-table;
   position: relative;
-  height: 20vh;
+  font-size: 2vw
+}
+@media screen and (min-width: 1200px) {
+  .naviTable tbody {
+    font-size: 1.35vw;
+  }
 }
 
 /* smaller font size for smaller screens */
 @media (max-width: 768px) {
-  .naviTable {
+  /* .naviTable {
     margin: 15px 0 0 10px;
   }
   .naviTable tbody {
@@ -63,7 +66,7 @@
   }
   .naviTable th, .naviTable td {
     font-size: 0.7rem; 
-  }
+  } */
   .volumeMute {
     top: -20px;
     font-size: 0.8em;
@@ -83,12 +86,12 @@
 
 /* larger font size for larger screens */
 @media (min-width: 768px) {
-  .naviTable {
+  /* .naviTable {
     margin: 20px 10px 0 10px;
   }
   .naviTable th, .naviTable td {
     font-size: 1.1rem; 
-  }
+  } */
   .volumeMute {
     top: -30px;
     font-size: 1em;
