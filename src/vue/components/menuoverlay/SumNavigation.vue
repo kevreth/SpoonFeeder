@@ -68,9 +68,9 @@
     top: -20px;
     font-size: 0.8em;
   }
-  .menuBtn {
+  /* .menuBtn {
     font-size: 2rem;
-  }
+  } */
   .explainIcon {
     top: 25px;
     font-size: 1rem;
@@ -93,10 +93,10 @@
     top: -30px;
     font-size: 1em;
   }
-  .menuBtn {
+  /* .menuBtn {
     font-size: 3rem;
     margin: 0 15px 0 0;
-  }
+  } */
   .explainIcon {
     font-size: 1.2rem;
     right: 120px;
