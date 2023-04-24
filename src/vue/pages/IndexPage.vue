@@ -33,8 +33,8 @@ function initialize() {
 
 <style>
 .wrapContent {
-  display: block;
-  margin-top: 2vw;
+  /* display: block; */
+  top: -10vh;
 }
 
 </style>

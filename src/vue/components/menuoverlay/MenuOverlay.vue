@@ -1,5 +1,5 @@
 <template>
-  <MenuBtn id="menuBtn" class="iconHamburger z-top"/>
+  <MenuBtn id="menuBtn" class="z-top"/>
   <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
   <ExpTable
     id="explainTable"

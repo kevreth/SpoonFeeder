@@ -1,11 +1,11 @@
 <template>
   <q-menu
     id="droplist"
-    class="text-white"
-    style="background: black;"
+    class="text-white droplist"
+    style="background: transparent;"
     v-model="droplist"
   >
-    <q-list style="min-width: 30px" class="droplist bg-secondary" @click="droplist = false">
+    <q-list style="min-width: 30px" class="bg-secondary" @click="droplist = false">
       <q-item clickable>
         <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
       </q-item>
@@ -52,7 +52,7 @@ function handleOverlay() {
 }
 @media screen and (min-width: 1200px) {
   .droplist {
-    font-size: 1.5vw;
+    font-size: 1.3vw;
   }
 }
 </style>

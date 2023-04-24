@@ -8,7 +8,7 @@
       <template #body>
         <q-list
           id="courseList"
-          class="smaller-font fixed-center bg-secondary courseList">
+          class="courseList smaller-font fixed-center bg-secondary">
           <q-item
             :header="true"
             class="titleCourse"
@@ -26,7 +26,7 @@
               :class="{ 'selected': course === selectedCourse }"
             >
               <q-item-section
-                class="course"
+                class="courseItem"
                 :id="createValidHtmlId(course)"
               >
                 {{ course.toUpperCase() }}
@@ -36,11 +36,13 @@
           <SavedCourse id="savedCourse" class="savedCourse" :savedCourse="savedCourse"></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
+              class="courseTableBtn"
               :selectCourse="selectCourse"
               :selectedCourse="selectedCourse"
               @closeInfo="closeInfo"
             />
             <ExitBtn
+              class="courseTableBtn"
                 v-if="disableExit"
                 @click="closeInfo"
                 color="primary"
@@ -97,6 +99,9 @@ function closeInfo() {
 </script>
 
 <style>
+.courseTableBtn {
+  font-size: 2vw;
+}
 .btnCourse {
   position: absolute;
   display: flex;
@@ -108,7 +113,7 @@ function closeInfo() {
   margin-top: 8px;
 }
 .savedCourse span {
-  font-size: 12px;
+  font-size: 2.5vw;
   font-weight: bold;
   color: #40b782;
 }
@@ -131,6 +136,17 @@ function closeInfo() {
   height: 85%;
   border-radius: 10px;
   padding: 0 15px;
+  font-size: 2.5vw;
+  font-weight: normal;
+  line-height: 2em;
+}
+@media screen and (min-width: 1200px) {
+  .courseList {
+    font-size: 1.5vw;
+  }
+  .savedCourse span, .courseTableBtn {
+  font-size: 1.1vw;
+}
 }
 .scrollable-course {
   overflow: auto;

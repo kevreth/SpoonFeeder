@@ -17,7 +17,7 @@ import DropList from './menubtn/droplist/DropList.vue';
 .menuBtn {
   position: fixed;
   right: 0;
-  /* font-size: 6vw; */
+  margin-right: 2vw;
   font-size: 6vw;
   top: 0;
 }
