@@ -37,9 +37,3 @@ onMounted(() => {
   }, 1000)
 })
 </script>
-
-<style>
-/* .q-page-container {
-  padding-top: calc(80px + env(safe-area-inset-top, 0)) !important;
-} */
-</style>

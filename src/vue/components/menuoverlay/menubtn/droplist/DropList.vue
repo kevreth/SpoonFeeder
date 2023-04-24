@@ -1,11 +1,11 @@
 <template>
   <q-menu
     id="droplist"
-    class=" text-white"
+    class="text-white"
     style="background: black;"
     v-model="droplist"
   >
-    <q-list style="min-width: 30px" class="smaller-font bg-secondary" @click="droplist = false">
+    <q-list style="min-width: 30px" class="droplist bg-secondary" @click="droplist = false">
       <q-item clickable>
         <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
       </q-item>
@@ -31,8 +31,8 @@ import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
 // setting transition disable
-// const isEnable = ref(true);
 const isEnable = ref(false);
+// const isEnable = ref(true);
 
 const droplist = ref(false);
 const overlay = ref(false);
@@ -45,10 +45,14 @@ function handleOverlay() {
 </script>
 
 <style>
-.smaller-font {
-  font-size: 16px;
+.droplist {
+  font-size: 2.5vw;
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 0;
-  /* background: #212026; */
+  margin-right: 1vw;
+}
+@media screen and (min-width: 1200px) {
+  .droplist {
+    font-size: 1.5vw;
+  }
 }
 </style>
