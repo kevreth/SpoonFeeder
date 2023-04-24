@@ -113,7 +113,7 @@ function closeInfo() {
   margin-top: 8px;
 }
 .savedCourse span {
-  font-size: 2.5vw;
+  font-size: 2vw;
   font-weight: bold;
   color: #40b782;
 }
@@ -136,13 +136,13 @@ function closeInfo() {
   height: 85%;
   border-radius: 10px;
   padding: 0 15px;
-  font-size: 2.5vw;
+  font-size: 2vw;
   font-weight: normal;
-  line-height: 2em;
+  line-height: 0.1em;
 }
 @media screen and (min-width: 1200px) {
   .courseList {
-    font-size: 1.5vw;
+    font-size: 1vw;
   }
   .savedCourse span, .courseTableBtn {
   font-size: 1.1vw;
