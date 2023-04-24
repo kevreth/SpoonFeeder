@@ -1,5 +1,5 @@
 <template>
-  <q-page class="wrapIndex row items-center justify-evenly">
+  <q-page class="wrapContent row items-center justify-evenly">
     <CourseSelector v-model="courseList" @closeInfo="courseList = false" :isEnable="isEnable"/>
     <div id="slide">
       <div id="content"></div>
@@ -32,22 +32,9 @@ function initialize() {
 </script>
 
 <style>
-.wrapIndex {
+.wrapContent {
   display: block;
-  top: 60px;
+  margin-top: 2vw;
 }
 
-/* smaller font size for smaller screens */
-@media (max-width: 400px) {
-  .wrapIndex {
-    /* top: 60px; */
-  }
-}
-/* larger font size for larger screens */
-@media (min-width: 400px) {
-  .wrapIndex {
-    top: 20px;
-    font-size: 1.4rem;
-  }
-}
 </style>
