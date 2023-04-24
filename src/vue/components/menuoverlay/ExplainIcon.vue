@@ -9,10 +9,17 @@
 .explainIcon {
   position: fixed;
   top: 30px;
-  right: 100px;
+  right: 15vw;
   cursor: pointer;
+  font-size: 3vw;
+}
+@media screen and (min-width: 1200px) {
+  .explainIcon {
+    font-size: 2vw;
+    right: 10vw;
+  }
 }
 .explainIcon:hover {
-  transform: scale(1.6);
+  transform: scale(1.4);
 } 
 </style>
