@@ -67,10 +67,10 @@
   .naviTable th, .naviTable td {
     font-size: 0.7rem; 
   } */
-  .volumeMute {
+  /* .volumeMute {
     top: -20px;
     font-size: 0.8em;
-  }
+  } */
   /* .menuBtn {
     font-size: 2rem;
   } */
@@ -92,10 +92,10 @@
   .naviTable th, .naviTable td {
     font-size: 1.1rem; 
   } */
-  .volumeMute {
+  /* .volumeMute {
     top: -30px;
     font-size: 1em;
-  }
+  } */
   /* .menuBtn {
     font-size: 3rem;
     margin: 0 15px 0 0;
