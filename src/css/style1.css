@@ -28,7 +28,6 @@
     font-size: 14vw;
   }
 } */
-
 ol,ul {
   text-align: left;
 }
@@ -58,6 +57,8 @@ button {
   display: inline-block;
   padding:0.1em 0.3em;
   margin:0.1em 0.1em 0.8em 0;
+  /* padding: 1vw; */
+  /* margin: 1vw 0; */
   border: 1px solid #42414d;
   box-sizing: border-box;
   text-decoration:none;
@@ -101,14 +102,6 @@ button:hover {
   right:auto;
   top:auto;
 }
-.container {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 400px;
-  transform: translate(-50%, 0%);
-}
 .list-item {
   position: absolute;
   top: 0;
@@ -139,7 +132,6 @@ button:hover {
   fill:red;
   opacity: 50%;
 }
-
 iframe {
   border: 0;
   width: 1px;

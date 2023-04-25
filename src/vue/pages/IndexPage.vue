@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page class="wrapContent row items-center justify-evenly">
     <CourseSelector v-model="courseList" @closeInfo="courseList = false" :isEnable="isEnable"/>
     <div id="slide">
       <div id="content"></div>
@@ -30,3 +30,11 @@ function initialize() {
   else switchCourse(courseName);
 }
 </script>
+
+<style>
+.wrapContent {
+  /* display: block; */
+  top: -10vh;
+}
+
+</style>

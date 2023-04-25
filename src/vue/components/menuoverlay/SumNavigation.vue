@@ -1,4 +1,5 @@
 <template>
+  <div>
     <table class="naviTable bg-secondary q-pl-sm q-pb-sm">
       <tbody>
         <tr>
@@ -33,20 +34,25 @@
         </tr>
       </tbody>
     </table>
+  </div>
 </template>
 
 <style>
-
 .naviTable {
-  display: grid;
   border-collapse: collapse;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
+  grid-template-rows: repeat(auto-fit, minmax(10px, 0.7fr));
+  margin: 15px 15px 0 15px;
 }
 .naviTable tbody {
   display: inline-table;
-  font-size: 0.8em;
   position: relative;
+  font-size: 2vw
 }
-
+@media screen and (min-width: 1200px) {
+  .naviTable tbody {
+    font-size: 1.1vw;
+  }
+}
 </style>

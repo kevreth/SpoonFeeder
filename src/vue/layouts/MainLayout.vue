@@ -1,8 +1,10 @@
 <template>
   <q-layout>
-    <q-card class="iconHamburger z-top">
-      <MenuOverlay />
-    </q-card>
+    <q-header>
+      <q-toolbar>
+        <MenuOverlay />
+      </q-toolbar>
+    </q-header>
 
     <q-page-container>
       <router-view />
@@ -35,14 +37,3 @@ onMounted(() => {
   }, 1000)
 })
 </script>
-
-<style>
-.q-page-container {
-  padding-top: calc(0px + env(safe-area-inset-top, 0)) !important;
-}
-.iconHamburger {
-  max-height: 0px;
-  display: flex;
-  float: right;
-}
-</style>

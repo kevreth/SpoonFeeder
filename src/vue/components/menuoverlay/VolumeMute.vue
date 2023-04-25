@@ -2,7 +2,6 @@
   <q-btn
     flat
     dense
-    size="200%"
     :icon="volume ? 'volume_off' : 'volume_up'"
     class="volumeMute q-ml-sm q-pt-md"
     @click="toggleVolume"
@@ -38,9 +37,18 @@ function soundControl() {
 
 <style>
 .volumeMute {
-  top: 0;
-  height: 10px;
+  height: 20px;
   z-index: 1;
-  font-size: 1em !important;
+  padding: 2px;
+  top: -35px;
+  font-size: 2.5vw;
 }
+@media screen and (min-width: 1200px) {
+  .volumeMute {
+    font-size: 1.5vw
+  }
+}
+.volumeMute:hover {
+  transform: scale(1.2);
+} 
 </style>

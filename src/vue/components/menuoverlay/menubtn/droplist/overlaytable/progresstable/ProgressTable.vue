@@ -73,8 +73,6 @@ import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
 
-// const isEnable = ref(true);
-// const isEnable = ref(false);
 defineProps({
   isEnable: {
     type: Boolean,
@@ -165,12 +163,8 @@ function myClass (pctCorrect: string, pctComplete: string) {
 </script>
 
 <style>
-/* make the icon "-" in the table smaller */
-.q-btn .q-icon {
-  font-size: none;
-}
 /* make the header sticky */
-.q-markup-table {
+.progressTable .q-markup-table {
   overflow: clip
 }
 .progressTable thead tr th{
@@ -178,18 +172,23 @@ function myClass (pctCorrect: string, pctComplete: string) {
   position: sticky;
   z-index: 1;
 }
-.q-table {
+.progressTable .q-table {
   margin-top: -18px;
 }
 .progressTable thead tr:first-child th {
   top: 0;
+  font-size: 2vw;
 }
-.progressTable .q-table td:first-child {
-  padding-left: 8px;
-}
-.q-table td {
+.progressTable .q-table tbody td {
   padding-top: 2px;
   padding-bottom: 2px;
+  font-size: 2vw;
+}
+@media screen and (min-width: 1200px) {
+  .progressTable thead tr:first-child th,
+  .progressTable .q-table tbody td {
+  font-size: 1.1vw !important;
+}
 }
 .progressTable tbody {
   display:contents;
