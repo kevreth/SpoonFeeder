@@ -18,6 +18,7 @@
           </q-item>
           <div class="scrollable-course" id="courses">
             <q-item
+              class="courseItem"
               clickable
               v-for="course in courses"
               :key="course"
@@ -26,7 +27,7 @@
               :class="{ 'selected': course === selectedCourse }"
             >
               <q-item-section
-                class="courseItem"
+                class="courseItemSection"
                 :id="createValidHtmlId(course)"
               >
                 {{ course.toUpperCase() }}
@@ -99,21 +100,19 @@ function closeInfo() {
 </script>
 
 <style>
-.courseTableBtn {
-  font-size: 2vw;
-}
 .btnCourse {
   position: absolute;
   display: flex;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0%);
+
 }
 .savedCourse {
   margin-top: 8px;
+  line-height: 1em;
 }
 .savedCourse span {
-  font-size: 2vw;
   font-weight: bold;
   color: #40b782;
 }
@@ -132,25 +131,31 @@ function closeInfo() {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.q-btn .courseItem, .q-item .courseItem {
+  min-height: 3em;
+  line-height: 1em;
+}
+/* .courseTableBtn, .savedCourse span {
+  font-size: 1.5vw;
+} */
 .courseList {
   height: 85%;
   border-radius: 10px;
-  padding: 0 15px;
-  font-size: 2vw;
+  padding: 0px 15px;
+  font-size: 1.5vw;
   font-weight: normal;
-  line-height: 0.1em;
 }
 @media screen and (min-width: 1200px) {
   .courseList {
     font-size: 1vw;
   }
   .savedCourse span, .courseTableBtn {
-  font-size: 1.1vw;
-}
+    font-size: 1vw;
+  }
 }
 .scrollable-course {
   overflow: auto;
-  height: 70%;
+  height: 77%;
   max-height: 80vh;
 }
 </style>
