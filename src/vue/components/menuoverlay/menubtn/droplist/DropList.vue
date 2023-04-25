@@ -21,9 +21,9 @@
     </q-list>
   </q-menu>
 
-    <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
-    <CourseSelector :isEnable="isEnable" v-model="courseList"
-    @closeInfo="courseList = false"></CourseSelector>
+  <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
+  <CourseSelector :isEnable="isEnable" v-model="courseList"
+  @closeInfo="courseList = false"></CourseSelector>
 </template>
 
 <script setup lang="ts">
