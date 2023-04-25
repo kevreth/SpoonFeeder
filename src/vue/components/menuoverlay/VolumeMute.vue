@@ -41,11 +41,11 @@ function soundControl() {
   z-index: 1;
   padding: 2px;
   top: -35px;
-  font-size: 2.9vw;
+  font-size: 2.5vw;
 }
 @media screen and (min-width: 1200px) {
   .volumeMute {
-    font-size: 1.9vw
+    font-size: 1.5vw
   }
 }
 .volumeMute:hover {

@@ -52,7 +52,7 @@
 }
 @media screen and (min-width: 1200px) {
   .naviTable tbody {
-    font-size: 1.35vw;
+    font-size: 1.1vw;
   }
 }
 </style>

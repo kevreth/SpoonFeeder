@@ -30,6 +30,7 @@
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
+
 // setting transition disable
 const isEnable = ref(false);
 // const isEnable = ref(true);
@@ -46,9 +47,9 @@ function handleOverlay() {
 
 <style>
 .droplist {
-  font-size: 2.5vw;
+  font-size: 2vw;
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  margin-right: 1vw;
+  right: 15px;
 }
 @media screen and (min-width: 1200px) {
   .droplist {

@@ -43,20 +43,30 @@ function closeInfo() {
 }
 .iconContainer {
   border-radius: 20px;
-  width: 70%;
+  width: 50%;
   box-sizing: border-box;
 }
 .iconContainer h5 {
   padding: 0px;
   margin: 5px 0 0 0;
   letter-spacing: 1px;
-  font-size: 18px;
+  font-size: 2vw;
 }
 p.iconContent {
   text-align: left;
   padding: 0 0 0 25px;
-  font-size: 14px;
+  font-size: 1.8vw;
   line-height: 2em;
+}
+@media screen and (min-width: 1200px) {
+  .iconContainer h5
+   {
+    font-size: 1.1vw;
+  }
+  p.iconContent
+   {
+    font-size: 1vw;
+  }
 }
 </style>
 
