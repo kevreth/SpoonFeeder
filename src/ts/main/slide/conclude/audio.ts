@@ -12,9 +12,10 @@ export class AudioPlayer {
   }
   public muteAudio(): void {
     this.audio.muted = true;
-    this.mute.clear();
+    this.mute.set();
   }
   public playBack(): void {
     this.audio.muted = false;
+    this.mute.clear();
   }
 }
