@@ -6,7 +6,7 @@ import {
   getYaml2,
   showSlides,
 } from '../mediator';
-export const PREFIX_COURSE_FILE = '../../../src/courses/';
+export const PREFIX_COURSE_FILE = '/courses/';
 const { processJson } = ProcessJson;
 const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';
 export function loadCourse(yamlFilename: string, doc: Document) {
