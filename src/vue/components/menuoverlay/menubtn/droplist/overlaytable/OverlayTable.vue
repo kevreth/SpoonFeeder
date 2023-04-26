@@ -40,12 +40,12 @@ function startOver() {
 <style>
 .overlayTable {
   height: 60%;
-  width: 80vw;
+  /* width: 80vw; */
 }
 @media screen and (min-width: 1200px) {
-  .overlayTable {
+  /* .overlayTable {
     width: 60vw;
-  }
+  } */
 }
 .progressBackground {
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
