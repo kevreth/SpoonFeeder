@@ -11,11 +11,11 @@
   top: 30px;
   right: 15vw;
   cursor: pointer;
-  font-size: 3vw;
+  font-size: 2.5vw;
 }
 @media screen and (min-width: 1200px) {
   .explainIcon {
-    font-size: 2vw;
+    font-size: 1.5vw;
     right: 8vw;
   }
 }
