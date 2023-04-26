@@ -4,7 +4,7 @@
 
 _programmed instruction on overdrive_
 
-SpoonFeeder is programmed instruction software that takes advantage of recent advances in gamification. SpoonFeeder breaks learning content into around three simple slides, asks concept-checking questions, and then learners complete exercises of various types, such as multiple choice, gap fill, and sort.
+SpoonFeeder is programmed instruction software that takes advantage of recent advances in gamification. SpoonFeeder breaks learning content into a few simple slides, asks concept-checking questions, and then offers exercises of various types, such as multiple choice, gap fill, and sort.
 
 ## Advantages
 
