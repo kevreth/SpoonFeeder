@@ -1,4 +1,4 @@
-![spoon feeder](https://user-images.githubusercontent.com/47391465/232287925-ce52f7c8-c837-4001-83e2-3b857ed8d3af.jpg)
+<img src="https://user-images.githubusercontent.com/47391465/232287925-ce52f7c8-c837-4001-83e2-3b857ed8d3af.jpg" alt="spoon feeder" width="150" height="150">
 
 SpoonFeeder is programmed instruction software that takes advantage of recent advances in gamification. SpoonFeeder breaks learning content into around three simple slides, asks concept-checking questions, and then learners complete exercises of various types, such as multiple choice, gap fill, and sort.
 
