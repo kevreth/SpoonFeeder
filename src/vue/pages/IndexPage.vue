@@ -34,7 +34,7 @@ function initialize() {
 <style>
 .wrapContent {
   /* display: block; */
-  top: -10vh;
+  /* top: -10vh; */
 }
 
 </style>
