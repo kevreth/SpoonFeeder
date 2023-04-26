@@ -36,15 +36,23 @@ SpoonFeeder is not designed to assess learners' ability to expound on a topic. T
 
 SpoonFeeder remains in an early pre-release state. Although functional, it's missing major features and the user interface needs attention.
 
-## Installation
+## Installation for development
 
 1) Install Node if not already installed, platforms vary.
 2) Update Node and npm:
-npm i -g npm
-npm i -g node
+
+`npm i -g npm`
+
+`npm i -g node`
+
 3) Install quasar if not already installed:
-npm i -g @quasar/cli
+
+`npm i -g @quasar/cli`
+
 4) Clone the project
-git clone https://github.com/kevreth/SpoonFeeder.git
+
+`git clone https://github.com/kevreth/SpoonFeeder.git`
+
 5) Start the project
-quasar dev
+
+`quasar dev`
