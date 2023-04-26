@@ -172,19 +172,20 @@ function myClass (pctCorrect: string, pctComplete: string) {
   position: sticky;
   z-index: 1;
 }
-.progressTable .q-table {
+/* .progressTable {
   margin-top: -18px;
-}
+  width: 80vw;
+} */
 .progressTable thead tr:first-child th {
   top: 0;
   font-size: 2vw;
 }
-.progressTable .q-table tbody td {
+.progressTable tbody td {
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 2vw;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
   .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {
   font-size: 1.1vw !important;

@@ -40,12 +40,12 @@ function soundControl() {
   height: 20px;
   z-index: 1;
   padding: 2px;
-  top: -35px;
-  font-size: 2.5vw;
+  top: 25px;
+  font-size: 2vw;
 }
 @media screen and (min-width: 1200px) {
   .volumeMute {
-    font-size: 1.5vw
+    font-size: 1vw
   }
 }
 .volumeMute:hover {
