@@ -15,7 +15,7 @@ SpoonFeeder is programmed instruction software that takes advantage of recent ad
 
 SpoonFeeder is not designed to assess learners' ability to expound on a topic. The idea is to quickly commit concepts and rote material to the brain for later contemplation. An ideal use would be in a flipped classroom, where learners know the material fairly well before class and use class time to find gaps in their knowledge, collaborate with other students, and instructors can use higher-level teaching methods like dialectics. SpoonFeeder leaves instructors free to focus on high-level thinking skills.
 
-# Roles
+## Roles
 
 * test preparation,
 * corporate training programs,
