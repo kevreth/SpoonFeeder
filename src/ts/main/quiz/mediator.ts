@@ -10,7 +10,7 @@ export {
   ScoreProcessor,
   SummaryLine,
   TRANSITION,
-  clearSessionStorage,
+  clearCourseListing,
   loadCourse,
 } from '../course/mediator';
 export type { Division, ISummaryLine } from '../course/mediator';

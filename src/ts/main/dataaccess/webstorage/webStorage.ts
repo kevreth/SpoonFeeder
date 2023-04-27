@@ -10,6 +10,9 @@ export function clearSessionStorage() {
 export function setCourseListing(value: Array<string>) {
   COURSES.set(JSON.stringify(value));
 }
+export function clearCourseListing() {
+  COURSES.remove();
+}
 export function getCourseListing() {
   return JSON.parse(COURSES.get() as string);
 }

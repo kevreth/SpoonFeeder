@@ -26,7 +26,7 @@ export {
   MUTE,
   RANDOM,
   TRANSITION,
-  clearSessionStorage,
+  clearCourseListing,
   getCourseListing,
   getSaveData,
   setCourseListing,

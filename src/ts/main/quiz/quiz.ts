@@ -3,7 +3,7 @@ import {
   PREFIX_COURSE_FILE,
   RANDOM,
   TRANSITION,
-  clearSessionStorage,
+  clearCourseListing,
   loadCourse,
 } from './mediator';
 // necessary for adding a property to the
@@ -14,7 +14,7 @@ interface Window {
 }
 declare const window: Window;
 export function switchCourse(courseName: string) {
-  clearSessionStorage();
+  clearCourseListing();
   //===========================================================================
   // un-comment for TESTING
   RANDOM.clear();

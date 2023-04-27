@@ -5,7 +5,7 @@ export {
   RANDOM,
   SaveData,
   TRANSITION,
-  clearSessionStorage,
+  clearCourseListing,
   getYaml2
 } from '../dataaccess/mediator';
 export { shuffle } from '../mediator';
