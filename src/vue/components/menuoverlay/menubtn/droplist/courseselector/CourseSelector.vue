@@ -146,7 +146,6 @@ function closeInfo() {
   transform: translate(-50%, -50%);
 }
 .q-btn .courseItem, .q-item.courseItem {
-  /* min-height: 3em; */
   min-height: 3.5vw;
   line-height: 0em;
 }
@@ -154,9 +153,6 @@ function closeInfo() {
   font-size: 1.5vw;
 }
 .courseList {
-  /* height: 85%; */
-  /* max-height: 85%; */
-  /* overflow: auto; */
   border-radius: 10px;
   padding: 0px;
   font-size: 1.5vw;
@@ -165,7 +161,6 @@ function closeInfo() {
 @media screen and (min-width: 1200px) {
   .courseList {
     font-size: 1vw;
-    /* height: 85vh; */
   }
   .savedCourse span, .courseTableBtn {
     font-size: 1vw;
@@ -176,8 +171,6 @@ function closeInfo() {
 }
 .scrollable-course {
   overflow: auto;
-  /* max-height: 75%; */
-  /* height: 77%; */
   max-height: 70vh;
 }
 </style>

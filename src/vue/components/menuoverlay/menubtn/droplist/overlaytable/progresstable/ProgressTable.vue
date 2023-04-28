@@ -165,7 +165,7 @@ function myClass (pctCorrect: string, pctComplete: string) {
 <style>
 /* make the header sticky */
 .progressTable .q-table  {
-  line-height: 2vw;
+  line-height: 4vw;
 }
 .progressTable .q-markup-table {
   overflow: clip
@@ -190,7 +190,10 @@ function myClass (pctCorrect: string, pctComplete: string) {
   .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {
   font-size: 1.1vw !important;
-}
+  }
+  .progressTable .q-table  {
+    line-height: 2vw;
+  }
 }
 .progressTable tbody {
   display:contents;
