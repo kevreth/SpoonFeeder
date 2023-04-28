@@ -16,7 +16,7 @@
 @media screen and (min-width: 1200px) {
   .explainIcon {
     font-size: 1.5vw;
-    right: 8vw;
+    right: 10vw;
   }
 }
 .explainIcon:hover {

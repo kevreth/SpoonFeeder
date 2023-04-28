@@ -3,6 +3,7 @@
     <q-overlay
       :class="{'transition': isEnable}"
       id="courseTable"
+      class="courseTable"
       @click.stop=""
       z-index="7000">
       <template #body>
@@ -100,25 +101,34 @@ function closeInfo() {
 </script>
 
 <style>
-.q-btn.courseItem,
-.q-item.courseItem {
+/* .q-item.courseItem {
   min-height: 1vw;
 }
+.q-btn .courseItem {
+  min-height: 3.5vw !important;
+} */
+/* .courseTable {
+  min-height: 70vw;
+} */
 .btnCourse {
   position: relative;
   /* display: flex; */
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0%);
-
+  /* bottom: 0.5em; */
+}
+.q-btn .btnCourse {
+  line-height: 0.5em;
 }
 .savedCourse {
-  margin-top: 8px;
+  margin-top: 0.4em;
   line-height: 1em;
 }
 .savedCourse span {
   font-weight: bold;
   color: #40b782;
+  padding-right: 1em;
 }
 .selected {
   background: #3c3b41;
@@ -135,15 +145,18 @@ function closeInfo() {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.q-btn .courseItem, .q-item .courseItem {
-  min-height: 3em;
+.q-btn .courseItem, .q-item.courseItem {
+  /* min-height: 3em; */
+  min-height: 3.5vw;
   line-height: 0em;
 }
 .courseTableBtn, .savedCourse span {
   font-size: 1.5vw;
 }
 .courseList {
-  height: 85%;
+  /* height: 85%; */
+  /* max-height: 85%; */
+  /* overflow: auto; */
   border-radius: 10px;
   padding: 0px;
   font-size: 1.5vw;
@@ -152,14 +165,19 @@ function closeInfo() {
 @media screen and (min-width: 1200px) {
   .courseList {
     font-size: 1vw;
+    /* height: 85vh; */
   }
   .savedCourse span, .courseTableBtn {
     font-size: 1vw;
   }
+  .q-btn .courseItem, .q-item.courseItem{
+    min-height: 2vw;
+  }
 }
 .scrollable-course {
   overflow: auto;
-  height: 77%;
-  max-height: 80vh;
+  /* max-height: 75%; */
+  /* height: 77%; */
+  max-height: 70vh;
 }
 </style>
