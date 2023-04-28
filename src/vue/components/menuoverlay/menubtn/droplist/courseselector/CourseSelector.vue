@@ -100,9 +100,13 @@ function closeInfo() {
 </script>
 
 <style>
+.q-btn.courseItem,
+.q-item.courseItem {
+  min-height: 1vw;
+}
 .btnCourse {
-  position: absolute;
-  display: flex;
+  position: relative;
+  /* display: flex; */
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -133,15 +137,15 @@ function closeInfo() {
 }
 .q-btn .courseItem, .q-item .courseItem {
   min-height: 3em;
-  line-height: 1em;
+  line-height: 0em;
 }
-/* .courseTableBtn, .savedCourse span {
+.courseTableBtn, .savedCourse span {
   font-size: 1.5vw;
-} */
+}
 .courseList {
   height: 85%;
   border-radius: 10px;
-  padding: 0px 15px;
+  padding: 0px;
   font-size: 1.5vw;
   font-weight: normal;
 }
