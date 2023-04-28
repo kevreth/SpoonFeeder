@@ -1,11 +1,11 @@
 <template>
   <q-menu
     id="droplist"
-    class="text-white droplist"
+    class="text-white dropMenu"
     style="background: transparent;"
     v-model="droplist"
   >
-    <q-list style="min-width: 30px" class="bg-secondary" @click="droplist = false">
+    <q-list style="min-width: 30px" class="dropList bg-secondary" @click="droplist = false">
       <q-item clickable>
         <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
       </q-item>
@@ -46,13 +46,16 @@ function handleOverlay() {
 </script>
 
 <style>
-.droplist {
+.dropList {
+  margin-right: 0.2em;
+}
+.dropMenu {
   font-size: 2vw;
   font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  right: 15px;
+  /* right: 15px; */
 }
 @media screen and (min-width: 1200px) {
-  .droplist {
+  .dropMenu {
     font-size: 1.3vw;
   }
 }

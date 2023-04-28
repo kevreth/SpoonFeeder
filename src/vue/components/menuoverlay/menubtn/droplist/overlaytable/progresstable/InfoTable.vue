@@ -59,16 +59,15 @@ p.iconContent {
   font-size: 1.9vw;
   line-height: 2em;
 }
-.exitInfo {
+/* .exitInfo {
   font-size: 2vw;
-}
+} */
 @media screen and (min-width: 1200px) {
   .iconContainer h5
    {
     font-size: 1.3vw;
   }
-  p.iconContent,
-  .exitInfo {
+  p.iconContent{
     font-size: 1.2vw;
   }
   .iconContainer {

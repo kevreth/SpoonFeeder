@@ -17,10 +17,15 @@ import DropList from './menubtn/droplist/DropList.vue';
 .menuBtn {
   position: fixed;
   right: 0;
-  margin-right: 1vw;
+  margin-right: 1.6vw;
   font-size: 6vw;
   top: 0;
 }
+/* .q-btn--dense.menuBtn{
+  padding: 0.1em;
+  padding-top: 0;
+  margin-top: 5px;
+} */
 @media screen and (min-width: 1200px) {
   .menuBtn {
     font-size: 3vw;

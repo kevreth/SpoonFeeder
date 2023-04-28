@@ -164,6 +164,9 @@ function myClass (pctCorrect: string, pctComplete: string) {
 
 <style>
 /* make the header sticky */
+.progressTable .q-table  {
+  line-height: 4vw;
+}
 .progressTable .q-markup-table {
   overflow: clip
 }
@@ -172,24 +175,25 @@ function myClass (pctCorrect: string, pctComplete: string) {
   position: sticky;
   z-index: 1;
 }
-/* .progressTable {
-  margin-top: -18px;
-  width: 80vw;
-} */
+.progressTable {
+  max-width: 85vw;
+  display: block ruby;
+}
 .progressTable thead tr:first-child th {
   top: 0;
   font-size: 2vw;
 }
 .progressTable tbody td {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 2vw;
+  font-size: 1.9vw;
 }
 @media screen and (min-width: 1000px) {
   .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {
   font-size: 1.1vw !important;
-}
+  }
+  .progressTable .q-table  {
+    line-height: 2vw;
+  }
 }
 .progressTable tbody {
   display:contents;

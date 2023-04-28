@@ -10,7 +10,7 @@
 .infoIcon {
   position: fixed;
   margin-left: auto;
-  top: 8vw;
+  top: 4vw;
   width: 20px;
   right: 0;
   padding-right: 20px;
@@ -19,7 +19,7 @@
 }
 @media screen and (min-width: 1200px) {
   .infoIcon {
-    top: 4.5vw;
+    top: 3vw;
   }
 }
 </style>
