@@ -1,0 +1,77 @@
+---
+name: C#
+units:
+- name: Get started
+  lessons:
+  - name: lesson 1
+    modules:
+    - name: module 1
+      # inst:
+          # C# (pronounced "See Sharp") is a modern, object-oriented, component-oriented, and type-safe programming language. C# enables developers to build many types of secure and robust applications that run in .NET. C# has its roots in the C family of languages and will be immediately familiar to C, C++, Java, and JavaScript programmers.
+          # Several C# features help create robust and durable applications:
+
+          # * *Garbage collection* automatically reclaims memory occupied by unreachable unused objects.
+          # * *Nullable types* guard against variables that dont refer to allocated objects.
+          # * *Exception handling* provides a structured and extensible approach to error detection and recovery.
+          # * *Lambda expressions* support functional programming techniques.
+          # * *Language Integrated Query (LINQ)* syntax creates a common pattern for working with data from any source.
+          # * *Asynchronous operations* provides syntax for building distributed systems.
+          # * A *unified type system* enabling all types to inherit from a single root object type.
+          # * *User-defined types* enables dynamic allocation of objects and in-line storage of lightweight structures.
+          # * *Generic methods and types* provide increased type safety and performance.
+          # * *Iterators* enable implementers of collection classes to define custom behaviors for client code.
+          # * *versioning* ensures programs and libraries can evolve over time in a compatible manner.
+
+          # Aspects of C#s design that were directly influenced by versioning considerations include
+          # * virtual and override modifiers
+          # * rules for method overload resolution
+          # * explicit interface member declarations
+      exercises:
+      - type: vocab
+        list:
+          garbage collection: automatically reclaims memory occupied by unreachable unused objects.
+          nullable types: guard against variables that dont refer to allocated objects.
+          exception handling: provides a structured and extensible approach to error detection and recovery.
+          lambda expressions: support functional programming techniques.
+          language Integrated Query (LINQ): syntax creates a common pattern for working with data from any source.
+          asynchronous operations: syntax for building distributed systems.
+          unified type system: all types inherit from a single root object type.
+          user-defined types: dynamic allocation of objects and in-line storage of lightweight structures.
+          generic methods and types: provide increased type safety and performance.
+          iterators: collection classes define custom behaviors for client code.
+          versioning: ensures programs and libraries can evolve over time in a compatible manner.
+    #.NET architecture
+          .NET: a virtual execution system
+          common language runtime (CLR): a set of class libraries implementating the common language infrastructure (CLI)
+          common language infrastructure (CLI): a standard for languages and environments to work together seamlessly
+          intermediate language: what C# compiles to and conforms to the CLI specification
+          assembly: a file containing IL code and resources
+          dll: the file extension an assembly uses
+          manifest: provides informoration about an assemblys types, version, and culture
+          Just-In-Time (JIT) compilation: converts IL code to native machine instructions
+          managed code: code executed by the CLR
+          unmanaged code: compiled into native machine language
+          Common Type Specification (CTS): IL code can interact with many programming languages
+          #Hello World
+          namespace: a hierarhical means of organizing programs and libraries
+          using: identifies a files namespace
+          static method: operates without reference to a particular object
+          Main: serves as the entry point of a program
+          #: single-line comment
+          /* .. */: multi-line comment
+          #Type and Variables
+          type: defines the structure and behavior of data
+          variable: a label referring to an instance of a specific type
+          value type: contains their data
+          reference type: stores the memory address of data
+          identifier: the name of a variable
+          type declaration: creates new type
+          class: a reference type that contains fields and functions
+          struct: a value type that contains fields and functions
+          interface : defines a contract of named public members
+          delegate: method references
+          nullable: dont require separate definition
+          boxing: treating a value type as an object
+          program: declares types that contains members organized into namespaces
+          stack: first in - last out" (FILO) data structure
+
