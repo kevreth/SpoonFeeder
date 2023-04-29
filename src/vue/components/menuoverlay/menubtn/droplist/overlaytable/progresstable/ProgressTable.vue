@@ -164,9 +164,13 @@ function myClass (pctCorrect: string, pctComplete: string) {
 </script>
 
 <style>
+button.expandIcon {
+  margin: 0;
+  padding: 0;
+}
 /* make the header sticky */
 .progressTable .q-table  {
-  line-height: 4vw;
+  line-height: 3vw;
 }
 .progressTable .q-markup-table {
   overflow: clip
@@ -187,6 +191,9 @@ function myClass (pctCorrect: string, pctComplete: string) {
 .progressTable tbody td {
   font-size: 1.9vw;
 }
+.q-btn .progressTable {
+    font-weight: 350;
+  }
 @media screen and (min-width: 1000px) {
   .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {
@@ -194,6 +201,9 @@ function myClass (pctCorrect: string, pctComplete: string) {
   }
   .progressTable .q-table  {
     line-height: 2vw;
+  }
+  .q-btn .progressTable {
+    font-weight: 150;
   }
 }
 .progressTable tbody {
