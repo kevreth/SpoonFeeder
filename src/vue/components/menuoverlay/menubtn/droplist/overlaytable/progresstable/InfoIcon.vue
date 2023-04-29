@@ -10,10 +10,10 @@
 .infoIcon {
   position: fixed;
   margin-left: auto;
-  top: 4vw;
+  top: 5vw;
   width: 20px;
   right: 0;
-  padding-right: 20px;
+  padding-right: 16px;
   z-index: 2;
   cursor: pointer;
 }

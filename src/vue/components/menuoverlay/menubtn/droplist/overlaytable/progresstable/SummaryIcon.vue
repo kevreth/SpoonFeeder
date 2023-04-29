@@ -7,6 +7,9 @@
 </template>
 
 <style>
+.q-icon.summary{
+  font-size: 1em;
+}
 .summary:hover {
   color: #999;
   cursor: pointer;
