@@ -24,12 +24,12 @@
       :default-expand-all="(default_expand_all = true)"
     >
       <template v-slot:body="props">
-        <td id="firstCell" class="text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
+        <td class="nameWrap text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
           <div
+            class="nameContainer"
             v-bind:style="props.setPadding(props.item)"
             :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
             <q-btn
-              id="expandIcon"
               class="expandIcon"
               @click="props.toggle(props.item)"
               v-if="props.iconName(props.item)!='done'"
@@ -37,17 +37,17 @@
               flat
               dense>
             </q-btn>
-            <span id="name" class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
+            <span class="name q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
 
-            <img id="award" v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../../../../../../../courses/test/award.svg" width="20"/>
+            <img class="award-icon" v-if="props.item.pctCorrect === 100+'%'" name="award" src="../../../../../../../courses/test/award.svg" width="20"/>
           </div>
         </td>
-        <td id="score" class="text-right">{{props.item.score}}</td>
-        <td id="complete" class="text-right complete">{{props.item.complete}}</td>
-        <td id="pctCorrect" class="text-right pctScore">{{props.item.pctCorrect}}</td>
-        <td id="count" class="text-right">{{props.item.count}}</td>
-        <td id="pctComplete" class="text-right pctComplete">{{props.item.pctComplete}}</td>
-        <td id="summary" class="text-left">
+        <td class="score text-right">{{props.item.score}}</td>
+        <td class="complete text-right complete">{{props.item.complete}}</td>
+        <td class="pctCorrect text-right pctScore">{{props.item.pctCorrect}}</td>
+        <td class="count text-right">{{props.item.count}}</td>
+        <td class="pctComplete text-right pctComplete">{{props.item.pctComplete}}</td>
+        <td class="summary text-left">
           <a v-bind:href="props.item.summary">
             <SummaryIcon
               id="summaryIcon"
