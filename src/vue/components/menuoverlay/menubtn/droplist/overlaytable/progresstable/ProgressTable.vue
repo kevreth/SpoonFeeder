@@ -24,29 +24,29 @@
       :default-expand-all="(default_expand_all = true)"
     >
       <template v-slot:body="props">
-        <td id="firstCell" class="text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
+        <td :id="'firstCell-' + uniqueId()" class="text-left" style="white-space: normal; word-wrap: break-word;" data-th="Name">
           <div
             v-bind:style="props.setPadding(props.item)"
             :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
             <q-btn
-              id="expandIcon"
+              :id="'expandIcon-' + uniqueId()"
               @click="props.toggle(props.item)"
               v-if="props.iconName(props.item)!='done'"
               :icon="props.iconName(props.item)"
               flat
               dense>
             </q-btn>
-            <span id="name" class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
+            <span :id="'name-' + uniqueId()" class="q-ml-sm title-vertical" :class="myClass(props.item.pctCorrect, props.item.pctComplete)">{{props.item.name}}</span>
 
-            <img id="award" v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../../../../../../../courses/test/award.svg" width="20"/>
+            <img :id="'award-' + uniqueId()" v-if="props.item.pctCorrect === 100+'%'" name="award" class="award-icon" src="../../../../../../../courses/test/award.svg" width="20"/>
           </div>
         </td>
-        <td id="score" class="text-right">{{props.item.score}}</td>
-        <td id="complete" class="text-right complete">{{props.item.complete}}</td>
-        <td id="pctCorrect" class="text-right pctScore">{{props.item.pctCorrect}}</td>
-        <td id="count" class="text-right">{{props.item.count}}</td>
-        <td id="pctComplete" class="text-right pctComplete">{{props.item.pctComplete}}</td>
-        <td id="summary" class="text-left">
+        <td :id="'score-' + uniqueId()" class="text-right">{{props.item.score}}</td>
+        <td :id="'complete-' + uniqueId()" class="text-right complete">{{props.item.complete}}</td>
+        <td :id="'pctCorrect-' + uniqueId()" class="text-right pctScore">{{props.item.pctCorrect}}</td>
+        <td :id="'count-' + uniqueId()" class="text-right">{{props.item.count}}</td>
+        <td :id="'pctComplete-' + uniqueId()" class="text-right pctComplete">{{props.item.pctComplete}}</td>
+        <td :id="'summary-' + uniqueId()" class="text-left">
           <a v-bind:href="props.item.summary">
             <SummaryIcon
               id="summaryIcon"
@@ -72,6 +72,7 @@ import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
+import { v4 as uuidv4 } from 'uuid';
 
 defineProps({
   isEnable: {
@@ -79,7 +80,11 @@ defineProps({
     default: true
   }
 })
-
+// create unique IDs for elements
+function uniqueId(): string {
+  // return uuidv4();
+  return Math.random().toString(36).substring(2,8);
+}
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);
 
