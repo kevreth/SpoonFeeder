@@ -30,6 +30,7 @@
             :class="props.iconName(props.item)!='done'?'q-pl-lg':''">
             <q-btn
               id="expandIcon"
+              class="expandIcon"
               @click="props.toggle(props.item)"
               v-if="props.iconName(props.item)!='done'"
               :icon="props.iconName(props.item)"
@@ -163,6 +164,9 @@ function myClass (pctCorrect: string, pctComplete: string) {
 </script>
 
 <style>
+button.expandIcon {
+  margin: 0;
+}
 /* make the header sticky */
 .progressTable .q-table  {
   line-height: 4vw;
