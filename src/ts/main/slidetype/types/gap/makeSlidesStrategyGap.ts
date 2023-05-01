@@ -131,6 +131,14 @@ function setfills(ctr: number, currentFills: string, doc: Document): void {
     const number = (e.target as HTMLElement).dataset.number as string;
     const text = (e.target as HTMLElement).dataset.text as string;
     (e.dataTransfer as DataTransfer).setData('number', number);
+    // (e.dataTransfer as DataTransfer).setData('text', text);
+
+    if (e.target  !== document.body || (e.target as HTMLElement).tagName !== 'HTML') {
+      // Prevent the drop from occurring outside the body
+      (e.dataTransfer as DataTransfer).dropEffect = 'none';
+      (e.dataTransfer as DataTransfer).setData('text', '');
+    }
+    
     (e.dataTransfer as DataTransfer).setData('text', text);
   };
 }
