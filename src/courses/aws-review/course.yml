@@ -1887,7 +1887,7 @@ units:
         - Capacity upfront
         - Mainly upfront
         - Enterprise upfront
-        numans: 2 |\n
+        numans: 2
         exp: |
           * Amazon EC2 Reserved Instances (RI) provide a significant discount (up to 75%) compared to On-Demand pricing and provide a capacity reservation when used in a specific Availability Zone
           * Payment options include All Upfront, Partial Upfront, and No Upfront
