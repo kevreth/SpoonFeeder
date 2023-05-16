@@ -8,6 +8,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      width: 100vw;
       margin: 0;
       background-color: #1a2229;
       font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -15,14 +16,19 @@
       color: #fff;
       text-align: center;
     }
-    
+
     table {
       border-collapse: collapse;
-      width: 85%;
-      /* background-color: #1a2229; */
-      /* border-collapse: separate; */
-      /* border-spacing: 5px 0; */
+      width: 50vw;
     }
+    /* @media screen and (min-width: 1000px) {
+      table .right-column{
+        min-width: 20vw;
+      }
+      table .left-column {
+        min-width: 250vw;
+      }
+    } */
     
     th, .row3-right-column {
       font-weight: 100;
@@ -34,84 +40,59 @@
     td {
       padding: 2px;
     }
-    
-    /* left column */
-    .left-column {
-      width: 80%;
-      /* background-color: #3a20a0; */
-      /* padding: 2px; */
-    }
-    .inner-left-column {
-      width: 100%;
-    }
-    .inner-left-column tr {
-      /* display: block; */
-      /* margin-bottom: 2px; */
-    }
-    
-    .large-padding {
-      padding: 50px 20px;
-    }
-    .dark-purple {
-      width: 100%;
-      background-color: #3a20a0;
-    }
-    .light-purple {
-      background-color: #7a60df;
-    }
-    .light-purple td {
-      /* padding: 0 1px; */
-      /* margin: 1px; */
-    }
-    .row3-right-column {
-      background-color: #333333;
-    }
-    .inner-left-column .row4{
-      background-color: #333333;
-      /* width: 100%; */
-    }
+
     .container {
       display: flex;
     }
+
     .left-column,
-  .right-column {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
+    .right-column {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
     /* right column */
     .right-column {
       width: 20%;
       height: 100%;
-      /* background-color: #333333; */
       display: block;
     }
     .inner-right-column {
       width: 100%;
-      /* height: 100%; */
-    }
-    .inner-right-column tr:first-child {
-      /* justify-content: center; */
-      background-color: #333333;
     }
     .inner-right-column tr:nth-child(n+2) {
       background-color: #646464;
-      padding: 33px 0;
+      padding: 31px 0;
     }
     .inner-right-column tr {
       display: grid;
       margin-bottom: 2px;
     }
-    
-    .row1 .inner-left-column {
-      display: flex;
-      justify-content: space-between;
+
+    /* left column */
+    .left-column {
+      width: 80%;
+    }
+    .inner-left-column {
+      width: 100%;
+      border-bottom: 5px solid #1a2229;
     }
 
-    .row1 .column {
-      padding: 50px 10px;
-      flex: 1;
+    .large-padding {
+      padding: 50px 20px;
     }
+
+    .dark-purple {
+      width: 100%;
+      background-color: #3a20a0;
+      border-left: 4px solid #1a2229;
+    }
+
+    .light-purple {
+      background-color: #7a60df;
+    }
+
     .row-column {
       padding: 15px;
       border: 2px solid #3a20a0;
@@ -119,8 +100,35 @@
     .row-column td {
       width: 25%;
     }
+
+    .row1 .column {
+      padding: 50px 10px;
+      flex: 1;
+    }
+    .row1 .inner-left-column {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .row2 {
       width: 100%;
+    }
+
+    .row3 .inner-left-column {
+      border: none;
+    }
+    .row3-right-column,
+    .inner-left-column .row4,
+    .inner-right-column tr:first-child
+    {
+      background-color: #333333;
+    }
+    .row3-right-column {
+      border-left: 5px solid #1a2229;
+    }
+
+    .row3, .row4 {
+      border-top: 5px solid #1a2229;
     }
   </style>
 </head>
@@ -131,8 +139,8 @@
         <table class="inner-left-column">
           <!-- row1 -->
           <tr class="row1-headers">
-            <th class="dark-purple" colspan="2">Web UI</th>
-            <th class="dark-purple" colspan="6">Services</th>
+            <th class="dark-purple" colspan="4">Web UI</th>
+            <th class="dark-purple" colspan="4">Services</th>
           </tr>
           <tr class="row1">
             <td class="dark-purple" colspan="4">
@@ -151,9 +159,6 @@
               </div>
             </td>
           </tr>
-          
-
-
           <!-- row2 -->
           <tr class="row2">
             <th colspan="8" class="dark-purple">Middleware</th>
@@ -186,7 +191,6 @@
             </td>
             <td class="row3-right-column">Worker Services</td>
           </tr>
-         
           <!-- row4 -->
           <tr class="row4">
             <th colspan="8">Hosting</th>
