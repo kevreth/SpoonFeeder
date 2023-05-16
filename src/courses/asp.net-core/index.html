@@ -102,7 +102,7 @@
       display: grid;
       margin-bottom: 2px;
     }
-
+    
     .row1 .inner-left-column {
       display: flex;
       justify-content: space-between;
@@ -119,13 +119,15 @@
     .row-column td {
       width: 25%;
     }
-
+    .row2 {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
   <table>
     <tr class="container">
-      <td class="left-column">
+      <td>
         <table class="inner-left-column">
           <!-- row1 -->
           <tr class="row1-headers">
@@ -156,13 +158,13 @@
           <tr class="row2">
             <th colspan="8" class="dark-purple">Middleware</th>
           </tr>
-          <tr class="light-purple">
+          <tr class="light-purple row2">
             <td class="row-column" colspan="1">Routing</td>
             <td class="row-column" colspan="2">Security</td>
             <td class="row-column" colspan="2">Localization</td>
             <td class="row-column" colspan="2">Caching</td>
           </tr>
-          <tr class="light-purple">
+          <tr class="light-purple row2">
             <td class="row-column" colspan="1">Compression</td>
             <td class="row-column" colspan="2">Session</td>
             <td class="row-column" colspan="2">Health Checks</td>
@@ -191,7 +193,7 @@
           </tr>
         </table>
       </td>
-      <td class="right-column">
+      <td>
         <table class="inner-right-column">
           <tr>
             <th>Extensions</th>
