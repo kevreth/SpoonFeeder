@@ -73,6 +73,7 @@ import SummaryIcon from './SummaryIcon.vue'
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
+import { useI18n } from 'vue-i18n';
 
 defineProps({
   isEnable: {
@@ -83,46 +84,46 @@ defineProps({
 
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);
-
+const { t } = useI18n()
 const _columns = [
     {
       name: 'name',
-      label: 'Name',
+      label: t('tableColumns.name'),
       align: 'left',
       field: 'name',
       sortable: false,
     },
     {
       name: 'score',
-      label: 'COR',
+      label: t('tableColumns.score'),
       sortable: false,
       field: 'score',
       align: 'right',
     },
     {
       name: 'complete',
-      label: 'COM',
+      label: t('tableColumns.complete'),
       sortable: false,
       field: 'complete',
       align: 'right',
     },
     {
       name: 'pctCorrect',
-      label: 'SCO',
+      label: t('tableColumns.pctCorrect'),
       sortable: false,
       field: 'pctCorrect',
       align: 'right',
     },
     {
       name: 'count',
-      label: 'TOT',
+      label: t('tableColumns.count'),
       sortable: false,
       field: 'count',
       align: 'right',
     },
     {
       name: 'pctComplete',
-      label: 'CPL',
+      label: t('tableColumns.pctComplete'),
       sortable: false,
       field: 'pctComplete',
       align: 'right',
@@ -215,3 +216,7 @@ button.expandIcon {
   left: 5px;
 }
 </style>
+
+function $t(arg0: string) {
+  throw new Error('Function not implemented.');
+}
