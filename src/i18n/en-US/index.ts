@@ -4,4 +4,10 @@
 export default {
   failed: 'Action failed',
   success: 'Action was successful',
+  droplist: {
+    progress: 'Progress',
+    courses: 'Courses',
+    settings: 'Settings',
+    help: 'Help'
+  }
 };

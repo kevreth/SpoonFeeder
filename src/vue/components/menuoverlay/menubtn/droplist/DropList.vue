@@ -7,16 +7,16 @@
   >
     <q-list style="min-width: 30px" class="dropList bg-secondary" @click="droplist = false">
       <q-item clickable>
-        <q-item-section @click="overlay = true" @keydown.esc="overlay = false">Progress</q-item-section>
+        <q-item-section @click="overlay = true" @keydown.esc="overlay = false">{{ $t('droplist.progress')}}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section @click="courseList = true">Courses</q-item-section>
+        <q-item-section @click="courseList = true">{{ $t('droplist.courses')}}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section>Settings</q-item-section>
+        <q-item-section>{{ $t('droplist.settings')}}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section>Help</q-item-section>
+        <q-item-section>{{ $t('droplist.help')}}</q-item-section>
       </q-item>
     </q-list>
   </q-menu>
