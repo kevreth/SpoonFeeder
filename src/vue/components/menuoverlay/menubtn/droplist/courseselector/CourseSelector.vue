@@ -31,7 +31,8 @@
                 class="courseItemSection"
                 :id="createValidHtmlId(course)"
               >
-                {{ course.toUpperCase() }}
+                <!-- {{ course.toUpperCase() }} -->
+                {{ $t('courseSelector.course', {course: course.toUpperCase()}) }}
               </q-item-section>
             </q-item>
           </div>

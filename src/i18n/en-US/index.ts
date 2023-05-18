@@ -9,5 +9,8 @@ export default {
     courses: 'Courses',
     settings: 'Settings',
     help: 'Help'
+  },
+  courseSelector: {
+    course: '{course}'
   }
 };
