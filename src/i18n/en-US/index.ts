@@ -12,5 +12,20 @@ export default {
   },
   courseSelector: {
     course: '{course}'
+  },
+  // progressTable: {
+  //   score: '{score}',
+  //   complete: '{complete}',
+  //   pctCorrect: '{pctCorrect}',
+  //   count: '{count}',
+  //   pctComplete: '{pctComplete}',
+  // }
+  tableColumns: {
+    name: 'Name',
+    score: 'COR',
+    complete: 'COM',
+    pctCorrect: 'SCO',
+    count: 'TOT',
+    pctComplete: 'CPL',
   }
 };
