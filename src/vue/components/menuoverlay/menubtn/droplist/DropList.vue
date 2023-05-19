@@ -1,5 +1,6 @@
 <template>
   <q-menu
+    fit
     id="droplist"
     class="text-white dropMenu"
     style="background: transparent;"
@@ -13,7 +14,7 @@
         <q-item-section @click="courseList = true">{{ $t('droplist.courses')}}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section>{{ $t('droplist.settings')}}</q-item-section>
+        <q-item-section @click="settingOverlay = true">{{ $t('droplist.settings')}}</q-item-section>
       </q-item>
       <q-item clickable>
         <q-item-section>{{ $t('droplist.help')}}</q-item-section>
@@ -24,12 +25,14 @@
   <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
   <CourseSelector :isEnable="isEnable" v-model="courseList"
   @closeInfo="courseList = false"></CourseSelector>
+  <SettingsOverlay v-model="settingOverlay" @closeInfo="settingOverlay=false"></SettingsOverlay>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
+import SettingsOverlay from './settings/SettingsOverlay.vue';
 
 // setting transition disable
 const isEnable = ref(false);
@@ -38,6 +41,7 @@ const isEnable = ref(false);
 const droplist = ref(false);
 const overlay = ref(false);
 const courseList = ref(false);
+const settingOverlay = ref(false);
 
 // handle overlay pages
 function handleOverlay() {
