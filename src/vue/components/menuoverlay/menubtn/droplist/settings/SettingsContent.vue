@@ -1,11 +1,11 @@
 <template>
-<div class="setting fixed-center bg-secondary">
-  <h6>Settings</h6>
-  <q-separator horizontal inset class="q-mx-lg bg-white"/>
-  <div>
-    <SwitchLang></SwitchLang>
+  <div class="setting fixed-center bg-secondary">
+    <h6>Settings</h6>
+    <q-separator horizontal inset class="q-mx-lg bg-white"/>
+    <div>
+      <SwitchLang></SwitchLang>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup lang="ts">

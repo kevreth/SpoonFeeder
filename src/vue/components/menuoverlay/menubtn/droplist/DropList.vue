@@ -22,10 +22,10 @@
     </q-list>
   </q-menu>
 
-  <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"></OverlayTable>
+  <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"/>
   <CourseSelector :isEnable="isEnable" v-model="courseList"
-  @closeInfo="courseList = false"></CourseSelector>
-  <SettingsOverlay v-model="settingOverlay" @closeInfo="settingOverlay=false"></SettingsOverlay>
+  @closeInfo="courseList = false"/>
+  <SettingsOverlay v-model="settingOverlay" @closeInfo="settingOverlay=false"/>
 </template>
 
 <script setup lang="ts">
