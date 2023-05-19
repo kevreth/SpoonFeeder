@@ -1,5 +1,5 @@
 <template>
-  <q-overlay v-model="langOptions" :z-index="7000" @click.stop="">
+  <q-overlay :z-index="7000" @click.stop="">
     <template #body>
       <div class="langOptions fixed-center bg-primary">
         <q-list style="min-width: 100px">
@@ -14,14 +14,24 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n'
 import ExitBtn from '../../../../../common/ExitBtn.vue';
 
-const { locale } = useI18n({ useScope: 'global' });
+// const { locale } = useI18n({ useScope: 'global' });
+const i18n = useI18n()
+const locale = ref(i18n.locale.value)
+
 const languages = [
   { value: 'en-US', label: 'English' },
   { value: 'zh-CN', label: '中文' }
 ];
+
+watch(locale, (newLocale: string) => {
+  localStorage.setItem('locale', newLocale)
+  i18n.locale.value = newLocale
+})
+
 </script>
 
 <style>

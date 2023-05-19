@@ -2,7 +2,7 @@
   <q-overlay class="settingOverlay" v-model="settingOverlay" :z-index="5000" @click.stop="">
     <template #body>
       <div class="settings fixed-center bg-secondary">
-        <h7>Settings</h7>
+        <div>Settings</div>
         <q-separator horizontal class="q-mx-sm bg-white"/>
         <div class="row q-pl-md">
           <p class="q-pt-md">Language</p>
@@ -42,13 +42,6 @@ function closeInfo() {
   margin: 0;
   font-size: 2vw;
 }
-.setting h7 {
-  padding: 0px;
-  /* margin: 8px; */
-  letter-spacing: 1px;
-  /* font-size: 2vw; */
-}
-
 </style>
 
 

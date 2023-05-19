@@ -20,10 +20,12 @@ declare module 'vue-i18n' {
   export interface DefineNumberFormat {}
 }
 /* eslint-enable @typescript-eslint/no-empty-interface */
+let lang = localStorage.getItem('locale')
+lang = lang || 'en-US'
 
 export default boot(({ app }) => {
   const i18n = createI18n({
-    locale: 'en-US',
+    locale: lang,
     legacy: false,
     messages,
   });
