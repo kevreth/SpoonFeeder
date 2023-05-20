@@ -5,13 +5,13 @@
     <q-overlay class="infoOverlay column" :class="{'transition': isEnable}">
       <template #body>
         <div class="iconContainer fixed-center bg-primary" @keydown.esc="closeInfo" tabindex="0">
-          <h5>Navigations:</h5>
+          <h5>{{ $t('infoTable.title') }}:</h5>
           <p class="iconContent">
-            COR: number correct <br>
-            COM: number completed <br>
-            TOT: number available <br>
-            SCO: score; COR/COM * 100% <br>
-            CPL: completion: COM/TOT * 100%
+            {{ $t('infoTable.cor') }} <br>
+            {{ $t('infoTable.com') }} <br>
+            {{ $t('infoTable.tot') }} <br>
+            {{ $t('infoTable.sco') }} <br>
+            {{ $t('infoTable.cpl') }}
           </p>
 
           <ExitBtn class="exitInfo" @click="closeInfo" color="secondary" />

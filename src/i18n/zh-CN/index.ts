@@ -27,5 +27,13 @@ export default {
   },
   exitBtn: {
     exit: '推出'
+  },
+  infoTable: {
+    title: '导航',
+    cor: '总正确',
+    com: '总完成',
+    tot: '可用数量',
+    sco: '正确率; 总正确/总完成 * 100%',
+    cpl: '完成率: 总完成/可用数 * 100%'
   }
 };

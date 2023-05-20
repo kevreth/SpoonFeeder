@@ -27,5 +27,13 @@ export default {
   },
   exitBtn: {
     exit: 'Exit'
+  },
+  infoTable: {
+    title: 'Navigations',
+    cor: 'COR: number correct',
+    com: 'COM: number completed',
+    tot: 'TOT: number available',
+    sco: 'SCO: score; COR/COM * 100%',
+    cpl: 'CPL: completion: COM/TOT * 100%'
   }
 };
