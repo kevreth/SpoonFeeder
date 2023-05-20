@@ -20,5 +20,12 @@ export default {
     pctCorrect: '正确率', //SCO
     count: '可用数', //TOT
     pctComplete: '完成率', //CPL
+  },
+  settingsContent: {
+    title: '设置',
+    language: '语言',
+  },
+  exitBtn: {
+    exit: '推出'
   }
 };

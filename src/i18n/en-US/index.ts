@@ -20,5 +20,12 @@ export default {
     pctCorrect: 'SCO',
     count: 'TOT',
     pctComplete: 'CPL',
+  },
+  settingsContent: {
+    title: 'Settings',
+    language: 'Language',
+  },
+  exitBtn: {
+    exit: 'Exit'
   }
 };

@@ -2,11 +2,11 @@
   <q-overlay class="settingOverlay" v-model="settingOverlay" :z-index="5000" @click.stop="">
     <template #body>
       <div class="settings fixed-center bg-secondary">
-        <div>Settings</div>
+        <div class="q-pa-sm">{{ $t('settingsContent.title')}}</div>
         <q-separator horizontal class="q-mx-sm bg-white"/>
         <div class="row q-pl-md">
-          <p class="q-pt-md">Language</p>
-          <SwitchLang></SwitchLang>
+          <div class="q-pt-lg q-pr-xl">{{ $t('settingsContent.language')}}</div>
+          <SwitchLang class="q-ma-sm"></SwitchLang>
         </div>
         <ExitBtn style="z-index: -1000;" @click="closeInfo"/>
       </div>
@@ -31,16 +31,14 @@ function closeInfo() {
 
 <style>
 .q-btn .settingOverlay {
-  line-height: 1em !important;
+  line-height: 1rem !important;
   font-weight: 900;
 }
 .settings {
   border-radius: 20px;
-  /* width: 50%; */
-  /* padding: 0 10px 0 20px; */
   padding: 0;
   margin: 0;
-  font-size: 2vw;
+  font-size: 1rem;
 }
 </style>
 
