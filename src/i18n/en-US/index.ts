@@ -11,6 +11,7 @@ export default {
     help: 'Help'
   },
   courseSelector: {
+    title: 'Course',
     course: '{course}'
   },
   tableColumns: {
@@ -35,5 +36,19 @@ export default {
     tot: 'TOT: number available',
     sco: 'SCO: score; COR/COM * 100%',
     cpl: 'CPL: completion: COM/TOT * 100%'
+  },
+  sumNavi: {
+    sco: 'SCO',
+    cpl: 'CPL',
+    crs: 'CRS:',
+    unt: 'UNT:',
+    les: 'LES:',
+    mod: 'MOD:'
+  },
+  switchCourse: {
+    switch: 'switch'
+  },
+  savedCourse: {
+    saved: 'Saved: '
   }
 };

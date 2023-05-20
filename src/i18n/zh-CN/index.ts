@@ -11,6 +11,7 @@ export default {
     help: '帮助'
   },
   courseSelector: {
+    title: '课程',
     course: '{course}'
   },
   tableColumns: {
@@ -21,13 +22,6 @@ export default {
     count: '可用数', //TOT
     pctComplete: '完成率', //CPL
   },
-  settingsContent: {
-    title: '设置',
-    language: '语言',
-  },
-  exitBtn: {
-    exit: '推出'
-  },
   infoTable: {
     title: '导航',
     cor: '总正确',
@@ -35,5 +29,26 @@ export default {
     tot: '可用数量',
     sco: '正确率; 总正确/总完成 * 100%',
     cpl: '完成率: 总完成/可用数 * 100%'
+  },
+  sumNavi: {
+    sco: '正确率',
+    cpl: '完成率',
+    crs: '课程',
+    unt: '单位',
+    les: '课',
+    mod: '模块'
+  },
+  settingsContent: {
+    title: '设置',
+    language: '语言',
+  },
+  exitBtn: {
+    exit: '推出'
+  },
+  switchCourse: {
+    switch: '切换'
+  },
+  savedCourse: {
+    saved: '已保存: '
   }
 };

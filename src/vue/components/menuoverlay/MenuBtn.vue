@@ -27,8 +27,8 @@ import DropList from './menubtn/droplist/DropList.vue';
   margin-top: 5px;
 } */
 @media screen and (min-width: 1200px) {
-  .menuBtn {
-    font-size: 3vw;
+  .q-btn.menuBtn {
+    font-size: 4vw;
   }
 }
 </style>
