@@ -3,12 +3,21 @@
     flat
     dense
     :icon="volume ? 'volume_off' : 'volume_up'"
-    class="volumeMute q-ml-sm q-pt-md"
+    class="volumeMute q-ml-sm q-mt-lg"
     @click="toggleVolume"
+  />
+  <q-slider
+    v-model="volumeControl"
+    :min="0"
+    :max="10"
+    label
+    color="white"
+    class="q-ml-sm q-mt-lg"
   />
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { MUTE } from '../../../ts/main/dataaccess/mediator';
 import { AudioPlayer } from '../../mediator';
 
@@ -18,6 +27,7 @@ const props = defineProps({
     default: false
   }
 });
+const volumeControl = ref(6)
 const emit = defineEmits(['toggle-volume'])
 function toggleVolume() {
   emit('toggle-volume');
@@ -36,11 +46,16 @@ function soundControl() {
 </script>
 
 <style>
+.q-slider__track {
+  width: 10vw;
+}
+.q-slider__inner {
+  background-color: gray;
+}
 .volumeMute {
   height: 20px;
   z-index: 1;
   padding: 2px;
-  top: 25px;
   font-size: 2vw;
 }
 @media screen and (min-width: 1200px) {
