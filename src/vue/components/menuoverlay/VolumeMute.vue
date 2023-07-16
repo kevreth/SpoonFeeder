@@ -7,7 +7,7 @@
     @click="toggleVolume"
   />
   <q-slider
-    v-model="volumeControl"
+    v-model="sliderValue"
     :min="0"
     :max="10"
     label
@@ -27,7 +27,7 @@ const props = defineProps({
     default: false
   }
 });
-const volumeControl = ref(6)
+const sliderValue = ref(6)
 const emit = defineEmits(['toggle-volume'])
 function toggleVolume() {
   emit('toggle-volume');

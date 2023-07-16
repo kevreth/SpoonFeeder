@@ -10,7 +10,6 @@
 
   <SumNavigation/>
   <VolumeMute
-  id="volume"
   :volume="isMuted"
   @toggle-volume="toggleVolume"/>
 </template>
