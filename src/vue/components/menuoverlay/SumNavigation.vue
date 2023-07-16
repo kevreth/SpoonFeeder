@@ -5,29 +5,29 @@
         <tr>
           <th></th>
           <th>#</th>
-          <th>SCO</th>
-          <th>CPL</th>
+          <th>{{ $t('sumNavi.sco') }}</th>
+          <th>{{ $t('sumNavi.cpl') }}</th>
         </tr>
         <tr>
-          <td>CRS:</td>
+          <td>{{ $t('sumNavi.crs') }}</td>
           <td>15</td>
           <td>12%</td>
           <td>89%</td>
         </tr>
         <tr>
-          <td>UNT:</td>
+          <td>{{ $t('sumNavi.unt') }}</td>
           <td>3</td>
           <td>45%</td>
           <td>67%</td>
         </tr>
         <tr>
-          <td>LES:</td>
+          <td>{{ $t('sumNavi.les') }}</td>
           <td>4</td>
           <td>35%</td>
           <td>85%</td>
         </tr>
         <tr>
-          <td>MOD:</td>
+          <td>{{ $t('sumNavi.mod') }}</td>
           <td>3</td>
           <td>58%</td>
           <td>95%</td>
