@@ -17,6 +17,7 @@
   .explainIcon {
     font-size: 1.5vw;
     right: 10vw;
+    /* top: 50px; */
   }
 }
 .explainIcon:hover {

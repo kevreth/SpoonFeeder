@@ -1,7 +1,7 @@
 <template>
   <div>
     <q-icon name="check" class="q-mr-sm" color="green" size="sm" />
-    <span>Saved: {{ savedCourse }}</span>
+    <span>{{ $t('savedCourse.saved') }} {{ savedCourse }}</span>
   </div>
 </template>
 

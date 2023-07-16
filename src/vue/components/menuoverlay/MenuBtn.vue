@@ -14,7 +14,7 @@ import DropList from './menubtn/droplist/DropList.vue';
 </script>
 
 <style>
-.menuBtn {
+.q-btn.menuBtn {
   position: fixed;
   right: 0;
   margin-right: 1.6vw;
@@ -27,8 +27,8 @@ import DropList from './menubtn/droplist/DropList.vue';
   margin-top: 5px;
 } */
 @media screen and (min-width: 1200px) {
-  .menuBtn {
-    font-size: 3vw;
+  .q-btn.menuBtn {
+    font-size: 4vw;
   }
 }
 </style>
