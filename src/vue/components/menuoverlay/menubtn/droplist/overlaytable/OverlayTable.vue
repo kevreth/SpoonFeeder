@@ -1,20 +1,20 @@
 <template>
   <transition appear group :name="isEnable ? 'transitions-zoom' : ''">
-  <q-overlay id="overlay" @click.stop="" :class="{'transition': isEnable}">
-    <template #body>
-      <div id="overlayTable" class="overlayTable fixed-center column" style="display: flex; flex-direction: column;">
-        <div class="overlayBtn">
-          <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
-          <TrashBtn id="startOver" @click="startOver" />
-        </div>
+    <q-overlay id="overlay" @click.stop="" :class="{'transition': isEnable}">
+      <template #body>
+        <div id="overlayTable" class="overlayTable fixed-center column" style="display: flex; flex-direction: column;">
+          <div class="overlayBtn">
+            <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
+            <TrashBtn id="startOver" @click="startOver" />
+          </div>
 
-        <div id="progressBackground" class="progressBackground" style="flex-grow: 1;">
-          <ProgressTable style="cursor: auto" />
+          <div id="progressBackground" class="progressBackground" style="flex-grow: 1;">
+            <ProgressTable style="cursor: auto" />
+          </div>
         </div>
-      </div>
-    </template>
-  </q-overlay>
-</transition>
+      </template>
+    </q-overlay>
+  </transition>
 </template>
 
 <script setup lang="ts">

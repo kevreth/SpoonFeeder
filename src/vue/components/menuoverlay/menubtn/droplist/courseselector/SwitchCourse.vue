@@ -2,7 +2,7 @@
   <q-btn
     id="btn_switch"
     class="switchBtn q-mb-sm q-mr-sm q-ml-xs bg-primary"
-    label="switch"
+    :label="$t('switchCourse.switch')"
     @click="switchCourse()"
   />
 </template>

@@ -15,7 +15,7 @@
             class="titleCourse"
             id="titleCourse"
           >
-            <q-item-label header class="headerCourse">Course</q-item-label>
+            <q-item-label header class="headerCourse q-pa-lg">{{ $t('courseSelector.title') }}</q-item-label>
           </q-item>
           <div class="scrollable-course" id="courses">
             <q-item
@@ -145,6 +145,7 @@ function closeInfo() {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
 }
 .q-btn .courseItem, .q-item.courseItem {
   min-height: 3.5vw;
