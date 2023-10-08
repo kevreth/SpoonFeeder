@@ -8,7 +8,9 @@ export interface ISummaryLine {
   pctComplete: string;
   children?: Array<ISummaryLine>;
   add(child: ISummaryLine): void;
-  calculate: (percentCorrect2: (correctCtr: number, responseCtr: number) => string) => void;
+  calculate: (
+    percentCorrect2: (correctCtr: number, responseCtr: number) => string
+  ) => void;
 }
 export class SummaryLine implements ISummaryLine {
   name = '';

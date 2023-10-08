@@ -6,7 +6,7 @@ export {
   SaveData,
   TRANSITION,
   clearCourseListing,
-  getYaml2
+  getYaml2,
 } from '../dataaccess/mediator';
 export { shuffle } from '../mediator';
 export { INFO, initSlide, percentCorrect, showSlides } from '../quiz/mediator';
@@ -22,4 +22,3 @@ export { Score } from './score/score';
 export { ScoreProcessor } from './score/scoreProcessor';
 export { SummaryLine } from './score/summaryLine';
 export type { ISummaryLine } from './score/summaryLine';
-

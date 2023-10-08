@@ -4,9 +4,11 @@ import {
   Division,
   DivisionProcessor,
   initSlide,
-  ISummaryLine, percentCorrect, SaveData,
+  ISummaryLine,
+  percentCorrect,
+  SaveData,
   Score,
-  SummaryLine
+  SummaryLine,
 } from '../mediator';
 export class ScoreProcessor
   implements DivisionProcessor<ISummaryLine, ISummaryLine, ISummaryLine>
@@ -59,7 +61,12 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): ISummaryLine {
-    const exerciseLine = Score.exercise(slide, this.getResults, initSlide, ScoreProcessor.createLine);
+    const exerciseLine = Score.exercise(
+      slide,
+      this.getResults,
+      initSlide,
+      ScoreProcessor.createLine
+    );
     parent.add(exerciseLine);
     return parent;
   }
