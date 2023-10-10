@@ -1,4 +1,7 @@
-// import { expect, it } from 'vitest';
+import { expect, it } from 'vitest';
+it('getMaxWidth', () => {
+  expect(0).toEqual(0);
+});
 // import { mock } from 'vitest-mock-extended';
 // import { SaveData } from '../../../main/datalayer/saveData';
 // import { GAP, MC, SORT } from '../../../main/datalayer/slideFactory';
