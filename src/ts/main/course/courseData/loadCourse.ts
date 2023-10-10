@@ -7,12 +7,11 @@ import {
   showSlides,
 } from '../mediator';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
-const { processJson } = ProcessJson;
 const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';
 export function loadCourse(yamlFilename: string, doc: Document) {
   const load = (course: Course) => {
     CourseFile.set(course);
-    const slides = processJson(course);
+    const slides = ProcessJson.processJson(course);
     Json.set(slides);
     showSlides(doc);
   };
