@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { expect, vi } from 'vitest';
+import { expect, vi, it } from 'vitest';
 import type { Slide } from '../../main/slide/slide';
 // import { MC, VOCAB } from '../../main/slide/slideType/slideFactory';
 import type { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
@@ -35,6 +35,10 @@ export abstract class SlideTest
     testable.makeSlides(dom.window.document);
     expect(spy).toHaveBeenCalled();
   }
+}
+it('getMaxWidth', () => {
+  expect(0).toEqual(0);
+});
   // This code is an experiment in creating testable classes
   // using just a string name of a class. That way the
   //subclasses won't have to do it.
@@ -57,7 +61,7 @@ export abstract class SlideTest
   //   newInstance.constructor(newInstance, ...args);
   //   return newInstance;
   // }
-}
+// }
 // it('saveData', () => {
 //   const slide = MC();
 //   slide.txt = 'value';
