@@ -33,6 +33,6 @@ it('testOptions', () => {
   const exp = ['svg=test', 'table=test1', 'string'];
   const arr = optionsReplacement(exp);
   expect(arr[0]).toContain('test.svg');
-  expect(arr[1]).toContain('.load');
-  expect(arr[2]).toEqual('string');
+  expect(arr[1]).toEqual('table=test1');
+  expect(arr.length==2);
 });

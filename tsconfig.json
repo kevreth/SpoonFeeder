@@ -4,7 +4,6 @@
   "compilerOptions": {
     "baseUrl": "src/ts",
     "sourceMap": false,
-    "watch": true,
     "strict": true
   }
 }

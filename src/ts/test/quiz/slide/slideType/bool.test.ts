@@ -3,12 +3,13 @@ import type { Slide } from '../../../../main/slide/slide';
 import { BOOL } from '../../../../main/slidetype/types/bool/factoryBool';
 import { Bool } from '../../../../main/slidetype/types/bool/slideTypeBool';
 import { SlideTest } from '../../slide.test';
+import { AnswerType } from 'app/main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'bool';
   public processJson(): void {
     const param = BOOL();
     param.txt = 'no';
-    param.ans = 'no';
+    param.ans = 'no' as AnswerType;
     param.isExercise = true;
     const testable = test.getTestable();
     testable.setProperties(param);

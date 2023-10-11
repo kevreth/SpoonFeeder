@@ -3,12 +3,13 @@ import type { Slide } from '../../../../main/slide/slide';
 import { IMAP } from '../../../../main/slidetype/types/imap/factoryImap';
 import { Imap } from '../../../../main/slidetype/types/imap/slideTypeImap';
 import { SlideTest } from '../../slide.test';
+import { AnswerType } from 'app/main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'imap';
   public processJson(): void {
     const param = IMAP();
     param.txt = 'no';
-    param.ans = 'no';
+    param.ans = 'no' as AnswerType;
     param.img = 'img';
     param.isExercise = true;
     const testable = test.getTestable() as Imap;

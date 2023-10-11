@@ -3,12 +3,13 @@ import type { Slide } from '../../../../main/slide/slide';
 import { MC } from '../../../../main/slidetype/types/mc/factoryMc';
 import { Mc } from '../../../../main/slidetype/types/mc/slideTypeMc';
 import { SlideTest } from '../../slide.test';
+import { AnswerType } from 'app/main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'mc';
   public processJson(): void {
     const param = MC();
     param.txt = 'yes';
-    param.ans = 'yes';
+    param.ans = 'yes' as AnswerType;
     param.o = ['yes', 'no'];
     param.isExercise = true;
     const testable = test.getTestable() as Mc;

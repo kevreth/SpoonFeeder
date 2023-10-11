@@ -3,12 +3,13 @@ import type { Slide } from '../../../../main/slide/slide';
 import { SORT } from '../../../../main/slidetype/types/sort/factorySort';
 import { Sort } from '../../../../main/slidetype/types/sort/slideTypeSort';
 import { SlideTest } from '../../slide.test';
+import { AnswerType } from 'app/main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'sort';
   public processJson(): void {
     const param = SORT();
     param.txt = 'no';
-    param.ans = ['no', 'yes'];
+    param.ans = ['no', 'yes'] as AnswerType;
     param.isExercise = true;
     const testable = test.getTestable() as Sort;
     testable.setProperties(param);

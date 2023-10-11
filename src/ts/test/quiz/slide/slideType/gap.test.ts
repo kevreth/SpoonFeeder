@@ -3,12 +3,13 @@ import type { Slide } from '../../../../main/slide/slide';
 import { GAP } from '../../../../main/slidetype/types/gap/factoryGap';
 import { Gap } from '../../../../main/slidetype/types/gap/slideTypeGap';
 import { SlideTest } from '../../slide.test';
+import { AnswerType } from 'app/main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'gap';
   public processJson(): void {
     const param = GAP();
     param.txt = 'no';
-    param.ans = ['no'];
+    param.ans = 'no' as AnswerType;
     param.isExercise = true;
     const testable = test.getTestable();
     testable.setProperties(param);

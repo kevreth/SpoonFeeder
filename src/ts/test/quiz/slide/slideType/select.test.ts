@@ -3,12 +3,13 @@ import type { Slide } from '../../../../main/slide/slide';
 import { SELECT } from '../../../../main/slidetype/types/select/factorySelect';
 import { Select } from '../../../../main/slidetype/types/select/slideTypeSelect';
 import { SlideTest } from '../../slide.test';
+import { AnswerType } from 'app/main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'select';
   public processJson(): void {
     const param = SELECT();
     param.txt = 'test this';
-    param.ans = [1];
+    param.ans = [1] as AnswerType;
     param.isExercise = true;
     const testable = test.getTestable() as Select;
     testable.setProperties(param);
