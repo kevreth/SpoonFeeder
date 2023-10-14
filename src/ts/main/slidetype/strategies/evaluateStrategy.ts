@@ -9,7 +9,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Another evaluation class, but evaluates an entire set of questions.
-import { AnswerType, Evaluation, makeRow } from '../mediator';
+import { Evaluation, makeRow } from '../mediator';
+import type { AnswerType } from '../mediator';
 // Only makeRow from Evaluation is required.
 type FunctionType = (
   response: AnswerType,

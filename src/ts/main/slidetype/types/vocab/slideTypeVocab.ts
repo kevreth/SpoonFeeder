@@ -1,8 +1,10 @@
 import { shuffle } from '../../../quiz/mediator';
 import {
-  AnswerType,
   RANDOM,
-  Slide,
+  Slide
+} from '../../../slide/mediator';
+import type {
+  AnswerType,
   SlideInterface,
 } from '../../../slide/mediator';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';

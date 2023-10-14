@@ -1,10 +1,6 @@
-import type { SlideInterface } from '../mediator';
+import type { AnswerType, Division, DivisionProcessor,ISummaryLine, SlideInterface } from '../mediator';
 import {
-  AnswerType,
-  Division,
-  DivisionProcessor,
   initSlide,
-  ISummaryLine,
   percentCorrect,
   SaveData,
   Score,

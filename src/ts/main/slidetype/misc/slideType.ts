@@ -1,5 +1,4 @@
-import type { AnswerType, SlideInterface } from '../mediator';
-import { AdocVisitorInterface } from '../mediator';
+import type { AnswerType, SlideInterface, AdocVisitorInterface } from '../mediator';
 export type MarkTypeGap = (corrArr: boolean[], doc: Document) => void;
 export type MarkTypeImap = (
   isCorrect: boolean,

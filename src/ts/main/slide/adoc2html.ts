@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import downdoc from 'downdoc';
 import Handlebars from 'handlebars';
 import { COURSE_NAME, marked } from '../dataaccess/mediator';

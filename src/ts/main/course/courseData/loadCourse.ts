@@ -1,11 +1,11 @@
 import {
-  Course,
   CourseFile,
   Json,
   ProcessJson,
   getYaml2,
   showSlides,
 } from '../mediator';
+import type {Course} from '../mediator';
 export const PREFIX_COURSE_FILE = '../../../src/courses/';
 const LISTING_FILE_NAME = PREFIX_COURSE_FILE + '/listing.yml';
 export function loadCourse(yamlFilename: string, doc: Document) {

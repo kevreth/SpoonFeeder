@@ -1,14 +1,11 @@
-import type { AnswerType, SlideInterface } from '../../mediator';
+import type { AnswerType, AdocVisitorInterface, MarkTypeGap, SlideType, SlideInterface } from '../../mediator';
 import {
   AdocVisitor,
-  AdocVisitorInterface,
   CORRECT,
   INCORRECT,
-  MarkTypeGap,
   RANDOM,
   SetWidths,
   Slide,
-  SlideType,
   polyfill,
   scrollBehaviourDragImageTranslateOverride,
   shuffle,
