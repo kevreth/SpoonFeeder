@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import {
-  adoc2html,
+  // adoc2html,
   adoc2markdown,
   markdown2html,
   processHandlebars,
@@ -26,12 +26,12 @@ const markdown = `
     3. This is _italics_.
     4. This is **boldface**.
 `;
-const asciidocMustache =
-  asciidoc +
-  `
-  {{{svg 'test1'}}}
-  {{{table 'test2'}}}
-`;
+// const asciidocMustache =
+//   asciidoc +
+//   `
+//   {{{svg 'test1'}}}
+//   {{{table 'test2'}}}
+// `;
 it('test processMustache', () => {
   const act = processHandlebars("{{{svg 'test1'}}}");
   expect(act).not.toBeNull();
