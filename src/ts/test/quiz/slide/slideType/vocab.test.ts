@@ -1,10 +1,10 @@
 import { beforeEach, expect, it, vi } from 'vitest';
+import { Slide, VOCAB } from '../../../../main/slidetype/mediator';
 import {
   Vocab,
   generateQuestions,
 } from '../../../../main/slidetype/types/vocab/slideTypeVocab';
 import { SlideTest } from '../../slide.test';
-import { Slide, VOCAB} from '../../../../main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'vocab';
   public processJson(): void {

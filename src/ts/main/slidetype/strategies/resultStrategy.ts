@@ -1,5 +1,5 @@
-import { isEqual } from '../mediator';
 import type { ResultType } from '../mediator';
+import { isEqual } from '../mediator';
 //Implments the strategy pattern but doesn't need explicit classes
 //since functions are first-class objects in Typescript.
 export class Result {

@@ -58,10 +58,10 @@ it('test adoc2html', () => {
   expect(0).toEqual(0);
   // const act = adoc2html(asciidocMustache);
   // expect(act).not.toBeNull();
-//   expect(act).toContain('h2');
-//   expect(act).toContain('li');
-//   expect(act).toContain('ul');
-//   expect(act).toContain('ol');
-//   expect(act).toContain('table0');
-//   expect(act).toContain('mcButton');
+  //   expect(act).toContain('h2');
+  //   expect(act).toContain('li');
+  //   expect(act).toContain('ul');
+  //   expect(act).toContain('ol');
+  //   expect(act).toContain('table0');
+  //   expect(act).toContain('mcButton');
 });

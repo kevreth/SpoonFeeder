@@ -1,4 +1,10 @@
-import type { AnswerType, AdocVisitorInterface, MarkTypeGap, SlideType, SlideInterface } from '../../mediator';
+import type {
+  AdocVisitorInterface,
+  AnswerType,
+  MarkTypeGap,
+  SlideInterface,
+  SlideType,
+} from '../../mediator';
 import {
   AdocVisitor,
   CORRECT,

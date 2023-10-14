@@ -1,10 +1,16 @@
-import type { AnswerType, Division, DivisionProcessor,ISummaryLine, SlideInterface } from '../mediator';
+import type {
+  AnswerType,
+  Division,
+  DivisionProcessor,
+  ISummaryLine,
+  SlideInterface,
+} from '../mediator';
 import {
-  initSlide,
-  percentCorrect,
   SaveData,
   Score,
   SummaryLine,
+  initSlide,
+  percentCorrect,
 } from '../mediator';
 export class ScoreProcessor
   implements DivisionProcessor<ISummaryLine, ISummaryLine, ISummaryLine>

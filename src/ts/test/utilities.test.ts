@@ -1,14 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
-import {
-  getChildIds,
-  remove,
-} from '../main/quiz/utilities';
-import {
-  difference,
-  intersection,
-  isEqual
-} from '../main/mediator';
+import { difference, intersection, isEqual } from '../main/mediator';
+import { getChildIds, remove } from '../main/quiz/utilities';
 const testArr1 = [1, 2];
 const testArr2 = [2, 3];
 it('difference', () => {

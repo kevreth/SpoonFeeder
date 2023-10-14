@@ -19,7 +19,6 @@ import ExitBtn from '../../../../common/ExitBtn.vue';
 import { ref } from 'vue';
 // import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
 import SwitchLang from './switchlanguages/SwitchLang.vue'
-import SettingsContent from './SettingsContent.vue'
 
 const settingOverlay = ref(false);
 

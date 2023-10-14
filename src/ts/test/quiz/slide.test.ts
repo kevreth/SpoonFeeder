@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { expect, vi, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import type { Slide } from '../../main/slide/slide';
 // import { MC, VOCAB } from '../../main/slide/slideType/slideFactory';
 import type { SlideInterfaceTest } from '../../test/quiz/slideInterface.test';
@@ -39,28 +39,28 @@ export abstract class SlideTest
 it('getMaxWidth', () => {
   expect(0).toEqual(0);
 });
-  // This code is an experiment in creating testable classes
-  // using just a string name of a class. That way the
-  //subclasses won't have to do it.
-  // public factory(): Slide<T> {
-  //   const createHtml = vi.fn();
-  //   const makeSlides = vi.fn();
-  //   const evaluate = vi.fn();
-  //   const result = vi.fn();
-  //   return this.getInstance(
-  //     this.type,
-  //     createHtml,
-  //     makeSlides,
-  //     evaluate,
-  //     result
-  //   );
-  // }
-  // public getInstance(type: any, ...args: any[]) {
-  //   type = type.charAt(0).toUpperCase() + type.slice(1);
-  //   const newInstance = new (<any>window)[type]();
-  //   newInstance.constructor(newInstance, ...args);
-  //   return newInstance;
-  // }
+// This code is an experiment in creating testable classes
+// using just a string name of a class. That way the
+//subclasses won't have to do it.
+// public factory(): Slide<T> {
+//   const createHtml = vi.fn();
+//   const makeSlides = vi.fn();
+//   const evaluate = vi.fn();
+//   const result = vi.fn();
+//   return this.getInstance(
+//     this.type,
+//     createHtml,
+//     makeSlides,
+//     evaluate,
+//     result
+//   );
+// }
+// public getInstance(type: any, ...args: any[]) {
+//   type = type.charAt(0).toUpperCase() + type.slice(1);
+//   const newInstance = new (<any>window)[type]();
+//   newInstance.constructor(newInstance, ...args);
+//   return newInstance;
+// }
 // }
 // it('saveData', () => {
 //   const slide = MC();

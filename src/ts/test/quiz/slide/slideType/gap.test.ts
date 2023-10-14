@@ -1,8 +1,8 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
+import { AnswerType, GAP } from '../../../../main/slidetype/mediator';
 import { Gap } from '../../../../main/slidetype/types/gap/slideTypeGap';
 import { SlideTest } from '../../slide.test';
-import { AnswerType, GAP} from '../../../../main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'gap';
   public processJson(): void {
