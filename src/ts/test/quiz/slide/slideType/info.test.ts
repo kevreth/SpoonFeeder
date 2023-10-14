@@ -1,8 +1,8 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { INFO } from '../../../../main/slidetype/types/info/factoryInfo';
-import { Info } from '../../../../main/slidetype/types/info/slideTypeInfo';
 import { SlideTest } from '../../slide.test';
+import { INFO, Info } from '../../../../main/slidetype/mediator';
+
 class Test extends SlideTest {
   type = 'info';
   public processJson(): void {

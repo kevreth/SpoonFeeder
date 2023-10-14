@@ -1,9 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { BOOL } from '../../../../main/slidetype/types/bool/factoryBool';
-import { Bool } from '../../../../main/slidetype/types/bool/slideTypeBool';
 import { SlideTest } from '../../slide.test';
-import { AnswerType } from 'app/main/slidetype/mediator';
+import { AnswerType, BOOL, Bool} from '../../../../main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'bool';
   public processJson(): void {

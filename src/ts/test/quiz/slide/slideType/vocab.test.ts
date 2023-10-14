@@ -1,11 +1,10 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import type { Slide } from '../../../../main/slide/slide';
-import { VOCAB } from '../../../../main/slidetype/types/vocab/factoryVocab';
 import {
   Vocab,
   generateQuestions,
 } from '../../../../main/slidetype/types/vocab/slideTypeVocab';
 import { SlideTest } from '../../slide.test';
+import { Slide, VOCAB} from '../../../../main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'vocab';
   public processJson(): void {
@@ -46,13 +45,13 @@ const MAP: Map<string, string> = new Map([
   ['term5', 'def5'],
 ]);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const json: any = {
-  type: 'vocab',
-  list: MAP,
-  isExercise: false,
-};
-const slide = VOCAB();
-slide.processJson(json);
+// const json: any = {
+//   type: 'vocab',
+//   list: MAP,
+//   isExercise: false,
+// };
+// const slide = VOCAB();
+// slide.list = MAP;
 it('generateQuestions', () => {
   const result = generateQuestions(MAP);
   expect(result).not.toBeNull();

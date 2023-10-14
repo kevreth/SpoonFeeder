@@ -1,9 +1,7 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { SORT } from '../../../../main/slidetype/types/sort/factorySort';
-import { Sort } from '../../../../main/slidetype/types/sort/slideTypeSort';
 import { SlideTest } from '../../slide.test';
-import { AnswerType } from 'app/main/slidetype/mediator';
+import { AnswerType, SORT, Sort} from '../../../../main/slidetype/mediator';
 class Test extends SlideTest {
   type = 'sort';
   public processJson(): void {
