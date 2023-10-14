@@ -36,7 +36,6 @@ it('processJson', () => {
 });
 
 sessionStorage.setItem('random', 'false');
-// const DOC = new JSDOM('<!DOCTYPE html><body></body>').window.document;
 const MAP: Map<string, string> = new Map([
   ['term1', 'def1'],
   ['term2', 'def2'],
@@ -44,14 +43,6 @@ const MAP: Map<string, string> = new Map([
   ['term4', 'def4'],
   ['term5', 'def5'],
 ]);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// const json: any = {
-//   type: 'vocab',
-//   list: MAP,
-//   isExercise: false,
-// };
-// const slide = VOCAB();
-// slide.list = MAP;
 it('generateQuestions', () => {
   const result = generateQuestions(MAP);
   expect(result).not.toBeNull();
