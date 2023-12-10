@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/47391465/232287925-ce52f7c8-c837-4001-83e2-3b857ed8d3af.jpg" alt="spoon feeder" width="100" height="100">
+![spoon feeder](https://github.com/kevreth/SpoonFeeder/assets/47391465/af633b8b-d0df-421b-a699-36f7a90abb19)
 
 # SpoonFeeder
 
