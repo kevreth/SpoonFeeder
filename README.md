@@ -1,4 +1,4 @@
-![spoon feeder](https://github.com/kevreth/SpoonFeeder/assets/47391465/af633b8b-d0df-421b-a699-36f7a90abb19)
+<img src="https://github.com/kevreth/SpoonFeeder/assets/47391465/af633b8b-d0df-421b-a699-36f7a90abb19" alt="SpoonFeeder logo" width="200" height="200">
 
 # SpoonFeeder
 
