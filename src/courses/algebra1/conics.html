@@ -1,0 +1,91 @@
+<!doctype html public "♥♥♥">
+<html lang=pl>
+<head>
+  <meta charset=utf-8>
+  <title>Szablon strony HTML5 + MathJax 2.0</title>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    html {
+      background: #E2DF9A;
+    }
+    table {
+      background: #EEEEEE;
+      font-size: 18px;
+      margin: 2em auto;
+    }
+    td {
+      text-align:center;
+      vertical-align: center;
+    }
+  </style>
+
+</head>
+<body>
+  <table border="1">
+    <thead>
+        <tr>
+            <th>Name of the Conic Section</th>
+            <th>Asymptote Code for Diagram</th>
+            <th>General Form \( ax^2 + bx^2... \)</th>
+            <th>Rational Form \( \frac{ax^2}{r^2}... \)</th>
+            <th>hk Form for Graphing</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Circle</td>
+            <td><code>draw(Circle((0,0),1));</code></td>
+            <td>\( x^2 + y^2 = r^2 \)</td>
+            <td>\( \frac{x^2}{r^2} + \frac{y^2}{r^2} = 1 \)</td>
+            <td>\( (x - h)^2 + (y - k)^2 = r^2 \)</td>
+        </tr>
+        <tr>
+            <td>Ellipse (Horizontal)</td>
+            <td><code>draw(shift((0,0))*scale(2,1)*Circle((0,0),1));</code></td>
+            <td>\( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \)</td>
+            <td>\( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \)</td>
+            <td>\( \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1 \)</td>
+        </tr>
+        <tr>
+            <td>Ellipse (Vertical)</td>
+            <td><code>draw(shift((0,0))*scale(1,2)*Circle((0,0),1));</code></td>
+            <td>\( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \)</td>
+            <td>\( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \)</td>
+            <td>\( \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1 \)</td>
+        </tr>
+        <tr>
+            <td>Hyperbola (Horizontal)</td>
+            <td><code>draw(shift((0,0))*scale(1,1)*hyperbola((0,0),2,1));</code></td>
+            <td>\( \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \)</td>
+            <td>\( \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \)</td>
+            <td>\( \frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1 \)</td>
+        </tr>
+        <tr>
+            <td>Hyperbola (Vertical)</td>
+            <td><code>draw(shift((0,0))*scale(1,1)*hyperbola((0,0),1,2,90));</code></td>
+            <td>\( \frac{y^2}{b^2} - \frac{x^2}{a^2} = 1 \)</td>
+            <td>\( \frac{y^2}{b^2} - \frac{x^2}{a^2} = 1 \)</td>
+            <td>\( \frac{(y - k)^2}{b^2} - \frac{(x - h)^2}{a^2} = 1 \)</td>
+        </tr>
+        <tr>
+            <td>Parabola (Vertical)</td>
+            <td><code>draw(shift((0,0))*graph(y=x^2,-2,2));</code></td>
+            <td>\( y = ax^2 + bx + c \)</td>
+            <td>Not applicable for parabolas</td>
+            <td>\( y = a(x - h)^2 + k \)</td>
+        </tr>
+        <tr>
+            <td>Parabola (Horizontal)</td>
+            <td><code>draw(shift((0,0))*parametricplot((t^2,t),-2,2));</code></td>
+            <td>\( x = ay^2 + by + c \)</td>
+            <td>Not applicable for parabolas</td>
+            <td>\( x = a(y - k)^2 + h \)</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+

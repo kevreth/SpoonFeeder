@@ -1,0 +1,102 @@
+---
+      # <ul>
+      #   <li></li>
+      #   <li></li>
+      #   <li></li>
+      #   <li></li>
+      #   <li></li>
+      # </ul>
+name: 'Algebra 1'
+units:
+- name: 'Linear Equations: ax+by+c=0'
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+- name: 'Polynomials':
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+- name: 'Factoring'
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+- name: 'Radical Equations'
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+- name: 'Rational Equations'
+- name: 'Inequalities'
+- name: 'Systems of Equations'
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''
+- name: 'Quadratic Equations'
+  lessons:
+  - name: ''
+    modules:
+    - name: ''
+      inst:
+      - type: info
+        txt: 'info'
+      exercises:
+      - type: mc
+        q: ''
+        o: []
+        ans: ''

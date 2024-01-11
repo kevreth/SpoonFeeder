@@ -1,0 +1,97 @@
+<!doctype html public "♥♥♥">
+<html lang=pl>
+<head>
+  <meta charset=utf-8>
+  <title>Szablon strony HTML5 + MathJax 2.0</title>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    html {
+      background: #E2DF9A;
+    }
+    table {
+      background: #EEEEEE;
+      font-size: 18px;
+      margin: 2em auto;
+    }
+    td {
+      text-align:center;
+      vertical-align: center;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>Conic Sections</h1>
+  <table>
+    <tr><th colspan="2">KEY</th></tr>
+    <tr><td colspan="2">\( Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0 \)</td>
+    <tr><td>Eccentricity</td></td><td>e</td></tr>
+    <tr><td>Linear Eccentricity</td><td>c</td></tr>
+    <tr><td>Semi-Latus Rectum</td><td>l</td></tr>
+    <tr><td>Focal Parameter</td><td>p</td></tr>
+    <tr><td>Center Coordinates</td><td>(h,k)</td></tr>
+    <tr><td>distance from the center to the vertices along the major axis</td><td>a</td></tr>
+    <tr><td>distance from the center to the vertices along the minor axis</td><td>b</td></tr>
+    <tr><td>Circle Radius</td><td>r</td></tr>
+  </table>
+  <table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>General Form</th>
+            <th>Standard Form</th>
+            <th>e</th>
+            <th>c</th>
+            <th>l</th>
+            <th>p</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Circle -->
+        <tr>
+            <td>Circle</td>
+            <td>\( A = C \) and \( B = 0 \)</td>
+            <td>\( (x-h)^2 + (y-k)^2 = r^2 \)</td>
+            <td>\( 0 \)</td>
+            <td>\( 0 \)</td>
+            <td>\( r \)</td>
+            <td>\( r \)</td>
+        </tr>
+        <!-- Ellipse (Vertical) -->
+        <tr>
+            <td>Ellipse</td>
+            <td>\(  A \cdot C > 0 \)</td>
+            <td>\( \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1 \)</td>
+            <td>\( \sqrt{1-\frac{b^2}{a^2}} \)</td>
+            <td>\( \sqrt{a^2 - b^2} \)</td>
+            <td>\( \frac{b^2}{a} \)</td>
+            <td>\( \frac{b^2}{c} \)</td>
+        </tr>
+        <!-- Parabola -->
+        <tr>
+            <td>Parabola</td>
+            <td>Either \( A \) or \(C \) equals \(0 \)</td>
+            <td>\( y-k = a(x-h)^2 \)</td>
+            <td>\( 1 \)</td>
+            <td>-</td>
+            <td>\( 2a \)</td>
+            <td>\( 2a \)</td>
+        </tr>
+        <!-- Hyperbola (Vertical) -->
+        <tr>
+            <td>Hyperbola</td>
+            <td>\( A \cdot C < 0 \)</td>
+            <td>\( \frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} = 1 \)</td>
+            <td>\( \sqrt{1+\frac{b^2}{a^2}} \)</td>
+            <td>\( \sqrt{a^2 + b^2} \)</td>
+            <td>\( \frac{b^2}{a} \)</td>
+            <td>\( \frac{b^2}{c} \)</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+

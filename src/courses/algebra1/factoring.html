@@ -1,0 +1,86 @@
+<!doctype html public "♥♥♥">
+<html lang=pl>
+<head>
+  <meta charset=utf-8>
+  <title>Szablon strony HTML5 + MathJax 2.0</title>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    html {
+      background: #E2DF9A;
+    }
+    table {
+      background: #EEEEEE;
+      font-size: 18px;
+      margin: 2em auto;
+    }
+    td {
+      text-align:center;
+      vertical-align: center;
+    }
+  </style>
+
+</head>
+<body>
+  <table>
+    <tr>
+        <th>Number of Terms</th>
+        <th>Factoring Rule Name</th>
+        <th>Formula</th>
+    </tr>
+    <tr>
+      <td rowspan="1">>1</td>
+      <td>Greatest Common Factor (GCF)</td>
+      <td>If \(d\) is the GCF of \(a\) and \(b\), then \(a + b = d(\frac{a}{d} + \frac{b}{d})\)</td>
+    </tr>
+    <tr>
+      <td rowspan="3">2</td>
+        <td>Difference of Squares</td>
+        <td>\(a^2 - b^2 = (a + b)(a - b)\)</td>
+    </tr>
+    <tr>
+        <td>Sum of Cubes</td>
+        <td>\(a^3 + b^3 = (a + b)(a^2 - ab + b^2)\)</td>
+    </tr>
+    <tr>
+        <td>Difference of Cubes</td>
+        <td>\(a^3 - b^3 = (a - b)(a^2 + ab + b^2)\)</td>
+    </tr>
+    <tr>
+      <td rowspan="4">3</td>
+        <td>Square of a Binomial Sum</td>
+        <td>\(a^2 + 2ab + b^2 = (a + b)^2\)</td>
+    </tr>
+    <tr>
+        <td>Square of a Binomial Difference</td>
+        <td>\(a^2 - 2ab + b^2 = (a - b)^2\)</td>
+    </tr>
+    <tr>
+      <td>Reverse FOIL method</td>
+      <td>\(x^2 + bx + c = (x + m)(x + n)\) <br>
+        where <br>
+        \(m + n = b\), and <br>
+        \(mn = c\)
+      </td>
+    </tr>
+    <tr>
+      <td>AC method</td>
+      <td>\(ax^2 + bx + c = (mx + n)(px + q)\) <br>
+        where <br>
+        \(mp = a\), <br>
+        \(mq + np = b\), and <br>
+        \(nq = c\)
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="1">4</td>
+        <td>Grouping</td>
+        <td>\(ac + ad + bc + bd \\
+          = a(c + d) + b(c + d) \\
+          = (a + b)(c + d)\)</td>
+    </tr>
+</table>
+
+</body>
+</html>
