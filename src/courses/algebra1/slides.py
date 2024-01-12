@@ -3,17 +3,16 @@ import yaml
 from bs4 import BeautifulSoup
 import subprocess
 
-ARGS = ['asciidoctor', '-b', 'html5', '-a', 'stylesheet!', '-o', '-', '-']
+ARGS = ['asciidoctor', '-b', 'html5', '-a', 'stylesheet!', '-a', 'nofooter', '-o', '-', '-']
 def read_yaml(file_path):
-    """ Reads and returns the content of the YAML file. """
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
 
 def verify_yaml(yaml_content):
-    return isinstance(yaml_content, dict)  # Basic validation
+    return isinstance(yaml_content, dict)
 
 def generate_html_body(yaml_content):
-    html_body = '<div>'
+    html_body = ''
     for lesson in yaml_content.get('lessons', []):
         html_body += f"<h2>{lesson['name']}</h2>"
         for module in lesson.get('modules', []):
@@ -22,12 +21,11 @@ def generate_html_body(yaml_content):
             if insts is not None:
                 for inst in insts:
                     inst_content = inst.get('txt')
+                    # print(inst_content + '\n======')
                     if inst_content:
                         html = extract(inst_content)
-                        html_body += html
+                        html_body += html + "<hr>"
             html_body += "<hr>"
-        html_body += "<hr>"
-    html_body += '</div>'
     return html_body
 
 def convert_to_html(inst_content):
@@ -45,20 +43,17 @@ def convert_to_html(inst_content):
 
 def extract_inner_content(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
+    content_div = soup.find('div', class_='content')
+    if content_div:
+        content_div.unwrap()
     content_div = soup.find('div', id='content')
     if content_div:
-        first_div_inside_content = content_div.find('div')
-        if first_div_inside_content:
-            inner_content = first_div_inside_content.decode_contents()
-            first_div_inside_content.decompose()
-            return inner_content.strip()
-        else:
-            content_div_content = content_div.decode_contents()
-            return content_div_content
+        return content_div.decode_contents()
     return None
 
 def extract(str):
     document=convert_to_html(str)
+    # print(document + '\n======')
     extract = extract_inner_content(document)
     return extract
 

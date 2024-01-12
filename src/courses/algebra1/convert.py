@@ -28,11 +28,17 @@ def convert_html_to_yml(input_html_path):
                 while next_elem and next_elem.name not in ['h1', 'h2']:
                     if next_elem.name != 'section':
                         if next_elem.name == 'table':
-                          for row in next_elem.find_all('tr'):
-                              new_table = BeautifulSoup('<table></table>', 'html.parser')
-                              new_table.table.append(copy.deepcopy(row))
-                              row_table_text = pypandoc.convert_text(str(new_table), 'asciidoc', format='html', extra_args=('--standalone', '--wrap=none'))
-                              module['inst'].append({'type': 'info', 'txt': row_table_text})
+                          if next_elem.find_parent('table'):
+                            print("\nNested" + next_elem.decode_contents()[:50])
+                            nested_table_text = pypandoc.convert_text(str(next_elem), 'asciidoc', format='html', extra_args=('--standalone', '--wrap=none'))
+                            module['inst'].append({'type': 'info', 'txt': nested_table_text})
+                          else:
+                            print("\nUnnested" + next_elem.decode_contents()[:50])
+                            for row in next_elem.find_all('tr'):
+                                new_table = BeautifulSoup('<table></table>', 'html.parser')
+                                new_table.table.append(copy.deepcopy(row))
+                                row_table_text = pypandoc.convert_text(str(new_table), 'asciidoc', format='html', extra_args=('--standalone', '--wrap=none'))
+                                module['inst'].append({'type': 'info', 'txt': row_table_text})
                         else:
                             converted_text = pypandoc.convert_text(str(next_elem), 'asciidoc', format='html', extra_args=('--standalone', '--wrap=none'))
                             module['inst'].append({'type': 'info', 'txt': converted_text})

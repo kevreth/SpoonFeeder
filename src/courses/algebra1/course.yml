@@ -21,7 +21,7 @@ units:
         q: ''
         o: []
         ans: ''
-- name: 'Polynomials':
+- name: 'Polynomials'
   lessons:
   - name: ''
     modules:

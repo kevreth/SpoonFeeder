@@ -1,0 +1,1647 @@
+lessons:
+- name: Word Problems
+  modules:
+  - name: Introduction
+    inst:
+    - type: info
+      txt: |
+        A _word problem_ expresses a math problem in English. The most basic word problems are obviously solved by basic arithmetic. For example
+
+        * Sally has 7 apples, and her friend gives her 3 more. How many apples does Sally have now? (7+3=10)
+        * If four boxes contain 6 pencils each, how many pencils are there in total? (4x6=24)
+        * If a movie starts at 3:30 and lasts for 2 hours, what time will it end? (3:30+2:00=5:30)
+    - type: info
+      txt: |
+        Complex word problems require a procedure to solve.
+
+        *Word Problem Procedure*
+
+        . *Read* the problem. Make sure all the words and ideas are understood
+        . *Decorate* the problem by crossing out distractors and underlining necessary information.
+        . *Identify*
+          * the type of problem
+          * the formula
+          * entities
+          * variables
+          * the number of required answers
+          * equations
+        . *Diagram* the problem
+        . *Tabulate* the equation, with one column for each variable.
+        . *Translate* the results into equations.
+        . *Solve* the equation.
+        . *Check* both the equation results and the answer in the problem and make sure it makes sense.
+        . *State* the answer with appropriate units.
+
+    - type: info
+      txt: |
+        . Read
+        . Decorate
+        . Identify
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+
+        *RDIDTTSCS*
+
+        Not all of steps will be used with every word problem, but the more complex a problem is the more of the steps are required.
+
+  - name: Example 1
+    inst:
+    - type: info
+      txt: |
+        _Sarah wants to plant flowers in her rectangular garden. The length of the garden is 6 feet, and the width is 4 feet. What is the area of her garden plot?_
+
+        Such a simple example can easily be solved without this process, but the example is being kept simple for clarity.
+
+    - type: info
+      txt: |
+        [.two-columns]
+        --
+        [.left-column]
+        . Read
+        . Decorate
+        . Identify
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+        [.right-column]
+
+        Step 1
+
+        *Read* the problem. Make sure all the words and ideas are understood. Notice some key words:
+
+        . rectangular
+        . length
+        . width
+        . area
+        --
+    - type: info
+      txt: |
+        Step 2
+        *Decorate* the problem by crossing out distractors and underlining necessary information.
+        [line-through]*Sarah wants to plant flowers in her* [.underline]#rectangular# [line-through]*garden*. The [.underline]#length# [line-through]*of the garden* [.underline]#is 6 feet#, and the [.underline]#width is 4 feet#. What is the [.underline]#area# [line-through]*of her garden plot*?
+
+        _Distractors_ are extra verbiage that do not contribute to the problem. Distractors exercise your ability to separate relevant and irrelevant information. You may want to [line-through]#*cross out*# distractors.
+
+        [.underline]#Underline# verbiage that describes
+
+        . The type of problem ("rectangular")
+        . Variable names ("length", "width")
+        . Quantities ("4", "6")
+        . The requirement ("area")
+
+        Together, these provide all infomation necessary to solve the problem.
+
+    - type: info
+      txt: |
+        = Step 3
+
+        *Identify*
+
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Type |geometry; area of rectangle |The types of problems will be listed later; for now, know that this is a *geometry* problem.
+        |Formula |\(A=l \cdot w\) |\(area = length \cdot width\). The formula will not usually be given with most word problems, where you will need to select the correct formula. In many cases, the formulas will need to be memorized.
+        |Entities a||
+        |Answers |\(A\) |
+        |Variables a|
+        * \(l = 6\): length
+        * \(w= 4\): width
+        |
+        |===
+    - type: info
+      txt: |
+        |Equations a|This is for equations other than the basic equation used by the problem. Their use will become clear in later examples.|
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Type |geometry; area of rectangle |The types of problems will be listed later; for now, know that this is a *geometry* problem.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Formula |\(A=l \cdot w\) |\(area = length \cdot width\). The formula will not usually be given with most word problems, where you will need to select the correct formula. In many cases, the formulas will need to be memorized.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Entities a|
+        * {blank}
+        * {blank}
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Answers |\(A\) |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Variables a|
+        * \(l = 6\): length
+        * \(w= 4\): width
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Equations a|
+        * {blank}
+        * {blank}
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |4 |*Diagram* the problem |l = 4 ft w = 6 ft A |Usually, any sort of visualization can help understand the problem. In this case, we draw and label the rectangular garden plot.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |5 |*Tabulate* the equation, with one column for each variable. | |This problem is too simple for a table.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |6 |*Translate* the results of the table into a new equation. | |This problem does not require translation.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |7 |*Solve* the equation. |\(A = l \cdot w = 4 \cdot 6 = 24\text\{ft}^2\) |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |8 |*Check* both the equation results and the answer in the problem | |Checking the equation results is only necessary if algebraic manipulation was involved. Since this was a straight arithmetic problem, no check can be performed.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |9 |*State* the answer with appropriate units. |\(24 \text\{ft}^2\) |Emphasize your final answer with a border. *Make sure* to add the correct units!
+        |===
+
+  - name: Example 2
+    inst:
+    - type: info
+      txt: |
+        NOTE: 1 quarter = $0.25, 1 penny = $0.01
+
+    - type: info
+      txt: |
+        Maria has $2.43 in quarters and pennies in her wallet. She has twice as many pennies as quarters. How many coins of each type does she have?
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |1 |Read | |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |2 |Decorate |[line-through]*Maria has* [.underline]#$2.43 in quarters and pennies# [line-through]*in her wallet. She has* [.underline]#twice as many pennies as quarters#. [.underline]#How many coins of each type# does she have? |You may not make the same decisions about underlining and crossing out as another student.
+        |===
+
+    - type: info
+      txt: |
+        3
+
+        Identify
+
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Type |Money |
+        |Formula |\(TV = n \cdot v\) |The basic formula applies to one entitiy, quarters and pennies are two separate entities. The TV of each coin will be summed.
+        |Entities a|
+        * \(p\) (pennies)
+        * \(q\) (quarters)
+
+        |
+        |Answers a|
+        * \(n_p\)
+        * \(n_q\)
+
+        |Each answer requires a separate equation. Keep aware of this as you continue this example.
+        |Variables a|
+        * \(v_q=$0.25\)
+        * \(v_p=$0.01\)
+
+        |
+        |Equations a|
+        * \($2.43 = TV_q + TV_p\)
+        * \(n_p = 2 n_q\)
+
+        |These are the two equations we need for each of the two answers.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Type |Money |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Formula |\(TV = n \cdot v\) |The basic formula applies to one entitiy, quarters and pennies are two separate entities. The TV of each coin will be summed.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Entities a|
+        * \(p\) (pennies)
+        * \(q\) (quarters)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Answers a|
+        * \(n_p\)
+        * \(n_q\)
+
+        |Each answer requires a separate equation. Keep aware of this as you continue this example.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Variables a|
+        * \(v_q=$0.25\)
+        * \(v_p=$0.01\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Equations a|
+        * \($2.43 = TV_q + TV_p\)
+        * \(n_p = 2 n_q\)
+
+        |These are the two equations we need for each of the two answers.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |4 |Diagram | |No diagram possible.
+        |===
+
+    - type: info
+      txt: |
+        5
+
+        Tabulate
+
+        E
+
+        n
+
+        v
+
+        TV
+
+        Quarters
+
+        q
+
+        0.25
+
+        0.25q
+
+        Pennies
+
+        2q
+
+        0.01
+
+        0.01(2q)
+
+        $2.43
+
+        Tabulating is a four-step sub-process. First, we construct the basic table. There's the header row, a row for each type of coin, and a total row. The header row is filled with the type of coin and the variables in the equation. Notice that we flipped the sides of the equation to put the total value on the right side.
+
+        E
+
+        n
+
+        v
+
+        TV
+
+        q
+
+        q
+
+        $0.25
+
+        $0.25q
+
+        p
+
+        2q
+
+        $0.01
+
+        $0.01(2q)
+
+        $2.43
+
+        Fill in the infomation that we immediately get from the problem or common knowledge such as the value of coins.
+
+        E
+
+        n
+
+        v
+
+        TV
+
+        q
+
+        \(n_q\)
+
+        \(0.25\)
+
+        \(0.25n_q\)
+
+        p
+
+        \(2n_q\)
+
+        \(0.01\)
+
+        \(0.01(2n_q)\)
+
+        2.43
+
+        We need to think: the problem says the number of pennies is twice the number of quarters and that we are looking for the number of coins of each type. We need to create a variable, \(q\), to represent the number of quarters. The number of quarters is \(q\), and the number of pennies is \(2q\). We enter that in our table. +
+        *This variable substitution step is the most difficult part of the entire word problem solving process.* Think about it carefully! +
+        We could have selected the variable \(p\) for pennies instead, but that entails division where quarters equals \(\frac\{p}\{2}\). Division is more complicated than multiplication.
+
+        E
+
+        n
+
+        v
+
+        TV
+
+        \(q\)
+
+        \(n_q\)
+
+        0.25
+
+        \(0.25n_q\)
+
+        \(p\)
+
+        \(2n_q\)
+
+        0.01
+
+        \(0.01(2n_q)\)
+
+        2.43
+
+        Perform algebra to create expressions representing the total value of each coin. The final column represents a new equation used in the next step. Notice that the ultimate purpose of the table is to *derive an equation that relates each instance of the original formula* (two instances, quarters and pennies). The last column provides the _relationship_ between pennies and quarters.
+
+        E
+
+        n
+
+        v
+
+        TV
+
+        \(q\)
+
+        \(n_q\)
+
+        \(v_q\)
+
+        \(TV_q\)
+
+        \(p\)
+
+        \(n_p\)
+
+        \(v_p\)
+
+        \(TV_p\)
+
+        \(TV_q+TV_p\)
+
+        For illustration purposes only, you can see how variables used in the identification section correspond to the table. So, \[E_q: n_q+v_q=TV_q\] \[E_p: n_p+v_p=TV_p\] However, stating this while working problems is not useful.
+
+    - type: info
+      txt: |
+        E
+
+        n
+
+        v
+
+        TV
+
+        Quarters
+
+        q
+
+        0.25
+
+        0.25q
+
+        Pennies
+
+        2q
+
+        0.01
+
+        0.01(2q)
+
+        $2.43
+
+        Tabulating is a four-step sub-process. First, we construct the basic table. There's the header row, a row for each type of coin, and a total row. The header row is filled with the type of coin and the variables in the equation. Notice that we flipped the sides of the equation to put the total value on the right side.
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |n |v |TV
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |Quarters |q |0.25 |0.25q
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |Pennies |2q |0.01 |0.01(2q)
+        |===
+
+    - type: info
+      txt: |
+        $2.43
+
+    - type: info
+      txt: |
+        E
+
+        n
+
+        v
+
+        TV
+
+        q
+
+        q
+
+        $0.25
+
+        $0.25q
+
+        p
+
+        2q
+
+        $0.01
+
+        $0.01(2q)
+
+        $2.43
+
+        Fill in the infomation that we immediately get from the problem or common knowledge such as the value of coins.
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |n |v |TV
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |q |q |$0.25 |$0.25q
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |p |2q |$0.01 |$0.01(2q)
+        |===
+
+    - type: info
+      txt: |
+        $2.43
+
+    - type: info
+      txt: |
+        E
+
+        n
+
+        v
+
+        TV
+
+        q
+
+        \(n_q\)
+
+        \(0.25\)
+
+        \(0.25n_q\)
+
+        p
+
+        \(2n_q\)
+
+        \(0.01\)
+
+        \(0.01(2n_q)\)
+
+        2.43
+
+        We need to think: the problem says the number of pennies is twice the number of quarters and that we are looking for the number of coins of each type. We need to create a variable, \(q\), to represent the number of quarters. The number of quarters is \(q\), and the number of pennies is \(2q\). We enter that in our table. +
+        *This variable substitution step is the most difficult part of the entire word problem solving process.* Think about it carefully! +
+        We could have selected the variable \(p\) for pennies instead, but that entails division where quarters equals \(\frac\{p}\{2}\). Division is more complicated than multiplication.
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |n |v |TV
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |q |\(n_q\) |\(0.25\) |\(0.25n_q\)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |p |\(2n_q\) |\(0.01\) |\(0.01(2n_q)\)
+        |===
+
+    - type: info
+      txt: |
+        2.43
+
+    - type: info
+      txt: |
+        E
+
+        n
+
+        v
+
+        TV
+
+        \(q\)
+
+        \(n_q\)
+
+        0.25
+
+        \(0.25n_q\)
+
+        \(p\)
+
+        \(2n_q\)
+
+        0.01
+
+        \(0.01(2n_q)\)
+
+        2.43
+
+        Perform algebra to create expressions representing the total value of each coin. The final column represents a new equation used in the next step. Notice that the ultimate purpose of the table is to *derive an equation that relates each instance of the original formula* (two instances, quarters and pennies). The last column provides the _relationship_ between pennies and quarters.
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |n |v |TV
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |\(q\) |\(n_q\) |0.25 |\(0.25n_q\)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |\(p\) |\(2n_q\) |0.01 |\(0.01(2n_q)\)
+        |===
+
+    - type: info
+      txt: |
+        2.43
+
+    - type: info
+      txt: |
+        E
+
+        n
+
+        v
+
+        TV
+
+        \(q\)
+
+        \(n_q\)
+
+        \(v_q\)
+
+        \(TV_q\)
+
+        \(p\)
+
+        \(n_p\)
+
+        \(v_p\)
+
+        \(TV_p\)
+
+        \(TV_q+TV_p\)
+
+        For illustration purposes only, you can see how variables used in the identification section correspond to the table. So, \[E_q: n_q+v_q=TV_q\] \[E_p: n_p+v_p=TV_p\] However, stating this while working problems is not useful.
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |n |v |TV
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |\(q\) |\(n_q\) |\(v_q\) |\(TV_q\)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |\(p\) |\(n_p\) |\(v_p\) |\(TV_p\)
+        |===
+
+    - type: info
+      txt: |
+        \(TV_q+TV_p\)
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |6 |Translate |\($0.25n_q+$0.01(2n_q)=$2.43\) +
+        \(n_p=2n_q\) |The first equation is based on the first equation from step 3, \($2.43 = TV_q + TV_p\)
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |7 |Solve |\(n_q=9\) +
+        \(n_p=18\) |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |8 |Check |9(0.25)+18(0.01) = 2.25 + 0.18 = $2.43 ✓ |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |9 |State |9 quarters, 18 pennies |
+        |===
+
+  - name: Example 3
+    inst:
+    - type: info
+      txt: |
+        An express train and a local train leave Pittsburgh to travel to Washington, D.C. The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |1 |Read | |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |2 |Decorate |An express train and a local train leave Pittsburgh to travel to Washington, D.C. [.underline]#The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.# |The first sentence isn't useful to the mathematics of the problem but provides information used for diagramming the problem later so we don't cross it out. The remainder of the problem is mathematically useful.
+        |===
+
+    - type: info
+      txt: |
+        3
+
+        Identify
+
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Type |Motion |
+        |Formula |\( D = r \cdot t \) |
+        |Entities a|
+        * \(l\): local
+        * \(e\): express
+
+        |An _entity_ is a case where the formula can apply. The formula \( D = r \cdot t \) applies to two trains: local and express. Each has their own rate and time.
+        |Answers |\(r_l\) +
+        \(r_e\) |From the problem, _Find the speed of both trains._ Usually the number of answers equals the number of entities.
+        |Variables a|
+        * \(t_l=5\)
+        * \(t_e=4\)
+
+        |
+        |Equations a|
+        * \(r_e=r_l+12\)
+        * \(D_l=D_e\)
+
+        |\(D_l=D_e\) is not stated in the problem but can be deduced since both trains use the same route.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Type |Motion |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Formula |\( D = r \cdot t \) |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Entities a|
+        * \(l\): local
+        * \(e\): express
+
+        |An _entity_ is a case where the formula can apply. The formula \( D = r \cdot t \) applies to two trains: local and express. Each has their own rate and time.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Answers |\(r_l\) +
+        \(r_e\) |From the problem, _Find the speed of both trains._ Usually the number of answers equals the number of entities.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Variables a|
+        * \(t_l=5\)
+        * \(t_e=4\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Equations a|
+        * \(r_e=r_l+12\)
+        * \(D_l=D_e\)
+
+        |\(D_l=D_e\) is not stated in the problem but can be deduced since both trains use the same route.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |4 |Diagram |Pittsburgh Washington D.C. 4 hours 5 hours Local Express 12 mph faster |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |5 |Tabulate a|
+        [width="100%",cols="25%,25%,25%,25%",options="header",]
+        |===
+        |Train |r +
+        (mph) |t +
+        (hrs) |D +
+        (miles)
+        |e |\(r_l+12\) |\(4\) |\(4(r_l+12)\)
+        |l |\(r_l\) |\(5\) |\(5r_l\)
+        |===
+
+        |The distance traveled by both trains is the same so we don't total it.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",options="header",]
+        |===
+        |Train |r +
+        (mph) |t +
+        (hrs) |D +
+        (miles)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |e |\(r_l+12\) |\(4\) |\(4(r_l+12)\)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |l |\(r_l\) |\(5\) |\(5r_l\)
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |6 |Translate |\(4(r_l+12)=5r_l\) +
+        \(r_e=r_l+12\) |The first equation is because \(D_l=D_e\).
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |7 |Solve |\(r_l=48\) +
+        \(r_e=60\) |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |8 |Check |60 mph \(\cdot\) 4 hours = 240 miles +
+        48 mph \(\cdot\) 5 hours = 240 miles ✓ |We got the same result in both equations, so we can be assured our answers are correct.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |9 |State |Express: 60 mph; Local: 48 mph |
+        |===
+
+  - name: Example 4
+    inst:
+    - type: info
+      txt: |
+        Henning is mixing raisins and nuts to make 25 pounds of trail mix. Raisins cost $4.50 a pound and nuts cost $8 a pound. If Henning wants his cost for the trail mix to be $6.60 a pound, how many pounds of raisins and how many pounds of nuts should he use?
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |1 |Read | |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |2 |Decorate |[line-through]*Henning is* [.underline]#mixing# raisins and nuts to make [.underline]#25 pounds# of trail mix. Raisins cost [.underline]#$4.50 a pound and nuts cost $8 a pound#. If Henning wants his cost for the trail mix to be [.underline]#$6.60 a pound#, [.underline]#how many pounds# of raisins and how many pounds of nuts should he use? |
+        |===
+
+    - type: info
+      txt: |
+        3
+
+        Identify
+
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Type |Mixture |as stated in the problem
+        |Formula |\(C=p \cdot q\) |\(cost=price \cdot quantity\)
+        |Entities a|
+        * \(r\): raisins
+        * \(n\): nuts
+        * \(m\): mix
+
+        |\(m\) combines \(r\) and \(n\).
+        |Answers a|
+        * \(q_r\)
+        * \(q_n\)
+
+        |
+        |Variables a|
+        * \(q_m=25\)
+        * \(p_r=4.5\)
+        * \(p_n=8\)
+        * \(p_m=6.6\)
+
+        |
+        |Equations a|
+        * \(C_m=C_r+C_n\)
+
+        |This could be difficult to realize. Think about it like this: the price of the ingredients of the mix are known. The quantity of the ingredients is being adjusted to create the mix. Therefore, the cost (not price, cost includes quantity) of each ingredient can be summed to get the cost of the mix. +
+        This may not be apparent until the tabulation step.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Type |Mixture |as stated in the problem
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Formula |\(C=p \cdot q\) |\(cost=price \cdot quantity\)
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Entities a|
+        * \(r\): raisins
+        * \(n\): nuts
+        * \(m\): mix
+
+        |\(m\) combines \(r\) and \(n\).
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Answers a|
+        * \(q_r\)
+        * \(q_n\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Variables a|
+        * \(q_m=25\)
+        * \(p_r=4.5\)
+        * \(p_n=8\)
+        * \(p_m=6.6\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Equations a|
+        * \(C_m=C_r+C_n\)
+
+        |This could be difficult to realize. Think about it like this: the price of the ingredients of the mix are known. The quantity of the ingredients is being adjusted to create the mix. Therefore, the cost (not price, cost includes quantity) of each ingredient can be summed to get the cost of the mix. +
+        This may not be apparent until the tabulation step.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |4 |Diagram | |No diagram possible.
+        |===
+
+    - type: info
+      txt: |
+        6
+
+        Tabulate
+
+        [width="100%",cols="50%,50%",]
+        |===
+        a|
+        [cols=",,,",options="header",]
+        |===
+        |E |p |q |C
+        |r |4.5 | |
+        |n |8 | |
+        |m |6.6 |25 |165
+        |===
+
+        |Fill in everything given in the problem or that can be calculated.
+        a|
+        [cols=",,,",options="header",]
+        |===
+        |E |p |q |C
+        |r |4.5 |\(q_r\) |\(4.5q_r\)
+        |n |8 |\(25-q_r\) |\(8(25-q_r)\)
+        |m |6.6 |25 |165
+        |===
+
+        |This is the difficult part: realizing that the quantity of one mixture component, r, is the total quantity of the mixture less r of the other part. We want 25 lbs of trail mix, so if the quantity of raisins is r then the quantity of nuts is \(25-q_r.\) Note that it doesn't make any difference whether we assign the variable to raisins or nuts. We could have assigned the variable n to nuts and made the quantity of raisins \(25-q_n\) and recalculating the C column accordingly.
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="50%,50%",]
+        |===
+        a|
+        [cols=",,,",options="header",]
+        |===
+        |E |p |q |C
+        |r |4.5 | |
+        |n |8 | |
+        |m |6.6 |25 |165
+        |===
+
+        |Fill in everything given in the problem or that can be calculated.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |p |q |C
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |r |4.5 | |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |n |8 | |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |m |6.6 |25 |165
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="50%,50%",]
+        |===
+        a|
+        [cols=",,,",options="header",]
+        |===
+        |E |p |q |C
+        |r |4.5 |\(q_r\) |\(4.5q_r\)
+        |n |8 |\(25-q_r\) |\(8(25-q_r)\)
+        |m |6.6 |25 |165
+        |===
+
+        |This is the difficult part: realizing that the quantity of one mixture component, r, is the total quantity of the mixture less r of the other part. We want 25 lbs of trail mix, so if the quantity of raisins is r then the quantity of nuts is \(25-q_r.\) Note that it doesn't make any difference whether we assign the variable to raisins or nuts. We could have assigned the variable n to nuts and made the quantity of raisins \(25-q_n\) and recalculating the C column accordingly.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",options="header",]
+        |===
+        |E |p |q |C
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |r |4.5 |\(q_r\) |\(4.5q_r\)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |n |8 |\(25-q_r\) |\(8(25-q_r)\)
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |m |6.6 |25 |165
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |7 |Translate |\(4.50 + 8(25-q_r) = 165\) +
+        \(q_n=25-q_r\) |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |8 |Solve |\(q_r=10\) +
+        \(q_n=25-q_r=25-10=15\) |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |9 |Check |\(4.5(10) + 8(25-10) = 45 + 120 = 165\) ✓ |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |10 |State |10 lbs raisins, 15 lbs nuts |
+        |===
+
+  - name: Example 5
+    inst:
+    - type: info
+      txt: |
+        One number is 8 more than another number and the sum of the two numbers is 26. Find the numbers.
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |1 |Read | |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |2 |Decorate |One number is 8 more than another number and the sum of the two numbers is 26. Find the numbers. |All verbiage is relevant.
+        |===
+
+    - type: info
+      txt: |
+        3
+
+        Identify
+
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Type |integer |
+        |Formula |\(C=x+y\) |
+        |Entities a|
+        * \(\)
+
+        |
+        |Answers a|
+        * \(x\)
+        * \(y\)
+
+        |
+        |Variables a|
+        * \(\)
+
+        |
+        |Equations a|
+        * \(x+8=y\)
+        * \(x+y=26\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Type |integer |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |Formula |\(C=x+y\) |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Entities a|
+        * \(\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Answers a|
+        * \(x\)
+        * \(y\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Variables a|
+        * \(\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Equations a|
+        * \(x+8=y\)
+        * \(x+y=26\)
+
+        |
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |4 |Diagram | |No diagram possible.
+        |===
+
+    - type: info
+      txt: |
+        5
+
+        Tabulate
+
+        [width="100%",cols="50%,50%",]
+        |===
+        a|
+        [cols=",,",options="header",]
+        |===
+        |x |y |C
+        |x |-y |-8
+        |x |y |26
+        |  | |
+        |===
+
+        |Before adding data to our table, we need to perform some algebra. The basic equations from the problem are \[x+8=y\] \[x+y=26\] To make the format of the equation fit a table the first equation needs to have y moved to the left side and the constant moved to the right side: \[x-y=-8\] Now both equations are in the same form, the x-term in the first position, the y-term in the second position, and a constant on the right side.
+        a|
+        [cols=",,",options="header",]
+        |===
+        |x |y |C
+        |x |-y |-8
+        |x |y |26
+        |2x | |18
+        |===
+
+        |Sum the totals of each column. The y's cancel each other out. This is a basic example of solving a system of linear equations in two unknowns using the elimination method, which you may not have encountered in your studies yet.
+        |===
+
+        6
+
+        Translate
+
+        \(2x=18\) +
+        \(y=x+8\)
+
+        The second equation derives from the first row of the table. We could also have chosen \(y=26-x\).
+
+        7
+
+        Solve
+
+        x=9 +
+        y=17
+
+        Solve the first equation (\(2x=18\)) then use that solution in the second equation. (\(y=x+8=9+8=17\))
+
+        8
+
+        Check
+
+        \(9+17=26\) ✓
+
+        We go back to the original statement of the equations and pick the equation that wasn't used in the *solve* step. \[x+y=26\]
+
+        9
+
+        State
+
+        \{9,17}
+
+    - type: info
+      txt: |
+        [width="100%",cols="50%,50%",]
+        |===
+        a|
+        [cols=",,",options="header",]
+        |===
+        |x |y |C
+        |x |-y |-8
+        |x |y |26
+        |  | |
+        |===
+
+        |Before adding data to our table, we need to perform some algebra. The basic equations from the problem are \[x+8=y\] \[x+y=26\] To make the format of the equation fit a table the first equation needs to have y moved to the left side and the constant moved to the right side: \[x-y=-8\] Now both equations are in the same form, the x-term in the first position, the y-term in the second position, and a constant on the right side.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",options="header",]
+        |===
+        |x |y |C
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |x |-y |-8
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |x |y |26
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |  | |
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="50%,50%",]
+        |===
+        a|
+        [cols=",,",options="header",]
+        |===
+        |x |y |C
+        |x |-y |-8
+        |x |y |26
+        |2x | |18
+        |===
+
+        |Sum the totals of each column. The y's cancel each other out. This is a basic example of solving a system of linear equations in two unknowns using the elimination method, which you may not have encountered in your studies yet.
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",options="header",]
+        |===
+        |x |y |C
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |x |-y |-8
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |x |y |26
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,",]
+        |===
+        |2x | |18
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |6 |Translate |\(2x=18\) +
+        \(y=x+8\) |The second equation derives from the first row of the table. We could also have chosen \(y=26-x\).
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="25%,25%,25%,25%",]
+        |===
+        |7 |Solve |x=9 +
+        y=17 |Solve the first equation (\(2x=18\)) then use that solution in the second equation. (\(y=x+8=9+8=17\))
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |8 |Check |\(9+17=26\) ✓ |We go back to the original statement of the equations and pick the equation that wasn't used in the *solve* step. \[x+y=26\]
+        |===
+
+    - type: info
+      txt: |
+        [cols=",,,",]
+        |===
+        |9 |State |\{9,17} |
+        |===
+
+  - name: Problem types
+    inst:
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Interest +
+        \( I = P \cdot r \cdot t \) |Change +
+        \( \Delta=\frac\{N \times O}\{|O|}\) |Motion +
+        \( D = r \cdot t \)
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Geometry +
+        \(a^2 + b^2 = c^2\) |Integer +
+        C=x+y |Age +
+        |===
+
+    - type: info
+      txt: |
+        [width="100%",cols="34%,33%,33%",]
+        |===
+        |Work +
+        \(W = r \cdot t\) |Money +
+        \(T = n \cdot v\) |Mixture +
+        |===
+
+  - name: Interest
+    inst:
+    - type: info
+      txt: |
+         +
+
+    - type: info
+      txt: |
+        * \( I \): simple interest
+        * \( P \): principal amount
+        * \( r \): rate of interest per time period
+        * \( t \): number of periods
+
+  - name: Change
+    inst:
+    - type: info
+      txt: |
+         +
+
+    - type: info
+      txt: |
+        * \(\Delta %\): Percent change
+        * \(N\): New Value
+        * \(O \): Old Value
+
+  - name: Motion
+    inst:
+    - type: info
+      txt: |
+         +
+
+    - type: info
+      txt: |
+        * \( D \): distance traveled
+        * \( r \): rate traveled
+        * \( t \): time traveled
+
+  - name: Geometry
+    inst:
+    - type: info
+      txt: |
+        *Pythagorean Theorem*
+
+    - type: info
+      txt: |
+         +
+
+    - type: info
+      txt: |
+         +
+
+    - type: info
+      txt: |
+        * \( a \) and \( b \): lengths of the legs
+        * \( c \): length of the hypotenuse
+
+  - name: Integer
+    inst:
+  - name: Age
+    inst:
+  - name: Work
+    inst:
+  - name: Money
+    inst:
+    - type: info
+      txt: |
+         +
+
+    - type: info
+      txt: |
+        * \(T\): total value
+        * \(n\): number of coins or bills
+        * \(v\): value of a coin or bill
+
+  - name: Mixture
+    inst:
