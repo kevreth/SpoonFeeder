@@ -1,6 +1,3 @@
-# The script needs to be modified to handle nested structures and subtables properly.
-# Here's the updated version of the script.
-
 import sys
 import os
 from bs4 import BeautifulSoup
