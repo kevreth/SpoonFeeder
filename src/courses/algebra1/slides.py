@@ -9,28 +9,21 @@ def read_yaml(file_path):
         return yaml.safe_load(file)
 
 def verify_yaml(yaml_content):
-    """ Verifies if the YAML content is valid. """
     return isinstance(yaml_content, dict)  # Basic validation
 
 def generate_html_body(yaml_content):
-    """ Generates an HTML body from YAML content, including the content of 'inst.txt'. """
     html_body = '<div>'
     for lesson in yaml_content.get('lessons', []):
         html_body += f"<h2>{lesson['name']}</h2>"
         for module in lesson.get('modules', []):
             html_body += f"<h3>{module['name']}</h3>"
             insts = module.get('inst')
-            if insts is not None:  # Checking if 'inst' is not None
+            if insts is not None:
                 for inst in insts:
-                    # Get the string content
-                    inst_content = inst.get('txt')  # Assuming 'content' contains the string
-                    # print(inst_content)
+                    inst_content = inst.get('txt')
                     if inst_content:
-                        # html_body += inst_content
                         html = extract(inst_content)
-                        # print(html)
                         html_body += html
-                    print("====================================================")
             html_body += "<hr>"
         html_body += "<hr>"
     html_body += '</div>'
@@ -58,11 +51,9 @@ def extract_inner_content(html_content):
         if first_div_inside_content:
             inner_content = first_div_inside_content.decode_contents()
             first_div_inside_content.decompose()
-            print(inner_content)
             return inner_content.strip()
         else:
             content_div_content = content_div.decode_contents()
-            print(content_div_content)
             return content_div_content
     return None
 
