@@ -3,6 +3,7 @@ import yaml
 from bs4 import BeautifulSoup
 import subprocess
 
+ARGS = ['asciidoctor', '-b', 'html5', '-a', 'stylesheet!', '-o', '-', '-']
 def read_yaml(file_path):
     """ Reads and returns the content of the YAML file. """
     with open(file_path, 'r') as file:
@@ -31,9 +32,8 @@ def generate_html_body(yaml_content):
 
 def convert_to_html(inst_content):
     try:
-        args = ['asciidoctor', '-b', 'html5', '-a', 'stylesheet!', '-o', '-', '-']
         completion = subprocess.run(
-            args, text=True, input=inst_content, capture_output=True, check=True
+            ARGS, text=True, input=inst_content, capture_output=True, check=True
         )
         if completion.check_returncode() == 0 or completion.check_returncode() == None:
             return completion.stdout
