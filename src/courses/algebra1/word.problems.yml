@@ -194,7 +194,9 @@ lessons:
       txt: |
         Step 9
 
-        *State* the answer with appropriate units. |\(24 \text\{ft}^2\)
+        *State* the answer with appropriate units.
+
+        \(24 \text\{ft}^2\)
 
         Emphasize your final answer with a border. *Make sure* to add the correct units!
 
@@ -202,15 +204,13 @@ lessons:
     inst:
     - type: info
       txt: |
-        NOTE: 1 quarter = $0.25, 1 penny = $0.01
-
-        _Maria has $2.43 in quarters and pennies in her wallet. She has twice as many pennies as quarters. How many coins of each type does she have?_
-
-    - type: info
-      txt: |
         Step 1
 
         Read
+
+        NOTE: +
+        1 quarter = $0.25, +
+        1 penny = $0.01
 
         _Maria has $2.43 in quarters and pennies in her wallet. She has twice as many pennies as quarters. How many coins of each type does she have?_
 
@@ -220,8 +220,9 @@ lessons:
 
         Decorate
 
-        [line-through]*Maria has* [.underline]#$2.43 in quarters and pennies# [line-through]*in her wallet. She has* [.underline]#twice as many pennies as quarters#. [.underline]#How many coins of each type# does she have? |You may not make the same decisions about underlining and crossing out as another student.
-        |===
+        [line-through]*Maria has* [.underline]#$2.43 in quarters and pennies# [line-through]*in her wallet. She has* [.underline]#twice as many pennies as quarters#. [.underline]#How many coins of each type# does she have?
+
+        You may not make the same decisions about underlining and crossing out as another student.
 
     - type: info
       txt: |
@@ -229,7 +230,7 @@ lessons:
 
         Identify
 
-        [width="100%",cols="34%,33%,33%",]
+        [width="100%",cols="15%,15%,70%",]
         |===
         |Type |Money |
         |Formula |\(TV = n \cdot v\) |The basic formula applies to one entitiy, quarters and pennies are two separate entities. The TV of each coin will be summed.
@@ -688,10 +689,7 @@ lessons:
 
         Tabulate
 
-        [width="100%",cols="50%,50%",]
-        |===
-        a|
-        [cols=",,",options="header",]
+        [width="100%",cols="15%,15%,70%",]
         |===
         |x |y  |C
         |x |-y |-8
@@ -701,7 +699,7 @@ lessons:
 
         Before adding data to our table, we need to perform some algebra. The basic equations from the problem are \[x+8=y\] \[x+y=26\] To make the format of the equation fit a table the first equation needs to have y moved to the left side and the constant moved to the right side: \[x-y=-8\] Now both equations are in the same form, the x-term in the first position, the y-term in the second position, and a constant on the right side.
 
-        [cols=",,",options="header",]
+        [width="100%",cols="15%,15%,70%",]
         |===
         |x  |y  |C
         |x  |-y |-8
@@ -758,37 +756,31 @@ lessons:
         [width="100%",cols="34%,33%,33%",]
         |===
         |Interest +
-        \( I = P \cdot r \cdot t \) |Change +
-        \( \Delta=\frac\{N \times O}\{|O|}\) |Motion +
-        \( D = r \cdot t \)
-        |===
-
-    - type: info
-      txt: |
-        [width="100%",cols="34%,33%,33%",]
-        |===
+          \( I = P \cdot r \cdot t \)
+        |Change +
+          +++ \( \Delta=\frac{N \times O}{O} \) +++
+        |Motion +
+          \( D = r \cdot t \)
         |Geometry +
-        \(a^2 + b^2 = c^2\) |Integer +
-        C=x+y |Age +
-        |===
-
-    - type: info
-      txt: |
-        [width="100%",cols="34%,33%,33%",]
-        |===
+          \(a^2 + b^2 = c^2\)
+        |Integer +
+          C=x+y
+        |Age
         |Work +
-        \(W = r \cdot t\) |Money +
-        \(T = n \cdot v\) |Mixture +
+          \(W = r \cdot t\)
+        |Money +
+          \(T = n \cdot v\)
+        |Mixture
         |===
 
   - name: Interest
     inst:
     - type: info
       txt: |
-         +
+        \( I = P \cdot r \cdot t \)
 
-    - type: info
-      txt: |
+        Where:
+
         * \( I \): simple interest
         * \( P \): principal amount
         * \( r \): rate of interest per time period
@@ -798,10 +790,10 @@ lessons:
     inst:
     - type: info
       txt: |
-         +
+        \( \Delta \% = \frac{N \times O}{|O|} \times 100\% \)
 
-    - type: info
-      txt: |
+        Where:
+
         * \(\Delta %\): Percent change
         * \(N\): New Value
         * \(O \): Old Value
@@ -810,10 +802,10 @@ lessons:
     inst:
     - type: info
       txt: |
-         +
+        \( D = r \cdot t \)<br>
 
-    - type: info
-      txt: |
+        Where:
+
         * \( D \): distance traveled
         * \( r \): rate traveled
         * \( t \): time traveled
@@ -822,18 +814,12 @@ lessons:
     inst:
     - type: info
       txt: |
-        *Pythagorean Theorem*
+        Pythagorean Theorem
 
-    - type: info
-      txt: |
-         +
+        \(a^2 + b^2 = c^2\)
 
-    - type: info
-      txt: |
-         +
+        Where:
 
-    - type: info
-      txt: |
         * \( a \) and \( b \): lengths of the legs
         * \( c \): length of the hypotenuse
 
@@ -847,10 +833,10 @@ lessons:
     inst:
     - type: info
       txt: |
-         +
+        \(T = n \cdot v\)<br>
 
-    - type: info
-      txt: |
+        Where:
+
         * \(T\): total value
         * \(n\): number of coins or bills
         * \(v\): value of a coin or bill
