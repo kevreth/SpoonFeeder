@@ -2,6 +2,8 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="mini-default.css"> -->
       <title>Word Problems</title>
       <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       <style>
@@ -9,16 +11,20 @@
           background: #E2DF9A;
         }
         table {
-          background: #EEEEEE;
+          /* background: #EEEEEE; */
           font-size: 18px;
           margin: 2em auto;
-          border: 1px solid black;
+          /* border: 1px solid black; */
         }
-        table, th, td, tr {
+        /* table, th, td, tr {
          border: 1px solid black
-        }
+        } */
         td {
           vertical-align: top;
+          text-align:left;
+          padding:0;
+        }
+        th {
           text-align:left;
         }
         ul {
@@ -29,20 +35,26 @@
         h2, h3 {
           margin-bottom: 0;
         }
-        tr {
+        /* tr {
           border: 1px solid black
-        }
+        } */
         .two-columns {
           display: flex;
         }
-
-        .left-column {
+        .sidebar {
           flex: 0 0 auto; /* Size to fit content */
           padding-right: 20px; /* Optional spacing between columns */
         }
-
-        .right-column {
+        .content {
+          display: flex; /* Added to make right-column a flex container */
+          flex-direction: column; /* Stacks children vertically */
           flex-grow: 1; /* Take up the remaining space */
+        }
+        .hidden {
+          visibility: hidden
+        }
+        .hilite {
+          background-color: yellow
         }
       </style>
    </head>

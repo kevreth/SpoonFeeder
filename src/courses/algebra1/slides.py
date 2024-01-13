@@ -3,7 +3,7 @@ import yaml
 from bs4 import BeautifulSoup
 import subprocess
 
-ARGS = ['asciidoctor', '-b', 'html5', '-a', 'stylesheet!', '-a', 'nofooter', '-o', '-', '-']
+ARGS = ['asciidoctor', '-b', 'html5', '-s', '-o', '-', '-']
 def read_yaml(file_path):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
@@ -20,13 +20,33 @@ def generate_html_body(yaml_content):
             insts = module.get('inst')
             if insts is not None:
                 for inst in insts:
-                    inst_content = inst.get('txt')
-                    # print(inst_content + '\n======')
-                    if inst_content:
-                        html = extract(inst_content)
+                    if inst:
+                        html = extract_inner_content(inst)
                         html_body += html + "<hr>"
             html_body += "<hr>"
     return html_body
+
+def extract_inner_content(inst):
+    # print(html_content)
+    content_adoc = inst.get('txt')
+    sdbr_adoc = inst.get('sdbr')
+    content_html = convert_to_html(content_adoc)
+    retval = ''
+    if sdbr_adoc:
+      sdbr_html = convert_to_html(sdbr_adoc)
+      retval = f'''
+      <div class="two-columns">
+        <div class="sidebar">
+        {sdbr_html}
+        </div>
+        <div class="content">
+        {content_html}
+        </div>
+      </div>
+
+      '''
+    else: retval = content_html
+    return retval
 
 def convert_to_html(inst_content):
     try:
@@ -40,22 +60,6 @@ def convert_to_html(inst_content):
             print(completion.check_returncode())
     except subprocess.CalledProcessError as e:
         print(f"Subprocess error: {e}", file=sys.stderr)
-
-def extract_inner_content(html_content):
-    soup = BeautifulSoup(html_content, 'html.parser')
-    content_div = soup.find('div', class_='content')
-    if content_div:
-        content_div.unwrap()
-    content_div = soup.find('div', id='content')
-    if content_div:
-        return content_div.decode_contents()
-    return None
-
-def extract(str):
-    document=convert_to_html(str)
-    # print(document + '\n======')
-    extract = extract_inner_content(document)
-    return extract
 
 def substitute_html_body(template_file, html_body):
     """ Substitutes the HTML body into the template HTML file. """
