@@ -5,32 +5,32 @@ lessons:
     inst:
     - type: info
       txt: |
-        A _word problem_ expresses a math problem in English. The most basic word problems are obviously solved by basic arithmetic. For example
+        A _word problem_ expresses a math problem in natural language. The most basic word problems are obviously solved by basic arithmetic. For example
 
         * Sally has 7 apples, and her friend gives her 3 more. How many apples does Sally have now? (7+3=10)
         * If four boxes contain 6 pencils each, how many pencils are there in total? (4x6=24)
         * If a movie starts at 3:30 and lasts for 2 hours, what time will it end? (3:30+2:00=5:30)
+    - type: bool
+      txt: A word problem expresses a math problem in natural language.
+      ans: 'yes'
+    - type: bool
+      txt: Basic word problems require algebra.
+      ans: 'no'
     - type: info
       txt: |
-        Complex word problems require a procedure to solve.
+        Complex word problems require algebra and a procedure to solve.
 
         *Word Problem Procedure*
 
         . *Read* the problem. Make sure all the words and ideas are understood
         . *Decorate* the problem by crossing out distractors and underlining necessary information.
-        . *Identify*
-          * the type of problem
-          * the formula
-          * entities
-          * variables
-          * the number of required answers
-          * equations
+        . *Identify* important aspects of the problem
         . *Diagram* the problem
         . *Tabulate* the equation, with one column for each variable.
         . *Translate* the results into equations.
         . *Solve* the equation.
-        . *Check* both the equation results and the answer in the problem and make sure it makes sense.
-        . *State* the answer with appropriate units.
+        . *Check* both the equation results and the solution set in the problem and make sure it makes sense.
+        . *State* the solution set with appropriate units.
 
     - type: info
       txt: |
@@ -47,6 +47,8 @@ lessons:
         *RDIDTTSCS*
 
         Not all of steps will be used with every word problem, but the more complex a problem is the more of the steps are required.
+
+        You will need to memorize the steps.
 
   - name: Example 1
     inst:
@@ -96,11 +98,11 @@ lessons:
 
         *Decorate* the problem by crossing out distractors and underlining necessary information.
 
-        _[line-through]*Sarah wants to plant flowers in her* [.underline]#rectangular# [line-through]*garden*. The [.underline]#length# [line-through]*of the garden* [.underline]#is 6 feet#, and the [.underline]#width is 4 feet#. What is the [.underline]#area# [line-through]*of her garden plot*?_
+        _[s]#Sarah wants to plant flowers in her# [u]#rectangular# [s]#garden#. The [u]#length# [s]#of the garden# [u]#is 6 feet#, and the [u]#width is 4 feet#. What is the [u]#area# [s]#of her garden plot#?_
 
-        _Distractors_ are extra verbiage that do not contribute to the problem. Distractors exercise your ability to separate relevant and irrelevant information. You may want to [line-through]#*cross out*# distractors.
+        _Distractors_ are extra verbiage that do not contribute to the problem. Distractors exercise your ability to separate relevant and irrelevant information. You may want to [s]#cross out# distractors.
 
-        [.underline]#Underline# verbiage that describes
+        [u]#Underline# verbiage that describes
 
         . The type of problem ("rectangular")
         . Variable names ("length", "width")
@@ -123,21 +125,156 @@ lessons:
       txt: |
         Step 3
 
-        *Identify*
+        *Identify* important aspects of the problem
 
-        [width="100%",cols="15%,15%,70%",]
-        |===
-        |Type |geometry; area of rectangle |The types of problems will be listed later; for now, know that this is a *geometry* problem.
-        |Formula |\(A=l \cdot w\) |\(area = length \cdot width\). The formula will not usually be given with most word problems, where you will need to select the correct formula. In many cases, the formulas will need to be memorized.
-        |Entities a||
-        |Answers |\(A\) |
-        |Variables a|
+        Identification consists of six sub-steps.
+
+          * problem type
+          * formula
+          * entities
+          * variables
+          * solution set
+          * equations
+
+
+
+    - type: info
+      sdbr: |
+        . Read
+        . Decorate
+        . Identify
+          * *problem type*
+          * formula
+          * entities
+          * variables
+          * solution set
+          * equations
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+      txt: |
+        Type
+
+        geometry; area of rectangle
+
+        The types of problems will be listed later; for now, know that this is a *geometry; area of rectangle* problem.
+    - type: info
+      sdbr: |
+        . Read
+        . Decorate
+        . Identify
+          * problem type
+          * *formula*
+          * entities
+          * variables
+          * solution set
+          * equations
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+      txt: |
+        Formula
+
+        \(A=l \cdot w\)
+
+        \(area = length \cdot width\)
+
+        The formula will not usually be given with most word problems, where you will need to select the correct formula. In many cases, formulas will need to be memorized.
+    - type: info
+      sdbr: |
+        . Read
+        . Decorate
+        . Identify
+          * problem type
+          * formula
+          * *entities*
+          * variables
+          * solution set
+          * equations
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+      txt: |
+        Entities
+
+        Garden plot
+
+        An *entity* is a case or instance where the forumula applies. The rectangular garden plot is described by the formula \(A=l \cdot w\). Entities become important when there's more than one.
+    - type: info
+      sdbr: |
+        . Read
+        . Decorate
+        . Identify
+          * problem type
+          * formula
+          * entities
+          * *variables*
+          * solution set
+          * equations
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+      txt: |
+        Variables
+
         * \(l = 6\): length
-        * \(w= 4\): width
-        |
-        |Equations a||This is for equations other than the basic equation used by the problem. Their use will become clear in later examples.
-        |===
+        * \(w = 4\): width
+    - type: info
+      sdbr: |
+        . Read
+        . Decorate
+        . Identify
+          * problem type
+          * formula
+          * entities
+          * variables
+          * *solution set*
+          * equations
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+      txt: |
+        Solution set
 
+        \(A\)
+
+        We seek the area of the garden plot. There may be more than one solution for a problem.
+    - type: info
+      sdbr: |
+        . Read
+        . Decorate
+        . Identify
+          * problem type
+          * formula
+          * entities
+          * variables
+          * solution set
+          * *equations*
+        . Diagram
+        . Tabulate
+        . Translate
+        . Solve
+        . Check
+        . State
+      txt: |
+        Equations
+
+        *Equations* become important when there's more than one entity. There is only one entity in this problem, garden plot, so no additional equations exist.
     - type: info
       sdbr: |
         . Read
@@ -186,7 +323,7 @@ lessons:
       txt: |
         Step 8
 
-        *Check* both the equation results and the answer in the problem.
+        *Check* both the equation results and the solution set in the problem.
 
         Checking the equation results is only necessary if algebraic manipulation was involved. Since this was a straight arithmetic problem, no check can be performed.
 
@@ -194,11 +331,11 @@ lessons:
       txt: |
         Step 9
 
-        *State* the answer with appropriate units.
+        *State* the solution set with appropriate units.
 
         \(24 \text\{ft}^2\)
 
-        Emphasize your final answer with a border. *Make sure* to add the correct units!
+        Emphasize your final solution set with a border. *Make sure* to add the correct units!
 
   - name: Example 2
     inst:
@@ -220,7 +357,7 @@ lessons:
 
         Decorate
 
-        [line-through]*Maria has* [.underline]#$2.43 in quarters and pennies# [line-through]*in her wallet. She has* [.underline]#twice as many pennies as quarters#. [.underline]#How many coins of each type# does she have?
+        [s]*Maria has* [u]#$2.43 in quarters and pennies# [s]*in her wallet. She has* [u]#twice as many pennies as quarters#. [u]#How many coins of each type# does she have?
 
         You may not make the same decisions about underlining and crossing out as another student.
 
@@ -239,11 +376,11 @@ lessons:
         * \(q\) (quarters)
 
         |
-        |Answers a|
+        |Solution set a|
         * \(n_p\)
         * \(n_q\)
 
-        |Each answer requires a separate equation. Keep aware of this as you continue this example.
+        |Each solution requires a separate equation. Keep aware of this as you continue this example.
         |Variables a|
         * \(v_q=$0.25\)
         * \(v_p=$0.01\)
@@ -253,7 +390,7 @@ lessons:
         * \($2.43 = TV_q + TV_p\)
         * \(n_p = 2 n_q\)
 
-        |These are the two equations we need for each of the two answers.
+        |These are the two equations we need for solution set.
         |===
 
     - type: info
@@ -337,12 +474,12 @@ lessons:
         Tabulate
 
         [options="header,footer"]
-        |================================================
-        | E    | n             | v       | TV
-        | E_q  | \(n_q\)       | \(v_q\) | \(TV_q\)
-        | E_p  | \(n_p\)       | \(v_p\) | \(TV_p\)
-        |      |               |         | \(TV_q + TV_p\)
-        |================================================
+        |=====================================================
+        | E        | n             | v       | TV
+        | \(E_q\)  | \(n_q\)       | \(v_q\) | \(TV_q\)
+        | \(E_p\)  | \(n_p\)       | \(v_p\) | \(TV_p\)
+        |          |               |         | \(TV_q + TV_p\)
+        |=====================================================
 
         For illustration purposes only, you can see how variables used in the identification section correspond to the table. So, \[E_q: n_q+v_q=TV_q\] \[E_p: n_p+v_p=TV_p\] However, stating this while working problems is not useful.
 
@@ -394,8 +531,11 @@ lessons:
     inst:
     - type: info
       txt: |
-        Step 1 |Read | |
-        An express train and a local train leave Pittsburgh to travel to Washington, D.C. The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.
+        Step 1
+
+        Read
+
+        _An express train and a local train leave Pittsburgh to travel to Washington, D.C. The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains._
 
     - type: info
       txt: |
@@ -403,7 +543,7 @@ lessons:
 
         Decorate
 
-        _An express train and a local train leave Pittsburgh to travel to Washington, D.C. [.underline]#The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.#_
+        _An express train and a local train leave Pittsburgh to travel to Washington, D.C. [u]#The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.#_
 
         The first sentence isn't useful to the mathematics of the problem but provides information used for diagramming the problem later so we don't cross it out. The remainder of the problem is mathematically useful.
 
@@ -413,7 +553,7 @@ lessons:
 
         Identify
 
-        _An express train and a local train leave Pittsburgh to travel to Washington, D.C. [.underline]#The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.#_
+        _An express train and a local train leave Pittsburgh to travel to Washington, D.C. [u]#The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains.#_
 
         [width="100%",cols="15%,15%,70%",]
         |===
@@ -423,10 +563,10 @@ lessons:
         * \(l\): local
         * \(e\): express
 
-        |An _entity_ is a _case_, or an instance, where the formula can apply. The formula \( D = r \cdot t \) applies to two trains: local and express. Each has their own rate and time.
+        |An _entity_ is a _case_, or an instance, where formula can apply. formula \( D = r \cdot t \) applies to two trains: local and express. Each has their own rate and time.
 
-        |Answers |\(r_l\) +
-        \(r_e\) |From the problem, _Find the speed of both trains._ Often the number of answers equals the number of entities.
+        |Solution set |\(r_l\) +
+        \(r_e\) |From the problem, _Find the speed of both trains._ Often the size of the solution set equals the number of entities.
 
         |Variables a|
         * \(t_l=5\)
@@ -492,7 +632,7 @@ lessons:
         60 mph \(\cdot\) 4 hours = 240 miles +
         48 mph \(\cdot\) 5 hours = 240 miles ✓
 
-        We got the same result in both equations, so we can be assured our answers are correct.
+        We got the same result in both equations, so we can be assured our solution set is correct.
 
     - type: info
       txt: |
@@ -523,7 +663,7 @@ lessons:
 
         Decorate
 
-        _[line-through]*Henning is* [.underline]#mixing# raisins and nuts to make [.underline]#25 pounds# of trail mix. Raisins cost [.underline]#$4.50 a pound and nuts cost $8 a pound#. If Henning wants his cost for the trail mix to be [.underline]#$6.60 a pound#, [.underline]#how many pounds# of raisins and how many pounds of nuts should he use?_
+        _[s]*Henning is* [u]#mixing# raisins and nuts to make [u]#25 pounds# of trail mix. Raisins cost [u]#$4.50 a pound and nuts cost $8 a pound#. If Henning wants his cost for the trail mix to be [u]#$6.60 a pound#, [u]#how many pounds# of raisins and how many pounds of nuts should he use?_
 
     - type: info
       txt: |
@@ -541,7 +681,7 @@ lessons:
         * \(m\): mix
 
         |\(m\) combines \(r\) and \(n\).
-        |Answers a|
+        |Solution set a|
         * \(q_r\)
         * \(q_n\)
 
@@ -574,9 +714,6 @@ lessons:
 
         Tabulate
 
-        [width="100%",cols="50%,50%",]
-        |===
-        a|
         [cols=",,,",options="header",]
         |===
         |E |p |q |C
@@ -585,8 +722,8 @@ lessons:
         |m |6.6 |25 |165
         |===
 
-        |Fill in everything given in the problem or that can be calculated.
-        a|
+        Fill in everything given in the problem or that can be calculated.
+
         [cols=",,,",options="header",]
         |===
         |E |p |q |C
@@ -595,7 +732,7 @@ lessons:
         |m |6.6 |25 |165
         |===
 
-        |This is the difficult part: realizing that the quantity of one mixture component, r, is the total quantity of the mixture less r of the other part. We want 25 lbs of trail mix, so if the quantity of raisins is r then the quantity of nuts is \(25-q_r.\) Note that it doesn't make any difference whether we assign the variable to raisins or nuts. We could have assigned the variable n to nuts and made the quantity of raisins \(25-q_n\) and recalculating the C column accordingly.
+        This is the difficult part: realizing that the quantity of one mixture component, r, is the total quantity of the mixture less r of the other part. We want 25 lbs of trail mix, so if the quantity of raisins is r then the quantity of nuts is \(25-q_r.\) Note that it doesn't make any difference whether we assign the variable to raisins or nuts. We could have assigned the variable n to nuts and made the quantity of raisins \(25-q_n\) and recalculating the C column accordingly.
 
     - type: info
       txt: |
@@ -641,7 +778,7 @@ lessons:
 
         Read
 
-        One number is 8 more than another number and the sum of the two numbers is 26. Find the numbers.
+        _One number is 8 more than another number and the sum of the two numbers is 26. Find the numbers._
 
     - type: info
       txt: |
@@ -664,14 +801,16 @@ lessons:
         |Type     |integer|
         |Formula  |\(C=x+y\)|
         |Entities ||
-        |Answers  |
+        |Solution set  a|
         * \(x\)
         * \(y\)
+
         |
         |Variables ||
-        |Equations |
+        |Equations a|
         * \(x+8=y\)
         * \(x+y=26\)
+
         |
         |===
 
@@ -802,7 +941,7 @@ lessons:
     inst:
     - type: info
       txt: |
-        \( D = r \cdot t \)<br>
+        \( D = r \cdot t \)
 
         Where:
 
@@ -833,7 +972,7 @@ lessons:
     inst:
     - type: info
       txt: |
-        \(T = n \cdot v\)<br>
+        \(T = n \cdot v\)
 
         Where:
 
