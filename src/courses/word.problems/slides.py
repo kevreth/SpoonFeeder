@@ -1,9 +1,7 @@
 import sys
 import yaml
 from bs4 import BeautifulSoup
-import subprocess
 
-ARGS = ['asciidoctor', '-b', 'html5', '-s', '-o', '-', '-']
 def read_yaml(file_path):
   with open(file_path, 'r') as file:
     return yaml.safe_load(file)
@@ -32,10 +30,8 @@ def generate_html_body(yaml_content):
 def extract_inner_content(inst):
   content_adoc = inst.get('txt')
   sdbr_adoc = inst.get('sdbr')
-  # content_html = convert_to_html(content_adoc)
   retval = ''
   if sdbr_adoc:
-    # sdbr_html = convert_to_html(sdbr_adoc)
     retval = f'''
 ++++
 <div class="two-columns">
@@ -58,19 +54,6 @@ def extract_inner_content(inst):
     '''
   else: retval = content_adoc
   return retval
-
-def convert_to_html(inst_content):
-  try:
-    completion = subprocess.run(
-      ARGS, text=True, input=inst_content, capture_output=True, check=True
-    )
-    if completion.check_returncode() == 0 or completion.check_returncode() == None:
-      return completion.stdout
-    else:
-      print(f"Error in converting content to HTML: {completion.stderr}", file=sys.stderr)
-      print(completion.check_returncode())
-  except subprocess.CalledProcessError as e:
-    print(f"Subprocess error: {e}", file=sys.stderr)
 
 def substitute_html_body(template_file, html_body):
   with open(template_file, 'r') as file:
