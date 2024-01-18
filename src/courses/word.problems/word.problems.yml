@@ -150,8 +150,6 @@ lessons:
         . Check
         . State
       txt: |
-        Type
-
         geometry; area of rectangle
 
         The types of problems will be listed later; for now, know that this is a *geometry; area of rectangle* problem.
@@ -173,8 +171,6 @@ lessons:
         . Check
         . State
       txt: |
-        Formula
-
         \(A=l \cdot w\)
 
         The formula will not usually be given with most word problems, where you will need to select the correct formula. In many cases, formulas will need to be memorized.
@@ -196,8 +192,6 @@ lessons:
         . Check
         . State
       txt: |
-        Entities
-
         Garden plot
 
         An *entity* is a case or instance where the forumula applies. The rectangular garden plot is described by the formula \(A=l \cdot w\). Entities become important when there's more than one.
@@ -219,8 +213,6 @@ lessons:
         . Check
         . State
       txt: |
-        Variables
-
         * \(l = 6\): length
         * \(w = 4\): width
     - type: info
@@ -241,8 +233,6 @@ lessons:
         . Check
         . State
       txt: |
-        Solution set
-
         \(A\)
 
         We seek the area of the garden plot. There may be more than one solution for a problem.
@@ -264,8 +254,6 @@ lessons:
         . Check
         . State
       txt: |
-        Equations
-
         *Equations* become important when there's more than one entity. There is only one entity in this problem, garden plot, so no additional equations exist.
     - type: info
       sdbr: |
@@ -296,8 +284,6 @@ lessons:
         . Check
         . State
       txt: |
-        Step 5
-
         *Tabulate* the equation, with one column for each variable.
 
         Tabulation is only used in the presence of more than one entity.
@@ -313,8 +299,6 @@ lessons:
         . Check
         . State
       txt: |
-        Step 6
-
         *Translate* the results of the table into a new equation.
 
         If there's no tabulation, there's no translation either.
@@ -330,8 +314,6 @@ lessons:
         . Check
         . State
       txt: |
-        Step 7
-
         *Solve* the equation(s).
 
         \(A = l \cdot w = 4 \cdot 6 = 24\text\{ft}^2\)
@@ -347,8 +329,6 @@ lessons:
         . *Check*
         . State
       txt: |
-        Step 8
-
         *Check* both the equation results and the solution set in the problem.
 
         Checking the equation results is only necessary if algebraic manipulation was involved. Since this was a straight arithmetic problem, no check can be performed.
@@ -364,8 +344,6 @@ lessons:
         . Check
         . *State*
       txt: |
-        Step 9
-
         *State* the solution set with appropriate units.
 
         \(24 \text\{ft}^2\)
@@ -659,7 +637,6 @@ lessons:
         . State
       txt: |
         _An express train and a local train leave Pittsburgh to travel to Washington, D.C. The express train can make the trip in 4 hours and the local train takes 5 hours for the trip. The speed of the express train is 12 miles per hour faster than the speed of the local train. Find the speed of both trains._
-
     - type: info
       sdbr: |
         . Read
