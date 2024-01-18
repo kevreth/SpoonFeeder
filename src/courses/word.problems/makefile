@@ -1,4 +1,4 @@
-word.problems.2.html: word.problems.adoc
+word.problems.html: word.problems.adoc
 	asciidoctor -b html5 -s -o $@ $<
 
 word.problems.adoc:
@@ -7,5 +7,5 @@ word.problems.adoc:
 .PHONY: clean
 
 clean:
-	rm -f word.problems.2.html
+	rm -f word.problems.html
 	rm -f word.problems.adoc
