@@ -24,7 +24,6 @@ def generate_html_body(yaml_content):
           if inst:
             html = extract_inner_content(inst)
             html_body += html + passthrough('<hr>')
-      html_body += passthrough('<hr>')
   return html_body
 
 def extract_inner_content(inst):

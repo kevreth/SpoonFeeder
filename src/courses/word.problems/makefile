@@ -1,7 +1,7 @@
 word.problems.html: word.problems.adoc
 	asciidoctor -b html5 -s -o $@ $<
 
-word.problems.adoc:
+word.problems.adoc: word.problems.yml
 	python slides.py word.problems.yml
 
 .PHONY: clean
