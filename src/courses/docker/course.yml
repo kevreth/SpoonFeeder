@@ -18,11 +18,11 @@ units:
         exp: A sandboxed process has no knowledge of it's host.
       - type: info
         txt: |
-          Docker is software that _containerizes_ applications
+          Docker is software that _containerizes_ applications.
 
           _Applications_ may include databases, Web servers, or even entire operating systems.
 
-          In lieu of installing the application on the host machine, a Docker _container_ can be installed instead. It is easily added and removed. Most importantly, several instances can execute simultaneosly, even of different versions. So for example, Python 2 and Python 3 (Python is a programming language) containers can execute simultaneously. They're unaware of each other.
+          In lieu of installing the application on the host machine, a Docker _container_ can be installed instead. Containers are easily added and removed. Most importantly, several instances can execute simultaneosly, even of different versions. So for example, Python 2 and Python 3 (Python is a programming language) containers can execute simultaneously. They're unaware of each other.
       - type: bool
         txt: With Docker, two copies of PostgreSQL 11 and three copies of PostgreSQL 12 (PostgreSQL is a database management server) could operate simultaneously.
         ans: 'yes'
@@ -58,8 +58,57 @@ units:
           image: a filesystem and build instructions containing everything required to execute in a container
 
           Docker enables multiple copies of multiple versions of applications to execute simulataneously.
+      - exercises:
+        - type: gap
+          txt: (1) will build a(n) (2) into to a(n) (3) that is in a(n) (4) on the host machine.
+          ans:
+          - Docker
+          - image
+          - container
+          - sandbox
+        - type: vocab
+        - list:
+            Docker: software that containerizes applications
+            image: a filesystem and build instructions containing everything required to execute in a container
+            container: a sandboxed process running on a host machine
+            sandbox: an application cannot know about or affect its host environment
+    - name: Microservices
+      - type: info
+        txt: |
+          The primary use case for Docker is operating _microservices_. For example, instead of one copy of the Apache Web server executing, several copies, each in a container, execute simultaneously. The redundancy enables failed copies of Apache to gracefully degrade capacity. If there was only one copy executing and it failed then the site would be offline. Microservices provide fault tolerance through redundancy.
+      - type: bool
+        txt: The primary benefit of microservices is ease of administration.
+        ans: 'no'
+        exp: The primary benefit of microservices is fault tolerance.
+      - type: bool
+        txt: The primary use case for Docker is operating _microservices_.
+        ans: 'yes'
+        exp:
+      - type: info
+        txt: |
+          _Microservices_ have their name because each container should be as small as possible. A set of database management microservices may exist where each microservice only serves part of the data required for a composite service or application. Each of those microservices (which corresponds to an _image_) would operate redundantly across many containers.
+      - type: bool
+        txt: A microservice container should be as small as possible.
+        ans: 'yes'
+        exp:
+      # - type: bool
+      #   txt:
+      #   ans: 'yes'
+      #   exp:
+      - type: info
+        txt: |
+          Summary
+
+          * The primary use case for Docker is operating _microservices_.
+          * Microservices provide fault tolerance through redundancy.
+          * A microservice container should be as small as possible.
       exercises:
-      - type:
+      - type: gap
+        txt: A (1) provides (2) through (3).
+        ans:
+          - microservice
+          - fault tolerance
+          - redundancy
     - name: Working with images and containers
       - type: info
         txt: |
@@ -190,8 +239,10 @@ units:
           docker rm: deletes container
           docker rmi: deletes image
           docker stop: halts container execution
+   - name: Containerizing an app
+  - name: Development containers
   - name: The Dockerfile
-    lessons:
+   lessons:
     - name: Instruction Overview
       modules:
       - name: Instruction Overview
@@ -235,5 +286,4 @@ units:
           USER:: Set user and group ID.
           VOLUME:: Create volume mounts.
           WORKDIR:: Change working directory.
-  - name: Containerizing an app
-  - name: Development containers
+  - name: Docker Commands
