@@ -13,7 +13,7 @@ units:
           container: a sandboxed process running on a host machine
           image: a filesystem containing everything required to execute in a container
       - type: info
-          image::area.svg[Static,300]
+          image::docker.basic.svg[Static,300]
 
           The Docker client commands and receives responses from the Docker server.
 
@@ -27,6 +27,43 @@ units:
         - type: info
           txt: |
             This SpoonFeeder course assumes using Linux.
+        - type: info
+          txt: |
+            docker version
+
+            Execute and make sure both the client and server are running.
+
+              $ docker version
+              Client: Docker Engine - Community
+              Version:           25.0.0
+              API version:       1.44
+              Go version:        go1.21.6
+              Git commit:        e758fe5
+              Built:             Thu Jan 18 17:10:20 2024
+              OS/Arch:           linux/arm64
+              Context:           default
+
+              Server: Docker Engine - Community
+              Engine:
+                Version:          25.0.0
+                API version:      1.44 (minimum version 1.24)
+                Go version:       go1.21.6
+                Git commit:       615dfdf
+                Built:            Thu Jan 18 17:10:20 2024
+                OS/Arch:          linux/arm64
+                Experimental:     false
+              containerd:
+                Version:          1.6.27
+                GitCommit:        a1496014c916f9e62104b33d1bb5bd03b0858e59
+              runc:
+                Version:          1.1.11
+                GitCommit:        v1.1.11-0-g4bccb38
+              docker-init:
+                Version:          0.19.0
+                GitCommit:        de40ad0
+
+    - name: Interacting with Images
+
     - name: Deploying an image
       inst:
       - type: info
@@ -117,3 +154,50 @@ units:
           docker rm: deletes container
           docker rmi: deletes image
           docker stop: halts container execution
+  - name: The Dockerfile
+    lessons:
+    - name: Instruction Overview
+      modules:
+      - name: Instruction Overview
+        inst:
+        txt: |
+          ADD
+          ARG
+          CMD
+          COPY
+          ENTRYPOINT
+          ENV
+          EXPOSE
+          FROM
+          HEALTHCHECK
+          LABEL
+          MAINTAINER
+          ONBUILD
+          RUN
+          SHELL
+          STOPSIGNAL
+          USER
+          VOLUME
+          WORKDIR
+        inst:
+        txt: |
+          ADD:: Add local or remote files and directories.
+          ARG:: Use build-time variables.
+          CMD:: Specify default commands.
+          COPY:: Copy files and directories.
+          ENTRYPOINT:: Specify default executable.
+          ENV:: Set environment variables.
+          EXPOSE:: Describe which ports your application is listening on.
+          FROM:: Create a new build stage from a base image.
+          HEALTHCHECK:: Check a container's health on startup.
+          LABEL:: Add metadata to an image.
+          MAINTAINER:: Specify the author of an image.
+          ONBUILD:: Specify instructions for when the image is used in a build.
+          RUN:: Execute build commands.
+          SHELL:: Set the default shell of an image.
+          STOPSIGNAL:: Specify the system call signal for exiting a container.
+          USER:: Set user and group ID.
+          VOLUME:: Create volume mounts.
+          WORKDIR:: Change working directory.
+  - name: Containerizing an app
+  - name: Development containers
