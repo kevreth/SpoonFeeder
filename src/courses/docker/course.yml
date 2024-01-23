@@ -5,14 +5,64 @@ units:
   lessons:
   - name: Introduction
     modules:
-    - name: What Docker does
+    - name: Basic Docker concepts
       inst:
       - type: info
         txt: |
-          docker:
-          container: a sandboxed process running on a host machine
-          image: a filesystem containing everything required to execute in a container
+          A _container_ is a sandboxed process running on a host machine.
+
+          _Sandboxed_ means the has no access to or awareness of the host or other sandboxed processes.
+      - type: bool
+        txt: A sandboxed process can identify the operating system version of it's host.
+        ans: 'no'
+        exp: A sandboxed process has no knowledge of it's host.
       - type: info
+        txt: |
+          Docker is software that _containerizes_ applications
+
+          _Applications_ may include databases, Web servers, or even entire operating systems.
+
+          In lieu of installing the application on the host machine, a Docker _container_ can be installed instead. It is easily added and removed. Most importantly, several instances can execute simultaneosly, even of different versions. So for example, Python 2 and Python 3 (Python is a programming language) containers can execute simultaneously. They're unaware of each other.
+      - type: bool
+        txt: With Docker, two copies of PostgreSQL 11 and three copies of PostgreSQL 12 (PostgreSQL is a database management server) could operate simultaneously.
+        ans: 'yes'
+        exp: A container allows multiple copies of multiple versions of applications to execute at the same time. They are unaware of each other.
+      - type: bool
+        txt: Docker cannot containerize operating systems.
+        ans: 'no'
+        exp: Docker can fully containerize operating systems.
+      - type: info
+        txt: |
+          An _image_ is a filesystem (a set of computer disk folders and files) and a set of instructions containing everything required to execute an application in a container.
+
+          Think of an image as a pattern and a container as a realization of that pattern. A container is an executable instance of an image. An image cannot be executed. It must be built (not just copied) into a container first.
+      - type: bool
+        txt: An image is simply copied to a container.
+        ans: 'no'
+        exp: An image must be built into a container.
+      - type: bool
+        txt: Docker executes images
+        ans: 'no'
+        exp: Docker executes containers that are built from images.
+      - type: bool
+        txt: An image contains a filesystem and build instructions.
+        ans: 'yes'
+        exp:
+      - type: info
+        txt: |
+          Summary
+
+          sandboxed: when an application cannot know about or affect its host environment
+          container: a sandboxed process running on a host machine
+          Docker: software that containerizes applications
+          image: a filesystem and build instructions containing everything required to execute in a container
+
+          Docker enables multiple copies of multiple versions of applications to execute simulataneously.
+      exercises:
+      - type:
+    - name: Working with images and containers
+      - type: info
+        txt: |
           image::docker.basic.svg[Static,300]
 
           The Docker client commands and receives responses from the Docker server.
@@ -22,46 +72,32 @@ units:
           An Image may be deployed to multiple containers.
 
           A container can only contain one image.
-    - name: Install Docker
-      inst:
-        - type: info
-          txt: |
-            This SpoonFeeder course assumes using Linux.
-        - type: info
-          txt: |
-            docker version
+      - type: info
+        txt: |
+          The Docker client is invoked with `docker` at a command prompt (such as PowerShell, Bash, ZShell, or the Windows Command Prompt) followed by a Docker command. For example, typing
 
-            Execute and make sure both the client and server are running.
+          `docker version`
 
-              $ docker version
-              Client: Docker Engine - Community
-              Version:           25.0.0
-              API version:       1.44
-              Go version:        go1.21.6
-              Git commit:        e758fe5
-              Built:             Thu Jan 18 17:10:20 2024
-              OS/Arch:           linux/arm64
-              Context:           default
+          at a command prompt informs if both the client and server are running.
 
-              Server: Docker Engine - Community
-              Engine:
-                Version:          25.0.0
-                API version:      1.44 (minimum version 1.24)
-                Go version:       go1.21.6
-                Git commit:       615dfdf
-                Built:            Thu Jan 18 17:10:20 2024
-                OS/Arch:          linux/arm64
-                Experimental:     false
-              containerd:
-                Version:          1.6.27
-                GitCommit:        a1496014c916f9e62104b33d1bb5bd03b0858e59
-              runc:
-                Version:          1.1.11
-                GitCommit:        v1.1.11-0-g4bccb38
-              docker-init:
-                Version:          0.19.0
-                GitCommit:        de40ad0
+          [literal]
+          ----
+          $ docker version
+          Client: Docker Engine - Community
+          Version:           25.0.0
+          API version:       1.44
+          Go version:        go1.21.6
+          (etc.)
 
+          Server: Docker Engine - Community
+          Engine:
+            Version:          25.0.0
+            API version:      1.44 (minimum version 1.24)
+          (etc.)
+          ----
+      - type: info
+        txt: |
+          Obtaining images
     - name: Interacting with Images
 
     - name: Deploying an image
