@@ -1,45 +1,119 @@
 ---
-name: ''
+name: Docker
 units:
-- name: ''
+- name: Introduction
   lessons:
-  - name: ''
+  - name: Introduction
     modules:
-    - name: ''
+    - name: What Docker does
       inst:
       - type: info
-        txt: <div id="table0"></div><script>$('#table0').load("src/courses/english/english.html")</script>
-      - type: bool
-        txt: 'yes'
-        ans: 'yes'
+        txt: |
+          docker:
+          container: a sandboxed process running on a host machine
+          image: a filesystem containing everything required to execute in a container
+      - type: info
+          image::area.svg[Static,300]
+
+          The Docker client commands and receives responses from the Docker server.
+
+          The Docker server interacts with images and containers.
+
+          An Image may be deployed to multiple containers.
+
+          A container can only contain one image.
+    - name: Install Docker
+      inst:
+        - type: info
+          txt: |
+            This SpoonFeeder course assumes using Linux.
+    - name: Deploying an image
+      inst:
+      - type: info
+        txt: |
+          Deploying an image
+
+          - obtain an image
+          - create a Dockerfile
+          - build the image
+          - run the image
+          - see the results
+      - type: info
+        txt: |
+          Obtain an image
+
+          In general, there's three ways to obtain images:
+          - create and build it yourself
+          - clone a repository and build the image
+          - download prebuilt images
+          Clone the repository
+          git clone https://github.com/docker/getting-started-app.git
+
+          #after clone, cd into the new directory
+          cd getting-started-app
+        type: inst
+        txt: |
+          Create the Dockerfile
+
+          echo '
+          # syntax=docker/dockerfile:1
+
+          FROM node:18-alpine
+          WORKDIR /app
+          COPY . .
+          RUN yarn install --production
+          CMD ["node", "src/index.js"]
+          EXPOSE 3000' > Dockerfile
+        type: inst
+        txt: |
+          # build the image
+          docker build -t getting-started-app .
+
+          # run the image
+          docker run --name getting-started-app -dp 127.0.0.1:3000:3000 getting-started-app
+        type: inst
+        txt: |
+          #see the image in operation
+          docker ps -a
+          docker images
+
+          #see the result
+          xdg-open http://localhost:3000
+        type: inst
+        txt: |
+          docker build: creates an image
+          docker run: starts a container
+          docker ps: lists containers
+          docker images: lists images
+          docker compose: ''
       exercises:
-      - type: mc
-        q: ''
-        o: []
-        ans: ''
-      - type: imap
-        txt: ''
-        img: src/svg/test.svg
-        ans: ''
-      - type: gap
-        text: " (1)  (2)  (3)"
-        ans:
-        - ''
-        - ''
-        - ''
-      - type: select
-        inst: ''
-        text: ''
-        ans: []
       - type: sort
-        txt: ''
+        txt: list in the order needed to execute them when deploying an image
         ans:
-        - a
-        - b
-        - c
-        - d
+          - git clone
+          - create Dockerfile
+          - docker build
+          - docker run
+          - docker ps
+    - name: Removing an image
+      inst:
+      - type: int
+        txt: |
+          docker rm: deletes container
+          docker rmi: deletes image
+          docker stop: halts container execution
+    - name: Review
+      exercises:
       - type: vocab
         list:
-          '1': ''
-          '2': ''
-          '3': ''
+          docker:
+          container: a sandboxed process running on a host machine that is isolated from all other processes running on that host machine
+          image: a filesystem containing everything required to execute in a container
+          dockerfile: a script to build a container image
+          docker build: creates an image
+          docker run: starts a container
+          docker ps: lists containers
+          docker images: lists images
+          docker rm: deletes container
+          docker rmi: deletes image
+          docker stop: halts container execution

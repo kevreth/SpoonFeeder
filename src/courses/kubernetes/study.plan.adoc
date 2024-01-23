@@ -1,0 +1,103 @@
+= Kubernetes Study Plan
+:toc: macro
+:toc-title:
+:toclevels: 4
+
+toc::[]
+
+== Week 1-2: Understanding Containers and Docker
+
+=== Introduction to Containers
+* What are containers?
+* Benefits of using containers.
+
+=== Getting Started with Docker
+* Install Docker.
+* Basic Docker commands: run, pull, push, build.
+* Creating Docker images.
+
+=== Docker Compose and Networking
+* Writing Docker compose files.
+* Networking in Docker.
+
+== Week 3-4: Kubernetes Basics
+
+=== Introduction to Kubernetes
+* What is Kubernetes and why it's used?
+* Basic architecture of Kubernetes.
+
+=== Core Concepts
+* Pods, Services, Deployments.
+* Replication Controllers and Sets.
+
+=== Kubernetes Installation and Setup
+* Setting up a Kubernetes cluster (minikube, k3s for learning purposes).
+* Basic kubectl commands.
+
+== Week 5-6: Deep Dive into Kubernetes
+
+=== Advanced Kubernetes Concepts
+* ConfigMaps, Secrets.
+* Persistent Volumes and Persistent Volume Claims.
+
+=== Networking in Kubernetes
+* Understanding Services.
+* Ingress and Network Policies.
+
+=== Observability
+* Logs and Monitoring in Kubernetes.
+* Using tools like Prometheus and Grafana.
+
+== Week 7-8: Kubernetes in Practice
+
+=== Helm - Kubernetes Package Manager
+* Introduction to Helm.
+* Creating and managing Helm charts.
+
+=== CI/CD with Kubernetes
+* Integrating Kubernetes with CI/CD pipelines.
+* Tools like Jenkins, ArgoCD.
+
+=== Security in Kubernetes
+* Best practices for securing Kubernetes clusters.
+* Understanding RBAC, Network Policies.
+
+== Week 9-10: Advanced Topics and Real-World Applications
+
+=== Stateful Applications in Kubernetes
+* Managing stateful applications.
+* Operators in Kubernetes.
+
+=== Service Mesh
+* Introduction to Service Mesh (Istio, Linkerd).
+* Implementing a Service Mesh in Kubernetes.
+
+=== Real-World Projects
+* Deploying a full application stack.
+* Troubleshooting and Performance tuning.
+
+== Continuous Learning and Practice
+
+=== Join a Kubernetes Community
+* Engage with communities (Kubernetes Slack, forums).
+* Attend webinars, workshops.
+
+=== Stay Updated
+* Follow Kubernetes release notes.
+* Read blogs and watch tutorials.
+
+=== Hands-On Practice
+* Regularly work on mini-projects.
+* Contribute to open-source Kubernetes projects.
+
+== Resources
+
+=== Books
+* "Kubernetes Up & Running" by Kelsey Hightower.
+* "The Kubernetes Book" by Nigel Poulton.
+
+=== Online Courses
+* Platforms like Coursera, Udemy, Pluralsight.
+
+=== Documentation
+* Official Kubernetes documentation (https://kubernetes.io/docs/).

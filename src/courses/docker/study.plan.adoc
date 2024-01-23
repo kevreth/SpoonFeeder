@@ -1,0 +1,43 @@
+= Docker Study Plan
+
+== Week 1: Introduction to Containers and Docker
+
+*Day 1-2*: Understand what containers are, their benefits, and how they differ from virtual machines.
+*Day 3-4*: Learn about Docker's history, its role in the container ecosystem, and its major components.
+*Day 5-7*: Install Docker on your local machine (if not already installed) and run your first Docker container. Experiment with basic Docker commands like `docker run`, `docker build`, and `docker images`.
+
+== Week 2: Docker Images and Containers
+
+*Day 1-2*: Dive deeper into Docker images. Learn about the Dockerfile, building custom images, and pushing/pulling images from Docker Hub.
+*Day 3-4*: Explore containerization best practices, including keeping images small, using multi-stage builds, and optimizing image layers.
+*Day 5-7*: Practice creating and managing containers with various configurations, including networking, volumes, and environment variables.
+
+== Week 3: Docker Compose
+
+*Day 1-2*: Introduce Docker Compose for managing multi-container applications. Learn about YAML configuration files and how to define services.
+*Day 3-4*: Create a simple multi-container application using Docker Compose, and experiment with scaling containers.
+*Day 5-7*: Explore more advanced Docker Compose features, such as networks, volumes, and environment variables for services.
+
+== Week 4: Docker Networking and Security
+
+*Day 1-2*: Study Docker networking concepts, including bridge networks, host networks, and overlay networks.
+*Day 3-4*: Secure your Docker containers by understanding container isolation, user namespaces, and Docker security best practices.
+*Day 5-7*: Configure network policies and firewall rules to control container communication, and practice securing Docker installations.
+
+== Week 5: Docker Registry and Continuous Integration/Continuous Deployment (CI/CD)
+
+*Day 1-2*: Learn about Docker registries and how to set up a private Docker registry.
+*Day 3-4*: Explore CI/CD practices with Docker, including automating container builds and deployments using tools like Jenkins or GitLab CI/CD.
+*Day 5-7*: Create a simple CI/CD pipeline for building and deploying Docker containers to a test environment.
+
+== Week 6: Docker Orchestration and Kubernetes Basics
+
+*Day 1-2*: Understand the need for container orchestration and learn about Kubernetes as a leading orchestration platform.
+*Day 3-4*: Install and configure minikube or kind to set up a local Kubernetes cluster for experimentation.
+*Day 5-7*: Deploy a basic application to Kubernetes and explore key Kubernetes concepts like pods, services, and deployments.
+
+== Week 7+: Advanced Docker Topics
+
+*Day 1-14*: Depending on your interests and goals, delve into advanced Docker topics such as Docker Swarm, Docker security scanning, Docker logging, monitoring, and containerization patterns.
+*Day 15-21*: Explore Docker ecosystem tools like Docker Machine, Docker Desktop, and Docker plugins/extensions.
+*Day 22-28*: Work on personal projects or real-world scenarios to apply your Docker knowledge and gain hands-on experience.
