@@ -3,7 +3,7 @@ name: Docker
 units:
 - name: Introduction
   lessons:
-  - name: Introduction
+  - name: Docker concepts
     modules:
     - name: Basic Docker concepts
       inst:
@@ -47,15 +47,15 @@ units:
       - type: bool
         txt: An image contains a filesystem and build instructions.
         ans: 'yes'
-        exp:
+        exp: null
       - type: info
         txt: |
           Summary
 
-          sandboxed: when an application cannot know about or affect its host environment
-          container: a sandboxed process running on a host machine
-          Docker: software that containerizes applications
-          image: a filesystem and build instructions containing everything required to execute in a container
+          #sandboxed#: when an application cannot know about or affect its host environment
+          #container#: a sandboxed process running on a host machine
+          #Docker#: software that containerizes applications
+          #image#: a filesystem and build instructions containing everything required to execute in a container
 
           Docker enables multiple copies of multiple versions of applications to execute simulataneously.
       - exercises:
@@ -67,7 +67,7 @@ units:
           - container
           - sandbox
         - type: vocab
-        - list:
+          list:
             Docker: software that containerizes applications
             image: a filesystem and build instructions containing everything required to execute in a container
             container: a sandboxed process running on a host machine
@@ -76,6 +76,8 @@ units:
       - type: info
         txt: |
           The primary use case for Docker is operating _microservices_. For example, instead of one copy of the Apache Web server executing, several copies, each in a container, execute simultaneously. The redundancy enables failed copies of Apache to gracefully degrade capacity. If there was only one copy executing and it failed then the site would be offline. Microservices provide fault tolerance through redundancy.
+
+          #microservice#: a minimal application designed to do one small task and deployed redundantly in Docker containers
       - type: bool
         txt: The primary benefit of microservices is ease of administration.
         ans: 'no'
@@ -90,11 +92,7 @@ units:
       - type: bool
         txt: A microservice container should be as small as possible.
         ans: 'yes'
-        exp:
-      # - type: bool
-      #   txt:
-      #   ans: 'yes'
-      #   exp:
+        exp: null
       - type: info
         txt: |
           Summary
@@ -109,106 +107,389 @@ units:
           - microservice
           - fault tolerance
           - redundancy
+    - name: Lesson summary and review
+      inst:
+      - type: info
+        txt: |
+          #sandbox#: an application cannot know about or affect its host environment
+          #container#: a sandboxed process running on a host machine
+          #Docker#: software that containerizes applications
+          #image#: a filesystem and build instructions containing everything required to execute in a container
+          #microservice#: a minimal application designed to do one small task and deployed redundantly in Docker containers
+
+          * Docker enables multiple copies of multiple versions of applications to execute simulataneously.
+          * Docker executes containers that are built from images.
+          * Images can be built to multiple containers but a container can only contain one image.
+          * The primary use case for Docker is operating _microservices_.
+          * Microservices provide fault tolerance through redundancy.
+          * A microservice container should be as small as possible.
+      exercises:
+      - type: vocab
+        list:
+          Docker: software that containerizes applications
+          image: a filesystem and build instructions containing everything required to execute in a container
+          container: a sandboxed process running on a host machine
+          sandbox: an application cannot know about or affect its host environment
+          microservice: a minimal application designed to do one small task and deployed redundantly in Docker containers
+      - type: bool
+        txt: Microservices provide fault tolerance through redundancy.
+        ans: 'yes'
+        exp: null
+      - type: bool
+        txt: Docker enables multiple copies of multiple versions of applications to execute simulataneously.
+        ans: 'yes'
+        exp: null
+      - type: bool
+        txt: A microservice container should be as large as possible.
+        ans: 'no'
+        exp: A microservice container should be as small as possible.
+      - type: bool
+        txt: Docker executes containers that are built from images.
+        ans: 'yes'
+        exp: null
+      - type: bool
+        txt: Images can be built to only one container but a container can only contain many images.
+        ans: 'no'
+        exp: Images can be built to multiple containers but a container can only contain one image.
+      - type: bool
+        txt: The primary use case for Docker is operating _microservices_.
+        ans: 'yes'
+        exp: null
     - name: Working with images and containers
+      inst:
       - type: info
         txt: |
           image::docker.basic.svg[Static,300]
 
-          The Docker client commands and receives responses from the Docker server.
+          Docker is split into two primary parts, a client and a server.
 
-          The Docker server interacts with images and containers.
+          The Docker client sends requests and receives responses from the Docker server.
+
+          The Docker server controls images and containers.
 
           An Image may be deployed to multiple containers.
 
           A container can only contain one image.
+      - type: bool
+        txt: The Docker client controls containers.
+        ans: no
+        exp: The Docker client communicates with the Docker server which controls containers.
+      - type: bool
+        txt: A container can contain multiple images.
+        ans: no
+        exp: A container can contain only one image.
+      - type: bool
+        txt: An Image may be built to multiple containers.
+        ans: yes
+        exp: null
       - type: info
         txt: |
-          The Docker client is invoked with `docker` at a command prompt (such as PowerShell, Bash, ZShell, or the Windows Command Prompt) followed by a Docker command. For example, typing
+          The Docker client is invoked with `docker` at a command prompt
+          (such as PowerShell, Bash, ZShell, or the Windows Command Prompt)
+          followed by a Docker command. For example, typing
 
           `docker version`
 
-          at a command prompt informs if both the client and server are running.
+          at a command prompt informs of both the client and server and the operational status of the server.
 
           [literal]
           ----
           $ docker version
           Client: Docker Engine - Community
-          Version:           25.0.0
-          API version:       1.44
-          Go version:        go1.21.6
-          (etc.)
+          Version:          25.0.0
+
+          Server: Docker Engine - Community
+          Version:          25.0.0
+          ----
+
+          If the server is not running then an error message will appear:
+
+          `Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?`
+      - type: bool
+        txt: Invoking `docker` starts the server.
+        ans: no
+        exp: Invoking `docker` starts the client.
+      - type: bool
+        txt: `docker version` provides the operational status of the server.
+        ans: 'yes'
+        exp: null
+      exercises:
+      - type: gap
+        txt: The Docker (1) communicates with the Docker (2) which controls (3)s.
+        ans:
+          - client
+          - server
+          - container
+      - type: bool
+        txt: An image can only be contained in one container and a container can only contain one image.
+        ans: no
+        exp: An image can contained in multiple containers but a container can only contain one image.
+      - type: mc
+        txt: |
+          The following is seen upon invoking `docker version`.
 
           Server: Docker Engine - Community
           Engine:
             Version:          25.0.0
             API version:      1.44 (minimum version 1.24)
-          (etc.)
-          ----
-      - type: info
-        txt: |
-          Obtaining images
-    - name: Interacting with Images
 
-    - name: Deploying an image
+          This tells us that
+        o:
+          - The server is functioning.
+          - The server is not functioning.
+          - The client is not functioning.
+          - At least one container is executing.
+        exp: |
+          `docker version` provides information on the client and server.
+          If the server is not functioning then an error message about it will be returned.
+    - name: Images
       inst:
       - type: info
         txt: |
-          Deploying an image
+          Docker must have an image for any significant work.
+          To obtain an image use the command
 
-          - obtain an image
-          - create a Dockerfile
-          - build the image
-          - run the image
-          - see the results
+          `docker pull`
+
+          [literal]
+          ----
+          $ docker pull hello-world
+          Using default tag: latest
+          Status: Downloaded newer image for hello-world:latest
+          ----
+          Docker maintains an image registry at hub.docker.com.
+          When using `docker pull`, hub.docker.com is the default registry
+          but other registries can be used by passing in the full URI.
+          For example, `docker pull quay.io/nginx/nginx:latest`
+          will pull the "nginx" image from the quay.io registry.
+
+          docker pull: download an image from a registry
+     - type: bool
+        txt: Is the purpose of `docker pull` to obtain containers?
+        ans: no
+        exp: The purpose of `docker pull` to obtain images.
+      - type: bool
+        txt: A registry is required to be specified with `docker pull`
+        ans: no
+        exp: `docker pull` will default to hub.docker.com if not registry is specified.
       - type: info
         txt: |
-          Obtain an image
+          We can see the image we just pulled as being added
+          to our Docker server with the command
 
-          In general, there's three ways to obtain images:
-          - create and build it yourself
-          - clone a repository and build the image
-          - download prebuilt images
-          Clone the repository
-          git clone https://github.com/docker/getting-started-app.git
+          `docker images`
 
-          #after clone, cd into the new directory
-          cd getting-started-app
-        type: inst
+          [literal]
+          ----
+          $ docker images
+          REPOSITORY    IMAGE ID
+          hello-world   ee301c921b8a
+          ----
+          `docker images`: list images
+      - type: info
         txt: |
-          Create the Dockerfile
+          `docker rmi` removes images.
 
-          echo '
-          # syntax=docker/dockerfile:1
-
-          FROM node:18-alpine
-          WORKDIR /app
-          COPY . .
-          RUN yarn install --production
-          CMD ["node", "src/index.js"]
-          EXPOSE 3000' > Dockerfile
-        type: inst
-        txt: |
-          # build the image
-          docker build -t getting-started-app .
-
-          # run the image
-          docker run --name getting-started-app -dp 127.0.0.1:3000:3000 getting-started-app
-        type: inst
-        txt: |
-          #see the image in operation
-          docker ps -a
-          docker images
-
-          #see the result
-          xdg-open http://localhost:3000
-        type: inst
-        txt: |
-          docker build: creates an image
-          docker run: starts a container
-          docker ps: lists containers
-          docker images: lists images
-          docker compose: ''
+          [literal]
+          ----
+          $ docker rmi hello-world
+          Untagged: hello-world:latest
+          Deleted: sha256:12660636fe55438cc3ae7424da7ac56e845cdb52493ff9cf949c47a7f57f8b43
+          $ docker images
+          REPOSITORY   TAG       IMAGE ID
+          ----
       exercises:
+      - type: sort
+        txt:  We want to download an image, see the image listed, and delete the image. Place the commands in the correct order.
+        ans: ['`docker pull`', '`docker images`','`docker rmi`']
+      # - type: bool
+      #   txt:
+      #   ans: yes
+      #   exp: null
+    - name: Containers
+      inst:
+      - type: info
+        txt: |
+          Creat a container from an image with
+
+          `docker create`
+
+          [literal]
+          ----
+          $ docker create hello-world
+          647bc74903be55cf4d6abdf95ba75def9517d4424e2bba2a314743498af2e53c
+          ----
+          The line below the command is an automatically generated container ID.
+
+          docker create: create a new container
+      - type: info
+        txt: |
+          The container ID from
+
+          [literal]
+          ----
+          $ docker create hello-world
+          647bc74903be55cf4d6abdf95ba75def9517d4424e2bba2a314743498af2e53c
+          ----
+
+          Can be seen in shortened form when listing containers with
+
+          `docker ps -a`
+
+          [literal]
+          ----
+          $ docker ps -a
+          CONTAINER ID IMAGE       NAMES
+          647bc74903be hello-world cool_mayer
+          ----
+          By default, `docker ps` only displays actively executing containers. We need `-a` to see inactive containers.
+
+          docker ps: list containers
+      - type: bool
+        txt: The `-a` in `docker ps -a` suppresses display of stopped containers.
+        ans: no
+        exp: The `-a` in `docker ps -a` causes display of stopped containers.
+      - type: info
+        txt: |
+          Notice `cool_mayer`:
+
+          [literal]
+          ----
+          $ docker ps -a
+          CONTAINER ID IMAGE       NAMES
+          647bc74903be hello-world cool_mayer
+          ----
+          Docker maintains a list of adjectives and nouns.
+          For each container, Docker generates an adjective-noun pairing to create container names.
+          Users can supply their own container name via the `--name` parameter passed to `docker create`.
+
+          [literal]
+          ----
+          $ docker create --name HelloWorld hello-world
+          $ docker ps -a
+          CONTAINER ID IMAGE       NAMES
+          a9c5e62a1813 hello-world HelloWorld
+          647bc74903be hello-world cool_mayer
+          ----
+      - type: bool
+        txt: After executing `docker create --name HelloWorld hello-world` will the container name be `HelloWorld`?
+        ans: yes
+        exp: null
+      - type: info
+        txt: |
+          With a container created we can start the container named "cool_mayer" with
+
+          `docker start`
+
+          [literal]
+          ----
+          $ docker start -a cool_mayer
+          Hello from Docker!
+          This message shows that your installation appears to be working correctly.
+          ----
+          `cool_mayer` is not part of the `-a` parameter.
+      - type: info
+        txt: |
+          Without the `-a` parameter, `docker start` by default displays the name instead of the output.
+          [literal]
+          ----
+          $ docker start cool_mayer
+          cool_mayer
+          ----
+          The container still started but did not display the output.
+      -   type: info
+        txt: |
+          When referencing a container, one may use either the container ID or the name.
+
+          [literal]
+          ----
+          $ docker start -a 647bc74903be
+
+          Hello from Docker!
+          This message shows that your installation appears to be working correctly.
+          ----
+          This is true of any docker command requiring a container parameter: either the container name or container ID can be supplied.
+      - type: info
+        txt: |
+          `docker start` can start multiple containers at once:
+          [literal]
+          ----
+          $ docker start cool_mayer happy_owl mad_mouse
+          cool_mayer happy_owl mad_mouse
+          ----
+          docker start: start one or more stopped containers
+      - type: bool
+          txt: `docker start sad_deer optimistic_octopus depressed_otter` will return an error stating only one container may be started at a time.
+          ans: no
+          exp: `docker start` can start many containers at the same time.
+      - type: info
+        txt: |
+          `docker rm` removes containers.
+
+          [literal]
+          ----
+          $ docker rm HelloWorld cool_mayer
+          HelloWorld
+          cool_mayer
+          $ docker ps -a
+          CONTAINER ID   IMAGE  NAMES
+          ----
+          As long as any container uses an image, an image cannot be removed. `docker rmi` will fail if the image is used by a container.
+     # - type: bool
+      #   txt:
+      #   ans: yes
+      #   exp: null
+      - type: info
+        txt: |
+          `docker run` is a convenience command that will
+
+            * pull an image,
+            * create an image, and
+            * start a container for that image
+
+          all at once.
+
+          [literal]
+          ----
+          $ docker run hello-world
+          Unable to find image 'hello-world:latest' locally
+          Status: Downloaded newer image for hello-world:latest
+
+          Hello from Docker!
+          This message shows that your installation appears to be working correctly.
+          ----
+
+          So, `docker run` combines the three commands in sequence:
+
+          . `docker pull`
+          . `docker create`
+          . `docker start -a`
+      - type: info
+        txt: |
+          `docker run: pull an image, create a container, and start the container
+
+      - type: info
+        txt: |
+          Module review
+            docker pull: download an image from a registry
+            docker create: create a new container
+            docker start: start one or more stopped containers
+            docker run: pull an image, create a container, and start a the container
+            docker images: list images
+            docker ps: list containers
+            docker rmi: removes images
+            docker rm: remove one or more containers
+      exercises:
+      - type: vocab
+        list:
+          docker pull: download an image from a registry
+          docker create: create a new container
+          docker start: start one or more stopped containers
+          docker run: pull an image, create a container, and start a the container
+          docker images: list images
+          docker ps: list containers
+          docker rmi: removes images
+          docker rm: remove one or more containers
       - type: sort
         txt: list in the order needed to execute them when deploying an image
         ans:
@@ -217,36 +498,55 @@ units:
           - docker build
           - docker run
           - docker ps
-    - name: Removing an image
+    - name: A simple server container
       inst:
-      - type: int
+      - type: info
         txt: |
-          docker rm: deletes container
-          docker rmi: deletes image
-          docker stop: halts container execution
-    - name: Review
-      exercises:
-      - type: vocab
-        list:
-          docker:
-          container: a sandboxed process running on a host machine that is isolated from all other processes running on that host machine
-          image: a filesystem containing everything required to execute in a container
-          dockerfile: a script to build a container image
-          docker build: creates an image
-          docker run: starts a container
-          docker ps: lists containers
-          docker images: lists images
-          docker rm: deletes container
-          docker rmi: deletes image
-          docker stop: halts container execution
-   - name: Containerizing an app
-  - name: Development containers
-  - name: The Dockerfile
-   lessons:
-    - name: Instruction Overview
-      modules:
-      - name: Instruction Overview
-        inst:
+          In practice, most Docker containers contain servers that do not exit until instructed to do so.
+          The hello-world image from past modules excecuting and exiting immediately is atypical.
+          We will use a server container that stays running until instructed to stop.
+      - type: info
+        txt: |
+          We will use a new image via
+
+          `docker run --name bare-nginx -d -p 80:80 nginx`
+
+          `-d` detaches the container from the command prompt.
+          Otherwise the container does not relenquish control of the command prompt.
+
+          `-p 80:80` is a port mapping, exposing port 80 of the container to port 80 of the host.
+          This enables navigation to the contained Web server's offerings from the host.
+
+          After the command completes, navigating to `http://localhost:80/index.html` will display a default Web page:
+
+          #Welcome to nginx!#
+      - type: info
+        txt: |
+          Because an active container contains a part of an operating system, that OS can be logged into and the filesystem navigated.
+
+          [literal]
+          ----
+          $ docker exec -it bare-nginx bash
+          root@fa441798c8ee:/# ls
+          bin  boot  dev	docker-entrypoint.d  docker-entrypoint.sh
+          etc	home  lib  media  mnt  opt  proc  root	run  sbin
+          srv	sys  tmp  usr  var
+          root@fa441798c8ee:/#
+          ----
+          We are in the root directory of the container.
+
+          Most containers use the `root` account without a password.
+      - type: info
+        txt: |
+          When exiting the container filesystem back to the host command prompt, use hotkey
+
+          ctrl-p-q
+
+          Do not use `exit` in the container command prompt.
+          `exit` will not only exit the container environment but often stop the container as well.
+    - name: Dockerfiles
+      inst:
+      - type: info
         txt: |
           ADD
           ARG
@@ -266,7 +566,7 @@ units:
           USER
           VOLUME
           WORKDIR
-        inst:
+      - type: info
         txt: |
           ADD:: Add local or remote files and directories.
           ARG:: Use build-time variables.
@@ -286,4 +586,6 @@ units:
           USER:: Set user and group ID.
           VOLUME:: Create volume mounts.
           WORKDIR:: Change working directory.
-  - name: Docker Commands
+    - name: Development containers
+    - name: Docker Commands
+    - name: The Docker server

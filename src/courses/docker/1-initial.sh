@@ -16,8 +16,8 @@ RUN yarn install --production
 CMD ["node", "src/index.js"]
 EXPOSE 3000' > Dockerfile
 
-# update permissions since 
-#sudo usermod -aG docker $user
+# update permissions since
+#sudo usermod -aG docker $USER
 
 # build the image
 docker build -t getting-started-app .
