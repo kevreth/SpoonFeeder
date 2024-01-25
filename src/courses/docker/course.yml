@@ -544,6 +544,9 @@ units:
 
           Do not use `exit` in the container command prompt.
           `exit` will not only exit the container environment but often stop the container as well.
+    - name: Networking
+    - name: Containerization
+    - name: Container persistence
     - name: Dockerfiles
       inst:
       - type: info
