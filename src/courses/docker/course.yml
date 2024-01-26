@@ -522,7 +522,8 @@ units:
           #Welcome to nginx!#
       - type: info
         txt: |
-          Because an active container contains a part of an operating system, that OS can be logged into and the filesystem navigated.
+          Because an active container contains a part of an operating system,
+          that OS can be logged into and the filesystem navigated if a command shell is present.
 
           [literal]
           ----
@@ -545,8 +546,8 @@ units:
           Do not use `exit` in the container command prompt.
           `exit` will not only exit the container environment but often stop the container as well.
     - name: Networking
-    - name: Containerization
-    - name: Container persistence
+    - name: Containerziation
+    - name: Persistence
     - name: Dockerfiles
       inst:
       - type: info
