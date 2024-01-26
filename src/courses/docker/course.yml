@@ -5,13 +5,95 @@ units:
   lessons:
   - name: Docker concepts
     modules:
-    - name: Basic Docker concepts
+    - name: Introduction
       inst:
+      - info: type
+        txt: |
+          Like all Spoonfeeder courses,
+          this course is self-contained.
+          Do not try to follow
+          along by replicating
+          what you read
+          using a real Docker installation.
+
+          No installation
+          of Docker
+          is required.
+
+          Just read,
+          complete the exercises,
+          and learn Docker.
+      - type: bool
+        txt: A computer with Docker installed is required to complete this course.
+        ans: no
+      - type: info
+        txt: |
+          This course assumes
+          basic computer knowledge,
+          including using a command prompt
+          such as PowerShell, Bash, ZShell,
+          or the Windows Command Prompt.
+
+
+          If you have never
+          used a command prompt
+          then gain experience with one
+          before starting this course.
+      - type: bool
+        txt: Knowledge of a command prompt is required for this course.
+        ans: yes
+      - type: info
+        txt: |
+          On a computer
+          with Docker installed and running,
+          we can type at a command prompt
+
+          `docker run hello-world`.
+
+          and see the following in the output.
+
+          `Hello from Docker!`
+      - type: info
+        txt: |
+          `docker run`
+          is an example
+          of a _Docker command_.
+
+          A Docker command
+          instructs Docker
+          to do something.
+      - type: info
+        txt: |
+          Although the output
+          (`Hello from Docker!`)
+          is trivial,
+          `docker run hello-world`
+          completed the following:
+
+          . Pulled an _image_
+            called `hello-world`
+            from a _Docker repository_;
+          . Created a _container_
+            from the `hello-world` image; and
+          . Executed a default command
+            in the container
+            to output `Hello from Docker!`
+      - type: info
+        txt: |
+          In the last slide
+          Docker took two actions
+
+          . pull an _image_
+          . create a _container_
+
+          Images and containers
+          are the most central concepts
+          of Docker.
       - type: info
         txt: |
           A _container_ is a sandboxed process running on a host machine.
 
-          _Sandboxed_ means the has no access to or awareness of the host or other sandboxed processes.
+          _Sandboxed_ means the process has no access to or awareness of the host or other sandboxed processes.
       - type: bool
         txt: A sandboxed process can identify the operating system version of it's host.
         ans: 'no'
@@ -22,20 +104,34 @@ units:
 
           _Applications_ may include databases, Web servers, or even entire operating systems.
 
-          In lieu of installing the application on the host machine, a Docker _container_ can be installed instead. Containers are easily added and removed. Most importantly, several instances can execute simultaneosly, even of different versions. So for example, Python 2 and Python 3 (Python is a programming language) containers can execute simultaneously. They're unaware of each other.
+          In lieu of installing the application on the host machine,
+          a Docker _container_ can be installed instead.
+          Containers are easily added and removed. Most importantly,
+          several instances can execute simultaneosly,
+          even of different versions.
+          So for example, Python 2 and Python 3 (Python is a programming language)
+          containers can execute simultaneously.
+          They're unaware of each other.
       - type: bool
-        txt: With Docker, two copies of PostgreSQL 11 and three copies of PostgreSQL 12 (PostgreSQL is a database management server) could operate simultaneously.
+        txt: |
+          With Docker, two copies of PostgreSQL 11 and three copies of PostgreSQL 12
+          (PostgreSQL is a database management server) could operate simultaneously.
         ans: 'yes'
-        exp: A container allows multiple copies of multiple versions of applications to execute at the same time. They are unaware of each other.
+        exp: |
+          A container allows multiple copies of multiple versions of applications to execute at the same time.
+          They are unaware of each other.
       - type: bool
         txt: Docker cannot containerize operating systems.
         ans: 'no'
         exp: Docker can fully containerize operating systems.
       - type: info
         txt: |
-          An _image_ is a filesystem (a set of computer disk folders and files) and a set of instructions containing everything required to execute an application in a container.
+          An _image_ is a filesystem (a set of computer disk folders and files) and
+          a set of instructions containing everything required to execute an application in a container.
 
-          Think of an image as a pattern and a container as a realization of that pattern. A container is an executable instance of an image. An image cannot be executed. It must be built (not just copied) into a container first.
+          An image is like blueprints and materials to build a house. The container is the built house.
+          A container is an executable instance of an image. An image cannot be executed.
+          An image must be built (not just copied) as a container first.
       - type: bool
         txt: An image is simply copied to a container.
         ans: 'no'
@@ -52,6 +148,7 @@ units:
         txt: |
           Summary
 
+          `docker run`: Create and run a new container from an image
           #sandboxed#: when an application cannot know about or affect its host environment
           #container#: a sandboxed process running on a host machine
           #Docker#: software that containerizes applications
@@ -60,12 +157,12 @@ units:
           Docker enables multiple copies of multiple versions of applications to execute simulataneously.
       - exercises:
         - type: gap
-          txt: (1) will build a(n) (2) into to a(n) (3) that is in a(n) (4) on the host machine.
+          txt: (1) builds (2) into to (3) that are in (4) on the host machine.
           ans:
           - Docker
-          - image
-          - container
-          - sandbox
+          - images
+          - containers
+          - sandboxes
         - type: vocab
           list:
             Docker: software that containerizes applications
@@ -75,9 +172,15 @@ units:
     - name: Microservices
       - type: info
         txt: |
-          The primary use case for Docker is operating _microservices_. For example, instead of one copy of the Apache Web server executing, several copies, each in a container, execute simultaneously. The redundancy enables failed copies of Apache to gracefully degrade capacity. If there was only one copy executing and it failed then the site would be offline. Microservices provide fault tolerance through redundancy.
+          The primary use case for Docker is operating _microservices_.
+          For example, instead of one copy of the Apache Web server executing, several copies,
+          each in a container, execute simultaneously.
+          The redundancy enables failed copies of Apache to gracefully degrade capacity.
+          If there was only one copy executing and it failed then the site would be offline.
+          Microservices provide fault tolerance through redundancy.
 
-          #microservice#: a minimal application designed to do one small task and deployed redundantly in Docker containers
+          #microservice#: a minimal application designed to do one small task and
+          deployed redundantly in Docker containers
       - type: bool
         txt: The primary benefit of microservices is ease of administration.
         ans: 'no'
@@ -88,7 +191,11 @@ units:
         exp:
       - type: info
         txt: |
-          _Microservices_ have their name because each container should be as small as possible. A set of database management microservices may exist where each microservice only serves part of the data required for a composite service or application. Each of those microservices (which corresponds to an _image_) would operate redundantly across many containers.
+          _Microservices_ have their name because each container should be as small as possible.
+          A set of database management microservices may exist where each microservice
+          only serves part of the data required for a composite service or application.
+          Each of those microservices (which corresponds to an _image_)
+          would operate redundantly across many containers.
       - type: bool
         txt: A microservice container should be as small as possible.
         ans: 'yes'
@@ -111,11 +218,8 @@ units:
       inst:
       - type: info
         txt: |
-          #sandbox#: an application cannot know about or affect its host environment
-          #container#: a sandboxed process running on a host machine
-          #Docker#: software that containerizes applications
-          #image#: a filesystem and build instructions containing everything required to execute in a container
-          #microservice#: a minimal application designed to do one small task and deployed redundantly in Docker containers
+          #microservice#: a minimal application designed to do one small task and
+          deployed redundantly in Docker containers
 
           * Docker enables multiple copies of multiple versions of applications to execute simulataneously.
           * Docker executes containers that are built from images.
@@ -127,10 +231,14 @@ units:
       - type: vocab
         list:
           Docker: software that containerizes applications
-          image: a filesystem and build instructions containing everything required to execute in a container
+          image: |
+            a filesystem and build instructions
+            containing everything required to execute in a container
           container: a sandboxed process running on a host machine
           sandbox: an application cannot know about or affect its host environment
-          microservice: a minimal application designed to do one small task and deployed redundantly in Docker containers
+          microservice: |
+            a minimal application designed to do one small task
+            and deployed redundantly in Docker containers
       - type: bool
         txt: Microservices provide fault tolerance through redundancy.
         ans: 'yes'
@@ -300,7 +408,8 @@ units:
           ----
       exercises:
       - type: sort
-        txt:  We want to download an image, see the image listed, and delete the image. Place the commands in the correct order.
+        txt:  We want to download an image, see the image listed, and delete the image.
+        Place the commands in the correct order.
         ans: ['`docker pull`', '`docker images`','`docker rmi`']
       # - type: bool
       #   txt:
@@ -310,7 +419,7 @@ units:
       inst:
       - type: info
         txt: |
-          Creat a container from an image with
+          Create a container from an image with
 
           `docker create`
 
@@ -342,7 +451,8 @@ units:
           CONTAINER ID IMAGE       NAMES
           647bc74903be hello-world cool_mayer
           ----
-          By default, `docker ps` only displays actively executing containers. We need `-a` to see inactive containers.
+          By default, `docker ps` only displays actively executing containers.
+          We need `-a` to see inactive containers.
 
           docker ps: list containers
       - type: bool
@@ -408,7 +518,8 @@ units:
           Hello from Docker!
           This message shows that your installation appears to be working correctly.
           ----
-          This is true of any docker command requiring a container parameter: either the container name or container ID can be supplied.
+          This is true of any docker command requiring a container parameter:
+          either the container name or container ID can be supplied.
       - type: info
         txt: |
           `docker start` can start multiple containers at once:
@@ -419,7 +530,9 @@ units:
           ----
           docker start: start one or more stopped containers
       - type: bool
-          txt: `docker start sad_deer optimistic_octopus depressed_otter` will return an error stating only one container may be started at a time.
+          txt: |
+            `docker start sad_deer optimistic_octopus depressed_otter`
+            will return an error stating only one container may be started at a time.
           ans: no
           exp: `docker start` can start many containers at the same time.
       - type: info
@@ -434,7 +547,8 @@ units:
           $ docker ps -a
           CONTAINER ID   IMAGE  NAMES
           ----
-          As long as any container uses an image, an image cannot be removed. `docker rmi` will fail if the image is used by a container.
+          As long as any container uses an image, an image cannot be removed.
+          `docker rmi` will fail if the image is used by a container.
      # - type: bool
       #   txt:
       #   ans: yes
@@ -509,7 +623,9 @@ units:
         txt: |
           We will use a new image via
 
-          `docker run --name bare-nginx -d -p 80:80 nginx`
+          `docker run --name bare-nginx -d -p 80:80 nginx`.
+
+          nginx is a web  server.
 
           `-d` detaches the container from the command prompt.
           Otherwise the container does not relenquish control of the command prompt.
@@ -517,12 +633,15 @@ units:
           `-p 80:80` is a port mapping, exposing port 80 of the container to port 80 of the host.
           This enables navigation to the contained Web server's offerings from the host.
 
-          After the command completes, navigating to `http://localhost:80/index.html` will display a default Web page:
+          After the command completes,
+          navigating to `http://localhost:80/index.html` will display a default Web page:
 
           #Welcome to nginx!#
       - type: info
         txt: |
-          Because an active container contains a part of an operating system, that OS can be logged into and the filesystem navigated.
+          The filesystem of an active container can be navigated if the container contains a command prompt.
+
+          This command executes bash from withing the container.
 
           [literal]
           ----
@@ -544,9 +663,7 @@ units:
 
           Do not use `exit` in the container command prompt.
           `exit` will not only exit the container environment but often stop the container as well.
-    - name: Networking
     - name: Containerization
-    - name: Container persistence
     - name: Dockerfiles
       inst:
       - type: info
@@ -592,3 +709,6 @@ units:
     - name: Development containers
     - name: Docker Commands
     - name: The Docker server
+    - name: Image registries
+      - `docker search`
+      - `docker push`

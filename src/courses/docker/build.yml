@@ -1,0 +1,50 @@
+
+    - name: Deploying an image
+      inst:
+      - type: info
+        txt: |
+          Deploying an image
+
+          - obtain an image
+          - create a Dockerfile
+          - build the image
+          - run the image
+          - see the results
+      - type: info
+        txt: |
+          Obtain an image
+
+          In general, there's three ways to obtain images:
+          - create and build it yourself
+          - clone a repository and build the image
+          - download prebuilt images
+          Clone the repository
+          git clone https://github.com/docker/getting-started-app.git
+
+          #after clone, cd into the new directory
+          cd getting-started-app
+        type: info
+        txt: |
+          Create the Dockerfile
+
+          echo '
+          # syntax=docker/dockerfile:1
+
+          FROM node:18-alpine
+          WORKDIR /app
+          COPY . .
+          RUN yarn install --production
+          CMD ["node", "src/index.js"]
+          EXPOSE 3000' > Dockerfile
+        type: info
+        txt: |
+          # build the image
+          docker build -t getting-started-app .
+
+          # run the image
+          docker run --name getting-started-app -dp 127.0.0.1:3000:3000 getting-started-app
+      exercises:
+      - type: vocab
+        list:
+          dockerfile: a script to build a container image
+          docker build: creates an image

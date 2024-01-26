@@ -1,0 +1,39 @@
+= Docker and Kubernetes
+
+== Persistence
+
+When data is changed in a container, that data will only live for the life of the container and cannot readily be shared among containers. Docker Volumes provides a persistent solution. Kubernetes provides a superior solution.
+
+== Docker Compose, Docker Swarm, and Docker Stacks
+
+== Networking
+
+=== 1
+The previous port-binding example has a serious problem.
+
+$ docker run -d -p 80:80 nginx
+9780938402...
+
+We bound the container port 80 to the host port 80.
+When we browse to port 80 on the host, we get `Welcome to nginx!` as expected.
+
+=== 2
+
+Redundancy is a major advantage of Docker.
+We want several docker Web servers operating in parallel,
+so that if one goes down others remain available.
+Upon starting a second instance:
+
+$ docker run -d -p 80:80 nginx
+Bind for 0.0.0.0:80 failed: port is already allocated.
+
+Only one application can bind to a particular port on the host.
+Port mapping can't provide desired redundancy.
+
+=== 3
+
+The inability of port mapping to provide redundancy requires Docker to provide a solution in Docker Overlay Networking.
+Docker creates a virtual network layer for containers to virtually map to.
+Then, that virtual network layer binds all the virtual mappings to a host port.
+However, Kubernetes provides all this functionality far more robustly so Docker Networking isn't covered here.
+

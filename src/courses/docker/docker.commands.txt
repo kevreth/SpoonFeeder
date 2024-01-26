@@ -1,35 +1,110 @@
-docker build
-docker commit
-docker cp
-docker create
-docker exec
-docker images
-docker info
-docker inspect
-docker kill
-docker login
-docker logout
-docker logs
-docker pause
-docker port
-docker ps
-docker pull
-docker push
-docker rename
-docker restart
-docker rm
-docker rmi
-docker run
-docker save
-docker start
-docker stats
-docker stop
-docker swarm
-docker system
-docker tag
-docker top
-docker unpause
-docker version
-docker volume
-docker wait
-docker-compose
+attach
+build
+builder
+buildx
+commit
+compose
+container
+context
+cp
+create
+diff
+events
+exec
+export
+history
+image
+images
+import
+info
+inspect
+kill
+load
+login
+logout
+logs
+manifest
+network
+pause
+plugin
+port
+ps
+pull
+push
+rename
+restart
+rm
+rmi
+run
+save
+search
+start
+stats
+stop
+system
+tag
+top
+trust
+unpause
+update
+version
+volume
+wait
+
+[cols=,,]
+|===
+|Docker Command|Kubernetes Equivalent
+|attach|kubectl attach
+|build|Build Docker image, then use in Kubernetes
+|compose|Kompose, Helm (for complex orchestration)
+|container|kubectl get pods
+|context|kubectl config
+|cp|kubectl cp
+|create|kubectl create
+|events|kubectl get events
+|exec|kubectl exec
+|info|kubectl cluster-info
+|inspect|kubectl describe
+|kill|kubectl delete pod
+|logs|kubectl logs
+|network|kubectl get svc, ing (services, ingress)
+|pause|kubectl scale (replicas to 0)
+|port|kubectl get svc
+|ps|kubectl get pods
+|restart|kubectl rollout restart
+|rm|kubectl delete pod
+|run|kubectl run, apply
+|start|kubectl scale (increase replicas)
+|stats|kubectl top
+|stop|kubectl delete pod, scale (replicas to 0)
+|top|kubectl top
+|unpause|kubectl scale (increase replicas)
+|update|kubectl set, edit
+|version|kubectl version
+|volume|kubectl get pvc (PersistentVolumeClaim)
+|===
+
+builder
+buildx
+commit
+diff
+export
+history
+image
+images
+import
+load
+login
+logout
+manifest
+plugin
+pull
+push
+rename
+rmi
+save
+search
+system
+tag
+trust
+wait
