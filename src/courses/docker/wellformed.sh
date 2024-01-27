@@ -17,5 +17,5 @@ if [ $? -eq 0 ]; then
     echo "$yaml_file is well-formed."
 else
     echo "$yaml_file is not well-formed."
-    exit -1
+    exit 1
 fi
