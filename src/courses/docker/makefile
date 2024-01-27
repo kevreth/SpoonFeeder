@@ -1,8 +1,14 @@
 course.html: course.adoc
 	asciidoctor -b html5 -s -o $@ $<
 
-course.adoc: course.yml slides.py
+course.adoc: slides.py yamale
 	python slides.py course.yml
+
+yamale: wellformed
+	yamale course.yml -s schema.yml
+
+wellformed: course.yml
+	sh ./wellformed.sh course.yml
 
 .PHONY: clean
 
