@@ -23,12 +23,17 @@ def generate_html_body(yaml_content):
         for inst in insts:
           if inst:
             html = extract_inner_content(inst)
-            html_body += html + passthrough('<hr>')
+            if html is not None:
+              html_body += html + passthrough('<hr>')
   return html_body
 
 def extract_inner_content(inst):
-  content_adoc = inst.get('txt')
-  sdbr_adoc = inst.get('sdbr')
+  sdbr_adoc = ""
+  try:
+    content_adoc = inst.get('txt')
+    sdbr_adoc = inst.get('sdbr')
+  except (AttributeError):
+    print(inst)
   retval = ''
   if sdbr_adoc:
     retval = f'''

@@ -7,7 +7,7 @@ units:
     - name: Introduction
       inst:
       # intro 1
-      - info: type
+      - type: info
         txt: |
           Like all Spoonfeeder courses,
           this course is self-contained.
@@ -166,7 +166,7 @@ units:
           #image#: a filesystem and build instructions containing everything required to execute in a container
 
           Docker enables multiple copies of multiple versions of applications to execute simulataneously.
-      - exercises:
+      exercises:
         - type: gap
           txt: (1) builds (2) into to (3) that are in (4) on the host machine.
           ans:
@@ -566,7 +566,7 @@ units:
           ----
           As long as any container uses an image, an image cannot be removed.
           `docker rmi` will fail if the image is used by a container.
-     # - type: bool
+      # - type: bool
       #   txt:
       #   ans: yes
       #   exp: null
@@ -598,7 +598,6 @@ units:
       - type: info
         txt: |
           `docker run: pull an image, create a container, and start the container
-
       - type: info
         txt: |
           Module review
@@ -680,53 +679,55 @@ units:
 
           Do not use `exit` in the container command prompt.
           `exit` will not only exit the container environment but often stop the container as well.
-    - name: Containerization
-    - name: Dockerfiles
+    # - name: Containerization
+    # - name: Dockerfiles
+    #   inst:
+    #   - type: info
+    #     txt: |
+    #       ADD
+    #       ARG
+    #       CMD
+    #       COPY
+    #       ENTRYPOINT
+    #       ENV
+    #       EXPOSE
+    #       FROM
+    #       HEALTHCHECK
+    #       LABEL
+    #       MAINTAINER
+    #       ONBUILD
+    #       RUN
+    #       SHELL
+    #       STOPSIGNAL
+    #       USER
+    #       VOLUME
+    #       WORKDIR
+    #   - type: info
+    #     txt: |
+    #       ADD:: Add local or remote files and directories.
+    #       ARG:: Use build-time variables.
+    #       CMD:: Specify default commands.
+    #       COPY:: Copy files and directories.
+    #       ENTRYPOINT:: Specify default executable.
+    #       ENV:: Set environment variables.
+    #       EXPOSE:: Describe which ports your application is listening on.
+    #       FROM:: Create a new build stage from a base image.
+    #       HEALTHCHECK:: Check a container's health on startup.
+    #       LABEL:: Add metadata to an image.
+    #       MAINTAINER:: Specify the author of an image.
+    #       ONBUILD:: Specify instructions for when the image is used in a build.
+    #       RUN:: Execute build commands.
+    #       SHELL:: Set the default shell of an image.
+    #       STOPSIGNAL:: Specify the system call signal for exiting a container.
+    #       USER:: Set user and group ID.
+    #       VOLUME:: Create volume mounts.
+    #       WORKDIR:: Change working directory.
+    # - name: Development containers
+    # - name: Docker Commands
+    # - name: The Docker server
+    # - name: Image registries
       inst:
       - type: info
         txt: |
-          ADD
-          ARG
-          CMD
-          COPY
-          ENTRYPOINT
-          ENV
-          EXPOSE
-          FROM
-          HEALTHCHECK
-          LABEL
-          MAINTAINER
-          ONBUILD
-          RUN
-          SHELL
-          STOPSIGNAL
-          USER
-          VOLUME
-          WORKDIR
-      - type: info
-        txt: |
-          ADD:: Add local or remote files and directories.
-          ARG:: Use build-time variables.
-          CMD:: Specify default commands.
-          COPY:: Copy files and directories.
-          ENTRYPOINT:: Specify default executable.
-          ENV:: Set environment variables.
-          EXPOSE:: Describe which ports your application is listening on.
-          FROM:: Create a new build stage from a base image.
-          HEALTHCHECK:: Check a container's health on startup.
-          LABEL:: Add metadata to an image.
-          MAINTAINER:: Specify the author of an image.
-          ONBUILD:: Specify instructions for when the image is used in a build.
-          RUN:: Execute build commands.
-          SHELL:: Set the default shell of an image.
-          STOPSIGNAL:: Specify the system call signal for exiting a container.
-          USER:: Set user and group ID.
-          VOLUME:: Create volume mounts.
-          WORKDIR:: Change working directory.
-    - name: Development containers
-    - name: Docker Commands
-    - name: The Docker server
-    - name: Image registries
-      inst:
-        - "`docker search`"
-        - "`docker push`"
+          - "`docker search`"
+          - "`docker push`"
