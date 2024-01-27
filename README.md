@@ -45,13 +45,15 @@ SpoonFeeder remains in an early pre-release state. Although functional, it's mis
 
 `npm i -g node`
 
-3) Install quasar if not already installed:
+3) Install quasar if not already installed (on Linux, precede with `sudo`):
 
 `npm i -g @quasar/cli`
 
 4) Clone the project
 
 `git clone https://github.com/kevreth/SpoonFeeder.git`
+
+5) `cd Spoonfeeder`
 
 5) Start the project
 
