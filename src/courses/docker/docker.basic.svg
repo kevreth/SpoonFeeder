@@ -9,9 +9,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1200"
-   height="600"
-   viewBox="0 0 1200 600"
+   width="600"
+   height="250"
    version="1.1"
    id="svg154"
    sodipodi:docname="docker.basic.svg"
@@ -190,7 +189,7 @@
   <!--  -->
   <!--  -->
   <image
-     sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/postgresql.logo.svg"
+     sodipodi:absref="postgresql.logo.svg"
      xlink:href="postgresql.logo.svg"
      y="133.66953"
      x="220.9706"
@@ -200,7 +199,7 @@
      inkscape:svg-dpi="96"
      preserveAspectRatio="none" />
   <image
-     sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/sqlite.logo.svg"
+     sodipodi:absref="sqlite.logo.svg"
      xlink:href="sqlite.logo.svg"
      y="196.63177"
      x="222.46344"
@@ -223,7 +222,7 @@
          x="298.57837"
          y="131.69922" />
       <image
-         sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/postgresql.logo.svg"
+         sodipodi:absref="postgresql.logo.svg"
          xlink:href="postgresql.logo.svg"
          preserveAspectRatio="none"
          inkscape:svg-dpi="96"
@@ -244,8 +243,8 @@
          x="298.57837"
          y="131.69922" />
       <image
-         sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/postgresql.logo.svg"
-         xlink:href="postgresql.logo.svg"
+         sodipodi:absref="postgresql.logo.svg"
+         xlink:href="/postgresql.logo.svg"
          preserveAspectRatio="none"
          inkscape:svg-dpi="96"
          width="25.031742"
@@ -265,8 +264,8 @@
          x="298.57837"
          y="131.69922" />
       <image
-         sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/postgresql.logo.svg"
-         xlink:href="postgresql.logo.svg"
+         sodipodi:absref="postgresql.logo.svg"
+         xlink:href="/postgresql.logo.svg"
          preserveAspectRatio="none"
          inkscape:svg-dpi="96"
          width="25.031742"
@@ -290,7 +289,7 @@
          x="297.14252"
          y="193.19884" />
       <image
-         sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/sqlite.logo.svg"
+         sodipodi:absref="sqlite.logo.svg"
          xlink:href="sqlite.logo.svg"
          preserveAspectRatio="none"
          inkscape:svg-dpi="96"
@@ -311,7 +310,7 @@
          x="297.14252"
          y="193.19884" />
       <image
-         sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/sqlite.logo.svg"
+         sodipodi:absref="sqlite.logo.svg"
          xlink:href="sqlite.logo.svg"
          preserveAspectRatio="none"
          inkscape:svg-dpi="96"
@@ -332,7 +331,7 @@
          x="297.14252"
          y="193.19884" />
       <image
-         sodipodi:absref="/home/kev/git/SpoonFeeder/src/courses/docker/sqlite.logo.svg"
+         sodipodi:absref="sqlite.logo.svg"
          xlink:href="sqlite.logo.svg"
          preserveAspectRatio="none"
          inkscape:svg-dpi="96"
