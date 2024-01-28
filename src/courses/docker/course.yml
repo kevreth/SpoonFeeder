@@ -174,12 +174,12 @@ units:
           - images
           - containers
           - sandboxes
-        - type: vocab
-          list:
-            Docker: software that containerizes applications
-            image: a filesystem and build instructions containing everything required to execute in a container
-            container: a sandboxed process running on a host machine
-            sandbox: an application cannot know about or affect its host environment
+        # - type: vocab
+        #   list:
+        #     Docker: software that containerizes applications
+        #     image: a filesystem and build instructions containing everything required to execute in a container
+        #     container: a sandboxed process running on a host machine
+        #     sandbox: an application cannot know about or affect its host environment
     # lesson: microservices
     - name: Microservices
       inst:
@@ -243,18 +243,18 @@ units:
           * Microservices provide fault tolerance through redundancy.
           * A microservice container should be as small as possible.
       exercises:
-      - type: vocab
-        list:
-          Docker: software that containerizes applications
-          image: |
-            a filesystem and build instructions
-            containing everything required to execute in a container
-          container: a sandboxed process running on a host machine
-          sandbox: an application cannot know about or affect its host environment
-          microservice: |
-            a minimal application designed to do one small task
-            and deployed redundantly in Docker containers
-          "`docker run`": Create and run a new container from an image
+      # - type: vocab
+      #   list:
+      #     Docker: software that containerizes applications
+      #     image: |
+      #       a filesystem and build instructions
+      #       containing everything required to execute in a container
+      #     container: a sandboxed process running on a host machine
+      #     sandbox: an application cannot know about or affect its host environment
+      #     microservice: |
+      #       a minimal application designed to do one small task
+      #       and deployed redundantly in Docker containers
+      #     "`docker run`": Create and run a new container from an image
       - type: bool
         txt: Microservices provide fault tolerance through redundancy.
         ans: 'yes'
@@ -275,15 +275,15 @@ units:
         txt: Images can be built to only one container but a container can only contain many images.
         ans: 'no'
         exp: Images can be built to multiple containers but a container can only contain one image.
-      - type: bool
-        txt: The primary use case for Docker is operating _microservices_.
-        ans: 'yes'
-        exp: null
+      # - type: bool
+      #   txt: The primary use case for Docker is operating _microservices_.
+      #   ans: 'yes'
+      #   exp: null
     - name: Working with images and containers
       inst:
       - type: info
         txt: |
-          image::docker.basic.svg[Static,300]
+          image::/src/courses/docker/docker.basic.svg[Static,900]
 
           Docker is split into two primary parts, a client and a server.
 
