@@ -283,7 +283,7 @@ units:
       inst:
       - type: info
         txt: |
-          image::/src/courses/docker/docker.basic.svg[Static,900]
+          image::docker.basic.svg[Static,1200,opts="inline"]
 
           Docker is split into two primary parts, a client and a server.
 
