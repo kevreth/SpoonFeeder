@@ -1,4 +1,6 @@
 name: Docker
+txt: |
+  image::docker.logo.svg[Docker logo,300,opts="inline"]
 units:
 - name: Introduction
   lessons:
@@ -20,6 +22,8 @@ units:
           of Docker
           is required.
 
+          image::docker.prohibited.svg[No Docker!,100,opts="inline"]
+
           Just read,
           complete the exercises,
           and learn Docker.
@@ -35,6 +39,7 @@ units:
           such as PowerShell, Bash, ZShell,
           or the Windows Command Prompt.
 
+          image::command.prompt.svg[Command prompt,100,opts="inline"]
 
           If you have never
           used a command prompt
@@ -52,7 +57,7 @@ units:
 
           `docker run hello-world`.
 
-          and see the following in the output.
+          and see in the output
 
           `Hello from Docker!`
       # docker run 2

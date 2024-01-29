@@ -14,6 +14,7 @@ def passthrough(str):
 
 def generate_html_body(yaml_content):
   html_body = passthrough(f"<h1>{yaml_content.get('name')}</h1>")
+  html_body += yaml_content.get('txt')
   for unit in yaml_content.get('units', []):
     html_body += passthrough(f"<h2>{unit['name']}</h2>")
     for lesson in unit.get('lessons', []):
@@ -31,11 +32,9 @@ def generate_html_body(yaml_content):
 
 def extract_inner_content(inst):
   sdbr_adoc = ""
-  try:
-    content_adoc = inst.get('txt')
-    sdbr_adoc = inst.get('sdbr')
-  except (AttributeError):
-    print(inst)
+  content_adoc = ''
+  content_adoc = inst.get('txt')
+  sdbr_adoc = inst.get('sdbr')
   retval = ''
   if sdbr_adoc:
     retval = f'''
