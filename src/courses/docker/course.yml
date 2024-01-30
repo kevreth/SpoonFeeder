@@ -55,7 +55,7 @@ units:
           with Docker installed and running,
           we can type at a command prompt
 
-          `docker run hello-world`.
+          `docker run hello-world`
 
           and see in the output
 
@@ -88,7 +88,7 @@ units:
             in the container
             to output `Hello from Docker!`
 
-          Docker performed a lot of work just to print that message.
+          Docker performed extensive work just to print that message.
       # images and containers
       - type: info
         txt: |
@@ -104,9 +104,14 @@ units:
       # containers
       - type: info
         txt: |
-          A _container_ is a sandboxed process running on a host machine.
+          A _sandboxed_ executing computer program ("process") has no access to or awareness of the host or other processes.
 
-          _Sandboxed_ means the process has no access to or awareness of the host or other sandboxed processes.
+          image::sandbox.svg[Sandbox, 300, opts="inline"]
+
+          An operating system can see processes inside a sandbox, but a process inside a sandbox cannot see outside.
+      - type: info
+        txt: |
+          A _container_ is a sandboxed process bundled with all dependencies required for its execution.
       - type: bool
         txt: A sandboxed process can identify the operating system version of it's host.
         ans: 'no'
@@ -114,12 +119,33 @@ units:
       #Docker
       - type: info
         txt: |
-          Docker is software that _containerizes_ applications.
+          _Docker_ is software that
 
-          _Applications_ may include databases, Web servers, or even entire operating systems.
+          * creates,
+          * executes, and
+          * manages
 
-          In lieu of installing the application on the host machine,
-          a Docker _container_ can be installed instead.
+          containers.
+      - type: info
+        txt: |
+          A container may include
+
+          * database servers,
+          * Web servers, or
+          * entire operating systems.
+      - type: info
+        txt: |
+          A container must include all
+
+          * libraries
+          * configuration files
+          * security certificates
+          * supporting software
+
+          required
+
+          In lieu of installing applications on hosts,
+          Docker containers can be installed instead.
           Containers are easily added and removed. Most importantly,
           several instances can execute simultaneosly,
           even of different versions.
