@@ -1,0 +1,33 @@
+name: str()
+txt: any(required=False)
+units: list(include('unit'))
+---
+unit:
+  name: str()
+  txt: str(required=False)
+  lessons: list(include('lesson'))
+---
+lesson:
+  name: str()
+  txt: str(required=False)
+  modules: list(include('module'))
+---
+module:
+  name: str()
+  txt: str(required=False)
+  inst: list(include('instruction'))
+  exercises: list(include('exercise'), required=False)
+---
+instruction:
+  type: enum('info', 'bool')
+  txt: str()
+  ans: any(str(), bool(), required=False)
+  exp: str(required=False)
+---
+exercise:
+  type: enum('gap','imap','ma','mc','sort','select','bool','vocab')
+  txt: str(required=False)
+  ans: any(str(), list(str()), bool(), required=False)
+  exp: str(required=False)
+  o: list(str(),required=False)
+  list: map(str(),required=False)
