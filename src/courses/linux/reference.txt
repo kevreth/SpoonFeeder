@@ -1,0 +1,435 @@
+=== Reserved keywords
+[cols="10,90",options="header"]
+|===
+| Keyword | Explanation
+
+| `!`
+| Used for logical negation.
+
+| `{`
+| Used to begin a block of code.
+
+| `}`
+| Used to end a block of code.
+
+| `case`
+| Starts a case conditional structure.
+
+| `do`
+| Used in loops to mark the beginning of the loop body.
+
+| `done`
+| Marks the end of a loop body.
+
+| `elif`
+| Introduces an else-if condition in an if statement.
+
+| `else`
+| Introduces the else block in an if statement.
+
+| `esac`
+| Ends a case conditional structure.
+
+| `fi`
+| Ends an if conditional structure.
+
+| `for`
+| Starts a for loop.
+
+| `if`
+| Starts an if conditional structure.
+
+| `in`
+| Used in for and case structures to introduce the list or pattern.
+
+| `then`
+| Introduces the body of an if, elif, or else statement.
+
+| `until`
+| Starts an until loop.
+
+| `while`
+| Starts a while loop.
+
+| `function`
+| Declares a function.
+
+| `select`
+| Starts a select loop, useful for creating menus.
+
+| `time`
+| Used to measure the time taken by a command to execute.
+
+| `[[`
+| Starts an extended test command.
+
+| `]]`
+| Ends an extended test command.
+
+| `coproc`
+| Starts a co-process.
+|===
+[options="header"]
+|===
+| Character | Template | Name | Example | Explanation
+
+| `>`
+| `command > file`
+| Redirection
+| `echo "Hello" > hello.txt`
+| Redirects the output of a command to a file, overwriting the file.
+
+| `>>`
+| `command >> file`
+| Append
+| `echo "World" >> hello.txt`
+| Appends the output of a command to a file without overwriting it.
+
+| `<`
+| `command < file`
+| Input Redirection
+| `grep "Hello" < hello.txt`
+| Takes the content of a file and uses it as input for the command.
+
+| `|`
+| `command1 | command2`
+| Pipe
+| `cat hello.txt | grep "Hello"`
+| Sends the output of one command (command1) to another command (command2) as input.
+
+| `&`
+| `command1 & command2`
+| Background Execution
+| `find / -name hello.txt &`
+| Executes `command1` and then `command2` in the background.
+
+| `&&`
+| `command1 && command2`
+| AND List
+| `mkdir new_dir && cd new_dir`
+| Executes `command2` only if `command1` completes successfully.
+
+| `||`
+| `command1 || command2`
+| OR List
+| `grep "Hello" file.txt || echo "Not found"`
+| Executes `command2` only if `command1` fails.
+
+| `;`
+| `command1 ; command2`
+| Command Separator
+| `cd folder; ls`
+| Executes `command1` and then `command2`, regardless of the success of `command1`.
+
+| `$`
+| `$variable`
+| Variable Expansion
+| `echo $HOME`
+| Expands to the value of `variable`.
+
+| `$( )`
+| `$(command)`
+| Command Substitution
+| `echo "Today is $(date)"`
+| Replaces the command with its output.
+
+| `{ }`
+| `{command1; command2;}`
+| Command Grouping
+| `{ echo "Start"; ls; }`
+| Groups multiple commands to be executed together.
+
+| `( )`
+| `(command)`
+| Subshell
+| `(cd temp_folder; ls)`
+| Executes `command` in a subshell.
+
+| `*`
+| `ls *`
+| Wildcard
+| `ls *.txt`
+| Matches zero or more characters in filenames or patterns.
+
+| `?`
+| `ls ?`
+| Single Character Wildcard
+| `ls ?.txt`
+| Matches any single character in filenames or patterns.
+
+| `[ ]`
+| `ls [abc]*`
+| Character Class
+| `ls [a-c].txt`
+| Matches any one of the enclosed characters in filenames or patterns.
+
+| `~`
+| `cd ~`
+| Home Directory
+| `cd ~`
+| Expands to the user's home directory.
+
+| `#`
+| `# comment`
+| Comment
+| `# This is a comment`
+| Marks the line as a comment, ignored during execution.
+
+| `\`
+| `echo "Line1 \`
+| `Line2"`
+| Line Continuation
+| `echo "Hello, \`
+| `World"`
+| Indicates that the command continues on the next line.
+
+| `!`
+| `!command`
+| Logical NOT
+| `! grep "Hello" file`
+| Executes `command` and returns true if `command` fails.
+
+| `{}`
+| `{cmd1,cmd2}`
+| Brace Expansion
+| `echo {A,B}.txt`
+| Generates arbitrary strings.
+
+| `[]`
+| `ls [pattern]`
+| Pattern Matching
+| `ls [a-c]*`
+| Matches files against the provided pattern.
+
+| `~+`
+| `cd ~+`
+| Current Directory
+| `echo ~+`
+| Refers to the current working directory.
+
+| `~-`
+| `cd ~-`
+| Previous Directory
+| `echo ~-`
+| Refers to the previous working directory.
+
+| `$?`
+| `echo $?`
+| Exit Status
+| `command; echo $?`
+| Shows the exit status of the last command.
+
+| `$$`
+| `echo $$`
+| Process ID
+| `echo $$`
+| Shows the process ID of the current shell.
+
+| `$!`
+| `command & echo $!`
+| Last Background PID
+| `command & echo $!`
+| Shows the PID of the last background command.
+
+| `$0`, `$1`, ..., `$9`, `$#`, `$@`, `$*`
+| `script $1`
+| Script Arguments
+| `echo $1`
+| Special parameters holding script arguments.
+
+| `;;`
+| `case ... ;;`
+| Case Terminator
+| `case $var in ... ;; esac`
+| Terminates a branch in a case statement.
+
+| `:`
+| `:`
+| Null Command
+| `:`
+| A null command that does nothing, used in scripting.
+
+| `' '`
+| `echo 'text'`
+| Single Quotes
+| `echo 'Hello $USER'`
+| Preserves the literal value of each character within the quotes.
+
+| `" "`
+| `echo "text"`
+| Double Quotes
+| `echo "Hello $USER"`
+| Preserves most of the literal value but allows variable expansion.
+
+| `>&`, `<&`
+| `command >& file`
+| File Descriptor Duplication
+| `command 2>&1`
+| Duplicates one file descriptor to another.
+
+| `<()`, `>()`
+| `command <(cmd)`
+| Process Substitution
+| `diff <(cmd1) <(cmd2)`
+| Substitutes the output of a command as a file.
+
+| `<<`, `<<-`
+| `command << END`
+| Here Document
+| `cat << EOF > file`
+| Redirects the contents to the command until a delimiter.
+
+| `<<<`
+| `command <<< "text"`
+| Here String
+| `grep "text" <<< "search"`
+| Redirects a string into a command.
+
+|===
+
+
+
+=== Programming
+
+[options="header"]
+|===
+| Keyword | Explanation
+
+| `!`
+| Used for logical negation.
+
+| `{`
+| Used to begin a block of code.
+
+| `}`
+| Used to end a block of code.
+
+| `case`
+| Starts a case conditional structure.
+
+| `do`
+| Used in loops to mark the beginning of the loop body.
+
+| `done`
+| Marks the end of a loop body.
+
+| `elif`
+| Introduces an else-if condition in an if statement.
+
+| `else`
+| Introduces the else block in an if statement.
+
+| `esac`
+| Ends a case conditional structure.
+
+| `fi`
+| Ends an if conditional structure.
+
+| `for`
+| Starts a for loop.
+
+| `if`
+| Starts an if conditional structure.
+
+| `in`
+| Used in for and case structures to introduce the list or pattern.
+
+| `then`
+| Introduces the body of an if, elif, or else statement.
+
+| `until`
+| Starts an until loop.
+
+| `while`
+| Starts a while loop.
+
+| `function`
+| Declares a function.
+
+| `select`
+| Starts a select loop, useful for creating menus.
+
+| `time`
+| Used to measure the time taken by a command to execute.
+
+| `[[`
+| Starts an extended test command.
+
+| `]]`
+| Ends an extended test command.
+
+| `coproc`
+| Starts a co-process.
+|===
+
+=== Example Bash script
+----
+#!/bin/bash
+
+# Using 'function'
+function myfunc {
+    echo "Function called"
+}
+
+# Using 'select', 'in', 'do', 'done', and 'case'
+echo "Select a fruit:"
+select fruit in apple orange "none of the above"; do
+    case $fruit in
+        apple) echo "Apple selected"; break ;;
+        orange) echo "Orange selected"; break ;;
+        "none of the above") break ;;
+        *) echo "Please select a number from the list." ;;
+    esac
+done
+
+# Using 'for', 'in', 'do', and 'done'
+for i in 1 2; do
+    echo "Loop $i"
+done
+
+# Using 'if', 'then', 'else', 'elif', and 'fi'
+if [[ $1 -eq 1 ]]; then
+    echo "Argument is 1"
+elif [[ $1 -eq 2 ]]; then
+    echo "Argument is 2"
+else
+    echo "Argument is not 1 or 2"
+fi
+
+# Using 'while' and 'do'
+count=0
+while [[ $count -lt 3 ]]; do
+    echo "Count is $count"
+    ((count++))
+done
+
+# Using 'until'
+until [[ $count -eq 0 ]]; do
+    echo "Countdown $count"
+    ((count--))
+done
+
+# Using '!'
+if ! [[ $count -eq 0 ]]; then
+    echo "Count is not zero"
+fi
+
+# Using '{}'
+{
+    echo "This is a block of code"
+}
+
+# Using 'coproc'
+coproc mycoproc { ls; }
+cat <&${mycoproc[0]}
+
+# Calling 'function'
+myfunc
+
+# Using 'time'
+time echo "Timing this echo command"
+
+# End of the script
+----
+
+
