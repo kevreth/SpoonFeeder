@@ -28,7 +28,6 @@
 ==== df-report file system disk space usage
 ==== kill-send a signal to a process
 ==== killall-kill processes by name
-==== man-an interface to the system reference manuals
 
 === Process commands
 ==== ps—Report a snapshot of current processes.
@@ -50,15 +49,20 @@
 ==== chgrp—Change a file's group ownership.
 ==== passwd—Change a user's password
 
+=== Getting help
+==== whatis-display one-line manual page descriptions
+==== man-an interface to the system reference manuals
+
 === Environment commands
 ==== alias-define or display aliases
 ==== whoami-print effective userid
 ==== id-print real and effective user and group IDs
-==== whatis-display one-line manual page descriptions
 ==== which-locate a command
 ==== whereis-locate the binary, source, and manual page files for a command
 ==== shopt
 ==== uname
+==== pushd
+==== popd
 ==== Environment variables
 ===== export-set export attribute for shell variables
 ===== env-run a program in a modified environment
@@ -87,7 +91,7 @@
 ==== sed —Stream editor for filtering and transforming text.
 ==== aspell—Interactive spell checker.
 
-=== Redirection and piping
+=== Redirection and piping operators
 ==== '>: redirect output'
 ==== '<: redirect input'
 ==== '>>: redirect output to append'
@@ -113,7 +117,7 @@
 ===== command
 ==== Command grouping
 
-=== History Commands
+=== Command history
 ==== history
 ==== History environment variables
 ===== HISTCODE
@@ -183,44 +187,33 @@
 |===
 | Path | Type | Description
 
-|`/`
-|root director
-|
+| `/`
+| root directory
+| -
 
-|`/bin`
-|Essential command [[executable|binaries]] that need to be available in [[single-user mode]], including to bring up the system or repair it,<ref>{{Cite web|title=hier(7) - Linux manual page|url=https://man7.org/linux/man-pages/man7/hier.7.html|access-date=2021-01-06|website=man7.org}}</ref> for all users (e.g., [[cat (Unix)|cat]], [[ls]], [[cp (Unix)|cp]]).
-|-
-|`/boot`
-|Files required for booting, including the kernel.
-|-
+| `/bin`
+| Essential commands required for single-user mode
+| -
+
+| `/boot`
+| Files required for booting, including the kernel.
+| -
 
 |`/dev`
-|[[Device file]]s (e.g., `[[Null device|/dev/null]]</code>, <code>/dev/disk0</code>,  <code>/dev/sda1</code>, <code>/dev/tty</code>, <code>[[%2Fdev%2Frandom]]`).
-|-
+| A virtual filesystem representing devices
+| /dev/null
 
 | `/etc`
 | Configuration files
-|
+| -
 
 | `/home`
 | User home directories. Each user except the root user will get one.
-|
+| -
 
 | `/lib`
 | Essential libraries
 | for the binaries in `/bin` and `/sbin`.
-
-| `/media`
-| removable media mount points
-| such as CD-ROMs (appeared in FHS-2.3 in 2004).
-
-| `/mnt`
-| Temporarily mounted filesystems
-|
-
-| `/opt`
-| add-on application software packages
-|
 
 | `/proc`
 | Virtual filesystem
@@ -228,7 +221,7 @@
 
 | `/root`
 | root user home directory
-|
+| -
 
 | `/run`
 | Run-time variable data
@@ -236,85 +229,49 @@
 
 | `/sbin`
 | Essential system binaries
-| e.g., fsck, init, route.
-
-| `/srv`
-| Site-specific data
-| served by this system, such as data for web servers, FTP servers, and version control systems.
+| fsck, init, route.
 
 | `/sys`
-| Contains information
-| about devices, drivers, and some kernel features.
+| A virtual filesystem containin information about devices, drivers, and some kernel features.
+|
 
 | `/tmp`
-| Directory for temporary files
-| often not preserved between system reboots.
+| Directory for temporary files often not preserved between system reboots.
+|
 
 | `/usr`
-| Secondary hierarchy
-| for read-only user data; contains the majority of user utilities and applications.
+| Secondary hierarchy for read-only user data; contains the majority of user utilities and applications.
+|
 
 | `/usr/bin`
-| Non-essential command binaries
-| for all users, not needed in single-user mode.
-
-| `/usr/include`
-| Standard include files
-| for development and compilation.
+| Non-essential command binaries for all users, not needed in single-user mode.
+|
 
 | `/usr/lib`
 | Libraries
 | for the binaries in `/usr/bin` and `/usr/sbin`.
 
 | `/usr/local`
-| Tertiary hierarchy for local data
-| specific to this host, typically has further subdirectories.
+| Tertiary hierarchy for local data specific to this host, typically has further subdirectories.
+| -
 
 | `/usr/sbin`
-| Non-essential system binaries
-| such as daemons for various network services.
-
-| `/usr/share`
-| Architecture-independent data
-| shared data.
+| Non-essential system binaries such as daemons for various network services.
+|
 
 | `/var`
-| Variable files
-| files whose content changes during normal operation, such as logs and temporary e-mail files.
-
-| `/var/cache`
-| Application cache data
-| locally generated as a result of I/O or calculation.
-
-| `/var/lib`
-| State information
-| persistent data modified by programs as they run.
-
-| `/var/lock`
-| Lock files
-| keeping track of resources currently in use.
+| Variable files whose content changes during normal operation, such as logs and temporary e-mail files.
+| -
 
 | `/var/log`
 | Log files
-| various system logs.
-
-| `/var/mail`
-| Mailbox files
-| for user emails, sometimes in `/var/spool/mail`.
-
-| `/var/opt`
-| Variable data from add-on packages
-| stored in `/opt`.
+| -
 
 | `/var/run`
 | Run-time variable data
 | contains system information data since the system was booted.
 
-| `/var/spool`
-| Spool for tasks waiting to be processed
-| such as print queues and mail queue.
-
 | `/var/tmp`
-| Temporary files
-| to be preserved between reboots.
+| Temporary files to be preserved between reboots.
+| -
 |===
