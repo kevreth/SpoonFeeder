@@ -1,152 +1,416 @@
-= Linux
-== Bash
+= Bash
+:source-highlighter: highlight.js
 
-=== File commands
-==== echo-display a line of text
-==== file-determine file type
-==== cat-concatenate files and print on the standard output
-==== cp—Copy files
-==== mv—Move/rename files
-==== rm—Remove files
-==== less-opposite of more
-==== grep-print lines that match patterns
-==== touch-change file timestamps
+== What is Bash?
 
-=== Directory commands
-==== pwd —Print name of current working directory.
-==== cd—Change directory.
-==== ls—List directory contents.
-==== mkdir—Create directories.
-==== rmdir - remove empty directories
-==== cp -a - copy directory
-==== rm -rf - delete directory tree
+_Bash_ is a _command line interface_ to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
 
-=== Filesystem commands
-==== ln—Create hard and symbolic links.
-==== find-search for files in a directory hierarchy
-==== du-estimate file space usage
-==== df-report file system disk space usage
-==== kill-send a signal to a process
-==== killall-kill processes by name
+`$_`
 
-=== Process commands
-==== ps—Report a snapshot of current processes.
-==== top—Display tasks.
-==== jobs—List active jobs.
-==== bg—Place a job in the background.
-==== fg—Place a job in the foreground.
-==== kill—Send a signal to a process.
-==== killall—Kill processes by name.
-==== shutdown—Shut down or reboot the system.
+If a GUI is started, then Bash can be started in a window of the GUI but the specific method varies among Linux systems.
 
-=== Security commands
-==== id—Display user identity.
-==== chmod—Change a file's mode.
-==== umask—Set the default file permissions.
-==== su—Run a shell as another user.
-==== sudo—Execute a command as another user.
-==== chown—Change a file's owner.
-==== chgrp—Change a file's group ownership.
-==== passwd—Change a user's password
+Bash vs. a GUI
 
-=== Getting help
-==== whatis-display one-line manual page descriptions
-==== man-an interface to the system reference manuals
+++++
+<style>
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.flex-item {
+  flex: 1;
+  margin: 0; /* Eliminate default margins */
+  display: flex;
+  flex-direction: column;
+}
+.source-code, .image-container {
+  padding: 0px; /* Reduced padding */
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Center content for visual appeal */
+  align-items: center; /* This might need adjustment based on your content */
+}
+/* Optional: Reduce bottom margin on preformatted blocks */
+pre {
+  margin-bottom: 0;
+}
+</style>
+<div style="display: flex; justify-content: left; align-items: flex-start;">
+<div style="flex: 1; padding: 0px;">
+++++
 
-=== Environment commands
-==== alias-define or display aliases
-==== whoami-print effective userid
-==== id-print real and effective user and group IDs
-==== which-locate a command
-==== whereis-locate the binary, source, and manual page files for a command
-==== shopt
-==== uname
-==== pushd
-==== popd
-==== Environment variables
-===== export-set export attribute for shell variables
-===== env-run a program in a modified environment
-===== PATH
-===== CDPATH
-===== PWD
-===== USER
+[source,bash]
+----
+$ pwd
+/home/user
+$ ls
+Documents  Downloads  Music  Pictures  Projects
+$ cd Projects
+$ ls
+my_project
+$ cd my_project
+$ ls
+data.txt  notes.txt  script.sh
+$ cat notes.txt
+Meeting notes:
+- Discuss project timeline
+- Review initial requirements
+$ grep "timeline" notes.txt
+- Discuss project timeline
+$ echo "TODO: Add more data analysis steps" >> notes.txt
+----
 
-=== Archiving and backup commands
-==== gzip—Compress or expand files.
-==== bzip2—A block sorting file compressor.
-==== tar —Tape-archiving utility.
-==== zip —Package and compress files.
-==== rsync-a fast, versatile, remote (and local) file-copying tool
+++++
+</div>
+<div style="flex: 1; padding: 10px;">
+++++
 
-=== Text processing commands
-==== wc-print newline, word, and byte counts for each file
-==== uniq-report or omit repeated lines
-==== head-output the first part of files
-==== tail-output the last part of files
-==== sort—Sort lines of text files.
-==== cut —Remove sections from each line of files.
-==== paste—Merge lines of files.
-==== join—Join lines of two files on a common field.
-==== tr—Translate or delete characters.
-==== sed —Stream editor for filtering and transforming text.
-==== aspell—Interactive spell checker.
+image::gui.svg[GUI example,opts="inline"]
 
-=== Redirection and piping operators
-==== '>: redirect output'
-==== '<: redirect input'
-==== '>>: redirect output to append'
-==== '<<: here document'
-==== '<<<: here string'
-==== '|: pipe'
-
-=== Path resolution
-==== absolute and relative paths
-==== ''
-==== ""
-==== File globbing
-====== wildcards
-====== *
-====== ?
-====== '[]'
-====== !
-==== Command expansion
-===== tilde
-===== arithmetic
-===== brace
-===== parameter
-===== command
-==== Command grouping
-
-=== Command history
-==== history
-==== History environment variables
-===== HISTCODE
-===== HISTFILESIZE
-===== HISTIGNORE
-===== HISTSIZE
-==== History modifiers
+++++
+</div>
+</div>
+++++
 
 
-=== Special characters
 
-=== Network commands
-==== ping—Send an ICMP ECHO_REQUEST to network hosts.
-==== traceroute—Print the route packets trace to a network host.
-==== netstat—Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
-==== ftp —Internet file transfer program.
-==== lftp—An improved Internet file transfer program.
-==== ssh—OpenSSH SSH client (remote login program).
-==== scp—Secure copy (remote file copy program).
-==== sftp—Secure file transfer program.
-==== wget—Non-interactive network downloader.
-==== curl—transfer a URL
+== Why use Bash?
 
-=== File comparison commands
-==== comm—Compare two sorted files line by line.
-==== diff—Compare files line by line.
-==== patch—Apply a diff file to an original.
+One may wonder why a CLI like Bash is worth learning when an easy learned and used GUI is available. The answer is,
 
-=== File types
+* CLIs make certain types of tasks easier
+* Some tasks cannot be done without Bash because a GUI equivalent is unavailable.
+* Tasks can easily be automated with Bash but GUI automation is difficult.
+* Typing is faster than using the mouse for most tasks.
+
+Examples of these situations will be demonstrated through the course.
+
+A distinguising trait of advanced Linux users is knowing how to use Bash.
+
+== The Linux filesystem
+
+Although not specfic to Bash, understanding how Linux stores data is necessary to use Bash.
+
+=== Directories, files, and data
+A _filesystem_ is the means computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, _directories_ and _files_.
+
+_Files_ contain data. A file can contain any type of computer data. Examples include a text document, a music track, or software program. Files cannot contain other files.
+
+_Directories_ are an organization tool. Directories contain files and other directories but cannot directly contain data like files can.
+
+The relationship of directories, files, and data. Arrows represent containership.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  files -> data
+  directories -> files
+  directories -> directories
+}
+....
+
+=== Filesystems
+
+Comparing a filesystem to a tree, directories are tree branches and files are leaves. Leaves (files) can grow anywhere, including the tree trunk.
+
+At the top of the tree is the _root directory_ which corresponds to a tree trunk. There can be only one root directory and it is named "/", which is the character _frontslash_ ("\" is a "backslash").
+
+An example filesystem. Arrows represent containership.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  "/" -> dir1
+  "/" -> dir2
+  "/" -> file1
+  "/" -> file2
+  dir1 -> file4
+  dir1 -> file5
+  dir1 -> dir4 -> file9
+  dir1 -> dir5 -> file10
+  dir2 -> dir6 -> file11
+  dir2 -> dir7 -> file12
+  dir2 -> file8
+}
+....
+
+In this simple filesystem, the root directory contains two directories and two files. Each of those two directories also contain directories and files. There is no practical limit to the number of directories and files a directory can contain, nor is there a practical limit to how deep directories can branch to other directories.
+
+=== File and directory naming
+
+Each directory and file has a name associated with it.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  "/" -> bob
+  "/" -> sue
+  "/" -> "annual.report.q1.txt"
+  "/" -> "annual.report.q2.txt"
+  bob -> "holiday.party.txt"
+  bob -> "corporate.retreat.mp4"
+  sue -> "accounts.payable.txt"
+}
+....
+
+In this example, the root directory contins directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file.
+
+=== File paths
+
+We can address any directory or file on a filesystem using a _path_.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  "/" -> bob
+  "/" -> sue
+  "/" -> "annual.report.q1.txt"
+  "/" -> "annual.report.q2.txt"
+  bob -> "holiday.party.txt"
+  bob -> "corporate.retreat.mp4"
+  sue -> "accounts.payable.txt"
+}
+....
+
+The directories necessary to address any file or directory in a file path are separated by "/".
+
+The path to "holiday.party.txt" is "/bob/holiday.party.txt"
+
+== File paths: ending frontslashes
+
+An ending "/" distinguishes if the final item in a directory path is a file or a directory. So,
+
+`/home/bob/monthly.reports/` is a directory
+
+`/home/bob/monthly.reports` is a file.
+
+== File paths: file extensions
+
+By convention, a file ends with a short indentifier indicating the type of file, but it's not a requirement.
+
+`annual.report.q1.txt` is a text file.
+
+`corporate.retreat.mp4` is an mp4 video file.
+
+Hundreds of standard file extensions exist. You will learn more file extensions as you learn Bash.
+
+== Current working directories
+
+Every Bash session has an associated _current working directory_ (CWD). Think of the CWD as your current location on the filesystem.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  "/" -> bob
+  "/" -> sue
+  "/" -> "annual.report.q1.txt"
+  "/" -> "annual.report.q2.txt"
+  bob -> "holiday.party.txt"
+  bob -> "corporate.retreat.mp4"
+  sue -> "accounts.payable.txt"
+}
+....
+
+The contents of the CWD can be addressed without using complete file paths. If our CWD is "bob" then we can address "holiday.party.txt" without preceding with "/bob/".
+
+=== Home directories
+
+When starting Bash, your CWD is normally the _home directory_ of the user you logged in as. Unless configured otherwise, the home directory will normally be
+
+`/home/<username>`
+
+So if you are logged in under "bob" your home directory, and where Bash starts, will be
+
+`/home/bob/`
+
+== Bash interface
+
+The most common way to interact with Bash is by typing _commands_.
+
+Typically the Bash interface looks something like this (although it can be configured to look much different)
+
+`$`
+
+That is called the _prompt_ and where commands can be typed in. The prompt is automatically displayed immediately after initiating a Bash session.
+
+=== Echo
+
+Our first Bash command will simply print something to the screen.
+
+[source, bash]
+----
+$ echo "Hello World!"
+Hello World!
+----
+
+Always press the `ENTER` (or on some systems `RETURN`) key after finishing typing a command to execute it.
+
+`echo`: display a line of text
+
+=== Hotkeys
+
+A second way to interact with Bash is via _hotkeys_. A hotkey is a combination of keyboard buttons that produce no visible input on the command prompt like typing commands does but still instructs Bash to do something.
+
+A commonly used hotkey is `CTRL-c`. It is made by pressing the button labled `CTRL` on the keyboard with the `c` button. It immediately stops whatever the command prompt is doing and starts a new command prompt. Let's say we start to enter an `echo` command but change our mind:
+
+[source, bash]
+----
+$ echo "A common"
+----
+
+Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
+
+`$`
+
+`echo` never executed.
+
+== File commands
+=== echo-display a line of text
+=== file-determine file type
+=== cat-concatenate files and print on the standard output
+=== cp—Copy files
+=== mv—Move/rename files
+=== rm—Remove files
+=== less-opposite of more
+=== grep-print lines that match patterns
+=== touch-change file timestamps
+
+== Directory commands
+=== pwd —Print name of current working directory.
+=== cd—Change directory.
+=== ls—List directory contents.
+=== mkdir—Create directories.
+=== rmdir - remove empty directories
+=== cp -a - copy directory
+=== rm -rf - delete directory tree
+
+== Filesystem commands
+=== ln—Create hard and symbolic links.
+=== find-search for files in a directory hierarchy
+=== du-estimate file space usage
+=== df-report file system disk space usage
+=== kill-send a signal to a process
+=== killall-kill processes by name
+
+== Process commands
+=== ps—Report a snapshot of current processes.
+=== top—Display tasks.
+=== jobs—List active jobs.
+=== bg—Place a job in the background.
+=== fg—Place a job in the foreground.
+=== kill—Send a signal to a process.
+=== killall—Kill processes by name.
+=== shutdown—Shut down or reboot the system.
+
+== Security commands
+=== id—Display user identity.
+=== chmod—Change a file's mode.
+=== umask—Set the default file permissions.
+=== su—Run a shell as another user.
+=== sudo—Execute a command as another user.
+=== chown—Change a file's owner.
+=== chgrp—Change a file's group ownership.
+=== passwd—Change a user's password
+
+== Getting help
+=== whatis-display one-line manual page descriptions
+=== man-an interface to the system reference manuals
+
+== Environment commands
+=== alias-define or display aliases
+=== whoami-print effective userid
+=== id-print real and effective user and group IDs
+=== which-locate a command
+=== whereis-locate the binary, source, and manual page files for a command
+=== shopt
+=== uname
+=== pushd
+=== popd
+=== Environment variables
+==== export-set export attribute for shell variables
+==== env-run a program in a modified environment
+==== PATH
+==== CDPATH
+==== PWD
+==== USER
+
+== Archiving and backup commands
+=== gzip—Compress or expand files.
+=== bzip2—A block sorting file compressor.
+=== tar —Tape-archiving utility.
+=== zip —Package and compress files.
+=== rsync-a fast, versatile, remote (and local) file-copying tool
+
+== Text processing commands
+=== wc-print newline, word, and byte counts for each file
+=== uniq-report or omit repeated lines
+=== head-output the first part of files
+=== tail-output the last part of files
+=== sort—Sort lines of text files.
+=== cut —Remove sections from each line of files.
+=== paste—Merge lines of files.
+=== join—Join lines of two files on a common field.
+=== tr—Translate or delete characters.
+=== sed —Stream editor for filtering and transforming text.
+=== aspell—Interactive spell checker.
+
+== Redirection and piping operators
+=== '>: redirect output'
+=== '<: redirect input'
+=== '>>: redirect output to append'
+=== '<<: here document'
+=== '<<<: here string'
+=== '|: pipe'
+
+== Path resolution
+=== absolute and relative paths
+=== ''
+=== ""
+=== File globbing
+===== wildcards
+===== *
+===== ?
+===== '[]'
+===== !
+=== Command expansion
+==== tilde
+==== arithmetic
+==== brace
+==== parameter
+==== command
+=== Command grouping
+
+== Command history
+=== history
+=== History environment variables
+==== HISTCODE
+==== HISTFILESIZE
+==== HISTIGNORE
+==== HISTSIZE
+=== History modifiers
+
+
+== Special characters
+
+== Network commands
+=== ping—Send an ICMP ECHO_REQUEST to network hosts.
+=== traceroute—Print the route packets trace to a network host.
+=== netstat—Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
+=== ftp —Internet file transfer program.
+=== lftp—An improved Internet file transfer program.
+=== ssh—OpenSSH SSH client (remote login program).
+=== scp—Secure copy (remote file copy program).
+=== sftp—Secure file transfer program.
+=== wget—Non-interactive network downloader.
+=== curl—transfer a URL
+
+== File comparison commands
+=== comm—Compare two sorted files line by line.
+=== diff—Compare files line by line.
+=== patch—Apply a diff file to an original.
+
+== File types
 
 [cols="1,15,84",options="header"]
 |===
@@ -182,7 +446,7 @@
 
 |===
 
-=== Directory structure
+== Directory structure
 [cols="10,15,75", options="header"]
 |===
 | Path | Type | Description
