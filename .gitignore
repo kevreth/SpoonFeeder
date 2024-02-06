@@ -62,3 +62,4 @@ yarn-error.log*
 *.sln
 .vscode
 course.html
+.asciidoctor/
