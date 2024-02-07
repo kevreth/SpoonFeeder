@@ -3,7 +3,7 @@
 
 == What is Bash?
 
-_Bash_ is a _command line interface_ to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
+_Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
 
 `$_`
 
@@ -72,8 +72,6 @@ image::gui.svg[GUI example,opts="inline"]
 </div>
 </div>
 ++++
-
-
 
 == Why use Bash?
 
@@ -154,7 +152,22 @@ digraph g {
 }
 ....
 
-In this example, the root directory contins directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file.
+In this example, the root directory contains directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file
+
+=== Directorry contents must have unique names
+
+Within a single directory, no two objects can have the same name. So within `/bob/` there cannot be any file or directory with the same name as another file or directory in `/bob/`.
+
+This cannot occur.
+`/bob/test.txt`
+`/bob/test.txt
+
+However this is fine.
+
+`/bob/`test.txt
+`/sue/`test.txt
+
+In addition to their role in organization, directories also provide a means to prevent name conflicts.
 
 === File paths
 
@@ -216,11 +229,11 @@ The contents of the CWD can be addressed without using complete file paths. If o
 
 === Home directories
 
-When starting Bash, your CWD is normally the _home directory_ of the user you logged in as. Unless configured otherwise, the home directory will normally be
+When starting Bash, your CWD is normally the _home directory_ of the user you logged in as. Unless configured otherwise, the home directory will normally be the pattern
 
 `/home/<username>`
 
-So if you are logged in under "bob" your home directory, and where Bash starts, will be
+So if you are logged in under "bob", your home directory, and where Bash starts, will be
 
 `/home/bob/`
 
@@ -259,11 +272,322 @@ A commonly used hotkey is `CTRL-c`. It is made by pressing the button labled `CT
 $ echo "A common"
 ----
 
-Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
+If we press CTRL-c *before* typing enter, we get a bare command prompt.
 
 `$`
 
 `echo` never executed.
+
+CTRL-c is a quick method to exit whatever we are doing and obtaining a fresh command prompt.
+
+== Using your home directory
+
+Let's assume a Bash session is freshly started. The current working directory is the user home directory and a Bash prompt is seen.
+
+`$`
+
+We can see the contents of the home directory with the `ls` command.
+
+`$ ls`
+
+The output will vary between different Linux systems and there is no standardization.
+
+== Creating a new directory
+
+Let's create a new directory for our work to keep it segregated. We will create a new directory called `bash-tutorial` using the `mkdir` command.
+
+`$ mkdir bash-tutorial`
+
+We can now use the `ls` command and see our new directory. The rest of the home directory contents will also be printed.
+
+=== changing the CWD
+
+We created our new directory and want to switch to it so we can avoid typing paths. We use cd:
+
+$ cd bash-tutorial
+
+ls will show it empty.
+
+$ ls
+
+=== Seeing the path of the CWD
+
+In case we forget, the path of the CWD can be printed with the pwd.
+
+pwd
+/home/bob/bash-tutroal/
+
+=== Creating our first file
+
+Bash features _outpot redirection_ to send the output of a command to a file. The pattern of redirection is *always*
+
+<command> <operator> <file>
+
+Earlier we used the echo command to print a message to the screen. This time we will use ouput redirection to instead create a file to contain the  outour of echo
+
+echo "this is a line" > test.txt
+
+This command both created a new file and added content to it.
+
+ls
+test.txt
+
+=== Viewing file contents
+Print the contents with the `cat` command
+
+cat testmtxt
+first line+
+
+=== Adding more lines
+The redirector used earlier >, always creates a new file. Unless configured differently, if the file  already exists it will overwrite whatever the content was
+
+echo "first line" > test.txt
+cat test.txt
+first line
+
+Onstead of overwriting lets add a second line using append redirection
+
+echo "second line" >> test.txt
+cat test.txt
+first line
+second line
+
+Like the output redirector, the file will be created if it doesn't exist, so to prevent data loss, we will usually prefer append redirection to output redirection.
+
+[source, bash]
+----
+$ ls
+bash-tutorial
+----
+
+=== copying files
+Files can be copied using `cp`
+
+cp test.txt sample.txt
+ls
+test.txt sample.txt
+
+=== renaming files
+Files cam be renamed using `mv`
+
+mv  sample.txt test0.txt
+test.txt test0.txt
+
+mv is an abbreviation ov "move". Why move instead of rename?
+
+Think of move as using the entire file path:
+
+/home/bob/bash-tutorial/test0.txt
+
+The data was previously available at
+
+
+We are not moving data, but rather moving the data to another path.
+
+is now available at
+
+If we want to move the file to the home directory we can use mv also
+
+mv test0.txt /home/bob/
+
+ls /home/bob/
+test0.txt
+
+With mv, we're changing the path to a file or directory; "moving to a new address".
+
+=== What is a "command"?
+
+The use of "command" has been used in different ways
+
+A command as in `echo`
+A command as in `ls echo test.txt`
+A command as in `echo test.txr > test.txt`
+
+All three of these are correct. while it may seem a problem, in practice which of the three meanings of "command" is intended is obvious based on context.
+
+=== Anatomy of a command 1
+
+Consider the following command
+
+`ls -a -l /home/bob`
+
+`-a`, `-l`, and `/home/bob` are called _arguments_. Linux imposes no structure on arguments nor attempts to understand them. Linux converts everything after the command to a list and sends the list to the command and the command itself is responsible processing arguments. So, at program start, `ls` will receive something like this
+
+["-a", "-l", "/home/bob/"]
+
+=== Anatomy of a command 2
+
+That said about programs being solely responsible for arguments, in an attempt at some standardization, most Linux commands follow a certain pattern for their arguments.
+
+Let's consider a hypothetical command
+
+`command -a arg -def --long-option argument /a/path/`
+
+* `-a` is an _option_
+* `arg` is an _option argument_
+* `-def` is an example of _combining options_. It is the equivalent of `-d -e -f`
+* `--long-option` is an example of a _long option_. Most long arguments have short versions. The long form is sometimes used for readability.
+* `argument` is an option argument to `--long-option`
+* `/a/path/` is a _positional parameter_. A program interprets a positional parameter based on where in the argument list it occurs rather than being identified by an option.
+
+=== Anatomy of a command 3
+
+The presence of option arguments and combined options raises a question. Can all this be combined?
+
+`-a arg -def`
+
+The answer is 'yes', but there's some rules. Combining these would look like
+
+`-defa arg`
+
+The rules combining options are:
+
+. Only one option requiring an argument may be used
+. The option requiring an argument must be last
+
+There is no way to further combine
+
+`-dfe arg1 -a arg2`
+
+
+
+=== A command with multiple options and parameters
+
+Lets say we start from
+
+/home/bob/bash-tutorial/
+
+We can pass an _option_ to `ls` to output additional information about directory contents.
+
+ls -l
+(show content)
+
+`-l` is an option to display a long version Notice the contents are in a vertical list with extra data that you wont understand.
+
+We can display the l9ng contents of our home directory with a parameter
+
+ls -d /home/bob/
+
+=== Options are of two types
+
+* Short options are one letter preceded by dash
+* long options are multiple letters and preceded by two dashes
+
+Short options can usually be combined, such as
+
+ls -(something)
+
+in this case, only the final option can be passed a parameter.
+
+Note that Bash commands aren't always consistent in the way they use options and parameters. some allow long options, some don
+
+=== absolute vs relative paths
+So far, if we wanted to address a directory or a file in a directory that is not CWD, we typed out the entire path
+
+/home/bob/bash-tutorial/test.txt
+
+This is called an _absolute path_. Absolute paths are always from the perspective of the root directory.
+
+Typing put all those paths is a chore. As a shortcut, Bash offers _relative paths_ which are from the perspective of the CWD. The reason in previous examples we didn't need to add paths when working with the contents of home/bon/bash-tutorial is because we were using relative pathing.
+
+lets make bash-tut our current directory, create a directory in it, and create a file.
+
+cd bash-tutorial
+mkdir lesson1
+cd lesson1
+
+In all three cases we used relative paths. Using absolute paths would require
+
+mkdir /home/bob/bash-tutorial/lesson1
+cd /home/bob/bash-tutorial/lesson1
+
+=== . and ..
+
+Notice when using `la -d`theres two extra entries
+
+.
+..
+
+. refers to the current directory. we may use it in certain circumstances, such as executing a program EXAMPLES
+
+.. refers to the parent directory. we can use it as a shortcut in relative paths
+
+cd ..
+
+CWD is now /home/bob/.
+
+=== don't change CWD for short tasks
+Most. commands take a path parameter if you only need to perform pne task don't change CWD. Instead, pass a path parameter to the command, if the command takes it.
+
+EXAMPLE
+
+=== copying directory trees
+
+cp -a
+ A quick form of backup is copying a directory and all its contents. Lets copy bash-tutorial to another directory in `bob`
+
+ cp - a bash-tutorial bash-tutorial.backup
+
+=== cleaning up
+Currently we have the following objects we added to the filesystem.
+
+LISTING
+
+Let's explore how to remove what we have done.
+
+rm removes a file object
+
+cd /..
+
+rmdir removes empty directories
+
+cd ..
+
+rmdir bash-tutorial
+
+rm provides a powerful options to remove a directory and its contents. but be careful using it. Its relatively easy to make a mistake and delete important data.
+
+rm -rf
+
+The most dangerous command you execute is `rm -rf`` as root. This will delete everything in your filesystem and crash Linux
+
+== Users and groups
+
+As a multi-user operating system, Linux maintains strict permissions on who can access files. You wouldn't for example want another user accessing your files, which may contain private information or someone maliciously deletes your data. Every object in the filesystem has an associated set of permissions
+
+* read
+* write
+* execute
+
+That are repeated three times
+
+* owner
+* group
+* world
+
+combined, three are nine permissions
+
+The big difference between files and directories when using these permissions is that "executing" a directory means making it the CWD, i.e., `cd`-ing into it.
+
+===
+
+A group in Linux is a named set if users that are treated as a user. A group may contain users or groups
+
+The owner of a file may be a user or a group.
+
+The group of a file grants access to any group the owner is a member of.
+
+World means anyone.
+
+=== touch
+
+Let's create a set of test files to play with permissions. The `touch` command updates the timestamp of a file to the current time and creates an empty file if it doesn't exist.
+
+ touch file1 file2 file3
+
+ === changing file permissions
+
+ the `chmod` command changes the 000
 
 == File commands
 === echo-display a line of text
@@ -274,7 +598,7 @@ Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
 === rm—Remove files
 === less-opposite of more
 === grep-print lines that match patterns
-=== touch-change file timestamps
+=== touch-change file timestamps⁰
 
 == Directory commands
 === pwd —Print name of current working directory.
@@ -282,7 +606,7 @@ Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
 === ls—List directory contents.
 === mkdir—Create directories.
 === rmdir - remove empty directories
-=== cp -a - copy directory
+=== cp -a - copy directory tree
 === rm -rf - delete directory tree
 
 == Filesystem commands
@@ -290,8 +614,6 @@ Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
 === find-search for files in a directory hierarchy
 === du-estimate file space usage
 === df-report file system disk space usage
-=== kill-send a signal to a process
-=== killall-kill processes by name
 
 == Process commands
 === ps—Report a snapshot of current processes.
@@ -303,7 +625,7 @@ Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
 === killall—Kill processes by name.
 === shutdown—Shut down or reboot the system.
 
-== Security commands
+== Filesystem permisskons
 === id—Display user identity.
 === chmod—Change a file's mode.
 === umask—Set the default file permissions.
@@ -318,6 +640,19 @@ Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
 === man-an interface to the system reference manuals
 
 == Environment commands
+
+So far, we have discussed two methods to inyersct with Bash
+
+* command
+* hoykeys
+
+A third method is environmental vallroable
+
+An environmental varisble is a sequence of characters ket in memory and retrieved by a label.
+
+VAR=myvariable
+
+We can now plq
 === alias-define or display aliases
 === whoami-print effective userid
 === id-print real and effective user and group IDs
@@ -353,7 +688,7 @@ Now if we press CTRL-c *before* typing enter, we get a bare command prompt.
 === join—Join lines of two files on a common field.
 === tr—Translate or delete characters.
 === sed —Stream editor for filtering and transforming text.
-=== aspell—Interactive spell checker.
+=== asqpell—Interactive spell checker.
 
 == Redirection and piping operators
 === '>: redirect output'
