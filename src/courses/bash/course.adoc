@@ -402,11 +402,12 @@ test.txt
 
 The use of "command" has been used in different ways.
 
-A command as in `echo` (a basic command)
-A command as in `echo test.txt` (a command with arguments)
-A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
+* A command as in `echo` (a basic command)
+* A command as in `echo test.txt` (a command with arguments)
+* A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
 
 All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
+
 === Viewing file contents
 Print the contents with the `cat` command
 
@@ -455,6 +456,7 @@ test.txt sample.txt
 ----
 
 `cp` cannot copy directories this way. We will look at directory copying later.
+
 === renaming files 1
 `mv` renames and moves filesystem objects.
 
@@ -845,7 +847,7 @@ combined, three are nine permissions
 
 The big difference between files and directories when using these permissions is that "executing" a directory means making it the CWD, i.e., `cd`-ing into it.
 
-===
+=== groups
 
 A group in Linux is a named set if users that are treated as a user. A group may contain users or groups
 
@@ -861,7 +863,7 @@ Let's create a set of test files to play with permissions. The `touch` command u
 
  touch file1 file2 file3
 
- === changing file permissions
+=== changing file permissions
 
  the `chmod` command changes the 000
 
@@ -914,7 +916,6 @@ An environmental variables is a sequence of characters ket in memory and retriev
 
 VAR=myvariable
 
-We can now plq
 === alias-define or display aliases
 === whoami-print effective userid
 === id-print real and effective user and group IDs
