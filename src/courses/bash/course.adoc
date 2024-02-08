@@ -1,5 +1,5 @@
 = Bash
-:source-highlighter: highlight.js
+//:source-highlighter: highlight.js
 == Introduction
 === What is Bash?
 _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
@@ -388,7 +388,7 @@ The use of "command" has been used in different ways.
 All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
 
 === Viewing file contents: `cat`
-Print the contents with the `cat` command
+Print file contents with the `cat` command
 
 [source, bash]
 ----
@@ -469,8 +469,8 @@ If we want to move the file to the home directory we can use `mv` also
 ----
 $ mkdir /home/bob/
 $ echo "first line" > test.txt
-mv test.txt /home/
-ls /home/
+$ mv test.txt /home/
+$ ls /home/
 test.txt
 ----
 
@@ -733,6 +733,11 @@ client_contact client_contact_backup
 === List object information recursively: `ls -R`
 === List objects sorted by time: `ls -t`
 === Do not overwrite existing file on copy: `cp -n`
+
+//////////////////////////////////////////////////////////////////////////////
+//                           END PART 1
+//////////////////////////////////////////////////////////////////////////////
+
 == Option arguments
 === Two meanings of "argument"
 
