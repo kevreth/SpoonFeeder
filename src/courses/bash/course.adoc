@@ -73,7 +73,7 @@ image::gui.svg[GUI example,opts="inline"]
 </div>
 ++++
 
-== Why use Bash?
+=== Why use Bash?
 
 One may wonder why a CLI like Bash is worth learning when an easy learned and used GUI is available. The answer is,
 
@@ -154,6 +154,32 @@ digraph g {
 
 In this example, the root directory contains directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file.
 
+=== Filesystem paths
+
+We can address any object on a filesystem using a _path_.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  "/" [style=filled, fillcolor=lightblue]
+  bob [style=filled, fillcolor=lightblue]
+  "holiday.party.txt" [style=filled, fillcolor=lightblue]
+  "/" -> bob
+  "/" -> sue
+  "/" -> "annual.report.q1.txt"
+  "/" -> "annual.report.q2.txt"
+  bob -> "holiday.party.txt"
+  bob -> "corporate.retreat.mp4"
+  sue -> "accounts.payable.txt"
+}
+....
+
+The directories necessary to address any file or directory in a file path are separated by "/".
+
+The path to "holiday.party.txt" is "/bob/holiday.party.txt".
+
+Every object on the filesystem can be addressed this way.
+
 === A different view of directory contents
 
 Up to now, directory contents have been presented graphically:
@@ -186,28 +212,7 @@ sue
 
 This can refer to any directory contents, not just the root directory. For example, this listing could be the contents of `/human.resources/employees/`
 
-=== Filesystem paths
-
-We can address any object on a filesystem using a _path_.
-
-[source]
-----
-annual.report.q1.txt
-annual.report.q2.txt
-bob
-  holiday.party.txt
-  corporate.retreat.mp4
-sue
-  accounts.payable.txt
-----
-
-The directories necessary to address any file or directory in a file path are separated by "/".
-
-The path to "holiday.party.txt" is "/bob/holiday.party.txt".
-
-Every object on the filesystem can be addressed this way.
-
-== File paths: ending frontslashes
+=== File paths: ending frontslashes
 
 An ending "/" distinguishes if the final item in a directory path is a file or a directory. So,
 
@@ -215,7 +220,7 @@ An ending "/" distinguishes if the final item in a directory path is a file or a
 
 `/home/bob/monthly.reports` is a file.
 
-== File paths: file extensions
+=== File paths: file extensions
 
 By convention, a file ends with a short identifier indicating the type of file, but it's not a requirement.
 
@@ -247,28 +252,28 @@ However this is fine.
 
 Beyond their role in organization, directories prevent name conflicts.
 
-== Current working directories
+== Beginning Bash
+
+=== Current working directories
 
 Every Bash session has an associated _current working directory_ (CWD). Think of the CWD as your current location on the filesystem.
 
-[graphviz, format="svg"]
-....
-digraph g {
-  "/" -> bob
-  "/" -> sue
-  "/" -> "annual.report.q1.txt"
-  "/" -> "annual.report.q2.txt"
-  bob -> "holiday.party.txt"
-  bob -> "corporate.retreat.mp4"
-  sue -> "accounts.payable.txt"
-}
-....
+[source, bash]
+----
+annual.report.q1.txt
+annual.report.q2.txt
+bob
+  holiday.party.txt
+  corporate.retreat.mp4
+sue
+  accounts.payable.txt
+----
 
 The contents of the CWD can be addressed without using complete file paths. If our CWD is "bob" then we can address "holiday.party.txt" without preceding with "/bob/".
 
 === Home directories
 
-When starting Bash, your CWD is normally the _home directory_ of the user you logged in as. Unless configured otherwise, the home directory will normally be the pattern
+When starting Bash, your CWD is normally the _home directory_ of the user you logged in as. Unless configured otherwise, the home directory follows the pattern
 
 `/home/<username>`
 
@@ -276,7 +281,7 @@ So if you are logged in under "bob", your home directory, and where Bash starts,
 
 `/home/bob/`
 
-== Bash interface
+=== Bash interface
 
 The most common way to interact with Bash is by typing _commands_.
 
@@ -304,11 +309,11 @@ Always press the `ENTER` (or on some systems `RETURN`) key after finishing typin
 
 A second way to interact with Bash is via _hotkeys_. A hotkey is a combination of keyboard buttons that produce no visible input on the command prompt like typing commands does but still instructs Bash to do something.
 
-A commonly used hotkey is `CTRL-c`. It is made by pressing the button labled `CTRL` on the keyboard with the `c` button. It immediately stops whatever the command prompt is doing and starts a new command prompt. Let's say we start to enter an `echo` command but change our mind:
+A commonly used hotkey is `CTRL-c`. It is made by pressing the button labeled `CTRL` on the keyboard with the `c` button. It immediately stops whatever the command prompt is doing and starts a new command prompt. Let's say we start to enter an `echo` command but change our mind:
 
 [source, bash]
 ----
-$ echo "A common"
+$ echo \"A common
 ----
 
 If we press CTRL-c *before* typing enter, we get a bare command prompt.
@@ -318,6 +323,8 @@ If we press CTRL-c *before* typing enter, we get a bare command prompt.
 `echo` never executed.
 
 CTRL-c is a quick method to exit whatever we are doing and obtaining a fresh command prompt.
+
+Hotkeys do not need to be pressed at the exact same time. Normally one presses `CTRL` and while holding it down presses `c`.
 
 == Using your home directory
 
@@ -329,7 +336,7 @@ We can see the contents of the home directory with the `ls` command.
 
 `$ ls`
 
-The output will vary between different Linux systems and there is no standardization.
+The output will vary between different Linux systems.
 
 == Creating a new directory
 
@@ -339,82 +346,114 @@ Let's create a new directory for our work to keep it segregated. We will create 
 
 We can now use the `ls` command and see our new directory. The rest of the home directory contents will also be printed.
 
-=== changing the CWD
-
-We created our new directory and want to switch to it so we can avoid typing paths. We use cd:
-
-$ cd bash-tutorial
-
-ls will show it empty.
-
-$ ls
-
-=== Seeing the path of the CWD
-
-In case we forget, the path of the CWD can be printed with the pwd.
-
-pwd
-/home/bob/bash-tutroal/
-
-=== Creating our first file
-
-Bash features _outpot redirection_ to send the output of a command to a file. The pattern of redirection is *always*
-
-<command> <operator> <file>
-
-Earlier we used the echo command to print a message to the screen. This time we will use output redirection to instead create a file to contain the output of echo
-
-echo "this is a line" > test.txt
-
-This command both created a new file and added content to it.
-
-ls
-test.txt
-
-=== Viewing file contents
-Print the contents with the `cat` command
-
-cat test.txt
-this is a line
-
-=== Adding more lines
-The redirector used earlier >, always creates a new file. Unless configured differently, if the file  already exists it will overwrite whatever the content was
-
-echo "first line" > test.txt
-cat test.txt
-first line
-
-Instead of overwriting, lets add a second line using _append redirection_.
-
-echo "second line" >> test.txt
-cat test.txt
-first line
-second line
-
-Like the output redirector, the file will be created if it doesn't exist, so to prevent data loss, we will usually prefer append redirection to output redirection.
-
 [source, bash]
 ----
 $ ls
 bash-tutorial
 ----
 
+=== changing the CWD
+
+We created our new directory and want to switch to it so we can avoid typing paths. We use `cd` (chage directory):
+
+[source, bash]
+----
+$ cd bash-tutorial
+----
+
+`ls`` will show it empty.
+
+[source, bash]
+----
+$ ls
+----
+
+=== Seeing the path of the CWD
+
+In case we forget, the path of the CWD can be printed with the pwd.
+
+[source, bash]
+----
+pwd
+/home/bob/bash-tutroal/
+----
+
+=== Creating our first file
+
+Bash features _output redirection_ to send the output of a command to a file. The pattern of redirection is *always*
+
+<command> <redirection operator> <file>
+
+Earlier we used the echo command to print a message to the screen. This time we will use output redirection to instead create a file to contain the output of `echo`.
+
+[source, bash]
+----
+$ echo "this is a line" > test.txt
+----
+
+This command both created a new file and added content to it.
+
+[source, bash]
+----
+$ ls
+test.txt
+----
+
+=== Viewing file contents
+Print the contents with the `cat` command
+
+[source, bash]
+----
+$ echo "this is a line" > test.txt
+$ cat test.txt
+this is a line
+----
+
+=== Adding more lines
+The redirector used earlier `>`, always overwrites any existing file content.
+
+[source, bash]
+----
+$ echo "this is a line" > test.txt
+$ cat test.txt
+this is a line
+$ echo "first line" > test.txt
+$ cat test.txt
+first line
+----
+
+"this is a line" was overwritten.
+
+Instead of overwriting, add a second line using _append redirection_ (`>>`).
+
+[source, bash]
+----
+$ echo "second line" >> test.txt
+$ cat test.txt
+first line
+second line
+----
+
+Like the output redirector, the file will be created if it doesn't exist, so to prevent data loss, we will usually prefer append redirection to output redirection.
+
 === copying files
 Files can be copied using `cp`
 
 [source, bash]
 ----
-cp test.txt sample.txt
-ls
+$ cp test.txt sample.txt
+$ ls
 test.txt sample.txt
 ----
 
-=== renaming files
+=== renaming files 1
 Files cam be renamed using `mv`
 
 [source, bash]
 ----
-mv  sample.txt test0.txt
+$ mkdir /home/bob/bash-tutorial/
+$
+$ mv sample.txt test0.txt
 test.txt test0.txt
 ----
 
@@ -435,6 +474,7 @@ If we want to move the file to the home directory we can use mv also
 
 [source, bash]
 ----
+
 mv test0.txt /home/bob/
 ls /home/bob/
 test0.txt
