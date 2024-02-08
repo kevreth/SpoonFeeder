@@ -87,10 +87,9 @@ Examples of these situations will be demonstrated through the course.
 A distinguishing trait of advanced Linux users is knowing how to use Bash.
 
 == The Linux filesystem
-=== Introduction
+=== Directories, files, and data
 Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
 
-=== Directories, files, and data
 A _filesystem_ is the means computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
 
 _Files_ contain data. A file can contain any type of computer data. Examples include a text document, a music track, or software program. Files cannot contain other files.
