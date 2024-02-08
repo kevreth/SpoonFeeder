@@ -253,7 +253,6 @@ However this is fine.
 Beyond their role in organization, directories prevent name conflicts.
 
 == Beginning Bash
-
 === Current working directories
 
 Every Bash session has an associated _current working directory_ (CWD). Think of the CWD as your current location on the filesystem.
@@ -326,9 +325,9 @@ CTRL-c is a quick method to exit whatever we are doing and obtaining a fresh com
 
 Hotkeys do not need to be pressed at the exact same time. Normally one presses `CTRL` and while holding it down presses `c`.
 
-== Using your home directory
+=== Using your home directory
 
-Let's assume a Bash session is freshly started. The current working directory is the user home directory and a Bash prompt is seen.
+Let's assume a Bash session is freshly started. CWD is the user home directory and a Bash prompt is seen.
 
 `$`
 
@@ -338,7 +337,7 @@ We can see the contents of the home directory with the `ls` command.
 
 The output will vary between different Linux systems.
 
-== Creating a new directory
+=== Creating a new directory
 
 Let's create a new directory for our work to keep it segregated. We will create a new directory called `bash-tutorial` using the `mkdir` command.
 
@@ -354,14 +353,14 @@ bash-tutorial
 
 === changing the CWD
 
-We created our new directory and want to switch to it so we can avoid typing paths. We use `cd` (chage directory):
+We created our new directory and want to switch to it so we can avoid typing paths. We use `cd` (change directory):
 
 [source, bash]
 ----
 $ cd bash-tutorial
 ----
 
-`ls`` will show it empty.
+`ls` will show it empty.
 
 [source, bash]
 ----
@@ -436,8 +435,8 @@ second line
 
 Like the output redirector, the file will be created if it doesn't exist, so to prevent data loss, we will usually prefer append redirection to output redirection.
 
-=== copying files
-Files can be copied using `cp`
+=== Copying files
+`cp` copies filesystem objects.
 
 [source, bash]
 ----
@@ -446,76 +445,221 @@ $ ls
 test.txt sample.txt
 ----
 
+`cp` cannot copy directories this way. We will look at directory copying later.
 === renaming files 1
-Files cam be renamed using `mv`
+`mv` renames and moves filesystem objects.
 
 [source, bash]
 ----
-$ mkdir /home/bob/bash-tutorial/
-$
-$ mv sample.txt test0.txt
+$ mkdir /home/bob/
+$ echo "first line" > test.txt
+$ mv test.txt test0.txt
 test.txt test0.txt
 ----
 
-mv is an abbreviation ov "move". Why move instead of rename?
+`mv` is an abbreviation of "move". Why "move" instead of "rename"?
 
-Think of move as using the entire file path:
+Think of `mv` as using the entire file path:
 
-`/home/bob/bash-tutorial/test0.txt`
+`/home/bob/test0.txt`
 
 The data was previously available at
 
+`/home/bob/test.txt`
+
+So, test.txt was renamed by moving it to another path.
 
 We are not moving data, but rather moving the data to another path.
 
-is now available at
+=== Renaming files
 
-If we want to move the file to the home directory we can use mv also
+If we want to move the file to the home directory we can use `mv` also
 
 [source, bash]
 ----
-
-mv test0.txt /home/bob/
-ls /home/bob/
-test0.txt
+$ mkdir /home/bob/
+$ echo "first line" > test.txt
+mv test.txt /home/
+ls /home/
+test.txt
 ----
 
-With mv, we're changing the path to a file or directory; "moving to a new address".
+With `mv``, we're changing the path to a file or directory; "moving to a new address".
 
-=== What is a "command"?
+== Bash command structure
+=== Command arguments
 
-The use of "command" has been used in different ways
+We've seen several cases where a command was used with some additional information:
+
+[source,bash]
+----
+cd bash-tutorial
+echo "this is a line"
+cp test.txt sample.txt
+mkdir /home/bob/
+mv test.txt test0.txt
+----
+
+Instances of that additional information are called _arguments_. The arguments we've seen so far are _positional arguments_ and are the simplest type of arguments. The meanings of positional arguments are understood based on their location in the arguments. For example, with `mv`,
+
+`mv test.txt test0.txt`
+
+the first positional argument is always the existing file object and the second positional argument is always the new location. They cannot be reversed.
+
+Redirectors (`>`, `>>`) are not arguments.
+
+=== The meaning of "command"
+
+The use of "command" has been used in different ways.
 
 A command as in `echo` (a basic command)
 A command as in `echo test.txt` (a command with arguments)
 A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
 
-All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is obvious based on context.
+All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
 
-=== Anatomy of a command 1
+=== Options
+
+An _option_ is an argument of one letter preceded by a dash "-". An example of using an option is `-1` used with `ls`. `-1` (one-column) instructs `ls` to list directory contents vertically.
+
+[source,bash]
+----
+marketing
+  branding
+    company_brand_book.pdf
+    logo_guidelines.pdf
+  campaigns
+    Q1_product_launch.pdf
+    summer_promo_plan.pdf
+----
+
+
+[source,bash]
+----
+$ cd marketing
+$ ls -1
+branding
+campaigns
+----
+
+without `-1`, `ls` prints horizontally.
+
+[source,bash]
+----
+$ cd marketing
+$ ls
+branding campaigns
+----
+
+Unlike positional arguments, the meaning of options aren't understood from their location, so they can appear in any order where they are allowed. The meaning of this will become clear later.
+
+=== Using multiple options
+
+The `-r` of `ls` reverses the normal alphabetical order of the output.
+
+[source,bash]
+----
+marketing
+  campaigns
+    Q1_product_launch.pdf
+    summer_promo_plan.pdf
+  branding
+    logo_guidelines.pdf
+    company_brand_book.pdf
+----
+
+[source,bash]
+----
+$ cd marketing
+$ ls
+branding campaigns
+$ ls -r
+campaigns branding
+----
+
+To print the contents of `marketing` as one column in reverse, we use `-1` and `-r`.
+
+[source,bash]
+----
+$ cd marketing
+$ ls -r -1
+campaigns
+branding
+----
+
+Options, unlike positional arguments, may occur in any order, so `-1 -r` works just like `-r -1`.
+
+[source,bash]
+----
+$ cd marketing
+$ ls -1 -r
+campaigns
+branding
+----
+
+=== Combining options
+[source,bash]
+----
+marketing
+  campaigns
+    Q1_product_launch.pdf
+    summer_promo_plan.pdf
+  branding
+    logo_guidelines.pdf
+    company_brand_book.pdf
+----
+As a shortcut, options can be bundled together, or _combined_.
+[source,bash]
+----
+$ cd marketing
+$ ls -1r
+campaigns
+branding
+----
+=== Using options with positional arguments
+[source,bash]
+----
+marketing
+  campaigns
+    Q1_product_launch.pdf
+    summer_promo_plan.pdf
+  branding
+    logo_guidelines.pdf
+    company_brand_book.pdf
+----
+List the contents of /marketing/branding/ in a reversed single column.
+[source,bash]
+----
+$ cd marketing/campaigns
+$ ls -1r marketing/branding
+logo_guidelines.pdf
+company_brand_book.pdf
+----
+Because `marketing/branding` is a positional argument, this is invalid.
+
+`ls marketing/branding -1r`
+
+Most commands have a specified area they can occur. Within that area options can be in any order.
+
+=== How Linux views arguments
 
 Consider the following command
 
 `ls -a -l /home/bob`
 
-`-a`, `-l`, and `/home/bob` are called _arguments_. Linux imposes no structure on arguments nor attempts to understand them. Linux converts everything after the command to a list and sends the list to the command and the command itself is responsible processing arguments. So, at program start, `ls` will receive something like this
+Linux imposes no structure on arguments nor attempts to understand them. Linux converts everything after the command to a list and sends the list to the command and the command itself is responsible processing arguments. So, at program start, `ls` will receive something like this
 
 ["-a", "-l", "/home/bob/"]
 
-=== Anatomy of a command 2
+Understanding and processing arguments is the responsibility of the command. Linux plays no part in it. Attempting to standardize, most Linux commands follow a certain pattern for their arguments, but some Linux commands are rogue and don't follow typical patterns.
 
-That said about programs being solely responsible for arguments, in an attempt at some standardization, most Linux commands follow a certain pattern for their arguments.
+== Option arguments
 
-Let's consider a hypothetical command
+=== Two meanings of "argument"
 
-`command -a arg -def --long-option argument /a/path/`
+Like "command", "argument" has multiple meanings.
 
-* `-a` is an _option_
-* `arg` is an _option argument_
-* `-def` is an example of _combining options_. It is the equivalent of `-d -e -f`
-* `--long-option` is an example of a _long option_. Most long arguments have short versions. The long form is sometimes used for readability.
-* `argument` is an option argument to `--long-option`
-* `/a/path/` is a _positional parameter_. A program interprets a positional parameter based on where in the argument list it occurs rather than being identified by an option. Most of the time, input and output paths will be positional parameters.
+In `ls -a -l /home/bob`
 
 === Anatomy of a command 3
 
@@ -542,44 +686,23 @@ Given this directory structure
 
 [source]
 ----
-/sales
-  /client_contact
-    client_list_2024.csv
-  /sales_reports
-    sales_report_Jan_2024.csv
-    sales_forecast_Q1_2024.pdf
+sales
+  client_contact
+    client_list.csv
+  sales_reports
+    sales_report_Jan.csv
+    sales_forecast_Q1.pdf
 ----
 
 [source, bash]
 ----
-cd /sales/sales_reports/
+cd /sales_reports/
 ls -1
-sales_report_Jan_2024.csv
-sales_forecast_Q1_2024.pdf
+sales_report_Jan.csv
+sales_forecast_Q1.pdf
 ----
 
 `-1` is an _option_ to display directory entries in a single column.
-
-=== Positional parameters
-
-[source]
-----
-/sales
-  /client_contacts
-    client_list_2024.csv
-  /sales_reports
-    sales_report_Jan_2024.csv
-    sales_forecast_Q1_2024.pdf
-----
-
-While CWD is `/sales/sales_reports/`, we can view the contents of '/sales/client_contacts/' using a _positional parameter_.
-
-[source, bash]
-----
-cd /sales/sales_reports/
-ls -1 /sales/client_contact
-client_list_2024.csv
-----
 
 === Options are of two types
 
@@ -592,18 +715,20 @@ ls -(something)
 
 in this case, only the final option can be passed a parameter.
 
-Note that Bash commands aren't always consistent in the way they use options and parameters. some allow long options, some don
+Note that Bash commands aren't always consistent in the way they use options and parameters. some allow long options, some don't.
 
-=== absolute vs relative paths
+== Globbing
+
+=== Absolute vs relative paths
 So far, if we wanted to address a directory or a file in a directory that is not CWD, we typed out the entire path
 
 /home/bob/bash-tutorial/test.txt
 
 This is called an _absolute path_. Absolute paths are always from the perspective of the root directory.
 
-Typing put all those paths is a chore. As a shortcut, Bash offers _relative paths_ which are from the perspective of the CWD. The reason in previous examples we didn't need to add paths when working with the contents of home/bon/bash-tutorial is because we were using relative pathing.
+Typing put all those paths is a chore. As a shortcut, Bash offers _relative paths_ which are from the perspective of the CWD. The reason in previous examples we didn't need to add paths when working with the contents of home/bon/bash-tutorial is because we were using relative paths.
 
-lets make bash-tut our current directory, create a directory in it, and create a file.
+Lets make bash-tut our current directory, create a directory in it, and create a file.
 
 cd bash-tutorial
 mkdir lesson1
@@ -630,37 +755,76 @@ cd ..
 CWD is now /home/bob/.
 
 === don't change CWD for short tasks
-Most. commands take a path parameter if you only need to perform pne task don't change CWD. Instead, pass a path parameter to the command, if the command takes it.
+Most commands take a path parameter if you only need to perform pne task don't change CWD. Instead, pass a path parameter to the command, if the command takes it.
 
 EXAMPLE
 
+== More commands
 === copying directory trees
 
-cp -a
- A quick form of backup is copying a directory and all its contents. Lets copy bash-tutorial to another directory in `bob`
+[source, bash]
+----
+sales
+  client_contact
+    client_list.csv
+----
 
- cp - a bash-tutorial bash-tutorial.backup
+A quick form of backup is copying a directory and all its contents. Let's copy client_contact to another directory in `sales`.
 
-=== cleaning up
-Currently we have the following objects we added to the filesystem.
+[source, bash]
+----
+cd sales
+cp -a client_contact client_contact_backup
+ls
+client_contact client_contact_backup
+----
 
-LISTING
+`cp -a` copy complete directory trees
+
+== Deleting filesystem objects
+=== Deleting a single file
+[source, bash]
+----
+sales
+  client_contact
+    client_list.csv
+  sales_reports
+    sales_report_Jan.csv
+    sales_forecast_Q1.pdf
+----
 
 Let's explore how to remove what we have done.
 
-rm removes a file object
+`rm` removes a file.
 
-cd /..
-
+[source, bash]
+----
+$ rm sales/sales_reports/sales_forecast_Q1.pdf
+$ ls sales/sales_reports/
+$ sales_report_Jan.csv
+----
+=== Deleting an empty directory
 rmdir removes empty directories
+[source, bash]
+----
+$ rm sales/sales_reports/sales_report_Jan.csv
+$ ls sales/sales_reports
+----
+=== Deleting a directory tree
+`rm` provides a powerful option set to remove a directory and its contents but be careful using it. Its easy to make a mistake and delete important data.
 
-cd ..
-
-rmdir bash-tutorial
-
-rm provides a powerful options to remove a directory and its contents. but be careful using it. Its relatively easy to make a mistake and delete important data.
-
-rm -rf
+[source, bash]
+----
+sales
+  client_contact
+    client_list.csv
+----
+[source, bash]
+----
+$ rm -rf sales
+$ ls sales
+ls: cannot access 'sales': No such file or directory
+----
 
 The most dangerous command you execute is `rm -rf`` as root. This will delete everything in your filesystem and crash Linux
 
