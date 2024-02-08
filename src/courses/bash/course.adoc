@@ -189,10 +189,9 @@ Up to now, directory contents have been presented graphically:
 digraph g {
   "/" -> bob
   "/" -> sue
+  "/" -> amy
   "/" -> "annual.report.q1.txt"
-  "/" -> "annual.report.q2.txt"
   bob -> "holiday.party.txt"
-  bob -> "corporate.retreat.mp4"
   sue -> "accounts.payable.txt"
 }
 ....
@@ -205,10 +204,12 @@ annual.report.q1.txt
 annual.report.q2.txt
 bob
   holiday.party.txt
-  corporate.retreat.mp4
 sue
   accounts.payable.txt
+amy/
 ----
+
+`amy` is an empty directory that contains no objects. To distinguish empty directories from files, empty directories have a frontslash after them.
 
 This can refer to any directory contents, not just the root directory. For example, this listing could be the contents of `/human.resources/employees/`
 
@@ -782,34 +783,45 @@ client_contact client_contact_backup
 `cp -a` copy complete directory trees
 
 == Deleting filesystem objects
+
 === Deleting a single file
 [source, bash]
 ----
-sales
-  client_contact
-    client_list.csv
-  sales_reports
-    sales_report_Jan.csv
-    sales_forecast_Q1.pdf
+
+sales_report_Jan.csv
+sales_forecast_Q1.pdf
 ----
-
-Let's explore how to remove what we have done.
-
 `rm` removes a file.
 
 [source, bash]
 ----
-$ rm sales/sales_reports/sales_forecast_Q1.pdf
-$ ls sales/sales_reports/
-$ sales_report_Jan.csv
+$ rm sales_forecast_Q1.pdf
+$ ls
+sales_report_Jan.csv
 ----
+
+
 === Deleting an empty directory
-rmdir removes empty directories
 [source, bash]
 ----
-$ rm sales/sales_reports/sales_report_Jan.csv
-$ ls sales/sales_reports
+client_contact
+  client_list.csv
+sales_reports/
 ----
+`rmdir` removes empty directories
+[source, bash]
+----
+$ rmdir sales_reports
+$ ls
+client_contact
+----
+If we try to delete a directory containing objects we get an error.
+[source, bash]
+----
+$ rmdir client_contact
+----
+rmdir: failed to remove 'client_contact': Directory not empty
+
 === Deleting a directory tree
 `rm` provides a powerful option set to remove a directory and its contents but be careful using it. Its easy to make a mistake and delete important data.
 
@@ -826,7 +838,7 @@ $ ls sales
 ls: cannot access 'sales': No such file or directory
 ----
 
-The most dangerous command you execute is `rm -rf`` as root. This will delete everything in your filesystem and crash Linux
+The most dangerous command you execute is `rm -rf`` as root. This will delete everything in your filesystem and crash Linux. All data will be lost and Linux will require re-installation.
 
 == Users and groups
 
@@ -980,11 +992,11 @@ We can now plq
 === ''
 === ""
 === File globbing
-===== wildcards
-===== *
-===== ?
-===== '[]'
-===== !
+==== wildcards
+==== *
+==== ?
+==== '[]'
+==== !
 === Command expansion
 ==== tilde
 ==== arithmetic
