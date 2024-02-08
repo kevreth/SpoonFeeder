@@ -84,14 +84,14 @@ One may wonder why a CLI like Bash is worth learning when an easy learned and us
 
 Examples of these situations will be demonstrated through the course.
 
-A distinguising trait of advanced Linux users is knowing how to use Bash.
+A distinguishing trait of advanced Linux users is knowing how to use Bash.
 
 == The Linux filesystem
 
-Although not specfic to Bash, understanding how Linux stores data is necessary to use Bash.
+Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
 
 === Directories, files, and data
-A _filesystem_ is the means computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, _directories_ and _files_.
+A _filesystem_ is the means computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
 
 _Files_ contain data. A file can contain any type of computer data. Examples include a text document, a music track, or software program. Files cannot contain other files.
 
@@ -135,9 +135,28 @@ digraph g {
 
 In this simple filesystem, the root directory contains two directories and two files. Each of those two directories also contain directories and files. There is no practical limit to the number of directories and files a directory can contain, nor is there a practical limit to how deep directories can branch to other directories.
 
-=== File and directory naming
+=== Filesystem object naming
 
-Each directory and file has a name associated with it.
+Each filesystem object has a name associated with it.
+
+[graphviz, format="svg"]
+....
+digraph g {
+  "/" -> bob
+  "/" -> sue
+  "/" -> "annual.report.q1.txt"
+  "/" -> "annual.report.q2.txt"
+  bob -> "holiday.party.txt"
+  bob -> "corporate.retreat.mp4"
+  sue -> "accounts.payable.txt"
+}
+....
+
+In this example, the root directory contains directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file.
+
+=== A different view of directory contents
+
+Up to now, directory contents have been presented graphically:
 
 [graphviz, format="svg"]
 ....
@@ -152,43 +171,41 @@ digraph g {
 }
 ....
 
-In this example, the root directory contains directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file
+From now on, directory contents will be presented textually, which is how you would see them when using Bash. The root directory is omitted.
 
-=== Directorry contents must have unique names
+[source]
+----
+annual.report.q1.txt
+annual.report.q2.txt
+bob
+  holiday.party.txt
+  corporate.retreat.mp4
+sue
+  accounts.payable.txt
+----
 
-Within a single directory, no two objects can have the same name. So within `/bob/` there cannot be any file or directory with the same name as another file or directory in `/bob/`.
+This can refer to any directory contents, not just the root directory. For example, this listing could be the contents of `/human.resources/employees/`
 
-This cannot occur.
-`/bob/test.txt`
-`/bob/test.txt
+=== Filesystem paths
 
-However this is fine.
+We can address any object on a filesystem using a _path_.
 
-`/bob/`test.txt
-`/sue/`test.txt
-
-In addition to their role in organization, directories also provide a means to prevent name conflicts.
-
-=== File paths
-
-We can address any directory or file on a filesystem using a _path_.
-
-[graphviz, format="svg"]
-....
-digraph g {
-  "/" -> bob
-  "/" -> sue
-  "/" -> "annual.report.q1.txt"
-  "/" -> "annual.report.q2.txt"
-  bob -> "holiday.party.txt"
-  bob -> "corporate.retreat.mp4"
-  sue -> "accounts.payable.txt"
-}
-....
+[source]
+----
+annual.report.q1.txt
+annual.report.q2.txt
+bob
+  holiday.party.txt
+  corporate.retreat.mp4
+sue
+  accounts.payable.txt
+----
 
 The directories necessary to address any file or directory in a file path are separated by "/".
 
-The path to "holiday.party.txt" is "/bob/holiday.party.txt"
+The path to "holiday.party.txt" is "/bob/holiday.party.txt".
+
+Every object on the filesystem can be addressed this way.
 
 == File paths: ending frontslashes
 
@@ -200,13 +217,35 @@ An ending "/" distinguishes if the final item in a directory path is a file or a
 
 == File paths: file extensions
 
-By convention, a file ends with a short indentifier indicating the type of file, but it's not a requirement.
+By convention, a file ends with a short identifier indicating the type of file, but it's not a requirement.
 
 `annual.report.q1.txt` is a text file.
 
 `corporate.retreat.mp4` is an mp4 video file.
 
 Hundreds of standard file extensions exist. You will learn more file extensions as you learn Bash.
+
+=== Directory contents must have unique names
+
+Within a single directory, no two objects can have the same name. So within `/bob/` there cannot be any file or directory with the same name as another file or directory in `/bob/`. Two objects in the filesystem may be named identically but they must be in different directories.
+
+This cannot occur.
+
+[source, bash]
+----
+/bob/test.txt
+/bob/test.txt
+----
+
+However this is fine.
+
+[source, bash]
+----
+/bob/test.txt
+/sue/test.txt
+----
+
+Beyond their role in organization, directories prevent name conflicts.
 
 == Current working directories
 
@@ -323,7 +362,7 @@ Bash features _outpot redirection_ to send the output of a command to a file. Th
 
 <command> <operator> <file>
 
-Earlier we used the echo command to print a message to the screen. This time we will use ouput redirection to instead create a file to contain the  outour of echo
+Earlier we used the echo command to print a message to the screen. This time we will use output redirection to instead create a file to contain the output of echo
 
 echo "this is a line" > test.txt
 
@@ -335,8 +374,8 @@ test.txt
 === Viewing file contents
 Print the contents with the `cat` command
 
-cat testmtxt
-first line+
+cat test.txt
+this is a line
 
 === Adding more lines
 The redirector used earlier >, always creates a new file. Unless configured differently, if the file  already exists it will overwrite whatever the content was
@@ -345,7 +384,7 @@ echo "first line" > test.txt
 cat test.txt
 first line
 
-Onstead of overwriting lets add a second line using append redirection
+Instead of overwriting, lets add a second line using _append redirection_.
 
 echo "second line" >> test.txt
 cat test.txt
@@ -363,21 +402,27 @@ bash-tutorial
 === copying files
 Files can be copied using `cp`
 
+[source, bash]
+----
 cp test.txt sample.txt
 ls
 test.txt sample.txt
+----
 
 === renaming files
 Files cam be renamed using `mv`
 
+[source, bash]
+----
 mv  sample.txt test0.txt
 test.txt test0.txt
+----
 
 mv is an abbreviation ov "move". Why move instead of rename?
 
 Think of move as using the entire file path:
 
-/home/bob/bash-tutorial/test0.txt
+`/home/bob/bash-tutorial/test0.txt`
 
 The data was previously available at
 
@@ -388,10 +433,12 @@ is now available at
 
 If we want to move the file to the home directory we can use mv also
 
+[source, bash]
+----
 mv test0.txt /home/bob/
-
 ls /home/bob/
 test0.txt
+----
 
 With mv, we're changing the path to a file or directory; "moving to a new address".
 
@@ -399,11 +446,11 @@ With mv, we're changing the path to a file or directory; "moving to a new addres
 
 The use of "command" has been used in different ways
 
-A command as in `echo`
-A command as in `ls echo test.txt`
-A command as in `echo test.txr > test.txt`
+A command as in `echo` (a basic command)
+A command as in `echo test.txt` (a command with arguments)
+A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
 
-All three of these are correct. while it may seem a problem, in practice which of the three meanings of "command" is intended is obvious based on context.
+All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is obvious based on context.
 
 === Anatomy of a command 1
 
@@ -428,7 +475,7 @@ Let's consider a hypothetical command
 * `-def` is an example of _combining options_. It is the equivalent of `-d -e -f`
 * `--long-option` is an example of a _long option_. Most long arguments have short versions. The long form is sometimes used for readability.
 * `argument` is an option argument to `--long-option`
-* `/a/path/` is a _positional parameter_. A program interprets a positional parameter based on where in the argument list it occurs rather than being identified by an option.
+* `/a/path/` is a _positional parameter_. A program interprets a positional parameter based on where in the argument list it occurs rather than being identified by an option. Most of the time, input and output paths will be positional parameters.
 
 === Anatomy of a command 3
 
@@ -445,28 +492,54 @@ The rules combining options are:
 . Only one option requiring an argument may be used
 . The option requiring an argument must be last
 
-There is no way to further combine
+There is no way to further combine (arg1 is an argument to option e)
 
 `-dfe arg1 -a arg2`
 
-
-
 === A command with multiple options and parameters
 
-Lets say we start from
+Given this directory structure
 
-/home/bob/bash-tutorial/
+[source]
+----
+/sales
+  /client_contact
+    client_list_2024.csv
+  /sales_reports
+    sales_report_Jan_2024.csv
+    sales_forecast_Q1_2024.pdf
+----
 
-We can pass an _option_ to `ls` to output additional information about directory contents.
+[source, bash]
+----
+cd /sales/sales_reports/
+ls -1
+sales_report_Jan_2024.csv
+sales_forecast_Q1_2024.pdf
+----
 
-ls -l
-(show content)
+`-1` is an _option_ to display directory entries in a single column.
 
-`-l` is an option to display a long version Notice the contents are in a vertical list with extra data that you wont understand.
+=== Positional parameters
 
-We can display the l9ng contents of our home directory with a parameter
+[source]
+----
+/sales
+  /client_contacts
+    client_list_2024.csv
+  /sales_reports
+    sales_report_Jan_2024.csv
+    sales_forecast_Q1_2024.pdf
+----
 
-ls -d /home/bob/
+While CWD is `/sales/sales_reports/`, we can view the contents of '/sales/client_contacts/' using a _positional parameter_.
+
+[source, bash]
+----
+cd /sales/sales_reports/
+ls -1 /sales/client_contact
+client_list_2024.csv
+----
 
 === Options are of two types
 
