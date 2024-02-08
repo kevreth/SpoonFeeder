@@ -978,7 +978,8 @@ We can now plq
 ==== parameter
 ==== command
 === Command grouping
-
+==== ;
+==== &&
 == Command history
 === history
 === History environment variables
