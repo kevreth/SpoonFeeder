@@ -89,7 +89,7 @@ A distinguishing trait of advanced Linux users is knowing how to use Bash.
 === Directories, files, and data
 Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
 
-A _filesystem_ is the means computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
+A _filesystem_ is how computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
 
 _Files_ contain data. A file can contain any type of computer data. Examples include a text document, a music track, or software program. Files cannot contain other files.
 
@@ -215,9 +215,9 @@ This can refer to any directory contents, not just the root directory. For examp
 
 An ending "/" distinguishes if the final item in a directory path is a file or a directory. So,
 
-`/home/bob/monthly.reports/` is a directory
+`monthly.reports/` is a directory
 
-`/home/bob/monthly.reports` is a file.
+`monthly.reports` is a file.
 
 The ending frontslash is often omitted depending on situations which we will explore.
 
@@ -293,7 +293,7 @@ That is called the _prompt_ and where commands can be typed in. The prompt is au
 
 === Echo
 
-Our first Bash command will simply print something to the screen. Anything after `$` is content you would type.
+Our first Bash command will simply print something to the screen. Anything after the prompt (`$`) is content you would type.
 
 [source, bash]
 ----
@@ -304,27 +304,6 @@ Hello World!
 Always press the `ENTER` (or on some systems `RETURN`) key after finishing typing a command to execute it.
 
 `echo`: display a line of text
-
-=== Hotkeys
-
-A second way to interact with Bash is via _hotkeys_. A hotkey is a combination of keyboard buttons that produce no visible input on the command prompt like typing commands does but still instructs Bash to do something.
-
-A commonly used hotkey is `CTRL-c`. It is made by pressing the button labeled `CTRL` on the keyboard with the `c` button. It immediately stops whatever the command prompt is doing and starts a new command prompt. Let's say we start to enter an `echo` command but change our mind:
-
-[source, bash]
-----
-$ echo \"A common
-----
-
-If we press CTRL-c *before* typing enter, we get a bare command prompt.
-
-`$`
-
-`echo` never executed.
-
-CTRL-c is a quick method to exit whatever we are doing and obtaining a fresh command prompt.
-
-Hotkeys do not need to be pressed at the exact same time. Normally one presses `CTRL` and while holding it down presses `c`.
 
 === Using your home directory
 
@@ -1138,3 +1117,24 @@ VAR=myvariable
 | Temporary files to be preserved between reboots.
 | -
 |===
+== misc
+=== Hotkeys
+
+A second way to interact with Bash is via _hotkeys_. A hotkey is a combination of keyboard buttons that produce no visible input on the command prompt like typing commands does but still instructs Bash to do something.
+
+A commonly used hotkey is `CTRL-c`. It is made by pressing the button labeled `CTRL` on the keyboard with the `c` button. It immediately stops whatever the command prompt is doing and starts a new command prompt. Let's say we start to enter an `echo` command but change our mind:
+
+[source, bash]
+----
+$ echo \"A common
+----
+
+If we press CTRL-c *before* typing enter, we get a bare command prompt.
+
+`$`
+
+`echo` never executed.
+
+CTRL-c is a quick method to exit whatever we are doing and obtaining a fresh command prompt.
+
+Hotkeys do not need to be pressed at the exact same time. Normally one presses `CTRL` and while holding it down presses `c`.
