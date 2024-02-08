@@ -481,11 +481,11 @@ With `mv`, we're changing the path to a file or directory; "moving to a new addr
 We've seen several cases where a command was used with some additional information:
 
 
-cd `bash-tutorial`
-echo `"this is a line"`
-cp `test.txt sample.txt`
-mkdir `/home/bob/`
-mv `test.txt test0.txt`
+* cd `bash-tutorial`
+* echo `"this is a line"`
+* cp `test.txt sample.txt`
+* mkdir `/home/bob/`
+* mv `test.txt test0.txt`
 
 Instances of that additional information are called _arguments_. The arguments we've seen so far are _positional arguments_ and are the simplest type of arguments. The meanings of positional arguments are understood based on their location in the arguments. For example, with `mv`,
 
