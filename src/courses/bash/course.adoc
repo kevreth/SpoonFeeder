@@ -219,9 +219,11 @@ An ending "/" distinguishes if the final item in a directory path is a file or a
 
 `/home/bob/monthly.reports` is a file.
 
+The ending frontslash is often omitted depending on situations which we will explore.
+
 === File paths: file extensions
 
-By convention, a file ends with a short identifier indicating the type of file, but it's not a requirement.
+By convention, a file ends with a short identifier, called a _file extension_ indicating the type of file, but it's not a requirement.
 
 `annual.report.q1.txt` is a text file.
 
@@ -376,13 +378,13 @@ $ pwd
 /home/bob/bash-tutorial/
 ----
 
-=== Creating our first file
+=== Creating a file
 
 Bash features _output redirection_ to send the output of a command to a file. The pattern of redirection is *always*
 
 <command> <redirection operator> <file>
 
-Earlier we used the echo command to print a message to the screen. This time we will use output redirection to instead create a file to contain the output of `echo`.
+Earlier we used the `echo` command to print a message to the screen. This time we will use output redirection to instead create a file to contain the output of `echo`.
 
 [source, bash]
 ----
@@ -396,6 +398,8 @@ This command both created a new file and added content to it.
 $ ls
 test.txt
 ----
+
+
 
 === Viewing file contents
 Print the contents with the `cat` command
