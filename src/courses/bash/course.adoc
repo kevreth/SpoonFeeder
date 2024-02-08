@@ -195,7 +195,8 @@ digraph g {
 }
 ....
 
-From now on, directory contents will be presented textually, which is how you would see them when using Bash.
+From now on, directory contents will be presented textually,
+which is how you would see them when using Bash.
 The root directory is omitted.
 
 [source]
@@ -227,7 +228,8 @@ The ending frontslash is often omitted depending on situations which we will exp
 
 === File paths: file extensions
 
-By convention, a file ends with a short identifier, called a _file extension_ indicating the type of file, but it's not a requirement.
+By convention, a file ends with a short identifier,
+called a _file extension_ indicating the type of file, but it's not a requirement.
 
 `annual.report.q1.txt` is a text file.
 
@@ -281,7 +283,8 @@ If our CWD is "bob" then we can address "holiday.party.txt" without preceding wi
 
 === Home directories
 
-When starting Bash, your CWD is normally the _home directory_ of the user you logged in as. Unless configured otherwise, the home directory follows the pattern
+When starting Bash, your CWD is normally the _home directory_ of the user you logged in as.
+Unless configured otherwise, the home directory follows the pattern
 
 `/home/<username>`
 
@@ -297,11 +300,13 @@ Typically the Bash interface looks something like this (although it can be confi
 
 `$`
 
-That is called the _prompt_ and where commands can be typed in. The prompt is automatically displayed immediately after initiating a Bash session.
+That is called the _prompt_ and where commands can be typed in.
+The prompt is automatically displayed immediately after initiating a Bash session.
 
 === Printing to the screen: `echo`
 
-Our first Bash command will simply print something to the screen. Anything after the prompt (`$`) is content you would type.
+Our first Bash command will simply print something to the screen.
+Anything after the prompt (`$`) is content you would type.
 
 [source, bash]
 ----
@@ -346,7 +351,8 @@ $ ls
 corporate.retreat.mp4 holiday.party.txt
 ----
 
-`ls` by itself does not provide any indication of what the type of the objects are. We will see later how to fix that.
+`ls` by itself does not provide any indication of what the type of the objects are.
+We will see later how to fix that.
 
 === Creating a new directory: `mkdir`
 
@@ -439,7 +445,10 @@ first line
 second line
 ----
 
-Like the output redirector, the file will be created if it doesn't exist, so to prevent data loss, we will usually prefer append redirection to output redirection.
+Like the output redirector,
+the file will be created if it doesn't exist,
+so to prevent data loss,
+we will usually prefer append redirection to output redirection.
 
 === Copying files: `cp`
 `cp` copies filesystem objects.
@@ -507,25 +516,29 @@ While it may seem a problem, in practice which of the three meanings of "command
 === Command arguments introduction
 We've seen several cases where a command was used with some additional information (which together is also a command):
 
-
 * cd `bash-tutorial`
 * cp `test.txt sample.txt`
 * echo `"this is a line"`
 * mkdir `/home/bob/`
 * mv `test.txt test0.txt`
 
-Instances of that additional information are called _arguments_. The arguments we've seen so far are _positional arguments_ and are the simplest type of arguments. The meanings of positional arguments are understood based on their location in the arguments. For example, with `mv`,
+Instances of that additional information are called _arguments_.
+The arguments we've seen so far are _positional arguments_ and are the simplest type of arguments.
+The meanings of positional arguments are understood based on their location in the arguments. For example, with `mv`,
 
 `mv test.txt test0.txt`
 
-the first positional argument is always the existing file object and the second positional argument is always the new location. They cannot be reversed.
+the first positional argument is always the existing file object and the second positional argument is always the new location.
+They cannot be reversed.
 
 Redirectors (`>`, `>>`) are not arguments.
 
 
 === Options
 
-An _option_ is an argument of one letter preceded by a dash "-". An example of using an option is `-1` used with `ls`. `-1` (one-column) instructs `ls` to list directory contents vertically.
+An _option_ is an argument of one letter preceded by a dash "-".
+An example of using an option is `-1` used with `ls`.
+`-1` (one-column) instructs `ls` to list directory contents vertically.
 
 [source,bash]
 ----
@@ -550,7 +563,10 @@ $ ls
 company_brand_book.pdf logo_guidelines.pdf
 ----
 
-Unlike positional arguments, the meaning of options aren't understood from their location, so they can appear in any order where they are allowed. The meaning of this will become clear later.
+Unlike positional arguments,
+the meaning of options aren't understood from their location,
+so they can appear in any order where they are allowed.
+The meaning of this will become clear later.
 
 === Using multiple options
 
@@ -582,7 +598,8 @@ company_brand_book.pdf
 
 === Options can appear in any order
 
-Options, unlike positional arguments, may occur in any order where they are allowed, so `-1 -r` works just like `-r -1`.
+Options, unlike positional arguments,
+may occur in any order where they are allowed, so `-1 -r` works just like `-r -1`.
 
 [source,bash]
 ----
@@ -624,7 +641,8 @@ marketing
     logo_guidelines.pdf
     company_brand_book.pdf
 ----
-When CWD is `marketing/campaigns`, list the contents of /marketing/branding/ in a reversed single column.
+When CWD is `marketing/campaigns`,
+list the contents of /marketing/branding/ in a reversed single column.
 [source,bash]
 ----
 $ cd marketing/campaigns
@@ -638,7 +656,9 @@ Because `marketing/branding` is a positional argument,
 
 is invalid.
 
-Most commands have a specified area where options can occur. Within that area options can be in any order.
+
+Most commands have a specified area where options can occur.
+Within that area options can be in any order.
 
 === How Linux views arguments
 
@@ -646,11 +666,18 @@ Consider the following command
 
 `ls -r -l /home/bob`
 
-Linux imposes no structure on arguments nor attempts to understand them. Linux converts everything after the command to a list and sends the list to the command and the command itself is responsible processing arguments. So, at program start, `ls` will receive something like this
+Linux imposes no structure on arguments nor attempts to understand them.
+Linux converts everything after the command to a list and sends the list to the command
+and the command itself is responsible processing arguments.
+So, at program start, `ls` will receive something like this
 
 ["-r", "-l", "/home/bob/"]
 
-Understanding and processing arguments is the responsibility of the command. Linux plays no part in it. Attempting to standardize, most Linux commands follow a certain pattern for their arguments, but some Linux commands are rogue and don't follow typical patterns.
+Understanding and processing arguments is the responsibility of the command.
+Linux plays no part in it.
+Attempting to standardize,
+most Linux commands follow a certain pattern for their arguments,
+but some Linux commands are rogue and don't follow typical patterns.
 
 == Deleting filesystem objects
 === Deleting a single file: `rm`
@@ -688,7 +715,8 @@ $ rmdir client_contact
 rmdir: failed to remove 'client_contact': Directory not empty
 
 === Deleting a directory tree: `rm -rf`
-`rm` provides a powerful option set to remove a directory and its contents but be careful using it. Its easy to make a mistake and delete important data.
+`rm` provides a powerful option set to remove a directory and its contents but be careful using it.
+Its easy to make a mistake and delete important data.
 
 [source, bash]
 ----
@@ -799,7 +827,8 @@ $ ls -l
 -rw-r--r-- 1 bob bob  1049 Feb  8 01:30 company_brand_book.pdf
 -rw-r--r-- 1 bob bob   124 Feb  8 05:46 logo_guidelines.pdf
 ----
-Most of the output can't be understood until later in the course, but the file sizes (1049 and 124) and file date and times are provided.
+Most of the output can't be understood until later in the course,
+but the file sizes (1049 and 124) and file date and times are provided.
 === List object information recursively: `ls -R`
 [source, bash]
 ----
@@ -821,10 +850,22 @@ software
   accounting_software_guide.pdf
   crm_tool_manual.pdf
 ----
+`ls -r` displays the entire directory tree.
 === List objects sorted by time: `ls -t`
 === Do not overwrite existing file on copy: `cp -n`
 === Listing file objects with markers: `ls -F`
-
+[source, bash]
+----
+password_policy.pdf
+security
+----
+[source, bash]
+----
+$ ls -F
+password_policy.pdf security/
+----
+Notice that `security` has `/` after it to indicate a directory.
+`-F` has several other markers that will be explored later.
 //////////////////////////////////////////////////////////////////////////////
 //                           END PART 1
 //////////////////////////////////////////////////////////////////////////////
