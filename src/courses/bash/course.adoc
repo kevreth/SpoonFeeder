@@ -291,7 +291,7 @@ Typically the Bash interface looks something like this (although it can be confi
 
 That is called the _prompt_ and where commands can be typed in. The prompt is automatically displayed immediately after initiating a Bash session.
 
-=== Echo
+=== Printing to the screen: `echo`
 
 Our first Bash command will simply print something to the screen. Anything after the prompt (`$`) is content you would type.
 
@@ -305,7 +305,7 @@ Always press the `ENTER` (or on some systems `RETURN`) key after finishing typin
 
 `echo`: display a line of text
 
-=== Using your home directory
+=== Listing directory contents: `ls`
 
 Let's assume a Bash session is freshly started. CWD is the user home directory and a Bash prompt is seen.
 
@@ -317,7 +317,7 @@ We can see the contents of the home directory with the `ls` command.
 
 The output will vary between different Linux systems.
 
-=== Creating a new directory
+=== Creating a new directory: `mkdir`
 
 Let's create a new directory for our work to keep it segregated. We will create a new directory called `bash-tutorial` using the `mkdir` command.
 
@@ -331,7 +331,7 @@ $ ls
 bash-tutorial
 ----
 
-=== changing the CWD
+=== changing the CWD: `cd`
 
 We created our new directory and want to switch to it so we can avoid typing paths. We use `cd` (change directory):
 
@@ -347,7 +347,7 @@ $ cd bash-tutorial
 $ ls
 ----
 
-=== Seeing the path of the CWD
+=== Seeing the path of the CWD: `pwd`
 
 In case we forget, the path of the CWD can be printed with `pwd`.
 
@@ -357,7 +357,7 @@ $ pwd
 /home/bob/bash-tutorial/
 ----
 
-=== Creating a file
+=== Creating a file: `>`
 
 Bash features _output redirection_ to send the output of a command to a file. The pattern of redirection is *always*
 
@@ -387,7 +387,7 @@ The use of "command" has been used in different ways.
 
 All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
 
-=== Viewing file contents
+=== Viewing file contents: `cat`
 Print the contents with the `cat` command
 
 [source, bash]
@@ -397,7 +397,7 @@ $ cat test.txt
 this is a line
 ----
 
-=== Adding more lines
+=== Adding more lines: `>>`
 The redirector used earlier `>`, always overwrites any existing file content.
 
 [source, bash]
@@ -424,7 +424,7 @@ second line
 
 Like the output redirector, the file will be created if it doesn't exist, so to prevent data loss, we will usually prefer append redirection to output redirection.
 
-=== Copying files
+=== Copying files: `cp`
 `cp` copies filesystem objects.
 
 [source, bash]
@@ -436,7 +436,7 @@ test.txt sample.txt
 
 `cp` cannot copy directories this way. We will look at directory copying later.
 
-=== Renaming files
+=== Renaming files: `mv`
 `mv` renames and moves filesystem objects.
 
 [source, bash]
@@ -461,7 +461,7 @@ So, test.txt was renamed by moving it to another path.
 
 We are not moving data, but rather moving the data to another path.
 
-=== Moving files
+=== Moving files: `mv`
 
 If we want to move the file to the home directory we can use `mv` also
 
@@ -617,37 +617,16 @@ Most commands have a specified area where options can occur. Within that area op
 
 Consider the following command
 
-`ls -a -l /home/bob`
+`ls -r -l /home/bob`
 
 Linux imposes no structure on arguments nor attempts to understand them. Linux converts everything after the command to a list and sends the list to the command and the command itself is responsible processing arguments. So, at program start, `ls` will receive something like this
 
-["-a", "-l", "/home/bob/"]
+["-r", "-l", "/home/bob/"]
 
 Understanding and processing arguments is the responsibility of the command. Linux plays no part in it. Attempting to standardize, most Linux commands follow a certain pattern for their arguments, but some Linux commands are rogue and don't follow typical patterns.
 
-== More commands
-=== copying directory trees
-[source, bash]
-----
-sales
-  client_contact
-    client_list.csv
-----
-
-A quick form of backup is copying a directory and all its contents. Let's copy client_contact to another directory in `sales`.
-
-[source, bash]
-----
-cd sales
-cp -a client_contact client_contact_backup
-ls
-client_contact client_contact_backup
-----
-
-`cp -a` copy complete directory trees
-
 == Deleting filesystem objects
-=== Deleting a single file
+=== Deleting a single file: `rm`
 [source, bash]
 ----
 
@@ -664,7 +643,7 @@ sales_report_Jan.csv
 ----
 
 
-=== Deleting an empty directory
+=== Deleting an empty directory: `rmdir`
 [source, bash]
 ----
 client_contact
@@ -685,7 +664,7 @@ $ rmdir client_contact
 ----
 rmdir: failed to remove 'client_contact': Directory not empty
 
-=== Deleting a directory tree
+=== Deleting a directory tree: `rm -rf`
 `rm` provides a powerful option set to remove a directory and its contents but be careful using it. Its easy to make a mistake and delete important data.
 
 [source, bash]
@@ -701,8 +680,59 @@ $ ls sales
 ls: cannot access 'sales': No such file or directory
 ----
 
+`-r`: _recursive_: a fancy way of saying the command will search the entire directory tree
+`-f`: _force_: without this option, `rm` will prompt before deleting every file
+
 The most dangerous command possible is `rm -rf /`. This will delete everything in your filesystem and crash Linux. All data will be lost and Linux will require re-installation.
 
+== More commands with options
+=== Our current command list
+So far, we have introduced these commands.
+
+* echo
+* cd
+* cp
+* mkdir
+* ls
+* pwd
+* mv
+* cat
+* rm
+* rmdir
+
+In addition, we introduced these options:
+
+* ls: -r, -1,
+* rm: -r, -f
+
+In this section we will explore useful options for many of these commands.
+
+=== Copying directory trees: `cp -a`
+[source, bash]
+----
+sales
+  client_contact
+    client_list.csv
+----
+
+A quick form of backup is copying a directory and all its contents. Let's copy client_contact to another directory in `sales`.
+
+[source, bash]
+----
+cd sales
+cp -a client_contact client_contact_backup
+ls
+client_contact client_contact_backup
+----
+
+`cp -a` copy complete directory trees
+
+=== Numbering lines: `cat -n`
+=== Create complete paths: `mkdir -p`
+=== List extended object information: `ls -l`
+=== List object information recursively: `ls -R`
+=== List objects sorted by time: `ls -t`
+=== Do not overwrite existing file on copy: `cp -n`
 == Option arguments
 === Two meanings of "argument"
 
@@ -848,17 +878,21 @@ Let's create a set of test files to play with permissions. The `touch` command u
  the `chmod` command changes the 000
 
 == File commands
-=== file-determine file type
-=== less-opposite of more
-=== grep-print lines that match patterns
-=== touch-change file timestamps⁰
-== Filesystem commands
-=== ln—Create hard and symbolic links.
-=== find-search for files in a directory hierarchy
-=== du-estimate file space usage
-=== df-report file system disk space usage
+=== Determine file type: `file`
+=== Paginate long output: `less`
+=== Print lines that match patterns: `grep`
+=== Change file timestamps: `touch`
+=== Create empty files: `touch`
+=== Create symbolic links: `ln`
+=== Searching the filesystem: `find`
+=== Estimate disk usage of a directory tree: `du`
 
 == Process commands
+=== Introduction
+The commands we have used so far either run instantly or in a short amount of time. Some however take a long time to execute or are designed to never stop.
+
+A command that is currently executing is called a _process_.
+
 === ps—Report a snapshot of current processes.
 === top—Display tasks.
 === jobs—List active jobs.
@@ -1118,6 +1152,10 @@ VAR=myvariable
 | Temporary files to be preserved between reboots.
 | -
 |===
+== Devices and mounts
+=== Mount points
+=== Adding a device to the system: `mount`
+=== Report file system disk space usage: `df`
 == misc
 === Hotkeys
 
