@@ -487,8 +487,7 @@ test.txt
 
 With `mv``, we're changing the path to a file or directory; "moving to a new address".
 
-== Bash command structure
-=== Command arguments
+== Command arguments
 
 We've seen several cases where a command was used with some additional information:
 
@@ -533,7 +532,6 @@ marketing
     Q1_product_launch.pdf
     summer_promo_plan.pdf
 ----
-
 
 [source,bash]
 ----
@@ -654,6 +652,31 @@ Linux imposes no structure on arguments nor attempts to understand them. Linux c
 
 Understanding and processing arguments is the responsibility of the command. Linux plays no part in it. Attempting to standardize, most Linux commands follow a certain pattern for their arguments, but some Linux commands are rogue and don't follow typical patterns.
 
+
+
+== More commands
+=== copying directory trees
+
+[source, bash]
+----
+sales
+  client_contact
+    client_list.csv
+----
+
+A quick form of backup is copying a directory and all its contents. Let's copy client_contact to another directory in `sales`.
+
+[source, bash]
+----
+cd sales
+cp -a client_contact client_contact_backup
+ls
+client_contact client_contact_backup
+----
+
+`cp -a` copy complete directory trees
+
+== Deleting filesystem objects
 == Option arguments
 
 === Two meanings of "argument"
@@ -760,30 +783,6 @@ Most commands take a path parameter if you only need to perform pne task don't c
 
 EXAMPLE
 
-== More commands
-=== copying directory trees
-
-[source, bash]
-----
-sales
-  client_contact
-    client_list.csv
-----
-
-A quick form of backup is copying a directory and all its contents. Let's copy client_contact to another directory in `sales`.
-
-[source, bash]
-----
-cd sales
-cp -a client_contact client_contact_backup
-ls
-client_contact client_contact_backup
-----
-
-`cp -a` copy complete directory trees
-
-== Deleting filesystem objects
-
 === Deleting a single file
 [source, bash]
 ----
@@ -838,7 +837,7 @@ $ ls sales
 ls: cannot access 'sales': No such file or directory
 ----
 
-The most dangerous command you execute is `rm -rf`` as root. This will delete everything in your filesystem and crash Linux. All data will be lost and Linux will require re-installation.
+The most dangerous command possible is `rm -rf /`. This will delete everything in your filesystem and crash Linux. All data will be lost and Linux will require re-installation.
 
 == Users and groups
 
@@ -914,7 +913,7 @@ Let's create a set of test files to play with permissions. The `touch` command u
 === killall—Kill processes by name.
 === shutdown—Shut down or reboot the system.
 
-== Filesystem permisskons
+== Filesystem permissions
 === id—Display user identity.
 === chmod—Change a file's mode.
 === umask—Set the default file permissions.
@@ -930,14 +929,14 @@ Let's create a set of test files to play with permissions. The `touch` command u
 
 == Environment commands
 
-So far, we have discussed two methods to inyersct with Bash
+So far, we have discussed two methods to interact with Bash
 
 * command
 * hoykeys
 
-A third method is environmental vallroable
+A third method is environmental variables.
 
-An environmental varisble is a sequence of characters ket in memory and retrieved by a label.
+An environmental variables is a sequence of characters ket in memory and retrieved by a label.
 
 VAR=myvariable
 
