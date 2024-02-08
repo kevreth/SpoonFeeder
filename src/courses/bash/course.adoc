@@ -482,8 +482,8 @@ We've seen several cases where a command was used with some additional informati
 
 
 * cd `bash-tutorial`
-* echo `"this is a line"`
 * cp `test.txt sample.txt`
+* echo `"this is a line"`
 * mkdir `/home/bob/`
 * mv `test.txt test0.txt`
 
@@ -502,21 +502,16 @@ An _option_ is an argument of one letter preceded by a dash "-". An example of u
 
 [source,bash]
 ----
-marketing
-  branding
-    company_brand_book.pdf
-    logo_guidelines.pdf
-  campaigns
-    Q1_product_launch.pdf
-    summer_promo_plan.pdf
+company_brand_book.pdf
+logo_guidelines.pdf
 ----
 
 [source,bash]
 ----
 $ cd marketing
 $ ls -1
-branding
-campaigns
+company_brand_book.pdf
+logo_guidelines.pdf
 ----
 
 without `-1`, `ls` prints horizontally.
@@ -525,7 +520,7 @@ without `-1`, `ls` prints horizontally.
 ----
 $ cd marketing
 $ ls
-branding campaigns
+company_brand_book.pdf logo_guidelines.pdf
 ----
 
 Unlike positional arguments, the meaning of options aren't understood from their location, so they can appear in any order where they are allowed. The meaning of this will become clear later.
@@ -536,18 +531,16 @@ The `-r` argument of `ls` reverses the normal alphabetical order of the output.
 
 [source,bash]
 ----
-branding
-  logo_guidelines.pdf
-  company_brand_book.pdf
+company_brand_book.pdf
+logo_guidelines.pdf
 ----
 
 [source,bash]
 ----
-$ cd branding
 $ ls
-logo_guidelines.pdf campaigns
-$ ls -r
 company_brand_book.pdf logo_guidelines.pdf
+$ ls -r
+logo_guidelines.pdf company_brand_book.pdf
 ----
 
 To print the contents of `branding` as one column in reverse, we use `-1` and `-r`.
@@ -556,31 +549,39 @@ To print the contents of `branding` as one column in reverse, we use `-1` and `-
 ----
 $ cd branding
 $ ls -r -1
-company_brand_book.pdf
 logo_guidelines.pdf
+company_brand_book.pdf
 ----
+
+=== Options can appear in any order
 
 Options, unlike positional arguments, may occur in any order where they are allowed, so `-1 -r` works just like `-r -1`.
 
 [source,bash]
 ----
-$ cd branding
-$ ls -1 -r
 company_brand_book.pdf
 logo_guidelines.pdf
+----
+
+[source,bash]
+----
+$ ls -r -1
+logo_guidelines.pdf
+company_brand_book.pdf
+$ ls -1 -r
+logo_guidelines.pdf
+company_brand_book.pdf
 ----
 
 === Combining options
 [source,bash]
 ----
-branding
-  company_brand_book.pdf
-  logo_guidelines.pdf
+company_brand_book.pdf
+logo_guidelines.pdf
 ----
 As a shortcut, options can be bundled together, or _combined_.
 [source,bash]
 ----
-$ cd branding
 $ ls -1r
 logo_guidelines.pdf
 company_brand_book.pdf
@@ -604,9 +605,11 @@ $ ls -1r marketing/branding
 logo_guidelines.pdf
 company_brand_book.pdf
 ----
-Because `marketing/branding` is a positional argument, this is invalid.
+Because `marketing/branding` is a positional argument,
 
 `ls marketing/branding -1r`
+
+is invalid.
 
 Most commands have a specified area where options can occur. Within that area options can be in any order.
 
