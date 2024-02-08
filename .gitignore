@@ -63,3 +63,5 @@ yarn-error.log*
 .vscode
 course.html
 .asciidoctor/
+
+diag-graphviz-md5-*.svg

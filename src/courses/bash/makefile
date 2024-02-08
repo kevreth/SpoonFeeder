@@ -1,5 +1,5 @@
 course.html: course.adoc
-	asciidoctor -r asciidoctor-diagram -b html5 -s -o $@ $<
+	asciidoctor -r asciidoctor-diagram -b html5 -o $@ $<
 
 course.adoc: course.yml slides.py #*.svg
 	sh ./wellformed.sh course.yml
