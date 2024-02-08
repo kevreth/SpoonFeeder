@@ -1,6 +1,5 @@
 = Bash
 :source-highlighter: highlight.js
-
 == Introduction
 === What is Bash?
 _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
