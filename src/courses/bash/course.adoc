@@ -293,7 +293,7 @@ That is called the _prompt_ and where commands can be typed in. The prompt is au
 
 === Echo
 
-Our first Bash command will simply print something to the screen.
+Our first Bash command will simply print something to the screen. Anything after `$` is content you would type.
 
 [source, bash]
 ----
@@ -398,9 +398,15 @@ This command both created a new file and added content to it.
 $ ls
 test.txt
 ----
+=== The meaning of "command"
 
+The use of "command" has been used in different ways.
 
+A command as in `echo` (a basic command)
+A command as in `echo test.txt` (a command with arguments)
+A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
 
+All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
 === Viewing file contents
 Print the contents with the `cat` command
 
@@ -510,15 +516,6 @@ the first positional argument is always the existing file object and the second 
 
 Redirectors (`>`, `>>`) are not arguments.
 
-=== The meaning of "command"
-
-The use of "command" has been used in different ways.
-
-A command as in `echo` (a basic command)
-A command as in `echo test.txt` (a command with arguments)
-A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
-
-All three of these are correct. While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
 
 === Options
 
