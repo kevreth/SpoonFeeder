@@ -436,7 +436,7 @@ test.txt sample.txt
 
 `cp` cannot copy directories this way. We will look at directory copying later.
 
-=== renaming files 1
+=== Renaming files
 `mv` renames and moves filesystem objects.
 
 [source, bash]
@@ -461,7 +461,7 @@ So, test.txt was renamed by moving it to another path.
 
 We are not moving data, but rather moving the data to another path.
 
-=== Renaming files
+=== Moving files
 
 If we want to move the file to the home directory we can use `mv` also
 
