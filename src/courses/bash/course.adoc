@@ -1,8 +1,8 @@
 = Bash
 :source-highlighter: highlight.js
 
-== What is Bash?
-
+== Introduction
+=== What is Bash?
 _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
 
 `$_`
@@ -87,7 +87,7 @@ Examples of these situations will be demonstrated through the course.
 A distinguishing trait of advanced Linux users is knowing how to use Bash.
 
 == The Linux filesystem
-
+=== Introduction
 Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
 
 === Directories, files, and data
@@ -370,12 +370,12 @@ $ ls
 
 === Seeing the path of the CWD
 
-In case we forget, the path of the CWD can be printed with the pwd.
+In case we forget, the path of the CWD can be printed with `pwd`.
 
 [source, bash]
 ----
-pwd
-/home/bob/bash-tutroal/
+$ pwd
+/home/bob/bash-tutorial/
 ----
 
 === Creating our first file
@@ -488,7 +488,7 @@ test.txt
 With `mv``, we're changing the path to a file or directory; "moving to a new address".
 
 == Command arguments
-
+=== Command arguments introduction
 We've seen several cases where a command was used with some additional information:
 
 [source,bash]
@@ -554,66 +554,58 @@ Unlike positional arguments, the meaning of options aren't understood from their
 
 === Using multiple options
 
-The `-r` of `ls` reverses the normal alphabetical order of the output.
+The `-r` argument of `ls` reverses the normal alphabetical order of the output.
 
 [source,bash]
 ----
-marketing
-  campaigns
-    Q1_product_launch.pdf
-    summer_promo_plan.pdf
-  branding
-    logo_guidelines.pdf
-    company_brand_book.pdf
+branding
+  logo_guidelines.pdf
+  company_brand_book.pdf
 ----
 
 [source,bash]
 ----
-$ cd marketing
+$ cd branding
 $ ls
-branding campaigns
+logo_guidelines.pdf campaigns
 $ ls -r
-campaigns branding
+company_brand_book.pdf logo_guidelines.pdf
 ----
 
-To print the contents of `marketing` as one column in reverse, we use `-1` and `-r`.
+To print the contents of `branding` as one column in reverse, we use `-1` and `-r`.
 
 [source,bash]
 ----
-$ cd marketing
+$ cd branding
 $ ls -r -1
-campaigns
-branding
+company_brand_book.pdf
+logo_guidelines.pdf
 ----
 
-Options, unlike positional arguments, may occur in any order, so `-1 -r` works just like `-r -1`.
+Options, unlike positional arguments, may occur in any order where they are allowed, so `-1 -r` works just like `-r -1`.
 
 [source,bash]
 ----
-$ cd marketing
+$ cd branding
 $ ls -1 -r
-campaigns
-branding
+company_brand_book.pdf
+logo_guidelines.pdf
 ----
 
 === Combining options
 [source,bash]
 ----
-marketing
-  campaigns
-    Q1_product_launch.pdf
-    summer_promo_plan.pdf
-  branding
-    logo_guidelines.pdf
-    company_brand_book.pdf
+branding
+  company_brand_book.pdf
+  logo_guidelines.pdf
 ----
 As a shortcut, options can be bundled together, or _combined_.
 [source,bash]
 ----
-$ cd marketing
+$ cd branding
 $ ls -1r
-campaigns
-branding
+logo_guidelines.pdf
+company_brand_book.pdf
 ----
 === Using options with positional arguments
 [source,bash]
@@ -626,7 +618,7 @@ marketing
     logo_guidelines.pdf
     company_brand_book.pdf
 ----
-List the contents of /marketing/branding/ in a reversed single column.
+When CWD is `marketing/campaigns`, list the contents of /marketing/branding/ in a reversed single column.
 [source,bash]
 ----
 $ cd marketing/campaigns
@@ -638,7 +630,7 @@ Because `marketing/branding` is a positional argument, this is invalid.
 
 `ls marketing/branding -1r`
 
-Most commands have a specified area they can occur. Within that area options can be in any order.
+Most commands have a specified area where options can occur. Within that area options can be in any order.
 
 === How Linux views arguments
 
@@ -652,11 +644,8 @@ Linux imposes no structure on arguments nor attempts to understand them. Linux c
 
 Understanding and processing arguments is the responsibility of the command. Linux plays no part in it. Attempting to standardize, most Linux commands follow a certain pattern for their arguments, but some Linux commands are rogue and don't follow typical patterns.
 
-
-
 == More commands
 === copying directory trees
-
 [source, bash]
 ----
 sales
@@ -677,8 +666,63 @@ client_contact client_contact_backup
 `cp -a` copy complete directory trees
 
 == Deleting filesystem objects
-== Option arguments
+=== Deleting a single file
+[source, bash]
+----
 
+sales_report_Jan.csv
+sales_forecast_Q1.pdf
+----
+`rm` removes a file.
+
+[source, bash]
+----
+$ rm sales_forecast_Q1.pdf
+$ ls
+sales_report_Jan.csv
+----
+
+
+=== Deleting an empty directory
+[source, bash]
+----
+client_contact
+  client_list.csv
+sales_reports/
+----
+`rmdir` removes empty directories
+[source, bash]
+----
+$ rmdir sales_reports
+$ ls
+client_contact
+----
+If we try to delete a directory containing objects we get an error.
+[source, bash]
+----
+$ rmdir client_contact
+----
+rmdir: failed to remove 'client_contact': Directory not empty
+
+=== Deleting a directory tree
+`rm` provides a powerful option set to remove a directory and its contents but be careful using it. Its easy to make a mistake and delete important data.
+
+[source, bash]
+----
+sales
+  client_contact
+    client_list.csv
+----
+[source, bash]
+----
+$ rm -rf sales
+$ ls sales
+ls: cannot access 'sales': No such file or directory
+----
+
+The most dangerous command possible is `rm -rf /`. This will delete everything in your filesystem and crash Linux. All data will be lost and Linux will require re-installation.
+
+== Option arguments
 === Two meanings of "argument"
 
 Like "command", "argument" has multiple meanings.
@@ -783,61 +827,6 @@ Most commands take a path parameter if you only need to perform pne task don't c
 
 EXAMPLE
 
-=== Deleting a single file
-[source, bash]
-----
-
-sales_report_Jan.csv
-sales_forecast_Q1.pdf
-----
-`rm` removes a file.
-
-[source, bash]
-----
-$ rm sales_forecast_Q1.pdf
-$ ls
-sales_report_Jan.csv
-----
-
-
-=== Deleting an empty directory
-[source, bash]
-----
-client_contact
-  client_list.csv
-sales_reports/
-----
-`rmdir` removes empty directories
-[source, bash]
-----
-$ rmdir sales_reports
-$ ls
-client_contact
-----
-If we try to delete a directory containing objects we get an error.
-[source, bash]
-----
-$ rmdir client_contact
-----
-rmdir: failed to remove 'client_contact': Directory not empty
-
-=== Deleting a directory tree
-`rm` provides a powerful option set to remove a directory and its contents but be careful using it. Its easy to make a mistake and delete important data.
-
-[source, bash]
-----
-sales
-  client_contact
-    client_list.csv
-----
-[source, bash]
-----
-$ rm -rf sales
-$ ls sales
-ls: cannot access 'sales': No such file or directory
-----
-
-The most dangerous command possible is `rm -rf /`. This will delete everything in your filesystem and crash Linux. All data will be lost and Linux will require re-installation.
 
 == Users and groups
 
@@ -878,25 +867,10 @@ Let's create a set of test files to play with permissions. The `touch` command u
  the `chmod` command changes the 000
 
 == File commands
-=== echo-display a line of text
 === file-determine file type
-=== cat-concatenate files and print on the standard output
-=== cp—Copy files
-=== mv—Move/rename files
-=== rm—Remove files
 === less-opposite of more
 === grep-print lines that match patterns
 === touch-change file timestamps⁰
-
-== Directory commands
-=== pwd —Print name of current working directory.
-=== cd—Change directory.
-=== ls—List directory contents.
-=== mkdir—Create directories.
-=== rmdir - remove empty directories
-=== cp -a - copy directory tree
-=== rm -rf - delete directory tree
-
 == Filesystem commands
 === ln—Create hard and symbolic links.
 === find-search for files in a directory hierarchy
@@ -928,6 +902,7 @@ Let's create a set of test files to play with permissions. The `touch` command u
 === man-an interface to the system reference manuals
 
 == Environment commands
+=== Introduction
 
 So far, we have discussed two methods to interact with Bash
 
