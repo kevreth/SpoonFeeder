@@ -14,7 +14,9 @@ def passthrough(str):
 
 def generate_html_body(yaml_content):
   html_body = passthrough(f"<h1>{yaml_content.get('name')}</h1>")
-  html_body += yaml_content.get('txt')
+  txt = yaml_content.get('txt')
+  if txt is not None:
+    html_body += yaml_content.get('txt')
   for unit in yaml_content.get('units', []):
     html_body += passthrough(f"<h2>{unit['name']}</h2>")
     for lesson in unit.get('lessons', []):

@@ -10,3 +10,4 @@ course.adoc: course.yml slides.py #*.svg
 
 clean:
 	rm -f course.html
+	rm -f course.adoc
