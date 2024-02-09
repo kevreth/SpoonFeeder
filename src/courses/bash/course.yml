@@ -1,15 +1,13 @@
 name: Bash
-txt: |
-  null
+txt: null
 units:
-  name: Basic Bash
-  txt: |
-    null
-  lessons:
-    name: Introduction
-    txt: |
-      null
-    modules:
+  - name: Basic Bash
+    txt: null
+    lessons:
+    - name: Introduction
+      txt: |
+        null
+      modules:
       name: asdf
       txt: |
         null
@@ -107,10 +105,10 @@ units:
 
           A distinguishing trait of advanced Linux users is knowing how to use Bash.
         ccq: null
-    name: The Linux filesystem
-    txt: |
-      null
-    modules:
+    - name: The Linux filesystem
+      txt: |
+        null
+      modules:
       name: Filesystem objects
       txt: |
         null
@@ -329,10 +327,10 @@ units:
 
           Beyond their role in organization, directories prevent name conflicts.
         ccq: null
-    name: Beginning Bash
-    txt: |
-      null
-    modules:
+    - name: Beginning Bash
+      txt: |
+        null
+      modules:
       name: The Bash interface
       txt: |
         null
@@ -653,10 +651,10 @@ units:
 
           With `mv`, we're changing the path to a file or directory; "moving to a new address".
         ccq: null
-    name: Command arguments
-    txt: |
-      null
-    modules:
+    - name: Command arguments
+      txt: |
+        null
+      modules:
       name: sad
       txt: |
         null
@@ -960,29 +958,29 @@ units:
           This will delete everything in your filesystem and crash Linux.
           All data will be lost and Linux will require re-installation.
         ccq: null
-    name: More commands with options
-    txt: |
-      null
-      So far, we have introduced these commands.
+    - name: More commands with options
+      txt: |
+        null
+        So far, we have introduced these commands.
 
-      * cat
-      * cd
-      * cp
-      * echo
-      * ls
-      * mkdir
-      * mv
-      * pwd
-      * rm
-      * rmdir
+        * cat
+        * cd
+        * cp
+        * echo
+        * ls
+        * mkdir
+        * mv
+        * pwd
+        * rm
+        * rmdir
 
-      In addition, we introduced these options:
+        In addition, we introduced these options:
 
-      * ls: -r, -1,
-      * rm: -r, -f
+        * ls: -r, -1,
+        * rm: -r, -f
 
-      In this lesson we will explore useful options for many of these commands.
-    modules:
+        In this lesson we will explore useful options for many of these commands.
+      modules:
       name: Options for `cp`, `cat`, and `mkdir`
       txt: |
         null
