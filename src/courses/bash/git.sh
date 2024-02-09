@@ -1,1 +1,1 @@
-git add course.adoc && git commit -mbash && git push
+git add course.yml && git commit -mbash && git push
