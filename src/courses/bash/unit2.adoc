@@ -1,0 +1,446 @@
+
+== Option arguments
+=== Two meanings of "argument"
+
+Like "command", "argument" has multiple meanings.
+
+In `ls -a -l /home/bob`
+
+=== Anatomy of a command 3
+
+The presence of option arguments and combined options raises a question. Can all this be combined?
+
+`-a arg -def`
+
+The answer is 'yes', but there's some rules. Combining these would look like
+
+`-defa arg`
+
+The rules combining options are:
+
+. Only one option requiring an argument may be used
+. The option requiring an argument must be last
+
+There is no way to further combine (arg1 is an argument to option e)
+
+`-dfe arg1 -a arg2`
+
+=== A command with multiple options and parameters
+
+Given this directory structure
+
+[source]
+----
+sales
+  client_contact
+    client_list.csv
+  sales_reports
+    sales_report_Jan.csv
+    sales_forecast_Q1.pdf
+----
+
+[source, bash]
+----
+cd /sales_reports/
+ls -1
+sales_report_Jan.csv
+sales_forecast_Q1.pdf
+----
+
+`-1` is an _option_ to display directory entries in a single column.
+
+=== Options are of two types
+
+* Short options are one letter preceded by dash
+* long options are multiple letters and preceded by two dashes
+
+Short options can usually be combined, such as
+
+ls -(something)
+
+in this case, only the final option can be passed a parameter.
+
+Note that Bash commands aren't always consistent in the way they use options and parameters. some allow long options, some don't.
+
+== Globbing
+
+=== Absolute vs relative paths
+So far, if we wanted to address a directory or a file in a directory that is not CWD, we typed out the entire path
+
+/home/bob/bash-tutorial/test.txt
+
+This is called an _absolute path_. Absolute paths are always from the perspective of the root directory.
+
+Typing put all those paths is a chore. As a shortcut, Bash offers _relative paths_ which are from the perspective of the CWD. The reason in previous examples we didn't need to add paths when working with the contents of home/bon/bash-tutorial is because we were using relative paths.
+
+Lets make bash-tut our current directory, create a directory in it, and create a file.
+
+cd bash-tutorial
+mkdir lesson1
+cd lesson1
+
+In all three cases we used relative paths. Using absolute paths would require
+
+mkdir /home/bob/bash-tutorial/lesson1
+cd /home/bob/bash-tutorial/lesson1
+
+=== . and ..
+
+Notice when using `la -d`theres two extra entries
+
+.
+..
+
+. refers to the current directory. we may use it in certain circumstances, such as executing a program EXAMPLES
+
+.. refers to the parent directory. we can use it as a shortcut in relative paths
+
+cd ..
+
+CWD is now /home/bob/.
+
+=== don't change CWD for short tasks
+Most commands take a path parameter if you only need to perform pne task don't change CWD. Instead, pass a path parameter to the command, if the command takes it.
+
+EXAMPLE
+
+
+== Users and groups
+
+As a multi-user operating system, Linux maintains strict permissions on who can access files. You wouldn't for example want another user accessing your files, which may contain private information or someone maliciously deletes your data. Every object in the filesystem has an associated set of permissions
+
+* read
+* write
+* execute
+
+That are repeated three times
+
+* owner
+* group
+* world
+
+combined, three are nine permissions
+
+The big difference between files and directories when using these permissions is that "executing" a directory means making it the CWD, i.e., `cd`-ing into it.
+
+=== groups
+
+A group in Linux is a named set if users that are treated as a user. A group may contain users or groups
+
+The owner of a file may be a user or a group.
+
+The group of a file grants access to any group the owner is a member of.
+
+World means anyone.
+
+=== touch
+
+Let's create a set of test files to play with permissions. The `touch` command updates the timestamp of a file to the current time and creates an empty file if it doesn't exist.
+
+ touch file1 file2 file3
+
+=== changing file permissions
+
+ the `chmod` command changes the 000
+
+== File commands
+=== Determine file type: `file`
+=== Paginate long output: `less`
+=== Print lines that match patterns: `grep`
+=== Change file timestamps: `touch`
+=== Create empty files: `touch`
+=== Create symbolic links: `ln`
+=== Searching the filesystem: `find`
+=== Executing commands on found objects: `xargs`
+=== Estimate disk usage of a directory tree: `du`
+
+== Process commands
+=== Introduction
+The commands we have used so far either run instantly or in a short amount of time. Some however take a long time to execute or are designed to never stop.
+
+A command that is currently executing is called a _process_.
+
+=== ps—Report a snapshot of current processes.
+=== top—Display tasks.
+=== jobs—List active jobs.
+=== bg—Place a job in the background.
+=== fg—Place a job in the foreground.
+=== kill—Send a signal to a process.
+=== killall—Kill processes by name.
+=== shutdown—Shut down or reboot the system.
+
+== Filesystem permissions
+=== id—Display user identity.
+=== chmod—Change a file's mode.
+=== umask—Set the default file permissions.
+=== su—Run a shell as another user.
+=== sudo—Execute a command as another user.
+=== chown—Change a file's owner.
+=== chgrp—Change a file's group ownership.
+=== passwd—Change a user's password
+
+== Getting help
+=== whatis-display one-line manual page descriptions
+=== man-an interface to the system reference manuals
+
+== Environment commands
+=== Introduction
+
+So far, we have discussed two methods to interact with Bash
+
+* command
+* hoykeys
+
+A third method is environmental variables.
+
+An environmental variables is a sequence of characters ket in memory and retrieved by a label.
+
+VAR=myvariable
+
+=== alias-define or display aliases
+=== whoami-print effective userid
+=== id-print real and effective user and group IDs
+=== which-locate a command
+=== whereis-locate the binary, source, and manual page files for a command
+=== shopt
+=== uname
+=== pushd
+=== popd
+=== Environment variables
+==== export-set export attribute for shell variables
+==== env-run a program in a modified environment
+==== PATH
+==== CDPATH
+==== PWD
+==== USER
+
+== Archiving and backup commands
+=== gzip—Compress or expand files.
+=== bzip2—A block sorting file compressor.
+=== tar —Tape-archiving utility.
+=== zip —Package and compress files.
+=== rsync-a fast, versatile, remote (and local) file-copying tool
+
+== Text processing commands
+=== wc-print newline, word, and byte counts for each file
+=== uniq-report or omit repeated lines
+=== head-output the first part of files
+=== tail-output the last part of files
+=== sort—Sort lines of text files.
+=== cut —Remove sections from each line of files.
+=== paste—Merge lines of files.
+=== join—Join lines of two files on a common field.
+=== tr—Translate or delete characters.
+=== sed —Stream editor for filtering and transforming text.
+=== aspell—Interactive spell checker.
+
+== Redirection and piping operators
+=== '>: redirect output'
+=== '<: redirect input'
+=== '>>: redirect output to append'
+=== '<<: here document'
+=== '<<<: here string'
+=== '|: pipe'
+
+== Path resolution
+=== absolute and relative paths
+=== ''
+=== ""
+=== File globbing
+==== wildcards
+==== *
+==== ?
+==== '[]'
+==== !
+=== Command expansion
+==== tilde
+==== arithmetic
+==== brace
+==== parameter
+==== command
+=== Command grouping
+==== ;
+==== &&
+== Command history
+=== history
+=== History environment variables
+==== HISTCODE
+==== HISTFILESIZE
+==== HISTIGNORE
+==== HISTSIZE
+=== History modifiers
+
+
+== Special characters
+
+== Network commands
+=== ping—Send an ICMP ECHO_REQUEST to network hosts.
+=== traceroute—Print the route packets trace to a network host.
+=== netstat—Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
+=== ftp —Internet file transfer program.
+=== lftp—An improved Internet file transfer program.
+=== ssh—OpenSSH SSH client (remote login program).
+=== scp—Secure copy (remote file copy program).
+=== sftp—Secure file transfer program.
+=== wget—Non-interactive network downloader.
+=== curl—transfer a URL
+
+== File comparison commands
+=== comm—Compare two sorted files line by line.
+=== diff—Compare files line by line.
+=== patch—Apply a diff file to an original.
+
+== Object types
+
+[cols="1,15,84",options="header"]
+|===
+| Letter | Type | Description
+
+| `-`
+| Regular file
+| A standard file that can contain data, text, or program instructions.
+
+| `d`
+| Directory
+| A file that contains a list of other files and directories.
+
+| `l`
+| Symbolic link
+| A special file that serves as a reference or pointer to another file or directory, similar to a shortcut.
+
+| `b`
+| Block device
+| Represents buffered access to hardware devices and allows data to be read and written in blocks (e.g., hard disks, CD-ROM drives).
+
+| `c`
+| Character device
+| Represents unbuffered, direct access to hardware devices that do not have a block structure (e.g., serial ports, printers).
+
+| `p`
+| Named pipe (FIFO)
+| Used for inter-process communication, acting as a conduit to allow two processes to communicate.
+
+| `s`
+| Socket
+| Used for Inter-Process Communication (IPC) to pass data between processes, commonly in networked services.
+
+|===
+
+== Directory structure
+[cols="10,15,75", options="header"]
+|===
+| Path | Type | Description
+
+| `/`
+| root directory
+| -
+
+| `/bin`
+| Essential commands required for single-user mode
+| -
+
+| `/boot`
+| Files required for booting, including the kernel.
+| -
+
+|`/dev`
+| A virtual filesystem representing devices
+| /dev/null
+
+| `/etc`
+| Configuration files
+| -
+
+| `/home`
+| User home directories. Each user except the root user will get one.
+| -
+
+| `/lib`
+| Essential libraries
+| for the binaries in `/bin` and `/sbin`.
+
+| `/proc`
+| Virtual filesystem
+| providing process and kernel information as files. In Linux, corresponds to a procfs mount.
+
+| `/root`
+| root user home directory
+| -
+
+| `/run`
+| Run-time variable data
+| Information about the running system since last boot, e.g., logged-in users and running daemons.
+
+| `/sbin`
+| Essential system binaries
+| fsck, init, route.
+
+| `/sys`
+| A virtual filesystem containin information about devices, drivers, and some kernel features.
+|
+
+| `/tmp`
+| Directory for temporary files often not preserved between system reboots.
+|
+
+| `/usr`
+| Secondary hierarchy for read-only user data; contains the majority of user utilities and applications.
+|
+
+| `/usr/bin`
+| Non-essential command binaries for all users, not needed in single-user mode.
+|
+
+| `/usr/lib`
+| Libraries
+| for the binaries in `/usr/bin` and `/usr/sbin`.
+
+| `/usr/local`
+| Tertiary hierarchy for local data specific to this host, typically has further subdirectories.
+| -
+
+| `/usr/sbin`
+| Non-essential system binaries such as daemons for various network services.
+|
+
+| `/var`
+| Variable files whose content changes during normal operation, such as logs and temporary e-mail files.
+| -
+
+| `/var/log`
+| Log files
+| -
+
+| `/var/run`
+| Run-time variable data
+| contains system information data since the system was booted.
+
+| `/var/tmp`
+| Temporary files to be preserved between reboots.
+| -
+|===
+== Devices and mounts
+=== Mount points
+=== Adding a device to the system: `mount`
+=== Report file system disk space usage: `df`
+== misc
+=== Hotkeys
+
+A second way to interact with Bash is via _hotkeys_. A hotkey is a combination of keyboard buttons that produce no visible input on the command prompt like typing commands does but still instructs Bash to do something.
+
+A commonly used hotkey is `CTRL-c`. It is made by pressing the button labeled `CTRL` on the keyboard with the `c` button. It immediately stops whatever the command prompt is doing and starts a new command prompt. Let's say we start to enter an `echo` command but change our mind:
+
+[source, bash]
+----
+$ echo \"A common
+----
+
+If we press CTRL-c *before* typing enter, we get a bare command prompt.
+
+`$`
+
+`echo` never executed.
+
+CTRL-c is a quick method to exit whatever we are doing and obtaining a fresh command prompt.
+
+Hotkeys do not need to be pressed at the exact same time. Normally one presses `CTRL` and while holding it down presses `c`.
