@@ -32,8 +32,6 @@ def generate_html_body(yaml_content):
   return html_body
 
 def extract_inner_content(inst):
-  sdbr_adoc = ""
-  content_adoc = ''
   content_adoc = inst.get('txt')
   sdbr_adoc = inst.get('sdbr')
   retval = ''
@@ -81,7 +79,6 @@ def main():
   html_body = generate_html_body(yaml_content)
   html_body = passthrough(html_body)
   final_html = substitute_html_body(template_file, html_body)
-  print(final_html)
   final_html = passthrough(final_html)
 
   output_file = yaml_file.rsplit('.', 1)[0] + ".adoc"
