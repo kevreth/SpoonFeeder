@@ -31,13 +31,6 @@ units:
             So, after entering a correct username and password,
             if a GUI is started, then Bash can be started in a window of the GUI but
             the specific method varies among Linux systems.
-        # - type: info
-        #   name: null
-        #   sdbr: null
-        #   ref: null
-        #   ccq: null
-        #   txt: |
-        #
         - type: info
           name: Bash CLI vs a GUI
           sdbr: null
@@ -92,27 +85,57 @@ units:
       - name: Filesystem objects
         txt:  null
         inst:
+        # - type: info
+        #   name: null
+        #   sdbr: null
+        #   ref: null
+        #   ccq: null
+        #   txt: |
         - type: info
           name: Directories, files, and data
           sdbr: null
           ref: null
           txt: |
             Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
-
+        - type: info
+          name: null
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             A _filesystem_ is how computers store data on permanent storage devices such as disk drives.
+        - type: info
+          name: Filesystems
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
-
+        - type: info
+          name: Files
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             _Files_ contain data.
             A file can contain any type of computer data.
             Examples include a text document, a music track, or software program.
             Files cannot contain other files.
-
+        - type: info
+          name: Directories
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             _Directories_ are an organization tool.
             Directories contain files and other directories but cannot directly contain data like files can.
-
-            The relationship of directories, files, and data.
+        - type: info
+          name: The relationship of directories, files, and data.
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             Arrows represent containership.
-
             [graphviz, format="svg"]
             ....
             digraph g {
@@ -126,15 +149,26 @@ units:
           name: Filesystems
           sdbr: null
           ref: null
+          ccq: null
           txt: |
             Comparing a filesystem to a tree,
             directories are tree branches and files are leaves.
             Leaves (files) can grow anywhere, including the tree trunk.
-
+        - type: info
+          name: The root directory
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             At the top of the tree is the _root directory_ which corresponds to a tree trunk.
             There can be only one root directory and it is named "/",
             which is the character _frontslash_ ("\" is a "backslash").
-
+        - type: info
+          name: An example filesystem
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             An example filesystem.
             Arrows represent containership.
 
@@ -157,9 +191,14 @@ units:
 
             In this simple filesystem, the root directory contains two directories and two files.
             Each of those two directories also contain directories and files.
+        - type: info
+          name: Filesystem limits
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             There is no practical limit to the number of directories and files a directory can contain,
             nor is there a practical limit to how deep directories can branch to other directories.
-
         - type: info
           name: Filesystem object naming
           sdbr: null
@@ -172,14 +211,13 @@ units:
             digraph g {
               "/" -> bob
               "/" -> sue
-              "/" -> "annual.report.q1.txt"
-              "/" -> "annual.report.q2.txt"
-              bob -> "holiday.party.txt"
-              bob -> "corporate.retreat.mp4"
-              sue -> "accounts.payable.txt"
+              "/" -> "report.q1.txt"
+              "/" -> "report.q2.txt"
+              bob -> "party.txt"
+              bob -> "party.mp4"
+              sue -> "ap.txt"
             }
             ....
-
             In this example, the root directory contains directories for "bob" and "sue" and two files.
             "bob" contains two files and "sue" contains one file.
           ccq: null
@@ -199,14 +237,14 @@ units:
             digraph g {
               "/" [style=filled, fillcolor=lightblue]
               bob [style=filled, fillcolor=lightblue]
-              "holiday.party.txt" [style=filled, fillcolor=lightblue]
+              "party.txt" [style=filled, fillcolor=lightblue]
               "/" -> bob
               "/" -> sue
-              "/" -> "annual.report.q1.txt"
-              "/" -> "annual.report.q2.txt"
-              bob -> "holiday.party.txt"
-              bob -> "corporate.retreat.mp4"
-              sue -> "accounts.payable.txt"
+              "/" -> "report.q1.txt"
+              "/" -> "report.q2.txt"
+              bob -> "party.txt"
+              bob -> "party.mp4"
+              sue -> "ap.txt"
             }
             ....
 
@@ -216,30 +254,17 @@ units:
 
             Every object on the filesystem can be addressed this way.
           ccq: null
-
+    - name: Representing directory contents
+      txt: null
+      modules:
         - type: info
-          name: A different view of directory contents
+          name: Graphical representation
           sdbr: null
           ref: null
           txt: |
-            Up to now, directory contents have been presented graphically:
-
-            [graphviz, format="svg"]
-            ....
-            digraph g {
-              "/" -> bob
-              "/" -> sue
-              "/" -> amy
-              "/" -> "annual.report.q1.txt"
-              bob -> "holiday.party.txt"
-              sue -> "accounts.payable.txt"
-            }
-            ....
-
-            From now on, directory contents will be presented textually,
-            which is how you would see them when using Bash.
-            The root directory is omitted.
-
+            Most of the time when discussing directories
+            we don't want to worry about the parent directories up to the root.
+            We only want to be concerned with a single directory under discussion.
             [source]
             ----
             annual.report.q1.txt
@@ -250,12 +275,66 @@ units:
               accounts.payable.txt
             amy/
             ----
-
+            This directory is the contents of the "employees" directory.
+            We do not know where on the filesystem "employees" is located.
+            In most cases it's not important.
+        - type: info
+          name: Graphical representation
+          sdbr: null
+          ref: null
+            If the full path to the directory is required it can be shown like this.
+            [source]
+            ----
+            /home/employees
+              annual.report.q1.txt
+              annual.report.q2.txt
+              bob
+                holiday.party.txt
+              sue
+                accounts.payable.txt
+              amy/
+            ----
+        - type: info
+          name: Graphical representation
+          sdbr: null
+          ref: null
+          txt: |
+            Up to now, directory contents have been presented graphically:
+            [graphviz, format="svg"]
+            ....
+            digraph g {
+              "/" -> bob
+              "/" -> sue
+              bob -> "party.txt"
+              sue -> "ap.txt"
+            }
+            ....
+        - type: info
+          name: Textual representation
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
+            From now on, directory contents will be presented textually,
+            which is how you would see them when using Bash.
+            [source]
+            ----
+            annual.report.q1.txt
+            annual.report.q2.txt
+            bob
+              holiday.party.txt
+            sue
+              accounts.payable.txt
+            amy/
+            ----
+        - type: info
+          name: Empty directories
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             `amy` is an empty directory that contains no objects.
             To distinguish empty directories from files, empty directories have a frontslash after them.
-
-            This can refer to any directory contents, not just the root directory.
-            For example, this listing could be the contents of `/human.resources/employees/`
           ccq: null
         - type: info
           name: 'File paths: ending frontslashes'
