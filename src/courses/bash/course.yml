@@ -21,11 +21,10 @@ units:
 
             If a GUI is started, then Bash can be started in a window of the GUI but the specific method varies among Linux systems.
 
-            Bash vs. a GUI
-
-            ++++
+                        ++++
             <div style="display: flex; justify-content: left; align-items: flex-start;">
             <div style="flex: 1; padding: 0px;">
+              <h6>Bash CLI vs. a GUI<h6>
             ++++
 
             [source,bash]
