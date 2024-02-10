@@ -1,6 +1,5 @@
 import sys
 import yaml
-from bs4 import BeautifulSoup
 
 def read_yaml(file_path):
   with open(file_path, 'r') as file:
@@ -64,10 +63,7 @@ def extract_inner_content(inst):
 
 def substitute_html_body(template_file, html_body):
   with open(template_file, 'r') as file:
-    soup = BeautifulSoup(file, 'html.parser')
-    soup.body.clear()
-    soup.body.append(BeautifulSoup(html_body, 'html.parser'))
-  return str(soup)
+    return file.read().replace('%REPLACE%',html_body)
 
 def main():
   if len(sys.argv) < 2:
@@ -85,6 +81,7 @@ def main():
   html_body = generate_html_body(yaml_content)
   html_body = passthrough(html_body)
   final_html = substitute_html_body(template_file, html_body)
+  print(final_html)
   final_html = passthrough(final_html)
 
   output_file = yaml_file.rsplit('.', 1)[0] + ".adoc"
