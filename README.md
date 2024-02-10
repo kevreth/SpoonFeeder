@@ -57,10 +57,6 @@ SpoonFeeder remains in an early pre-release state. Although functional, it's mis
 
 6) `npm install`
 
-7) start the Web server
-
-
-
-8) Start the project
+7) Start the project
 
 `quasar dev`
