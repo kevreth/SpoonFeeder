@@ -90,7 +90,7 @@ units:
           sdbr: null
           ref: null
           txt: |
-            One may wonder why a CLI like Bash is worth learning when an easy learned and used GUI is available. The answer is,
+            One may wonder why a CLI like Bash is worth learning when an easily learned and used GUI is available. The answer is,
 
             * CLIs make certain types of tasks easier
             * Some tasks cannot be done without Bash because a GUI equivalent is unavailable.
