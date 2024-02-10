@@ -642,7 +642,7 @@ units:
           null
         inst:
         - type: info
-          name: Option example
+          name: 'Option example: `ls -1`'
           sdbr: null
           ref: null
           txt: |
@@ -665,18 +665,15 @@ units:
             logo_guidelines.pdf
             ----
           ccq: null
+        # - type: info
+        #   name: 
+        #   sdbr: null
+        #   ref: null
+        #   txt: |
+
+        #   ccq: null
         - type: info
-          name: Positional arguments vs. options
-          sdbr: null
-          ref: null
-          txt: |
-            Unlike positional arguments,
-            the meaning of options aren't understood from their location,
-            so they can appear in any order where they are allowed.
-            The meaning of this will become clear later.
-          ccq: null
-        - type: info
-          name: 'printing directory contents in reverse: `ls -r`'
+          name: 'Printing directory contents in reverse: `ls -r`'
           sdbr: null
           ref: null
           txt: |
@@ -696,10 +693,28 @@ units:
             logo_guidelines.pdf company_brand_book.pdf
             ----
           ccq: null
+        - type: info
+          name: Using multiple options
+          sdbr: null
+          ref: null
+          txt: |
+            [source,bash]
+            ----
+            company_brand_book.pdf
+            logo_guidelines.pdf
+            ----          
+            To print `ls` output in one column in reverse order:
+            [source,bash]
+            ----
+            $ ls -1 -r
+            logo_guidelines.pdf
+            company_brand_book.pdf
+            ----
+          ccq: null 
       - name: Using multiple options
         txt: |
           null
-          To print one column in reverse, we use `-1` and `-r`.
+          To print `ls` output in a reversed single column, we use `-1` and `-r`.
           [source,bash]
           ----
           company_brand_book.pdf
@@ -771,7 +786,7 @@ units:
                 company_brand_book.pdf
             ----
             When CWD is `marketing/campaigns`,
-            list the contents of /marketing/branding/ in a reversed single column.
+            list the contents of `/marketing/branding/` in a reversed single column.
             [source,bash]
             ----
             $ cd marketing/campaigns
