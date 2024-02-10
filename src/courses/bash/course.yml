@@ -7,25 +7,43 @@ units:
     - name: Introduction
       txt: null
       modules:
-      - name: asdf
+      - name: What is Bash?
         txt: null
         inst:
         - type: info
           name: What is Bash?
           sdbr: null
           ref: null
+          ccq: null
           txt: |
             _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems.
+            After starting Bash, something like this will appear with no indication of what to do next.
+
+            `$_`
+        - type: info
+          name: GUIs and Bash
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around,
             Bash will probably be what is seen after logging into a Linux computer.
             So, after entering a correct username and password,
-            what will be seen is something like this with no indication of what to do next.
-
-            `$_`
-
-            If a GUI is started, then Bash can be started in a window of the GUI but
+            if a GUI is started, then Bash can be started in a window of the GUI but
             the specific method varies among Linux systems.
-
+        # - type: info
+        #   name: null
+        #   sdbr: null
+        #   ref: null
+        #   ccq: null
+        #   txt: |
+        #
+        - type: info
+          name: Bash CLI vs a GUI
+          sdbr: null
+          ref: null
+          ccq: null
+          txt: |
             ++++
             <div style="display: flex; justify-content: left; align-items: flex-start;">
             <div style="flex: 1; padding: 0px;">
@@ -51,7 +69,6 @@ units:
             </div>
             </div>
             ++++
-          ccq: null
         - type: info
           name: Why use Bash?
           sdbr: null
@@ -60,7 +77,7 @@ units:
             One may wonder why a CLI like Bash is worth learning when an easily learned and used GUI is available.
             The answer is,
 
-            * CLIs make certain types of tasks easier
+            * CLIs make certain types of tasks easier.
             * Some tasks cannot be done without Bash because a GUI equivalent is unavailable.
             * Tasks can easily be automated with Bash but GUI automation is difficult.
             * Typing is faster than using the mouse for most tasks.
