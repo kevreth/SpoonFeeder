@@ -1,6 +1,8 @@
 import sys
 import yaml
 
+HR = "\n\n'''\n\n"
+
 def read_yaml(file_path):
   with open(file_path, 'r') as file:
     return yaml.safe_load(file)
@@ -8,20 +10,17 @@ def read_yaml(file_path):
 def verify_yaml(yaml_content):
   return isinstance(yaml_content, dict)
 
-def passthrough(str):
-  return f'\n\n++++\n{str}\n++++\n\n'
-
 def generate_html_body(yaml_content):
   html_body = f"= {yaml_content.get('name')}\n\n"
   txt = yaml_content.get('txt')
   if txt is not None:
     html_body += yaml_content.get('txt')
   for unit_ctr, unit in enumerate(yaml_content.get('units', []), start=1):
-    html_body += f"== Unit {unit_ctr}: {unit['name']}\n\n"
+    html_body += f"== Unit {unit_ctr}: {unit['name']}\n\n{HR}"
     for lesson_ctr, lesson in enumerate(unit.get('lessons', []), start=1):
-      html_body += f"=== Lesson {lesson_ctr}: {lesson['name']}\n\n"
+      html_body += f"=== Lesson {lesson_ctr}: {lesson['name']}\n\n{HR}"
       for module_ctr, module in enumerate(lesson.get('modules', []), start=1):
-        html_body += f"==== Module {module_ctr}: {module['name']}\n\n"
+        html_body += f"==== Module {module_ctr}: {module['name']}\n\n{HR}"
         insts = module.get('inst')
         if insts is not None:
           for inst in insts:

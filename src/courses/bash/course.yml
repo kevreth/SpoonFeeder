@@ -138,7 +138,6 @@ units:
           sdbr: null
           ref: null
           txt: |
-            null
             Each filesystem object has a name associated with it.
 
             [graphviz, format="svg"]
@@ -713,7 +712,6 @@ units:
           ccq: null 
       - name: Using multiple options
         txt: |
-          null
           To print `ls` output in a reversed single column, we use `-1` and `-r`.
           [source,bash]
           ----
