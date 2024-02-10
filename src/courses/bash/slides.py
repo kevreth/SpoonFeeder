@@ -32,11 +32,16 @@ def generate_html_body(yaml_content):
   return html_body
 
 def extract_inner_content(inst):
+  name_adoc=inst.get('name')
+  # print(name_adoc)
+  # ref_adoc=inst.get('ref')
   content_adoc = inst.get('txt')
   sdbr_adoc = inst.get('sdbr')
   retval = ''
+  if name_adoc:
+    retval = f"\n++++\n<h5>{name_adoc}</h5>\n++++\n"
   if sdbr_adoc:
-    retval = f'''
+    retval += f'''
 ++++
 <div class="two-columns">
   <div class="sidebar">
@@ -56,7 +61,7 @@ def extract_inner_content(inst):
 </div>
 ++++
     '''
-  else: retval = content_adoc
+  else: retval += content_adoc
   return retval
 
 def substitute_html_body(template_file, html_body):
