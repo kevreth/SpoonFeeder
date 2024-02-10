@@ -12,23 +12,23 @@ def passthrough(str):
   return f'\n\n++++\n{str}\n++++\n\n'
 
 def generate_html_body(yaml_content):
-  html_body = passthrough(f"<h1>{yaml_content.get('name')}</h1>")
+  html_body = f"= {yaml_content.get('name')}\n\n"
   txt = yaml_content.get('txt')
   if txt is not None:
     html_body += yaml_content.get('txt')
   for unit in yaml_content.get('units', []):
-    html_body += passthrough(f"<h2>{unit['name']}</h2>")
+    html_body += f"== {unit['name']}\n\n"
     for lesson in unit.get('lessons', []):
-      html_body += passthrough(f"<h3>{lesson['name']}</h3>")
+      html_body += f"=== {lesson['name']}\n\n"
       for module in lesson.get('modules', []):
-        html_body += passthrough(f"<h4>{module['name']}</h4>")
+        html_body += f"==== {module['name']}\n\n"
         insts = module.get('inst')
         if insts is not None:
           for inst in insts:
             if inst:
               html = extract_inner_content(inst)
               if html is not None:
-                html_body += html + passthrough('<hr>')
+                html_body += html + "\n\n'''\n\n"
   return html_body
 
 def extract_inner_content(inst):
@@ -39,7 +39,7 @@ def extract_inner_content(inst):
   sdbr_adoc = inst.get('sdbr')
   retval = ''
   if name_adoc:
-    retval = f"\n++++\n<h5>{name_adoc}</h5>\n++++\n"
+    retval = f"===== {name_adoc}\n\n"
   if sdbr_adoc:
     retval += f'''
 ++++
@@ -74,7 +74,6 @@ def main():
     sys.exit(1)
 
   yaml_file = sys.argv[1]
-  template_file = 'template.html'
 
   yaml_content = read_yaml(yaml_file)
   if not verify_yaml(yaml_content):
@@ -82,13 +81,9 @@ def main():
     sys.exit(1)
 
   html_body = generate_html_body(yaml_content)
-  html_body = passthrough(html_body)
-  final_html = substitute_html_body(template_file, html_body)
-  final_html = passthrough(final_html)
-
   output_file = yaml_file.rsplit('.', 1)[0] + ".adoc"
   with open(output_file, 'w') as file:
-    file.write(final_html)
+    file.write(html_body)
   print(f"ADOC file created: {output_file}")
 
 if __name__ == "__main__":
