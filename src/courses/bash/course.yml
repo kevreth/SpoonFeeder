@@ -23,7 +23,8 @@ units:
 
             `$_`
 
-            If a GUI is started, then Bash can be started in a window of the GUI but the specific method varies among Linux systems.
+            If a GUI is started, then Bash can be started in a window of the GUI but
+            the specific method varies among Linux systems.
 
             ++++
             <div style="display: flex; justify-content: left; align-items: flex-start;">
@@ -626,14 +627,16 @@ units:
             * A command as in `echo test.txr > test.txt` (everything typed before pressing ENTER)
 
             All three of these are correct.
-            While it may seem a problem, in practice which of the three meanings of "command" is intended is understood from context.
+            While it may seem a problem,
+            in practice which of the three meanings of "command" is intended is understood from context.
           ccq: null
         - type: info
           name: Arguments we've already seen
           sdbr: null
           ref: null
           txt: |
-            We've seen several cases where a command was used with some additional information (which together is also a command):
+            We've seen several cases where a command was used
+            with some additional information (which together is also a command):
 
             * `cd bash-tutorial`
             * `cp test.txt sample.txt`
@@ -648,7 +651,8 @@ units:
 
             `mv test.txt test0.txt`
 
-            the first positional argument is always the existing file object and the second positional argument is always the new location.
+            The first positional argument is always the existing file object and
+            the second positional argument is always the new location.
             They cannot be reversed.
 
             Redirectors (`>`, `>>`) are not arguments.
@@ -988,7 +992,8 @@ units:
           sdbr: null
           ref: null
           txt: |
-            "Lorem ipsum" is a corrupted Latin text that is used when content is unimportant but text needs a placeholder.
+            "Lorem ipsum" is a corrupted Latin text
+            that is used when content is unimportant but text needs a placeholder.
             We will use Lorem ipsum for file content for this course.
             [source, bash]
             ----
