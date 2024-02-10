@@ -24,30 +24,6 @@ units:
             Bash vs. a GUI
 
             ++++
-            <style>
-            .flex-container {
-              display: flex;
-              justify-content: space-around;
-              align-items: flex-start;
-            }
-            .flex-item {
-              flex: 1;
-              margin: 0; /* Eliminate default margins */
-              display: flex;
-              flex-direction: column;
-            }
-            .source-code, .image-container {
-              padding: 0px; /* Reduced padding */
-              flex: 1;
-              display: flex;
-              justify-content: center; /* Center content for visual appeal */
-              align-items: center; /* This might need adjustment based on your content */
-            }
-            /* Optional: Reduce bottom margin on preformatted blocks */
-            pre {
-              margin-bottom: 0;
-            }
-            </style>
             <div style="display: flex; justify-content: left; align-items: flex-start;">
             <div style="flex: 1; padding: 0px;">
             ++++
@@ -64,13 +40,6 @@ units:
             $ cd my_project
             $ ls
             data.txt  notes.txt  script.sh
-            $ cat notes.txt
-            Meeting notes:
-            - Discuss project timeline
-            - Review initial requirements
-            $ grep "timeline" notes.txt
-            - Discuss project timeline
-            $ echo "TODO: Add more data analysis steps" >> notes.txt
             ----
 
             ++++

@@ -1,5 +1,6 @@
 course.html: course.adoc
 	asciidoctor -r asciidoctor-diagram -b html5 $<
+	tidy -eq course.html
 
 course.adoc: course.yml slides.py makefile schema.yml wellformed.sh *.svg
 	sh ./wellformed.sh course.yml
