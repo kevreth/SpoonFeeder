@@ -15,7 +15,11 @@ units:
           sdbr: null
           ref: null
           txt: |
-            _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems. Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around, Bash will probably be what is seen after logging into a Linux computer. So, after entering a correct username and password, what will be seen is something like this with no indication of what to do next.
+            _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems.
+            Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around,
+            Bash will probably be what is seen after logging into a Linux computer.
+            So, after entering a correct username and password,
+            what will be seen is something like this with no indication of what to do next.
 
             `$_`
 
@@ -52,7 +56,8 @@ units:
           sdbr: null
           ref: null
           txt: |
-            One may wonder why a CLI like Bash is worth learning when an easily learned and used GUI is available. The answer is,
+            One may wonder why a CLI like Bash is worth learning when an easily learned and used GUI is available.
+            The answer is,
 
             * CLIs make certain types of tasks easier
             * Some tasks cannot be done without Bash because a GUI equivalent is unavailable.
@@ -76,13 +81,19 @@ units:
           txt: |
             Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
 
-            A _filesystem_ is how computers store data on permanent storage devices such as disk drives. Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
+            A _filesystem_ is how computers store data on permanent storage devices such as disk drives.
+            Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
 
-            _Files_ contain data. A file can contain any type of computer data. Examples include a text document, a music track, or software program. Files cannot contain other files.
+            _Files_ contain data.
+            A file can contain any type of computer data.
+            Examples include a text document, a music track, or software program.
+            Files cannot contain other files.
 
-            _Directories_ are an organization tool. Directories contain files and other directories but cannot directly contain data like files can.
+            _Directories_ are an organization tool.
+            Directories contain files and other directories but cannot directly contain data like files can.
 
-            The relationship of directories, files, and data. Arrows represent containership.
+            The relationship of directories, files, and data.
+            Arrows represent containership.
 
             [graphviz, format="svg"]
             ....
@@ -98,11 +109,16 @@ units:
           sdbr: null
           ref: null
           txt: |
-            Comparing a filesystem to a tree, directories are tree branches and files are leaves. Leaves (files) can grow anywhere, including the tree trunk.
+            Comparing a filesystem to a tree,
+            directories are tree branches and files are leaves.
+            Leaves (files) can grow anywhere, including the tree trunk.
 
-            At the top of the tree is the _root directory_ which corresponds to a tree trunk. There can be only one root directory and it is named "/", which is the character _frontslash_ ("\" is a "backslash").
+            At the top of the tree is the _root directory_ which corresponds to a tree trunk.
+            There can be only one root directory and it is named "/",
+            which is the character _frontslash_ ("\" is a "backslash").
 
-            An example filesystem. Arrows represent containership.
+            An example filesystem.
+            Arrows represent containership.
 
             [graphviz, format="svg"]
             ....
@@ -146,7 +162,8 @@ units:
             }
             ....
 
-            In this example, the root directory contains directories for "bob" and "sue" and two files. "bob" contains two files and "sue" contains one file.
+            In this example, the root directory contains directories for "bob" and "sue" and two files.
+            "bob" contains two files and "sue" contains one file.
           ccq: null
       - name: File paths
         txt: |
@@ -227,7 +244,8 @@ units:
           sdbr: null
           ref: null
           txt: |
-            An ending "/" distinguishes if the final item in a directory path is a file or a directory. So,
+            An ending "/" distinguishes if the final item in a directory path is a file or a directory.
+            So,
 
             `monthly.reports/` is a directory
 
@@ -241,13 +259,15 @@ units:
           ref: null
           txt: |
             By convention, a file ends with a short identifier,
-            called a _file extension_ indicating the type of file, but it's not a requirement.
+            called a _file extension_ indicating the type of file,
+            but it's not a requirement.
 
             `annual.report.q1.txt` is a text file.
 
             `corporate.retreat.mp4` is an mp4 video file.
 
-            Hundreds of standard file extensions exist. You will learn more file extensions as you learn Bash.
+            Hundreds of standard file extensions exist.
+            You will learn more file extensions as you learn Bash.
           ccq: null
         - type: info
           name: Directory contents must have unique names
@@ -359,7 +379,8 @@ units:
           sdbr: null
           ref: null
           txt: |
-            From now on, many slides will display a listing of CWD at the beginning. For example,
+            From now on, many slides will display a listing of CWD at the beginning.
+            For example,
 
             [source, bash]
             ----
@@ -534,7 +555,8 @@ units:
             test.txt sample.txt
             ----
 
-            `cp` cannot copy directories this way. We will look at directory copying later.
+            `cp` cannot copy directories this way.
+            We will look at directory copying later.
           ccq: null
         - type: info
           name: 'Renaming files: `mv`'
@@ -551,7 +573,8 @@ units:
             test.txt test0.txt
             ----
 
-            `mv` is an abbreviation of "move". Why "move" instead of "rename"?
+            `mv` is an abbreviation of "move".
+            Why "move" instead of "rename"?
 
             Think of `mv` as using the entire file path:
 
@@ -620,7 +643,8 @@ units:
 
             Instances of that additional information are called _arguments_.
             The arguments we've seen so far are _positional arguments_ and are the simplest type of arguments.
-            The meanings of positional arguments are understood based on their location in the arguments. For example, with `mv`,
+            The meanings of positional arguments are understood based on their location in the arguments.
+            For example, with `mv`,
 
             `mv test.txt test0.txt`
 
@@ -658,7 +682,7 @@ units:
             ----
           ccq: null
         # - type: info
-        #   name: 
+        #   name:
         #   sdbr: null
         #   ref: null
         #   txt: |
@@ -694,7 +718,7 @@ units:
             ----
             company_brand_book.pdf
             logo_guidelines.pdf
-            ----          
+            ----
             To print `ls` output in one column in reverse order:
             [source,bash]
             ----
@@ -702,7 +726,7 @@ units:
             logo_guidelines.pdf
             company_brand_book.pdf
             ----
-          ccq: null 
+          ccq: null
       - name: Using multiple options
         txt: |
           To print `ls` output in a reversed single column, we use `-1` and `-r`.
@@ -968,18 +992,15 @@ units:
             We will use Lorem ipsum for file content for this course.
             [source, bash]
             ----
-            quick.txt
+            lorem.txt
             ----
-            `quick.txt` contains
             [source, bash]
             ----
+            cat lorem.txt
             Lorem ipsum dolor sit amet,
             consectetur adipiscing elit,
             sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua.
-            ----
-            [source, bash]
-            ----
             $ cat -n lorem.txt
             1	Lorem ipsum dolor sit amet,
             2	consectetur adipiscing elit,
