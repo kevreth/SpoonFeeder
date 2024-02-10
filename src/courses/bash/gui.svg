@@ -9,15 +9,21 @@
   <circle cx="60" cy="290" r="5" fill="#f2f2f2"/>
 
   <!-- Window -->
-  <rect x="50" y="40" width="300" height="200" fill="white" stroke="#4d4d4d" stroke-width="2"/>
+  <rect x="20" y="40" width="350" height="200" fill="white" stroke="#4d4d4d" stroke-width="2"/>
   <!-- Window Header -->
-  <rect x="50" y="40" width="300" height="20" fill="#4d4d4d"/>
-  <text x="60" y="55" fill="white" font-size="12" font-family="Arial">My Window</text>
+  <rect x="20" y="40" width="350" height="20" fill="#4d4d4d"/>
+  <text x="25" y="55" fill="white" font-size="12" font-family="Arial">/home/user</text>
 
   <!-- Icons -->
-  <rect x="70" y="70" width="40" height="40" fill="lightgrey" stroke="#4d4d4d" stroke-width="1"/>
-  <text x="70" y="120" fill="black" font-size="12" font-family="Arial">Icon 1</text>
+  <rect x="60" y="90" width="60" height="60" fill="lightgrey" stroke="#4d4d4d" stroke-width="1"/>
+  <text x="60" y="170" fill="black" font-size="12" font-family="Arial">Documents</text>
 
-  <rect x="120" y="70" width="40" height="40" fill="lightgrey" stroke="#4d4d4d" stroke-width="1"/>
-  <text x="120" y="120" fill="black" font-size="12" font-family="Arial">Icon 2</text>
+  <rect x="130" y="90" width="60" height="60" fill="lightgrey" stroke="#4d4d4d" stroke-width="1"/>
+  <text x="130" y="170" fill="black" font-size="12" font-family="Arial">Downloads</text>
+
+  <rect x="200" y="90" width="60" height="60" fill="lightgrey" stroke="#4d4d4d" stroke-width="1"/>
+  <text x="200" y="170" fill="black" font-size="12" font-family="Arial">Images</text>
+
+  <rect x="270" y="90" width="60" height="60" fill="lightgrey" stroke="#4d4d4d" stroke-width="1"/>
+  <text x="270" y="170" fill="black" font-size="12" font-family="Arial">Projects</text>
 </svg>
