@@ -1,1 +1,1 @@
-git add course.yml && git commit -mbash && git push
+git add course.yml makefile schema.yml slides.py wellformed.sh git.sh && git commit -mbash && git push
