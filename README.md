@@ -55,6 +55,12 @@ SpoonFeeder remains in an early pre-release state. Although functional, it's mis
 
 5) `cd Spoonfeeder`
 
-5) Start the project
+6) `npm install`
+
+7) start the Web server
+
+
+
+8) Start the project
 
 `quasar dev`
