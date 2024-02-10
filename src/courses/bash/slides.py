@@ -16,12 +16,12 @@ def generate_html_body(yaml_content):
   txt = yaml_content.get('txt')
   if txt is not None:
     html_body += yaml_content.get('txt')
-  for unit in yaml_content.get('units', []):
-    html_body += f"== {unit['name']}\n\n"
-    for lesson in unit.get('lessons', []):
-      html_body += f"=== {lesson['name']}\n\n"
-      for module in lesson.get('modules', []):
-        html_body += f"==== {module['name']}\n\n"
+  for unit_ctr, unit in enumerate(yaml_content.get('units', []), start=1):
+    html_body += f"== Unit {unit_ctr}: {unit['name']}\n\n"
+    for lesson_ctr, lesson in enumerate(unit.get('lessons', []), start=1):
+      html_body += f"=== Lesson {lesson_ctr}: {lesson['name']}\n\n"
+      for module_ctr, module in enumerate(lesson.get('modules', []), start=1):
+        html_body += f"==== Module {module_ctr}: {module['name']}\n\n"
         insts = module.get('inst')
         if insts is not None:
           for inst in insts:
