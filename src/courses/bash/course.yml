@@ -85,12 +85,6 @@ units:
       - name: Filesystem objects
         txt:  null
         inst:
-        # - type: info
-        #   name: null
-        #   sdbr: null
-        #   ref: null
-        #   ccq: null
-        #   txt: |
         - type: info
           name: Directories, files, and data
           sdbr: null
@@ -221,10 +215,6 @@ units:
             In this example, the root directory contains directories for "bob" and "sue" and two files.
             "bob" contains two files and "sue" contains one file.
           ccq: null
-      - name: File paths
-        txt: |
-          null
-        inst:
         - type: info
           name: Filesystem paths
           sdbr: null
@@ -254,9 +244,9 @@ units:
 
             Every object on the filesystem can be addressed this way.
           ccq: null
-    - name: Representing directory contents
-      txt: null
-      modules:
+      - name: Representing directory contents
+        txt: null
+        inst:
         - type: info
           name: Graphical representation
           sdbr: null
@@ -282,6 +272,7 @@ units:
           name: Graphical representation
           sdbr: null
           ref: null
+          txt: |
             If the full path to the directory is required it can be shown like this.
             [source]
             ----
