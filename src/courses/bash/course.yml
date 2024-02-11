@@ -414,6 +414,7 @@ units:
         type: info
         sdbr: null
         ref: null
+        ccq: null
         txt: |
           Every Bash session has an associated _current working directory_ (CWD).
           Think of the CWD as your current location on the filesystem.
@@ -431,11 +432,11 @@ units:
 
           The contents of the CWD can be addressed without using complete file paths.
           If our CWD is "bob" then we can address "holiday.party.txt" without preceding with "/bob/".
-        ccq: null
       - name: Home directories
         type: info
         sdbr: null
         ref: null
+        ccq: null
         txt: |
           When starting Bash, your CWD is normally the _home directory_ of the user you logged in as.
           Unless configured otherwise, the home directory follows the pattern
@@ -445,9 +446,9 @@ units:
           So if you are logged in under "bob", your home directory, and where Bash starts, will be
 
           `/home/bob/`
-        ccq: null
 
-        ccq: null
+          The home directory is your personal space on the filesystem.
+          Within it, you are free to create directories and files.
     - name: The current working directory
       txt: null
       inst:
