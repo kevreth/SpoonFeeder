@@ -60,6 +60,9 @@ units:
           should display underneath the prompt and a new prompt provided.
 
           `echo`: display a line of text
+    - name: GUIs and Bash
+      txt: null
+      inst:
       - name: GUIs and Bash
         type: info
         sdbr: null
