@@ -580,25 +580,29 @@ units:
           this is a line
           ----
         ccq: null
+      - name: '`>` overwrites files'
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          The redirector used earlier `>`, overwrites any existing file content.
+
+          [source, bash]
+          ----
+          $ echo "line 1" > test.txt
+          $ cat test.txt
+          line 1
+          $ echo "line 2" > test.txt
+          $ cat test.txt
+          line 2
+          ----
+
+          "line 1" was overwritten.
       - name: 'Adding more lines: `>>`'
         type: info
         sdbr: null
         ref: null
         txt: |
-          The redirector used earlier `>`, always overwrites any existing file content.
-
-          [source, bash]
-          ----
-          $ echo "this is a line" > test.txt
-          $ cat test.txt
-          this is a line
-          $ echo "this is a different line" > test.txt
-          $ cat test.txt
-          this is a different line
-          ----
-
-          "this is a line" was overwritten.
-
           Instead of overwriting, add a second line using the _append redirector_ (`>>`).
 
           [source, bash]
@@ -612,7 +616,7 @@ units:
           Like the output redirector,
           the file will be created if it doesn't exist,
           so to prevent data loss,
-          we will usually prefer append redirection to output redirection.
+          prefer append redirection to output redirection.
         ccq: null
     - name: Copying, renaming, and moving files
       txt: null
