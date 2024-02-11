@@ -58,8 +58,6 @@ units:
           `Hello World!`
 
           should display underneath the prompt and a new prompt provided.
-
-          `echo`: display a line of text
     - name: GUIs and Bash
       txt: null
       inst:
@@ -126,15 +124,15 @@ units:
   - name: The Linux filesystem
     txt: |
       `echo`, the only command studied so far,
-      doesn't require use of accessing persistent data storage.
+      doesn't require using persistent data storage.
 
-      The Bash commands we will be learning at first do require accessing persistent data storage,
+      The Bash commands we will be learning at first use persistent data storage,
       so this lesson explains how persistent storage works in Linux.
     modules:
     - name: Filesystem objects
       txt:  null
       inst:
-      - name: Directories, files, and data
+      - name: Filesystems
         type: info
         sdbr: null
         ref: null
@@ -147,7 +145,7 @@ units:
         ccq: null
         txt: |
           A _filesystem_ is how computers store data on permanent storage devices such as disk drives.
-      - name: Filesystems
+      - name: Directories and files
         type: info
         sdbr: null
         ref: null
@@ -162,7 +160,12 @@ units:
         txt: |
           _Files_ contain data.
           A file can contain any type of computer data.
-          Examples include a text document, a music track, or software program.
+          Examples include
+
+          * text documents,
+          * music tracks, or
+          * software programs.
+
           Files cannot contain other files.
       - name: Directories
         type: info
@@ -177,6 +180,7 @@ units:
         sdbr: null
         ref: null
         ccq: null
+        ccq: null
         txt: |
           Arrows represent containership.
           [graphviz, format="svg"]
@@ -187,7 +191,7 @@ units:
             directories -> directories
           }
           ....
-        ccq: null
+          Directories can contain directories and files, files contain data.
       - name: Filesystems
         type: info
         sdbr: null
