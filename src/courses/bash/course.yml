@@ -323,7 +323,7 @@ units:
             sue
               ap.txt
           ----
-      - name: Graphical representation
+      - name: Removing the file path
         type: info
         sdbr: null
         ref: null
@@ -344,32 +344,20 @@ units:
           This is the standard way directory contents will be displayed.
           We often do not know or care where on the filesystem "employees" is located.
           In most cases it's not important.
-      - name: Graphical representation
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          If the full path to the directory is required it can be shown like this.
-          [source]
-          ----
-          /home/employees
-            annual.report.q1.txt
-            annual.report.q2.txt
-            bob
-              holiday.party.txt
-            sue
-              accounts.payable.txt
-            amy/
-          ----
       - name: Empty directories
         type: info
         sdbr: null
         ref: null
         ccq: null
         txt: |
-          `amy` is an empty directory that contains no objects.
+          [source]
+          ----
+          bob
+            party.txt
+          amy/
+          ----
+          `amy` is an empty directory containing no objects.
           To distinguish empty directories from files, empty directories have a frontslash after them.
-        ccq: null
       - name: 'File paths: ending frontslashes'
         type: info
         sdbr: null
