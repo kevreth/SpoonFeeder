@@ -615,7 +615,7 @@ units:
           so to prevent data loss,
           prefer append redirection to output redirection.
         ccq: null
-    - name: Copying, renaming, and moving files
+    - name: Copying, renaming, and moving objects
       txt: null
       inst:
       - name: 'Copying files: `cp`'
@@ -688,6 +688,51 @@ units:
           $ ls
           line.txt
           ----
+    - name: Deleting filesystem objects
+      txt: null
+      inst:
+      - name: 'Deleting a single file: `rm`'
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          [source, bash]
+          ----
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          ----
+          [source, bash]
+          ----
+          $ rm sales_forecast_Q1.pdf
+          $ ls
+          sales_report_Jan.csv
+          ----
+        ccq: null
+      - name: 'Deleting an empty directory: `rmdir`'
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          [source, bash]
+          ----
+          client_contact/
+            client_list.csv
+          sales_reports/
+          ----
+          `rmdir` removes empty directories
+          [source, bash]
+          ----
+          $ rmdir sales_reports
+          $ ls
+          client_contact
+          ----
+          If we try to delete a directory containing objects we get an error.
+          [source, bash]
+          ----
+          $ rmdir client_contact
+          ----
+          rmdir: failed to remove 'client_contact': Directory not empty
+        ccq: null
   - name: Command arguments
     txt: |
       null
@@ -976,80 +1021,6 @@ units:
           most Linux commands follow a certain pattern for their arguments,
           but some Linux commands are rogue and don't follow typical patterns.
         ccq: null
-    - name: Deleting filesystem objects
-      txt: null
-      inst:
-      - name: 'Deleting a single file: `rm`'
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          [source, bash]
-          ----
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
-          ----
-          [source, bash]
-          ----
-          $ rm sales_forecast_Q1.pdf
-          $ ls
-          sales_report_Jan.csv
-          ----
-        ccq: null
-      - name: 'Deleting an empty directory: `rmdir`'
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          [source, bash]
-          ----
-          client_contact/
-            client_list.csv
-          sales_reports/
-          ----
-          `rmdir` removes empty directories
-          [source, bash]
-          ----
-          $ rmdir sales_reports
-          $ ls
-          client_contact
-          ----
-          If we try to delete a directory containing objects we get an error.
-          [source, bash]
-          ----
-          $ rmdir client_contact
-          ----
-          rmdir: failed to remove 'client_contact': Directory not empty
-        ccq: null
-
-      - name: 'Deleting a directory tree: `rm -rf`'
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          `rm` provides a powerful option set to remove a directory and its contents but be careful using it.
-          Its easy to make a mistake and delete important data.
-
-          [source, bash]
-          ----
-          sales
-            client_contact
-              client_list.csv
-          ----
-          [source, bash]
-          ----
-          $ rm -rf sales
-          $ ls sales
-          ls: cannot access 'sales': No such file or directory
-          ----
-
-          `-r`: _recursive_: a fancy way of saying the command will search the entire directory tree
-          `-f`: _force_: without this option, `rm` will prompt before deleting every file
-
-          The most dangerous command possible is `rm -rf /`.
-          This will delete everything in your filesystem and crash Linux.
-          All data will be lost and Linux will require re-installation.
-        ccq: null
   - name: More commands with options
     txt: |
       null
@@ -1073,7 +1044,7 @@ units:
 
       In this lesson we will explore useful options for many of these commands.
     modules:
-    - name: Options for `cp`, `cat`, and `mkdir`
+    - name: Options for `cp`, `cat`, `mkdir`, and `rm`
       txt: null
       inst:
       - name: 'Copying directory trees: `cp -a`'
@@ -1158,6 +1129,34 @@ units:
           $ ls marketing
           bob
           ----
+        ccq: null
+      - name: 'Deleting a directory tree: `rm -rf`'
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          `rm` provides a powerful option set to remove a directory and its contents but be careful using it.
+          Its easy to make a mistake and delete important data.
+
+          [source, bash]
+          ----
+          sales
+            client_contact
+              client_list.csv
+          ----
+          [source, bash]
+          ----
+          $ rm -rf sales
+          $ ls sales
+          ls: cannot access 'sales': No such file or directory
+          ----
+
+          `-r`: _recursive_: a fancy way of saying the command will search the entire directory tree
+          `-f`: _force_: without this option, `rm` will prompt before deleting every file
+
+          The most dangerous command possible is `rm -rf /`.
+          This will delete everything in your filesystem and crash Linux.
+          All data will be lost and Linux will require re-installation.
         ccq: null
     - name: More `ls` options
       txt: null
