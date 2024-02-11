@@ -19,7 +19,47 @@ units:
           _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems.
           After starting Bash, something like this will appear with no indication of what to do next.
 
-          `$_`
+          `$ `
+      - name: Bash commands
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          The most common way to interact with Bash is by typing _commands_.
+
+          `$`
+
+          is called the _prompt_ and where commands can be typed in.
+          The prompt is automatically displayed immediately after initiating a Bash session.
+        ccq: null
+      - name: 'Printing to the screen: `echo`'
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          Our first Bash command will print to the screen.
+          Anything after the prompt (`$`) on the same line is content you would type.
+
+          [source, bash]
+          ----
+          $ echo "Hello World!"
+          Hello World!
+          ----
+
+          Always press the `ENTER` (or on some systems `RETURN`) key after finishing typing a command to execute (run) it.
+          In this case, we would type
+
+          `echo "Hello World!"<ENTER>`
+
+          <ENTER> means pressing the ENTER key, not to type out < E N T E R > literally.
+
+          After executing the command,
+
+          `Hello World!`
+
+          should display underneath the prompt and a new prompt provided.
+
+          `echo`: display a line of text
       - name: GUIs and Bash
         type: info
         sdbr: null
@@ -388,8 +428,7 @@ units:
     txt: null
     modules:
     - name: The Bash interface
-      txt: |
-        null
+      txt: null
       inst:
       - name: Current working directories
         type: info
@@ -427,40 +466,10 @@ units:
 
           `/home/bob/`
         ccq: null
-      - name: Bash interface
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          The most common way to interact with Bash is by typing _commands_.
 
-          Typically the Bash interface looks something like this (although it can be configured to look much different)
-
-          `$`
-
-          That is called the _prompt_ and where commands can be typed in.
-          The prompt is automatically displayed immediately after initiating a Bash session.
-        ccq: null
-      - name: 'Printing to the screen: `echo`'
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          Our first Bash command will simply print something to the screen.
-          Anything after the prompt (`$`) is content you would type.
-
-          [source, bash]
-          ----
-          $ echo "Hello World!"
-          Hello World!
-          ----
-
-          Always press the `ENTER` (or on some systems `RETURN`) key after finishing typing a command to execute it.
-          `echo`: display a line of text
         ccq: null
     - name: The current working directory
-      txt: |
-        null
+      txt: null
       inst:
       - name: Displaying the CWD
         type: info
@@ -517,8 +526,7 @@ units:
           ----
         ccq: null
     - name: Creating and viewing file objects
-      txt: |
-        null
+      txt: null
       inst:
       - name: 'Listing directory contents: `ls`'
         type: info
@@ -626,8 +634,7 @@ units:
           we will usually prefer append redirection to output redirection.
         ccq: null
     - name: Copying, renaming, and moving files
-      txt: |
-        null
+      txt: null
       inst:
       - name: 'Copying files: `cp`'
         type: info
@@ -699,8 +706,7 @@ units:
       null
     modules:
     - name: sad
-      txt: |
-        null
+      txt: null
       inst:
       - name: The many meanings of "command"
         type: info
@@ -745,8 +751,7 @@ units:
           Redirectors (`>`, `>>`) are not arguments.
         ccq: null
     - name: Options
-      txt: |
-        null
+      txt: null
       inst:
       - name: 'Option example: `ls -1`'
         type: info
@@ -772,13 +777,6 @@ units:
           logo_guidelines.pdf
           ----
         ccq: null
-      # - type: info
-      #   name:
-      #   sdbr: null
-      #   ref: null
-      #   txt: |
-
-      #   ccq: null
       - name: 'Printing directory contents in reverse: `ls -r`'
         type: info
         sdbr: null
@@ -933,8 +931,7 @@ units:
           but some Linux commands are rogue and don't follow typical patterns.
         ccq: null
     - name: Deleting filesystem objects
-      txt: |
-        null
+      txt: null
       inst:
       - name: 'Deleting a single file: `rm`'
         type: info
@@ -1031,8 +1028,7 @@ units:
       In this lesson we will explore useful options for many of these commands.
     modules:
     - name: Options for `cp`, `cat`, and `mkdir`
-      txt: |
-        null
+      txt: null
       inst:
       - name: 'Copying directory trees: `cp -a`'
         type: info
@@ -1118,8 +1114,7 @@ units:
           ----
         ccq: null
     - name: More `ls` options
-      txt: |
-        null
+      txt: null
       inst:
       - name: 'List extended object information: `ls -l`'
         type: info
