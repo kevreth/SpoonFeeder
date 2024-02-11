@@ -875,24 +875,52 @@ units:
       - name: '`rmdir` can remove multiple directories'
         type: info
         sdbr: null
-        ref: null
-        txt: |
-
         ccq: null
+        ref: |
+          [source, bash]
+          ----
+          bob
+            sales_report_Jan.csv
+          sue
+            sales_forecast_Q1.pdf
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ ls bob sue
+          bob:
+            sales_report_Jan.csv
+          sue:
+            sales_forecast_Q1.pdf
+          ----
       - name: '`cat` can display multiple files'
         type: info
         sdbr: null
         ccq: null
-        ref: null
+        ref: |
+          [source, bash]
+          ----
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          ----
         txt: |
-
+          [source, bash]
+          ----
+          $ cat sales_report_Jan.txt sales_forecast_Q1.txt
+          Jan: 100,000,000
+          Q1: 400,000,000
+          ----
       - name: '`echo` can display multiple pieces of text'
         type: info
         sdbr: null
         ccq: null
         ref: null
         txt: |
-
+          [source, bash]
+          ----
+          $ echo "a" "b"
+          a b
+          ----
     - name: Options
       txt: null
       inst:
