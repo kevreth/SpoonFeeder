@@ -790,42 +790,44 @@ units:
         sdbr: null
         ref: null
         txt: |
+          ls can list multiple directories 
 
+          $ ls 
         ccq: null
       - name: cp
         type: info
         sdbr: null
         ref: null
         txt: |
-
+          cp can copy an object to multiple tsrgets
         ccq: null
       - name: mkdir
         type: info
         sdbr: null
         ref: null
         txt: |
-
+          mkdor can create muliple directories
         ccq: null
       - name: mv
         type: info
         sdbr: null
         ref: null
         txt: |
-
+          
         ccq: null
       - name: rm
         type: info
         sdbr: null
         ref: null
         txt: |
-
+          rm can remove multiple file objectd
         ccq: null
       - name: rmdir
         type: info
         sdbr: null
         ref: null
         txt: |
-          rmdir
+          rmdir can remove multiple directories
         ccq: null
       - name: cat
         type: info
@@ -833,14 +835,14 @@ units:
         ref: null
         ccq: null
         txt: |
-          cat
+          cat can display multiple files
       - name: echo
         type: info
         sdbr: null
         ref: null
         ccq: null
         txt: |
-          echo
+          echo can fodplsy multiple pieces of text
     - name: Options
       txt: null
       inst:
