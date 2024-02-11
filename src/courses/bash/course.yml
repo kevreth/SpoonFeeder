@@ -299,44 +299,6 @@ units:
         sdbr: null
         ref: null
         txt: |
-          Most of the time when discussing directories
-          we don't want to worry about the parent directories up to the root.
-          We only want to be concerned with a single directory under discussion.
-          [source]
-          ----
-          annual.report.q1.txt
-          annual.report.q2.txt
-          bob
-            holiday.party.txt
-          sue
-            accounts.payable.txt
-          amy/
-          ----
-          This directory is the contents of the "employees" directory.
-          We do not know where on the filesystem "employees" is located.
-          In most cases it's not important.
-      - name: Graphical representation
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          If the full path to the directory is required it can be shown like this.
-          [source]
-          ----
-          /home/employees
-            annual.report.q1.txt
-            annual.report.q2.txt
-            bob
-              holiday.party.txt
-            sue
-              accounts.payable.txt
-            amy/
-          ----
-      - name: Graphical representation
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
           Up to now, directory contents have been presented graphically:
           [graphviz, format="svg"]
           ....
@@ -357,13 +319,51 @@ units:
           which is how you would see them when using Bash.
           [source]
           ----
+          /home/employees
+            bob
+              holiday.party.txt
+            sue
+              accounts.payable.txt
+          ----
+      - name: Graphical representation
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          Most of the time when discussing directories
+          we don't want to worry about the parent directories up to the root.
+          We only want to be concerned with a single directory under discussion.
+          So, we leave out the path to the directory.
+          [source]
+          ----
           annual.report.q1.txt
           annual.report.q2.txt
           bob
             holiday.party.txt
           sue
             accounts.payable.txt
-          amy/
+          ----
+          This directory is the contents of the "/home/employees" directory seen in the last slide
+          with the path removed.
+          This is the standard way directory contents will be displayed.
+          We often do not know or care where on the filesystem "employees" is located.
+          In most cases it's not important.
+      - name: Graphical representation
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          If the full path to the directory is required it can be shown like this.
+          [source]
+          ----
+          /home/employees
+            annual.report.q1.txt
+            annual.report.q2.txt
+            bob
+              holiday.party.txt
+            sue
+              accounts.payable.txt
+            amy/
           ----
       - name: Empty directories
         type: info
