@@ -737,6 +737,65 @@ units:
 
           Redirectors (`>`, `>>`) are not arguments.
         ccq: null
+    - name: Positional arguments
+      txt: Most of the Linux commands we've see so far can take positional arguments in ways we haven't used yet.
+      inst:
+      - name: ls
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+
+        ccq: null
+      - name: cp
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+
+        ccq: null
+      - name: mkdir
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+
+        ccq: null
+      - name: mv
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+
+        ccq: null
+      - name: rm
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+
+        ccq: null
+      - name: rmdir
+        type: info
+        sdbr: null
+        ref: null
+        txt: |
+          rmdir
+        ccq: null
+      - name: cat
+        type: info
+        sdbr: null
+        ref: null
+        ccq: null
+        txt: |
+          cat
+      - name: echo
+        type: info
+        sdbr: null
+        ref: null
+        ccq: null
+        txt: |
+          echo
     - name: Options
       txt: null
       inst:
