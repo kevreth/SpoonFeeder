@@ -698,14 +698,14 @@ units:
         txt: |
           [source, bash]
           ----
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           ----
           [source, bash]
           ----
-          $ rm sales_forecast_Q1.pdf
+          $ rm forecast_Q1.pdf
           $ ls
-          sales_report_Jan.csv
+          report_Jan.csv
           ----
         ccq: null
       - name: 'Deleting an empty directory: `rmdir`'
@@ -717,12 +717,12 @@ units:
           ----
           client_contact/
             client_list.csv
-          sales_reports/
+          reports/
           ----
           `rmdir` removes empty directories
           [source, bash]
           ----
-          $ rmdir sales_reports
+          $ rmdir reports
           $ ls
           client_contact
           ----
@@ -792,18 +792,18 @@ units:
           [source, bash]
           ----
           bob
-            sales_report_Jan.csv
+            report_Jan.csv
           sue
-            sales_forecast_Q1.pdf
+            forecast_Q1.pdf
           ----
         txt: |
           [source, bash]
           ----
           $ ls bob sue
           bob:
-            sales_report_Jan.csv
+            report_Jan.csv
           sue:
-            sales_forecast_Q1.pdf
+            forecast_Q1.pdf
           ----
         ccq: null
       - name: '`cp` can copy multiple objects to a target'
@@ -812,17 +812,17 @@ units:
         ref: |
           [source, bash]
           ----
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           sue/
           ----
         txt: |
           [source, bash]
           ----
-          $ cp sales_report_Jan.csv sales_forecast_Q1.pdf sue
+          $ cp report_Jan.csv forecast_Q1.pdf sue
           $ ls sue
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           ----
         ccq: null
       - name: '`mkdir` can create multiple directories'
@@ -844,17 +844,17 @@ units:
         ref: |
           [source, bash]
           ----
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           sue/
           ----
         txt: |
           [source, bash]
           ----
-          $ mv sales_report_Jan.csv sales_forecast_Q1.pdf sue
+          $ mv report_Jan.csv forecast_Q1.pdf sue
           $ ls sue
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           ----
       - name: '`rm` can remove multiple file objects'
         type: info
@@ -863,13 +863,13 @@ units:
         ref: |
           [source, bash]
           ----
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           ----
         txt: |
           [source, bash]
           ----
-          $ rm sales_report_Jan.csv sales_forecast_Q1.pdf sue
+          $ rm report_Jan.csv forecast_Q1.pdf sue
           $ ls
           ----
       - name: '`rmdir` can remove multiple directories'
@@ -880,18 +880,18 @@ units:
           [source, bash]
           ----
           bob
-            sales_report_Jan.csv
+            report_Jan.csv
           sue
-            sales_forecast_Q1.pdf
+            forecast_Q1.pdf
           ----
         txt: |
           [source, bash]
           ----
           $ ls bob sue
           bob:
-            sales_report_Jan.csv
+            report_Jan.csv
           sue:
-            sales_forecast_Q1.pdf
+            forecast_Q1.pdf
           ----
       - name: '`cat` can display multiple files'
         type: info
@@ -900,13 +900,13 @@ units:
         ref: |
           [source, bash]
           ----
-          sales_report_Jan.csv
-          sales_forecast_Q1.pdf
+          report_Jan.csv
+          forecast_Q1.pdf
           ----
         txt: |
           [source, bash]
           ----
-          $ cat sales_report_Jan.txt sales_forecast_Q1.txt
+          $ cat report_Jan.txt forecast_Q1.txt
           Jan: 100,000,000
           Q1: 400,000,000
           ----
