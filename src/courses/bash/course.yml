@@ -596,7 +596,6 @@ units:
           $ cat test.txt
           line 2
           ----
-
           "line 1" was overwritten.
       - name: 'Adding more lines: `>>`'
         type: info
@@ -604,7 +603,6 @@ units:
         ref: null
         txt: |
           Instead of overwriting, add a second line using the _append redirector_ (`>>`).
-
           [source, bash]
           ----
           $ echo "second line" >> test.txt
@@ -612,7 +610,6 @@ units:
           first line
           second line
           ----
-
           Like the output redirector,
           the file will be created if it doesn't exist,
           so to prevent data loss,
