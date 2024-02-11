@@ -785,64 +785,114 @@ units:
     - name: Positional arguments
       txt: Most of the Linux commands we've see so far can take positional arguments in ways we haven't used yet.
       inst:
-      - name: ls
+      - name: '`ls` can list multiple directories'
+        type: info
+        sdbr: null
+        ref: |
+          [source, bash]
+          ----
+          bob
+            sales_report_Jan.csv
+          sue
+            sales_forecast_Q1.pdf
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ ls bob sue
+          bob:
+            sales_report_Jan.csv
+          sue:
+            sales_forecast_Q1.pdf
+          ----
+        ccq: null
+      - name: '`cp` can copy multiple objects to a target'
+        type: info
+        sdbr: null
+        ref: |
+          [source, bash]
+          ----
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          sue/
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ cp sales_report_Jan.csv sales_forecast_Q1.pdf sue
+          $ ls sue
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          ----
+        ccq: null
+      - name: '`mkdir` can create multiple directories'
+        type: info
+        sdbr: null
+        ccq: null
+        ref: null
+        txt: |
+          [source, bash]
+          ----
+          $ mkdir bob sue
+          $ ls
+          bob sue
+          ----
+      - name: '`mv` can move multiple objects to another directory'
+        type: info
+        sdbr: null
+        ccq: null
+        ref: |
+          [source, bash]
+          ----
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          sue/
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ mv sales_report_Jan.csv sales_forecast_Q1.pdf sue
+          $ ls sue
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          ----
+      - name: '`rm` can remove multiple file objects'
+        type: info
+        sdbr: null
+        ccq: null
+        ref: |
+          [source, bash]
+          ----
+          sales_report_Jan.csv
+          sales_forecast_Q1.pdf
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ rm sales_report_Jan.csv sales_forecast_Q1.pdf sue
+          $ ls
+          ----
+      - name: '`rmdir` can remove multiple directories'
         type: info
         sdbr: null
         ref: null
         txt: |
-          ls can list multiple directories 
 
-          $ ls 
         ccq: null
-      - name: cp
+      - name: '`cat` can display multiple files'
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
-          cp can copy an object to multiple tsrgets
-        ccq: null
-      - name: mkdir
+
+      - name: '`echo` can display multiple pieces of text'
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
-          mkdor can create muliple directories
-        ccq: null
-      - name: mv
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          
-        ccq: null
-      - name: rm
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          rm can remove multiple file objectd
-        ccq: null
-      - name: rmdir
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          rmdir can remove multiple directories
-        ccq: null
-      - name: cat
-        type: info
-        sdbr: null
-        ref: null
-        ccq: null
-        txt: |
-          cat can display multiple files
-      - name: echo
-        type: info
-        sdbr: null
-        ref: null
-        ccq: null
-        txt: |
-          echo can fodplsy multiple pieces of text
+
     - name: Options
       txt: null
       inst:
