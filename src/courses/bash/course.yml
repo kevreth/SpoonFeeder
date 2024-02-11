@@ -670,7 +670,7 @@ units:
           ----
 
           With `mv`, we're changing the path to a file or directory; "moving to a new path".
-      - name: 'Moving files: `mv`'
+      - name: 'Moving and renaming files simultaneously: `mv`'
         type: info
         sdbr: null
         ref: null
