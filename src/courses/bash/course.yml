@@ -10,8 +10,8 @@ units:
     - name: What is Bash?
       txt: null
       inst:
-      - type: info
-        name: What is Bash?
+      - name: What is Bash?
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -20,8 +20,8 @@ units:
           After starting Bash, something like this will appear with no indication of what to do next.
 
           `$_`
-      - type: info
-        name: GUIs and Bash
+      - name: GUIs and Bash
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -31,8 +31,8 @@ units:
           So, after entering a correct username and password,
           if a GUI is started, then Bash can be started in a window of the GUI but
           the specific method varies among Linux systems.
-      - type: info
-        name: Bash CLI vs a GUI
+      - name: Bash CLI vs a GUI
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -62,8 +62,8 @@ units:
           </div>
           </div>
           ++++
-      - type: info
-        name: Why use Bash?
+      - name: Why use Bash?
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -85,28 +85,28 @@ units:
     - name: Filesystem objects
       txt:  null
       inst:
-      - type: info
-        name: Directories, files, and data
+      - name: Directories, files, and data
+        type: info
         sdbr: null
         ref: null
         txt: |
           Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
-      - type: info
-        name: null
+      - name: null
+        type: info
         sdbr: null
         ref: null
         ccq: null
         txt: |
           A _filesystem_ is how computers store data on permanent storage devices such as disk drives.
-      - type: info
-        name: Filesystems
+      - name: Filesystems
+        type: info
         sdbr: null
         ref: null
         ccq: null
         txt: |
           Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
-      - type: info
-        name: Files
+      - name: Files
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -115,16 +115,16 @@ units:
           A file can contain any type of computer data.
           Examples include a text document, a music track, or software program.
           Files cannot contain other files.
-      - type: info
-        name: Directories
+      - name: Directories
+        type: info
         sdbr: null
         ref: null
         ccq: null
         txt: |
           _Directories_ are an organization tool.
           Directories contain files and other directories but cannot directly contain data like files can.
-      - type: info
-        name: The relationship of directories, files, and data.
+      - name: The relationship of directories, files, and data.
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -139,8 +139,8 @@ units:
           }
           ....
         ccq: null
-      - type: info
-        name: Filesystems
+      - name: Filesystems
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -148,8 +148,8 @@ units:
           Comparing a filesystem to a tree,
           directories are tree branches and files are leaves.
           Leaves (files) can grow anywhere, including the tree trunk.
-      - type: info
-        name: The root directory
+      - name: The root directory
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -157,8 +157,8 @@ units:
           At the top of the tree is the _root directory_ which corresponds to a tree trunk.
           There can be only one root directory and it is named "/",
           which is the character _frontslash_ ("\" is a "backslash").
-      - type: info
-        name: An example filesystem
+      - name: An example filesystem
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -185,16 +185,16 @@ units:
 
           In this simple filesystem, the root directory contains two directories and two files.
           Each of those two directories also contain directories and files.
-      - type: info
-        name: Filesystem limits
+      - name: Filesystem limits
+        type: info
         sdbr: null
         ref: null
         ccq: null
         txt: |
           There is no practical limit to the number of directories and files a directory can contain,
           nor is there a practical limit to how deep directories can branch to other directories.
-      - type: info
-        name: Filesystem object naming
+      - name: Filesystem object naming
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -215,8 +215,8 @@ units:
           In this example, the root directory contains directories for "bob" and "sue" and two files.
           "bob" contains two files and "sue" contains one file.
         ccq: null
-      - type: info
-        name: Filesystem paths
+      - name: Filesystem paths
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -247,8 +247,8 @@ units:
     - name: Representing directory contents
       txt: null
       inst:
-      - type: info
-        name: Graphical representation
+      - name: Graphical representation
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -268,8 +268,8 @@ units:
           This directory is the contents of the "employees" directory.
           We do not know where on the filesystem "employees" is located.
           In most cases it's not important.
-      - type: info
-        name: Graphical representation
+      - name: Graphical representation
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -285,8 +285,8 @@ units:
               accounts.payable.txt
             amy/
           ----
-      - type: info
-        name: Graphical representation
+      - name: Graphical representation
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -300,8 +300,8 @@ units:
             sue -> "ap.txt"
           }
           ....
-      - type: info
-        name: Textual representation
+      - name: Textual representation
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -318,8 +318,8 @@ units:
             accounts.payable.txt
           amy/
           ----
-      - type: info
-        name: Empty directories
+      - name: Empty directories
+        type: info
         sdbr: null
         ref: null
         ccq: null
@@ -327,8 +327,8 @@ units:
           `amy` is an empty directory that contains no objects.
           To distinguish empty directories from files, empty directories have a frontslash after them.
         ccq: null
-      - type: info
-        name: 'File paths: ending frontslashes'
+      - name: 'File paths: ending frontslashes'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -341,8 +341,8 @@ units:
 
           The ending frontslash is often omitted depending on situations which we will explore.
         ccq: null
-      - type: info
-        name: 'File paths: file extensions'
+      - name: 'File paths: file extensions'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -357,8 +357,8 @@ units:
           Hundreds of standard file extensions exist.
           You will learn more file extensions as you learn Bash.
         ccq: null
-      - type: info
-        name: Directory contents must have unique names
+      - name: Directory contents must have unique names
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -391,8 +391,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: Current working directories
+      - name: Current working directories
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -413,8 +413,8 @@ units:
           The contents of the CWD can be addressed without using complete file paths.
           If our CWD is "bob" then we can address "holiday.party.txt" without preceding with "/bob/".
         ccq: null
-      - type: info
-        name: Home directories
+      - name: Home directories
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -427,8 +427,8 @@ units:
 
           `/home/bob/`
         ccq: null
-      - type: info
-        name: Bash interface
+      - name: Bash interface
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -441,8 +441,8 @@ units:
           That is called the _prompt_ and where commands can be typed in.
           The prompt is automatically displayed immediately after initiating a Bash session.
         ccq: null
-      - type: info
-        name: 'Printing to the screen: `echo`'
+      - name: 'Printing to the screen: `echo`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -462,8 +462,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: Displaying the CWD
+      - name: Displaying the CWD
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -486,8 +486,8 @@ units:
           Just know that's the tree of the CWD you're working with.
           In most cases, the CWD will only be identified if significant..
         ccq: null
-      - type: info
-        name: 'Printing the path of the CWD: `pwd`'
+      - name: 'Printing the path of the CWD: `pwd`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -499,8 +499,8 @@ units:
           /home/bob
           ----
         ccq: null
-      - type: info
-        name: 'changing the CWD: `cd`'
+      - name: 'changing the CWD: `cd`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -520,8 +520,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: 'Listing directory contents: `ls`'
+      - name: 'Listing directory contents: `ls`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -540,8 +540,8 @@ units:
           `ls` by itself does not provide any indication of what the type of the objects are.
           We will see later how to fix that.
         ccq: null
-      - type: info
-        name: 'Creating a new directory: `mkdir`'
+      - name: 'Creating a new directory: `mkdir`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -557,8 +557,8 @@ units:
           bob sue
           ----
         ccq: null
-      - type: info
-        name: 'Creating a file: `>`'
+      - name: 'Creating a file: `>`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -579,8 +579,8 @@ units:
           test.txt
           ----
         ccq: null
-      - type: info
-        name: 'Viewing file contents: `cat`'
+      - name: 'Viewing file contents: `cat`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -591,8 +591,8 @@ units:
           this is a line
           ----
         ccq: null
-      - type: info
-        name: 'Adding more lines: `>>`'
+      - name: 'Adding more lines: `>>`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -629,8 +629,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: 'Copying files: `cp`'
+      - name: 'Copying files: `cp`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -646,8 +646,8 @@ units:
           `cp` cannot copy directories this way.
           We will look at directory copying later.
         ccq: null
-      - type: info
-        name: 'Renaming files: `mv`'
+      - name: 'Renaming files: `mv`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -676,8 +676,8 @@ units:
 
           We are not moving data, but rather moving the data to another path.
         ccq: null
-      - type: info
-        name: 'Moving files: `mv`'
+      - name: 'Moving files: `mv`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -702,8 +702,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: The many meanings of "command"
+      - name: The many meanings of "command"
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -717,8 +717,8 @@ units:
           While it may seem a problem,
           in practice which of the three meanings of "command" is intended is understood from context.
         ccq: null
-      - type: info
-        name: Arguments we've already seen
+      - name: Arguments we've already seen
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -748,8 +748,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: 'Option example: `ls -1`'
+      - name: 'Option example: `ls -1`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -779,8 +779,8 @@ units:
       #   txt: |
 
       #   ccq: null
-      - type: info
-        name: 'Printing directory contents in reverse: `ls -r`'
+      - name: 'Printing directory contents in reverse: `ls -r`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -800,8 +800,8 @@ units:
           logo_guidelines.pdf company_brand_book.pdf
           ----
         ccq: null
-      - type: info
-        name: Using multiple options
+      - name: Using multiple options
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -834,8 +834,8 @@ units:
         company_brand_book.pdf
         ----
       inst:
-      - type: info
-        name: Options can appear in any order
+      - name: Options can appear in any order
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -858,8 +858,8 @@ units:
           company_brand_book.pdf
           ----
         ccq: null
-      - type: info
-        name: Combining options
+      - name: Combining options
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -876,8 +876,8 @@ units:
           company_brand_book.pdf
           ----
         ccq: null
-      - type: info
-        name: Using options with positional arguments
+      - name: Using options with positional arguments
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -910,8 +910,8 @@ units:
           Most commands have a specified area where options can occur.
           Within that area options can be in any order.
         ccq: null
-      - type: info
-        name: How Linux views arguments
+      - name: How Linux views arguments
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -936,8 +936,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: 'Deleting a single file: `rm`'
+      - name: 'Deleting a single file: `rm`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -953,8 +953,8 @@ units:
           sales_report_Jan.csv
           ----
         ccq: null
-      - type: info
-        name: 'Deleting an empty directory: `rmdir`'
+      - name: 'Deleting an empty directory: `rmdir`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -979,8 +979,8 @@ units:
           rmdir: failed to remove 'client_contact': Directory not empty
         ccq: null
 
-      - type: info
-        name: 'Deleting a directory tree: `rm -rf`'
+      - name: 'Deleting a directory tree: `rm -rf`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1034,8 +1034,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: 'Copying directory trees: `cp -a`'
+      - name: 'Copying directory trees: `cp -a`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1057,8 +1057,8 @@ units:
           client_list.csv
           ----
         ccq: null
-      - type: info
-        name: 'Do not overwrite existing file on copy: `cp -n`'
+      - name: 'Do not overwrite existing file on copy: `cp -n`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1074,8 +1074,8 @@ units:
           In this situation, `password_policy_20.pdf` will remain unchanged.
           `cp` will not provide any notice that the file was not copied.
         ccq: null
-      - type: info
-        name: 'Numbering lines: `cat -n`'
+      - name: 'Numbering lines: `cat -n`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1100,8 +1100,8 @@ units:
           4	ut labore et dolore magna aliqua.
           ----
         ccq: null
-      - type: info
-        name: 'Create complete paths: `mkdir -p`'
+      - name: 'Create complete paths: `mkdir -p`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1121,8 +1121,8 @@ units:
       txt: |
         null
       inst:
-      - type: info
-        name: 'List extended object information: `ls -l`'
+      - name: 'List extended object information: `ls -l`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1141,8 +1141,8 @@ units:
           Most of the output can't be understood until later in the course,
           but the file sizes (1049 and 124) and file date and times are provided.
         ccq: null
-      - type: info
-        name: 'List object information recursively: `ls -R`'
+      - name: 'List object information recursively: `ls -R`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1168,8 +1168,8 @@ units:
           ----
           `ls -r` displays the entire directory tree.
         ccq: null
-      - type: info
-        name: 'List objects sorted by time: `ls -t`'
+      - name: 'List objects sorted by time: `ls -t`'
+        type: info
         sdbr: null
         ref: null
         txt: |
@@ -1184,8 +1184,8 @@ units:
           -rw-r--r-- 1 kev kev   7777 Feb  2 23:20 slides.py
           ----
         ccq: null
-      - type: info
-        name: 'Listing file objects with markers: `ls -F`'
+      - name: 'Listing file objects with markers: `ls -F`'
+        type: info
         sdbr: null
         ref: null
         txt: |
