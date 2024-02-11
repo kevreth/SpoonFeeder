@@ -19,7 +19,7 @@ units:
           _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems.
           After starting Bash, something like this will appear with no indication of what to do next.
 
-          `$ `
+          `$`
       - name: Bash commands
         type: info
         sdbr: null
@@ -105,7 +105,7 @@ units:
           </div>
           </div>
           ++++
-      - name: Why use Bash?
+      - name: Why use Bash instead of a GUI?
         type: info
         sdbr: null
         ref: null
@@ -115,6 +115,7 @@ units:
 
           * CLIs make certain types of tasks easier.
           * Some tasks cannot be done without Bash because a GUI equivalent is unavailable.
+          * CLI programming is easy, GUI programming is difficult.
           * Tasks can easily be automated with Bash but GUI automation is difficult.
           * Typing is faster than using the mouse for most tasks.
 
@@ -123,7 +124,12 @@ units:
           A distinguishing trait of advanced Linux users is knowing how to use Bash.
         ccq: null
   - name: The Linux filesystem
-    txt: null
+    txt: |
+      `echo`, the only command studied so far,
+      doesn't require use of accessing persistent data storage.
+
+      The Bash commands we will be learning at first do require accessing persistent data storage,
+      so this lesson explains how persistent storage works in Linux.
     modules:
     - name: Filesystem objects
       txt:  null
