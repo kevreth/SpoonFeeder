@@ -136,12 +136,6 @@ units:
         type: info
         sdbr: null
         ref: null
-        txt: |
-          Although not specific to Bash, understanding how Linux stores data is necessary to use Bash.
-      - name: null
-        type: info
-        sdbr: null
-        ref: null
         ccq: null
         txt: |
           A _filesystem_ is how computers store data on permanent storage devices such as disk drives.
