@@ -358,20 +358,9 @@ units:
           ----
           `amy` is an empty directory containing no objects.
           To distinguish empty directories from files, empty directories have a frontslash after them.
-      - name: 'File paths: ending frontslashes'
-        type: info
-        sdbr: null
-        ref: null
-        txt: |
-          An ending "/" distinguishes if the final item in a directory path is a file or a directory.
-          So,
-
-          `monthly.reports/` is a directory
-
-          `monthly.reports` is a file.
-
-          The ending frontslash is often omitted depending on situations which we will explore.
-        ccq: null
+    - name: More about directories and files
+      txt: null
+      inst:
       - name: 'File paths: file extensions'
         type: info
         sdbr: null
