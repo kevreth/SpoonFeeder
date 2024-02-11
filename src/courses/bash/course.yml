@@ -180,7 +180,7 @@ units:
           }
           ....
           Directories can contain directories and files, files contain data.
-      - name: Filesystems
+      - name: Filesystems analogy
         type: info
         sdbr: null
         ref: null
@@ -188,7 +188,11 @@ units:
         txt: |
           Comparing a filesystem to a tree,
           directories are tree branches and files are leaves.
+          Branches can grow from the trunk and other branches.
           Leaves (files) can grow anywhere, including the tree trunk.
+    - name: More about filesystems
+      txt:  null
+      inst:
       - name: The root directory
         type: info
         sdbr: null
@@ -315,9 +319,9 @@ units:
           ----
           /home/employees
             bob
-              holiday.party.txt
+              party.txt
             sue
-              accounts.payable.txt
+              ap.txt
           ----
       - name: Graphical representation
         type: info
@@ -327,18 +331,16 @@ units:
           Most of the time when discussing directories
           we don't want to worry about the parent directories up to the root.
           We only want to be concerned with a single directory under discussion.
-          So, we leave out the path to the directory.
+          So, we leave out the path to the directory and remove indentation of the contents.
           [source]
           ----
-          annual.report.q1.txt
-          annual.report.q2.txt
           bob
-            holiday.party.txt
+            party.txt
           sue
-            accounts.payable.txt
+            ap.txt
           ----
           This directory is the contents of the "/home/employees" directory seen in the last slide
-          with the path removed.
+          with the path removed and the contents not indented.
           This is the standard way directory contents will be displayed.
           We often do not know or care where on the filesystem "employees" is located.
           In most cases it's not important.
