@@ -527,7 +527,7 @@ units:
           ----
 
           `ls` by itself does not provide any indication of what the type of the objects are.
-          We will see later how to fix that.
+          We will see later how to view more object information.
         ccq: null
       - name: 'Creating a new directory: `mkdir`'
         type: info
@@ -627,11 +627,11 @@ units:
 
           [source, bash]
           ----
+          $ echo "test" > test.txt
           $ cp test.txt sample.txt
           $ ls
           test.txt sample.txt
           ----
-
           `cp` cannot copy directories this way.
           We will look at directory copying later.
         ccq: null
@@ -644,26 +644,14 @@ units:
 
           [source, bash]
           ----
-          $ mkdir /home/bob/
           $ echo "first line" > test.txt
           $ mv test.txt test0.txt
-          test.txt test0.txt
+          $ ls
+          test0.txt
           ----
 
           `mv` is an abbreviation of "move".
-          Why "move" instead of "rename"?
-
-          Think of `mv` as using the entire file path:
-
-          `/home/bob/test0.txt`
-
-          The data was previously available at
-
-          `/home/bob/test.txt`
-
-          So, test.txt was renamed by moving it to another path.
-
-          We are not moving data, but rather moving the data to another path.
+          Think of "move" as "moving to a new path" where the path includes the filename.
         ccq: null
       - name: 'Moving files: `mv`'
         type: info
@@ -674,15 +662,32 @@ units:
 
           [source, bash]
           ----
-          $ mkdir /home/bob/
+          $ mkdir /steve/
           $ echo "first line" > test.txt
-          $ mv test.txt /home/
-          $ ls /home/
+          $ mv test.txt /steve/
+          $ ls /steve/
           test.txt
           ----
 
-          With `mv`, we're changing the path to a file or directory; "moving to a new address".
+          With `mv`, we're changing the path to a file or directory; "moving to a new path".
+      - name: 'Moving files: `mv`'
+        type: info
+        sdbr: null
+        ref: null
         ccq: null
+        txt: |
+          Since `mv` moves to a different path,
+          it can rename the file and move it to a different directory simultaneously.
+
+          [source, bash]
+          ----
+          $ mkdir /steve/
+          $ echo "first line" > test.txt
+          $ mv test.txt /steve/line.txt
+          $ cd /steve/
+          $ ls
+          line.txt
+          ----
   - name: Command arguments
     txt: |
       null
