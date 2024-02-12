@@ -14,12 +14,19 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: Is bash a _command line interface_ to Windows?
+            ans: 'no'
         txt: |
           _Bash_ is a _command line interface_ (CLI) to Linux.
       - name: Bash commands
         type: info
         sdbr: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: null
         txt: |
           The most common way to interact with Bash is by typing _commands_.
@@ -28,7 +35,6 @@ units:
 
           is called the _prompt_ and where commands can be typed in.
           The prompt is automatically displayed immediately after initiating a Bash session.
-        ccq: null
       - name: 'Printing to the screen: `echo`'
         type: info
         sdbr: null
@@ -62,7 +68,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           Unless a _graphical user interface_ (GUI) is started with lots of pretty windows that move around,
           Bash will probably be what is seen after logging into a Linux computer.
@@ -73,7 +82,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           ++++
           <div style="display: flex; justify-content: left; align-items: flex-start;">
@@ -104,7 +116,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           One may wonder why a CLI like Bash is worth learning when an easily learned and used GUI is available.
           The answer is,
@@ -127,21 +142,30 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           A _filesystem_ is how computers store data on permanent storage devices such as disk drives.
       - name: Directories and files
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           Filesystems contain primarily two types of items, known as _objects_: _directories_ and _files_.
       - name: Files
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           _Files_ contain data.
           A file can contain any type of computer data.
@@ -156,7 +180,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           _Directories_ are an organization tool.
           Directories contain files and other directories but cannot directly contain data like files can.
@@ -164,8 +191,14 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           Arrows represent containership.
           [graphviz, format="svg"]
@@ -181,7 +214,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           Comparing a filesystem to a tree,
           directories are tree branches and files are leaves.
@@ -194,7 +230,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           At the top of the tree is the _root directory_ which corresponds to a tree trunk.
           There can be only one root directory and it is named "/",
@@ -203,7 +242,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           An example filesystem.
           Arrows represent containership.
@@ -231,7 +273,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           There is no practical limit to the number of directories and files a directory can contain,
           nor is there a practical limit to how deep directories can branch to other directories.
@@ -256,7 +301,10 @@ units:
           ....
           In this example, the root directory contains directories for "bob" and "sue" and two files.
           "bob" contains two files and "sue" contains one file.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: Filesystem paths
         type: info
         sdbr: null
@@ -283,7 +331,10 @@ units:
           The path to "holiday.party.txt" is "/bob/holiday.party.txt".
 
           Every object on the filesystem can be addressed this way.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
     - name: Representing directory contents
       txt: null
       inst:
@@ -306,7 +357,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           From now on, directory contents will be presented textually,
           which is how you would see them when using Bash.
@@ -343,7 +397,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           [source]
           ----
@@ -371,7 +428,10 @@ units:
 
           Hundreds of standard file extensions exist.
           You will learn more file extensions as you learn Bash.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: Directory contents must have unique names
         type: info
         sdbr: null
@@ -398,7 +458,10 @@ units:
           ----
 
           Beyond their role in organization, directories prevent name conflicts.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
   - name: Beginning Bash
     txt: null
     modules:
@@ -409,7 +472,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           Every Bash session has an associated _current working directory_ (CWD).
           Think of the CWD as your current location on the filesystem.
@@ -431,7 +497,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           When starting Bash, your CWD is normally the _home directory_ of the user you logged in as.
           Unless configured otherwise, the home directory follows the pattern
@@ -470,7 +539,10 @@ units:
 
           Just know that's the tree of the CWD you're working with.
           In most cases, the CWD will only be identified if significant..
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Printing the path of the CWD: `pwd`'
         type: info
         sdbr: null
@@ -483,7 +555,10 @@ units:
           $ pwd
           /home/bob
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'changing the CWD: `cd`'
         type: info
         sdbr: null
@@ -500,7 +575,10 @@ units:
           $ pwd
           bob
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
     - name: Creating and viewing file objects
       txt: null
       inst:
@@ -523,7 +601,10 @@ units:
 
           `ls` by itself does not provide any indication of what the type of the objects are.
           We will see later how to view more object information.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Creating a new directory: `mkdir`'
         type: info
         sdbr: null
@@ -540,7 +621,10 @@ units:
           $ ls
           bob sue
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Creating a file: `>`'
         type: info
         sdbr: null
@@ -562,7 +646,10 @@ units:
           $ ls
           test.txt
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Viewing file contents: `cat`'
         type: info
         sdbr: null
@@ -574,7 +661,10 @@ units:
           $ cat test.txt
           this is a line
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: '`>` overwrites files'
         type: info
         sdbr: null
@@ -608,7 +698,10 @@ units:
           the file will be created if it doesn't exist,
           so to prevent data loss,
           prefer append redirection to output redirection.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
     - name: Copying, renaming, and moving objects
       txt: null
       inst:
@@ -627,7 +720,10 @@ units:
           ----
           `cp` cannot copy directories this way.
           We will look at directory copying later.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Renaming files: `mv`'
         type: info
         sdbr: null
@@ -643,7 +739,10 @@ units:
           ----
           `mv` is an abbreviation of "move".
           Think of "move" as "moving to a new path" where the path includes the filename.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Moving files: `mv`'
         type: info
         sdbr: null
@@ -665,7 +764,10 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         txt: |
           Since `mv` moves to a different path,
           it can rename the file and move it to a different directory simultaneously.
@@ -685,7 +787,10 @@ units:
       - name: 'Deleting a single file: `rm`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           [source, bash]
           ----
@@ -702,7 +807,10 @@ units:
       - name: 'Deleting an empty directory: `rmdir`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -746,7 +854,10 @@ units:
           All three of these are correct.
           While it may seem a problem,
           in practice which of the three meanings of "command" is intended is understood from context.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: Arguments we've already seen
         type: info
         sdbr: null
@@ -773,7 +884,10 @@ units:
           They cannot be reversed.
 
           Redirectors (`>`, `>>`) are not arguments. Redirectors are processed by Linux not by commands.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
     - name: Positional arguments
       txt: Most of the Linux commands we've see so far can take positional arguments in ways we haven't used yet.
       inst:
@@ -798,7 +912,10 @@ units:
           sue:
             forecast_Q1.pdf
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: '`cp` can copy multiple objects to a target'
         type: info
         sdbr: null
@@ -818,11 +935,17 @@ units:
           report_Jan.csv
           forecast_Q1.pdf
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: '`mkdir` can create multiple directories'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: null
         txt: |
           [source, bash]
@@ -834,7 +957,10 @@ units:
       - name: '`mv` can move multiple objects to another directory'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -854,7 +980,10 @@ units:
       - name: '`rm` can remove multiple file objects'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -871,7 +1000,10 @@ units:
       - name: '`rmdir` can remove multiple directories'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -888,7 +1020,10 @@ units:
       - name: '`cat` can display multiple files'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -906,7 +1041,10 @@ units:
       - name: '`echo` can display multiple pieces of text'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: null
         txt: |
           [source, bash]
@@ -920,7 +1058,10 @@ units:
       - name: 'Option example: `ls -1`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source,bash]
@@ -943,7 +1084,10 @@ units:
       - name: 'Printing directory contents in reverse: `ls -r`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source,bash]
@@ -963,7 +1107,10 @@ units:
       - name: Using multiple options
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source,bash]
@@ -998,7 +1145,10 @@ units:
       - name: Options can appear in any order
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source,bash]
@@ -1021,7 +1171,10 @@ units:
       - name: Combining options
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source,bash]
@@ -1040,7 +1193,10 @@ units:
       - name: Using options with positional arguments
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source,bash]
@@ -1075,7 +1231,10 @@ units:
       - name: How Linux views arguments
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: null
         txt: |
           Consider the following command
@@ -1122,7 +1281,10 @@ units:
       - name: 'Copying directory trees: `cp -a`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -1158,11 +1320,17 @@ units:
           ----
           In this situation, `password_policy_20.pdf` will remain unchanged.
           `cp` will not provide any notice that the file was not copied.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Numbering lines: `cat -n`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: null
         txt: |
           "Lorem ipsum" is a corrupted Latin text
@@ -1201,7 +1369,10 @@ units:
           $ ls marketing
           bob
           ----
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'Deleting a directory tree: `rm -rf`'
         type: info
         sdbr: null
@@ -1228,14 +1399,20 @@ units:
           The most dangerous command possible is `rm -rf /`.
           This will delete everything in your filesystem and crash Linux.
           All data will be lost and Linux will require re-installation.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
     - name: More `ls` options
       txt: null
       inst:
       - name: 'List extended object information: `ls -l`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
@@ -1279,11 +1456,17 @@ units:
             crm_tool_manual.pdf
           ----
           `ls -r` displays the entire directory tree.
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
       - name: 'List objects sorted by time: `ls -t`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: null
         txt: |
           `ls -t` changes from the default alphabetical sort order to ordering from most recent to oldest.
@@ -1299,7 +1482,10 @@ units:
       - name: 'Listing file objects with markers: `ls -F`'
         type: info
         sdbr: null
-        ccq: null
+        ccq:
+          - type: bool
+            txt: question
+            ans: 'no'
         ref: |
           .CWD
           [source, bash]
