@@ -1001,6 +1001,7 @@ units:
       - name: Options can appear in any order
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           Options, unlike positional arguments,
@@ -1021,10 +1022,10 @@ units:
           logo_guidelines.pdf
           company_brand_book.pdf
           ----
-        ccq: null
       - name: Combining options
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           [source,bash]
@@ -1039,11 +1040,11 @@ units:
           logo_guidelines.pdf
           company_brand_book.pdf
           ----
-        ccq: null
       - name: Using options with positional arguments
         type: info
         sdbr: null
         ref: null
+        ccq: null
         txt: |
           [source,bash]
           ----
@@ -1073,11 +1074,11 @@ units:
 
           Most commands have a specified area where options can occur.
           Within that area options can be in any order.
-        ccq: null
       - name: How Linux views arguments
         type: info
         sdbr: null
         ref: null
+        ccq: null
         txt: |
           Consider the following command
 
@@ -1095,20 +1096,19 @@ units:
           Attempting to standardize,
           most Linux commands follow a certain pattern for their arguments,
           but some Linux commands are rogue and don't follow typical patterns.
-        ccq: null
   - name: More commands with options
     txt: |
       null
       So far, we have introduced these commands.
 
+      * echo
       * cat
+      * ls
+      * pwd
       * cd
       * cp
-      * echo
-      * ls
-      * mkdir
       * mv
-      * pwd
+      * mkdir
       * rm
       * rmdir
 
