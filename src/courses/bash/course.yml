@@ -25,8 +25,11 @@ units:
         sdbr: null
         ccq:
           - type: bool
-            txt: question
-            ans: 'no'
+            txt: Commands are the most common way to interact with Bash.
+            ans: 'yes'
+          - type: bool
+            txt: The prompts is where commands are typed in.
+            ans: 'yes'
         ref: null
         txt: |
           The most common way to interact with Bash is by typing _commands_.
@@ -39,6 +42,10 @@ units:
         type: info
         sdbr: null
         ref: null
+        ccq:
+          - type: bool
+            txt: '`echo` prints to the screen.'
+            ans: 'yes'
         txt: |
           Our first Bash command will print to the screen.
           Anything after the prompt (`$`) on the same line is content you would type.
@@ -49,7 +56,8 @@ units:
           Hello World!
           ----
 
-          Always press the `ENTER` (or on some systems `RETURN`) key after finishing typing a command to execute (run) it.
+          Always press the `ENTER` (or on some systems `RETURN`) key
+          after finishing typing a command to execute (run) it.
           In this case, we would type
 
           `echo "Hello World!"<ENTER>`
@@ -82,10 +90,7 @@ units:
         type: info
         sdbr: null
         ref: null
-        ccq:
-          - type: bool
-            txt: question
-            ans: 'no'
+        ccq: null
         txt: |
           ++++
           <div style="display: flex; justify-content: left; align-items: flex-start;">
@@ -118,10 +123,13 @@ units:
         ref: null
         ccq:
           - type: bool
-            txt: question
+            txt: |
+              A reason Bash is used when a GUI is available is because
+              a mouse is faster than a keyboard.
             ans: 'no'
         txt: |
-          One may wonder why a CLI like Bash is worth learning when an easily learned and used GUI is available.
+          One may wonder why a CLI like Bash is worth learning when
+          an easily learned and used GUI is available.
           The answer is,
 
           * CLIs make certain types of tasks easier.
