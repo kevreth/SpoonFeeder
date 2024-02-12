@@ -263,7 +263,6 @@ units:
         ref: null
         txt: |
           We can address any object on a filesystem using a _path_.
-
           [graphviz, format="svg"]
           ....
           digraph g {
@@ -279,7 +278,6 @@ units:
             sue -> "ap.txt"
           }
           ....
-
           The directories necessary to address any file or directory in a file path are separated by "/".
 
           The path to "holiday.party.txt" is "/bob/holiday.party.txt".
@@ -580,7 +578,6 @@ units:
         ref: null
         txt: |
           The redirector used earlier `>`, overwrites any existing file content.
-
           [source, bash]
           ----
           $ echo "line 1" > test.txt
@@ -618,7 +615,6 @@ units:
         ref: null
         txt: |
           `cp` copies filesystem objects.
-
           [source, bash]
           ----
           $ echo "test" > test.txt
