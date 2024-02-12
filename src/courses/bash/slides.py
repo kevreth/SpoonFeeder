@@ -36,9 +36,12 @@ def extract_inner_content(inst):
   # ref_adoc=inst.get('ref')
   content_adoc = inst.get('txt')
   sdbr_adoc = inst.get('sdbr')
+  ref_adoc = inst.get('ref')
   retval = ''
   if name_adoc:
     retval = f"===== {name_adoc}\n\n"
+  if ref_adoc:
+    retval += ref_adoc
   if sdbr_adoc:
     retval += f'''
 ++++
