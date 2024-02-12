@@ -1509,3 +1509,108 @@ units:
           ----
           Notice that `security` has `/` after it to indicate a directory.
           `-F` has several other markers that will be explored later.
+- name: Making Bash easier to use
+  txt: methods to reduce typing effort in Bash
+  lessons:
+  - name: asdf
+    txt: null
+    modules:
+    - name: Path resolution
+      txt: null
+      inst:
+      - name: absolute and relative paths
+        type: info
+        txt: ''
+      - name: Quoting
+        type: info
+        txt: ''
+    - name: File globbing
+      txt: null
+      inst:
+      - name: wildcards
+        type: info
+        txt: ''
+      - name: '*'
+        type: info
+        txt: ''
+      - name: '?'
+        type: info
+        txt: ''
+      - name: '[]'
+        type: info
+        txt: ''
+      - name: !
+        type: info
+        txt: ''
+    - name: Command grouping
+      txt: null
+      inst:
+      - name: ';'
+        type: info
+        txt: ''
+      - name: '`&&`'
+        type: info
+        txt: ''
+    - name: Environment variables
+      txt: null
+      inst:
+      - name: export-set export attribute for shell variables
+        type: info
+        txt: ''
+      - name: env-run a program in a modified environment
+        type: info
+        txt: ''
+      - name: PATH
+        type: info
+        txt: ''
+      - name: CDPATH
+        type: info
+        txt: ''
+      - name: CWD
+        type: info
+        txt: ''
+      - name: USER
+        type: info
+        txt: ''
+    - name: Command line editing
+      txt: null
+      inst: []
+  - name: Command history
+    txt: null
+    modules:
+    - name: History environment variables
+      txt: null
+      inst:
+      - name: HISTCODE
+        type: info
+        txt: ''
+      - name: HISTFILESIZE
+        type: info
+        txt: ''
+      - name: HISTIGNORE
+        type: info
+        txt: ''
+      - name: HISTSIZE
+        type: info
+        txt: ''
+    - name: History modifiers
+      txt: null
+      inst: []
+  - name: Command expansion
+    txt: null
+    modules:
+    - name: tilde
+      txt: null
+      inst: []
+    - name: arithmetic
+      txt: null
+      inst: []
+    - name: brace
+      txt: null
+      inst: []
+    - name: parameter
+      txt: null
+      inst: []
+    - name: command
+      txt: null
+      inst: []
