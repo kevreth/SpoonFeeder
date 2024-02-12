@@ -869,7 +869,7 @@ units:
         txt: |
           [source, bash]
           ----
-          $ rm report_Jan.csv forecast_Q1.pdf sue
+          $ rm report_Jan.csv forecast_Q1.pdf
           $ ls
           ----
       - name: '`rmdir` can remove multiple directories'
@@ -880,18 +880,13 @@ units:
           [source, bash]
           ----
           bob
-            report_Jan.csv
           sue
-            forecast_Q1.pdf
           ----
         txt: |
           [source, bash]
           ----
-          $ ls bob sue
-          bob:
-            report_Jan.csv
-          sue:
-            forecast_Q1.pdf
+          $ rmdir bob sue
+          $ ls
           ----
       - name: '`cat` can display multiple files'
         type: info
