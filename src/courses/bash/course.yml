@@ -16,7 +16,7 @@ units:
         ref: null
         ccq: null
         txt: |
-          _Bash_ is a _command line interface_ (CLI) to Linux and many other"=====
+          _Bash_ is a _command line interface_ (CLI) to Linux.
       - name: Bash commands
         type: info
         sdbr: null
@@ -488,6 +488,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           bob/
@@ -507,6 +508,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           corporate.retreat.mp4
@@ -526,6 +528,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           bob/
@@ -682,7 +685,8 @@ units:
       - name: 'Deleting a single file: `rm`'
         type: info
         sdbr: null
-        ref: null
+        ccq: null
+        ref: |
           [source, bash]
           ----
           report_Jan.csv
@@ -695,11 +699,12 @@ units:
           $ ls
           report_Jan.csv
           ----
-        ccq: null
       - name: 'Deleting an empty directory: `rmdir`'
         type: info
         sdbr: null
+        ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           client_contact/
@@ -720,7 +725,6 @@ units:
           $ rmdir client_contact
           ----
           rmdir: failed to remove 'client_contact': Directory not empty
-        ccq: null
   - name: Command arguments
     txt: |
       null
@@ -768,7 +772,7 @@ units:
           the second positional argument is always the new location.
           They cannot be reversed.
 
-          Redirectors (`>`, `>>`) are not arguments.
+          Redirectors (`>`, `>>`) are not arguments. Redirectors are processed by Linux not by commands.
         ccq: null
     - name: Positional arguments
       txt: Most of the Linux commands we've see so far can take positional arguments in ways we haven't used yet.
@@ -777,6 +781,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           bob
@@ -798,6 +803,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           report_Jan.csv
@@ -830,6 +836,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           report_Jan.csv
@@ -849,6 +856,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           report_Jan.csv
@@ -865,6 +873,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           bob
@@ -881,6 +890,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           report_Jan.csv
@@ -912,6 +922,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source,bash]
           ----
           company_brand_book.pdf
@@ -934,6 +945,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source,bash]
           ----
           company_brand_book.pdf
@@ -953,6 +965,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source,bash]
           ----
           company_brand_book.pdf
@@ -987,6 +1000,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source,bash]
           ----
           company_brand_book.pdf
@@ -1009,6 +1023,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source,bash]
           ----
           company_brand_book.pdf
@@ -1027,6 +1042,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source,bash]
           ----
           marketing
@@ -1080,7 +1096,6 @@ units:
           but some Linux commands are rogue and don't follow typical patterns.
   - name: More commands with options
     txt: |
-      null
       So far, we have introduced these commands.
 
       * echo
@@ -1109,6 +1124,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           client_contact
@@ -1129,6 +1145,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           password_policy_19.pdf
@@ -1189,6 +1206,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           sales
@@ -1219,6 +1237,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           branding
@@ -1238,6 +1257,7 @@ units:
         type: info
         sdbr: null
         ref: |
+          .CWD
           [source, bash]
           ----
           security
@@ -1281,6 +1301,7 @@ units:
         sdbr: null
         ccq: null
         ref: |
+          .CWD
           [source, bash]
           ----
           password_policy.pdf
