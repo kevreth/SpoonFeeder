@@ -470,6 +470,24 @@ units:
           - type: bool
             txt: question
             ans: 'no'
+      - name: Parent directories and subdirectories
+        type: info
+        sdbr: null
+        ref: |
+          [source, bash]
+          ----
+          /accounting/financial.statements
+            annual/
+            quarterly/
+          ----
+        txt: |
+          From the perspective of the CWD (/accounting/financial.statements),
+          /accounting is the _parent directory_.
+          A directory can only have one parent directory.
+
+          "annual" and "quarterly" are _subdirectories_ of financial.statements.
+          They could also be called "child directories" but "subdirectories" is the common term.
+          A directory can have any number of subdirectories.
   - name: Beginning Bash
     txt: null
     modules:
@@ -1518,12 +1536,121 @@ units:
     - name: Path resolution
       txt: null
       inst:
-      - name: absolute and relative paths
+      - name: Absolute paths
         type: info
-        txt: ''
+        txt: |
+          So far, if we wanted to address a filesystem object in a directory that is not CWD,
+          we typed out the entire path
+          [source, bash]
+          ----
+          $ pwd
+          /it/configuration/
+          $ ls /hr/policies/
+          leave.txt
+          ----
+          We are in the /it/configuration/ directory,
+          but we wish to see what's in the /hr/policies directory.
+
+          This is called an _absolute path_.
+          Absolute paths are always from the perspective of the root directory.
+      - name: Relative paths
+        type: info
+        ref: |
+          [source, bash]
+          ----
+          /departments/marketing
+          ----
+        txt: |
+          Typing put all those absolute paths is a chore.
+          As a shortcut, Bash offers _relative paths_ which are from the perspective of the CWD.
+          Relative paths are the reason in previous examples we didn't need to add paths
+          when working with CWD previously.
+
+          Let's create a directory in CWD and change to it.
+          [source, bash]
+          ----
+          mkdir media
+          cd media
+          ----
+          In both lines we used relative paths. Using absolute paths would require
+          [source, bash]
+          ----
+          mkdir /departments/marketing/media
+          cd /departments/marketing/media
+          ----
+      - name: 'The parent directory reference: `..`'
+        type: info
+        ref: |
+          [source, bash]
+          ----
+          /departments
+            marketing/
+            it/
+          ----
+        txt: |
+          The _parent directory reference_, `..`, is a shortcut to the parent directory.
+          Since a directory can only have one parent directory,
+          the meaning of the _parent directory reference_ is never ambiguous.
+          [source, bash]
+          ----
+          cd marketing
+          cd ../it
+          ----
+          Without the parent directory reference we would have to resort to absolute pathing:
+          [source, bash]
+          ----
+          cd marketing
+          cd /departments/it
+          ----
+          The parent directory reference can be used in series.
+          If we are deep in a filesystem,
+          `cd ../../../steve` would go up three directory levels and into the "steve" directory.
+      - name: 'The current directory reference: `.`'
+        type: info
+        ref: |
+          [source, bash]
+          ----
+          hr
+            report.txt
+            policies/
+          ----
+        txt: |
+          There is another directory reference for the current directory, `.`.
+          [source, bash]
+          ----
+          cd policies
+          cp /hr/report.txt .
+          ----
+          Copy report.txt from the hr to CWD.
       - name: Quoting
         type: info
-        txt: ''
+        ref: |
+          [source, bash]
+          ----
+          leave policy.txt
+          ----
+        txt: |
+          Spaces in file object names present a problem because
+          spaces are how Bash separates objects as well.
+          For example,
+          [source, bash]
+          ----
+          $ cat leave policy.txt
+          cat: leave: No such file or directory
+          cat: policy.txt: No such file or directory
+          ----
+          Bash interprets "leave" and "policy.txt" as two separate files.
+          To resolve this, we use _quoting_
+          [source, bash]
+          ----
+          $ cat "leave policy.txt"
+          ----
+          Bash interprets everything in quotes as a single object name.
+
+          Both `'` and `"` may be used for quoting.
+          They don't work exactly the same but the differences won't be
+          apparent until you gain more Bash knowledge.
+          For now, single and double quotes may be used interchangeably.
     - name: File globbing
       txt: null
       inst:
