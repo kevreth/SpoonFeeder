@@ -922,6 +922,7 @@ units:
       - name: 'Option example: `ls -1`'
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           An _option_ is an argument of one letter preceded by a dash "-".
@@ -942,10 +943,10 @@ units:
           company_brand_book.pdf
           logo_guidelines.pdf
           ----
-        ccq: null
       - name: 'Printing directory contents in reverse: `ls -r`'
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           The `-r` argument of `ls` reverses the normal alphabetical order of the output.
@@ -963,10 +964,10 @@ units:
           $ ls -r
           logo_guidelines.pdf company_brand_book.pdf
           ----
-        ccq: null
       - name: Using multiple options
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           [source,bash]
@@ -981,7 +982,6 @@ units:
           logo_guidelines.pdf
           company_brand_book.pdf
           ----
-        ccq: null
     - name: Using multiple options
       txt: |
         To print `ls` output in a reversed single column, we use `-1` and `-r`.
