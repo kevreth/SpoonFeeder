@@ -915,18 +915,16 @@ units:
         type: info
         sdbr: null
         ccq: null
-        ref: null
-        txt: |
-          An _option_ is an argument of one letter preceded by a dash "-".
-          An example of using an option is `-1` used with `ls`.
-          `-1` (one-column) instructs `ls` to list directory contents vertically instead of horizontally.
-
+        ref: |
           [source,bash]
           ----
           company_brand_book.pdf
           logo_guidelines.pdf
           ----
-
+        txt: |
+          An _option_ is an argument of one letter preceded by a dash "-".
+          An example of using an option is `-1` used with `ls`.
+          `-1` (one-column) instructs `ls` to list directory contents vertically instead of horizontally.
           [source,bash]
           ----
           $ ls
@@ -939,16 +937,14 @@ units:
         type: info
         sdbr: null
         ccq: null
-        ref: null
-        txt: |
-          The `-r` argument of `ls` reverses the normal alphabetical order of the output.
-
+        ref: |
           [source,bash]
           ----
           company_brand_book.pdf
           logo_guidelines.pdf
           ----
-
+        txt: |
+          The `-r` argument of `ls` reverses the normal alphabetical order of the output.
           [source,bash]
           ----
           $ ls
@@ -960,13 +956,13 @@ units:
         type: info
         sdbr: null
         ccq: null
-        ref: null
-        txt: |
+        ref: |
           [source,bash]
           ----
           company_brand_book.pdf
           logo_guidelines.pdf
           ----
+        txt: |
           To print `ls` output in one column in reverse order:
           [source,bash]
           ----

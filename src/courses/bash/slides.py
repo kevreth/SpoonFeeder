@@ -41,7 +41,7 @@ def extract_inner_content(inst):
   if name_adoc:
     retval = f"===== {name_adoc}\n\n"
   if ref_adoc:
-    retval += ref_adoc
+    retval += f"[NOTE]\n====\n{ref_adoc}\n====\n"
   if sdbr_adoc:
     retval += f'''
 ++++
