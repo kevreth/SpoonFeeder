@@ -16,10 +16,7 @@ units:
         ref: null
         ccq: null
         txt: |
-          _Bash_ is a _command line interface_ (CLI) to Linux and many other operating systems.
-          After starting Bash, something like this will appear with no indication of what to do next.
-
-          `$`
+          _Bash_ is a _command line interface_ (CLI) to Linux and many other"=====
       - name: Bash commands
         type: info
         sdbr: null
@@ -492,13 +489,12 @@ units:
       - name: 'changing the CWD: `cd`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ref: |
           [source, bash]
           ----
           bob/
           ----
-
+        txt: |
           [source, bash]
           ----
           $ cd bob
@@ -512,14 +508,13 @@ units:
       - name: 'Listing directory contents: `ls`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ref: |
           [source, bash]
           ----
           corporate.retreat.mp4
           holiday.party.txt
           ----
-
+        txt: |
           [source, bash]
           ----
           $ ls
@@ -532,13 +527,12 @@ units:
       - name: 'Creating a new directory: `mkdir`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ref: |
           [source, bash]
           ----
           bob/
           ----
-
+        txt: |
           [source, bash]
           ----
           $ mkdir sue
@@ -641,7 +635,6 @@ units:
         ref: null
         txt: |
           `mv` renames and moves filesystem objects.
-
           [source, bash]
           ----
           $ echo "first line" > test.txt
@@ -649,7 +642,6 @@ units:
           $ ls
           test0.txt
           ----
-
           `mv` is an abbreviation of "move".
           Think of "move" as "moving to a new path" where the path includes the filename.
         ccq: null
@@ -695,12 +687,12 @@ units:
         type: info
         sdbr: null
         ref: null
-        txt: |
           [source, bash]
           ----
           report_Jan.csv
           forecast_Q1.pdf
           ----
+        txt: |
           [source, bash]
           ----
           $ rm forecast_Q1.pdf
@@ -711,14 +703,14 @@ units:
       - name: 'Deleting an empty directory: `rmdir`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ref: |
           [source, bash]
           ----
           client_contact/
             client_list.csv
           reports/
           ----
+        txt: |
           `rmdir` removes empty directories
           [source, bash]
           ----
@@ -1002,17 +994,15 @@ units:
         type: info
         sdbr: null
         ccq: null
-        ref: null
-        txt: |
-          Options, unlike positional arguments,
-          may occur in any order where they are allowed, so `-1 -r` works just like `-r -1`.
-
+        ref: |
           [source,bash]
           ----
           company_brand_book.pdf
           logo_guidelines.pdf
           ----
-
+        txt: |
+          Options, unlike positional arguments,
+          may occur in any order where they are allowed, so `-1 -r` works just like `-r -1`.
           [source,bash]
           ----
           $ ls -r -1
@@ -1026,13 +1016,13 @@ units:
         type: info
         sdbr: null
         ccq: null
-        ref: null
-        txt: |
+        ref: |
           [source,bash]
           ----
           company_brand_book.pdf
           logo_guidelines.pdf
           ----
+        txt: |
           As a shortcut, options can be bundled together, or _combined_.
           [source,bash]
           ----
@@ -1043,9 +1033,8 @@ units:
       - name: Using options with positional arguments
         type: info
         sdbr: null
-        ref: null
         ccq: null
-        txt: |
+        ref: |
           [source,bash]
           ----
           marketing
@@ -1056,6 +1045,7 @@ units:
               logo_guidelines.pdf
               company_brand_book.pdf
           ----
+        txt: |
           When CWD is `marketing/campaigns`,
           list the contents of `/marketing/branding/` in a reversed single column.
           [source,bash]
@@ -1077,8 +1067,8 @@ units:
       - name: How Linux views arguments
         type: info
         sdbr: null
-        ref: null
         ccq: null
+        ref: null
         txt: |
           Consider the following command
 
@@ -1125,17 +1115,16 @@ units:
       - name: 'Copying directory trees: `cp -a`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ccq: null
+        ref: |
           [source, bash]
           ----
           client_contact
             client_list.csv
           ----
-
+        txt: |
           A quick form of backup is copying a directory and all its contents.
           Let's copy `client_contact`` to another directory in CWD.
-
           [source, bash]
           ----
           $ cp -a client_contact client_contact_backup
@@ -1144,17 +1133,16 @@ units:
           $ ls client_contact_backup
           client_list.csv
           ----
-        ccq: null
       - name: 'Do not overwrite existing file on copy: `cp -n`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ref: |
           [source, bash]
           ----
           password_policy_19.pdf
           password_policy_20.pdf
           ----
+        txt: |
           [source, bash]
           ----
           $ cp -n password_policy_19.pdf password_policy_20.pdf
@@ -1165,6 +1153,7 @@ units:
       - name: 'Numbering lines: `cat -n`'
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           "Lorem ipsum" is a corrupted Latin text
@@ -1187,7 +1176,6 @@ units:
           3	sed do eiusmod tempor incididunt
           4	ut labore et dolore magna aliqua.
           ----
-        ccq: null
       - name: 'Create complete paths: `mkdir -p`'
         type: info
         sdbr: null
@@ -1208,24 +1196,22 @@ units:
       - name: 'Deleting a directory tree: `rm -rf`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
-          `rm` provides a powerful option set to remove a directory and its contents but be careful using it.
-          Its easy to make a mistake and delete important data.
-
+        ref: |
           [source, bash]
           ----
           sales
             client_contact
               client_list.csv
           ----
+        txt: |
+          `rm` provides a powerful option set to remove a directory and its contents but be careful using it.
+          Its easy to make a mistake and delete important data.
           [source, bash]
           ----
           $ rm -rf sales
           $ ls sales
           ls: cannot access 'sales': No such file or directory
           ----
-
           `-r`: _recursive_: a fancy way of saying the command will search the entire directory tree
           `-f`: _force_: without this option, `rm` will prompt before deleting every file
 
@@ -1239,14 +1225,15 @@ units:
       - name: 'List extended object information: `ls -l`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ccq: null
+        ref: |
           [source, bash]
           ----
           branding
             company_brand_book.pdf
             logo_guidelines.pdf
           ----
+        txt: |
           [source, bash]
           ----
           $ ls -l
@@ -1255,12 +1242,10 @@ units:
           ----
           Most of the output can't be understood until later in the course,
           but the file sizes (1049 and 124) and file date and times are provided.
-        ccq: null
       - name: 'List object information recursively: `ls -R`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ref: |
           [source, bash]
           ----
           security
@@ -1270,7 +1255,7 @@ units:
             accounting_software_guide.pdf
             crm_tool_manual.pdf
           ----
-
+        txt: |
           [source, bash]
           ----
           $ ls -R
@@ -1286,6 +1271,7 @@ units:
       - name: 'List objects sorted by time: `ls -t`'
         type: info
         sdbr: null
+        ccq: null
         ref: null
         txt: |
           `ls -t` changes from the default alphabetical sort order to ordering from most recent to oldest.
@@ -1298,17 +1284,17 @@ units:
           -rw-r--r-- 1 kev kev   2334 Jan 29 22:50 reference.txt
           -rw-r--r-- 1 kev kev   7777 Feb  2 23:20 slides.py
           ----
-        ccq: null
       - name: 'Listing file objects with markers: `ls -F`'
         type: info
         sdbr: null
-        ref: null
-        txt: |
+        ccq: null
+        ref: |
           [source, bash]
           ----
           password_policy.pdf
           security
           ----
+        txt: |
           [source, bash]
           ----
           $ ls -F
@@ -1316,4 +1302,3 @@ units:
           ----
           Notice that `security` has `/` after it to indicate a directory.
           `-F` has several other markers that will be explored later.
-        ccq: null
