@@ -1643,38 +1643,109 @@ units:
           To resolve this, we use _quoting_
           [source, bash]
           ----
-          $ cat "leave policy.txt"
+          $ cat 'leave policy.txt'
           ----
           Bash interprets everything in quotes as a single object name.
-
-          Both `'` and `"` may be used for quoting.
-          They don't work exactly the same but the differences won't be
-          apparent until you gain more Bash knowledge.
-          For now, single and double quotes may be used interchangeably.
     - name: File globbing
       txt: null
       inst:
       - name: wildcards
         type: info
-        txt: ''
-      - name: '*'
+        ref: |
+          Wildcards are special characters that represent a set of other characters.
+          Using wildcards is called, _file globbing.
+        txt: |
+
+      - name: 'Globbing multiple characters with `*`'
         type: info
-        txt: ''
-      - name: '?'
+        ref: |
+          [source, bash]
+          ----
+          income1.txt
+          income2.txt
+          income1.mp4
+          income2.mp4
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ ls *.txt
+          income1.txt income2.txt
+          $ ls *.mp4
+          income1.mp4 income2.mp4
+          ----
+      - name: 'Globbing one character with `?`'
         type: info
-        txt: ''
-      - name: '[]'
+        txt: |
+
+      - name: 'Globbing specific characters with []'
         type: info
-        txt: ''
-      - name: !
+        ref: |
+          [source, bash]
+          ----
+          income1.txt
+          income2.txt
+          income1.mp4
+          income2.mp4
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ ls *[1].txt
+          income1.txt income1.mp4
+          ----
+      - name: 'Globbing ranges with []'
         type: info
-        txt: ''
+        ref: |
+          [source, bash]
+          ----
+          income1.txt
+          incomea.txt
+          income1.mp4
+          incomea.mp4
+          ----
+        txt: |
+          [source, bash]
+          ----
+          $ ls *[a-z].txt
+          incomea.txt incomea.mp4
+          ----
+          The square brackets accept ranges.
+          The ranges are
+
+          * a-z: lowercase letters
+          * A-Z: uppercase letters
+          * 0-9: numerals
+
+          They can be combined.
+
+          [a-zA-Z0-9] will match any lowercase letter, uppercase letter, or numeral.
+      - name: 'Globbing with `!`'
+        type: info
+        ref: |
+          [source, bash]
+          ----
+          income1.txt
+          incomea.txt
+          income2.mp4
+          incomea.mp4
+          ----
+        txt: |
+          `!` means "not" and selects whatever doesn't meet the pattern.
+          [source, bash]
+          ----
+          $ ls *[!a-z]*.*
+          income1.txt income2.mp4
+          ----
     - name: Command grouping
       txt: null
       inst:
       - name: ';'
         type: info
-        txt: ''
+        txt: |
+          _Command grouping executes commands in a series.
+
+          
       - name: '`&&`'
         type: info
         txt: ''

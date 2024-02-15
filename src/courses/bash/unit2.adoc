@@ -1,11 +1,3 @@
-== Making Bash easier to use
-=== Relative paths
-=== File Globbing
-=== Command line editing
-=== Command expansion
-=== Command history
-=== Command grouping
-=== Environment variables
 === Getting help
 
 == Option arguments
@@ -74,24 +66,7 @@ Note that Bash commands aren't always consistent in the way they use options and
 == Globbing
 
 === Absolute vs relative paths
-So far, if we wanted to address a directory or a file in a directory that is not CWD, we typed out the entire path
 
-/home/bob/bash-tutorial/test.txt
-
-This is called an _absolute path_. Absolute paths are always from the perspective of the root directory.
-
-Typing put all those paths is a chore. As a shortcut, Bash offers _relative paths_ which are from the perspective of the CWD. The reason in previous examples we didn't need to add paths when working with the contents of home/bon/bash-tutorial is because we were using relative paths.
-
-Lets make bash-tut our current directory, create a directory in it, and create a file.
-
-cd bash-tutorial
-mkdir lesson1
-cd lesson1
-
-In all three cases we used relative paths. Using absolute paths would require
-
-mkdir /home/bob/bash-tutorial/lesson1
-cd /home/bob/bash-tutorial/lesson1
 
 === . and ..
 
@@ -215,13 +190,7 @@ VAR=myvariable
 === uname
 === pushd
 === popd
-=== Environment variables
-==== export-set export attribute for shell variables
-==== env-run a program in a modified environment
-==== PATH
-==== CDPATH
-==== PWD
-==== USER
+
 
 == Archiving and backup commands
 === gzip—Compress or expand files.
@@ -250,35 +219,6 @@ VAR=myvariable
 === '<<: here document'
 === '<<<: here string'
 === '|: pipe'
-
-== Path resolution
-=== absolute and relative paths
-=== ''
-=== ""
-=== File globbing
-==== wildcards
-==== *
-==== ?
-==== '[]'
-==== !
-=== Command expansion
-==== tilde
-==== arithmetic
-==== brace
-==== parameter
-==== command
-=== Command grouping
-==== ;
-==== &&
-== Command history
-=== history
-=== History environment variables
-==== HISTCODE
-==== HISTFILESIZE
-==== HISTIGNORE
-==== HISTSIZE
-=== History modifiers
-
 
 == Special characters
 
