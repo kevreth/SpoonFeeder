@@ -1737,18 +1737,84 @@ units:
           $ ls *[!a-z]*.*
           income1.txt income2.mp4
           ----
-    - name: Command grouping
+    - name: Basic command chaining
       txt: null
       inst:
       - name: ';'
         type: info
         txt: |
-          _Command grouping executes commands in a series.
-
-          
+          _Command chaining_ executes commands in a series.
+          [source, bash]
+          ----
+          mkdir accounting; cd accounting; echo 'INCOME STATEMENT' > income.txt
+          ----
+          `;` executes all the commands regardless of the failure of previous commands.
+          In this case, if `mkdir` fails then `cd` will also fail and
+          `echo` will create income.txt in CWD.
       - name: '`&&`'
         type: info
-        txt: ''
+        txt: |
+
+          [source, bash]
+          ----
+          mkdir accounting && cd accounting && echo 'INCOME STATEMENT' > income.txt
+          ----
+          If `mkdir` fails then nothing else will execute.
+          If `cd` fails then `echo` will not execute.
+      - name: '`||`'
+        type: info
+        txt: |
+          `||` only allows the next command to execute if the previous command fails.
+          It's often used as a cleanup operation or to provide an option in case of failure.
+          [source, bash]
+          ----
+          mkdir marketing || echo "failed" >> fails.log
+          ----
+          Attempt to create the directory and if it fails write an entry to a log file.
+    - name: Command chaining with pipes
+      txt: null
+      inst:
+      - name: '`|`'
+        type: info
+        txt: |
+          Up until now, commands in a chain didn't affect the operation of other commands in the chain.
+          The vertical bar is different: the output of one command is sent as input to the next command.
+          This process is called _piping_.
+          None of the commands studied so far are good candidates for piping, so we introduce two new commands.
+      - name: 'listing processes with `ps`'
+        type: info
+        txt: |
+          A _process_ is a currently executing program.
+          The commands we have studied so far are also programs
+          but they execute without significant delay.
+          Executing `ps` will display significant output.
+          Each line is a process.
+          [source, bash]
+          ----
+          $ ps
+          PID TTY      STAT   TIME COMMAND
+            1 ?        Ss     0:08 /sbin/init splash
+            2 ?        S      0:00 [kthreadd]
+            3 ?        I<     0:00 [rcu_gp]
+            ...
+          ----
+          The output is the first three of hundreds of lines would appear.
+          The only part we are interested in is the final column, 'COMMAND'.
+      - name: 'Filtering output with `grep`'
+        type: info
+        txt: |
+          Bash executes continuously, most of the time waiting for input,
+          so it will appear as one line in the output of `ps`.
+          `grep` is a command that takes as it's input the output of another command and filters it.
+          Piping `ps` and `grep`, we can see the line for Bash.
+          [source, bash]
+          ----
+          $ ps|grep bash
+            29822 pts/1    Ss     0:00 /usr/bin/bash
+          ----
+          `grep` filtered out all the output lines of `ps` that didn't include the word `bash`.
+          The `bash` executable is typically located in /usr/bin/.
+          There may be other lines in the output but they are of no concern.
     - name: Environment variables
       txt: null
       inst:
