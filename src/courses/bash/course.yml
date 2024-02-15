@@ -1851,14 +1851,28 @@ units:
       - name: PATH
         type: info
         txt: |
-          A commonly used EV is $PATH, which tells Bash which directories to seek for executable commands.
+          A builtin EV is $PATH, which tells Bash which directories to seek for executable commands.
+          [source, bash]
           ----
           echo $PATH
           ----
-          `/usr/bin/` should be in the output
-          which is where all the commands
+          `/usr/bin/`
+          should be in the output,
+          which is where
+          all the commands
           we have studied so far
           are typically located.
+      - name: PATH
+        type: info
+        txt: |
+          Another builtin is $PWD, which is the current working directory.
+          [source, bash]
+          ----
+          $ cd /tom
+          $ echo $PWD
+          tom
+          ----
+          `pwd` is essentially a shortcut to `echo $PWD`.
       - name: CDPATH
         type: info
         txt: ''
