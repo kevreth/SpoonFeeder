@@ -1825,10 +1825,50 @@ units:
             <command> <operator> <file>
           * command chaining always has commands on both sides of the operator:
             <command> <operator> <command>
+    - name: Configuration files
+      txt: null
+      inst:
+      - name: 'Hidden files'
+        type: info
+        ref: |
+          [source, bash]
+          ----
+          visible/
+          ----
+        txt: |
+          A _hidden file_ does not normally appear when executing `ls`.
+          A hidden file is made by starting the file's name with `.`.
+          Assuming an
+          [source, bash]
+          ----
+          $ echo '' > .hidden.txt
+          $ ls
+          ----
+          An empty hidden file was created. `ls` shows the directory as empty.
+
+          The primary reason to use hidden files is to avoid clutter with directory listings.
+      - name: ''
+        type: info
+        txt: |
+          To view hidden files with `ls`, use the `-a` option.
+          [source, bash]
+          ----
+          $ echo '' > .hidden.txt
+          $ ls -a
+          .hidden.txt
+          ----
+      - name: ''
+        type: info
+        txt: |
+
+      - name: ''
+        type: info
+        txt: |
+
     - name: Environment variables
       txt: null
       inst:
-      - name: Environment variables
+      - name: 'The current user: `$USER`'
         type: info
         txt: |
           _Environment variables_ (EVs) are named character sequences that are kept in memory.
@@ -1848,7 +1888,7 @@ units:
       - name: 'List environment variables: `env`'
         type: info
         txt: ''
-      - name: PATH
+      - name: 'Directories to search for executable files: `$PATH`'
         type: info
         txt: |
           A builtin EV is $PATH, which tells Bash which directories to seek for executable commands.
@@ -1862,7 +1902,7 @@ units:
           all the commands
           we have studied so far
           are typically located.
-      - name: PATH
+      - name: 'The current working directory: `$PWD`'
         type: info
         txt: |
           Another builtin is $PWD, which is the current working directory.
@@ -1873,15 +1913,44 @@ units:
           tom
           ----
           `pwd` is essentially a shortcut to `echo $PWD`.
-      - name: CDPATH
+          $PATH is typically set in .bashrc.
+      - name: 'Directories to use with `cd`: `$CDPATH`'
         type: info
-        txt: ''
-      - name: CWD
+        txt: |
+          $CDPATH is a tremendous timesaving EV that easily switching directories.
+          When an absolute path is included in $CDPATH,
+          it can be used with `cd` with only the final segment of the path.
+          [source, bash]
+          ----
+          $ cd /
+          $ $CDPATH=/home/tom/git
+          $ cd git
+          $ pwd
+          git
+          ----
+          Once set in $CDPATH, instead of typing out `/home/tom/git` every time, we only need to type `git`.
+          $CDPATH is typically set in .bashrc.
+      - name: 'Setting environment variables: `=`'
         type: info
-        txt: ''
-      - name: USER
+        txt: |
+          The value of environment variables can be assigned using `=`.
+          [source, bash]
+          ----
+          $ MY_VAL='aValue'
+          $ echo $MY_VAL
+          aValue
+          ----
+          The pattern to set an EV is
+
+          <name>=<value>
+      - name: 'Environment variable rules'
         type: info
-        txt: ''
+        txt: |
+          * Don't use `$` with the variable name on the left side
+          * Don't use spaces immediately before or after the equals sign
+          * The only valid characters for a EV name are letters, digits, and `_`.
+          * If the EV value contains a space, the entire value should be quoted.
+          * Don't reassign the Bash builtins that are automatically set. This includes $PWD and $USER but not $PATH or $CDPATH.
     - name: Command line editing
       txt: null
       inst: []
