@@ -1828,15 +1828,37 @@ units:
     - name: Environment variables
       txt: null
       inst:
-      - name: export-set export attribute for shell variables
+      - name: Environment variables
+        type: info
+        txt: |
+          _Environment variables_ (EVs) are named character sequences that are kept in memory.
+          Some EVs are provided by Bash, called _builtins_, but you can also define your own.
+          The value of an EV can be seen using `echo`.
+          When referenced on the command line, an EV is always preceded by `$`.
+          One builtin is USER, the current username:
+          [source, bash]
+          ----
+          echo $USER
+          <username>
+          ----
+          <username> will be the username you are logged in as.
+      - name: 'Make environment variables available to subprocesses: `export`'
         type: info
         txt: ''
-      - name: env-run a program in a modified environment
+      - name: 'List environment variables: `env`'
         type: info
         txt: ''
       - name: PATH
         type: info
-        txt: ''
+        txt: |
+          A commonly used EV is $PATH, which tells Bash which directories to seek for executable commands.
+          ----
+          echo $PATH
+          ----
+          `/usr/bin/` should be in the output
+          which is where all the commands
+          we have studied so far
+          are typically located.
       - name: CDPATH
         type: info
         txt: ''
