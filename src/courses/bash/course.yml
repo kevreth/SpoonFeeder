@@ -1815,6 +1815,16 @@ units:
           `grep` filtered out all the output lines of `ps` that didn't include the word `bash`.
           The `bash` executable is typically located in /usr/bin/.
           There may be other lines in the output but they are of no concern.
+      - name: The difference between redirection and command chaining
+        type: info
+        txt: |
+          The redirection operators, `>`, and `>>` (there's more that will be introduced later) and
+          command chaining, `;`,`&&`, `||`, and `|` look somewhat similar.
+          The difference is that
+          * redirection always has an operator between a command on the left and a file on the right:
+            <command> <operator> <file>
+          * command chaining always has commands on both sides of the operator:
+            <command> <operator> <command>
     - name: Environment variables
       txt: null
       inst:
