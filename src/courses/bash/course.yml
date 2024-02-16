@@ -1883,7 +1883,7 @@ units:
       - name: ''
         type: info
         txt: |
-
+          A
     - name: Environment variables
       txt: null
       inst:
@@ -2027,55 +2027,94 @@ units:
           cat a <TAB><TAB>
           alphonse.txt albert.txt
           ----
-    - name: Statement completion
+    - name: Command line editing
       txt: null
       inst:
-      - name: 'Command line editing'
-        type: info
-        txt: |
-          A
       - name: ''
         type: info
         txt: |
-          A
-      - name: ''
-        type: info
-        txt: |
-          A
-      - name: ''
-        type: info
-        txt: |
-          A
-      - name: ''
-        type: info
-        txt: |
-          A
-      - name: ''
-        type: info
-        txt: |
-          A
+          Bash allows standard key combinations, or _hotkeys_, for editing the command line that
+          you're likely already familiar with from computer use.
+          These are listed without examples.
 
+          * <&larr;>, <&rarr;> Move the cursor one character at a time
+          * <CTRL-&larr;>, <CTRL-&rarr;> Move the cursor one word at a time
+          * <DEL> delete current character
+          * <BKSP> delete previous character
+          * <HOME> move to beginning of line
+          * <END> move to end of line
+      - name: 'Cutting text'
+        type: info
+        txt: |
+          The next four hotkeys involve _cutting_ text,
+          meaning to
+
+          . remove the text and
+          . place it in a clipboard.
+
+          The Bash clipboard is independent of any clipboard provided by a GUI.
+          When using a GUI with Bash,
+          there will be two clipboards and they cannot share content.
+      - name: 'Cut from cursor to beginning of word: `<CTRL-w>`'
+        type: info
+        txt: |
+          A
+      - name: 'Cut from cursor to end of word: `<ALT-d>`'
+        type: info
+        txt: |
+          A
+      - name: 'Cut from cursor to beginning of line: `<CTRL-u>`'
+        type: info
+        txt: |
+          A
+      - name: 'Cut from cursor to end of line: `<CTRL-k>`'
+        type: info
+        txt: |
+          A
+      - name: 'Paste: `<CTRL-y>`'
+        type: info
+        txt: |
+          `<CTRL-y>` pastes previously text into the current cursor position.
+      - name: 'Lowercase from cursor to end of word: `<ALT-l>`'
+        type: info
+        txt: |
+          A
+      - name: 'Uppercase from cursor to end of word: `<Alt-u>`'
+        type: info
+        txt: |
+          A
+      - name: 'Transpose characters: `<CTRL-t>`'
+        type: info
+        txt: |
+          A
   - name: Command history
     txt: null
     modules:
-    - name: History environment variables
-      txt: null
-      inst:
-      - name: HISTCODE
-        type: info
+      - name: 'History hotkeys'
         txt: ''
-      - name: HISTFILESIZE
-        type: info
-        txt: ''
-      - name: HISTIGNORE
-        type: info
-        txt: ''
-      - name: HISTSIZE
-        type: info
-        txt: ''
-    - name: History modifiers
-      txt: null
-      inst: []
+        inst:
+        - name: ''
+          type: info
+          txt: |
+            A
+      - name: History environment variables
+        txt: null
+        inst:
+        - name: HISTCODE
+          type: info
+          txt: ''
+        - name: HISTFILESIZE
+          type: info
+          txt: ''
+        - name: HISTIGNORE
+          type: info
+          txt: ''
+        - name: HISTSIZE
+          type: info
+          txt: ''
+      - name: History modifiers
+        txt: null
+        inst: []
   - name: Command expansion
     txt: null
     modules:
