@@ -2093,6 +2093,92 @@ units:
       - name: 'History hotkeys'
         txt: ''
         inst:
+        - name: 'What is command history?'
+          type: info
+          txt: |
+            Bash keeps a list of your previous commands in the _command history_.
+        - name: ' previous commands: <&uarr;>'
+          type: info
+          txt: |
+            [source,bash]
+            ----
+            $ echo "first line"
+            $ mkdir "directory"
+            $ ls
+            ----
+            After enter the above commands, each successive press of <&uarr;> scrolls backwards in the history.
+            So, the commands will appear in the command line in this order.
+            [source,bash]
+            ----
+            ls
+            mkdir "directory"
+            echo "first line"
+            ----
+            Each command can be executed by pressing <ENTER> as usual, as if it had been typed in.
+        - name: 'Listing all the command history: `history`'
+          type: info
+          txt: |
+            To see all the history that Bash recorded, use the `history` command.
+            [source,bash]
+            ----
+            $ history
+            1 echo "first line"
+            2 mkdir "directory"
+            3 ls
+            ----
+            The list appears from chronological order.
+        - name: 'Executing a command from history: `!`'
+          type: info
+          ref: |
+            [source,bash]
+            ----
+            $ history
+            1 echo "first line"
+            2 mkdir "directory"
+            3 ls
+            ----
+          txt: |
+            `history` lists the _history number_ in the first column.
+            This number can be used to execute any desired history entry without scrolling using <&uarr;>
+            [source,bash]
+            ----
+            $ !1
+            echo "first line"
+            first line
+            ----
+            `! <number>` prints the command then executes it.
+        - name: 'Search backward by character sequence: `<CTRL-r>`'
+          type: info
+          txt: |
+            `<CTRL-R>` will replace the Bash prompt with this:
+            `(reverse-i-search)pass:[`]':`
+            The desired character sequence can now be typed.
+            Let's say we're looking for `mkdir`.
+            After typing `mkdir` the prompt will display the most recent
+            occurrence of `mkdir` in the command history.
+            We can scroll backwards through the command history
+            with repeated use of <CTRL-r> to find all occurrences of `mkdir`.
+        - name: 'Search forward by character sequence: `<CTRL-s>`'
+          type: info
+          txt: |
+            When scrolling backwards using <CTRL-r>, we can move forward again
+            using <CTRL-S>. This is useful if the desired command is scrolled past.
+        - name: ''
+          type: info
+          txt: |
+            Using <CTRL-r> or <CTRL-s> starts _incremental search mode_,
+            which can be started with either hotkey. It makes no difference
+            which one is used before any characters are entered.
+        - name: 'Exit incremental search mode: <CTRL-g>'
+          type: info
+          txt: |
+            <CTRL-G> exits incremental search mode, returning to the Bash prompt.
+        - name: 'Searching in non-incremental search mode: `<ALT-P>`'
+          type: info
+          txt: |
+            Pressing `<ALT-P>` adds a second colon (`:`) prompt after the Bash prompt.
+            In this mode, typing a character sequence and pressing <ENTER>
+            will immediately retrieve the most recent command containing that character sequence.
         - name: ''
           type: info
           txt: |
