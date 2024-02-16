@@ -1828,7 +1828,7 @@ units:
     - name: Configuration files
       txt: null
       inst:
-      - name: 'Hidden files'
+      - name: 'Hidden files: `.<filename>`'
         type: info
         ref: |
           [source, bash]
@@ -1838,7 +1838,6 @@ units:
         txt: |
           A _hidden file_ does not normally appear when executing `ls`.
           A hidden file is made by starting the file's name with `.`.
-          Assuming an
           [source, bash]
           ----
           $ echo '' > .hidden.txt
@@ -1847,7 +1846,7 @@ units:
           An empty hidden file was created. `ls` shows the directory as empty.
 
           The primary reason to use hidden files is to avoid clutter with directory listings.
-      - name: ''
+      - name: 'List hidden files: `ls -a`'
         type: info
         txt: |
           To view hidden files with `ls`, use the `-a` option.
@@ -1857,10 +1856,30 @@ units:
           $ ls -a
           .hidden.txt
           ----
-      - name: ''
+      - name: 'Configuring Bash startup: `.bashrc`'
         type: info
         txt: |
+          `.bashrc` is an example of a _Bash script_ which contains a series of Bash commands to
+          automatically execute when a Bash session starts.
 
+          `.bashrc` resides in users' home directories.
+
+          You almost certainly have a default `.bashrc` file for your Linux account.
+
+          A new Bash session can be started within Bash by typing `bash`.
+          To perserve it for now, change it's name:
+          [source, bash]
+          ----
+          $ mv .bashrc .bashrc.bu
+          $ echo "ls -l" >> .bashrc
+          $ bash
+          (the listing of you home directory appears)
+          $ exit
+          $ rm .bashrc
+          $ mv .bashrc.bu .bashrc
+          ----
+          Now, upon starting a new Bash session,
+          the listing of your home directory will automatically display.
       - name: ''
         type: info
         txt: |
@@ -1950,10 +1969,92 @@ units:
           * Don't use spaces immediately before or after the equals sign
           * The only valid characters for a EV name are letters, digits, and `_`.
           * If the EV value contains a space, the entire value should be quoted.
-          * Don't reassign the Bash builtins that are automatically set. This includes $PWD and $USER but not $PATH or $CDPATH.
-    - name: Command line editing
+          * Don't reassign the Bash builtins that are automatically set.
+            This includes $PWD and $USER but not $PATH or $CDPATH.
+    - name: Statement completion
       txt: null
-      inst: []
+      inst:
+      - name: 'Statement completion with <TAB> 1'
+        type: info
+        ref: |
+          [source,bash]
+          ----
+          alphonse.txt
+          bella.txt
+          ----
+        txt: |
+          To execute `cat alphonse.txt`
+          instead of typing out the filename,
+          we can type `cat a <TAB>`.
+          Bash will complete the rest of the filename.
+      - name: 'Statement completion with <TAB> 2'
+        type: info
+        ref: |
+          [source,bash]
+          ----
+          alphonse.txt
+          albert.txt
+          ----
+        txt: |
+          Bash can only complete what is non-ambiguous.
+          In this case, there's two files in the directory
+          that both begin with `al`.
+
+          To execute `cat alphonse.txt`,
+          we must type
+          `cat alp <TAB>`
+      - name: 'Statement completion with <TAB> 3'
+        type: info
+        txt: |
+          Statement completion also works with commands and directories.
+      - name: 'Obtaining completion suggestions with <TAB> <TAB>'
+        type: info
+        ref: |
+          [source,bash]
+          ----
+          alphonse.txt
+          albert.txt
+          ----
+        txt: |
+          In the event Bash can't resolve
+          a file object or command with <TAB>,
+          it will do nothing.
+          In that case, <TAB><TAB> (pressing TAB twice)
+          can show what is available
+          based on what is already typed.
+          [source,bash]
+          ----
+          cat a <TAB><TAB>
+          alphonse.txt albert.txt
+          ----
+    - name: Statement completion
+      txt: null
+      inst:
+      - name: 'Command line editing'
+        type: info
+        txt: |
+          A
+      - name: ''
+        type: info
+        txt: |
+          A
+      - name: ''
+        type: info
+        txt: |
+          A
+      - name: ''
+        type: info
+        txt: |
+          A
+      - name: ''
+        type: info
+        txt: |
+          A
+      - name: ''
+        type: info
+        txt: |
+          A
+
   - name: Command history
     txt: null
     modules:
