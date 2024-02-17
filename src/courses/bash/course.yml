@@ -2163,6 +2163,9 @@ units:
           txt: |
             When scrolling backwards using <CTRL-r>, we can move forward again
             using <CTRL-S>. This is useful if the desired command is scrolled past.
+            For obscure technical reasons, the command
+            `stty -ixon`
+            Must be executed to enable `<CTRL-S>`.
         - name: ''
           type: info
           txt: |
@@ -2184,8 +2187,12 @@ units:
           txt: |
             A
       - name: History environment variables
-        txt: null
+        txt: Environment variables to configure command history
         inst:
+        - name: HISTFILE
+          type: info
+          txt: |
+            `
         - name: HISTCODE
           type: info
           txt: ''
@@ -2201,7 +2208,7 @@ units:
       - name: History modifiers
         txt: null
         inst: []
-  - name: Command expansion
+  - name: Pathname expansion
     txt: null
     modules:
     - name: tilde
