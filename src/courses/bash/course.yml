@@ -1740,7 +1740,7 @@ units:
     - name: Basic command chaining
       txt: null
       inst:
-      - name: ';'
+      - name: 'semicolon: `;`'
         type: info
         txt: |
           _Command chaining_ executes commands in a series.
@@ -1748,23 +1748,24 @@ units:
           ----
           mkdir accounting; cd accounting; echo 'INCOME STATEMENT' > income.txt
           ----
-          `;` executes all the commands regardless of the failure of previous commands.
+          The semicolon (`;`) executes all the commands regardless of the success or failure of previous commands.
           In this case, if `mkdir` fails then `cd` will also fail and
           `echo` will create income.txt in CWD.
-      - name: '`&&`'
+          That's undesired behavior.
+      - name: 'AND: `&&`'
         type: info
         txt: |
-
+          AND (`&&`) executes the next command only if the previous command executed successfully.
           [source, bash]
           ----
           mkdir accounting && cd accounting && echo 'INCOME STATEMENT' > income.txt
           ----
           If `mkdir` fails then nothing else will execute.
           If `cd` fails then `echo` will not execute.
-      - name: '`||`'
+      - name: 'OR: `||`'
         type: info
         txt: |
-          `||` only allows the next command to execute if the previous command fails.
+          OR: (`||`) only allows the next command to execute if the previous command fails.
           It's often used as a cleanup operation or to provide an option in case of failure.
           [source, bash]
           ----
@@ -1774,7 +1775,7 @@ units:
     - name: Command chaining with pipes
       txt: null
       inst:
-      - name: '`|`'
+      - name: 'Pipes: `|`'
         type: info
         txt: |
           Up until now, commands in a chain didn't affect the operation of other commands in the chain.
@@ -2283,9 +2284,9 @@ units:
             _Ranged expansion_ shows everything between a pair of letters or numbers.
             `cat income_200{0..9}.txt`
             will print the contents of nine files.
-    - name: parameter
+    - name: 'command expansion: `$()`'
       txt: null
-      inst: []
-    - name: command
-      txt: null
-      inst: []
+      inst:
+        - name: ranged brace expansion
+          type: info
+          txt: |
