@@ -2261,7 +2261,21 @@ units:
             Tilde can usually be used with any Bash command that accepts a path.
     - name: brace
       txt: null
-      inst: []
+      inst:
+        - name: strings
+          type: info
+          txt: |
+            A _string_ is another name for a character sequence.
+            For example, these are strings:
+            `John Jackson`
+            `Sue Peg and Joe`
+            `qwerty`
+        - name: strings
+          type: info
+          txt: |
+            _Brace expansion_ provides a list of characters to use for expansion.
+
+            `cat income_202{0,1,2,3}.txt`
     - name: parameter
       txt: null
       inst: []
