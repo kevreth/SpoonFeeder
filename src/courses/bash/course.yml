@@ -2270,12 +2270,19 @@ units:
             `John Jackson`
             `Sue Peg and Joe`
             `qwerty`
-        - name: strings
+        - name: basic brace expansion
           type: info
           txt: |
-            _Brace expansion_ provides a list of characters to use for expansion.
-
-            `cat income_202{0,1,2,3}.txt`
+            _Brace expansion_ provides a list of strings to use for expansion.
+            `cat income_20{00,11,19}.txt`
+            is equivalent to
+            `cat income_2000.txt income_2011.txt income_2019.txt`
+        - name: ranged brace expansion
+          type: info
+          txt: |
+            _Ranged expansion_ shows everything between a pair of letters or numbers.
+            `cat income_200{0..9}.txt`
+            will print the contents of nine files.
     - name: parameter
       txt: null
       inst: []
