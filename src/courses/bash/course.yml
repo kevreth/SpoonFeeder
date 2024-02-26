@@ -1880,10 +1880,17 @@ units:
           ----
           Now, upon starting a new Bash session,
           the listing of your home directory will automatically display.
-      - name: ''
+      - name: 'Customizing commands: `alias`'
         type: info
         txt: |
-          A
+          The `alias` command is typically used to create new commands from existing commands.
+          For example,
+
+          `alias ll='ls -l'`
+
+          will create a new command, `ll`, that will list directory contents in long format.
+
+          Aliases are typically set in `.bashrc` for availability after rebooting.
     - name: Environment variables
       txt: null
       inst:
@@ -2090,133 +2097,168 @@ units:
   - name: Command history
     txt: null
     modules:
-      - name: 'History hotkeys'
+    - name: 'History hotkeys'
+      txt: ''
+      inst:
+      - name: 'What is command history?'
+        type: info
+        txt: |
+          Bash keeps a list of your previous commands in the _command history_.
+      - name: ' previous commands: <&uarr;>'
+        type: info
+        txt: |
+          [source,bash]
+          ----
+          $ echo "first line"
+          $ mkdir "directory"
+          $ ls
+          ----
+          After enter the above commands, each successive press of <&uarr;> scrolls backwards in the history.
+          So, the commands will appear in the command line in this order.
+          [source,bash]
+          ----
+          ls
+          mkdir "directory"
+          echo "first line"
+          ----
+          Each command can be executed by pressing <ENTER> as usual, as if it had been typed in.
+      - name: 'Listing all the command history: `history`'
+        type: info
+        txt: |
+          To see all the history that Bash recorded, use the `history` command.
+          [source,bash]
+          ----
+          $ history
+          1 echo "first line"
+          2 mkdir "directory"
+          3 ls
+          ----
+          The list appears from chronological order.
+      - name: 'Executing a command from history: `!`'
+        type: info
+        ref: |
+          [source,bash]
+          ----
+          $ history
+          1 echo "first line"
+          2 mkdir "directory"
+          3 ls
+          ----
+        txt: |
+          `history` lists the _history number_ in the first column.
+          This number can be used to execute any desired history entry without scrolling using <&uarr;>
+          [source,bash]
+          ----
+          $ !1
+          echo "first line"
+          first line
+          ----
+          `! <number>` prints the command then executes it.
+      - name: 'Search backward by character sequence: `<CTRL-r>`'
+        type: info
+        txt: |
+          `<CTRL-R>` will replace the Bash prompt with this:
+          `(reverse-i-search)pass:[`]':`
+          The desired character sequence can now be typed.
+          Let's say we're looking for `mkdir`.
+          After typing `mkdir` the prompt will display the most recent
+          occurrence of `mkdir` in the command history.
+          We can scroll backwards through the command history
+          with repeated use of <CTRL-r> to find all occurrences of `mkdir`.
+      - name: 'Search forward by character sequence: `<CTRL-s>`'
+        type: info
+        txt: |
+          When scrolling backwards using <CTRL-r>, we can move forward again
+          using <CTRL-S>. This is useful if the desired command is scrolled past.
+          For obscure technical reasons, the command
+          `stty -ixon`
+          Must be executed to enable `<CTRL-S>`.
+      - name: ''
+        type: info
+        txt: |
+          Using <CTRL-r> or <CTRL-s> starts _incremental search mode_,
+          which can be started with either hotkey. It makes no difference
+          which one is used before any characters are entered.
+      - name: 'Exit incremental search mode: <CTRL-g>'
+        type: info
+        txt: |
+          <CTRL-G> exits incremental search mode, returning to the Bash prompt.
+      - name: 'Searching in non-incremental search mode: `<ALT-P>`'
+        type: info
+        txt: |
+          Pressing `<ALT-P>` adds a second colon (`:`) prompt after the Bash prompt.
+          In this mode, typing a character sequence and pressing <ENTER>
+          will immediately retrieve the most recent command containing that character sequence.
+      - name: ''
+        type: info
+        txt: |
+          A
+    - name: History environment variables
+      txt: Environment variables to configure command history
+      inst:
+      - name: HISTFILE
+        type: info
+        txt: |
+          `
+      - name: HISTCONTROL
+        type: info
         txt: ''
-        inst:
-        - name: 'What is command history?'
-          type: info
-          txt: |
-            Bash keeps a list of your previous commands in the _command history_.
-        - name: ' previous commands: <&uarr;>'
-          type: info
-          txt: |
-            [source,bash]
-            ----
-            $ echo "first line"
-            $ mkdir "directory"
-            $ ls
-            ----
-            After enter the above commands, each successive press of <&uarr;> scrolls backwards in the history.
-            So, the commands will appear in the command line in this order.
-            [source,bash]
-            ----
-            ls
-            mkdir "directory"
-            echo "first line"
-            ----
-            Each command can be executed by pressing <ENTER> as usual, as if it had been typed in.
-        - name: 'Listing all the command history: `history`'
-          type: info
-          txt: |
-            To see all the history that Bash recorded, use the `history` command.
-            [source,bash]
-            ----
-            $ history
-            1 echo "first line"
-            2 mkdir "directory"
-            3 ls
-            ----
-            The list appears from chronological order.
-        - name: 'Executing a command from history: `!`'
-          type: info
-          ref: |
-            [source,bash]
-            ----
-            $ history
-            1 echo "first line"
-            2 mkdir "directory"
-            3 ls
-            ----
-          txt: |
-            `history` lists the _history number_ in the first column.
-            This number can be used to execute any desired history entry without scrolling using <&uarr;>
-            [source,bash]
-            ----
-            $ !1
-            echo "first line"
-            first line
-            ----
-            `! <number>` prints the command then executes it.
-        - name: 'Search backward by character sequence: `<CTRL-r>`'
-          type: info
-          txt: |
-            `<CTRL-R>` will replace the Bash prompt with this:
-            `(reverse-i-search)pass:[`]':`
-            The desired character sequence can now be typed.
-            Let's say we're looking for `mkdir`.
-            After typing `mkdir` the prompt will display the most recent
-            occurrence of `mkdir` in the command history.
-            We can scroll backwards through the command history
-            with repeated use of <CTRL-r> to find all occurrences of `mkdir`.
-        - name: 'Search forward by character sequence: `<CTRL-s>`'
-          type: info
-          txt: |
-            When scrolling backwards using <CTRL-r>, we can move forward again
-            using <CTRL-S>. This is useful if the desired command is scrolled past.
-            For obscure technical reasons, the command
-            `stty -ixon`
-            Must be executed to enable `<CTRL-S>`.
-        - name: ''
-          type: info
-          txt: |
-            Using <CTRL-r> or <CTRL-s> starts _incremental search mode_,
-            which can be started with either hotkey. It makes no difference
-            which one is used before any characters are entered.
-        - name: 'Exit incremental search mode: <CTRL-g>'
-          type: info
-          txt: |
-            <CTRL-G> exits incremental search mode, returning to the Bash prompt.
-        - name: 'Searching in non-incremental search mode: `<ALT-P>`'
-          type: info
-          txt: |
-            Pressing `<ALT-P>` adds a second colon (`:`) prompt after the Bash prompt.
-            In this mode, typing a character sequence and pressing <ENTER>
-            will immediately retrieve the most recent command containing that character sequence.
-        - name: ''
-          type: info
-          txt: |
-            A
-      - name: History environment variables
-        txt: Environment variables to configure command history
-        inst:
-        - name: HISTFILE
-          type: info
-          txt: |
-            `
-        - name: HISTCODE
-          type: info
-          txt: ''
-        - name: HISTFILESIZE
-          type: info
-          txt: ''
-        - name: HISTIGNORE
-          type: info
-          txt: ''
-        - name: HISTSIZE
-          type: info
-          txt: ''
-      - name: History modifiers
-        txt: null
-        inst: []
+      - name: HISTFILE
+        type: info
+        txt: |
+          `HISTFILE` points to the name of the history file
+          which defaults to <HOME-DIR>/.bash_history.
+
+          You likely don't want to change `HISTFILE`
+          but be aware that it's the source of the
+          history file location.
+      - name: HISTFILESIZE
+        type: info
+        txt: |
+          `HISTFILESIZE` is the maximum number of lines for the Bash history file
+          and therefore the number of commands that are retained.
+          The default is 500.
+          Modern computer systems can easily retain more commands,
+          so set it to a higher number like 999999.
+
+      - name: HISTIGNORE
+        type: info
+        txt: ''
+      - name: HISTSIZE
+        type: info
+        txt: |
+          `HISTSIZE` is the maximum number of commands
+          the current Bash session retains in memory.
+          The default is 500.
+          Modern computer systems can easily retain more commands,
+          so set it to a higher number like 9999.
+    - name: History modifiers
+      txt: null
+      inst: []
   - name: Pathname expansion
     txt: null
     modules:
-    - name: tilde
+    - name: 'tilde: `~`'
       txt: null
-      inst: []
-    - name: arithmetic
-      txt: null
-      inst: []
+      inst:
+        - name: HISTSIZE
+          type: info
+          txt: |
+            The tilde character (`~`) represents a home directory.
+            To list your home directory,
+            `ls ~`
+        - name: HISTSIZE
+          type: info
+          txt: |
+            Tilde can also be used to switch to another users home directory:
+            `cd ~tom`
+            will change to tom's home directory
+        - name: HISTSIZE
+          type: info
+          txt: |
+            Tilde can be used in longer paths as well. We can type
+            `ls ~/abc/def/ghi/
+            Tilde can usually be used with any Bash command that accepts a path.
     - name: brace
       txt: null
       inst: []
