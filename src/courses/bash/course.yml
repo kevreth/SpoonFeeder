@@ -2197,10 +2197,6 @@ units:
     - name: History environment variables
       txt: Environment variables to configure command history
       inst:
-      - name: HISTFILE
-        type: info
-        txt: |
-          `
       - name: HISTCONTROL
         type: info
         txt: ''
@@ -2220,7 +2216,7 @@ units:
           and therefore the number of commands that are retained.
           The default is 500.
           Modern computer systems can easily retain more commands,
-          so set it to a higher number like 999999.
+          so set it to a higher number like 999999 in .bashrc.
 
       - name: HISTIGNORE
         type: info
@@ -2232,10 +2228,71 @@ units:
           the current Bash session retains in memory.
           The default is 500.
           Modern computer systems can easily retain more commands,
-          so set it to a higher number like 9999.
+          so set it to a higher number like 9999 in .bashrc.
     - name: History modifiers
       txt: null
-      inst: []
+      inst:
+      - name: 'recalling the previous command with `!!`'
+        type: info
+        txt: |
+          _History modifiers_ are appended to other history commands
+          to change how those commands work.
+          They function similar to command parameters.
+
+          History modifiers are added to the end of a history command
+          and start with a colon (`:`).
+      - name: 'recalling the previous command with `!!`'
+        type: info
+        txt: |
+          `!!` is a placeholder for the previously executed command when using history.
+          The effect is similar to <&uarr;>,
+          but it doesn't take effect immediately.
+          [source,bash]
+          ----
+          echo "My name is Fred."
+          My name is Fred.
+          !!
+          My name is Fred.
+          ----
+      - name: 'print: `:p`'
+        type: info
+        txt: |
+          [source,bash]
+          ----
+          echo "My name is Fred."
+          My name is Fred.
+          !!:p
+          echo "My name is Fred."
+          ----
+          Without the :p the last line would have been
+          `My name is Fred.`
+          Because the `echo` command would have been executed instead of printed.
+          After printing the command, it can be executed with <&uarr;> - <ENTER>.
+      - name: 'substitute: `:s/old/new/`'
+        type: info
+        txt: |
+          `:s/old/new/` substitutes one string for another.
+          [source,bash]
+          ----
+          echo "My name is Fred."
+          My name is Fred.
+          !!:s/Fred/Jane/
+          My name is Jane.
+          ----
+      - name: 'chaining history modifiers'
+        type: info
+        txt: |
+          History modifiers can be chained together.
+          For example, lets say we want to see the result of a substitution before we execute it.
+          The previous two examples can be combined.
+          [source,bash]
+          ----
+          echo "My name is Fred."
+          My name is Fred.
+          !!:s/Fred/Jane/:p
+          echo "My name is Jane."
+          ----
+          The modified command is now ready to execute with <&uarr;> - <ENTER>.
   - name: Pathname expansion
     txt: null
     modules:
@@ -2284,9 +2341,9 @@ units:
             _Ranged expansion_ shows everything between a pair of letters or numbers.
             `cat income_200{0..9}.txt`
             will print the contents of nine files.
-    - name: 'command expansion: `$()`'
-      txt: null
-      inst:
-        - name: ranged brace expansion
+        - name: command expansion
           type: info
           txt: |
+            Command expansion enables using the output of a command in another command.
+            `cat $(ls *.txt)`
+            Will print the contents of every file with the extension "txt".
