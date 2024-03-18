@@ -190,11 +190,11 @@ units:
         txt: |
           Summary
 
-          `docker run`: create and run a new container from an image
-          #sandboxed#: when an application cannot know about or affect its host environment
-          #container#: a sandboxed process running on a host machine
-          #Docker#: software that containerizes applications
-          #image#: a filesystem and build instructions containing everything required to execute in a container
+          * `docker run`: create and run a new container from an image
+          * #sandboxed#: when an application cannot know about or affect its host environment
+          * #container#: a sandboxed process running on a host machine
+          * #Docker#: software that containerizes applications
+          * #image#: a filesystem and build instructions containing everything required to execute in a container
 
           Docker enables multiple copies of multiple versions of applications to execute simulataneously.
       exercises:
@@ -291,7 +291,7 @@ units:
         ans: 'yes'
         exp: null
       - type: bool
-        txt: Docker enables multiple copies of multiple versions of applications to execute simulataneously.
+        txt: Docker enables multiple copies of multiple versions of applications to execute simultaneously.
         ans: 'yes'
         exp: null
       - type: bool
@@ -306,10 +306,6 @@ units:
         txt: Images can be built to only one container but a container can only contain many images.
         ans: 'no'
         exp: Images can be built to multiple containers but a container can only contain one image.
-      - type: bool
-        txt: The primary use case for Docker is operating _microservices_.
-        ans: 'yes'
-        exp: null
     - name: Working with images and containers
       inst:
       - type: info
@@ -624,14 +620,14 @@ units:
       - type: info
         txt: |
           Module review
-            docker pull: download an image from a registry
-            docker create: create a new container
-            docker start: start one or more stopped containers
-            docker run: pull an image, create a container, and start a the container
-            docker images: list images
-            docker ps: list containers
-            docker rmi: removes images
-            docker rm: remove one or more containers
+            * docker pull: download an image from a registry
+            * docker create: create a new container
+            * docker start: start one or more stopped containers
+            * docker run: pull an image, create a container, and start a the container
+            * docker images: list images
+            * docker ps: list containers
+            * docker rmi: removes images
+            * docker rm: remove one or more containers
       exercises:
       - type: vocab
         list:
