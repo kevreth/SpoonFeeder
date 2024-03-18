@@ -274,18 +274,18 @@ units:
           * Microservices provide fault tolerance through redundancy.
           * A microservice container should be as small as possible.
       exercises:
-      # - type: vocab
-      #   list:
-      #     Docker: software that containerizes applications
-      #     image: |
-      #       a filesystem and build instructions
-      #       containing everything required to execute in a container
-      #     container: a sandboxed process running on a host machine
-      #     sandbox: an application cannot know about or affect its host environment
-      #     microservice: |
-      #       a minimal application designed to do one small task
-      #       and deployed redundantly in Docker containers
-      #     "`docker run`": Create and run a new container from an image
+      - type: vocab
+        list:
+          Docker: software that containerizes applications
+          image: |
+            a filesystem and build instructions
+            containing everything required to execute in a container
+          container: a sandboxed process running on a host machine
+          sandbox: an application cannot know about or affect its host environment
+          microservice: |
+            a minimal application designed to do one small task
+            and deployed redundantly in Docker containers
+          "`docker run`": Create and run a new container from an image
       - type: bool
         txt: Microservices provide fault tolerance through redundancy.
         ans: 'yes'
@@ -306,10 +306,10 @@ units:
         txt: Images can be built to only one container but a container can only contain many images.
         ans: 'no'
         exp: Images can be built to multiple containers but a container can only contain one image.
-      # - type: bool
-      #   txt: The primary use case for Docker is operating _microservices_.
-      #   ans: 'yes'
-      #   exp: null
+      - type: bool
+        txt: The primary use case for Docker is operating _microservices_.
+        ans: 'yes'
+        exp: null
     - name: Working with images and containers
       inst:
       - type: info
@@ -459,257 +459,253 @@ units:
           We want to download an image, see the image listed, and delete the image.
           Place the commands in the correct order.
         ans: ['`docker pull`', '`docker images`','`docker rmi`']
-      # - type: bool
-      #   txt:
-      #   ans: yes
-      #   exp: null
-    # - name: Containers
-    #   inst:
-    #   - type: info
-    #     txt: |
-    #       Create a container from an image with
+      - type: bool
+        txt:
+        ans: yes
+        exp: null
+    - name: Containers
+      inst:
+      - type: info
+        txt: |
+          Create a container from an image with
 
-    #       `docker create`
+          `docker create`
 
-    #       [literal]
-    #       ----
-    #       $ docker create hello-world
-    #       647bc74903be55cf4d6abdf95ba75def9517d4424e2bba2a314743498af2e53c
-    #       ----
-    #       The line below the command is an automatically generated container ID.
+          [literal]
+          ----
+          $ docker create hello-world
+          647bc74903be55cf4d6abdf95ba75def9517d4424e2bba2a314743498af2e53c
+          ----
+          The line below the command is an automatically generated container ID.
 
-    #       docker create: create a new container
-    #   - type: info
-    #     txt: |
-    #       The container ID from
+          docker create: create a new container
+      - type: info
+        txt: |
+          The container ID from
 
-    #       [literal]
-    #       ----
-    #       $ docker create hello-world
-    #       647bc74903be55cf4d6abdf95ba75def9517d4424e2bba2a314743498af2e53c
-    #       ----
+          [literal]
+          ----
+          $ docker create hello-world
+          647bc74903be55cf4d6abdf95ba75def9517d4424e2bba2a314743498af2e53c
+          ----
 
-    #       Can be seen in shortened form when listing containers with
+          Can be seen in shortened form when listing containers with
 
-    #       `docker ps -a`
+          `docker ps -a`
 
-    #       [literal]
-    #       ----
-    #       $ docker ps -a
-    #       CONTAINER ID IMAGE       NAMES
-    #       647bc74903be hello-world cool_mayer
-    #       ----
-    #       By default, `docker ps` only displays actively executing containers.
-    #       We need `-a` to see inactive containers.
+          [literal]
+          ----
+          $ docker ps -a
+          CONTAINER ID IMAGE       NAMES
+          647bc74903be hello-world cool_mayer
+          ----
+          By default, `docker ps` only displays actively executing containers.
+          We need `-a` to see inactive containers.
 
-    #       docker ps: list containers
-    #   - type: bool
-    #     txt: The `-a` in `docker ps -a` suppresses display of stopped containers.
-    #     ans: no
-    #     exp: The `-a` in `docker ps -a` causes display of stopped containers.
-    #   - type: info
-    #     txt: |
-    #       Notice `cool_mayer`:
+          docker ps: list containers
+      - type: bool
+        txt: The `-a` in `docker ps -a` suppresses display of stopped containers.
+        ans: no
+        exp: The `-a` in `docker ps -a` causes display of stopped containers.
+      - type: info
+        txt: |
+          Notice `cool_mayer`:
 
-    #       [literal]
-    #       ----
-    #       $ docker ps -a
-    #       CONTAINER ID IMAGE       NAMES
-    #       647bc74903be hello-world cool_mayer
-    #       ----
-    #       Docker maintains a list of adjectives and nouns.
-    #       For each container, Docker generates an adjective-noun pairing to create container names.
-    #       Users can supply their own container name via the `--name` parameter passed to `docker create`.
+          [literal]
+          ----
+          $ docker ps -a
+          CONTAINER ID IMAGE       NAMES
+          647bc74903be hello-world cool_mayer
+          ----
+          Docker maintains a list of adjectives and nouns.
+          For each container, Docker generates an adjective-noun pairing to create container names.
+          Users can supply their own container name via the `--name` parameter passed to `docker create`.
 
-    #       [literal]
-    #       ----
-    #       $ docker create --name HelloWorld hello-world
-    #       $ docker ps -a
-    #       CONTAINER ID IMAGE       NAMES
-    #       a9c5e62a1813 hello-world HelloWorld
-    #       647bc74903be hello-world cool_mayer
-    #       ----
-    #   - type: bool
-    #     txt: After executing `docker create --name HelloWorld hello-world` will the container name be `HelloWorld`?
-    #     ans: yes
-    #     exp: null
-    #   - type: info
-    #     txt: |
-    #       With a container created we can start the container named "cool_mayer" with
+          [literal]
+          ----
+          $ docker create --name HelloWorld hello-world
+          $ docker ps -a
+          CONTAINER ID IMAGE       NAMES
+          a9c5e62a1813 hello-world HelloWorld
+          647bc74903be hello-world cool_mayer
+          ----
+      - type: bool
+        txt: After executing `docker create --name HelloWorld hello-world` will the container name be `HelloWorld`?
+        ans: yes
+        exp: null
+      - type: info
+        txt: |
+          With a container created we can start the container named "cool_mayer" with
 
-    #       `docker start`
+          `docker start`
 
-    #       [literal]
-    #       ----
-    #       $ docker start -a cool_mayer
-    #       Hello from Docker!
-    #       This message shows that your installation appears to be working correctly.
-    #       ----
-    #       `cool_mayer` is not part of the `-a` parameter.
-    #   - type: info
-    #     txt: |
-    #       Without the `-a` parameter, `docker start` by default displays the name instead of the output.
-    #       [literal]
-    #       ----
-    #       $ docker start cool_mayer
-    #       cool_mayer
-    #       ----
-    #       The container still started but did not display the output.
-    #   - type: info
-    #     txt: |
-    #       When referencing a container, one may use either the container ID or the name.
+          [literal]
+          ----
+          $ docker start -a cool_mayer
+          Hello from Docker!
+          This message shows that your installation appears to be working correctly.
+          ----
+          `cool_mayer` is not part of the `-a` parameter.
+      - type: info
+        txt: |
+          Without the `-a` parameter, `docker start` by default displays the name instead of the output.
+          [literal]
+          ----
+          $ docker start cool_mayer
+          cool_mayer
+          ----
+          The container still started but did not display the output.
+      - type: info
+        txt: |
+          When referencing a container, one may use either the container ID or the name.
 
-    #       [literal]
-    #       ----
-    #       $ docker start -a 647bc74903be
+          [literal]
+          ----
+          $ docker start -a 647bc74903be
 
-    #       Hello from Docker!
-    #       This message shows that your installation appears to be working correctly.
-    #       ----
-    #       This is true of any docker command requiring a container parameter:
-    #       either the container name or container ID can be supplied.
-    #   - type: info
-    #     txt: |
-    #       `docker start` can start multiple containers at once:
-    #       [literal]
-    #       ----
-    #       $ docker start cool_mayer happy_owl mad_mouse
-    #       cool_mayer happy_owl mad_mouse
-    #       ----
-    #       docker start: start one or more stopped containers
-    #   - type: bool
-    #     txt: |
-    #       `docker start sad_deer optimistic_octopus depressed_otter`
-    #       will return an error stating only one container may be started at a time.
-    #     ans: no
-    #     exp: "`docker start` can start many containers at the same time."
-    #   - type: info
-    #     txt: |
-    #       `docker rm` removes containers.
+          Hello from Docker!
+          This message shows that your installation appears to be working correctly.
+          ----
+          This is true of any docker command requiring a container parameter:
+          either the container name or container ID can be supplied.
+      - type: info
+        txt: |
+          `docker start` can start multiple containers at once:
+          [literal]
+          ----
+          $ docker start cool_mayer happy_owl mad_mouse
+          cool_mayer happy_owl mad_mouse
+          ----
+          docker start: start one or more stopped containers
+      - type: bool
+        txt: |
+          `docker start sad_deer optimistic_octopus depressed_otter`
+          will return an error stating only one container may be started at a time.
+        ans: no
+        exp: "`docker start` can start many containers at the same time."
+      - type: info
+        txt: |
+          `docker rm` removes containers.
 
-    #       [literal]
-    #       ----
-    #       $ docker rm HelloWorld cool_mayer
-    #       HelloWorld
-    #       cool_mayer
-    #       $ docker ps -a
-    #       CONTAINER ID   IMAGE  NAMES
-    #       ----
-    #       As long as any container uses an image, an image cannot be removed.
-    #       `docker rmi` will fail if the image is used by a container.
-    #   # - type: bool
-    #   #   txt:
-    #   #   ans: yes
-    #   #   exp: null
-    #   - type: info
-    #     txt: |
-    #       `docker run` is a convenience command that will
+          [literal]
+          ----
+          $ docker rm HelloWorld cool_mayer
+          HelloWorld
+          cool_mayer
+          $ docker ps -a
+          CONTAINER ID   IMAGE  NAMES
+          ----
+          As long as any container uses an image, an image cannot be removed.
+          `docker rmi` will fail if the image is used by a container.
+      - type: info
+        txt: |
+          `docker run` is a convenience command that will
 
-    #         * pull an image,
-    #         * create an image, and
-    #         * start a container for that image
+            * pull an image,
+            * create an image, and
+            * start a container for that image
 
-    #       all at once.
+          all at once.
 
-    #       [literal]
-    #       ----
-    #       $ docker run hello-world
-    #       Unable to find image 'hello-world:latest' locally
-    #       Status: Downloaded newer image for hello-world:latest
+          [literal]
+          ----
+          $ docker run hello-world
+          Unable to find image 'hello-world:latest' locally
+          Status: Downloaded newer image for hello-world:latest
 
-    #       Hello from Docker!
-    #       This message shows that your installation appears to be working correctly.
-    #       ----
+          Hello from Docker!
+          This message shows that your installation appears to be working correctly.
+          ----
 
-    #       So, `docker run` combines the three commands in sequence:
+          So, `docker run` combines the three commands in sequence:
 
-    #       . `docker pull`
-    #       . `docker create`
-    #       . `docker start -a`
-    #   - type: info
-    #     txt: |
-    #       `docker run: pull an image, create a container, and start the container
-    #   - type: info
-    #     txt: |
-    #       Module review
-    #         docker pull: download an image from a registry
-    #         docker create: create a new container
-    #         docker start: start one or more stopped containers
-    #         docker run: pull an image, create a container, and start a the container
-    #         docker images: list images
-    #         docker ps: list containers
-    #         docker rmi: removes images
-    #         docker rm: remove one or more containers
-    #   exercises:
-    #   - type: vocab
-    #     list:
-    #       docker pull: download an image from a registry
-    #       docker create: create a new container
-    #       docker start: start one or more stopped containers
-    #       docker run: pull an image, create a container, and start a the container
-    #       docker images: list images
-    #       docker ps: list containers
-    #       docker rmi: removes images
-    #       docker rm: remove one or more containers
-    #   - type: sort
-    #     txt: list in the order needed to execute them when deploying an image
-    #     ans:
-    #       - git clone
-    #       - create Dockerfile
-    #       - docker build
-    #       - docker run
-    #       - docker ps
-    # - name: A simple server container
-      # inst:
-      # - type: info
-      #   txt: |
-      #     In practice, most Docker containers contain servers that do not exit until instructed to do so.
-      #     The hello-world image from past modules excecuting and exiting immediately is atypical.
-      #     We will use a server container that stays running until instructed to stop.
-      # - type: info
-      #   txt: |
-      #     We will use a new image via
+          . `docker pull`
+          . `docker create`
+          . `docker start -a`
+      - type: info
+        txt: |
+          `docker run: pull an image, create a container, and start the container
+      - type: info
+        txt: |
+          Module review
+            docker pull: download an image from a registry
+            docker create: create a new container
+            docker start: start one or more stopped containers
+            docker run: pull an image, create a container, and start a the container
+            docker images: list images
+            docker ps: list containers
+            docker rmi: removes images
+            docker rm: remove one or more containers
+      exercises:
+      - type: vocab
+        list:
+          docker pull: download an image from a registry
+          docker create: create a new container
+          docker start: start one or more stopped containers
+          docker run: pull an image, create a container, and start a the container
+          docker images: list images
+          docker ps: list containers
+          docker rmi: removes images
+          docker rm: remove one or more containers
+      - type: sort
+        txt: list in the order needed to execute them when deploying an image
+        ans:
+          - git clone
+          - create Dockerfile
+          - docker build
+          - docker run
+          - docker ps
+    - name: A simple server container
+      inst:
+      - type: info
+        txt: |
+          In practice, most Docker containers contain servers that do not exit until instructed to do so.
+          The hello-world image from past modules excecuting and exiting immediately is atypical.
+          We will use a server container that stays running until instructed to stop.
+      - type: info
+        txt: |
+          We will use a new image via
 
-      #     `docker run --name bare-nginx -d -p 80:80 nginx`.
+          `docker run --name bare-nginx -d -p 80:80 nginx`.
 
-      #     nginx is a web  server.
+          nginx is a web  server.
 
-      #     `-d` detaches the container from the command prompt.
-      #     Otherwise the container does not relenquish control of the command prompt.
+          `-d` detaches the container from the command prompt.
+          Otherwise the container does not relenquish control of the command prompt.
 
-      #     `-p 80:80` is a port mapping, exposing port 80 of the container to port 80 of the host.
-      #     This enables navigation to the contained Web server's offerings from the host.
+          `-p 80:80` is a port mapping, exposing port 80 of the container to port 80 of the host.
+          This enables navigation to the contained Web server's offerings from the host.
 
-      #     After the command completes,
-      #     navigating to `http://localhost:80/index.html` will display a default Web page:
+          After the command completes,
+          navigating to `http://localhost:80/index.html` will display a default Web page:
 
-      #     #Welcome to nginx!#
-      # - type: info
-      #   txt: |
-      #     The filesystem of an active container can be navigated if the container contains a command prompt.
+          #Welcome to nginx!#
+      - type: info
+        txt: |
+          The filesystem of an active container can be navigated if the container contains a command prompt.
 
-      #     This command executes bash from withing the container.
+          This command executes bash from withing the container.
 
-      #     [literal]
-      #     ----
-      #     $ docker exec -it bare-nginx bash
-      #     root@fa441798c8ee:/# ls
-      #     bin  boot  dev	docker-entrypoint.d  docker-entrypoint.sh
-      #     etc	home  lib  media  mnt  opt  proc  root	run  sbin
-      #     srv	sys  tmp  usr  var
-      #     root@fa441798c8ee:/#
-      #     ----
-      #     We are in the root directory of the container.
+          [literal]
+          ----
+          $ docker exec -it bare-nginx bash
+          root@fa441798c8ee:/# ls
+          bin  boot  dev	docker-entrypoint.d  docker-entrypoint.sh
+          etc	home  lib  media  mnt  opt  proc  root	run  sbin
+          srv	sys  tmp  usr  var
+          root@fa441798c8ee:/#
+          ----
+          We are in the root directory of the container.
 
-      #     Most containers use the `root` account without a password.
-      # - type: info
-      #   txt: |
-      #     When exiting the container filesystem back to the host command prompt, use hotkey
+          Most containers use the `root` account without a password.
+      - type: info
+        txt: |
+          When exiting the container filesystem back to the host command prompt, use hotkey
 
-      #     ctrl-p-q
+          ctrl-p-q
 
-      #     Do not use `exit` in the container command prompt.
-      #     `exit` will not only exit the container environment but often stop the container as well.
+          Do not use `exit` in the container command prompt.
+          `exit` will not only exit the container environment but often stop the container as well.
     # - name: Containerization
     # - name: Dockerfiles
     #   inst:
@@ -757,8 +753,8 @@ units:
     # - name: Docker Commands
     # - name: The Docker server
     # - name: Image registries
-      # inst:
-      # - type: info
-      #   txt: |
-      #     - "`docker search`"
-      #     - "`docker push`"
+    #   inst:
+    #   - type: info
+    #     txt: |
+    #       - "`docker search`"
+    #       - "`docker push`"
