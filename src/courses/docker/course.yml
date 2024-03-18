@@ -459,10 +459,6 @@ units:
           We want to download an image, see the image listed, and delete the image.
           Place the commands in the correct order.
         ans: ['`docker pull`', '`docker images`','`docker rmi`']
-      - type: bool
-        txt:
-        ans: yes
-        exp: null
     - name: Containers
       inst:
       - type: info
@@ -671,7 +667,7 @@ units:
           nginx is a web  server.
 
           `-d` detaches the container from the command prompt.
-          Otherwise the container does not relenquish control of the command prompt.
+          Otherwise the container does not relinquish control of the command prompt.
 
           `-p 80:80` is a port mapping, exposing port 80 of the container to port 80 of the host.
           This enables navigation to the contained Web server's offerings from the host.
