@@ -639,14 +639,15 @@ units:
           docker ps: list containers
           docker rmi: removes images
           docker rm: remove one or more containers
-      - type: sort
-        txt: list in the order needed to execute them when deploying an image
-        ans:
-          - git clone
-          - create Dockerfile
-          - docker build
-          - docker run
-          - docker ps
+      # doesn't work because the `done` button is underneath the last item
+      # - type: sort
+      #   txt: list in the order needed to execute them when deploying an image
+      #   ans:
+      #     - git clone
+      #     - create Dockerfile
+      #     - docker build
+      #     - docker run
+      #     - docker ps
     - name: A simple server container
       inst:
       - type: info
