@@ -63,8 +63,16 @@ SpoonFeeder remains in an early pre-release state. Although functional, it's mis
 
 ## Docker installation
 
+Build the SpoonFeeder image from the Dockerfile in the Spoonfeeder repository
+
 `docker build -t spoonfeeder https://github.com/kevreth/SpoonFeeder.git#main`
 
+Create and run a container
+
 `docker run -d -p 9000:9000 --name spoonfeeder-run spoonfeeder`
+
+Navigating to http://localhost:9000 should display Spoonfeeder.
+
+### Run this to get a shell in the container
 
 `docker exec -it spoonfeeder-run bash`
