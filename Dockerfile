@@ -14,7 +14,7 @@ RUN git clone https://github.com/kevreth/SpoonFeeder.git .
 RUN npm install
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 9000
 
 # Command to run the Quasar development server
 CMD ["quasar", "dev"]

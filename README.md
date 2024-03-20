@@ -60,3 +60,11 @@ SpoonFeeder remains in an early pre-release state. Although functional, it's mis
 7) Start the project
 
 `quasar dev`
+
+## Docker installation
+
+`docker build -t spoonfeeder https://github.com/kevreth/SpoonFeeder.git#main`
+
+`docker run -d -p 9000:9000 --name spoonfeeder-run spoonfeeder`
+
+`docker exec -it spoonfeeder-run bash`
