@@ -73,6 +73,6 @@ Create and run a container
 
 Navigating to http://localhost:9000 should display Spoonfeeder.
 
-### Run this to get a shell in the container
+### Run a shell in the container
 
 `docker exec -it spoonfeeder-run bash`
