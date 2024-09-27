@@ -71,6 +71,9 @@ Create and run a container
 
 `docker run -d -p 9000:9000 --name spoonfeeder-run spoonfeeder`
 
+or run the below to see updates everytime you make changes
+`docker run -d -p 9000:9000 --name spoonfeeder-run -v $(pwd):/app spoonfeeder`
+
 Navigating to http://localhost:9000 should display Spoonfeeder.
 
 ### Run a shell in the container
