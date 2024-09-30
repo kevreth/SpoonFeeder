@@ -15,7 +15,7 @@
   padding: 10px 20px;
   color: white;
   text-transform: uppercase;
-  box-shadow: 0 0 5px #00ffea;
+  box-shadow: 0 0 5px #0ff;
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -33,7 +33,7 @@
     transform: translateY(-2px);
   }*/
 }
-.hightlight-btn:hover {
+.highlight-btn:hover {
   background-color: #005fa3 !important;
 }
 </style>

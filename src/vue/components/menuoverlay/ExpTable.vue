@@ -46,10 +46,10 @@ function closeInfo() {
   background-color: #121212;
   padding: 20px; */
 
-  background: rgba(0, 0, 0, 0.85);
-  border: 1px solid #00ff00;
-  box-shadow: 0 0 10px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.5);
-  color: #fff;
+  background: rgba(0, 0, 0, 1);
+  border: 1px solid #00bfff;
+  box-shadow: 0 0 10px #00bfff, inset 0 0 20px rgba(0, 255, 0, 0.5);
+  /* color: #fff; */
   padding: 20px;
   border-radius: 10px;
 }
