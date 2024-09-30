@@ -21,7 +21,7 @@ body {
   padding: 10px 5px;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 0.9em;
 }
 
 .q-item:hover,

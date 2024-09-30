@@ -42,7 +42,7 @@ function closeInfo() {
   padding: 20px;
   border-radius: 10px;
   width: 100vw;
-  z-index: 8000;
+  z-index: 2;
 }
 .scrollable-content {
   font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,

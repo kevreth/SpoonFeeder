@@ -10,7 +10,7 @@
   padding-right: 9px;
   width: 20px;
   right: 0;
-  z-index: 2;
+  z-index: 1;
   cursor: pointer;
 }
 @media (min-width: 768px) {

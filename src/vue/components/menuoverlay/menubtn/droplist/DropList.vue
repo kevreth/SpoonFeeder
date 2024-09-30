@@ -12,7 +12,7 @@
       @click="droplist = false"
     >
       <q-item clickable>
-        <q-item-section avatar>
+        <q-item-section avatar class="dropListIcon">
           <q-icon name="trending_up" />
         </q-item-section>
         <q-item-section
@@ -22,7 +22,7 @@
         >
       </q-item>
       <q-item clickable>
-        <q-item-section avatar>
+        <q-item-section avatar class="dropListIcon">
           <q-icon name="school" />
         </q-item-section>
         <q-item-section @click="courseList = true">{{
@@ -30,7 +30,7 @@
         }}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section avatar>
+        <q-item-section avatar class="dropListIcon">
           <q-icon name="settings" />
         </q-item-section>
         <q-item-section @click="settingOverlay = true">{{
@@ -38,7 +38,7 @@
         }}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section avatar>
+        <q-item-section avatar class="dropListIcon">
           <q-icon name="help_outline" />
         </q-item-section>
         <q-item-section>{{ $t('droplist.help') }}</q-item-section>
@@ -85,17 +85,18 @@ function handleOverlay() {
 
 <style>
 .dropList {
-  /* margin-right: 0.2em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
-
   border-right: 1px solid #00bfff;
   padding-right: 5px;
   color: #ddd;
   font-family: 'Orbitron', sans-serif;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  font-size: 1.2em;
+}
+.dropListIcon {
+  padding: 0 10px;
 }
 .dropMenu {
-  font-size: 2vw;
+  font-size: 3.5vw;
   font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   /* right: 15px; */

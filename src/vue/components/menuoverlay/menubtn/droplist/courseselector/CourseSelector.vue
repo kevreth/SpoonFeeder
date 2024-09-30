@@ -5,7 +5,7 @@
       id="courseTable"
       class="courseTable"
       @click.stop=""
-      z-index="7000"
+      z-index="3"
     >
       <template #body>
         <q-list
@@ -111,6 +111,9 @@ function closeInfo() {
 </script>
 
 <style>
+.courseItemSection {
+  padding: 5px 0;
+}
 .btnCourse {
   position: relative;
   bottom: 0;
@@ -150,26 +153,20 @@ function closeInfo() {
   min-height: 3.5vw;
   line-height: 0em;
 }
-.courseTableBtn,
-.savedCourse span {
-  font-size: 1.5vw;
-}
-.courseList {
-  /* border-radius: 10px;
-  padding: 0px;
-  font-size: 1.5vw;
-  font-weight: normal; */
 
-  background-color: rgba(15, 15, 30, 0.85);
+.courseList {
+  background-color: rgba(15, 15, 30, 1);
   border: 1px solid rgba(100, 100, 255, 0.6);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   padding: 10px 0;
   width: 250px;
-  font-family: 'Orbitron', sans-serif;
 }
-
-@media screen and (min-width: 1200px) {
+.scrollable-course {
+  overflow: auto;
+  max-height: 70vh;
+}
+@media (min-width: 768px) {
   .courseList {
     font-size: 1vw;
   }
@@ -181,9 +178,9 @@ function closeInfo() {
   .q-item.courseItem {
     min-height: 2vw;
   }
-}
-.scrollable-course {
-  overflow: auto;
-  max-height: 70vh;
+  /* .courseTableBtn,
+  .savedCourse span {
+    font-size: 1.5vw;
+  } */
 }
 </style>

@@ -196,6 +196,7 @@ button.expandIcon {
   overflow: clip;
 }
 .progressTable thead tr th {
+  background-color: rgba(28, 28, 60, 1);
   position: sticky;
   z-index: 1;
 }

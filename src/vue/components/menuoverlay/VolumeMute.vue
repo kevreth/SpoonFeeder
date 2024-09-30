@@ -15,10 +15,10 @@ import { AudioPlayer } from '../../mediator';
 const props = defineProps({
   volume: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
-const emit = defineEmits(['toggle-volume'])
+const emit = defineEmits(['toggle-volume']);
 function toggleVolume() {
   emit('toggle-volume');
   soundControl();
@@ -26,7 +26,7 @@ function toggleVolume() {
 }
 
 function soundControl() {
-  const player = new AudioPlayer(new Audio, MUTE);
+  const player = new AudioPlayer(new Audio(), MUTE);
   if (!props.volume) {
     player.muteAudio();
   } else if (props.volume) {
@@ -38,17 +38,17 @@ function soundControl() {
 <style>
 .volumeMute {
   height: 20px;
-  z-index: 1;
+  z-index: -1;
   padding: 2px;
   top: 25px;
   font-size: 2vw;
 }
 @media screen and (min-width: 1200px) {
   .volumeMute {
-    font-size: 1vw
+    font-size: 1vw;
   }
 }
 .volumeMute:hover {
   transform: scale(1.2);
-} 
+}
 </style>

@@ -39,13 +39,13 @@
 
 <style>
 .naviTable {
-  /* display:inline-block; */
   border-collapse: collapse;
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
-  /* grid-template-rows: repeat(auto-fit, minmax(10px, 0.7fr)); */
   margin: 15px 15px 0 15px;
   float: left;
+  z-index: -1;
+  position: relative;
 }
 .naviTable tbody {
   display: inline-table;

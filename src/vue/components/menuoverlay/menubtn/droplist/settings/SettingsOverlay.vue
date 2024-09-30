@@ -2,7 +2,7 @@
   <q-overlay
     class="settingOverlay"
     v-model="settingOverlay"
-    :z-index="5000"
+    :z-index="3"
     @click.stop=""
   >
     <template #body>
@@ -15,7 +15,7 @@
           </div>
           <SwitchLang class="q-ma-sm"></SwitchLang>
         </div>
-        <ExitBtn style="z-index: -1000" @click="closeInfo" />
+        <ExitBtn style="z-index: -1" @click="closeInfo" />
       </div>
     </template>
   </q-overlay>
