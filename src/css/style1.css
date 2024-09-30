@@ -1,47 +1,62 @@
-*, *:before, *:after { box-sizing: border-box; }
-/* @media (orientation: landscape) {
-  body {
-    font-size: 2vw;
-  }
-  button {
-    font-size: 2vw;
-  }
-  .correct {
-    font-size: 6vw;
-  }
-  .incorrect {
-    font-size: 6vw;
-  }
-} */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
-/* @media (orientation: portrait) {
-  body {
-    font-size: 4vw;
+body {
+  font-family: sans-serif;
+
+  background-image: url(../img/cosmos-1853491.jpg),
+    radial-gradient(circle, #2c2b32 0%, #1c1b22 100%);
+  background-size: cover, auto;
+  opacity: 1;
+}
+
+.q-item,
+.bg-course-list {
+  background: linear-gradient(145deg, #3a3f55, #313447);
+  border: 1px solid #5f6278;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.q-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
   }
-  button {
-    font-size: 4vw;
+  50% {
+    opacity: 0.5;
   }
-  .correct {
-    font-size: 14vw;
+  100% {
+    opacity: 1;
   }
-  .incorrect {
-    font-size: 14vw;
-  }
-} */
-ol,ul {
+}
+
+.q-item:focus {
+  animation: pulse 1s infinite;
+}
+
+ol,
+ul {
   text-align: left;
 }
 .correct {
   color: green;
-  font-weight:bold;
-  font-size:15vw;
+  font-weight: bold;
+  font-size: 15vw;
 }
 .incorrect {
   color: red;
-  font-weight:bold;
-  font-size:15vw;
+  font-weight: bold;
+  font-size: 15vw;
 }
-.question{
+.question {
   margin-bottom: 10px;
 }
 .answers {
@@ -49,58 +64,73 @@ ol,ul {
   text-align: left;
   display: inline-block;
 }
-.answers label{
+.answers label {
   display: block;
   margin-bottom: 10px;
 }
+
 button {
-  display: inline-block;
-  padding:0.1em 0.3em;
-  margin:0.1em 0.1em 0.8em 0;
-  /* padding: 1vw; */
-  /* margin: 1vw 0; */
+  /* display: inline-block;
+  padding: 0.1em 0.3em;
+  margin: 0.1em 0.1em 0.8em 0;
   border: 1px solid #42414d;
   box-sizing: border-box;
-  text-decoration:none;
+  text-decoration: none;
   color: #fbfbfe;
-  background: #42414d; 
-  text-align:center;
+  background: #42414d;
+  text-align: center;
   border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15); */
+
+  display: inline-block;
+  background-color: white;
+  border: none;
+  color: black !important;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
+  /* color: #ffffff; */
+  /* text-shadow: 2px 2px 4px #000000; */
+
+  /* background: linear-gradient(145deg, #3a3f55, #313447);
+  border: 1px solid #5f6278;
+  color: #fff;
+  padding: 10px 20px;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-shadow: 2px 2px 4px #000000; */
 }
-/* @keyframes transitionIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-} */
-/* .continueBtn, .hljs, table, .container, .shape, #gaps, #fills, #text {
-  animation: transitionIn 0.5s;
-} */
+
 button:hover {
-  border-color: #6CAEF8;
+  /* border-color: #6caef8; */
+  background-color: #1e406e;
+  /* transform: scale(1.1); */
 }
-@media all and (max-width:10em){
-  button{
-    display:block;
-    margin:0.2em auto;
+
+.continueBtn {
+  margin-left: -3.3em !important;
+}
+@media all and (max-width: 10em) {
+  button {
+    display: block;
+    margin: 0.2em auto;
   }
 }
 #fills {
-  position:sticky;
-  top:0;
+  position: sticky;
+  top: 0;
   color: white;
-  word-wrap:normal;
+  word-wrap: normal;
 }
 #header {
   text-align: right;
   position: static;
-  right:auto;
-  top:auto;
+  right: auto;
+  top: auto;
 }
 .container {
   position: relative;
@@ -121,7 +151,7 @@ button:hover {
   line-height: 25px;
   font-size: 22px;
   font-weight: 400;
-  background-color: #141E30;
+  background-color: #141e30;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,11 +163,11 @@ button:hover {
   opacity: 50%;
 }
 .shape_correct {
-  fill:green;
+  fill: green;
   opacity: 50%;
 }
 .shape_incorrect {
-  fill:red;
+  fill: red;
   opacity: 50%;
 }
 iframe {

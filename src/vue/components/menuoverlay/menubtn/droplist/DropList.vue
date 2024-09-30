@@ -3,29 +3,63 @@
     fit
     id="droplist"
     class="text-white dropMenu"
-    style="background: transparent;"
+    style="background: transparent"
     v-model="droplist"
   >
-    <q-list style="min-width: 30px" class="dropList bg-secondary" @click="droplist = false">
+    <q-list
+      style="min-width: 30px"
+      class="dropList bg-secondary"
+      @click="droplist = false"
+    >
       <q-item clickable>
-        <q-item-section @click="overlay = true" @keydown.esc="overlay = false">{{ $t('droplist.progress')}}</q-item-section>
+        <q-item-section avatar>
+          <q-icon name="trending_up" />
+        </q-item-section>
+        <q-item-section
+          @click="overlay = true"
+          @keydown.esc="overlay = false"
+          >{{ $t('droplist.progress') }}</q-item-section
+        >
       </q-item>
       <q-item clickable>
-        <q-item-section @click="courseList = true">{{ $t('droplist.courses')}}</q-item-section>
+        <q-item-section avatar>
+          <q-icon name="school" />
+        </q-item-section>
+        <q-item-section @click="courseList = true">{{
+          $t('droplist.courses')
+        }}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section @click="settingOverlay = true">{{ $t('droplist.settings')}}</q-item-section>
+        <q-item-section avatar>
+          <q-icon name="settings" />
+        </q-item-section>
+        <q-item-section @click="settingOverlay = true">{{
+          $t('droplist.settings')
+        }}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section>{{ $t('droplist.help')}}</q-item-section>
+        <q-item-section avatar>
+          <q-icon name="help_outline" />
+        </q-item-section>
+        <q-item-section>{{ $t('droplist.help') }}</q-item-section>
       </q-item>
     </q-list>
   </q-menu>
 
-  <OverlayTable :isEnable="isEnable" v-model="overlay" @handleOverlay="handleOverlay"/>
-  <CourseSelector :isEnable="isEnable" v-model="courseList"
-  @closeInfo="courseList = false"/>
-  <SettingsOverlay v-model="settingOverlay" @closeInfo="settingOverlay=false"/>
+  <OverlayTable
+    :isEnable="isEnable"
+    v-model="overlay"
+    @handleOverlay="handleOverlay"
+  />
+  <CourseSelector
+    :isEnable="isEnable"
+    v-model="courseList"
+    @closeInfo="courseList = false"
+  />
+  <SettingsOverlay
+    v-model="settingOverlay"
+    @closeInfo="settingOverlay = false"
+  />
 </template>
 
 <script setup lang="ts">
@@ -55,7 +89,8 @@ function handleOverlay() {
 }
 .dropMenu {
   font-size: 2vw;
-  font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   /* right: 15px; */
 }
 @media screen and (min-width: 1200px) {
