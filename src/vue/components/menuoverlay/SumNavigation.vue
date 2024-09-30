@@ -50,9 +50,10 @@
 .naviTable tbody {
   display: inline-table;
   position: relative;
-  font-size: 1.5vw
+  /* font-size: 1.5vw */
+  font-size: 0.6em;
 }
-@media screen and (min-width: 1200px) {
+@media (min-width: 768px) {
   .naviTable tbody {
     font-size: 0.9vw;
   }

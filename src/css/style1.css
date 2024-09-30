@@ -18,9 +18,10 @@ body {
 .q-item,
 .bg-course-list {
   color: #ccc;
-  padding: 10px 20px;
+  padding: 10px 5px;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
+  font-size: 2em;
 }
 
 .q-item:hover,
@@ -190,4 +191,22 @@ tbody tr td:first-child {
 }
 tbody th {
   padding: 10px;
+}
+
+#slide {
+  width: 80vw;
+}
+
+.q-btn .q-icon {
+  font-size: 3em;
+}
+@media (min-width: 768px) {
+  .q-btn .q-icon {
+    font-size: 1.5em;
+  }
+
+  .q-item {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
 }
