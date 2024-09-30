@@ -60,6 +60,7 @@ function startOver() {
   border-radius: 10px;
   overflow: auto;
   background: transparent;
+  overflow-x: auto;
 }
 .overlayBtn {
   color: #fc3d08;

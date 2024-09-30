@@ -205,15 +205,24 @@ button.expandIcon {
 }
 .progressTable thead tr:first-child th {
   top: 0;
-  font-size: 2vw;
+  /* font-size: 2.5vw; */
 }
 .progressTable tbody td {
-  font-size: 1.9vw;
+  font-size: 2.9vw;
+  line-height: normal;
 }
 .q-btn .progressTable {
   font-weight: 350;
 }
-@media screen and (min-width: 1000px) {
+.progressTable tbody {
+  display: contents;
+}
+.award-icon {
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+@media (min-width: 768px) {
   .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {
     font-size: 1.1vw !important;
@@ -224,13 +233,11 @@ button.expandIcon {
   .q-btn .progressTable {
     font-weight: 150;
   }
-}
-.progressTable tbody {
-  display: contents;
-}
-.award-icon {
-  position: relative;
-  top: 5px;
-  left: 5px;
+  .progressTable tbody td {
+    font-size: 1.9vw;
+  }
+  .progressTable thead tr:first-child th {
+    font-size: 2vw;
+  }
 }
 </style>

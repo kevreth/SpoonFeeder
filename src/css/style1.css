@@ -90,7 +90,6 @@ ul {
 
 button {
   display: inline-block;
-  padding: 0.1em 0.3em;
   margin: 0.1em 0.1em 0.8em 0;
   box-sizing: border-box;
   text-decoration: none;
@@ -208,5 +207,9 @@ tbody th {
   .q-item {
     padding: 10px 20px;
     font-size: 1em;
+  }
+
+  button {
+    padding: 0.1em 0.3em;
   }
 }
