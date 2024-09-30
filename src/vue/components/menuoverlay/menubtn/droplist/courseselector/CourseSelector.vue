@@ -155,10 +155,18 @@ function closeInfo() {
   font-size: 1.5vw;
 }
 .courseList {
-  border-radius: 10px;
+  /* border-radius: 10px;
   padding: 0px;
   font-size: 1.5vw;
-  font-weight: normal;
+  font-weight: normal; */
+
+  background-color: rgba(15, 15, 30, 0.85);
+  border: 1px solid rgba(100, 100, 255, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 10px 0;
+  width: 250px;
+  font-family: 'Orbitron', sans-serif;
 }
 
 @media screen and (min-width: 1200px) {

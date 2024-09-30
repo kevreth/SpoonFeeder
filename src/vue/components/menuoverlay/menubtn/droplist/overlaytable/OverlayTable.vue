@@ -1,14 +1,22 @@
 <template>
   <transition appear group :name="isEnable ? 'transitions-zoom' : ''">
-    <q-overlay id="overlay" @click.stop="" :class="{'transition': isEnable}">
+    <q-overlay id="overlay" @click.stop="" :class="{ transition: isEnable }">
       <template #body>
-        <div id="overlayTable" class="overlayTable fixed-center column" style="display: flex; flex-direction: column;">
+        <div
+          id="overlayTable"
+          class="overlayTable fixed-center column"
+          style="display: flex; flex-direction: column"
+        >
           <div class="overlayBtn">
-            <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')"/>
+            <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')" />
             <TrashBtn id="startOver" @click="startOver" />
           </div>
 
-          <div id="progressBackground" class="progressBackground" style="flex-grow: 1;">
+          <div
+            id="progressBackground"
+            class="progressBackground"
+            style="flex-grow: 1"
+          >
             <ProgressTable style="cursor: auto" />
           </div>
         </div>
@@ -26,9 +34,9 @@ import getStartOver from '../../../../../composables/startOver';
 defineProps({
   isEnable: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+});
 
 // start over functionality
 function startOver() {
@@ -48,10 +56,10 @@ function startOver() {
   } */
 }
 .progressBackground {
-  font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   height: 70%;
   border-radius: 10px;
   overflow: auto;
+  background: transparent;
 }
 .overlayBtn {
   color: #fc3d08;

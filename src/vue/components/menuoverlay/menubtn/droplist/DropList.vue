@@ -85,7 +85,14 @@ function handleOverlay() {
 
 <style>
 .dropList {
-  margin-right: 0.2em;
+  /* margin-right: 0.2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
+
+  border-right: 1px solid #00bfff;
+  padding-right: 5px;
+  color: #ddd;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 .dropMenu {
   font-size: 2vw;

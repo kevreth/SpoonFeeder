@@ -18,20 +18,6 @@
   box-shadow: 0 0 5px #0ff;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  /* background: linear-gradient(145deg, #ff470f, #ff6b3d);
-  border: none;
-  box-shadow: 0 4px #ff3300;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  &:hover {
-    background: linear-gradient(145deg, #ff3d00, #ff5436);
-    box-shadow: 0 6px #cc2900;
-    transform: translateY(-2px);
-  }*/
 }
 .highlight-btn:hover {
   background-color: #005fa3 !important;

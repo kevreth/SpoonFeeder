@@ -1,8 +1,5 @@
 <template>
-  <q-icon
-    name="info"
-    class="explainIcon"
-  /> 
+  <q-icon name="info" class="explainIcon" />
 </template>
 
 <style>
@@ -16,11 +13,11 @@
 @media screen and (min-width: 1200px) {
   .explainIcon {
     font-size: 1.5vw;
-    right: 10vw;
+    right: 13vw;
     /* top: 50px; */
   }
 }
 .explainIcon:hover {
   transform: scale(1.4);
-} 
+}
 </style>

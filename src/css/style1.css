@@ -8,7 +8,6 @@
 
 body {
   font-family: sans-serif;
-
   background-image: url(../img/cosmos-1853491.jpg),
     radial-gradient(circle, #2c2b32 0%, #1c1b22 100%);
   background-size: cover, auto;
@@ -18,15 +17,23 @@ body {
 
 .q-item,
 .bg-course-list {
-  background: linear-gradient(145deg, #3a3f55, #313447);
-  border: 1px solid #5f6278;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  color: #ccc;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
 }
 
-.q-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+.q-item:hover,
+.q-item:focus {
+  background-color: #222244;
+  color: #00ffcc;
+  outline: none;
+}
+
+.q-item.active {
+  background-color: #113377;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 @keyframes pulse {
@@ -45,14 +52,13 @@ body {
   animation: pulse 1s infinite;
 }
 
-/* a {
-  color: #00ffff;
-  text-decoration: underline; 
+a {
+  color: #00bfff;
+  text-decoration: none;
   &:hover {
-    color: #ffffff; 
-    text-shadow: 0 0 10px #ffffff;
+    color: #00ffcc;
   }
-} */
+}
 
 ol,
 ul {
@@ -83,78 +89,25 @@ ul {
 
 button {
   display: inline-block;
-  /* padding: 10px 20px;
-  margin: 5px; */
-  /* font-family: 'Orbitron', sans-serif; */
-  /* font-weight: bolder; */
   padding: 0.1em 0.3em;
   margin: 0.1em 0.1em 0.8em 0;
-  /* border: 1px solid #42414d; */
-  /* border: 1px solid #00bfff; */
-
   box-sizing: border-box;
   text-decoration: none;
-  /* color: #fbfbfe; */
   background: #c5c5c5;
-  /* background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%); */
-
-  /* color: #000000; */
-  /* color: #333; */
-  /* letter-spacing: 0.1em; */
-  /* color: #e5e5e5; */
   text-align: center;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
-  /* box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.1); */
-
-  /* outline: none; */
-  /* border-color: transparent; */
   border: 1px solid #00bfff;
-  /* border: 1px solid #00ff00; */
-
   cursor: pointer;
-  /* transition: background 0.3s, box-shadow 0.3s; */
-  /* background: transparent; */
-
-  /* display: inline-block;
-  border: none;
-  background: linear-gradient(to bottom, #3a7bd5, #3a6073);
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
-  color: #ffffff;
-  text-shadow: 2px 2px 4px #000000; */
-
-  /* background: linear-gradient(145deg, #3a3f55, #313447);
-  border: 1px solid #5f6278;
-  color: #fff;
-  padding: 10px 20px;
-  font-family: 'Orbitron', sans-serif;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-shadow: 2px 2px 4px #000000; */
-}
-
-button:hover {
-  /* border-color: #00bfff; */
-  /* background-color: #1e406e; */
-  transform: scale(1.1);
 }
 
 .continueBtn {
-  /* margin-left: -4.3em !important; */
-  /* margin-top: 1em; */
-  font-size: 1.1em;
+  font-size: 1em;
   letter-spacing: 0.4em;
-  /* font-weight: 900; */
-  /* text-transform: uppercase; */
   background-color: #152439;
   font-family: 'Orbitron', sans-serif;
   color: #e5e5e5;
+  padding-left: 10px;
 }
 
 @media all and (max-width: 10em) {
