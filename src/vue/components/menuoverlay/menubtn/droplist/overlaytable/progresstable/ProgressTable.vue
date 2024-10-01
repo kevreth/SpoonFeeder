@@ -189,19 +189,19 @@ button.expandIcon {
 }
 /* make the header sticky */
 .progressTable .q-table {
-  background-color: rgba(28, 28, 60, 0.9);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(28, 28, 60, 0.9); */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
 }
 .progressTable .q-markup-table {
   overflow: clip;
 }
 .progressTable thead tr th {
-  background-color: rgba(28, 28, 60, 1);
+  background-color: #152439;
   position: sticky;
   z-index: 1;
 }
 .progressTable {
-  max-width: 100vw;
+  max-width: 90vw;
   display: block ruby;
 }
 .progressTable thead tr:first-child th {
@@ -239,6 +239,9 @@ button.expandIcon {
   }
   .progressTable thead tr:first-child th {
     font-size: 2vw;
+  }
+  .progressTable {
+    max-width: 100vw;
   }
 }
 </style>

@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import MenuOverlay from '../components/menuoverlay/MenuOverlay.vue';
-
 import { onBeforeUnmount, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 
@@ -41,6 +40,6 @@ onMounted(() => {
   max-height: 0px;
   display: flex;
   float: left;
-  z-index: 3;
+  z-index: 1;
 }
 </style>
