@@ -124,7 +124,7 @@ function closeInfo() {
   line-height: 0.5em;
 }
 .savedCourse {
-  margin-top: 0.4em;
+  margin: 0.4em;
   line-height: 1em;
 }
 .savedCourse span {
