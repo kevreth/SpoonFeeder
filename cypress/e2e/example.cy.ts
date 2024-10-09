@@ -1,33 +1,31 @@
-import { parseQuery } from 'vue-router';
 import {
-  existVisibleNotEmpty,
-  elementContains,
-  testButton,
-  existAndVisible,
   continueButton,
   dragDrop,
-  printWebStorage
+  elementContains,
+  existAndVisible,
+  existVisibleNotEmpty,
+  testButton,
 } from './functions';
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
-  Cypress.Commands.add('printWebStorage' as any, () => {
-    cy.window().then((win: Window) => {
-      const storageTypes: Record<string, Storage> = {
-        local: win.localStorage,
-        session: win.sessionStorage,
-      };
+Cypress.Commands.add('printWebStorage' as any, () => {
+  cy.window().then((win: Window) => {
+    const storageTypes: Record<string, Storage> = {
+      local: win.localStorage,
+      session: win.sessionStorage,
+    };
 
-      Object.keys(storageTypes).forEach((type: string) => {
-        const storage = storageTypes[type];
-        console.log(`${type} storage:`);
-        for (let i = 0; i < storage.length; i++) {
-          const key = storage.key(i) as string;
-          const value = storage.getItem(key);
-          console.log(`  ${key}: ${value}`);
-        }
-      });
+    Object.keys(storageTypes).forEach((type: string) => {
+      const storage = storageTypes[type];
+      console.log(`${type} storage:`);
+      for (let i = 0; i < storage.length; i++) {
+        const key = storage.key(i) as string;
+        const value = storage.getItem(key);
+        console.log(`  ${key}: ${value}`);
+      }
     });
   });
+});
 Cypress.on('uncaught:exception', (err, runnable) => {
   console.log('Error:', err);
   console.log('Stack trace:', err.stack);
@@ -46,7 +44,7 @@ describe('Cypress Testing', () => {
     //because of async loading
     cy.get('#android', { timeout: 20000 }).should('be.visible');
     //course selection dialog
-    cy.get('#test').scrollIntoView()
+    cy.get('#test').scrollIntoView();
     testButton('#test');
     testButton('#btn_switch');
 
@@ -210,7 +208,7 @@ describe('Cypress Testing', () => {
 
     //because of async loading
     cy.get('#android', { timeout: 10000 }).should('be.visible');
-    cy.get('#test').scrollIntoView()
+    cy.get('#test').scrollIntoView();
     testButton('#test');
     testButton('#btn_switch');
 

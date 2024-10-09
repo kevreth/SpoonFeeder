@@ -13,9 +13,6 @@ export function continueButton(doc: Document, txt: string): HTMLElement {
   const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   //as an HTMLElement we can assign styles
   //this wouldn't work when using a stylesheet, not sure why.
-  continue_btn.style.position = 'absolute';
-  continue_btn.style.marginTop = 10 + 'px';
-  continue_btn.style.marginLeft = -2.3 + 'em';
   continue_btn?.addEventListener('click', (): void => {
     SaveData.setContinueTrue(txt);
     const explain = doc.getElementById('explainIcon') as HTMLElement;
