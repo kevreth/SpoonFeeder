@@ -1,11 +1,11 @@
-word.problems.html: word.problems.adoc
-	asciidoctor -b html5 -s -o $@ $<
+# course.html: course.adoc
+# 	asciidoctor -b html5 -s -o $@ $<
 
-word.problems.adoc: word.problems.yml slides.py
-	python slides.py word.problems.yml
+course.adoc: course.yml slides.py
+	python slides.py course.yml
 
 .PHONY: clean
 
 clean:
-	rm -f word.problems.html
-	rm -f word.problems.adoc
+	rm -f course.html
+	rm -f course.adoc
