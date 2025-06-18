@@ -1,0 +1,11 @@
+{
+  "name": "cyberlearning2",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^5.7.8",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/core": "^5.0.0"
+  }
+}

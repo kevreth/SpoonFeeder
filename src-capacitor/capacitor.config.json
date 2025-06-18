@@ -1,0 +1,9 @@
+{
+  "appId": "com.sasha.spoonfeeder",
+  "appName": "cyberlearning2",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "url": "http://192.168.2.6:9500"
+  }
+}
