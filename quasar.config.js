@@ -97,7 +97,7 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
       config: {
-        loading: {}
+        loading: {},
       },
 
       // iconSet: 'material-icons', // Quasar icon set
@@ -122,7 +122,7 @@ module.exports = configure(function (/* ctx */) {
       'fadeOutRight',
       'slideInDown',
       'slideOutUp',
-      'zoomInUp'
+      'zoomInUp',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#sourcefiles
@@ -130,11 +130,11 @@ module.exports = configure(function (/* ctx */) {
       rootComponent: './src/vue/App.vue',
       router: './src/vue/router/index',
       store: './src/vue/store/index',
-    //   registerServiceWorker: 'src-pwa/register-service-worker',
-    //   serviceWorker: 'src-pwa/custom-service-worker',
-    //   pwaManifestFile: 'src-pwa/manifest.json',
-    //   electronMain: 'src-electron/electron-main',
-    //   electronPreload: 'src-electron/electron-preload'
+      //   registerServiceWorker: 'src-pwa/register-service-worker',
+      //   serviceWorker: 'src-pwa/custom-service-worker',
+      //   pwaManifestFile: 'src-pwa/manifest.json',
+      electronMain: './src-electron/electron-main',
+      electronPreload: './src-electron/electron-preload',
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
@@ -179,6 +179,7 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-capacitor-apps/configuring-capacitor
     capacitor: {
       hideSplashscreen: true,
+      target: 'android',
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-electron-apps/configuring-electron
@@ -199,6 +200,8 @@ module.exports = configure(function (/* ctx */) {
         // protocol: 'myapp://path',
         // Windows only
         // win32metadata: { ... }
+
+        platform: 'win32',
       },
 
       builder: {

@@ -1,9 +1,8 @@
 {
-  "appId": "com.sasha.spoonfeeder",
-  "appName": "cyberlearning2",
-  "webDir": "www",
+  "appId": "com.spoonfeeder.app",
+  "appName": "spoonfeeder",
+  "webDir": "dist/capacitor",
   "server": {
-    "androidScheme": "https",
-    "url": "http://192.168.2.6:9500"
+    "androidScheme": "https"
   }
 }
