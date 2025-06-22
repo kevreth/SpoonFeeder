@@ -520,23 +520,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@intlify/core-base@npm:11.1.6":
-  version: 11.1.6
-  resolution: "@intlify/core-base@npm:11.1.6"
+"@intlify/core-base@npm:11.1.7":
+  version: 11.1.7
+  resolution: "@intlify/core-base@npm:11.1.7"
   dependencies:
-    "@intlify/message-compiler": "npm:11.1.6"
-    "@intlify/shared": "npm:11.1.6"
-  checksum: 10c0/33348898b95cc67923dd46adac6860ce768b78d5215de7cd5e8e1b3fc07baf9b8e8c75c59d0b8e95cb8360a805e6ab52656ac8a9107b01af9561196f4b539bac
+    "@intlify/message-compiler": "npm:11.1.7"
+    "@intlify/shared": "npm:11.1.7"
+  checksum: 10c0/72d663436eb33a5df33708c0f2176356cb8fd8839e442a6d88ae55fb759b277899494710de7f9d6a8c270b2e11015cbf1f67cdb71c86735cc2d1b9aa631b3717
   languageName: node
   linkType: hard
 
-"@intlify/message-compiler@npm:11.1.6":
-  version: 11.1.6
-  resolution: "@intlify/message-compiler@npm:11.1.6"
+"@intlify/message-compiler@npm:11.1.7":
+  version: 11.1.7
+  resolution: "@intlify/message-compiler@npm:11.1.7"
   dependencies:
-    "@intlify/shared": "npm:11.1.6"
+    "@intlify/shared": "npm:11.1.7"
     source-map-js: "npm:^1.0.2"
-  checksum: 10c0/c0febb54a4694a7a4af60c37dc1925652c436914a51fb23097075c881121b9bd4186536611c716526b2de6174aa019549ce86e908001c80cd1c04d9b3deeb745
+  checksum: 10c0/1f0a352e89e851dc8b57874bf75490e69e0ba87acaddc27532a32aa959a3cea36f5677838e685b95af40548d8083d29242fb3b01a9fa2d33a88de52b05e7d797
   languageName: node
   linkType: hard
 
@@ -550,10 +550,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@intlify/shared@npm:11.1.6":
-  version: 11.1.6
-  resolution: "@intlify/shared@npm:11.1.6"
-  checksum: 10c0/5223159dee51395152c87d3b13ad0487b03944c2dbe32968345fe5350e4bfa991ff9ecb2cd69139f04b8b778176b4c4e14c6e25b80bc0fee071bf8cdf81d788d
+"@intlify/shared@npm:11.1.7":
+  version: 11.1.7
+  resolution: "@intlify/shared@npm:11.1.7"
+  checksum: 10c0/b603470654ae92f2f4e588f797ae4a442c34c453327da98e2ca9f22208681079d55f7a1a83e70ce46deeaa2fc528df163c9096dab7910274fe59ad1ebb3df3d0
   languageName: node
   linkType: hard
 
@@ -3143,76 +3143,6 @@ __metadata:
   checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
   languageName: node
   linkType: hard
-
-"cyberlearning2@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "cyberlearning2@workspace:."
-  dependencies:
-    "@iconfu/svg-inject": "npm:^1.2.3"
-    "@intlify/vite-plugin-vue-i18n": "npm:^6.0.3"
-    "@quasar/app-vite": "npm:^1.2.1"
-    "@quasar/extras": "npm:^1.17.0"
-    "@quasar/quasar-app-extension-qoverlay": "npm:^2.0.1"
-    "@rushstack/eslint-patch": "npm:^1.2.0"
-    "@tanem/svg-injector": "npm:^10.1.68"
-    "@types/jquery": "npm:^3.5.32"
-    "@types/js-yaml": "npm:^4.0.9"
-    "@types/jsdom": "npm:^21.1.7"
-    "@types/lodash": "npm:^4.17.18"
-    "@types/marked": "npm:^6.0.0"
-    "@types/mathjax": "npm:^0.0.40"
-    "@types/node": "npm:^24.0.3"
-    "@typescript-eslint/eslint-plugin": "npm:^5.57.1"
-    "@typescript-eslint/parser": "npm:^5.57.1"
-    "@vue/eslint-config-prettier": "npm:^7.1.0"
-    "@vue/eslint-config-typescript": "npm:^11.0.2"
-    "@vue/test-utils": "npm:^2.4.6"
-    "@vue/tsconfig": "npm:^0.7.0"
-    asciidoctor: "npm:^3.0.4"
-    autoprefixer: "npm:^10.4.21"
-    axios: "npm:^1.10.0"
-    cypress: "npm:^14.5.0"
-    downdoc: "npm:^1.0.2-stable"
-    dpdm: "npm:^3.14.0"
-    eslint: "npm:^8.36.0"
-    eslint-config-prettier: "npm:^8.8.0"
-    eslint-plugin-cypress: "npm:^2.12.1"
-    eslint-plugin-vue: "npm:^9.9.0"
-    fs: "npm:^0.0.1-security"
-    gsap: "npm:^3.13.0"
-    handlebars: "npm:^4.7.8"
-    highlight.js: "npm:^11.11.1"
-    iframe-resizer: "npm:^5.4.6"
-    jquery: "npm:^3.7.1"
-    js-yaml: "npm:^4.1.0"
-    jsdom: "npm:^26.1.0"
-    lodash: "npm:^4.17.21"
-    marked: "npm:^15.0.12"
-    mathjax-full: "npm:^3.2.2"
-    mnemonist: "npm:^0.40.3"
-    mobile-drag-drop: "npm:^3.0.0-rc.0"
-    normalize.css: "npm:^8.0.1"
-    npm-run-all: "npm:^4.1.5"
-    pinia: "npm:^3.0.3"
-    polyfill-library: "npm:^4.8.0"
-    prettier: "npm:^3.5.3"
-    prettier-plugin-organize-imports: "npm:^4.1.0"
-    quasar: "npm:^2.11.10"
-    quasar-app-extension-qhierarchy: "npm:^1.0.9"
-    start-server-and-test: "npm:^2.0.0"
-    typed.js: "npm:^2.1.0"
-    typescript: "npm:~5.0.2"
-    typescript-eslint: "npm:^0.0.1-alpha.0"
-    vara: "npm:^1.4.1"
-    vitest: "npm:^3.2.4"
-    vitest-mock-extended: "npm:^3.1.0"
-    vue: "npm:^3.5.17"
-    vue-i18n: "npm:^11.1.6"
-    vue-router: "npm:^4.5.1"
-    vue-tsc: "npm:^2.2.10"
-    vuedraggable: "npm:^4.1.0"
-  languageName: unknown
-  linkType: soft
 
 "cypress@npm:^14.5.0":
   version: 14.5.0
@@ -8790,6 +8720,77 @@ __metadata:
   languageName: node
   linkType: hard
 
+"spoonfeeder@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "spoonfeeder@workspace:."
+  dependencies:
+    "@iconfu/svg-inject": "npm:^1.2.3"
+    "@intlify/vite-plugin-vue-i18n": "npm:^6.0.3"
+    "@quasar/app-vite": "npm:^1.2.1"
+    "@quasar/extras": "npm:^1.17.0"
+    "@quasar/quasar-app-extension-qoverlay": "npm:^2.0.1"
+    "@rushstack/eslint-patch": "npm:^1.2.0"
+    "@tanem/svg-injector": "npm:^10.1.68"
+    "@types/jquery": "npm:^3.5.32"
+    "@types/js-yaml": "npm:^4.0.9"
+    "@types/jsdom": "npm:^21.1.7"
+    "@types/lodash": "npm:^4.17.18"
+    "@types/marked": "npm:^6.0.0"
+    "@types/mathjax": "npm:^0.0.40"
+    "@types/node": "npm:^24.0.3"
+    "@typescript-eslint/eslint-plugin": "npm:^5.57.1"
+    "@typescript-eslint/parser": "npm:^5.57.1"
+    "@vue/eslint-config-prettier": "npm:^7.1.0"
+    "@vue/eslint-config-typescript": "npm:^11.0.2"
+    "@vue/test-utils": "npm:^2.4.6"
+    "@vue/tsconfig": "npm:^0.7.0"
+    asciidoctor: "npm:^3.0.4"
+    autoprefixer: "npm:^10.4.21"
+    axios: "npm:^1.10.0"
+    cypress: "npm:^14.5.0"
+    downdoc: "npm:^1.0.2-stable"
+    dpdm: "npm:^3.14.0"
+    eslint: "npm:^8.36.0"
+    eslint-config-prettier: "npm:^8.8.0"
+    eslint-plugin-cypress: "npm:^2.12.1"
+    eslint-plugin-vue: "npm:^9.9.0"
+    fs: "npm:^0.0.1-security"
+    gsap: "npm:^3.13.0"
+    handlebars: "npm:^4.7.8"
+    highlight.js: "npm:^11.11.1"
+    iframe-resizer: "npm:^5.4.6"
+    jquery: "npm:^3.7.1"
+    js-yaml: "npm:^4.1.0"
+    jsdom: "npm:^26.1.0"
+    lodash: "npm:^4.17.21"
+    marked: "npm:^15.0.12"
+    mathjax-full: "npm:^3.2.2"
+    mnemonist: "npm:^0.40.3"
+    mobile-drag-drop: "npm:^3.0.0-rc.0"
+    normalize.css: "npm:^8.0.1"
+    npm-run-all: "npm:^4.1.5"
+    pinia: "npm:^3.0.3"
+    polyfill-library: "npm:^4.8.0"
+    postcss: "npm:^8.5.6"
+    prettier: "npm:^3.5.3"
+    prettier-plugin-organize-imports: "npm:^4.1.0"
+    quasar: "npm:^2.11.10"
+    quasar-app-extension-qhierarchy: "npm:^1.0.9"
+    start-server-and-test: "npm:^2.0.0"
+    typed.js: "npm:^2.1.0"
+    typescript: "npm:5.0.2"
+    typescript-eslint: "npm:^0.0.1-alpha.0"
+    vara: "npm:^1.4.1"
+    vitest: "npm:^3.2.4"
+    vitest-mock-extended: "npm:^3.1.0"
+    vue: "npm:^3.5.17"
+    vue-i18n: "npm:^11.1.6"
+    vue-router: "npm:^4.5.1"
+    vue-tsc: "npm:^2.2.10"
+    vuedraggable: "npm:^4.1.0"
+  languageName: unknown
+  linkType: soft
+
 "sprintf-js@npm:^1.1.3":
   version: 1.1.3
   resolution: "sprintf-js@npm:1.1.3"
@@ -9469,6 +9470,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:5.0.2":
+  version: 5.0.2
+  resolution: "typescript@npm:5.0.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/aa0e2a766412a0c9f609133681753cc88098aa44e079820d203dc0628a8fc3997d4e6b93c2c813c483f770698561c3225c5ab3e5c8896639cfc5d94528e3005f
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.2.2":
   version: 5.8.3
   resolution: "typescript@npm:5.8.3"
@@ -9479,13 +9490,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.0.2":
-  version: 5.0.4
-  resolution: "typescript@npm:5.0.4"
+"typescript@patch:typescript@npm%3A5.0.2#optional!builtin<compat/typescript>":
+  version: 5.0.2
+  resolution: "typescript@patch:typescript@npm%3A5.0.2#optional!builtin<compat/typescript>::version=5.0.2&hash=b5f058"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/2f5bd1cead194905957cb34e220b1d6ff1662399adef8ec1864f74620922d860ee35b6e50eafb3b636ea6fd437195e454e1146cb630a4236b5095ed7617395c2
+  checksum: 10c0/7889472e5f13d6c6df993f8cc26ac5bd9d27ed5e5e865afc150ceffb5c02d944e27e5e92dfd730232a9180549c6b7d3f622deacd1d96c0457cba72e17ed6901f
   languageName: node
   linkType: hard
 
@@ -9496,16 +9507,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/39117e346ff8ebd87ae1510b3a77d5d92dae5a89bde588c747d25da5c146603a99c8ee588c7ef80faaf123d89ed46f6dbd918d534d641083177d5fac38b8a1cb
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A~5.0.2#optional!builtin<compat/typescript>":
-  version: 5.0.4
-  resolution: "typescript@patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>::version=5.0.4&hash=b5f058"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/c3f7b80577bddf6fab202a7925131ac733bfc414aec298c2404afcddc7a6f242cfa8395cf2d48192265052e11a7577c27f6e5fac8d8fe6a6602023c83d6b3292
   languageName: node
   linkType: hard
 
@@ -9870,15 +9871,15 @@ __metadata:
   linkType: hard
 
 "vue-i18n@npm:^11.1.6":
-  version: 11.1.6
-  resolution: "vue-i18n@npm:11.1.6"
+  version: 11.1.7
+  resolution: "vue-i18n@npm:11.1.7"
   dependencies:
-    "@intlify/core-base": "npm:11.1.6"
-    "@intlify/shared": "npm:11.1.6"
+    "@intlify/core-base": "npm:11.1.7"
+    "@intlify/shared": "npm:11.1.7"
     "@vue/devtools-api": "npm:^6.5.0"
   peerDependencies:
     vue: ^3.0.0
-  checksum: 10c0/c50a47790291736f5a27b99dde739451478dd0ffa88108e4207f94b7afcd15c6750a5d6055e863ceb0e37b5174104a732c2ab6c744061f23d91ac9a5f338e2eb
+  checksum: 10c0/dab16d8c9f3ab25c09fbb1ca953b5b06d29f24a7d7884bd275907c24f8f989baf13e25b4e304becb875ae7af0d27438cc0a4b3fb2c547c2628b79106f8d3797d
   languageName: node
   linkType: hard
 
