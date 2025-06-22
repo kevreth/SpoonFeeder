@@ -568,7 +568,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@intlify/bundle-utils@npm:^3.2.1":
+"@intlify/bundle-utils@npm:^3.1.2":
   version: 3.4.0
   resolution: "@intlify/bundle-utils@npm:3.4.0"
   dependencies:
@@ -630,11 +630,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@intlify/vite-plugin-vue-i18n@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "@intlify/vite-plugin-vue-i18n@npm:6.0.3"
+"@intlify/vite-plugin-vue-i18n@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@intlify/vite-plugin-vue-i18n@npm:7.0.0"
   dependencies:
-    "@intlify/bundle-utils": "npm:^3.2.1"
+    "@intlify/bundle-utils": "npm:^3.1.2"
     "@intlify/shared": "npm:next"
     "@rollup/pluginutils": "npm:^4.2.0"
     debug: "npm:^4.3.1"
@@ -651,7 +651,7 @@ __metadata:
       optional: true
     vue-i18n:
       optional: true
-  checksum: 10c0/0186a2b9176a0ed3a0b9d630cf2d9214284071aad3d13ca18790714a605428ff94a40f3909b72d2a04aa20c2b6d3b90c12836d32835ca3dc792fcf4fec011af6
+  checksum: 10c0/cf5f6c141e8b9b2b5e9c11a4d146c717f252d8bdf307737aa7da4f2588b0aac192abc529de73193143084475337200989fd8bbf06e182122549e219856d37d80
   languageName: node
   linkType: hard
 
@@ -8736,7 +8736,7 @@ __metadata:
   resolution: "spoonfeeder@workspace:."
   dependencies:
     "@iconfu/svg-inject": "npm:^1.2.3"
-    "@intlify/vite-plugin-vue-i18n": "npm:^6.0.3"
+    "@intlify/vite-plugin-vue-i18n": "npm:^7.0.0"
     "@quasar/app-vite": "npm:^1.2.1"
     "@quasar/extras": "npm:^1.17.0"
     "@quasar/quasar-app-extension-qoverlay": "npm:^2.0.1"
