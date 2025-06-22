@@ -7989,7 +7989,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"quasar-app-extension-qhierarchy@npm:^1.0.9":
+"quasar-app-extension-qhierarchy@npm:^1.0.15":
   version: 1.0.15
   resolution: "quasar-app-extension-qhierarchy@npm:1.0.15"
   dependencies:
@@ -8005,7 +8005,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"quasar@npm:^2.11.10":
+"quasar@npm:^2.18.1":
   version: 2.18.1
   resolution: "quasar@npm:2.18.1"
   checksum: 10c0/41edfe6b65852e567b00133d64feaa624c42aba3e655e6be2621be7e5ff3945d45f23a091da0637c54b1f69462cb6f97873dbae25de52e411a009c10b5323412
@@ -8924,9 +8924,9 @@ __metadata:
     postcss: "npm:^8.5.6"
     prettier: "npm:^3.5.3"
     prettier-plugin-organize-imports: "npm:^4.1.0"
-    quasar: "npm:^2.11.10"
-    quasar-app-extension-qhierarchy: "npm:^1.0.9"
-    start-server-and-test: "npm:^2.0.0"
+    quasar: "npm:^2.18.1"
+    quasar-app-extension-qhierarchy: "npm:^1.0.15"
+    start-server-and-test: "npm:^2.0.12"
     typed.js: "npm:^2.1.0"
     typescript: "npm:5.8.3"
     typescript-eslint: "npm:^8.34.1"
@@ -8992,7 +8992,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"start-server-and-test@npm:^2.0.0":
+"start-server-and-test@npm:^2.0.12":
   version: 2.0.12
   resolution: "start-server-and-test@npm:2.0.12"
   dependencies:
