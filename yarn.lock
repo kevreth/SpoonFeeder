@@ -1135,7 +1135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:^1.2.0":
+"@rushstack/eslint-patch@npm:^1.11.0":
   version: 1.11.0
   resolution: "@rushstack/eslint-patch@npm:1.11.0"
   checksum: 10c0/abea8d8cf2f4f50343f74abd6a8173c521ddd09b102021f5aa379ef373c40af5948b23db0e87eca1682e559e09d97d3f0c48ea71edad682c6bf72b840c8675b3
@@ -8729,7 +8729,7 @@ __metadata:
     "@quasar/app-vite": "npm:^1.2.1"
     "@quasar/extras": "npm:^1.17.0"
     "@quasar/quasar-app-extension-qoverlay": "npm:^2.0.1"
-    "@rushstack/eslint-patch": "npm:^1.2.0"
+    "@rushstack/eslint-patch": "npm:^1.11.0"
     "@tanem/svg-injector": "npm:^10.1.68"
     "@types/jquery": "npm:^3.5.32"
     "@types/js-yaml": "npm:^4.0.9"
@@ -8784,7 +8784,7 @@ __metadata:
     vitest: "npm:^3.2.4"
     vitest-mock-extended: "npm:^3.1.0"
     vue: "npm:^3.5.17"
-    vue-i18n: "npm:^11.1.6"
+    vue-i18n: "npm:^11.1.7"
     vue-router: "npm:^4.5.1"
     vue-tsc: "npm:^2.2.10"
     vuedraggable: "npm:^4.1.0"
@@ -9870,7 +9870,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-i18n@npm:^11.1.6":
+"vue-i18n@npm:^11.1.7":
   version: 11.1.7
   resolution: "vue-i18n@npm:11.1.7"
   dependencies:
