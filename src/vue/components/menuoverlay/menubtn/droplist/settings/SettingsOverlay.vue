@@ -1,14 +1,21 @@
 <template>
-  <q-overlay class="settingOverlay" v-model="settingOverlay" :z-index="5000" @click.stop="">
+  <q-overlay
+    class="settingOverlay"
+    v-model="settingOverlay"
+    :z-index="3"
+    @click.stop=""
+  >
     <template #body>
       <div class="settings fixed-center bg-secondary">
-        <div class="q-pa-sm">{{ $t('settingsContent.title')}}</div>
-        <q-separator horizontal class="q-mx-sm bg-white"/>
+        <div class="q-pa-sm">{{ $t('settingsContent.title') }}</div>
+        <q-separator horizontal class="q-mx-sm bg-white" />
         <div class="row q-pl-md">
-          <div class="q-pt-lg q-pr-xl">{{ $t('settingsContent.language')}}</div>
+          <div class="q-pt-lg q-pr-xl">
+            {{ $t('settingsContent.language') }}
+          </div>
           <SwitchLang class="q-ma-sm"></SwitchLang>
         </div>
-        <ExitBtn style="z-index: -1000;" @click="closeInfo"/>
+        <ExitBtn style="z-index: -1" @click="closeInfo" />
       </div>
     </template>
   </q-overlay>
@@ -18,7 +25,7 @@
 import ExitBtn from '../../../../common/ExitBtn.vue';
 import { ref } from 'vue';
 // import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
-import SwitchLang from './switchlanguages/SwitchLang.vue'
+import SwitchLang from './switchlanguages/SwitchLang.vue';
 
 const settingOverlay = ref(false);
 
@@ -40,5 +47,3 @@ function closeInfo() {
   font-size: 1rem;
 }
 </style>
-
-

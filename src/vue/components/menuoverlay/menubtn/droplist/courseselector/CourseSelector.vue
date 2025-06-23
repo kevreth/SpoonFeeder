@@ -1,21 +1,21 @@
 <template>
   <transition appear group :name="isEnable ? 'transitions' : ''">
     <q-overlay
-      :class="{'transition': isEnable}"
+      :class="{ transition: isEnable }"
       id="courseTable"
       class="courseTable"
       @click.stop=""
-      z-index="7000">
+      z-index="3"
+    >
       <template #body>
         <q-list
           id="courseList"
-          class="courseList smaller-font fixed-center bg-secondary">
-          <q-item
-            :header="true"
-            class="titleCourse"
-            id="titleCourse"
-          >
-            <q-item-label header class="headerCourse q-pa-lg">{{ $t('courseSelector.title') }}</q-item-label>
+          class="courseList smaller-font fixed-center bg-course-list"
+        >
+          <q-item :header="true" class="titleCourse" id="titleCourse">
+            <q-item-label header class="headerCourse q-pa-lg">{{
+              $t('courseSelector.title')
+            }}</q-item-label>
           </q-item>
           <div class="scrollable-course" id="courses">
             <q-item
@@ -25,18 +25,24 @@
               :key="course"
               id="wrapCourses"
               @click="selectedCourse = course"
-              :class="{ 'selected': course === selectedCourse }"
+              :class="{ selected: course === selectedCourse }"
             >
               <q-item-section
                 class="courseItemSection"
                 :id="createValidHtmlId(course)"
               >
                 <!-- {{ course.toUpperCase() }} -->
-                {{ $t('courseSelector.course', {course: course.toUpperCase()}) }}
+                {{
+                  $t('courseSelector.course', { course: course.toUpperCase() })
+                }}
               </q-item-section>
             </q-item>
           </div>
-          <SavedCourse id="savedCourse" class="savedCourse" :savedCourse="savedCourse"></SavedCourse>
+          <SavedCourse
+            id="savedCourse"
+            class="savedCourse"
+            :savedCourse="savedCourse"
+          ></SavedCourse>
           <div class="btnCourse">
             <SwitchCourse
               class="courseTableBtn"
@@ -46,9 +52,9 @@
             />
             <ExitBtn
               class="courseTableBtn"
-                v-if="disableExit"
-                @click="closeInfo"
-                color="primary"
+              v-if="disableExit"
+              @click="closeInfo"
+              color="primary"
             />
           </div>
         </q-list>
@@ -59,11 +65,11 @@
 
 <script setup lang="ts">
 import { ref, onBeforeUpdate } from 'vue';
-import ExitBtn from '../../../../common/ExitBtn.vue';
 import { getCourseData, switchCourse } from '../../../../../mediator';
-import SwitchCourse from './SwitchCourse.vue'
+import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
 import { createValidHtmlId } from '../../../../../composables/createValidHtmlId';
+import ExitBtn from '../../../../common/ExitBtn.vue';
 
 let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
@@ -74,22 +80,25 @@ const disableExit = ref(false);
 defineProps({
   isEnable: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+});
 
 onBeforeUpdate(() => {
   courseData = ref(getCourseData());
   courses = ref(courseData.value.availableCourses);
-})
+});
 
 function selectCourse(course: string): void {
-  if(courseData.value.courseName === null || courseData.value.courseName === undefined) {
+  if (
+    courseData.value.courseName === null ||
+    courseData.value.courseName === undefined
+  ) {
     disableExit.value = false;
   } else {
     disableExit.value = true;
-    selectedCourse.value = course
-    savedCourse.value = selectedCourse.value
+    selectedCourse.value = course;
+    savedCourse.value = selectedCourse.value;
     switchCourse(selectedCourse.value);
   }
 }
@@ -102,28 +111,20 @@ function closeInfo() {
 </script>
 
 <style>
-/* .q-item.courseItem {
-  min-height: 1vw;
+.courseItemSection {
+  padding: 5px 0;
 }
-.q-btn .courseItem {
-  min-height: 3.5vw !important;
-} */
-/* .courseTable {
-  min-height: 70vw;
-} */
 .btnCourse {
   position: relative;
-  /* display: flex; */
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0%);
-  /* bottom: 0.5em; */
 }
 .q-btn .btnCourse {
   line-height: 0.5em;
 }
 .savedCourse {
-  margin-top: 0.4em;
+  margin: 0.4em;
   line-height: 1em;
 }
 .savedCourse span {
@@ -147,32 +148,39 @@ function closeInfo() {
   transform: translate(-50%, -50%);
   width: 100%;
 }
-.q-btn .courseItem, .q-item.courseItem {
+.q-btn .courseItem,
+.q-item.courseItem {
   min-height: 3.5vw;
   line-height: 0em;
 }
-.courseTableBtn, .savedCourse span {
-  font-size: 1.5vw;
-}
+
 .courseList {
-  border-radius: 10px;
-  padding: 0px;
-  font-size: 1.5vw;
-  font-weight: normal;
-}
-@media screen and (min-width: 1200px) {
-  .courseList {
-    font-size: 1vw;
-  }
-  .savedCourse span, .courseTableBtn {
-    font-size: 1vw;
-  }
-  .q-btn .courseItem, .q-item.courseItem{
-    min-height: 2vw;
-  }
+  background-color: rgba(15, 15, 30, 1);
+  border: 1px solid rgba(100, 100, 255, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 10px 0;
+  width: 250px;
 }
 .scrollable-course {
   overflow: auto;
   max-height: 70vh;
+}
+@media (min-width: 768px) {
+  .courseList {
+    font-size: 1vw;
+  }
+  .savedCourse span,
+  .courseTableBtn {
+    font-size: 1vw;
+  }
+  .q-btn .courseItem,
+  .q-item.courseItem {
+    min-height: 2vw;
+  }
+  /* .courseTableBtn,
+  .savedCourse span {
+    font-size: 1.5vw;
+  } */
 }
 </style>

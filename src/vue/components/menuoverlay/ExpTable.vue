@@ -2,15 +2,17 @@
   <transition
     enter-active-class="animated slideInDown"
     leave-active-class="animated slideOutUp"
-    :duration="1000">
+    :duration="1000"
+  >
     <q-overlay class="column">
       <template #body>
-        <div class="expContainer fixed-center bg-secondary" @keydown.esc="closeInfo" tabindex="0">
+        <div
+          class="expContainer fixed-center"
+          @keydown.esc="closeInfo"
+          tabindex="0"
+        >
           <span class="scrollable-content" v-html="content"></span>
-          <ExitBtn
-            class="q-mt-sm"
-            @click="closeInfo"
-            color="primary"/>
+          <ExitBtn class="q-mt-sm" @click="closeInfo" color="primary" />
         </div>
       </template>
     </q-overlay>
@@ -22,31 +24,41 @@ import ExitBtn from '../common/ExitBtn.vue';
 
 defineProps({
   content: {
-    required: true
-  }
+    required: true,
+  },
 });
 
-const emit = defineEmits(['closeInfo'])
+const emit = defineEmits(['closeInfo']);
 function closeInfo() {
-  emit('closeInfo')
+  emit('closeInfo');
 }
 </script>
 
 <style>
 .expContainer {
-  border-radius: 20px;
-  width: 70%;
-  box-sizing: border-box;
+  background: rgba(0, 0, 0, 1);
+  border: 1px solid #00bfff;
+  box-shadow: 0 0 10px #00bfff, inset 0 0 20px rgba(0, 255, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100vw;
+  z-index: 2;
 }
 .scrollable-content {
-  font-family: "Segoe UI", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   text-align: left;
   padding: 10px 5px 5px 15px;
   display: block;
   position: relative;
   overflow: auto;
-  max-height: 80vh; /* Set the maximum height of the scrollable area */
+  max-height: 80vh;
+}
+
+@media (min-width: 768px) {
+  .expContainer {
+    width: 60vw;
+  }
 }
 </style>
-

@@ -1,0 +1,63 @@
+CorporateFilesystem/
+├── HR/
+│   ├── EmployeeHandbook.pdf
+│   ├── Policies/
+│   │   ├── LeavePolicy.pdf
+│   │   ├── WorkFromHomePolicy.pdf
+│   │   └── EqualOpportunityPolicy.pdf
+│   ├── Recruitment/
+│   │   ├── JobDescriptions/
+│   │   │   ├── SoftwareEngineer.pdf
+│   │   │   └── MarketingSpecialist.pdf
+│   │   └── CandidateApplications/
+│   │       ├── JohnDoe_Resume.pdf
+│   │       └── JaneSmith_Resume.pdf
+│   └── PerformanceReviews/
+│       ├── 2023/
+│       │   ├── JohnDoe_Review.pdf
+│       │   └── JaneSmith_Review.pdf
+│       └── 2024/
+├── IT/
+│   ├── SoftwareLicenses/
+│   │   ├── AdobeCreativeCloud.pdf
+│   │   └── MicrosoftOffice.pdf
+│   ├── NetworkConfiguration/
+│   │   ├── WiFiSettings.txt
+│   │   └── FirewallRules.txt
+│   └── EquipmentInventory/
+│       ├── Laptops.csv
+│       └── Monitors.csv
+├── Accounting/
+│   ├── FinancialStatements/
+│   │   ├── BalanceSheet_2023.xlsx
+│   │   └── ProfitAndLoss_2023.xlsx
+│   ├── TaxDocuments/
+│   │   ├── 2023/
+│   │   │   ├── CorporateTaxReturn.pdf
+│   │   │   └── EmployeeW2Forms.zip
+│   │   └── 2024/
+│   └── Invoices/
+│       ├── Received/
+│       │   ├── Vendor1_Invoice.pdf
+│       │   └── Vendor2_Invoice.pdf
+│       └── Sent/
+│           ├── Client1_Invoice.pdf
+│           └── Client2_Invoice.pdf
+└── Marketing/
+    ├── BrandAssets/
+    │   ├── Logo/
+    │   │   ├── LogoHorizontal.png
+    │   │   └── LogoVertical.png
+    │   └── CompanyStyleGuide.pdf
+    ├── Campaigns/
+    │   ├── 2023/
+    │   │   ├── SummerCampaign/
+    │   │   │   ├── CampaignBrief.pdf
+    │   │   │   └── CampaignResults.pdf
+    │   │   └── WinterCampaign/
+    │   │       ├── CampaignBrief.pdf
+    │   │       └── CampaignResults.pdf
+    │   └── 2024/
+    └── SocialMedia/
+        ├── Strategy.pdf
+        └── ContentCalendar.xlsx

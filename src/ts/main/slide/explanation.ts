@@ -33,8 +33,7 @@ function removeLinebreaks(str: string): string {
   return str.replaceAll('<br>', '');
 }
 function pluralize(str: string, length: number): string {
-  length >= 1 ? '== ' + (str += 's') : (str = '');
-  return str;
+  return length >= 1 ? str + 's' : '';
 }
 function title(ref: string, label: string) {
   let retval = '';

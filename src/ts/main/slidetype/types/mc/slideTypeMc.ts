@@ -54,10 +54,7 @@ export class Mc extends Slide implements SlideType {
     return isCorrect;
   }
   mark: MarkTypeMc = (isCorrect, responseButton, answerButton) => {
-    let color = INCORRECT;
-    isCorrect
-      ? (color = CORRECT)
-      : (answerButton.style.border = `1px solid ${INCORRECT}`);
+    const color = isCorrect ? CORRECT : (answerButton.style.border = `1px solid ${INCORRECT}`, INCORRECT);
     responseButton.style.backgroundColor = color;
   };
 }

@@ -33,7 +33,6 @@ export class JsonProcessor
   ): void {
     this.addNewInfoSlide('Unit', ctr, child, retval);
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   lesson_start(
     child: Division,
     ctr: number,

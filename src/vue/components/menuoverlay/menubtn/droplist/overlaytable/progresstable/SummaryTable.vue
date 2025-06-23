@@ -1,8 +1,9 @@
 <template>
-  <transition
-    :name="isEnable ? 'transitions' : ''"
-    :duration="1000">
-    <q-overlay class="summaryOverlay bg-secondary" :class="{'transition': isEnable}">
+  <transition :name="isEnable ? 'transitions' : ''" :duration="1000">
+    <q-overlay
+      class="summaryOverlay bg-secondary"
+      :class="{ transition: isEnable }"
+    >
       <template #body>
         <div class="justify-evenly summaryContainer">
           <!-- {{ content }} -->
@@ -20,13 +21,13 @@ import ExitBtn from '../../../../../common/ExitBtn.vue';
 defineProps({
   isEnable: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+});
 
-const emit = defineEmits(['closeSummary'])
+const emit = defineEmits(['closeSummary']);
 function closeSummary() {
-  emit('closeSummary')
+  emit('closeSummary');
 }
 </script>
 
@@ -40,4 +41,3 @@ function closeSummary() {
   border-radius: 8px !important;
 }
 </style>
-

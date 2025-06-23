@@ -50,7 +50,6 @@ export class AdocVisitor implements AdocVisitorInterface {
     stdReplacement(clazz);
   }
   visitVocab(clazz: Vocab): void {
-    clazz.txt = clazz.txt;
     clazz.list.forEach((value, key, map) => {
       map.set(key, adoc2html(value));
     });

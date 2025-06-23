@@ -14,16 +14,18 @@ def passthrough(str):
 
 def generate_html_body(yaml_content):
   html_body = ''
-  for lesson in yaml_content.get('lessons', []):
-    html_body += passthrough(f"<h2>{lesson['name']}</h2>")
-    for module in lesson.get('modules', []):
-      html_body += passthrough(f"<h3>{module['name']}</h3>")
-      insts = module.get('inst')
-      if insts is not None:
-        for inst in insts:
-          if inst:
-            html = extract_inner_content(inst)
-            html_body += html + passthrough('<hr>')
+  for unit in yaml_content.get('units', []):
+    html_body += passthrough(f"<h2>{unit['name']}</h2>")
+    for lesson in unit.get('lessons', []):
+      html_body += passthrough(f"<h3>{lesson['name']}</h3>")
+      for module in lesson.get('modules', []):
+        html_body += passthrough(f"<h4>{module['name']}</h4>")
+        insts = module.get('inst')
+        if insts is not None:
+          for inst in insts:
+            if inst:
+              html = extract_inner_content(inst)
+              html_body += html + passthrough('<hr>')
   return html_body
 
 def extract_inner_content(inst):
