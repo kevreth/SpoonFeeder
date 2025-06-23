@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.sasha.spoonfeeder"
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    namespace "com.spoon.feeder"
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.sasha.spoonfeeder"
+        applicationId "com.spoon.feeder"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,8 +1,5 @@
 {
-  "appId": "com.spoonfeeder.app",
+  "appId": "com.spoon.feeder",
   "appName": "spoonfeeder",
-  "webDir": "dist/capacitor",
-  "server": {
-    "androidScheme": "https"
-  }
+  "webDir": "www"
 }

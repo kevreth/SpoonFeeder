@@ -1,4 +1,4 @@
-package com.sasha.spoonfeeder;
+package com.spoon.feeder;
 
 import com.getcapacitor.BridgeActivity;
 

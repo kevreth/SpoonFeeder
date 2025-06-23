@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">cyberlearning2</string>
-    <string name="title_activity_main">cyberlearning2</string>
-    <string name="package_name">com.sasha.spoonfeeder</string>
-    <string name="custom_url_scheme">com.sasha.spoonfeeder</string>
+    <string name="app_name">spoonfeeder</string>
+    <string name="title_activity_main">spoonfeeder</string>
+    <string name="package_name">com.spoon.feeder</string>
+    <string name="custom_url_scheme">com.spoon.feeder</string>
 </resources>
