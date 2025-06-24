@@ -5,16 +5,16 @@
     :duration="1000"
   >
     <q-dialog v-model="showOverlay" class="column">
-      <template #body>
-        <div
-          class="expContainer fixed-center"
-          @keydown.esc="closeInfo"
-          tabindex="0"
-        >
-          <span class="scrollable-content" v-html="content"></span>
-          <ExitBtn class="q-mt-sm" @click="closeInfo" color="primary" />
-        </div>
-      </template>
+      <!-- <template #body> -->
+      <div
+        class="expContainer fixed-center"
+        @keydown.esc="closeInfo"
+        tabindex="0"
+      >
+        <span class="scrollable-content" v-html="content"></span>
+        <ExitBtn class="q-mt-sm" @click="closeInfo" color="primary" />
+      </div>
+      <!-- </template> -->
     </q-dialog>
   </transition>
 </template>

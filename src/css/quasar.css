@@ -40,3 +40,9 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
+
+@media (min-width: 600px) {
+  .q-dialog__inner--minimized > div {
+    max-width: unset !important;
+  }
+}
