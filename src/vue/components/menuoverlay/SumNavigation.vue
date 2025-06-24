@@ -39,9 +39,12 @@
 
 <style>
 .naviTable {
+  display: none;
   border-collapse: collapse;
   border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.15);
   margin: 15px 15px 0 15px;
   float: left;
   z-index: -1;
