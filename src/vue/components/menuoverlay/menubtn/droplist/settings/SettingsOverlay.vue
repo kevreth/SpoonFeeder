@@ -1,24 +1,24 @@
 <template>
-  <q-overlay
+  <q-dialog
+    v-model="showOverlay"
     class="settingOverlay"
-    v-model="settingOverlay"
     :z-index="3"
     @click.stop=""
   >
-    <template #body>
-      <div class="settings fixed-center bg-secondary">
-        <div class="q-pa-sm">{{ $t('settingsContent.title') }}</div>
-        <q-separator horizontal class="q-mx-sm bg-white" />
-        <div class="row q-pl-md">
-          <div class="q-pt-lg q-pr-xl">
-            {{ $t('settingsContent.language') }}
-          </div>
-          <SwitchLang class="q-ma-sm"></SwitchLang>
+    <!-- <template #body> -->
+    <div class="settings fixed-center bg-secondary">
+      <div class="q-pa-sm">{{ $t('settingsContent.title') }}</div>
+      <q-separator horizontal class="q-mx-sm bg-white" />
+      <div class="row q-pl-md">
+        <div class="q-pt-lg q-pr-xl">
+          {{ $t('settingsContent.language') }}
         </div>
-        <ExitBtn style="z-index: -1" @click="closeInfo" />
+        <SwitchLang class="q-ma-sm"></SwitchLang>
       </div>
-    </template>
-  </q-overlay>
+      <ExitBtn style="z-index: -1" @click="closeInfo" />
+    </div>
+    <!-- </template> -->
+  </q-dialog>
 </template>
 
 <script setup lang="ts">
@@ -27,11 +27,13 @@ import { ref } from 'vue';
 // import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
 import SwitchLang from './switchlanguages/SwitchLang.vue';
 
-const settingOverlay = ref(false);
+// const settingOverlay = ref(false);
+const showOverlay = ref(true);
 
 const emit = defineEmits(['closeInfo']);
 function closeInfo() {
   emit('closeInfo');
+  showOverlay.value = false;
 }
 </script>
 

@@ -1,27 +1,32 @@
 <template>
   <transition appear group :name="isEnable ? 'transitions-zoom' : ''">
-    <q-overlay id="overlay" @click.stop="" :class="{ transition: isEnable }">
-      <template #body>
-        <div
-          id="overlayTable"
-          class="overlayTable fixed-center column"
-          style="display: flex; flex-direction: column"
-        >
-          <div class="overlayBtn">
-            <OverlayCloseBtn id="closeBtn" @click="$emit('handleOverlay')" />
-            <TrashBtn id="startOver" @click="startOver" />
-          </div>
-
-          <div
-            id="progressBackground"
-            class="progressBackground"
-            style="flex-grow: 1"
-          >
-            <ProgressTable style="cursor: auto" />
-          </div>
+    <q-dialog
+      v-model="props.showOverlay"
+      id="overlay"
+      @click.stop=""
+      :class="{ transition: isEnable }"
+    >
+      <!-- <template #body> -->
+      <div
+        id="overlayTable"
+        class="overlayTable fixed-center column"
+        style="display: flex; flex-direction: column"
+      >
+        <div class="overlayBtn">
+          <OverlayCloseBtn id="closeBtn" @click="closeOverlay" />
+          <TrashBtn id="startOver" @click="startOver" />
         </div>
-      </template>
-    </q-overlay>
+
+        <div
+          id="progressBackground"
+          class="progressBackground"
+          style="flex-grow: 1"
+        >
+          <ProgressTable style="cursor: auto" />
+        </div>
+      </div>
+      <!-- </template> -->
+    </q-dialog>
   </transition>
 </template>
 
@@ -31,12 +36,22 @@ import ProgressTable from './progresstable/ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
 import getStartOver from '../../../../../composables/startOver';
 
-defineProps({
+const props = defineProps({
   isEnable: {
     type: Boolean,
     default: true,
   },
 });
+
+const emit = defineEmits<{
+  (e: 'update:showOverlay', value: boolean): void;
+  (e: 'handleOverlay'): void;
+}>();
+
+function closeOverlay() {
+  emit('update:showOverlay', false);
+  emit('handleOverlay');
+}
 
 // start over functionality
 function startOver() {

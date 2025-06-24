@@ -1021,22 +1021,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quasar/quasar-app-extension-qoverlay@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@quasar/quasar-app-extension-qoverlay@npm:2.0.1"
-  dependencies:
-    "@quasar/quasar-ui-qoverlay": "npm:^2.0.1"
-  checksum: 10c0/75669ba05a421d7ad42f61c81f10b5bf29fb390899572c92c41275472537d94c410d2e80eb1539c7959c50f71ff16b4578b09fe2817bf51c3b4be56e57b54a7b
-  languageName: node
-  linkType: hard
-
-"@quasar/quasar-ui-qoverlay@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@quasar/quasar-ui-qoverlay@npm:2.0.1"
-  checksum: 10c0/0b2d2ab404a617ab5201aabfa9067e37cfdc272759519805b6cc0c4df112828bd3a4dd349160cfb96fd4243a94b1b85e6919cbc369d9e9c2cfd849292486d7cd
-  languageName: node
-  linkType: hard
-
 "@quasar/render-ssr-error@npm:^1.0.3":
   version: 1.0.3
   resolution: "@quasar/render-ssr-error@npm:1.0.3"
@@ -8739,7 +8723,6 @@ __metadata:
     "@intlify/vite-plugin-vue-i18n": "npm:^7.0.0"
     "@quasar/app-vite": "npm:^1.2.1"
     "@quasar/extras": "npm:^1.17.0"
-    "@quasar/quasar-app-extension-qoverlay": "npm:^2.0.1"
     "@rushstack/eslint-patch": "npm:^1.11.0"
     "@tanem/svg-injector": "npm:^10.1.68"
     "@types/jquery": "npm:^3.5.32"

@@ -1,30 +1,35 @@
 <template>
   <transition :name="isEnable ? 'transitions' : ''" :duration="1000">
-    <q-overlay class="infoOverlay column" :class="{ transition: isEnable }">
-      <template #body>
-        <div
-          class="iconContainer fixed-center bg-primary"
-          @keydown.esc="closeInfo"
-          tabindex="0"
-        >
-          <h5>{{ $t('infoTable.title') }}:</h5>
-          <p class="iconContent">
-            {{ $t('infoTable.cor') }} <br />
-            {{ $t('infoTable.com') }} <br />
-            {{ $t('infoTable.tot') }} <br />
-            {{ $t('infoTable.sco') }} <br />
-            {{ $t('infoTable.cpl') }}
-          </p>
+    <q-dialog
+      v-model="showOverlay"
+      class="infoOverlay column"
+      :class="{ transition: isEnable }"
+    >
+      <!-- <template #body> -->
+      <div
+        class="iconContainer fixed-center bg-primary"
+        @keydown.esc="closeInfo"
+        tabindex="0"
+      >
+        <h5>{{ $t('infoTable.title') }}:</h5>
+        <p class="iconContent">
+          {{ $t('infoTable.cor') }} <br />
+          {{ $t('infoTable.com') }} <br />
+          {{ $t('infoTable.tot') }} <br />
+          {{ $t('infoTable.sco') }} <br />
+          {{ $t('infoTable.cpl') }}
+        </p>
 
-          <ExitBtn class="exitInfo" @click="closeInfo" color="secondary" />
-        </div>
-      </template>
-    </q-overlay>
+        <ExitBtn class="exitInfo" @click="closeInfo" color="secondary" />
+      </div>
+      <!-- </template> -->
+    </q-dialog>
   </transition>
 </template>
 
 <script setup lang="ts">
 import ExitBtn from '../../../../../common/ExitBtn.vue';
+import { ref } from 'vue';
 
 defineProps({
   isEnable: {
@@ -33,9 +38,11 @@ defineProps({
   },
 });
 
+const showOverlay = ref(true);
 const emit = defineEmits(['closeInfo']);
 function closeInfo() {
   emit('closeInfo');
+  showOverlay.value = false;
 }
 </script>
 

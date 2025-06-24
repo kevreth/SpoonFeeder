@@ -4,7 +4,7 @@
     leave-active-class="animated slideOutUp"
     :duration="1000"
   >
-    <q-overlay class="column">
+    <q-dialog v-model="showOverlay" class="column">
       <template #body>
         <div
           class="expContainer fixed-center"
@@ -15,12 +15,13 @@
           <ExitBtn class="q-mt-sm" @click="closeInfo" color="primary" />
         </div>
       </template>
-    </q-overlay>
+    </q-dialog>
   </transition>
 </template>
 
 <script setup lang="ts">
 import ExitBtn from '../common/ExitBtn.vue';
+import { ref } from 'vue';
 
 defineProps({
   content: {
@@ -28,9 +29,12 @@ defineProps({
   },
 });
 
+const showOverlay = ref(true);
 const emit = defineEmits(['closeInfo']);
+
 function closeInfo() {
   emit('closeInfo');
+  showOverlay.value = false;
 }
 </script>
 
@@ -38,15 +42,25 @@ function closeInfo() {
 .expContainer {
   background: rgba(0, 0, 0, 1);
   border: 1px solid #00bfff;
-  box-shadow: 0 0 10px #00bfff, inset 0 0 20px rgba(0, 255, 0, 0.5);
+  box-shadow:
+    0 0 10px #00bfff,
+    inset 0 0 20px rgba(0, 255, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
   width: 100vw;
   z-index: 2;
 }
 .scrollable-content {
-  font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    'Segoe UI',
+    'SF Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
   font-size: 1rem;
   text-align: left;
   padding: 10px 5px 5px 15px;

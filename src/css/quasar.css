@@ -2,7 +2,7 @@
   box-shadow: none;
   font-size: none;
 }
-.q-overlay {
+.q-dialog {
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0) !important;
 }
@@ -28,7 +28,9 @@
 }
 
 .q-layout {
-  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+  box-shadow:
+    0 0 15px #0ff,
+    0 0 30px #0ff;
   border: 1px solid rgba(0, 255, 255, 0.8);
   position: absolute;
   top: 0;

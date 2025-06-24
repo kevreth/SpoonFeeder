@@ -1,6 +1,7 @@
 <template>
   <transition :name="isEnable ? 'transitions' : ''" :duration="1000">
-    <q-overlay
+    <q-dialog
+      v-model="showOverlay"
       class="summaryOverlay bg-secondary"
       :class="{ transition: isEnable }"
     >
@@ -11,12 +12,13 @@
 
         <ExitBtn @click="closeSummary" />
       </template>
-    </q-overlay>
+    </q-dialog>
   </transition>
 </template>
 
 <script setup lang="ts">
 import ExitBtn from '../../../../../common/ExitBtn.vue';
+import { ref } from 'vue';
 
 defineProps({
   isEnable: {
@@ -25,9 +27,11 @@ defineProps({
   },
 });
 
+const showOverlay = ref(true);
 const emit = defineEmits(['closeSummary']);
 function closeSummary() {
   emit('closeSummary');
+  showOverlay.value = false;
 }
 </script>
 
