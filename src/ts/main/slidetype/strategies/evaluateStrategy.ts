@@ -90,8 +90,8 @@ export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   public static readonly GAP: EvaluateTypeGap = function evaluate(
     txt,
-    res,
     ans,
+    res,
     result
   ) {
     const rowFunction: FunctionType = Evaluate.gapRow;
