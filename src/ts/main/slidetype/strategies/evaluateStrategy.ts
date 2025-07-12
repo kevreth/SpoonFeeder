@@ -117,20 +117,20 @@ export class Evaluate {
   ) {
     const rows = new Array<string>();
     let length = 0;
-    if (ans != null) {
-      length = ans.length;
-      (ans as string[]).forEach((answer, idx) => {
-        const response = res[idx];
-        const row = rowFunction(
-          response,
-          answer as AnswerType,
-          txt,
-          idx,
-          length
-        );
-        rows.push(row);
-      });
-    }
+    if (ans == null || !Array.isArray(ans) )
+      throw new Error(`invalid ans: txt: ${txt} res: ${res} result: ${result} ans: ${ans}`)
+    length = ans.length;
+    (ans as string[]).forEach((answer, idx) => {
+      const response = res[idx];
+      const row = rowFunction(
+        response,
+        answer as AnswerType,
+        txt,
+        idx,
+        length
+      );
+      rows.push(row);
+    });
     const row_accum = rows.join('\n');
     const correctCtr = result.filter(Boolean).length;
     return new Evaluation(length, correctCtr, row_accum);

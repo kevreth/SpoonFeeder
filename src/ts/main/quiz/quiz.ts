@@ -24,7 +24,12 @@ export function switchCourse(courseName: string) {
   //make the course path accessible to course files
   window.courseName = courseName;
   window.coursePath = PREFIX_COURSE_FILE + courseName + '/';
-  Quiz.slides(courseName, document);
+  try {
+    Quiz.slides(courseName, document);
+  }
+  catch (err) {
+    console.error('Error in Quiz.slides:', err)
+  }
 }
 export class Quiz {
   public static slides(courseName: string, doc: Document): void {
