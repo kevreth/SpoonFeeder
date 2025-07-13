@@ -5,7 +5,7 @@ import type {
   Evaluation,
   MakeSlidesType,
 } from './mediator';
-export type AnswerType = string & Array<string> & Array<number>;
+export type AnswerType = string | Array<string> | Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
 export type ResultType = (ans: AnswerType, res: AnswerType) => ResultReturnType;
 export interface SlideInterface {

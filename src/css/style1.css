@@ -8,7 +8,8 @@
 
 body {
   font-family: sans-serif;
-  background-image: url(../img/cosmos-1853491.jpg),
+  background-image:
+    url(../img/cosmos-1853491.jpg),
     radial-gradient(circle, #2c2b32 0%, #1c1b22 100%);
   background-size: cover, auto;
   opacity: 1;
@@ -19,7 +20,9 @@ body {
 .bg-course-list {
   color: #ccc;
   padding: 10px 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   cursor: pointer;
   font-size: 0.9em;
 }
@@ -96,7 +99,9 @@ button {
   background: #c5c5c5;
   text-align: center;
   border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.15);
   border: 1px solid #00bfff;
   cursor: pointer;
 }
@@ -222,13 +227,8 @@ tbody th {
   transform: translateZ(20px);
   perspective: 500px;
 }
-.q-btn .q-icon {
-  font-size: 3em;
-}
+
 @media (min-width: 768px) {
-  .q-btn .q-icon {
-    font-size: 1.5em;
-  }
   .q-item {
     padding: 10px 20px;
     font-size: 1em;

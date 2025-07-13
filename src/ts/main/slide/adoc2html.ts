@@ -15,16 +15,13 @@ export function adoc2html(str: string): string {
   // let txt = str.replace('image::',`image::src/courses/${course}/`);
   // console.log(txt)
   let txt = adoc2markdown(str as string);
-  console.log(txt);
   txt = markdown2html(txt);
   //consider adding a beautification step
-  console.log(txt);
   txt = txt.replace(
     'img src="',
     `img height = 200
   src="src/courses/${course}/`
   );
-  console.log(txt);
   txt = insertHandlebars(txt);
   txt = processHandlebars(txt);
   return txt;

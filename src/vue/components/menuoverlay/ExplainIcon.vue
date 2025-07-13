@@ -6,16 +6,17 @@
 .explainIcon {
   position: fixed;
   cursor: pointer;
-  top: 29px;
-  right: 26vw;
-  font-size: 5.5vw;
+  top: 20px;
+  right: 80px;
+  /* font-size: 5.5vw; */
   z-index: -1;
 }
 @media (min-width: 768px) {
   .explainIcon {
     top: 30px;
-    right: 12vw;
-    font-size: 2vw;
+    right: 120px;
+    /* right: 12vw; */
+    /* font-size: 2vw; */
   }
 }
 .explainIcon:hover {
