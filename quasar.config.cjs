@@ -73,7 +73,6 @@ module.exports = configure(function (/* ctx */) {
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
-
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
@@ -85,7 +84,7 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
       config: {
-        loading: {}
+        loading: {},
       },
 
       // iconSet: 'material-icons', // Quasar icon set
@@ -102,7 +101,7 @@ module.exports = configure(function (/* ctx */) {
       plugins: ['Loading'],
     },
 
-    animations: 'all', // --- includes all animations
+    // animations: 'all', // --- includes all animations
     // https://v2.quasar.dev/options/animations
     animations: [
       'zoomOutDown',
@@ -110,7 +109,7 @@ module.exports = configure(function (/* ctx */) {
       'fadeOutRight',
       'slideInDown',
       'slideOutUp',
-      'zoomInUp'
+      'zoomInUp',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#sourcefiles
@@ -118,11 +117,11 @@ module.exports = configure(function (/* ctx */) {
       rootComponent: './src/vue/App.vue',
       router: './src/vue/router/index',
       store: './src/vue/store/index',
-    //   registerServiceWorker: 'src-pwa/register-service-worker',
-    //   serviceWorker: 'src-pwa/custom-service-worker',
-    //   pwaManifestFile: 'src-pwa/manifest.json',
-    //   electronMain: 'src-electron/electron-main',
-    //   electronPreload: 'src-electron/electron-preload'
+      //   registerServiceWorker: 'src-pwa/register-service-worker',
+      //   serviceWorker: 'src-pwa/custom-service-worker',
+      //   pwaManifestFile: 'src-pwa/manifest.json',
+      //   electronMain: 'src-electron/electron-main',
+      //   electronPreload: 'src-electron/electron-preload'
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
