@@ -13,6 +13,8 @@
     "build-only": "vite build"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
     "@iconfu/svg-inject": "^1.2.3",
     "@quasar/extras": "^1.17.0",
     "@tanem/svg-injector": "^10.1.68",

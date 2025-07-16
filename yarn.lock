@@ -101,6 +101,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/android@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "@capacitor/android@npm:7.4.2"
+  peerDependencies:
+    "@capacitor/core": ^7.4.0
+  checksum: 10c0/e4b00d4f77141843fb238401c826c7d2e5347eb4187143234201dfe2a27dc9b8b2369911901e2404f3592be727685d70df95e6c1bdeeeb9fa3cd33da8d5a9206
+  languageName: node
+  linkType: hard
+
+"@capacitor/core@npm:^7.4.2":
+  version: 7.4.2
+  resolution: "@capacitor/core@npm:7.4.2"
+  dependencies:
+    tslib: "npm:^2.1.0"
+  checksum: 10c0/b7122d40b02621719c84e6361907315364e55ef8a27106d1d746335b286f406f3998983f49026006900c5e8006797e2845270841ad0f79a958d8fabdad9dc5b9
+  languageName: node
+  linkType: hard
+
 "@csstools/color-helpers@npm:^5.0.2":
   version: 5.0.2
   resolution: "@csstools/color-helpers@npm:5.0.2"
@@ -8497,6 +8515,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "spoonfeeder@workspace:."
   dependencies:
+    "@capacitor/android": "npm:^7.4.2"
+    "@capacitor/core": "npm:^7.4.2"
     "@iconfu/svg-inject": "npm:^1.2.3"
     "@intlify/vite-plugin-vue-i18n": "npm:^7.0.0"
     "@quasar/app-vite": "npm:^2.2.1"
