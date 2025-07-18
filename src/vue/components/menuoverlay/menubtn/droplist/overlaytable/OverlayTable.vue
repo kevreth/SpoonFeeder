@@ -72,14 +72,13 @@ function startOver() {
 }
 .progressBackground {
   height: 70%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   overflow: auto;
   background: transparent;
   overflow-x: auto;
 }
 .overlayBtn {
   color: #fc3d08;
-  font-size: 2vw;
 }
 @media screen and (min-width: 1200px) {
   .overlayBtn {

@@ -22,7 +22,7 @@
       :data="data"
       :classes="classes"
       :dark="dark"
-      :default-expand-all="(default_expand_all = true)"
+      :default-expand-all="default_expand_all = true"
     >
       <template v-slot:body="props">
         <td
@@ -187,34 +187,79 @@ button.expandIcon {
   margin: 0;
   padding: 0;
 }
-/* make the header sticky */
-.progressTable .q-table {
-  /* background-color: rgba(28, 28, 60, 0.9); */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
-}
+
 .progressTable .q-markup-table {
   overflow: clip;
 }
+
 .progressTable thead tr th {
-  background-color: #152439;
+  background-color: var(
+    --q-primary
+  ); /* Replace with your primary color variable or a hex value */
   position: sticky;
   z-index: 1;
 }
-.progressTable {
-  max-width: 90vw;
-  display: block ruby;
+
+/* web */
+.q-table--dense .q-table th:first-child,
+.q-table--dense .q-table td:first-child {
+  padding-left: 5px;
 }
+.q-table--dense .q-table th,
+.q-table--dense .q-table td {
+  /* padding: 4px 8px; */
+  padding: 2px 3px;
+}
+.q-table thead tr,
+.q-table tbody td {
+  text-align: center;
+}
+.progressTable thead tr:first-child th:first-child {
+  text-align: left;
+}
+.progressTable thead tr:first-child th:not(:first-child) {
+  text-align: center;
+}
+.q-table th {
+  font-size: 10px;
+}
+.q-table--horizontal-separator thead th,
+.q-table--horizontal-separator tbody tr td,
+.q-table--cell-separator thead th,
+.q-table--cell-separator tbody tr:not(:last-child) > td {
+  border-width: 0.5px;
+}
+
+.progressTable .q-btn .q-icon,
+.q-btn .q-spinner {
+  font-size: unset;
+}
+.progressTable .q-table--no-wrap th,
+.progressTable .q-table--no-wrap td {
+  white-space: normal;
+  word-break: break-word;
+}
+/* .q-table__card {
+  border-radius: unset;
+} */
+
+/* .progressTable {
+  display: block ruby;
+} */
 .progressTable thead tr:first-child th {
   top: 0;
   /* font-size: 2.5vw; */
 }
+.progressTable td:first-child {
+  padding-left: 0;
+}
 .progressTable tbody td {
-  font-size: 2.9vw;
+  /* font-size: 2.9vw; */
   line-height: normal;
 }
-.q-btn .progressTable {
+/* .q-btn .progressTable {
   font-weight: 350;
-}
+} */
 .progressTable tbody {
   display: contents;
 }
@@ -224,22 +269,22 @@ button.expandIcon {
   left: 5px;
 }
 @media (min-width: 768px) {
-  .progressTable thead tr:first-child th,
+  /* .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {
     font-size: 1.1vw !important;
-  }
+  } */
   .progressTable .q-table {
     line-height: 2vw;
   }
   .q-btn .progressTable {
     font-weight: 150;
   }
-  .progressTable tbody td {
+  /* .progressTable tbody td {
     font-size: 1.9vw;
-  }
-  .progressTable thead tr:first-child th {
+  } */
+  /* .progressTable thead tr:first-child th {
     font-size: 2vw;
-  }
+  } */
   .progressTable {
     max-width: 100vw;
   }

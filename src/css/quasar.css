@@ -41,6 +41,11 @@
   z-index: 1;
 }
 
+body.platform-ios .q-dialog__inner--minimized > div {
+  width: 97%;
+}
+
+/* desktop */
 @media (min-width: 600px) {
   .q-dialog__inner--minimized > div {
     max-width: unset !important;
