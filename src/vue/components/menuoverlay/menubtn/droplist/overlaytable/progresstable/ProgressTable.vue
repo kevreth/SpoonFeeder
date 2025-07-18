@@ -32,7 +32,7 @@
         >
           <div
             class="nameContainer"
-            v-bind:style="props.setPadding(props.item)"
+            :style="setPadding(props.item)"
             :class="props.iconName(props.item) != 'done' ? 'q-pl-lg' : ''"
           >
             <q-btn
@@ -85,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, CSSProperties } from 'vue';
 import { Score, CourseFile } from '../../../../../../mediator';
 import SummaryIcon from './SummaryIcon.vue';
 import SummaryTable from './SummaryTable.vue';
@@ -99,6 +99,20 @@ defineProps({
     default: true,
   },
 });
+
+// Overwrite left padding in q-hierachy table
+interface Item {
+  level?: number;
+}
+
+function setPadding(item: Item): CSSProperties {
+  console.log('Item keys:', Object.keys(item));
+  const level = item.level ?? 0;
+  const basePadding = 8;
+  return {
+    paddingLeft: `${level * basePadding}px`,
+  };
+}
 
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);
@@ -207,8 +221,7 @@ button.expandIcon {
 }
 .q-table--dense .q-table th,
 .q-table--dense .q-table td {
-  /* padding: 4px 8px; */
-  padding: 2px 3px;
+  padding: 2px 7px;
 }
 .q-table thead tr,
 .q-table tbody td {
