@@ -210,18 +210,18 @@ button.expandIcon {
   overflow: clip;
 }
 
-.progressTable thead tr th {
+/* .progressTable thead tr th {
   background-color: var(
     --q-primary
-  ); /* Replace with your primary color variable or a hex value */
+  ); 
   position: sticky;
   z-index: 1;
-}
+} */
 
 /* web */
 .q-table--dense .q-table th:first-child,
 .q-table--dense .q-table td:first-child {
-  padding-left: 5px;
+  padding-left: 0px;
 }
 /* .q-table--dense .q-table th,
 .q-table--dense .q-table td {
@@ -262,9 +262,9 @@ button.expandIcon {
   border-radius: unset;
 } */
 
-/* .progressTable {
+.progressTable {
   display: block ruby;
-} */
+}
 .progressTable thead tr:first-child th {
   top: 0;
   /* font-size: 2.5vw; */
