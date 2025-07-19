@@ -6,11 +6,11 @@
 .infoIcon {
   position: fixed;
   margin-left: auto;
-  top: 10vw;
+  /* top: 25px; */
   padding-right: 9px;
   width: 20px;
   right: 0;
-  z-index: 1;
+  z-index: 100;
   cursor: pointer;
 }
 @media (min-width: 768px) {

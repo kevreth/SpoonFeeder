@@ -1,11 +1,11 @@
 <template>
   <q-card class="bg-secondary">
-    <InfoIcon
+    <!-- <InfoIcon
       id="infoIcon"
       @click="handleInfoOverlay"
       @keydown.esc="infoOverlay = false"
       tabindex="0"
-    />
+    /> -->
     <InfoTable
       :isEnable="isEnable"
       id="infoTable"
@@ -47,6 +47,12 @@
             <span
               class="name q-ml-sm title-vertical"
               :class="myClass(props.item.pctCorrect, props.item.pctComplete)"
+              :style="{
+                marginLeft:
+                  props.iconName(props.item) != 'done'
+                    ? '0.75rem'
+                    : 'calc(0.75rem + 5px)',
+              }"
               >{{ props.item.name }}</span
             >
 
@@ -104,9 +110,7 @@ defineProps({
 interface Item {
   level?: number;
 }
-
 function setPadding(item: Item): CSSProperties {
-  console.log('Item keys:', Object.keys(item));
   const level = item.level ?? 0;
   const basePadding = 8;
   return {
@@ -117,7 +121,7 @@ function setPadding(item: Item): CSSProperties {
 const summaryOverlay = ref(false);
 const infoOverlay = ref(false);
 const { t } = useI18n();
-const _columns = [
+const columns = [
   {
     name: 'name',
     label: t('tableColumns.name'),
@@ -130,48 +134,48 @@ const _columns = [
     label: t('tableColumns.score'),
     sortable: false,
     field: 'score',
-    align: 'right',
+    align: 'center',
   },
   {
     name: 'complete',
     label: t('tableColumns.complete'),
     sortable: false,
     field: 'complete',
-    align: 'right',
+    align: 'center',
   },
   {
     name: 'pctCorrect',
     label: t('tableColumns.pctCorrect'),
     sortable: false,
     field: 'pctCorrect',
-    align: 'right',
+    align: 'center',
   },
   {
     name: 'count',
     label: t('tableColumns.count'),
     sortable: false,
     field: 'count',
-    align: 'right',
+    align: 'center',
   },
   {
     name: 'pctComplete',
     label: t('tableColumns.pctComplete'),
     sortable: false,
     field: 'pctComplete',
-    align: 'right',
+    align: 'center',
   },
   {
     name: 'summary',
-    label: '',
+    label: 'ⓘ',
     sortable: false,
     field: 'summary',
-    align: 'right',
+    align: 'center',
   },
 ];
 
 const course = CourseFile.get();
 let summary = Score.summary(course);
-const columns = ref(_columns);
+// const columns = ref(_columns);
 const data = ref(summary);
 const classes = ref('bg-secondary');
 const dark = ref(true);
@@ -219,29 +223,31 @@ button.expandIcon {
 .q-table--dense .q-table td:first-child {
   padding-left: 5px;
 }
-.q-table--dense .q-table th,
+/* .q-table--dense .q-table th,
 .q-table--dense .q-table td {
   padding: 2px 7px;
-}
+} */
 .q-table thead tr,
 .q-table tbody td {
   text-align: center;
 }
-.progressTable thead tr:first-child th:first-child {
-  text-align: left;
-}
-.progressTable thead tr:first-child th:not(:first-child) {
-  text-align: center;
+/* .q-table--dense .q-table th:last-child,
+.q-table--dense .q-table td:last-child {
+  padding-right: 5px;
+} */
+.q-table--dense .q-table th:last-child {
+  font-size: 14px;
+  font-weight: 700;
 }
 .q-table th {
   font-size: 10px;
 }
-.q-table--horizontal-separator thead th,
+/* .q-table--horizontal-separator thead th,
 .q-table--horizontal-separator tbody tr td,
 .q-table--cell-separator thead th,
 .q-table--cell-separator tbody tr:not(:last-child) > td {
   border-width: 0.5px;
-}
+} */
 
 .progressTable .q-btn .q-icon,
 .q-btn .q-spinner {
