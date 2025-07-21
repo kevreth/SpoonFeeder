@@ -96,14 +96,22 @@ function handleOverlay() {
   padding: 0 10px;
 }
 .dropMenu {
-  font-size: 3.5vw;
-  font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* font-size: 3.5vw; */
+  font-family:
+    'Segoe UI',
+    'SF Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
   /* right: 15px; */
 }
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
   .dropMenu {
     font-size: 1.3vw;
   }
-}
+} */
 </style>

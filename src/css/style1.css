@@ -207,7 +207,7 @@ tbody th {
   -webkit-box-orient: vertical;
   font-size: 0.9rem;
   overflow: hidden;
-  margin-top: 110px;
+  /* margin-top: 110px; */
 }
 .touch {
   z-index: 2;

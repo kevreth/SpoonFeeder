@@ -95,7 +95,7 @@ import { ref, CSSProperties } from 'vue';
 import { Score, CourseFile } from '../../../../../../mediator';
 import SummaryIcon from './SummaryIcon.vue';
 import SummaryTable from './SummaryTable.vue';
-import InfoIcon from './InfoIcon.vue';
+// import InfoIcon from './InfoIcon.vue';
 import InfoTable from './InfoTable.vue';
 import { useI18n } from 'vue-i18n';
 
@@ -180,9 +180,9 @@ const data = ref(summary);
 const classes = ref('bg-secondary');
 const dark = ref(true);
 
-function handleInfoOverlay() {
-  infoOverlay.value = !infoOverlay.value;
-}
+// function handleInfoOverlay() {
+//   infoOverlay.value = !infoOverlay.value;
+// }
 
 function myClass(pctCorrect: string, pctComplete: string) {
   if (pctComplete < 100 + '%') {
@@ -219,22 +219,33 @@ button.expandIcon {
 } */
 
 /* web */
+/* .nameContainer {
+  max-width: 170px;
+} */
 .q-table--dense .q-table th:first-child,
 .q-table--dense .q-table td:first-child {
   padding-left: 0px;
+  max-width: 160px;
 }
-/* .q-table--dense .q-table th,
-.q-table--dense .q-table td {
-  padding: 2px 7px;
+/* .q-table th:first-child {
+  width: 150px;
+}
+.q-table th {
+  width: 50px;
 } */
+.q-table--dense .q-table th,
+.q-table--dense .q-table td {
+  /* padding: 2px 4px; */
+  padding: 2px;
+}
 .q-table thead tr,
 .q-table tbody td {
   text-align: center;
 }
-/* .q-table--dense .q-table th:last-child,
+.q-table--dense .q-table th:last-child,
 .q-table--dense .q-table td:last-child {
-  padding-right: 5px;
-} */
+  padding-right: 0px;
+}
 .q-table--dense .q-table th:last-child {
   font-size: 14px;
   font-weight: 700;
@@ -292,6 +303,27 @@ button.expandIcon {
   .progressTable .q-table tbody td {
     font-size: 1.1vw !important;
   } */
+  .q-table--dense .q-table th:first-child,
+  .q-table--dense .q-table td:first-child {
+    padding-left: 16px;
+    max-width: 100%;
+  }
+
+  .progressTable .q-table--no-wrap th,
+  .progressTable .q-table--no-wrap td {
+    white-space: unset;
+    word-break: unset;
+  }
+  .q-table--dense .q-table th,
+  .q-table--dense .q-table td {
+    /* padding: 2px 4px; */
+    padding: 4px 8px;
+  }
+  .q-table--dense .q-table th:last-child,
+  .q-table--dense .q-table td:last-child {
+    padding-right: 16px;
+  }
+
   .progressTable .q-table {
     line-height: 2vw;
   }

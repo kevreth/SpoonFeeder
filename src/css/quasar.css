@@ -46,8 +46,12 @@ body.platform-ios .q-dialog__inner--minimized > div {
 }
 
 /* desktop */
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .q-dialog__inner--minimized > div {
-    max-width: unset !important;
+    max-width: unset;
+  }
+
+  body.platform-ios .q-dialog__inner--minimized > div {
+    width: unset !important;
   }
 }
