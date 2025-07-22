@@ -1,4 +1,3 @@
-<!-- ConfirmStartOverDialog.vue -->
 <template>
   <q-dialog v-model="showConfirm" persistent style="z-index: 10000">
     <q-card style="min-width: 300px" class="confirm fixed-center">
