@@ -40,9 +40,12 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
-
+.q-dialog__inner--minimized {
+  padding: 0;
+}
 body.platform-ios .q-dialog__inner--minimized > div {
   width: 97%;
+  max-height: none;
 }
 
 /* desktop */
@@ -52,6 +55,6 @@ body.platform-ios .q-dialog__inner--minimized > div {
   }
 
   body.platform-ios .q-dialog__inner--minimized > div {
-    width: unset !important;
+    width: 100%;
   }
 }

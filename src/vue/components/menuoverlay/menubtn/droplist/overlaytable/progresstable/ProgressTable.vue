@@ -36,7 +36,11 @@
             :class="props.iconName(props.item) != 'done' ? 'q-pl-lg' : ''"
           >
             <q-btn
-              class="expandIcon"
+              no-caps
+              no-ripple
+              padding="none"
+              class="no-border no-outline expandIcon"
+              style="background: none; box-shadow: none"
               @click="props.toggle(props.item)"
               v-if="props.iconName(props.item) != 'done'"
               :icon="props.iconName(props.item)"
@@ -195,7 +199,7 @@ function myClass(pctCorrect: string, pctComplete: string) {
   } else if (pctCorrect >= 80 + '%') {
     return 'text-blue-3';
   } else {
-    return 'text-red-6';
+    return 'text-red';
   }
 }
 </script>
@@ -213,7 +217,7 @@ button.expandIcon {
 /* .progressTable thead tr th {
   background-color: var(
     --q-primary
-  ); 
+  );
   position: sticky;
   z-index: 1;
 } */
@@ -283,10 +287,10 @@ button.expandIcon {
 .progressTable td:first-child {
   padding-left: 0;
 }
-.progressTable tbody td {
-  /* font-size: 2.9vw; */
-  line-height: normal;
-}
+/* .progressTable tbody td { */
+/* font-size: 2.9vw; */
+/* line-height: normal; */
+/* } */
 /* .q-btn .progressTable {
   font-weight: 350;
 } */
@@ -298,6 +302,13 @@ button.expandIcon {
   top: 5px;
   left: 5px;
 }
+
+.bg-secondary {
+  /* background: linear-gradient(135deg, #203752, #000000) !important; */
+  /* background: linear-gradient(135deg, #2a1b3d, #000000) !important; */
+  background: linear-gradient(145deg, #172a3f, #15192d) !important;
+}
+
 @media (min-width: 768px) {
   /* .progressTable thead tr:first-child th,
   .progressTable .q-table tbody td {

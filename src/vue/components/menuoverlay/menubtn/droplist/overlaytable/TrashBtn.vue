@@ -1,10 +1,10 @@
 <template>
-  <q-icon name="delete" class="trash" />
+  <q-icon name="refresh" class="trash q-pr-md" />
 </template>
 
 <style>
 .trash {
-  float: right; 
+  float: right;
   cursor: pointer;
 }
 </style>
