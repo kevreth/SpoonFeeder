@@ -10,10 +10,10 @@
 
 <style>
 .highlight-btn {
-  background-color: #0078d4;
+  /* background-color: #0078d4; */
   border: none;
   padding: 10px 20px;
-  color: white;
+  /* color: white; */
   text-transform: uppercase;
   box-shadow: 0 0 5px #0ff;
   cursor: pointer;

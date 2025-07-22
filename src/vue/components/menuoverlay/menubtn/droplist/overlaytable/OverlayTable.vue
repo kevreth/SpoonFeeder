@@ -14,30 +14,36 @@
       >
         <div class="overlayBtn">
           <OverlayCloseBtn id="closeBtn" @click="closeOverlay" />
-          <TrashBtn id="startOver" @click="confirmStartOver" />
+          <TrashBtn id="startOver" @click="askToStartOver" />
 
-          <q-dialog v-model="confirmStartOver">
-            <q-card style="min-width: 300px">
+          <ConfirmStartOverDialog ref="confirmRef" />
+
+          <!-- Confirmation Dialog -->
+          <!-- <q-dialog v-model="showConfirm" persistent style="z-index: 10000">
+            <q-card style="min-width: 300px" class="confirm fixed-center">
               <q-card-section>
-                <div class="text-h6">Confirm</div>
-              </q-card-section>
-
-              <q-card-section class="q-pt-none">
                 Are you sure you want to start over? You will lose your current
                 progress.
               </q-card-section>
 
-              <q-card-actions align="right">
-                <q-btn flat label="Cancel" color="primary" v-close-popup />
+              <q-card-actions align="center" class="q-px-md">
                 <q-btn
                   flat
-                  label="Start Over"
+                  label="Cancel"
+                  color="primary"
+                  v-close-popup
+                  class="q-mb-sm q-mr-md highlight-btn bg-primary text-white"
+                />
+                <q-btn
+                  flat
+                  label="OK"
                   color="negative"
-                  @click="startOver"
+                  @click="handleOk"
+                  class="q-mb-sm q-mr-xs highlight-btn bg-primary"
                 />
               </q-card-actions>
             </q-card>
-          </q-dialog>
+          </q-dialog> -->
         </div>
 
         <div
@@ -57,8 +63,10 @@
 import OverlayCloseBtn from './OverlayCloseBtn.vue';
 import ProgressTable from './progresstable/ProgressTable.vue';
 import TrashBtn from './TrashBtn.vue';
-import getStartOver from '../../../../../composables/startOver';
-import { Dialog } from 'quasar';
+// import getStartOver from '../../../../../composables/startOver';
+// import { Dialog } from 'quasar';
+import { ref } from 'vue';
+import ConfirmStartOverDialog from '../../../ConfirmStartOverDialog.vue';
 
 const props = defineProps({
   isEnable: {
@@ -77,29 +85,34 @@ function closeOverlay() {
   emit('handleOverlay');
 }
 
-function confirmStartOver() {
-  Dialog.create({
-    title: 'Confirm',
-    message:
-      'Are you sure you want to start over? You will lose your current progress.',
-    cancel: true,
-    persistent: true,
-  })
-    .onOk(() => {
-      // User clicked OK
-      startOver();
-    })
-    .onCancel(() => {
-      // Optional: handle cancel
-      console.log('User canceled the action');
-    });
-}
+// const showConfirm = ref(false);
+// function handleOk() {
+//   startOver();
+//   showConfirm.value = false;
+// }
+
+// function handleCancel() {
+//   console.log('User canceled the action');
+// }
 
 // start over functionality
-function startOver() {
-  const { clear, reload } = getStartOver();
-  return { clear, reload };
-}
+const confirmRef = ref<InstanceType<typeof ConfirmStartOverDialog> | null>(
+  null,
+);
+
+const askToStartOver = () => {
+  // Make sure it's rendered
+  if (confirmRef.value) {
+    confirmRef.value.open();
+  } else {
+    console.warn('Dialog not available yet!');
+  }
+};
+
+// function startOver() {
+//   const { clear, reload } = getStartOver();
+//   return { clear, reload };
+// }
 </script>
 
 <style>
