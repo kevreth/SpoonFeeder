@@ -71,17 +71,27 @@ const askToStartOver = () => {
 
 <style>
 .overlayTable {
-  height: 90%;
+  /* height: 90%; */
+  /* border: 1px solid #00bfff; */
+
+  height: 98%;
+  top: 5px;
+  position: absolute;
 }
 .progressBackground {
   height: 70%;
   overflow: auto;
   background: transparent;
   overflow-x: auto;
+  /* border: 1px solid #00bfff; */
+  /* box-shadow:
+    0 0 10px #00bfff,
+    inset 0 0 20px rgba(0, 255, 0, 0.5); */
 }
 .overlayBtn {
   font-size: 1.7em;
   color: deeppink;
+  background: rgba(0, 0, 0, 1);
 }
 .animated {
   animation-duration: 1s;

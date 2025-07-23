@@ -229,8 +229,14 @@ button.expandIcon {
 .q-table--dense .q-table th:first-child,
 .q-table--dense .q-table td:first-child {
   padding-left: 0px;
-  max-width: 160px;
+  /* max-width: 160px; */
+  width: 50%;
+  /* max-width: none; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
 }
+
 /* .q-table th:first-child {
   width: 150px;
 }
@@ -271,7 +277,7 @@ button.expandIcon {
 .progressTable .q-table--no-wrap th,
 .progressTable .q-table--no-wrap td {
   white-space: normal;
-  word-break: break-word;
+  /* word-break: break-word; */
 }
 /* .q-table__card {
   border-radius: unset;
@@ -304,9 +310,9 @@ button.expandIcon {
 }
 
 .bg-secondary {
-  /* background: linear-gradient(135deg, #203752, #000000) !important; */
-  /* background: linear-gradient(135deg, #2a1b3d, #000000) !important; */
   background: linear-gradient(145deg, #172a3f, #15192d) !important;
+  margin: 0 5px;
+  border-radius: 10px;
 }
 
 @media (min-width: 768px) {
