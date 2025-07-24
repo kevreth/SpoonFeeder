@@ -5,7 +5,6 @@
     :z-index="3"
     @click.stop=""
   >
-    <!-- <template #body> -->
     <div class="settings fixed-center bg-secondary">
       <div class="q-pa-sm">{{ $t('settingsContent.title') }}</div>
       <q-separator horizontal class="q-mx-sm bg-white" />
@@ -17,7 +16,6 @@
       </div>
       <ExitBtn @click="closeInfo" />
     </div>
-    <!-- </template> -->
   </q-dialog>
 </template>
 

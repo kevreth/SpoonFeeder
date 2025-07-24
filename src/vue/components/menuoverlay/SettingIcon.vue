@@ -1,25 +1,10 @@
 <template>
-  <!-- <div @click="openOverlay" class="setting-icon"> -->
-  <q-btn
-    flat
-    round
-    dense
-    icon="settings"
-    aria-label="Settings"
-    lass="dropListIcon"
-    @click="settingOverlay = true"
-  />
+  <div @click.stop="isOverlayOpen = true" class="setting-icon-container">
+    <q-icon name="settings" />
+    <span v-if="showLabel" class="q-ml-sm">{{ $t('droplist.settings') }}</span>
+  </div>
 
-  <span v-if="props.showLabel" class="setting-label">
-    {{ $t('droplist.settings') }}
-  </span>
-  <!-- </div> -->
-
-  <SettingsOverlay
-    v-model="settingOverlay"
-    :title="props.showLabel ? $t('droplist.settings') : null"
-    @closeInfo="settingOverlay = false"
-  />
+  <SettingsOverlay v-model="isOverlayOpen" @closeInfo="isOverlayOpen = false" />
 </template>
 
 <script setup lang="ts">
@@ -28,17 +13,13 @@ import SettingsOverlay from './menubtn/droplist/settings/SettingsOverlay.vue';
 
 // Props
 interface Props {
-  showLabel?: boolean; // Whether to show text next to icon
+  showLabel?: boolean;
+  size?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  showLabel: false, // Default: hide label
+  showLabel: false,
+  size: '1.4em',
 });
 
-// Reactive
-const settingOverlay = ref(false);
-
-// Open overlay
-const openOverlay = () => {
-  settingOverlay.value = true;
-};
+const isOverlayOpen = ref(false);
 </script>

@@ -30,12 +30,16 @@
         }}</q-item-section>
       </q-item>
       <q-item clickable>
-        <q-item-section avatar class="dropListIcon">
+        <!-- <q-item-section avatar class="dropListIcon">
           <q-icon name="settings" />
         </q-item-section>
         <q-item-section @click="settingOverlay = true">{{
           $t('droplist.settings')
-        }}</q-item-section>
+        }}</q-item-section> -->
+        <q-item-section avatar class="dropListIcon">
+          <SettingIcon showLabel />
+        </q-item-section>
+        <!-- <q-item-section>{{ $t('droplist.settings') }}</q-item-section> -->
       </q-item>
       <q-item clickable>
         <q-item-section avatar class="dropListIcon">
@@ -56,17 +60,18 @@
     v-model="courseList"
     @closeInfo="courseList = false"
   />
-  <SettingsOverlay
+  <!-- <SettingsOverlay
     v-model="settingOverlay"
     @closeInfo="settingOverlay = false"
-  />
+  /> -->
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
-import SettingsOverlay from './settings/SettingsOverlay.vue';
+// import SettingsOverlay from './settings/SettingsOverlay.vue';
+import SettingIcon from '../../SettingIcon.vue';
 
 // setting transition disable
 const isEnable = ref(false);
