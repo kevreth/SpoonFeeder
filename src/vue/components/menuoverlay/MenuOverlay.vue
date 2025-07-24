@@ -9,7 +9,8 @@
   />
 
   <SumNavigation />
-  <VolumeMute id="volume" :volume="isMuted" @toggle-volume="toggleVolume" />
+  <!-- <VolumeMute id="volume" :volume="isMuted" @toggle-volume="toggleVolume" /> -->
+  <SettingIcon />
 </template>
 
 <script setup lang="ts">
@@ -20,6 +21,7 @@ import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue';
 import { SaveData } from '../../mediator';
 import SumNavigation from './SumNavigation.vue';
+import SettingIcon from './SettingIcon.vue';
 
 const isMuted = ref(false);
 

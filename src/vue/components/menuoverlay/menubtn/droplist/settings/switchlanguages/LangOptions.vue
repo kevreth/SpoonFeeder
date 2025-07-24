@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="props.showOverlay" :z-index="3" @click.stop="">
+  <q-dialog v-model="props.modelValue" :z-index="3" @click.stop="">
     <!-- <template #body> -->
     <div
       id="langOptions"
@@ -36,11 +36,11 @@ const i18n = useI18n();
 const locale = ref(i18n.locale.value);
 
 const props = defineProps<{
-  showOverlay: boolean;
+  modelValue: boolean;
 }>();
 
 const emit = defineEmits<{
-  (e: 'update:showOverlay', value: boolean): void;
+  (e: 'update:modelValue', value: boolean): void;
 }>();
 
 const languages = [
@@ -54,6 +54,6 @@ watch(locale, (newLocale: string) => {
 });
 
 function closeDialog() {
-  emit('update:showOverlay', false);
+  emit('update:modelValue', false);
 }
 </script>
