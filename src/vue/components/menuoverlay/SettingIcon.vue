@@ -1,8 +1,14 @@
 <template>
-  <div @click.stop="isOverlayOpen = true" class="setting-icon-container">
+  <q-item-section
+    avatar
+    @click.stop="isOverlayOpen = true"
+    class="dropListIcon"
+  >
     <q-icon name="settings" />
-    <span v-if="showLabel" class="q-ml-sm">{{ $t('droplist.settings') }}</span>
-  </div>
+  </q-item-section>
+  <q-item-section v-if="showLabel">{{
+    $t('droplist.settings')
+  }}</q-item-section>
 
   <SettingsOverlay v-model="isOverlayOpen" @closeInfo="isOverlayOpen = false" />
 </template>

@@ -1,6 +1,6 @@
 <template>
   <q-layout>
-    <q-card class="iconHamburger">
+    <q-card class="homePage">
       <MenuOverlay />
     </q-card>
 
@@ -36,10 +36,10 @@ onMounted(() => {
 </script>
 
 <style>
-.iconHamburger {
+.homePage {
   max-height: 0px;
   display: flex;
-  float: left;
+  /* float: left; */
   z-index: 1;
   padding: 0;
   margin: 0;

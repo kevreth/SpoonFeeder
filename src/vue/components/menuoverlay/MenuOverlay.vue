@@ -1,6 +1,9 @@
 <template>
-  <MenuBtn id="menuBtn" class="z-top:1000" />
-  <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
+  <div class="headerIcon">
+    <MenuBtn id="menuBtn" class="z-top:1000" />
+    <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
+    <SettingIcon />
+  </div>
   <ExpTable
     id="explainTable"
     v-model="expOverlay"
@@ -10,7 +13,6 @@
 
   <SumNavigation />
   <!-- <VolumeMute id="volume" :volume="isMuted" @toggle-volume="toggleVolume" /> -->
-  <SettingIcon />
 </template>
 
 <script setup lang="ts">
@@ -37,3 +39,14 @@ function handleExpOverlay() {
   content.value = SaveData.getCurrentSlide();
 }
 </script>
+
+<style>
+.headerIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding-left: 20px;
+}
+</style>
