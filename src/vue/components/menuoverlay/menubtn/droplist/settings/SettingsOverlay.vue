@@ -15,7 +15,7 @@
         </div>
         <SwitchLang class="q-ma-sm"></SwitchLang>
       </div>
-      <ExitBtn style="z-index: -1" @click="closeInfo" />
+      <ExitBtn @click="closeInfo" />
     </div>
     <!-- </template> -->
   </q-dialog>
