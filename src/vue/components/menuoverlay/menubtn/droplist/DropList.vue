@@ -29,18 +29,18 @@
           $t('droplist.courses')
         }}</q-item-section>
       </q-item>
-      <q-item clickable>
-        <!-- <q-item-section avatar class="dropListIcon">
+      <!-- <q-item clickable> -->
+      <!-- <q-item-section avatar class="dropListIcon">
           <q-icon name="settings" />
         </q-item-section>
         <q-item-section @click="settingOverlay = true">{{
           $t('droplist.settings')
         }}</q-item-section> -->
-        <!-- <q-item-section avatar class="dropListIcon">
+      <!-- <q-item-section avatar class="dropListIcon">
         </q-item-section> -->
-        <SettingIcon showLabel />
-        <!-- <q-item-section>{{ $t('droplist.settings') }}</q-item-section> -->
-      </q-item>
+      <!-- <q-item-section>{{ $t('droplist.settings') }}</q-item-section> -->
+      <!-- </q-item> -->
+      <SettingIcon showLabel />
       <q-item clickable>
         <q-item-section avatar class="dropListIcon">
           <q-icon name="help_outline" />

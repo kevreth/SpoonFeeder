@@ -1,10 +1,13 @@
 <template>
-  <q-item-section avatar @click.stop="isOverlayOpen = true" class="settingIcon">
-    <q-icon name="settings" />
-  </q-item-section>
-  <q-item-section v-if="showLabel">{{
-    $t('droplist.settings')
-  }}</q-item-section>
+
+  <q-item clickable @click.stop="isOverlayOpen = true">
+    <q-item-section avatar class="dropListIcon">
+      <q-icon name="settings" />
+    </q-item-section>
+    <q-item-section v-if="showLabel">{{
+      $t('droplist.settings')
+    }}</q-item-section>
+  </q-item clickable>
 
   <SettingsOverlay v-model="isOverlayOpen" @closeInfo="isOverlayOpen = false" />
 </template>
@@ -25,11 +28,3 @@ const props = withDefaults(defineProps<Props>(), {
 
 const isOverlayOpen = ref(false);
 </script>
-
-<style>
-.settingIcon {
-  top: 20px;
-  position: fixed;
-  padding-left: 20px;
-}
-</style>
