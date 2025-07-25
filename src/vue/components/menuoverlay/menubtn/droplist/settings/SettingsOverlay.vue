@@ -1,14 +1,11 @@
 <template>
-  <q-dialog
-    v-model="showOverlay"
-    class="setting-overlay"
-    :z-index="3"
-    @click.stop
-  >
+  <q-dialog v-model="dorplist" class="setting-overlay" :z-index="3" @click.stop>
     <div class="settings-dialog bg-primary text-white">
       <!-- Header -->
-      <div class="header text-center q-py-md q-px-sm relative-position">
+
+      <div class="header text-center q-py-sm q-px-sm relative-position">
         <div class="text-h6">{{ $t('settingsContent.title') }}</div>
+        <OverlayCloseBtn class="absolute-top-right" @click="closeInfo" />
       </div>
 
       <q-separator color="white" />
@@ -93,7 +90,6 @@
           class="full-width"
           padding="sm lg"
           label="Customer Care"
-          @click="onRestorePurchase"
         />
       </div>
 
@@ -108,8 +104,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import ExitBtn from '../../../../common/ExitBtn.vue';
 import SwitchLang from './switchlanguages/SwitchLang.vue';
+import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
 
 // Props & Emits
 const emit = defineEmits(['closeInfo']);
@@ -121,25 +117,12 @@ const hapticsEnabled = ref(false);
 const colorblindMode = ref(false);
 
 // Control dialog visibility
-const showOverlay = ref(true);
+const dorplist = ref(true);
 
 // Close handler
 function closeInfo() {
   emit('closeInfo');
-  showOverlay.value = false;
-}
-
-// Placeholder actions
-function onRestorePurchase() {
-  console.log('Restore Purchase clicked');
-}
-
-function openAgreement() {
-  console.log('User Agreement clicked');
-}
-
-function openPrivacy() {
-  console.log('Privacy Policy clicked');
+  dorplist.value = false;
 }
 </script>
 
