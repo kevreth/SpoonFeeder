@@ -13,8 +13,8 @@
       style="display: flex; flex-direction: column"
     >
       <div class="overlayBtn">
-        <OverlayCloseBtn id="closeBtn" @click="closeOverlay" />
         <TrashBtn id="startOver" @click="askToStartOver" />
+        <OverlayCloseBtn id="closeBtn" @click="closeOverlay" />
 
         <ConfirmStartOverDialog ref="confirmRef" />
       </div>
@@ -89,9 +89,10 @@ const askToStartOver = () => {
     inset 0 0 20px rgba(0, 255, 0, 0.5); */
 }
 .overlayBtn {
-  font-size: 1.7em;
+  /* font-size: 1.7em;
   color: deeppink;
-  background: rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, 1); */
+  text-align: right;
 }
 .animated {
   animation-duration: 1s;
