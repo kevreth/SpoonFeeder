@@ -1,9 +1,10 @@
 <template>
-  <div class="headerIcon">
+  <div>
     <MenuBtn id="menuBtn" class="z-top:1000" />
     <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
     <SettingIcon />
   </div>
+
   <ExpTable
     id="explainTable"
     v-model="expOverlay"
@@ -41,12 +42,12 @@ function handleExpOverlay() {
 </script>
 
 <style>
-.headerIcon {
+/* .headerIcon {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   height: 50px;
   padding-left: 20px;
-}
+} */
 </style>

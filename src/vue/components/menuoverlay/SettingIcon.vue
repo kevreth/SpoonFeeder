@@ -1,9 +1,5 @@
 <template>
-  <q-item-section
-    avatar
-    @click.stop="isOverlayOpen = true"
-    class="dropListIcon"
-  >
+  <q-item-section avatar @click.stop="isOverlayOpen = true" class="settingIcon">
     <q-icon name="settings" />
   </q-item-section>
   <q-item-section v-if="showLabel">{{
@@ -29,3 +25,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const isOverlayOpen = ref(false);
 </script>
+
+<style>
+.settingIcon {
+  top: 20px;
+  position: fixed;
+  padding-left: 20px;
+}
+</style>
