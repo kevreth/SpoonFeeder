@@ -12,7 +12,8 @@
         <div class="q-pt-lg q-pr-xl">
           {{ $t('settingsContent.language') }}
         </div>
-        <SwitchLang class="q-ma-sm"></SwitchLang>
+        <!-- <SwitchLang class="q-ma-sm"></SwitchLang> -->
+        <LangOptions v-model="langOptions" @click="langOptions = false" />
       </div>
       <ExitBtn @click="closeInfo" />
     </div>
@@ -24,9 +25,11 @@ import ExitBtn from '../../../../common/ExitBtn.vue';
 import { ref } from 'vue';
 // import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
 import SwitchLang from './switchlanguages/SwitchLang.vue';
+import LangOptions from './switchlanguages/LangOptions.vue';
 
 // const settingOverlay = ref(false);
 const showOverlay = ref(true);
+const langOptions = ref(false);
 
 const emit = defineEmits(['closeInfo']);
 function closeInfo() {

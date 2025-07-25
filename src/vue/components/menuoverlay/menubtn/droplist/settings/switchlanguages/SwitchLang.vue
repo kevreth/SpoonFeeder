@@ -1,5 +1,11 @@
 <template>
-  <q-btn flat round icon="translate" @click="langOptions = true">
+  <q-btn
+    flat
+    round
+    icon="translate"
+    @click="langOptions = true"
+    class="q-pa-none q-ma-none"
+  >
     <LangOptions v-model="langOptions" @click="langOptions = false" />
   </q-btn>
 </template>

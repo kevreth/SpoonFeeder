@@ -1,29 +1,56 @@
 <template>
-  <q-dialog v-model="props.modelValue" :z-index="3" @click.stop="">
-    <!-- <template #body> -->
+  <q-dialog v-model="props.modelValue" :z-index="3" @click.stop>
     <div
-      id="langOptions"
-      class="fixed-center bg-primary"
-      style="border-radius: 20px"
+      class="lang-dialog bg-primary text-white"
+      style="border-radius: 20px; width: 90vw; max-width: 360px"
     >
-      <div class="q-pa-sm">{{ $t('settingsContent.language') }}</div>
-      <q-separator horizontal class="q-mx-sm bg-white" />
-      <q-list style="min-width: 100px">
+      <!-- Header -->
+      <div class="q-pa-sm text-center text-h6 text-uppercase">
+        {{ $t('settingsContent.language') }}
+      </div>
+
+      <q-separator color="white" />
+
+      <!-- Language List -->
+      <q-list
+        class="q-pt-sm"
+        style="min-width: 200px; max-height: 240px; overflow-y: auto"
+      >
         <q-item
-          v-model="locale"
-          @click="locale = language.value"
-          clickable
-          v-close-popup
           v-for="language in languages"
           :key="language.value"
-          style="position: relative; z-index: 1"
+          clickable
+          v-ripple
+          :class="[
+            'relative-position',
+            locale === language.value
+              ? 'border-selected text-white'
+              : 'text-dark-orange',
+          ]"
+          @click="locale = language.value"
         >
-          <q-item-section>{{ language.label }}</q-item-section>
+          <!-- Centered Text -->
+          <q-item-section class="text-center">
+            <q-item-label>{{ language.label }}</q-item-label>
+          </q-item-section>
+
+          <!-- Checkmark overlaid on the right (doesn't affect centering) -->
+          <q-icon
+            v-if="locale === language.value"
+            name="check"
+            size="sm"
+            color="white"
+            class="absolute-right q-mr-sm"
+            style="top: 50%; transform: translateY(-50%)"
+          />
         </q-item>
       </q-list>
-      <ExitBtn class="bg-secondary" @click="closeDialog" />
+
+      <!-- Close Button (Top Right) -->
+      <div class="q-pa-md q-pt-none">
+        <ExitBtn @click="closeDialog" />
+      </div>
     </div>
-    <!-- </template> -->
   </q-dialog>
 </template>
 
@@ -46,9 +73,13 @@ const emit = defineEmits<{
 const languages = [
   { value: 'en-US', label: 'English' },
   { value: 'zh-CN', label: '中文' },
+  { value: 'zh-TW', label: '漢語' },
+  { value: 'fr-FR', label: 'Français' },
+  { value: 'de-DE', label: 'Deutsch' },
 ];
 
-watch(locale, (newLocale: string) => {
+// Save locale when changed
+watch(locale, (newLocale) => {
   localStorage.setItem('locale', newLocale);
   i18n.locale.value = newLocale;
 });
@@ -57,3 +88,20 @@ function closeDialog() {
   emit('update:modelValue', false);
 }
 </script>
+
+<style>
+.text-dark-orange {
+  color: #ff8c00 !important;
+}
+.border-selected {
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 0 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.lang-dialog {
+  position: relative;
+  padding: 0;
+  /* font-family: 'Roboto', sans-serif; */
+}
+</style>
