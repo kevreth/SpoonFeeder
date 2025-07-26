@@ -1,14 +1,19 @@
 <template>
-  <q-btn
-    flat
-    dense
-    :icon="volume ? 'volume_off' : 'volume_up'"
-    class="volumeMute q-ml-sm q-pt-md"
-    @click="toggleVolume"
-  />
+  <div class="col text-left">
+    <q-icon name="volume_up" size="sm" class="q-mr-sm" />
+    <span class="text-body1">SFX</span>
+  </div>
+  <div class="col-auto">
+    <q-toggle
+      :model-value="!volume"
+      color="blue"
+      @update:model-value="onToggle"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue';
 import { MUTE } from '../../../ts/main/dataaccess/mediator';
 import { AudioPlayer } from '../../mediator';
 
@@ -18,37 +23,28 @@ const props = defineProps({
     default: false,
   },
 });
-const emit = defineEmits(['toggle-volume']);
-function toggleVolume() {
-  emit('toggle-volume');
-  soundControl();
-  // mute()
+const emit = defineEmits<{
+  'update:volume': [value: boolean];
+}>();
+
+function onToggle(newVal: boolean) {
+  emit('update:volume', !newVal);
 }
 
-function soundControl() {
+watch(
+  () => props.volume,
+  (val) => {
+    soundControl(val);
+  },
+  { immediate: true },
+);
+
+function soundControl(isMuted: boolean) {
   const player = new AudioPlayer(new Audio(), MUTE);
-  if (!props.volume) {
+  if (isMuted) {
     player.muteAudio();
-  } else if (props.volume) {
+  } else {
     player.playBack();
   }
 }
 </script>
-
-<style>
-.volumeMute {
-  height: 20px;
-  z-index: -1;
-  padding: 2px;
-  top: 25px;
-  font-size: 2vw;
-}
-@media screen and (min-width: 1200px) {
-  .volumeMute {
-    font-size: 1vw;
-  }
-}
-.volumeMute:hover {
-  transform: scale(1.2);
-}
-</style>

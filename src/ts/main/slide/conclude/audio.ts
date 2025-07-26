@@ -3,7 +3,11 @@ import { WebStorageFlag } from '../../dataaccess/mediator';
 export class AudioPlayer {
   private readonly INCORRECT: string = '/resources/audio/incorrect.mp3';
   private readonly CORRECT: string = this.INCORRECT.replace('in', '');
-  constructor(public audio: HTMLAudioElement, public mute: WebStorageFlag) {}
+  z;
+  constructor(
+    public audio: HTMLAudioElement,
+    public mute: WebStorageFlag,
+  ) {}
   public playAudio(correct: boolean): void {
     if (this.mute.is()) return;
     this.audio.src = this.INCORRECT;

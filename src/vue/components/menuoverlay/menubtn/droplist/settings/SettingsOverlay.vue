@@ -24,14 +24,14 @@
 
         <!-- SFX Toggle -->
         <div class="setting-item row items-center q-px-lg q-py-sm">
-          <div class="col text-left">
+          <VolumeMute v-model:volume="isMuted" />
+          <!-- <div class="col text-left">
             <q-icon name="volume_up" size="sm" class="q-mr-sm" />
             <span class="text-body1">SFX</span>
           </div>
-          <!-- <VolumeMute id="volume" :volume="isMuted" @toggle-volume="toggleVolume" /> -->
           <div class="col-auto">
             <q-toggle v-model="sfxEnabled" color="blue" />
-          </div>
+          </div> -->
         </div>
 
         <!-- Haptics Toggle -->
@@ -98,25 +98,28 @@
 import { ref } from 'vue';
 import SwitchLang from './switchlanguages/SwitchLang.vue';
 import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
-import LangOptions from './switchlanguages/LangOptions.vue';
+// import LangOptions from './switchlanguages/LangOptions.vue';
+import VolumeMute from '../../../VolumeMute.vue';
 
 // Props & Emits
 const emit = defineEmits(['closeInfo']);
 
 // Internal state for toggles
 const musicEnabled = ref(true);
-const sfxEnabled = ref(true);
 const hapticsEnabled = ref(false);
 const colorblindMode = ref(false);
+const openLanguagePopup = ref(false);
 
 // Control dialog visibility
 const dorplist = ref(true);
-const showLanguagePopup = ref(false);
+// const showLanguagePopup = ref(false);
 // Close handler
 function closeInfo() {
   emit('closeInfo');
   dorplist.value = false;
 }
+
+const isMuted = ref(false);
 </script>
 
 <style>
