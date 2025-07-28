@@ -11,36 +11,26 @@
       class="dropList bg-secondary"
       @click="droplist = false"
     >
-      <q-item clickable>
+      <q-item clickable @click="overlay = true" @keydown.esc="overlay = false">
         <q-item-section avatar class="dropListIcon">
           <q-icon name="trending_up" />
         </q-item-section>
-        <q-item-section
-          @click="overlay = true"
-          @keydown.esc="overlay = false"
-          >{{ $t('droplist.progress') }}</q-item-section
-        >
+        <q-item-section>{{ $t('droplist.progress') }}</q-item-section>
       </q-item>
-      <q-item clickable>
+      <q-item clickable @click="courseList = true">
         <q-item-section avatar class="dropListIcon">
           <q-icon name="school" />
         </q-item-section>
-        <q-item-section @click="courseList = true">{{
-          $t('droplist.courses')
-        }}</q-item-section>
+        <q-item-section>{{ $t('droplist.courses') }}</q-item-section>
       </q-item>
-      <!-- <q-item clickable> -->
-      <!-- <q-item-section avatar class="dropListIcon">
+      <q-item clickable @click="settingOverlay = true">
+        <q-item-section avatar class="dropListIcon">
           <q-icon name="settings" />
         </q-item-section>
-        <q-item-section @click="settingOverlay = true">{{
-          $t('droplist.settings')
-        }}</q-item-section> -->
-      <!-- <q-item-section avatar class="dropListIcon">
-        </q-item-section> -->
-      <!-- <q-item-section>{{ $t('droplist.settings') }}</q-item-section> -->
-      <!-- </q-item> -->
-      <SettingIcon showLabel />
+        <q-item-section>{{ $t('droplist.settings') }}</q-item-section>
+        <!-- <SettingIcon showLabel /> -->
+      </q-item>
+
       <q-item clickable>
         <q-item-section avatar class="dropListIcon">
           <q-icon name="help_outline" />
@@ -60,18 +50,18 @@
     v-model="courseList"
     @closeInfo="courseList = false"
   />
-  <!-- <SettingsOverlay
+  <SettingsOverlay
     v-model="settingOverlay"
     @closeInfo="settingOverlay = false"
-  /> -->
+  />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
-// import SettingsOverlay from './settings/SettingsOverlay.vue';
-import SettingIcon from '../../SettingIcon.vue';
+import SettingsOverlay from './settings/SettingsOverlay.vue';
+// import SettingIcon from '../../SettingIcon.vue';
 
 // setting transition disable
 const isEnable = ref(false);
