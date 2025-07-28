@@ -46,17 +46,12 @@
         ></SavedCourse>
         <div class="btnCourse">
           <SwitchCourse
-            class="courseTableBtn"
+            class="courseTableBtn text-white q-mr-lg"
             :selectCourse="selectCourse"
             :selectedCourse="selectedCourse"
             @closeInfo="closeInfo"
           />
-          <ExitBtn
-            class="courseTableBtn"
-            v-if="disableExit"
-            @click="closeInfo"
-            color="primary"
-          />
+          <ExitBtn class="courseTableBtn" @click="closeInfo" color="primary" />
         </div>
       </q-list>
       <!-- </template> -->
@@ -76,7 +71,7 @@ let courseData = ref(getCourseData());
 let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref<string | null>(null);
 const savedCourse = ref<string>('');
-const disableExit = ref(false);
+// const disableExit = ref(false);
 // const disable = ref(false);
 defineProps({
   isEnable: {
@@ -91,17 +86,20 @@ onBeforeUpdate(() => {
 });
 
 function selectCourse(course: string): void {
-  if (
-    courseData.value.courseName === null ||
-    courseData.value.courseName === undefined
-  ) {
-    disableExit.value = false;
-  } else {
-    disableExit.value = true;
-    selectedCourse.value = course;
-    savedCourse.value = selectedCourse.value;
-    switchCourse(selectedCourse.value);
-  }
+  // if (
+  //   courseData.value.courseName === null ||
+  //   courseData.value.courseName === undefined
+  // ) {
+  //   disableExit.value = false;
+  // } else {
+  //   disableExit.value = true;
+  //   selectedCourse.value = course;
+  //   savedCourse.value = selectedCourse.value;
+  //   switchCourse(selectedCourse.value);
+  // }
+  selectedCourse.value = course;
+  savedCourse.value = course;
+  switchCourse(course);
 }
 
 const emit = defineEmits(['closeInfo']);

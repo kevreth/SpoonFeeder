@@ -6,9 +6,15 @@
   />
   <q-page class="wrapContent row items-center justify-evenly">
     <div id="slide">
-      <div id="content"></div>
+      <div id="content" ref="contentRef"></div>
     </div>
   </q-page>
+
+  <PlayButton
+    @play="courseList = true"
+    :isEnable="isEnable"
+    :content-ref="contentRef"
+  />
 </template>
 
 <script setup lang="ts">
@@ -22,10 +28,12 @@ import {
 import '../../css/style1.css';
 import '../../css/quasar.css';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
+import PlayButton from '../components/PlayButton.vue';
 
 const courseList = ref(false);
 // const isEnable = ref(false);
 const isEnable = ref(false);
+const contentRef = ref<HTMLDivElement | null>(null);
 
 //This should probably be moved to App.vue.
 loadCourseListing((yml) => {

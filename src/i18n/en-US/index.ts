@@ -8,11 +8,11 @@ export default {
     progress: 'Progress',
     courses: 'Courses',
     settings: 'Settings',
-    help: 'Help'
+    help: 'Help',
   },
   courseSelector: {
     title: 'Course',
-    course: '{course}'
+    course: '{course}',
   },
   tableColumns: {
     name: 'Name',
@@ -27,7 +27,7 @@ export default {
     language: 'Language',
   },
   exitBtn: {
-    exit: 'Exit'
+    exit: 'Exit',
   },
   infoTable: {
     title: 'Navigations',
@@ -35,7 +35,7 @@ export default {
     com: 'COM: number completed',
     tot: 'TOT: number available',
     sco: 'SCO: score; COR/COM * 100%',
-    cpl: 'CPL: completion: COM/TOT * 100%'
+    cpl: 'CPL: completion: COM/TOT * 100%',
   },
   sumNavi: {
     sco: 'SCO',
@@ -43,12 +43,13 @@ export default {
     crs: 'CRS:',
     unt: 'UNT:',
     les: 'LES:',
-    mod: 'MOD:'
+    mod: 'MOD:',
   },
   switchCourse: {
-    switch: 'switch'
+    switch: 'switch',
   },
   savedCourse: {
-    saved: 'Saved: '
-  }
+    saved: 'Saved: ',
+    none: 'No saved course',
+  },
 };
