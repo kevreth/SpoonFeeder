@@ -1,7 +1,7 @@
 <template>
   <q-btn
     id="btn_switch"
-    class="switchBtn highlight-btn q-mb-sm q-mr-sm q-ml-xs bg-primary"
+    class="switchBtn green-btn q-mb-sm q-mr-sm q-ml-xs bg-primary"
     :label="$t('switchCourse.switch')"
     @click="switchCourse()"
   />
@@ -37,3 +37,14 @@ function switchCourse() {
   }
 }
 </script>
+
+<style>
+.switchBtn {
+  border: 1px solid rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 5px #0ff;
+}
+.green-btn {
+  border: 1px solid #00bfff;
+  background-color: green !important;
+}
+</style>

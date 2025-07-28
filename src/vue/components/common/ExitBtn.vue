@@ -13,7 +13,7 @@
   /* background-color: #0078d4; */
   /* border: none; */
   border: 1px solid #00bfff;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   /* color: white; */
   text-transform: uppercase;
   box-shadow: 0 0 5px #0ff;
