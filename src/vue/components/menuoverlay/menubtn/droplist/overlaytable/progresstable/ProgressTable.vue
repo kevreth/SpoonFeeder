@@ -249,6 +249,14 @@ button.expandIcon {
   /* padding: 2px 4px; */
   padding: 2px;
 }
+
+/* .q-table thead {
+  position: fixed;
+  width: 98%;
+  background: linear-gradient(145deg, #172a3f, #15192d) !important;
+  z-index: 100;
+  display: table;
+} */
 .q-table thead tr,
 .q-table tbody td {
   text-align: center;
@@ -263,6 +271,16 @@ button.expandIcon {
 }
 .q-table th {
   font-size: 10px;
+
+  font-size: 10px;
+  position: sticky;
+  /* background: linear-gradient(145deg, #172a3f, #15192d) !important; */
+  background-color: #172a3f;
+  z-index: 100;
+  height: 40px;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 /* .q-table--horizontal-separator thead th,
 .q-table--horizontal-separator tbody tr td,
@@ -286,7 +304,7 @@ button.expandIcon {
 
 .progressTable {
   display: block ruby;
-  margin: 5px;
+  margin: 0 5px;
 }
 .progressTable thead tr:first-child th {
   top: 0;
@@ -314,7 +332,7 @@ button.expandIcon {
 .bg-secondary {
   background: linear-gradient(145deg, #172a3f, #15192d) !important;
   /* margin: 0 5px; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* width: 100%; */
   width: fit-content;
   margin: 0 auto;

@@ -13,6 +13,7 @@
   color: white;
   transition: background-color 0.3s ease;
   background-color: deeppink;
+  margin-bottom: 0;
   /* margin-right: 10px; */
 }
 </style>

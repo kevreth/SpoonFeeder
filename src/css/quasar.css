@@ -44,7 +44,7 @@
   padding: 0;
 }
 body.platform-ios .q-dialog__inner--minimized > div {
-  width: 97%;
+  /* width: 97%; */
   max-height: none;
 }
 
