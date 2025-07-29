@@ -6,6 +6,7 @@
       @keydown.esc="infoOverlay = false"
       tabindex="0"
     /> -->
+
     <InfoTable
       :isEnable="isEnable"
       id="infoTable"
@@ -285,6 +286,7 @@ button.expandIcon {
 
 .progressTable {
   display: block ruby;
+  margin: 5px;
 }
 .progressTable thead tr:first-child th {
   top: 0;
@@ -311,8 +313,11 @@ button.expandIcon {
 
 .bg-secondary {
   background: linear-gradient(145deg, #172a3f, #15192d) !important;
-  margin: 0 5px;
+  /* margin: 0 5px; */
   border-radius: 10px;
+  /* width: 100%; */
+  width: fit-content;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {

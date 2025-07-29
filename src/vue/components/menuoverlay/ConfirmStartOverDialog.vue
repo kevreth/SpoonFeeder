@@ -9,18 +9,18 @@
       <q-card-actions align="center" class="q-px-md">
         <q-btn
           flat
+          label="OK"
+          color="negative"
+          @click="handleOk"
+          class="q-mb-sm q-mr-xs highlight-btn bg-darkred text-white"
+        />
+        <q-btn
+          flat
           label="Cancel"
           color="primary"
           v-close-popup
           class="q-mb-sm q-mr-md highlight-btn bg-primary text-white"
           @click="handleCancel"
-        />
-        <q-btn
-          flat
-          label="OK"
-          color="negative"
-          @click="handleOk"
-          class="q-mb-sm q-mr-xs highlight-btn bg-primary"
         />
       </q-card-actions>
     </q-card>
@@ -56,6 +56,9 @@ function handleCancel() {
 </script>
 
 <style>
+.bg-darkred {
+  background-color: darkred;
+}
 .confirm {
   background: rgba(0, 0, 0, 1);
   border: 1px solid #00bfff;

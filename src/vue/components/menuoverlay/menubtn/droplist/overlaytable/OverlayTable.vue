@@ -83,6 +83,9 @@ const askToStartOver = () => {
   overflow: auto;
   background: transparent;
   overflow-x: auto;
+
+  /* margin: 0 auto;
+  width: inherit; */
   /* border: 1px solid #00bfff; */
   /* box-shadow:
     0 0 10px #00bfff,
