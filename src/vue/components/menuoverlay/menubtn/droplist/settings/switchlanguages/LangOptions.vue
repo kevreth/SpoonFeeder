@@ -5,11 +5,11 @@
       style="border-radius: 20px; width: 90vw; max-width: 360px"
     >
       <!-- Header -->
-      <div class="q-pa-sm text-center text-h6 text-uppercase">
+      <div class="bg-grey-10 q-pa-sm text-center text-h6 text-uppercase">
         {{ $t('settingsContent.language') }}
       </div>
 
-      <q-separator color="white" />
+      <!-- <q-separator color="white" /> -->
 
       <!-- Language List -->
       <q-list

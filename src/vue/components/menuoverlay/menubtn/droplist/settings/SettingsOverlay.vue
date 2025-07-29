@@ -25,48 +25,8 @@
         <!-- SFX Toggle -->
         <div class="setting-item row items-center q-px-lg q-py-sm">
           <VolumeMute v-model:volume="isMuted" />
-          <!-- <div class="col text-left">
-            <q-icon name="volume_up" size="sm" class="q-mr-sm" />
-            <span class="text-body1">SFX</span>
-          </div>
-          <div class="col-auto">
-            <q-toggle v-model="sfxEnabled" color="blue" />
-          </div> -->
-        </div>
-
-        <!-- Haptics Toggle -->
-        <div class="setting-item row items-center q-px-lg q-py-sm">
-          <div class="col text-left">
-            <q-icon name="vibration" size="sm" class="q-mr-sm" />
-            <span class="text-body1">Haptics</span>
-          </div>
-          <div class="col-auto">
-            <q-toggle v-model="hapticsEnabled" color="blue" />
-          </div>
-        </div>
-
-        <!-- Colorblind Mode -->
-        <div class="setting-item row items-center q-px-lg q-py-sm">
-          <div class="col text-left">
-            <q-icon name="visibility" size="sm" class="q-mr-sm" />
-            <span class="text-body1">Colorblind Mode</span>
-          </div>
-          <div class="col-auto">
-            <q-toggle v-model="colorblindMode" color="blue" />
-          </div>
         </div>
       </div>
-
-      <!-- <q-separator color="white" /> -->
-
-      <!-- Language Button -->
-
-      <!-- <div class="row q-pl-md">
-        <div class="q-pt-lg q-pr-xl">
-          {{ $t('settingsContent.language') }}
-        </div>
-        <LangOptions v-model="langOptions" @click="langOptions = false" />
-      </div> -->
 
       <div class="btn-group inline-flex">
         <q-btn

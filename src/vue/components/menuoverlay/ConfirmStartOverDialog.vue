@@ -19,7 +19,7 @@
           label="Cancel"
           color="primary"
           v-close-popup
-          class="q-mb-sm q-mr-md highlight-btn bg-primary text-white"
+          class="q-mb-sm q-ml-md highlight-btn bg-primary text-white"
           @click="handleCancel"
         />
       </q-card-actions>
