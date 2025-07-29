@@ -1,7 +1,13 @@
 <template>
   <div class="welcome-screen">
     <div class="spoonfeeder-logo">
-      <!-- <img src="/duolingo-logo.png" alt="Duolingo Logo" /> -->
+      <img
+        src="https://github.com/kevreth/SpoonFeeder/assets/47391465/af633b8b-d0df-421b-a699-36f7a90abb19"
+        alt="SpoonFeeder logo"
+        width="100"
+        height="100"
+      />
+
       <h1 class="spoonfeeder-text">Spoonfeeder</h1>
       <p class="slogan">Perpetual learning</p>
     </div>
