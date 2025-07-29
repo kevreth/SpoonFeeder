@@ -1,62 +1,59 @@
 <template>
-  <transition appear group :name="isEnable ? 'transitions' : ''">
-    <q-dialog
-      v-model="showOverlay"
-      :class="{ transition: isEnable }"
-      id="courseTable"
-      class="courseTable"
-      @click.stop=""
-      z-index="3"
+  <!-- <transition appear :name="isEnable ? 'transitions' : ''"> -->
+  <q-dialog
+    v-model="showOverlay"
+    :class="{ transition: isEnable }"
+    id="courseTable"
+    class="courseTable"
+    @click.stop=""
+    z-index="3"
+    :transition="isEnable ? 'transitions' : ''"
+  >
+    <q-list
+      id="courseList"
+      class="courseList smaller-font fixed-center bg-course-list"
     >
-      <!-- <template #body> -->
-      <q-list
-        id="courseList"
-        class="courseList smaller-font fixed-center bg-course-list"
-      >
-        <q-item :header="true" class="titleCourse" id="titleCourse">
-          <q-item-label header class="headerCourse q-pa-lg">{{
-            $t('courseSelector.title')
-          }}</q-item-label>
-        </q-item>
-        <div class="scrollable-course" id="courses">
-          <q-item
-            class="courseItem"
-            clickable
-            v-for="course in courses"
-            :key="course"
-            id="wrapCourses"
-            @click="selectedCourse = course"
-            :class="{ selected: course === selectedCourse }"
+      <q-item :header="true" class="titleCourse" id="titleCourse">
+        <q-item-label header class="headerCourse q-pa-lg">{{
+          $t('courseSelector.title')
+        }}</q-item-label>
+      </q-item>
+      <div class="scrollable-course" id="courses">
+        <q-item
+          class="courseItem"
+          clickable
+          v-for="course in courses"
+          :key="course"
+          id="wrapCourses"
+          @click="selectedCourse = course"
+          :class="{ selected: course === selectedCourse }"
+        >
+          <q-item-section
+            class="courseItemSection"
+            :id="createValidHtmlId(course)"
           >
-            <q-item-section
-              class="courseItemSection"
-              :id="createValidHtmlId(course)"
-            >
-              <!-- {{ course.toUpperCase() }} -->
-              {{
-                $t('courseSelector.course', { course: course.toUpperCase() })
-              }}
-            </q-item-section>
-          </q-item>
-        </div>
-        <SavedCourse
-          id="savedCourse"
-          class="savedCourse"
-          :savedCourse="savedCourse"
-        ></SavedCourse>
-        <div class="btnCourse">
-          <SwitchCourse
-            class="courseTableBtn text-white q-mr-lg"
-            :selectCourse="selectCourse"
-            :selectedCourse="selectedCourse"
-            @closeInfo="closeInfo"
-          />
-          <ExitBtn class="courseTableBtn" @click="closeInfo" color="primary" />
-        </div>
-      </q-list>
-      <!-- </template> -->
-    </q-dialog>
-  </transition>
+            <!-- {{ course.toUpperCase() }} -->
+            {{ $t('courseSelector.course', { course: course.toUpperCase() }) }}
+          </q-item-section>
+        </q-item>
+      </div>
+      <SavedCourse
+        id="savedCourse"
+        class="savedCourse"
+        :savedCourse="savedCourse"
+      ></SavedCourse>
+      <div class="btnCourse">
+        <SwitchCourse
+          class="courseTableBtn text-white q-mr-lg"
+          :selectCourse="selectCourse"
+          :selectedCourse="selectedCourse"
+          @closeInfo="closeInfo"
+        />
+        <ExitBtn class="courseTableBtn" @click="closeInfo" color="primary" />
+      </div>
+    </q-list>
+  </q-dialog>
+  <!-- </transition> -->
 </template>
 
 <script setup lang="ts">
