@@ -10,7 +10,7 @@
     </div>
   </q-page>
 
-  <PlayButton
+  <WelcomeScreen
     @play="courseList = true"
     :isEnable="isEnable"
     :content-ref="contentRef"
@@ -28,7 +28,7 @@ import {
 import '../../css/style1.css';
 import '../../css/quasar.css';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
-import PlayButton from '../components/PlayButton.vue';
+import WelcomeScreen from '../components/WelcomeScreen.vue';
 
 const courseList = ref(false);
 // const isEnable = ref(false);

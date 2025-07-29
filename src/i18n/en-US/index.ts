@@ -50,6 +50,6 @@ export default {
   },
   savedCourse: {
     saved: 'Saved: ',
-    none: 'No saved course',
+    none: 'No saved course yet',
   },
 };

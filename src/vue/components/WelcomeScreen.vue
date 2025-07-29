@@ -1,17 +1,20 @@
-<!-- components/PlayButton.vue -->
 <template>
-  <!-- Show Play button only if #content is empty -->
-  <div v-if="isContentEmpty" class="play-btn-container">
+  <div class="welcome-screen">
+    <div class="spoonfeeder-logo">
+      <!-- <img src="/duolingo-logo.png" alt="Duolingo Logo" /> -->
+      <h1 class="spoonfeeder-text">Spoonfeeder</h1>
+      <p class="slogan">Perpetual learning</p>
+    </div>
+
     <q-btn
-      class="play-btn green-btn"
+      v-if="isContentEmpty"
+      class="green-btn start-btn"
       color="primary"
-      icon="play_arrow"
-      label="PLAY"
+      label="START LEARNING"
       @click="courseList = true"
     />
   </div>
 
-  <!-- Course Selector -->
   <CourseSelector
     :isEnable="isEnable"
     v-model="courseList"
@@ -23,7 +26,6 @@
 import { ref, watch, onMounted } from 'vue';
 import CourseSelector from './menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
-// Props
 interface Props {
   contentRef: HTMLElement | null;
   isEnable?: boolean;
@@ -32,7 +34,6 @@ const props = withDefaults(defineProps<Props>(), {
   isEnable: true,
 });
 
-// Local state
 const courseList = ref(false);
 const isContentEmpty = ref(true);
 
@@ -68,13 +69,26 @@ watch(
 </script>
 
 <style>
-.play-btn {
+.welcome-screen {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+}
+.spoonfeeder-logo {
+  padding-bottom: 50px;
+}
+.spoonfeeder-text {
+  font-weight: 700;
+  font-size: 3.5rem;
+  color: #0ff;
+  padding: 0;
+  margin: 0;
+}
+.slogan {
+  font-weight: 400;
+}
+.start-btn {
+  width: 80%;
 }
 </style>
