@@ -2,7 +2,7 @@
   <div class="welcome-screen">
     <div class="spoonfeeder-logo">
       <img
-        src="https://github.com/kevreth/SpoonFeeder/assets/47391465/af633b8b-d0df-421b-a699-36f7a90abb19"
+        src="../../img/spoonfeeder-logo.jpg"
         alt="SpoonFeeder logo"
         width="100"
         height="100"
