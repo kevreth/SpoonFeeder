@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onBeforeUnmount } from 'vue';
 import CourseSelector from './menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
 interface Props {
@@ -42,7 +42,12 @@ const props = withDefaults(defineProps<Props>(), {
 const courseList = ref(false);
 const isContentEmpty = ref(true);
 
+defineEmits(['play']);
+
 // Watch for changes to contentRef and its children
+
+let observer: MutationObserver | null = null;
+
 watch(
   () => props.contentRef,
   (newEl) => {
@@ -50,8 +55,11 @@ watch(
       // Initial check
       isContentEmpty.value = !newEl.hasChildNodes();
 
-      // Watch for future changes
-      const observer = new MutationObserver(() => {
+      // Clean up previous observer if any
+      observer?.disconnect();
+
+      // Create a new observer
+      observer = new MutationObserver(() => {
         isContentEmpty.value = !props.contentRef?.hasChildNodes();
       });
 
@@ -60,17 +68,15 @@ watch(
         subtree: true,
         characterData: true,
       });
-
-      // Cleanup on unwatch
-      onMounted(() => {
-        return () => {
-          observer.disconnect();
-        };
-      });
     }
   },
   { immediate: true },
 );
+
+// ✅ Cleanup when component unmounts
+onBeforeUnmount(() => {
+  observer?.disconnect();
+});
 </script>
 
 <style>

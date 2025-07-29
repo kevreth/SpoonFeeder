@@ -85,8 +85,6 @@ onBeforeUpdate(() => {
   courses = ref(courseData.value.availableCourses);
 });
 
-console.log('courses:', courses);
-
 function selectCourse(course: string): void {
   // if (
   //   courseData.value.courseName === null ||
