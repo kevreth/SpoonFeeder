@@ -1,8 +1,11 @@
-import { PREFIX_COURSE_FILE, loadFile } from '../../ts/main/course/courseData/loadCourse';
+import {
+  PREFIX_COURSE_FILE,
+  loadFile,
+} from '../../ts/main/course/courseData/loadCourse';
 import {
   COURSE_NAME,
   getCourseListing,
-  setCourseListing
+  setCourseListing,
 } from '../../ts/main/dataaccess/mediator';
 import { remove } from '../../ts/main/quiz/mediator';
 //Vue interface to Course data.
@@ -25,6 +28,26 @@ export class CourseData {
     }
   }
 }
-export function getCourseData() {
-  return new CourseData();
+// export function getCourseData() {
+//   return new CourseData();
+// }
+
+function loadFileAsync(file: string): Promise<string[]> {
+  return new Promise((resolve) => {
+    loadFile(file, (data: string[]) => resolve(data));
+  });
+}
+
+export async function getCourseData(): Promise<CourseData> {
+  const courseData = new CourseData();
+  const list = getCourseListing();
+  if (list !== null && list !== undefined) {
+    courseData.availableCourses = remove(list, courseData.courseName);
+  } else {
+    const filename = PREFIX_COURSE_FILE + '/listing.yml';
+    const listing = await loadFileAsync(filename);
+    courseData.availableCourses = listing;
+    setCourseListing(listing);
+  }
+  return courseData;
 }

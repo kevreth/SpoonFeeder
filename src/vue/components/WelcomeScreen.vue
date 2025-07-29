@@ -45,7 +45,6 @@ const isContentEmpty = ref(true);
 defineEmits(['play']);
 
 // Watch for changes to contentRef and its children
-
 let observer: MutationObserver | null = null;
 
 watch(

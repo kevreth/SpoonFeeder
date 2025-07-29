@@ -57,19 +57,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeUpdate } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getCourseData, switchCourse } from '../../../../../mediator';
 import SwitchCourse from './SwitchCourse.vue';
 import SavedCourse from './SavedCourse.vue';
 import { createValidHtmlId } from '../../../../../composables/createValidHtmlId';
 import ExitBtn from '../../../../common/ExitBtn.vue';
 
-let courseData = ref(getCourseData());
-let courses = ref(courseData.value.availableCourses);
 const selectedCourse = ref<string | null>(null);
 const savedCourse = ref<string>('');
-// const disableExit = ref(false);
-// const disable = ref(false);
+
+const courses = ref<string[]>([]);
+onMounted(async () => {
+  const data = await getCourseData();
+  courses.value = data.availableCourses;
+});
+
 defineProps({
   isEnable: {
     type: Boolean,
@@ -77,23 +80,7 @@ defineProps({
   },
 });
 
-onBeforeUpdate(() => {
-  courseData = ref(getCourseData());
-  courses = ref(courseData.value.availableCourses);
-});
-
 function selectCourse(course: string): void {
-  // if (
-  //   courseData.value.courseName === null ||
-  //   courseData.value.courseName === undefined
-  // ) {
-  //   disableExit.value = false;
-  // } else {
-  //   disableExit.value = true;
-  //   selectedCourse.value = course;
-  //   savedCourse.value = selectedCourse.value;
-  //   switchCourse(selectedCourse.value);
-  // }
   selectedCourse.value = course;
   savedCourse.value = course;
   switchCourse(course);

@@ -54,7 +54,6 @@ function initialize() {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  /* white-space: nowrap; */
   max-height: 500px;
 }
 </style>
