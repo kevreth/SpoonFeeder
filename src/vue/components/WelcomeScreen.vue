@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome-screen">
+  <div class="welcome-screen" v-if="isContentEmpty">
     <div class="spoonfeeder-logo">
       <img
         src="../../img/spoonfeeder-logo.jpg"
@@ -13,7 +13,6 @@
     </div>
 
     <q-btn
-      v-if="isContentEmpty"
       class="green-btn start-btn"
       color="primary"
       label="START LEARNING"
