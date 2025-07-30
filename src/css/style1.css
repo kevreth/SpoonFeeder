@@ -25,6 +25,7 @@ body {
     color 0.3s;
   cursor: pointer;
   font-size: 0.9em;
+  top: 10px;
 }
 
 .q-item:hover,
