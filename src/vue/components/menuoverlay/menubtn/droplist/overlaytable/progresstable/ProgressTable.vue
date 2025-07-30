@@ -1,98 +1,105 @@
 <template>
-  <q-card class="bg-secondary">
-    <!-- <InfoIcon
+  <!-- <q-card class="hierachy-container"> -->
+  <!-- <InfoIcon
       id="infoIcon"
       @click="handleInfoOverlay"
       @keydown.esc="infoOverlay = false"
       tabindex="0"
     /> -->
 
-    <InfoTable
+  <!-- <InfoTable
       :isEnable="isEnable"
       id="infoTable"
       v-model="infoOverlay"
       @closeInfo="infoOverlay = false"
-    />
+    /> -->
 
-    <q-hierarchy
-      id="progress"
-      class="progressTable center"
-      dense
-      flat
-      :columns="columns"
-      :data="data"
-      :classes="classes"
-      :dark="dark"
-      :default-expand-all="default_expand_all = true"
-    >
-      <template v-slot:body="props">
-        <td
-          class="nameWrap text-left"
-          style="white-space: normal; word-wrap: break-word"
-          data-th="Name"
+  <q-hierarchy
+    id="progress"
+    class="progressTable center"
+    dense
+    flat
+    :columns="columns"
+    :data="data"
+    :classes="classes"
+    :dark="dark"
+    :default-expand-all="default_expand_all = true"
+  >
+    <template v-slot:body="props">
+      <td
+        class="nameWrap text-left"
+        style="white-space: normal; word-wrap: break-word"
+        data-th="Name"
+      >
+        <div
+          class="nameContainer"
+          :style="setPadding(props.item)"
+          :class="props.iconName(props.item) != 'done' ? 'q-pl-lg' : ''"
         >
-          <div
-            class="nameContainer"
-            :style="setPadding(props.item)"
-            :class="props.iconName(props.item) != 'done' ? 'q-pl-lg' : ''"
+          <q-btn
+            no-caps
+            no-ripple
+            padding="none"
+            class="no-border no-outline expandIcon"
+            style="background: none; box-shadow: none"
+            @click="props.toggle(props.item)"
+            v-if="props.iconName(props.item) != 'done'"
+            :icon="props.iconName(props.item)"
+            flat
+            dense
           >
-            <q-btn
-              no-caps
-              no-ripple
-              padding="none"
-              class="no-border no-outline expandIcon"
-              style="background: none; box-shadow: none"
-              @click="props.toggle(props.item)"
-              v-if="props.iconName(props.item) != 'done'"
-              :icon="props.iconName(props.item)"
-              flat
-              dense
-            >
-            </q-btn>
-            <span
-              class="name q-ml-sm title-vertical"
-              :class="myClass(props.item.pctCorrect, props.item.pctComplete)"
-              :style="{
-                marginLeft:
-                  props.iconName(props.item) != 'done'
-                    ? '0.75rem'
-                    : 'calc(0.75rem + 5px)',
-              }"
-              >{{ props.item.name }}</span
-            >
+          </q-btn>
+          <span
+            class="name q-ml-sm title-vertical"
+            :class="myClass(props.item.pctCorrect, props.item.pctComplete)"
+            :style="{
+              marginLeft:
+                props.iconName(props.item) != 'done'
+                  ? '0.75rem'
+                  : 'calc(0.75rem + 5px)',
+            }"
+            >{{ props.item.name }}</span
+          >
 
-            <img
-              class="award-icon"
-              v-if="props.item.pctCorrect === 100 + '%'"
-              name="award"
-              src="../../../../../../../courses/test/award.svg"
-              width="20"
-            />
-          </div>
-        </td>
-        <td class="score text-right">{{ props.item.score }}</td>
-        <td class="complete text-right complete">{{ props.item.complete }}</td>
-        <td class="pctCorrect text-right pctScore">
-          {{ props.item.pctCorrect }}
-        </td>
-        <td class="count text-right">{{ props.item.count }}</td>
-        <td class="pctComplete text-right pctComplete">
-          {{ props.item.pctComplete }}
-        </td>
-        <td class="summary text-left">
-          <a v-bind:href="props.item.summary">
-            <SummaryIcon id="summaryIcon" @click="summaryOverlay = true" />
-            <SummaryTable
-              :isEnable="isEnable"
-              id="summaryTable"
-              v-model="summaryOverlay"
-              @closeSummary="summaryOverlay = false"
-            />
-          </a>
-        </td>
-      </template>
-    </q-hierarchy>
-  </q-card>
+          <img
+            class="award-icon"
+            v-if="props.item.pctCorrect === 100 + '%'"
+            name="award"
+            src="../../../../../../../courses/test/award.svg"
+            width="20"
+          />
+        </div>
+      </td>
+      <td class="score text-right">{{ props.item.score }}</td>
+      <td class="complete text-right complete">{{ props.item.complete }}</td>
+      <td class="pctCorrect text-right pctScore">
+        {{ props.item.pctCorrect }}
+      </td>
+      <td class="count text-right">{{ props.item.count }}</td>
+      <td class="pctComplete text-right pctComplete">
+        {{ props.item.pctComplete }}
+      </td>
+      <td class="summary text-left">
+        <a v-bind:href="props.item.summary">
+          <SummaryIcon id="summaryIcon" @click="summaryOverlay = true" />
+          <SummaryTable
+            :isEnable="isEnable"
+            id="summaryTable"
+            v-model="summaryOverlay"
+            @closeSummary="summaryOverlay = false"
+          />
+        </a>
+      </td>
+    </template>
+  </q-hierarchy>
+  <!-- </q-card> -->
+
+  <InfoTable
+    :isEnable="isEnable"
+    id="infoTable"
+    v-model="infoOverlay"
+    @closeInfo="infoOverlay = false"
+  />
 </template>
 
 <script setup lang="ts">
@@ -213,6 +220,7 @@ button.expandIcon {
 
 .progressTable .q-markup-table {
   overflow: clip;
+  padding: 0 5px;
 }
 
 /* .progressTable thead tr th {
@@ -304,7 +312,9 @@ button.expandIcon {
 
 .progressTable {
   display: block ruby;
-  margin: 0 5px;
+  /* margin: 0 5px; */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 .progressTable thead tr:first-child th {
   top: 0;
@@ -329,14 +339,18 @@ button.expandIcon {
   left: 5px;
 }
 
-.bg-secondary {
+/* .bg-secondary {
   background: linear-gradient(145deg, #172a3f, #15192d) !important;
-  /* margin: 0 5px; */
-  /* border-radius: 10px; */
-  /* width: 100%; */
   width: fit-content;
   margin: 0 auto;
-}
+} */
+
+/* .hierachy-container {
+  box-shadow:
+    0 1px 5px rgba(0, 0, 0, 0.2),
+    0 2px 2px rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12);
+} */
 
 @media (min-width: 768px) {
   /* .progressTable thead tr:first-child th,

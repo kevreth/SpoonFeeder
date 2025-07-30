@@ -18,6 +18,9 @@
 
         <ConfirmStartOverDialog ref="confirmRef" />
       </div>
+      <!-- <div class="hierachy-container">
+        <ProgressTable style="cursor: auto" />
+      </div> -->
 
       <div
         id="progressBackground"
@@ -83,13 +86,8 @@ const askToStartOver = () => {
   overflow: auto;
   background: transparent;
   overflow-x: auto;
-
-  /* margin: 0 auto;
-  width: inherit; */
-  /* border: 1px solid #00bfff; */
-  /* box-shadow:
-    0 0 10px #00bfff,
-    inset 0 0 20px rgba(0, 255, 0, 0.5); */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling in iOS*/
+  overscroll-behavior: none; /* prevent table be dragable in iOS */
 }
 .overlayBtn {
   /* font-size: 1.7em;
