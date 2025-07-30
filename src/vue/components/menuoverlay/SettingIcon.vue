@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable @click.stop="isOverlayOpen = true">
+  <q-item clickable @click.stop="isOverlayOpen = true" style="top: 5px">
     <q-item-section avatar class="dropListIcon">
       <q-icon name="settings" />
     </q-item-section>

@@ -21,16 +21,16 @@ import { ref } from 'vue';
 import MenuBtn from './MenuBtn.vue';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
-import VolumeMute from './VolumeMute.vue';
+// import VolumeMute from './VolumeMute.vue';
 import { SaveData } from '../../mediator';
 import SumNavigation from './SumNavigation.vue';
 import SettingIcon from './SettingIcon.vue';
 
-const isMuted = ref(false);
+// const isMuted = ref(false);
 
-function toggleVolume() {
-  isMuted.value = !isMuted.value;
-}
+// function toggleVolume() {
+//   isMuted.value = !isMuted.value;
+// }
 const expOverlay = ref(false);
 const content = ref('');
 
@@ -50,4 +50,8 @@ function handleExpOverlay() {
   height: 50px;
   padding-left: 20px;
 } */
+
+.setting-icon {
+  top: 10px;
+}
 </style>
