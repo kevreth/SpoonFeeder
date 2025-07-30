@@ -11,7 +11,7 @@ export default {
     help: 'Help',
   },
   courseSelector: {
-    title: 'Course',
+    title: 'Pick Your Course',
     course: '{course}',
   },
   tableColumns: {

@@ -132,7 +132,9 @@ function closeInfo() {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  font-size: 1.1rem;
 }
+
 .q-btn .courseItem,
 .q-item.courseItem {
   min-height: 3.5vw;
@@ -146,10 +148,14 @@ function closeInfo() {
   border-radius: 5px;
   padding: 10px 0;
   width: 250px;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overscroll-behavior: none;
 }
 .scrollable-course {
   overflow: auto;
-  max-height: 70vh;
+  /* max-height: 70vh; */
 }
 @media (min-width: 768px) {
   .courseList {
