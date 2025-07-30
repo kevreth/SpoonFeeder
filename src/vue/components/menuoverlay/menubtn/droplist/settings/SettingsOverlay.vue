@@ -117,7 +117,7 @@ const isMuted = ref(false);
 
 .settings-dialog {
   width: 90vw;
-  max-width: 400px;
+  max-width: 400px !important;
   border-radius: 20px;
   font-family: 'Roboto', sans-serif;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);

@@ -50,9 +50,9 @@ body.platform-ios .q-dialog__inner--minimized > div {
 
 /* desktop */
 @media (min-width: 768px) {
-  .q-dialog__inner--minimized > div {
+  /* .q-dialog__inner--minimized > div {
     max-width: unset;
-  }
+  } */
 
   body.platform-ios .q-dialog__inner--minimized > div {
     width: 100%;

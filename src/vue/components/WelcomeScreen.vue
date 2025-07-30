@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
   transform: translate(-50%, -50%);
 }
 .spoonfeeder-logo {
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 .spoonfeeder-text {
   font-weight: 700;
