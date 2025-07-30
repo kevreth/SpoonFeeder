@@ -28,17 +28,15 @@
         </div>
       </div>
 
-      <div class="btn-group inline-flex">
-        <q-btn
-          unelevated
-          no-caps
-          class="blue-btn items-center"
-          @click="openLanguagePopup"
-        >
+      <div class="btn-group inline-flex" @click="showLangPopup = true">
+        <q-btn unelevated no-caps class="blue-btn items-center">
           <div class="q-pr-xl">
             {{ $t('settingsContent.language') }}
           </div>
-          <SwitchLang class="q-pa-none q-ma-none"></SwitchLang>
+          <SwitchLang
+            class="q-pa-none q-ma-none"
+            v-model:langOptions="showLangPopup"
+          ></SwitchLang>
         </q-btn>
 
         <!-- <div class="action-buttons q-pa-md q-gutter-y-sm"> -->
@@ -61,19 +59,13 @@ import OverlayCloseBtn from '../overlaytable/OverlayCloseBtn.vue';
 // import LangOptions from './switchlanguages/LangOptions.vue';
 import VolumeMute from '../../../VolumeMute.vue';
 
-// Props & Emits
 const emit = defineEmits(['closeInfo']);
 
-// Internal state for toggles
 const musicEnabled = ref(true);
-const hapticsEnabled = ref(false);
-const colorblindMode = ref(false);
-const openLanguagePopup = ref(false);
-
-// Control dialog visibility
+// const openLanguagePopup = ref(false);
+const showLangPopup = ref(false);
 const dorplist = ref(true);
-// const showLanguagePopup = ref(false);
-// Close handler
+
 function closeInfo() {
   emit('closeInfo');
   dorplist.value = false;

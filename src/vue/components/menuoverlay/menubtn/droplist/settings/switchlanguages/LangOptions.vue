@@ -4,6 +4,7 @@
       class="lang-dialog bg-primary text-white"
       style="border-radius: 20px; width: 90vw; max-width: 360px"
     >
+      <OverlayCloseBtn class="absolute-top-right" @click="closeDialog" />
       <!-- Header -->
       <div class="bg-grey-10 q-pa-sm text-center text-h6 text-uppercase">
         {{ $t('settingsContent.language') }}
@@ -47,9 +48,9 @@
       </q-list>
 
       <!-- Close Button (Top Right) -->
-      <div class="q-pa-md q-pt-none">
+      <!-- <div class="q-pa-md q-pt-none">
         <ExitBtn @click="closeDialog" />
-      </div>
+      </div> -->
     </div>
   </q-dialog>
 </template>
@@ -58,6 +59,7 @@
 import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ExitBtn from '../../../../../common/ExitBtn.vue';
+import OverlayCloseBtn from '../../overlaytable/OverlayCloseBtn.vue';
 
 const i18n = useI18n();
 const locale = ref(i18n.locale.value);
