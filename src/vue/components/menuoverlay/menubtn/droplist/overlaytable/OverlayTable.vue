@@ -89,6 +89,10 @@ const askToStartOver = () => {
   -webkit-overflow-scrolling: touch; /* smooth scrolling in iOS*/
   overscroll-behavior: none; /* prevent table be dragable in iOS */
 }
+/* darket overlay */
+.q-dialog__backdrop {
+  background-color: rgba(0, 0, 0, 0.85);
+}
 .overlayBtn {
   /* font-size: 1.7em;
   color: deeppink;
