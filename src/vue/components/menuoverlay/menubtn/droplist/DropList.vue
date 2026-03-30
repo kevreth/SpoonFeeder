@@ -21,14 +21,15 @@
           >{{ $t('droplist.progress') }}</q-item-section
         >
       </q-item>
-      <q-item clickable>
+      <!-- COURSE SELECTOR DISABLED — keep for future use -->
+      <!-- <q-item clickable>
         <q-item-section avatar class="dropListIcon">
           <q-icon name="school" />
         </q-item-section>
         <q-item-section @click="courseList = true">{{
           $t('droplist.courses')
         }}</q-item-section>
-      </q-item>
+      </q-item> -->
       <q-item clickable>
         <q-item-section avatar class="dropListIcon">
           <q-icon name="settings" />
@@ -51,11 +52,12 @@
     v-model="overlay"
     @handleOverlay="handleOverlay"
   />
-  <CourseSelector
+  <!-- COURSE SELECTOR DISABLED — keep for future use -->
+  <!-- <CourseSelector
     :isEnable="isEnable"
     v-model="courseList"
     @closeInfo="courseList = false"
-  />
+  /> -->
   <SettingsOverlay
     v-model="settingOverlay"
     @closeInfo="settingOverlay = false"
@@ -65,7 +67,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
-import CourseSelector from './courseselector/CourseSelector.vue';
+// import CourseSelector from './courseselector/CourseSelector.vue';
 import SettingsOverlay from './settings/SettingsOverlay.vue';
 
 // setting transition disable
@@ -74,7 +76,7 @@ const isEnable = ref(false);
 
 const droplist = ref(false);
 const overlay = ref(false);
-const courseList = ref(false);
+// const courseList = ref(false);
 const settingOverlay = ref(false);
 
 // handle overlay pages
@@ -97,9 +99,16 @@ function handleOverlay() {
 }
 .dropMenu {
   font-size: 3.5vw;
-  font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  /* right: 15px; */
+  font-family:
+    'Segoe UI',
+    'SF Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 @media screen and (min-width: 1200px) {
   .dropMenu {
