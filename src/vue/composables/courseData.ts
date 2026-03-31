@@ -17,7 +17,7 @@ export class CourseData {
     if (list !== null && list !== undefined)
       this.availableCourses = remove(list, course) as string[];
     else {
-      const filename = PREFIX_COURSE_FILE + '/listing.yml';
+      const filename = PREFIX_COURSE_FILE + 'listing.yml';
       loadFile(filename, (listing: Array<string>) => {
         this.availableCourses = listing;
         setCourseListing(listing);
