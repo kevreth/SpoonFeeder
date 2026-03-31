@@ -13,6 +13,7 @@ const path = require('path');
 const fs = require('fs');
 
 const coursesDir = path.resolve(__dirname, 'src/courses');
+const libDir = path.resolve(__dirname, 'lib');
 
 function copyDirSync(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
@@ -47,6 +48,7 @@ const coursesPlugin = {
   closeBundle() {
     if (outDir) {
       copyDirSync(coursesDir, path.join(outDir, 'courses'));
+      copyDirSync(libDir, path.join(outDir, 'lib'));
     }
   },
 };
