@@ -139,6 +139,7 @@ button {
   width: calc(100% - 32px);
   max-width: 500px;
   height: 400px;
+  padding-bottom: 2px;
 }
 .list-item {
   position: absolute;
