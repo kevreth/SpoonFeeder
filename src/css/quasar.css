@@ -41,7 +41,7 @@
   z-index: 1;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .q-dialog__inner--minimized > div {
     max-width: unset !important;
   }

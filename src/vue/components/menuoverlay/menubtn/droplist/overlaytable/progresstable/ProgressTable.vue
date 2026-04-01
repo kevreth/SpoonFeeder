@@ -1,11 +1,16 @@
 <template>
-  <q-card class="bg-secondary">
-    <InfoIcon
-      id="infoIcon"
-      @click="handleInfoOverlay"
-      @keydown.esc="infoOverlay = false"
-      tabindex="0"
-    />
+  <q-card class="bg-transparent">
+    <div class="course-header">
+      <div class="course-header-row">
+        <div class="progress-bar-wrap" style="flex:1;">
+          <div
+            class="progress-bar-fill"
+            :style="{ width: overallPctComplete + '%' }"
+          ></div>
+          <span class="progress-bar-label">{{ overallPctComplete }}%</span>
+        </div>
+      </div>
+    </div>
     <InfoTable
       :isEnable="isEnable"
       id="infoTable"
@@ -22,11 +27,28 @@
       :data="data"
       :classes="classes"
       :dark="dark"
-      :default-expand-all="(default_expand_all = true)"
+      :default-expand-all="default_expand_all = true"
     >
+      <template v-slot:header="hProps">
+        <th
+          v-for="col in hProps.columns"
+          :key="col.name"
+          :class="col.name === 'summary' ? 'text-left' : 'text-' + col.align"
+        >
+          <InfoIcon
+            v-if="col.name === 'summary'"
+            id="infoIcon"
+            @click="handleInfoOverlay"
+            @keydown.esc="infoOverlay = false"
+            tabindex="0"
+          />
+          <template v-else>{{ col.label }}</template>
+        </th>
+      </template>
       <template v-slot:body="props">
         <td
           class="nameWrap text-left"
+          :class="rowClass(props.item)"
           style="white-space: normal; word-wrap: break-word"
           data-th="Name"
         >
@@ -46,7 +68,7 @@
             </q-btn>
             <span
               class="name q-ml-sm title-vertical"
-              :class="myClass(props.item.pctCorrect, props.item.pctComplete)"
+              :class="levelNameClass(props.item)"
               >{{ props.item.name }}</span
             >
 
@@ -59,16 +81,38 @@
             />
           </div>
         </td>
-        <td class="score text-right">{{ props.item.score }}</td>
-        <td class="complete text-right complete">{{ props.item.complete }}</td>
-        <td class="pctCorrect text-right pctScore">
+        <td
+          class="score text-right"
+          :class="rowClass(props.item)"
+          :style="{ color: scoreStyle(props.item.pctCorrect) }"
+        >
+          {{ props.item.score }}
+        </td>
+        <td
+          class="complete text-right"
+          :class="rowClass(props.item)"
+          :style="{ color: scoreStyle(props.item.pctComplete) }"
+        >
+          {{ props.item.complete }}
+        </td>
+        <td
+          class="pctCorrect text-right pctScore"
+          :class="rowClass(props.item)"
+          :style="{ color: scoreStyle(props.item.pctCorrect) }"
+        >
           {{ props.item.pctCorrect }}
         </td>
-        <td class="count text-right">{{ props.item.count }}</td>
-        <td class="pctComplete text-right pctComplete">
+        <td class="count text-right" :class="rowClass(props.item)">
+          {{ props.item.count }}
+        </td>
+        <td
+          class="pctComplete text-right"
+          :class="rowClass(props.item)"
+          :style="{ color: scoreStyle(props.item.pctComplete) }"
+        >
           {{ props.item.pctComplete }}
         </td>
-        <td class="summary text-left">
+        <td class="summary text-left" :class="rowClass(props.item)">
           <a v-bind:href="props.item.summary">
             <SummaryIcon id="summaryIcon" @click="summaryOverlay = true" />
             <SummaryTable
@@ -85,7 +129,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Score, CourseFile } from '../../../../../../mediator';
 import SummaryIcon from './SummaryIcon.vue';
 import SummaryTable from './SummaryTable.vue';
@@ -162,58 +206,95 @@ const data = ref(summary);
 const classes = ref('bg-secondary');
 const dark = ref(true);
 
+const overallPctComplete = computed(() => {
+  const items = data.value as any[];
+  if (!items?.length) return 0;
+  const sum = items.reduce(
+    (acc: number, item: any) => acc + (parseInt(item.pctCorrect) || 0),
+    0,
+  );
+  return Math.round(sum / items.length);
+});
+
 function handleInfoOverlay() {
   infoOverlay.value = !infoOverlay.value;
 }
 
-function myClass(pctCorrect: string, pctComplete: string) {
-  if (pctComplete < 100 + '%') {
-    return 'text-white';
-  }
-  if (pctCorrect === 100 + '%') {
-    return 'text-green';
-  } else if (pctCorrect >= 90 + '%') {
-    return 'text-green';
-  } else if (pctCorrect >= 80 + '%') {
-    return 'text-blue-3';
-  } else {
-    return 'text-red-6';
-  }
+function getLevel(item: any): number {
+  return item._level ?? item.level ?? item.depth ?? 0;
+}
+
+function rowClass(item: any): string {
+  const level = getLevel(item);
+  if (level === 0) return 'row-course';
+  if (level === 1) return 'row-unit';
+  if (level === 2) return 'row-lesson';
+  return 'row-slide';
+}
+
+function levelNameClass(item: any): string {
+  const level = getLevel(item);
+  if (level === 0) return 'name-course';
+  if (level === 1) return 'name-unit';
+  if (level === 2) return 'name-lesson';
+  return 'name-slide';
+}
+
+function scoreStyle(pctStr: string): string {
+  const val = parseInt(pctStr) || 0;
+  if (val === 100) return '#2ecc9a';
+  if (val >= 1) return '#e0a020';
+  return '';
 }
 </script>
 
 <style>
+.bg-transparent {
+  background: transparent !important;
+}
 button.expandIcon {
   margin: 0;
   padding: 0;
 }
-/* make the header sticky */
-.progressTable .q-table {
-  /* background-color: rgba(28, 28, 60, 0.9); */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
-}
 .progressTable .q-markup-table {
   overflow: clip;
 }
+/* Table background + border */
+.progressTable .q-table {
+  /* background: rgba(10, 15, 25, 0.96); */
+  background: rgba(5, 10, 18, 0.95);
+}
+/* Header row */
 .progressTable thead tr th {
-  background-color: #152439;
+  background: rgba(0, 191, 255, 0.06);
+  color: #00bfff99;
   position: sticky;
   z-index: 1;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 4px 4px;
+  white-space: nowrap;
 }
 .progressTable {
-  max-width: 90vw;
+  max-width: 100vw;
+  width: 100%;
   display: block ruby;
+  background: rgba(10, 15, 25, 0.96);
+  overflow-x: auto;
 }
 .progressTable thead tr:first-child th {
   top: 0;
-  /* font-size: 2.5vw; */
 }
 .progressTable tbody td {
-  font-size: 2.9vw;
+  font-size: 9px;
   line-height: normal;
+  padding: 2px 3px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  white-space: nowrap;
 }
-.q-btn .progressTable {
-  font-weight: 350;
+.progressTable tbody tr:hover td {
+  background: rgba(0, 191, 255, 0.04);
 }
 .progressTable tbody {
   display: contents;
@@ -223,25 +304,138 @@ button.expandIcon {
   top: 5px;
   left: 5px;
 }
+
+/* Row level styles */
+.name-course,
+td.row-course {
+  color: #00bfff !important;
+}
+.name-course {
+  font-weight: 500;
+  font-size: 12px;
+}
+.name-unit,
+td.row-unit {
+  color: #e0e0e0 !important;
+}
+.name-unit {
+  font-size: 10px;
+}
+td.row-lesson {
+  padding-left: 20px;
+}
+/* .name-lesson,
+td.row-lesson {
+  color: #aaa !important;
+} */
+.name-lesson {
+  font-size: 11px;
+}
+td.row-slide {
+  padding-left: 28px;
+}
+.name-slide {
+  font-size: 9px;
+  color: #7f91a3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Course header */
+.course-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.course-header {
+  padding: 8px 12px 6px;
+  border-bottom: 1px solid #1a2e45;
+  max-width: 100vw;
+  box-sizing: border-box;
+  width: 100%;
+}
+.progress-bar-wrap {
+  position: relative;
+  background: #1a2e45;
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: #1d9e75;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+.progress-bar-label {
+  line-height: 1;
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  transform-origin: right center;
+  z-index: 2;
+}
+
 @media (min-width: 768px) {
-  .progressTable thead tr:first-child th,
-  .progressTable .q-table tbody td {
-    font-size: 1.1vw !important;
-  }
-  .progressTable .q-table {
-    line-height: 2vw;
-  }
-  .q-btn .progressTable {
-    font-weight: 150;
+  .progressTable thead tr th {
+    padding: 6px 8px;
   }
   .progressTable tbody td {
-    font-size: 1.9vw;
-  }
-  .progressTable thead tr:first-child th {
-    font-size: 2vw;
+    font-size: 12px;
   }
   .progressTable {
     max-width: 100vw;
   }
+  .name-course {
+    font-size: 14px;
+  }
+  .name-unit {
+    font-size: 12px;
+  }
+  .name-lesson {
+    font-size: 14px;
+  }
+  .name-slide {
+    font-size: 12px;
+  }
 }
+
+/* @media (max-width: 768px) {
+  .progressTable {
+    overflow-x: auto;
+  }
+  .progressTable thead tr th,
+  .progressTable tbody td {
+    font-size: 10px;
+    padding: 4px;
+  }
+  .progressTable td.score,
+  .progressTable td.complete,
+  .progressTable td.pctCorrect,
+  .progressTable td.count,
+  .progressTable td.pctComplete {
+    max-width: 36px;
+  }
+  .name-course,
+  td.row-course {
+    color: #00bfff !important;
+  }
+  .name-unit,
+  td.row-unit {
+    color: #e0e0e0 !important;
+  }
+  .name-lesson,
+  td.row-lesson {
+    color: #aaa !important;
+  }
+} */
 </style>

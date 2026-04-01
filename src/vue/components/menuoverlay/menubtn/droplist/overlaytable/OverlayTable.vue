@@ -13,8 +13,11 @@
         style="display: flex; flex-direction: column"
       >
         <div class="overlayBtn">
-          <OverlayCloseBtn id="closeBtn" @click="closeOverlay" />
-          <TrashBtn id="startOver" @click="startOver" />
+          <span class="overlay-title">PROGRESS</span>
+          <div class="overlayBtnActions">
+            <OverlayCloseBtn id="closeBtn" @click="closeOverlay" />
+            <TrashBtn id="startOver" @click="startOver" />
+          </div>
         </div>
 
         <div
@@ -62,31 +65,43 @@ function startOver() {
 
 <style>
 .overlayTable {
-  height: 60%;
-  /* width: 80vw; */
-}
-@media screen and (min-width: 1200px) {
-  /* .overlayTable {
-    width: 60vw;
-  } */
+  height: fit-content;
+  width: 100%;
+  border: 1px solid rgba(0, 191, 255, 0.3);
 }
 .progressBackground {
   height: 70%;
-  border-radius: 10px;
   overflow: auto;
   background: transparent;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 .overlayBtn {
-  color: #fc3d08;
-  font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #0d1b2a;
+  border-bottom: 1px solid #00bfff44;
+  border-radius: 8px 8px 0 0;
 }
-@media screen and (min-width: 1200px) {
-  .overlayBtn {
-    font-size: 1.2vw;
-  }
+.overlay-title {
+  color: #00bfff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.overlayBtnActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fc3d08;
 }
 .animated {
   animation-duration: 1s;
+}
+@media (min-width: 768px) {
+  .overlayTable {
+    width: fit-content;
+  }
 }
 </style>
