@@ -7,8 +7,8 @@
             class="progress-bar-fill"
             :style="{ width: overallPctComplete + '%' }"
           ></div>
-          <span class="progress-bar-label">{{ overallPctComplete }}%</span>
         </div>
+        <span class="progress-bar-label">{{ overallPctComplete }}%</span>
       </div>
     </div>
     <InfoTable
@@ -54,17 +54,17 @@
         >
           <div
             class="nameContainer"
-            v-bind:style="props.setPadding(props.item)"
+            :style="{ paddingLeft: getLevel(props.item) * 8 + 'px' }"
             :class="props.iconName(props.item) != 'done' ? 'q-pl-lg' : ''"
           >
             <q-btn
               class="expandIcon"
               @click="props.toggle(props.item)"
               v-if="props.iconName(props.item) != 'done'"
-              :icon="props.iconName(props.item)"
               flat
               dense
             >
+              <span>{{ props.iconName(props.item) === 'remove' ? '–' : '+' }}</span>
             </q-btn>
             <span
               class="name q-ml-sm title-vertical"
@@ -272,7 +272,7 @@ button.expandIcon {
   z-index: 1;
   font-size: 11px;
   letter-spacing: 1px;
-  padding: 4px 4px;
+  padding: 3px 2px;
   white-space: nowrap;
 }
 .progressTable {
@@ -288,7 +288,7 @@ button.expandIcon {
 .progressTable tbody td {
   font-size: 9px;
   line-height: normal;
-  padding: 2px 3px;
+  padding: 1px 2px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
   color: #ccc;
   white-space: nowrap;
@@ -299,10 +299,13 @@ button.expandIcon {
 .progressTable tbody {
   display: contents;
 }
+.nameContainer {
+  display: flex;
+  align-items: center;
+}
 .award-icon {
-  position: relative;
-  top: 5px;
-  left: 5px;
+  margin-left: 4px;
+  vertical-align: middle;
 }
 
 /* Row level styles */
@@ -358,13 +361,10 @@ td.row-slide {
   width: 100%;
 }
 .progress-bar-wrap {
-  position: relative;
   background: #1a2e45;
   border-radius: 4px;
   height: 8px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
 }
 .progress-bar-fill {
   height: 100%;
@@ -373,16 +373,13 @@ td.row-slide {
   transition: width 0.3s ease;
 }
 .progress-bar-label {
-  line-height: 1;
-  position: absolute;
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%) scale(0.9);
-  font-size: 12px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: right;
+  font-size: 11px;
   font-weight: 600;
   color: #fff;
-  transform-origin: right center;
-  z-index: 2;
+  line-height: 1;
 }
 
 @media (min-width: 768px) {
