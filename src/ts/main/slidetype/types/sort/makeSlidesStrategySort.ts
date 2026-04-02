@@ -100,5 +100,5 @@ export const makeSlidesStrategySort: MakeSlidesTypeSort = function (
   }
 };
 function evaluate(sortables: { element: Element }[]) {
-  return sortables.map((x) => x.element.innerHTML);
+  return sortables.map((x) => (x.element.textContent || '').trim());
 }
