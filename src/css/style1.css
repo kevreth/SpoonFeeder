@@ -75,7 +75,7 @@ ul {
   text-align: left;
 }
 .correct {
-  color: green;
+  color: #1d9e75;
   font-weight: bold;
   font-size: 15vw;
 }
@@ -190,7 +190,7 @@ button {
   opacity: 50%;
 }
 .shape_correct {
-  fill: green;
+  fill: #1d9e75;
   opacity: 50%;
 }
 .shape_incorrect {
@@ -253,7 +253,6 @@ tbody th {
 }
 
 .summary-wrapper {
-  background: #0d0f16;
   color: #cfd2d6;
   min-height: 100vh;
   padding: 16px;
@@ -290,15 +289,16 @@ tbody th {
   color: #1d9e75;
 }
 .card-wrong .card-value {
-  color: #d85a30;
+  color: red;
 }
 .card-score .card-value {
   color: #fff;
 }
 .summary-table {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   border-collapse: collapse;
-  background: rgba(5, 10, 18, 0.95);
   font-size: 11px;
   display: table;
   table-layout: fixed;
@@ -339,12 +339,10 @@ tbody th {
 .summary-table td {
   padding: 12px 8px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
-  color: #aaa;
+  /* color: #aaa; */
   font-size: 12px;
 }
-.summary-table td:first-child {
-  color: #888;
-}
+
 .summary-table .list-item-drag {
   display: none;
 }
@@ -354,7 +352,7 @@ tbody th {
   color: #1d9e75;
 }
 .row-wrong .sum-response {
-  color: #d85a30;
+  color: red;
 }
 .row-unanswered .sum-response {
   color: #444;
@@ -362,11 +360,8 @@ tbody th {
 .sum-answer {
   text-align: center !important;
   font-size: 12px;
-  color: #1d9e75;
 }
-.row-correct .sum-answer {
-  color: #666;
-}
+
 .row-list .sum-response,
 .row-list .sum-answer {
   font-size: 12px;
