@@ -302,6 +302,7 @@ tbody th {
   font-size: 11px;
   display: table;
   table-layout: fixed;
+  background: rgba(0, 0, 0, 0.3);
 }
 .summary-table tbody {
   display: table-row-group;
