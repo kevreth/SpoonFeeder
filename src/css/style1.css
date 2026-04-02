@@ -114,6 +114,20 @@ button {
   cursor: pointer;
 }
 
+.startOver {
+  background: rgba(5, 10, 18, 0.95);
+  border: 1px solid rgba(0, 191, 255, 0.5);
+  color: #00bfff;
+  padding: 10px 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.startOver:hover {
+  background: rgba(0, 191, 255, 0.1);
+  border-color: #00bfff;
+}
+
 .continueBtn {
   font-size: 1em;
   letter-spacing: 0.4em;
