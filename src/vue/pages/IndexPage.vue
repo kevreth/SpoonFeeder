@@ -49,4 +49,11 @@ function initialize() {
   /* white-space: nowrap; */
   max-height: 500px;
 }
+@media (min-width: 768px) {
+  .wrapContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 </style>

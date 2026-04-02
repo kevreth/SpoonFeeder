@@ -2,7 +2,7 @@
   <q-card class="bg-transparent">
     <div class="course-header">
       <div class="course-header-row">
-        <div class="progress-bar-wrap" style="flex:1;">
+        <div class="progress-bar-wrap" style="flex: 1">
           <div
             class="progress-bar-fill"
             :style="{ width: overallPctComplete + '%' }"
@@ -64,7 +64,9 @@
               flat
               dense
             >
-              <span>{{ props.iconName(props.item) === 'remove' ? '–' : '+' }}</span>
+              <span>{{
+                props.iconName(props.item) === 'remove' ? '–' : '+'
+              }}</span>
             </q-btn>
             <span
               class="name q-ml-sm title-vertical"
@@ -405,34 +407,4 @@ td.row-slide {
     font-size: 12px;
   }
 }
-
-/* @media (max-width: 768px) {
-  .progressTable {
-    overflow-x: auto;
-  }
-  .progressTable thead tr th,
-  .progressTable tbody td {
-    font-size: 10px;
-    padding: 4px;
-  }
-  .progressTable td.score,
-  .progressTable td.complete,
-  .progressTable td.pctCorrect,
-  .progressTable td.count,
-  .progressTable td.pctComplete {
-    max-width: 36px;
-  }
-  .name-course,
-  td.row-course {
-    color: #00bfff !important;
-  }
-  .name-unit,
-  td.row-unit {
-    color: #e0e0e0 !important;
-  }
-  .name-lesson,
-  td.row-lesson {
-    color: #aaa !important;
-  }
-} */
 </style>
