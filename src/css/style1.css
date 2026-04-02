@@ -98,12 +98,6 @@ ul {
   display: flex;
   width: 100%;
 }
-button.questionBtn {
-  display: block;
-  width: 90%;
-  max-width: 320px;
-  margin: 0 auto 8px;
-}
 
 button {
   display: inline-block;
