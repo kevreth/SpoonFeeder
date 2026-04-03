@@ -48,6 +48,7 @@ const coursesPlugin = {
   closeBundle() {
     if (outDir) {
       copyDirSync(coursesDir, path.join(outDir, 'courses'));
+      copyDirSync(coursesDir, path.join(outDir, 'src', 'courses'));
       copyDirSync(libDir, path.join(outDir, 'lib'));
     }
   },
