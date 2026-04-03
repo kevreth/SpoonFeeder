@@ -264,6 +264,10 @@ tbody th {
   perspective: 500px;
   text-align: center;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .summary-wrapper {
@@ -393,12 +397,7 @@ tbody th {
   #slide {
     font-size: 1rem;
   }
-  #content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+
   .summary-table,
   .summary-table th,
   .summary-table td,
