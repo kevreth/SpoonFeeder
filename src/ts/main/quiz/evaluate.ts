@@ -77,5 +77,5 @@ function getEvaluationArray(slidesArr: SlideInterface[]) {
 export function evalStats(correct: number, responses: number) {
   const pctCorrect = percentCorrect(correct, responses);
   const wrong = responses - correct;
-  return `<div class="summary-cards"><div class="summary-card card-correct"><div class="card-value">${correct}</div><div class="card-label">Correct</div></div><div class="summary-card card-wrong"><div class="card-value">${wrong}</div><div class="card-label">Wrong</div></div><div class="summary-card card-score"><div class="card-value">${pctCorrect}%</div><div class="card-label">Score</div></div></div>`;
+  return `<div class="summary-cards"><div class="summary-card card-score"><div class="card-value">${responses}</div><div class="card-label">Questions</div></div><div class="summary-card card-correct"><div class="card-value">${correct}</div><div class="card-label">Correct</div></div><div class="summary-card card-wrong"><div class="card-value">${wrong}</div><div class="card-label">Wrong</div></div><div class="summary-card card-score"><div class="card-value">${pctCorrect}%</div><div class="card-label">Score</div></div></div>`;
 }
