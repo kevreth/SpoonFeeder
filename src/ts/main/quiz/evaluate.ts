@@ -1,4 +1,4 @@
-const ROW = '<tr class="%STATUS%"><td>%Q%</td><td class="sum-response">%A%</td><td class="sum-answer">%C%</td></tr>';
+const ROW = '<tr class="%STATUS%"><td>%Q%</td><td class="sum-response"><span class="ans-pill">%A%</span></td><td class="sum-answer">%C%</td></tr>';
 import type { AnswerType, SlideInterface } from './mediator';
 import { SaveData } from './mediator';
 export class Evaluation {
@@ -46,7 +46,7 @@ export function numbering(responseCtr: number, text: string) {
 export function evaluate(slidesArr: SlideInterface[]): string {
   const evals = getEvaluationArray(slidesArr);
   const TABLE_HEADER =
-    '<table class="summary-table"><tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th></tr>';
+    '<table class="summary-table"><colgroup><col style="width:50%"><col style="width:25%"><col style="width:25%"></colgroup><tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th></tr>';
   const evalAccum = new Evaluation(0, 0, TABLE_HEADER);
   for (const evaluation of evals) {
     evalAccum.responses += evaluation.responses;
@@ -77,5 +77,5 @@ function getEvaluationArray(slidesArr: SlideInterface[]) {
 export function evalStats(correct: number, responses: number) {
   const pctCorrect = percentCorrect(correct, responses);
   const wrong = responses - correct;
-  return `<div class="summary-cards"><div class="summary-card card-score"><div class="card-value">${responses}</div><div class="card-label">Questions</div></div><div class="summary-card card-correct"><div class="card-value">${correct}</div><div class="card-label">Correct</div></div><div class="summary-card card-wrong"><div class="card-value">${wrong}</div><div class="card-label">Wrong</div></div><div class="summary-card card-score"><div class="card-value">${pctCorrect}%</div><div class="card-label">Score</div></div></div>`;
+  return `<div class="summary-stats-bar"><div class="stat-segment stat-questions"><div class="stat-value">${responses}</div><div class="stat-label">Questions</div></div><div class="stat-divider"></div><div class="stat-segment stat-correct"><div class="stat-value">${correct}</div><div class="stat-label">Correct</div></div><div class="stat-divider"></div><div class="stat-segment stat-wrong"><div class="stat-value">${wrong}</div><div class="stat-label">Wrong</div></div><div class="stat-divider"></div><div class="stat-segment stat-score"><div class="stat-value">${pctCorrect}%</div><div class="stat-label">Score</div></div></div>`;
 }

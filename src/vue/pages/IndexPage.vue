@@ -19,8 +19,6 @@ import {
   COURSE_NAME,
   setCourseListing,
 } from '../mediator';
-import '../../css/style1.css';
-import '../../css/quasar.css';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
 const courseList = ref(false);
