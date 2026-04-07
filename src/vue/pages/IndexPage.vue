@@ -32,8 +32,8 @@ loadCourseListing((yml) => {
 });
 function initialize() {
   let courseName = COURSE_NAME.get();
-  if (courseName == null || courseName == 'null') courseList.value = true;
-  else switchCourse(courseName);
+  // Course selector disabled — no longer shown on startup or after start over
+  if (courseName != null && courseName != 'null') switchCourse(courseName);
 }
 </script>
 
