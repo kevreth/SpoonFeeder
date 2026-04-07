@@ -361,6 +361,7 @@ td.row-slide {
   max-width: 100vw;
   box-sizing: border-box;
   width: 100%;
+  background: rgba(5, 10, 18, 0.95);
 }
 .progress-bar-wrap {
   background: #1a2e45;
