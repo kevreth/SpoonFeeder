@@ -22,7 +22,8 @@
         </span>
         <span>{{ $t('droplist.progress') }}</span>
       </div>
-      <div class="dropItem" @click="courseList = true">
+      <!-- Disable course selector -->
+      <!-- <div class="dropItem" @click="courseList = true">
         <span class="dropIcon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <rect
@@ -45,7 +46,7 @@
           </svg>
         </span>
         <span>{{ $t('droplist.courses') }}</span>
-      </div>
+      </div> -->
       <div class="dropDivider"></div>
       <div class="dropItem" @click="settingOverlay = true">
         <span class="dropIcon">
