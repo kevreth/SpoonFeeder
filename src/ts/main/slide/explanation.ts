@@ -4,30 +4,42 @@ export function explanation(slide: SlideInterface): string {
   const distrators = [];
   const exp = slide.exp;
   const ref = slide.ref;
-  const answer = removeLinebreaks(pluralize('<b>Answer</b>', answers.length));
+  const hasAnswer = removeLinebreaks(pluralize('<b>Answer</b>', answers.length)).length > 0;
   const distrator = removeLinebreaks(
     pluralize('Distractor', distrators.length)
   );
-  const titleExplanation = title(exp, '<b>Explanation</b>');
-  const titleReference = title(ref, '<br>Reference(s)');
-  const titleDistractor = title(distrator, 'Distractor');
-  const titleResponse = title(
+  const hasExplanation = exp !== undefined && exp.length > 0;
+  const hasReference = ref !== undefined && ref.length > 0;
+  const hasDistractor = title(distrator, 'Distractor').length > 0;
+  const hasResponse = title(
     slide.res === undefined ? '' : slide.res.toString(),
     '<b>Response</b>'
-  );
-  const explanation = `
-  <center><b>${slide.txt}</b></center> <br>
-    ${answer}
-    ${(slide.ans as string).toString()} <br>
-    ${titleDistractor}
-    ${titleResponse}
-    ${removeLinebreaks((slide.res as string).toString())} <br>
-    ${titleExplanation}
-    ${exp === undefined ? '' : removeLinebreaks(exp)} <br>
-    ${titleReference}
-    ${removeLinebreaks(ref)}
-  `;
-  return explanation;
+  ).length > 0;
+
+  const titleHtml = `<center>${slide.txt}</center>`;
+
+  const answerGrid = (hasAnswer || hasResponse) ? `<div class="answer-grid">
+  <div class="info-cell">
+    <div class="info-label">Correct Answer</div>
+    <div class="info-value-correct">${(slide.ans as string).toString()}</div>
+  </div>
+  <div class="info-cell">
+    <div class="info-label">Your Response</div>
+    <div class="info-value-wrong">${removeLinebreaks((slide.res as string).toString())}</div>
+  </div>
+</div>` : '';
+
+  const expHtml = hasExplanation ? `<div class="exp-box">
+  <span class="section-label">Explanation</span>
+  ${removeLinebreaks(exp)}
+</div>` : '';
+
+  const refHtml = hasReference ? `<div class="refs">
+  <span class="section-label">References</span>
+  ${removeLinebreaks(ref)}
+</div>` : '';
+
+  return `${titleHtml}${answerGrid}${expHtml}${refHtml}`;
 }
 function removeLinebreaks(str: string): string {
   return str.replaceAll('<br>', '');
