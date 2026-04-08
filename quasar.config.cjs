@@ -34,7 +34,10 @@ const coursesPlugin = {
   },
   configureServer(server) {
     server.middlewares.use('/courses', (req, res, next) => {
-      const filePath = path.join(coursesDir, decodeURIComponent(req.url || '/'));
+      const filePath = path.join(
+        coursesDir,
+        decodeURIComponent(req.url || '/'),
+      );
       try {
         if (fs.statSync(filePath).isFile()) {
           res.setHeader('Content-Type', 'text/plain; charset=utf-8');
@@ -93,6 +96,11 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      rawDefine: {
+        'import.meta.env.DEFAULT_COURSE': JSON.stringify(
+          process.env.COURSE || 'test',
+        ),
+      },
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
         node: 'node16',

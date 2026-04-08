@@ -31,9 +31,19 @@ loadCourseListing((yml) => {
   initialize();
 });
 function initialize() {
+  const userChose = localStorage.getItem('userChoseCourse');
   let courseName = COURSE_NAME.get();
-  // Course selector disabled — no longer shown on startup or after start over
-  if (courseName != null && courseName != 'null') switchCourse(courseName);
+
+  console.log('savedCourse from localStorage:', courseName);
+  console.log('DEFAULT_COURSE from env:', import.meta.env.DEFAULT_COURSE);
+  console.log('userChoseCourse flag:', userChose);
+
+  if (!userChose || courseName == null || courseName == 'null') {
+    courseName = import.meta.env.DEFAULT_COURSE || 'test';
+    console.log('falling back to:', courseName);
+  }
+  console.log('switching to course:', courseName);
+  if (courseName) switchCourse(courseName);
 }
 </script>
 
