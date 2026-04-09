@@ -8,7 +8,7 @@ import {
 } from '../../main/quiz/evaluate';
 it('makeRow', () => {
   const act = makeRow('q', 'a', 'c');
-  const exp = '<tr><td>q</td><td>%N%.</td><td>a</td><td>c</td></tr>';
+  const exp = '<tr class="row-unanswered"><td>q</td><td class="sum-response"><span class="ans-pill">a</span></td><td class="sum-answer">c</td></tr>';
   expect(act).toBe(exp);
 });
 it('percentCorrect', () => {
@@ -47,7 +47,8 @@ it('summary', () => {
 it('evalStats', () => {
   const txt = evalStats(1, 2);
   expect(txt).not.toBeNull();
-  expect(txt).toContain('NUMBER OF QUESTIONS: 2');
-  expect(txt).toContain('NUMBER CORRECT: 1');
-  expect(txt).toContain('PERCENT CORRECT: 50%');
+  expect(txt).toContain('stat-questions');
+  expect(txt).toContain('>2<');
+  expect(txt).toContain('>1<');
+  expect(txt).toContain('>50%<');
 });
