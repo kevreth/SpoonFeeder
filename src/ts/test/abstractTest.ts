@@ -19,7 +19,7 @@ export abstract class AbstractTest<T extends object> {
   public beforeEach() {
     try {
       this.testable = this.factory();
-    } catch (e) {
+    } catch {
       const msg = MSG_PREFIX + this.getTestName();
       fail(msg);
     }

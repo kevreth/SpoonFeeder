@@ -43,11 +43,11 @@ sessionStorage.setItem('random', 'false');
 it('testProcessSlides', () => {
   const slideArr = ProcessJson.processJson(JSON.parse(testjson));
   expect(slideArr).toBeDefined();
-  expect(slideArr).not.to.be.empty;
+  expect(slideArr).not.toHaveLength(0);
   expect(slideArr.length).toEqual(7);
   const slide = slideArr[5];
   expect(slide).toBeDefined();
-  expect(slide).not.to.be.empty;
+  expect(Object.keys(slide as object).length).toBeGreaterThan(0);
   expect(slide).toBeInstanceOf(Mc);
   expect((slide as Mc).o[0]).toBe('o1');
   expect((slide as Mc).txt).toBe('mc');

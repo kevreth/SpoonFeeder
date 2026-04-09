@@ -34,7 +34,7 @@ it('getChildIds', () => {
   const doc = dom.window.document;
   const ids = getChildIds(doc, 'parent-div');
   expect(ids).not.toBeNull();
-  expect(ids).not.to.be.empty;
+  expect(ids).not.toHaveLength(0);
   expect(ids.length).toBe(4);
   expect(ids[2]).toBe('div-no-3');
 });

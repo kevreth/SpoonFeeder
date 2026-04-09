@@ -6,6 +6,6 @@ it('makeButton', () => {
   expect(str).toContain('class="DEF"');
   expect(str).toContain('>HIJ<');
   expect(str).toBeDefined();
-  expect(str).not.to.be.empty;
-  expect(str).to.be.string;
+  expect(str).not.toBe('');
+  expect(typeof str).toBe('string');
 });
