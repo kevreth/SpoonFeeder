@@ -1,5 +1,13 @@
 /* eslint-disable */
 
+export {};
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $t: (key: string, ...args: unknown[]) => string;
+  }
+}
+
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string;

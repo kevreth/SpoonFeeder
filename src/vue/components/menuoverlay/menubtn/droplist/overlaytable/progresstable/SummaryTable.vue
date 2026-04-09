@@ -5,13 +5,11 @@
       class="summaryOverlay bg-secondary"
       :class="{ transition: isEnable }"
     >
-      <template #body>
         <div class="justify-evenly summaryContainer">
           <!-- {{ content }} -->
         </div>
 
         <ExitBtn @click="closeSummary" />
-      </template>
     </q-dialog>
   </transition>
 </template>

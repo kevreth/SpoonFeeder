@@ -33,8 +33,8 @@ export function markdown2html(text: string): string {
   //marked(text) places text inside <p> tags which
   //is usually not wanted but marked.parseInline(text)
   //doesn't work with multi-line strings (undocumented).
-  if (text.includes('\n')) return marked(text);
-  else return marked.parseInline(text);
+  if (text.includes('\n')) return marked(text) as string;
+  else return marked.parseInline(text) as string;
 }
 export function processHandlebars(txt: string) {
   register(COURSE_NAME.get() as string);

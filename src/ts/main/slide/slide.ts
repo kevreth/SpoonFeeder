@@ -67,7 +67,7 @@ export abstract class Slide implements SlideInterface {
     this.res = res;
   }
   evaluate(): Evaluation {
-    const txt = this.txt as AnswerType;
+    const txt = this.txt;
     const res = this.res as AnswerType;
     const ans = this.ans as AnswerType;
     const result = this.result() as ResultTypeIntersection;

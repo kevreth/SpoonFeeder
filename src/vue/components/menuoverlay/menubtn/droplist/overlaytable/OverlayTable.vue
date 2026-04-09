@@ -41,6 +41,10 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  showOverlay: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits<{

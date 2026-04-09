@@ -121,7 +121,7 @@ export class Evaluate {
       throw new Error(`invalid ans: txt: ${txt} res: ${res} result: ${result} ans: ${ans}`)
     length = ans.length;
     (ans as string[]).forEach((answer, idx) => {
-      const response = res[idx];
+      const response = res[idx] as AnswerType;
       const row = rowFunction(
         response,
         answer as AnswerType,

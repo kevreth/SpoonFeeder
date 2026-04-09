@@ -40,7 +40,7 @@ export class Ma extends Slide implements SlideType {
     const makeSlidesStrategy = this.makeSlidesStrategy;
     makeSlidesStrategy(
       txt,
-      options as AnswerType,
+      options as string[],
       createHtml,
       maxWidthStrategy,
       doc,
@@ -48,14 +48,14 @@ export class Ma extends Slide implements SlideType {
     );
   }
   decorate(doc: Document) {
-    const options = this.o as AnswerType;
+    const options = this.o as string[];
     for (let i = 0; i < options.length; i++) {
       removeListener(doc.getElementById('btn' + i) as HTMLElement);
       const option = options[i];
       let isKey = false;
       let selected = false;
-      if (this.ans.includes(option)) isKey = true;
-      if ((this.res as AnswerType).includes(option)) selected = true;
+      if ((this.ans as string[]).includes(option)) isKey = true;
+      if ((this.res as string[]).includes(option)) selected = true;
       const btn = doc.getElementById('btn' + i) as HTMLElement;
       this.mark(isKey, selected, btn);
     }
