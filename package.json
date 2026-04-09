@@ -11,7 +11,8 @@
     "test:unit": "vitest --run --environment jsdom --reporter default",
     "test:e2e": "npx cypress run -q",
     "test:e2e:open": "npx cypress open",
-    "build-only": "vite build"
+    "build-only": "vite build",
+    "test:all": "yarn type-check && yarn lint && yarn test:unit && yarn test:e2e"
   },
   "dependencies": {
     "@iconfu/svg-inject": "^2.0.1",
