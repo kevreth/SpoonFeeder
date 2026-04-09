@@ -37,16 +37,11 @@ function soundControl() {
 
 <style>
 .volumeMute {
-  height: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
   z-index: -1;
-  padding: 2px;
-  top: 25px;
-  font-size: 2vw;
-}
-@media screen and (min-width: 1200px) {
-  .volumeMute {
-    font-size: 1vw;
-  }
+  font-size: 18px;
 }
 .volumeMute:hover {
   transform: scale(1.2);

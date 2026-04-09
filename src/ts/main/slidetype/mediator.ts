@@ -8,8 +8,6 @@ export {
   empty,
   isEqual,
   mathjax,
-  polyfill,
-  scrollBehaviourDragImageTranslateOverride,
   shuffle,
 } from '../mediator';
 export {

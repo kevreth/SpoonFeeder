@@ -1,49 +1,112 @@
 <template>
   <q-menu
-    fit
     id="droplist"
-    class="text-white dropMenu"
-    style="background: transparent"
+    class="dropMenu"
+    :offset="[0, 4]"
+    anchor="bottom right"
+    self="top right"
     v-model="droplist"
   >
-    <q-list
-      style="min-width: 30px"
-      class="dropList bg-secondary"
-      @click="droplist = false"
-    >
-      <q-item clickable>
-        <q-item-section avatar class="dropListIcon">
-          <q-icon name="trending_up" />
-        </q-item-section>
-        <q-item-section
-          @click="overlay = true"
-          @keydown.esc="overlay = false"
-          >{{ $t('droplist.progress') }}</q-item-section
-        >
-      </q-item>
-      <q-item clickable>
-        <q-item-section avatar class="dropListIcon">
-          <q-icon name="school" />
-        </q-item-section>
-        <q-item-section @click="courseList = true">{{
-          $t('droplist.courses')
-        }}</q-item-section>
-      </q-item>
-      <q-item clickable>
-        <q-item-section avatar class="dropListIcon">
-          <q-icon name="settings" />
-        </q-item-section>
-        <q-item-section @click="settingOverlay = true">{{
-          $t('droplist.settings')
-        }}</q-item-section>
-      </q-item>
-      <q-item clickable>
-        <q-item-section avatar class="dropListIcon">
-          <q-icon name="help_outline" />
-        </q-item-section>
-        <q-item-section>{{ $t('droplist.help') }}</q-item-section>
-      </q-item>
-    </q-list>
+    <div class="dropList" @click="droplist = false">
+      <div class="dropItem" @click="overlay = true">
+        <span class="dropIcon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <polyline
+              points="1,10 4,5 7,8 10,3 13,5"
+              stroke="#00bfff"
+              stroke-width="1.2"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <span>{{ $t('droplist.progress') }}</span>
+      </div>
+      <!-- Disable course selector -->
+      <!-- <div class="dropItem" @click="courseList = true">
+        <span class="dropIcon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <rect
+              x="2"
+              y="2"
+              width="10"
+              height="10"
+              rx="2"
+              stroke="#00bfff"
+              stroke-width="1"
+            />
+            <line
+              x1="5"
+              y1="2"
+              x2="5"
+              y2="12"
+              stroke="#00bfff"
+              stroke-width="1"
+            />
+          </svg>
+        </span>
+        <span>{{ $t('droplist.courses') }}</span>
+      </div> -->
+      <div class="dropDivider"></div>
+      <div class="dropItem" @click="settingOverlay = true">
+        <span class="dropIcon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="2.5" stroke="#00bfff" stroke-width="1" />
+            <line
+              x1="7"
+              y1="1"
+              x2="7"
+              y2="3"
+              stroke="#00bfff"
+              stroke-width="1"
+            />
+            <line
+              x1="7"
+              y1="11"
+              x2="7"
+              y2="13"
+              stroke="#00bfff"
+              stroke-width="1"
+            />
+            <line
+              x1="1"
+              y1="7"
+              x2="3"
+              y2="7"
+              stroke="#00bfff"
+              stroke-width="1"
+            />
+            <line
+              x1="11"
+              y1="7"
+              x2="13"
+              y2="7"
+              stroke="#00bfff"
+              stroke-width="1"
+            />
+          </svg>
+        </span>
+        <span>{{ $t('droplist.settings') }}</span>
+      </div>
+      <div class="dropItem">
+        <span class="dropIcon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="#00bfff" stroke-width="1" />
+            <line
+              x1="7"
+              y1="6"
+              x2="7"
+              y2="10"
+              stroke="#00bfff"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            />
+            <circle cx="7" cy="4.5" r="0.6" fill="#00bfff" />
+          </svg>
+        </span>
+        <span>{{ $t('droplist.help') }}</span>
+      </div>
+    </div>
   </q-menu>
 
   <OverlayTable
@@ -68,42 +131,71 @@ import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
 import SettingsOverlay from './settings/SettingsOverlay.vue';
 
-// setting transition disable
 const isEnable = ref(false);
-// const isEnable = ref(true);
-
 const droplist = ref(false);
 const overlay = ref(false);
 const courseList = ref(false);
 const settingOverlay = ref(false);
 
-// handle overlay pages
 function handleOverlay() {
   overlay.value = !overlay.value;
 }
 </script>
 
 <style>
-.dropList {
-  border-right: 1px solid #00bfff;
-  padding-right: 5px;
-  color: #ddd;
-  font-family: 'Orbitron', sans-serif;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  font-size: 1.2em;
-}
-.dropListIcon {
-  padding: 0 10px;
-}
 .dropMenu {
-  font-size: 3.5vw;
-  font-family: 'Segoe UI', 'SF Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  /* right: 15px; */
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  padding-right: 1px;
 }
-@media screen and (min-width: 1200px) {
-  .dropMenu {
-    font-size: 1.3vw;
-  }
+.dropList {
+  background: rgba(10, 15, 25, 0.96);
+  border-left: 1px solid rgba(0, 191, 255, 0.3);
+  border-right: 1px solid rgba(0, 191, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 6px 0;
+  min-width: 180px;
+}
+.dropItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 20px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #ccc;
+  font-family:
+    'Segoe UI',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  letter-spacing: 0.3px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.dropItem:hover {
+  background: rgba(0, 191, 255, 0.06);
+  color: #00bfff;
+}
+.dropIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.dropItem:hover .dropIcon {
+  opacity: 1;
+}
+.dropDivider {
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 20px;
 }
 </style>

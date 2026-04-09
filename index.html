@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpoonFeeder</title>
     <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <script>
+      if (!Array.prototype.at) {
+        Array.prototype.at = function (n) {
+          n = Math.trunc(n) || 0;
+          if (n < 0) n += this.length;
+          if (n < 0 || n >= this.length) return undefined;
+          return this[n];
+        };
+      }
+    </script>
     <script src="lib/tex-mml-chtml.js"></script>
     <script src="lib/Draggable.min.js"></script>
     <script src="lib/gsap.min.js"></script>

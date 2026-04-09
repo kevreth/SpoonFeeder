@@ -10,6 +10,52 @@
 
 const { configure } = require('quasar/wrappers');
 const path = require('path');
+const fs = require('fs');
+
+const coursesDir = path.resolve(__dirname, 'src/courses');
+const libDir = path.resolve(__dirname, 'lib');
+
+function copyDirSync(src, dest) {
+  fs.mkdirSync(dest, { recursive: true });
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+    const s = path.join(src, entry.name);
+    const d = path.join(dest, entry.name);
+    if (entry.isDirectory()) copyDirSync(s, d);
+    else fs.copyFileSync(s, d);
+  }
+}
+
+let outDir = '';
+
+const coursesPlugin = {
+  name: 'courses-static',
+  configResolved(config) {
+    outDir = config.build.outDir;
+  },
+  configureServer(server) {
+    server.middlewares.use('/courses', (req, res, next) => {
+      const filePath = path.join(
+        coursesDir,
+        decodeURIComponent(req.url || '/'),
+      );
+      try {
+        if (fs.statSync(filePath).isFile()) {
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          fs.createReadStream(filePath).pipe(res);
+          return;
+        }
+      } catch (_) {}
+      next();
+    });
+  },
+  closeBundle() {
+    if (outDir) {
+      copyDirSync(coursesDir, path.join(outDir, 'courses'));
+      copyDirSync(coursesDir, path.join(outDir, 'src', 'courses'));
+      copyDirSync(libDir, path.join(outDir, 'lib'));
+    }
+  },
+};
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -32,7 +78,7 @@ module.exports = configure(function (/* ctx */) {
     boot: ['i18n', 'axios'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
-    css: ['app.scss'],
+    css: ['app.scss', 'style1.css', 'quasar.css'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -50,6 +96,11 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      rawDefine: {
+        'import.meta.env.DEFAULT_COURSE': JSON.stringify(
+          process.env.COURSE || 'test',
+        ),
+      },
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
         node: 'node16',
@@ -71,7 +122,9 @@ module.exports = configure(function (/* ctx */) {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        viteConf.plugins = (viteConf.plugins || []).concat(coursesPlugin);
+      },
       // viteVuePluginOptions: {},
     },
 

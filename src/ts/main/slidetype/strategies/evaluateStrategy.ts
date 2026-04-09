@@ -17,7 +17,8 @@ type FunctionType = (
   answer: AnswerType,
   text: string | string[],
   idx: number,
-  length: number
+  length: number,
+  correct: boolean
 ) => string;
 ///////////////////////////////////////////////////////////////////////////////
 // The types for each strategy.
@@ -77,7 +78,7 @@ export class Evaluate {
   ) {
     let correctCtr = 0;
     if (result) correctCtr++;
-    const text = makeRow(txt, res, ans);
+    const text = makeRow(txt, res, ans, result);
     const count = res == null ? 0 : 1;
     return new Evaluation(count, correctCtr, text);
   };
@@ -127,7 +128,8 @@ export class Evaluate {
         answer as AnswerType,
         txt,
         idx,
-        length
+        length,
+        result[idx]
       );
       rows.push(row);
     });
@@ -154,11 +156,12 @@ export class Evaluate {
     answer,
     text,
     idx,
-    length
+    length,
+    correct
   ) {
     let replaceValue = '';
     if (idx === 0) replaceValue = `<td rowspan="${length}">${text}</td>`;
-    let row_a = makeRow(replaceValue, response, answer);
+    let row_a = makeRow(replaceValue, response, answer, correct);
     // makeRow wasn't designed for this type of question.
     // Remove extra cell (td) tags.
     row_a = row_a.replace(`<td>${replaceValue}</td>`, replaceValue);

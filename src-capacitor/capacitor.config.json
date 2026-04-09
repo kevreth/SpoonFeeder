@@ -1,0 +1,8 @@
+{
+  "appId": "com.spoonfeeder.app",
+  "appName": "spoonfeeder",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#1c1b22"
+  }
+}

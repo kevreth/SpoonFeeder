@@ -23,7 +23,7 @@ export function continueButton(doc: Document, txt: string): HTMLElement {
 }
 export function startOverButton(doc: Document) {
   const startOverText = makeButton('startOver', 'startOver', 'Start Over');
-  doc.body.insertAdjacentHTML('beforeend', '<br>' + startOverText);
+  doc.body.insertAdjacentHTML('beforeend', startOverText);
   const startOver = doc.getElementById('startOver') as HTMLElement;
   startOver.addEventListener('click', () => reloadPage());
 }

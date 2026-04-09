@@ -65,3 +65,4 @@ course.html
 .asciidoctor/
 
 diag-graphviz-md5-*.svg
+/src-capacitor/android/

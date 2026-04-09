@@ -42,11 +42,7 @@ describe('Cypress Testing', () => {
     sessionStorage.setItem('mute', 'true');
 
     //because of async loading
-    cy.get('#android', { timeout: 20000 }).should('be.visible');
-    //course selection dialog
-    cy.get('#test').scrollIntoView();
-    testButton('#test');
-    testButton('#btn_switch');
+    cy.get('#continueBtn', { timeout: 20000 }).should('be.visible');
 
     //course title
     existVisibleNotEmpty('body');
@@ -198,19 +194,14 @@ describe('Cypress Testing', () => {
     existVisibleNotEmpty('body');
     cy.contains('a,b,c,d');
     cy.contains('blue');
-    cy.contains('NUMBER OF QUESTIONS: 17');
-    cy.contains('NUMBER CORRECT: 11');
-    cy.contains('PERCENT CORRECT: 65%');
-    // cy.wait(20000);
-    cy.contains('15.');
+    cy.contains('.stat-value', '17');
+    cy.contains('.stat-value', '11');
+    cy.contains('.stat-value', '65%');
     cy.contains('ans');
     testButton('#startOver');
 
     //because of async loading
-    cy.get('#android', { timeout: 10000 }).should('be.visible');
-    cy.get('#test').scrollIntoView();
-    testButton('#test');
-    testButton('#btn_switch');
+    cy.get('#continueBtn', { timeout: 10000 }).should('be.visible');
 
     cy.contains('course 1');
   });

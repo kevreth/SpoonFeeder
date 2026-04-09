@@ -28,6 +28,8 @@ onMounted(() => {
 });
 
 function switchCourse() {
+  localStorage.setItem('userChoseCourse', 'true');
+
   if (
     props.selectedCourse &&
     props.selectedCourse !== prevSelectedCourse.value

@@ -17,20 +17,20 @@ SpoonFeeder is not designed to assess learners' ability to expound on a topic. T
 
 ## Roles
 
-* test preparation,
-* corporate training programs,
-* continuing education,
-* professional development,
-* learning languages, and, to a lesser extent,
-* common skills like money management, cooking, or sports rules.
+- test preparation,
+- corporate training programs,
+- continuing education,
+- professional development,
+- learning languages, and, to a lesser extent,
+- common skills like money management, cooking, or sports rules.
 
 ## Uses
 
-* replace most textbook content, with exceptions including open-form questions like short answer and essays;
-* replace lectures involving concepts and terms;
-* teach any subject involving book learning;
-* create one-off quizzes and assignments; and
-* convey information as text, images, audio, or video.
+- replace most textbook content, with exceptions including open-form questions like short answer and essays;
+- replace lectures involving concepts and terms;
+- teach any subject involving book learning;
+- create one-off quizzes and assignments; and
+- convey information as text, images, audio, or video.
 
 ## Status
 
@@ -38,26 +38,26 @@ SpoonFeeder remains in an early pre-release state. Although functional, it's mis
 
 ## Installation for development
 
-1) Install Node if not already installed, platforms vary.
-2) Update Node and npm:
+1. Install Node if not already installed, platforms vary.
+2. Update Node and npm:
 
 `npm i -g npm`
 
 `npm i -g node`
 
-3) Install quasar if not already installed (on Linux, precede with `sudo`):
+3. Install quasar if not already installed (on Linux, precede with `sudo`):
 
 `npm i -g @quasar/cli`
 
-4) Clone the project
+4. Clone the project
 
 `git clone https://github.com/kevreth/SpoonFeeder.git`
 
-5) `cd Spoonfeeder`
+5. `cd Spoonfeeder`
 
-6) `npm install`
+6. `npm install`
 
-7) Start the project
+7. Start the project
 
 `quasar dev`
 
@@ -79,3 +79,50 @@ Navigating to http://localhost:9000 should display Spoonfeeder.
 ### Run a shell in the container
 
 `docker exec -it spoonfeeder-run bash`
+
+## Building with a specific course
+
+By default, the app builds with the `test` course.
+
+```bash
+# Build with default (test) course
+quasar build
+OR
+quasar dev
+
+# Build with a specific course
+COURSE=history quasar dev
+```
+
+The course name must match a folder in your courses directory.
+
+## Running on Android
+
+Make sure you have Android Studio and the Android SDK installed.
+
+```bash
+# 1. Build the web assets with default test
+quasar build -m capacitor -T android
+
+# 1. Build the web assets with your target course
+COURSE=history quasar build -m capacitor -T android
+
+
+# 2. Sync to Capacitor
+cd src-capacitor
+npx cap sync android
+
+# 3. Open in Android Studio
+npx cap open android
+```
+
+Then in Android Studio, select your device or emulator and click Run.
+
+Or to build an APK directly:
+
+```bash
+cd src-capacitor/android
+./gradlew assembleDebug
+```
+
+The APK will be at `src-capacitor/android/app/build/outputs/apk/debug/app-debug.apk`

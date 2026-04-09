@@ -19,8 +19,6 @@ import {
   COURSE_NAME,
   setCourseListing,
 } from '../mediator';
-import '../../css/style1.css';
-import '../../css/quasar.css';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 
 const courseList = ref(false);
@@ -33,9 +31,19 @@ loadCourseListing((yml) => {
   initialize();
 });
 function initialize() {
+  const userChose = localStorage.getItem('userChoseCourse');
   let courseName = COURSE_NAME.get();
-  if (courseName == null || courseName == 'null') courseList.value = true;
-  else switchCourse(courseName);
+
+  console.log('savedCourse from localStorage:', courseName);
+  console.log('DEFAULT_COURSE from env:', import.meta.env.DEFAULT_COURSE);
+  console.log('userChoseCourse flag:', userChose);
+
+  if (!userChose || courseName == null || courseName == 'null') {
+    courseName = import.meta.env.DEFAULT_COURSE || 'test';
+    console.log('falling back to:', courseName);
+  }
+  console.log('switching to course:', courseName);
+  if (courseName) switchCourse(courseName);
 }
 </script>
 
@@ -48,5 +56,12 @@ function initialize() {
   width: 100%;
   /* white-space: nowrap; */
   max-height: 500px;
+}
+@media (min-width: 768px) {
+  .wrapContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>
