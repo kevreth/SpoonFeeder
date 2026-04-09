@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "upgrade": "npx npm-check-updates --interactive",
-    "circular": "dpdm --transform --no-warning --no-tree --exit-code circular:1 src/ts/main.ts",
+    "circular": "dpdm --transform --no-warning --no-tree --exit-code circular:1 src/ts/main/quiz/quiz.ts",
     "type-check": "vue-tsc --allowJs --noEmit -p tsconfig.typecheck.json --composite false",
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-pattern .gitignore",
     "format": "prettier --loglevel=warn --write --single-quote \"src/ts/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
