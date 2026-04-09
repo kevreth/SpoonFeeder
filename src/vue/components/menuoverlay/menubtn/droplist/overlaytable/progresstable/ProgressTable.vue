@@ -27,7 +27,7 @@
       :data="data"
       :classes="classes"
       :dark="dark"
-      :default-expand-all="default_expand_all = true"
+      :default-expand-all="true"
     >
       <template v-slot:header="hProps">
         <th
