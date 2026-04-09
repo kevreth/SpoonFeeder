@@ -162,17 +162,30 @@ function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void 
       ghost.style.left = `${touch.clientX - offsetX}px`;
       ghost.style.top = `${touch.clientY - offsetY}px`;
       doc.body.appendChild(ghost);
+      let hoveredGap: HTMLElement | null = null;
       const onMove = (ev: TouchEvent) => {
         ev.preventDefault();
         const t = ev.touches[0];
         ghost.style.left = `${t.clientX - offsetX}px`;
         ghost.style.top = `${t.clientY - offsetY}px`;
+        const el = doc.elementFromPoint(t.clientX, t.clientY) as HTMLElement | null;
+        const gapEl = el?.closest('[id^="gap"]') as HTMLElement | null;
+        if (gapEl !== hoveredGap) {
+          if (hoveredGap) hoveredGap.style.removeProperty('background-color');
+          if (gapEl?.ondrop) {
+            gapEl.style.backgroundColor = 'grey';
+            hoveredGap = gapEl;
+          } else {
+            hoveredGap = null;
+          }
+        }
       };
       const onEnd = (ev: TouchEvent) => {
         doc.removeEventListener('touchmove', onMove);
         doc.removeEventListener('touchend', onEnd);
         doc.removeEventListener('touchcancel', onEnd);
         ghost.style.display = 'none';
+        if (hoveredGap) hoveredGap.style.removeProperty('background-color');
         const t = ev.changedTouches[0];
         const target = doc.elementFromPoint(
           t.clientX,
