@@ -12,14 +12,8 @@ import {
   RANDOM,
   SetWidths,
   Slide,
-  polyfill,
-  scrollBehaviourDragImageTranslateOverride,
   shuffle,
 } from '../../mediator';
-
-polyfill({
-  dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
-});
 export class Gap extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = props);

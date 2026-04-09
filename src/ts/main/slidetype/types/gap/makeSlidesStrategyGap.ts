@@ -33,6 +33,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
     setgap(ctr, doc, txt, slide);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
+  setupTouchDnD(doc, slide, txt);
 };
 export function fills(ans: AnswerType): string {
   let fill_accum = '';
@@ -133,4 +134,68 @@ function setfills(ctr: number, currentFills: string, doc: Document): void {
     (e.dataTransfer as DataTransfer).setData('number', number);
     (e.dataTransfer as DataTransfer).setData('text', text);
   };
+}
+function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void {
+  const fillsDiv = doc.getElementById('fills') as HTMLElement;
+  fillsDiv.addEventListener(
+    'touchstart',
+    (e: TouchEvent) => {
+      const fillEl = (e.target as HTMLElement).closest(
+        '[id^="fill"]'
+      ) as HTMLElement | null;
+      if (!fillEl?.classList.contains('fills')) return;
+      e.preventDefault();
+      const touch = e.touches[0];
+      const rect = fillEl.getBoundingClientRect();
+      const offsetX = touch.clientX - rect.left;
+      const offsetY = touch.clientY - rect.top;
+      const cs = window.getComputedStyle(fillEl);
+      const ghost = fillEl.cloneNode(true) as HTMLElement;
+      ghost.style.position = 'fixed';
+      ghost.style.zIndex = '9999';
+      ghost.style.pointerEvents = 'none';
+      ghost.style.margin = '0';
+      ghost.style.color = cs.color;
+      ghost.style.backgroundColor = cs.backgroundColor;
+      ghost.style.fontSize = cs.fontSize;
+      ghost.style.padding = cs.padding;
+      ghost.style.left = `${touch.clientX - offsetX}px`;
+      ghost.style.top = `${touch.clientY - offsetY}px`;
+      doc.body.appendChild(ghost);
+      const onMove = (ev: TouchEvent) => {
+        ev.preventDefault();
+        const t = ev.touches[0];
+        ghost.style.left = `${t.clientX - offsetX}px`;
+        ghost.style.top = `${t.clientY - offsetY}px`;
+      };
+      const onEnd = (ev: TouchEvent) => {
+        doc.removeEventListener('touchmove', onMove);
+        doc.removeEventListener('touchend', onEnd);
+        doc.removeEventListener('touchcancel', onEnd);
+        ghost.style.display = 'none';
+        const t = ev.changedTouches[0];
+        const target = doc.elementFromPoint(
+          t.clientX,
+          t.clientY
+        ) as HTMLElement | null;
+        ghost.remove();
+        const gapEl = target?.closest('[id^="gap"]') as HTMLElement | null;
+        if (!gapEl?.ondrop) return;
+        const gapNumber = gapEl.dataset.number as string;
+        const fillText = fillEl.dataset.text as string;
+        const fillNumber = fillEl.dataset.number as string;
+        gapEl.style.removeProperty('background-color');
+        gapEl.ondrop = null;
+        const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
+        if (fillsRemaining === 0) {
+          const res = evaluate(doc);
+          slide.conclude(doc, res as AnswerType, txt);
+        }
+      };
+      doc.addEventListener('touchmove', onMove, { passive: false });
+      doc.addEventListener('touchend', onEnd);
+      doc.addEventListener('touchcancel', onEnd);
+    },
+    { passive: false }
+  );
 }
