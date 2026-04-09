@@ -2,7 +2,7 @@
   <q-menu
     id="droplist"
     class="dropMenu"
-    :offset="[0, 4]"
+    :offset="[0, 0]"
     anchor="bottom right"
     self="top right"
     v-model="droplist"
@@ -88,7 +88,8 @@
         </span>
         <span>{{ $t('droplist.settings') }}</span>
       </div>
-      <div class="dropItem">
+      <!-- Help item hidden until content is available -->
+      <!-- <div class="dropItem">
         <span class="dropIcon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <circle cx="7" cy="7" r="5.5" stroke="#00bfff" stroke-width="1" />
@@ -105,7 +106,7 @@
           </svg>
         </span>
         <span>{{ $t('droplist.help') }}</span>
-      </div>
+      </div> -->
     </div>
   </q-menu>
 
@@ -148,24 +149,22 @@ function handleOverlay() {
   box-shadow: none !important;
   overflow: visible !important;
   padding-right: 1px;
+  min-width: 150px;
+  width: fit-content !important;
 }
 .dropList {
   background: rgba(10, 15, 25, 0.96);
-  border-left: 1px solid rgba(0, 191, 255, 0.3);
-  border-right: 1px solid rgba(0, 191, 255, 0.3);
-  border-bottom: 1px solid rgba(0, 191, 255, 0.3);
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 10px;
   padding: 6px 0;
-  min-width: 180px;
 }
 .dropItem {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 13px 20px;
+  padding: 12px 16px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 14px;
   color: #ccc;
   font-family:
     'Segoe UI',

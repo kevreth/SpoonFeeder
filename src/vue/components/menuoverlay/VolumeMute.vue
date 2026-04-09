@@ -41,7 +41,6 @@ function soundControl() {
   left: 0;
   top: 0;
   z-index: -1;
-  font-size: 18px;
 }
 .volumeMute:hover {
   transform: scale(1.2);
