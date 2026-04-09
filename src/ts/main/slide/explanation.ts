@@ -1,16 +1,11 @@
 import type { AnswerType, SlideInterface } from './mediator';
 export function explanation(slide: SlideInterface): string {
   const answers = slide.ans as AnswerType;
-  const distrators = [];
   const exp = slide.exp;
   const ref = slide.ref;
   const hasAnswer = removeLinebreaks(pluralize('<b>Answer</b>', answers.length)).length > 0;
-  const distrator = removeLinebreaks(
-    pluralize('Distractor', distrators.length)
-  );
   const hasExplanation = exp !== undefined && exp.length > 0;
   const hasReference = ref !== undefined && ref.length > 0;
-  const hasDistractor = title(distrator, 'Distractor').length > 0;
   const hasResponse = title(
     slide.res === undefined ? '' : slide.res.toString(),
     '<b>Response</b>'

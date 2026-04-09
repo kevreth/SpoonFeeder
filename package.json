@@ -47,6 +47,7 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@intlify/vite-plugin-vue-i18n": "^7.0.0",
     "@quasar/app-vite": "^2.6.0",
     "@rushstack/eslint-patch": "^1.16.1",
