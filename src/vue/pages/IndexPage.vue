@@ -47,21 +47,3 @@ function initialize() {
 }
 </script>
 
-<style>
-.wrapContent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  /* white-space: nowrap; */
-  max-height: 500px;
-}
-@media (min-width: 768px) {
-  .wrapContent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-</style>
