@@ -1,7 +1,7 @@
 const ROW =
   '<tr class="%STATUS%"><td>%Q%</td><td class="sum-response"><span class="ans-pill">%A%</span></td><td class="sum-answer">%C%</td></tr>';
-import type { AnswerType, SlideInterface } from './mediator';
-import { SaveData } from './mediator';
+import type { AnswerType, SlideInterface } from '../dataaccess/index';
+import { SaveData } from '../dataaccess/index';
 export class Evaluation {
   constructor(
     public responses: number,
