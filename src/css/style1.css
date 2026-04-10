@@ -14,7 +14,6 @@ html {
     url('../assets/cosmos-1853491.jpg'),
     radial-gradient(circle, #2c2b32 0%, #1c1b22 100%);
   background-size: cover, auto;
-  background-attachment: fixed;
 }
 
 body {
@@ -26,9 +25,34 @@ body {
     url('../assets/cosmos-1853491.jpg'),
     radial-gradient(circle, #2c2b32 0%, #1c1b22 100%);
   background-size: cover, auto;
-  background-attachment: fixed;
   opacity: 1;
   color: #cfd2d6;
+}
+
+#q-app {
+  min-height: 100vh;
+  background-image: url('../assets/cosmos-1853491.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+
+.q-page {
+  background: transparent !important;
+}
+
+.wrapContent {
+  position: static;
+  top: unset;
+  left: unset;
+  transform: none;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .q-item,
@@ -260,7 +284,7 @@ tbody th {
   overflow: hidden;
   text-align: center;
 }
-.touch {
+/* .touch {
   z-index: 2;
 }
 .touch::before {
@@ -273,10 +297,8 @@ tbody th {
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   z-index: -1;
-}
+} */
 #content {
-  transform: translateZ(20px);
-  perspective: 500px;
   text-align: center;
   margin: 0 auto;
   display: flex;
@@ -442,6 +464,7 @@ td.sum-answer img {
   padding: 4px 12px;
   display: inline-block;
   margin: 0 auto;
+  white-space: nowrap;
 }
 .row-correct .ans-pill {
   background: rgba(78, 204, 163, 0.15);

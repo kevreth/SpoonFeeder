@@ -1,23 +1,24 @@
-const ROW = '<tr class="%STATUS%"><td>%Q%</td><td class="sum-response"><span class="ans-pill">%A%</span></td><td class="sum-answer">%C%</td></tr>';
-import type { AnswerType, SlideInterface } from '../slide/slideInterface';
-import { SaveData } from '../dataaccess/saveData/saveData';
+const ROW =
+  '<tr class="%STATUS%"><td>%Q%</td><td class="sum-response"><span class="ans-pill">%A%</span></td><td class="sum-answer">%C%</td></tr>';
+import type { AnswerType, SlideInterface } from '../dataaccess/index';
+import { SaveData } from '../dataaccess/index';
 export class Evaluation {
   constructor(
     public responses: number,
     public correct: number,
-    public text: string
+    public text: string,
   ) {}
 }
 export function summary(
   responseCtr: number,
   correctCtr: number,
-  pctCorrect: string
+  pctCorrect: string,
 ) {
   return `NUMBER OF QUESTIONS: ${responseCtr}<br>\nNUMBER CORRECT: ${correctCtr}<br>\nPERCENT CORRECT: ${pctCorrect}%`;
 }
 export function percentCorrect(
   correctCtr: number,
-  responseCtr: number
+  responseCtr: number,
 ): string {
   if (responseCtr === 0) return '0'; // prevent divide-by-zero error
   return ((correctCtr / responseCtr) * 100).toFixed(0);
@@ -26,11 +27,17 @@ export function makeRow(
   question: string,
   response: AnswerType,
   answer: AnswerType,
-  correct?: boolean
+  correct?: boolean,
 ) {
   let text = ROW;
-  const status = correct === true ? 'row-correct' : correct === false ? 'row-wrong' : 'row-unanswered';
-  const listClass = Array.isArray(response) || Array.isArray(answer) ? ' row-list' : '';
+  const status =
+    correct === true
+      ? 'row-correct'
+      : correct === false
+        ? 'row-wrong'
+        : 'row-unanswered';
+  const listClass =
+    Array.isArray(response) || Array.isArray(answer) ? ' row-list' : '';
   text = text.replace('%STATUS%', status + listClass);
   text = text.replace('%Q%', question);
   text = text.replace('%A%', response != null ? String(response) : '—');

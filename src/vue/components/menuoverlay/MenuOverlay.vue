@@ -1,6 +1,8 @@
 <template>
-  <MenuBtn id="menuBtn" class="z-top:1000" />
-  <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
+  <div class="menu-btn-row">
+    <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
+    <MenuBtn id="menuBtn" />
+  </div>
   <ExpTable
     id="explainTable"
     v-model="expOverlay"
@@ -35,3 +37,16 @@ function handleExpOverlay() {
   content.value = getCurrentSlideExplanation();
 }
 </script>
+
+<style>
+.menu-btn-row {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  z-index: 100;
+}
+</style>

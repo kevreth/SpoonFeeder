@@ -10,12 +10,11 @@ import DropList from './menubtn/droplist/DropList.vue';
 
 <style>
 .menuBtn {
-  position: fixed;
-  right: 0;
   /* margin-right: 1.6vw; */
   /* font-size: 6vw; */
-  font-size: 2rem;
-  top: 0;
+  font-size: 1.2rem;
+  padding: 4px;
+  background: transparent !important;
 }
 
 .menuBtn .q-focus-helper {
@@ -24,7 +23,7 @@ import DropList from './menubtn/droplist/DropList.vue';
 
 @media (min-width: 768px) {
   .menuBtn {
-    font-size: 3rem;
+    font-size: 1.4rem;
   }
 }
 </style>
