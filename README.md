@@ -112,18 +112,14 @@ Choose one of two methods:
 
 1. Connect your phone via USB
 2. Accept the "Allow USB Debugging" prompt on your phone
-3. Confirm it's detected:
-
-```bash
-adb devices
-```
 
 **Option B — Wireless (no USB required, Android 11+)**
 
 1. Go to **Settings > Developer Options > Wireless Debugging** and turn it ON
 2. Tap **"Pair device with QR code"**
 3. Open Android Studio → open the device manager → scan the QR code shown
-4. Confirm connection:
+
+Confirm connection:
 
 ```bash
 adb devices
@@ -132,7 +128,6 @@ adb devices
 ### Build and run
 
 ```bash
-quasar build -m capacitor -T android --debug
-
-adb install -r dist/capacitor/android/apk/debug/app-debug.apk
+yarn android:build
+yarn android:deploy
 ```

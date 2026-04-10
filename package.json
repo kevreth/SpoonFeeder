@@ -12,7 +12,9 @@
     "test:e2e": "npx cypress run -q",
     "test:e2e:open": "npx cypress open",
     "build-only": "vite build",
-    "test:all": "yarn type-check && yarn lint && yarn test:unit && yarn test:e2e"
+    "test:all": "yarn type-check && yarn lint && yarn test:unit && yarn test:e2e",
+    "android:build": "quasar build -m capacitor -T android --debug",
+    "android:deploy": "adb install -r dist/capacitor/android/apk/debug/app-debug.apk"
   },
   "dependencies": {
     "@iconfu/svg-inject": "^2.0.1",
