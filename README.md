@@ -96,33 +96,43 @@ COURSE=history quasar dev
 
 The course name must match a folder in your courses directory.
 
-## Running on Android
+## Running on a real Android device
 
-Make sure you have Android Studio and the Android SDK installed.
+### Prerequisites
 
-```bash
-# 1. Build the web assets with default test
-quasar build -m capacitor -T android
+- Android Studio installed with Android SDK
+- On your phone: go to **Settings > About Phone** and tap **Build Number** 7 times to enable Developer Options
+- Then go to **Settings > Developer Options** and enable **USB Debugging**
 
-# 1. Build the web assets with your target course
-COURSE=history quasar build -m capacitor -T android
+### Connect your real phone Android
 
+Choose one of two methods:
 
-# 2. Sync to Capacitor
-cd src-capacitor
-npx cap sync android
+**Option A — USB cable**
 
-# 3. Open in Android Studio
-npx cap open android
-```
-
-Then in Android Studio, select your device or emulator and click Run.
-
-Or to build an APK directly:
+1. Connect your phone via USB
+2. Accept the "Allow USB Debugging" prompt on your phone
+3. Confirm it's detected:
 
 ```bash
-cd src-capacitor/android
-./gradlew assembleDebug
+adb devices
 ```
 
-The APK will be at `src-capacitor/android/app/build/outputs/apk/debug/app-debug.apk`
+**Option B — Wireless (no USB required, Android 11+)**
+
+1. Go to **Settings > Developer Options > Wireless Debugging** and turn it ON
+2. Tap **"Pair device with QR code"**
+3. Open Android Studio → open the device manager → scan the QR code shown
+4. Confirm connection:
+
+```bash
+adb devices
+```
+
+### Build and run
+
+```bash
+quasar build -m capacitor -T android --debug
+
+adb install -r dist/capacitor/android/apk/debug/app-debug.apk
+```
