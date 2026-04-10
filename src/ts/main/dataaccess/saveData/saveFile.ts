@@ -1,5 +1,5 @@
-import type { SlideInterface } from '../mediator';
-import { isEqual } from '../mediator';
+import type { SlideInterface } from '../index';
+import { isEqual } from 'lodash';
 export class Json {
   private static json: Array<SlideInterface> = [];
   public static get() {

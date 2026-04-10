@@ -1,4 +1,4 @@
-import { WebStorageFlag } from '../../dataaccess/mediator';
+import { WebStorageFlag } from '../../dataaccess/persistence/webPersistence';
 
 export class AudioPlayer {
   private readonly INCORRECT: string = '/resources/audio/incorrect.mp3';

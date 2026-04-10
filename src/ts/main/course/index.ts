@@ -7,10 +7,13 @@ export {
   TRANSITION,
   clearCourseListing,
   getYaml2,
-} from '../dataaccess/mediator';
-export { shuffle } from '../mediator';
-export { INFO, initSlide, percentCorrect, showSlides } from '../quiz/mediator';
-export type { AnswerType, SlideInterface } from '../quiz/mediator';
+} from '../dataaccess/index';
+export { shuffle } from '../index';
+export { INFO } from '../slidetype/types/info/factoryInfo';
+export { initSlide } from '../slidetype/misc/slideFactory';
+export { percentCorrect } from '../quiz/evaluate';
+export { showSlides } from '../quiz/slideDispatcher';
+export type { AnswerType, SlideInterface } from '../slide/slideInterface';
 export type { Course, Division, Module } from './courseData/course';
 export { CourseFile } from './courseData/courseFile';
 export { JsonProcessor } from './courseData/jsonProcessor';

@@ -12,19 +12,19 @@ export {
   TRANSITION,
   clearCourseListing,
   loadCourse,
-} from '../course/mediator';
-export type { Division, ISummaryLine } from '../course/mediator';
-export { difference, intersection, marked, shuffle } from '../mediator';
+} from '../course/index';
+export type { Division, ISummaryLine } from '../course/index';
+export { difference, intersection, marked, shuffle } from '../index';
 export { explanation } from '../slide/explanation';
-export type { AnswerType, SlideInterface } from '../slide/mediator';
-export { INFO, initSlide } from '../slidetype/mediator';
+export type { AnswerType, SlideInterface } from '../slide/index';
+export { INFO, initSlide } from '../slidetype/index';
 export type {} from '../slidetype/misc/adocVisitor';
 export {
   continueButton,
   doneButton,
   makeButton,
-  startOverButton,
 } from './buttons';
+export { startOverButton } from './startOverButton';
 export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
 export { hideExplainIcon, showExplainIcon } from './explainIcon';
 export { switchCourse } from './quiz';

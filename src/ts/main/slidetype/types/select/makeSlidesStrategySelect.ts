@@ -1,5 +1,5 @@
-import { removeListener } from '../../../quiz/mediator';
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import { removeListener } from '../../../quiz/utilities';
+import type { AnswerType, SlideInterface } from '../../../slide/index';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import { INDETERMINANT } from '../../misc/markupColors';
 import type { CreateHtmlTypeSelect } from './createHtmlSelect';

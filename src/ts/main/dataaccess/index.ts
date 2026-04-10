@@ -1,17 +1,11 @@
 //datalayer mediator;
-export { extend, isEqual, last } from '../mediator';
-export {
-  dispatch2,
-  explanation,
-  fillMatchingSlide,
-  marked,
-  showSlides,
-} from '../quiz/mediator';
-export type {
-  AnswerType,
-  SlideInterface,
-  StateActions,
-} from '../quiz/mediator';
+export { extend, isEqual, last } from '../index';
+export { dispatch2 } from '../quiz/stateActionDispatcher';
+export { explanation } from '../slide/explanation';
+export { fillMatchingSlide, showSlides } from '../quiz/slideDispatcher';
+export { marked } from '../index';
+export type { AnswerType, SlideInterface } from '../slide/slideInterface';
+export type { StateActions } from '../quiz/stateActionDispatcher';
 export { getYaml2 } from './persistence/filePersistence';
 export {
   WebStorageFlag,

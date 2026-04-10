@@ -1,5 +1,5 @@
 import { beforeEach, expect, it, vi } from 'vitest';
-import { Slide, VOCAB } from '../../../../main/slidetype/mediator';
+import { Slide, VOCAB } from '../../../../main/slidetype/index';
 import {
   Vocab,
   generateQuestions,

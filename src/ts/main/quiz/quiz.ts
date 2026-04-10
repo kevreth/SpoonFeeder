@@ -1,11 +1,5 @@
-import {
-  COURSE_NAME,
-  PREFIX_COURSE_FILE,
-  RANDOM,
-  TRANSITION,
-  clearCourseListing,
-  loadCourse,
-} from './mediator';
+import { COURSE_NAME, RANDOM, TRANSITION, clearCourseListing } from '../dataaccess/webstorage/webStorage';
+import { PREFIX_COURSE_FILE, loadCourse } from '../course/courseData/loadCourse';
 // necessary for adding a property to the
 // DOM window object
 interface Window {

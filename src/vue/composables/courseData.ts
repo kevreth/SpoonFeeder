@@ -3,8 +3,8 @@ import {
   COURSE_NAME,
   getCourseListing,
   setCourseListing
-} from '../../ts/main/dataaccess/mediator';
-import { remove } from '../../ts/main/quiz/mediator';
+} from '../../ts/main/dataaccess/index';
+import { remove } from '../../ts/main/quiz/index';
 //Vue interface to Course data.
 export class CourseData {
   public courseName: string;

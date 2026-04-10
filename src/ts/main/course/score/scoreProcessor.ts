@@ -4,14 +4,11 @@ import type {
   DivisionProcessor,
   ISummaryLine,
   SlideInterface,
-} from '../mediator';
-import {
-  SaveData,
-  Score,
-  SummaryLine,
-  initSlide,
-  percentCorrect,
-} from '../mediator';
+} from '../index';
+import { SaveData } from '../../dataaccess/saveData/saveData';
+import { SummaryLine } from './summaryLine';
+import { initSlide } from '../../slidetype/misc/slideFactory';
+import { percentCorrect } from '../../quiz/evaluate';
 export class ScoreProcessor
   implements DivisionProcessor<ISummaryLine, ISummaryLine, ISummaryLine>
 {
@@ -63,7 +60,7 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): ISummaryLine {
-    const exerciseLine = Score.exercise(
+    const exerciseLine = ScoreProcessor.exercise(
       slide,
       this.getResults,
       initSlide,
@@ -99,6 +96,25 @@ export class ScoreProcessor
   course_end(course: ISummaryLine, _retval: SummaryLine): void {
     course.calculate(percentCorrect);
     this.retval = course;
+  }
+  //Moved from Score class to break score <-> scoreProcessor cycle
+  public static exercise(
+    exercise: SlideInterface,
+    getResults: (slide: SlideInterface) => AnswerType,
+    initSlide: (exercise: SlideInterface) => SlideInterface | SlideInterface[],
+    createLine: (
+      slide: SlideInterface,
+      exerciseLine: ISummaryLine,
+      getResults: (slide: SlideInterface) => AnswerType
+    ) => void
+  ) {
+    const slides = initSlide(exercise);
+    const isArray = Array.isArray(slides);
+    const exerciseLine = new SummaryLine();
+    if (isArray)
+      slides.forEach((slide) => createLine(slide, exerciseLine, getResults));
+    else createLine(slides, exerciseLine, getResults);
+    return exerciseLine;
   }
   private static createLine(
     slide: SlideInterface,

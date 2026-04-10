@@ -1,11 +1,9 @@
-import type { Course } from '../mediator';
-import {
-  CourseFile,
-  Json,
-  ProcessJson,
-  getYaml2,
-  showSlides,
-} from '../mediator';
+import type { Course } from '../index';
+import { Json } from '../../dataaccess/saveData/saveFile';
+import { getYaml2 } from '../../dataaccess/persistence/filePersistence';
+import { showSlides } from '../../quiz/slideDispatcher';
+import { CourseFile } from './courseFile';
+import { ProcessJson } from './processJson';
 export const PREFIX_COURSE_FILE = '/courses/';
 const LISTING_FILE_NAME = PREFIX_COURSE_FILE + 'listing.yml';
 export function loadCourse(yamlFilename: string, doc: Document) {

@@ -1,5 +1,9 @@
-import type { SlideInterface, StateActions } from '../mediator';
-import { Json, SaveData, fillMatchingSlide, last } from '../mediator';
+import { last } from 'lodash';
+import type { SlideInterface } from '../../slide/slideInterface';
+import type { StateActions } from '../../quiz/stateActionDispatcher';
+import { Json } from './saveFile';
+import { SaveData } from './saveData';
+import { fillMatchingSlide } from '../../quiz/slideDispatcher';
 
 export class SaveDataDispatcher implements StateActions<SlideInterface> {
   constructor(public slides: SlideInterface[], public saves: SaveData[]) {}

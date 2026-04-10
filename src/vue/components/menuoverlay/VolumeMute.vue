@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { MUTE } from '../../../ts/main/dataaccess/mediator';
+import { MUTE } from '../../../ts/main/dataaccess/index';
 import { AudioPlayer } from '../../mediator';
 
 const props = defineProps({

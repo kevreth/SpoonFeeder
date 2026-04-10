@@ -1,19 +1,12 @@
-import type {
-  AdocVisitorInterface,
-  AnswerType,
-  MarkTypeGap,
-  SlideInterface,
-  SlideType,
-} from '../../mediator';
-import {
-  AdocVisitor,
-  CORRECT,
-  INCORRECT,
-  RANDOM,
-  SetWidths,
-  Slide,
-  shuffle,
-} from '../../mediator';
+import { shuffle } from 'lodash';
+import type { AnswerType, SlideInterface } from '../../../slide/slideInterface';
+import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
+import { Slide } from '../../../slide/slide';
+import type { AdocVisitorInterface } from '../../misc/adocVisitor';
+import { AdocVisitor } from '../../misc/adocVisitor';
+import { CORRECT, INCORRECT } from '../../misc/markupColors';
+import type { MarkTypeGap, SlideType } from '../../misc/slideType';
+import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 export class Gap extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = props);

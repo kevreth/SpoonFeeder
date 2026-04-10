@@ -1,4 +1,4 @@
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/index';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { CreateHtmlTypeMc } from '../mc/createHtmlMc';
 

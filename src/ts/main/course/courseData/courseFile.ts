@@ -1,4 +1,4 @@
-import type { Course } from '../mediator';
+import type { Course } from '../index';
 
 //Should be replaced by a Pinia store
 export class CourseFile {

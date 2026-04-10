@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { AnswerType, SELECT } from '../../../../main/slidetype/mediator';
+import { AnswerType, SELECT } from '../../../../main/slidetype/index';
 import { Select } from '../../../../main/slidetype/types/select/slideTypeSelect';
 import { SlideTest } from '../../slide.test';
 class Test extends SlideTest {

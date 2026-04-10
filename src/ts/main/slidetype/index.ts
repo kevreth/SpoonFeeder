@@ -9,20 +9,20 @@ export {
   isEqual,
   mathjax,
   shuffle,
-} from '../mediator';
+} from '../index';
 export {
   Evaluation,
   RANDOM,
   Slide,
   adoc2html,
   makeRow,
-} from '../slide/mediator';
+} from '../slide/index';
 export type {
   AnswerType,
   ResultReturnType,
   ResultType,
   SlideInterface,
-} from '../slide/mediator';
+} from '../slide/index';
 export { AdocVisitor } from './misc/adocVisitor';
 export type { AdocVisitorInterface } from './misc/adocVisitor';
 export { postRender } from './misc/createPageContent/postRender';

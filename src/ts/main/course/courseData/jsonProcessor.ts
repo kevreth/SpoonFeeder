@@ -3,25 +3,27 @@ import type {
   DivisionProcessor,
   Module,
   SlideInterface,
-} from '../mediator';
-import { RANDOM, shuffle } from '../mediator';
-import { ProcessJson } from './processJson';
+} from '../index';
+import { shuffle } from 'lodash';
+import { RANDOM } from '../../dataaccess/webstorage/webStorage';
+import { INFO } from '../../slidetype/types/info/factoryInfo';
+import { initSlide } from '../../slidetype/misc/slideFactory';
 
 export class JsonProcessor
   implements DivisionProcessor<void, void, SlideInterface[]>
 {
-  private addNewInfoSlide(
+  private _addNewInfoSlide(
     name: string,
     ctr: number,
     child: Division,
     retval: SlideInterface[]
   ) {
-    const title = ProcessJson.titleSlideText(name, ctr, child.name);
-    const slide = ProcessJson.addNewInfoSlide(title);
+    const title = _titleSlideText(name, ctr, child.name);
+    const slide = _createTitleSlide(title);
     retval.push(slide);
   }
   course_start(course: Division, retval: SlideInterface[]): void {
-    const slide = ProcessJson.addNewInfoSlide(course.name);
+    const slide = _createTitleSlide(course.name);
     retval.push(slide);
   }
   unit_start(
@@ -31,7 +33,7 @@ export class JsonProcessor
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _parent: void
   ): void {
-    this.addNewInfoSlide('Unit', ctr, child, retval);
+    this._addNewInfoSlide('Unit', ctr, child, retval);
   }
   lesson_start(
     child: Division,
@@ -40,7 +42,7 @@ export class JsonProcessor
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _parent: void
   ): void {
-    this.addNewInfoSlide('Lesson', ctr, child, retval);
+    this._addNewInfoSlide('Lesson', ctr, child, retval);
   }
   module_start(
     child: Module,
@@ -49,12 +51,12 @@ export class JsonProcessor
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _parent: void
   ): void {
-    this.addNewInfoSlide('Module', ctr, child, retval);
+    this._addNewInfoSlide('Module', ctr, child, retval);
     if (child.inst !== undefined)
-      ProcessJson.loadQuestions(retval, child.inst, false);
+      _loadQuestions(retval, child.inst, false);
     if (child.exercises !== undefined) {
       if (RANDOM.is()) child.exercises = shuffle(child.exercises);
-      ProcessJson.loadQuestions(retval, child.exercises, true);
+      _loadQuestions(retval, child.exercises, true);
     }
   }
   inst(
@@ -97,4 +99,33 @@ export class JsonProcessor
   course_end(_course: void, _retval: SlideInterface[]): void {
     return;
   }
+}
+
+function _createTitleSlide(text: string): SlideInterface {
+  const slide = INFO() as SlideInterface;
+  slide.immediateConclusion = true;
+  slide.txt = text;
+  return slide;
+}
+function _titleSlideText(type: string, counter: number, name: string): string {
+  counter++;
+  return `${type} ${counter}:<br>${name}`;
+}
+function _loadQuestions(
+  slides: Array<SlideInterface>,
+  questions: Array<SlideInterface>,
+  isExercise: boolean
+): void {
+  const processedSlides = new Array<SlideInterface>();
+  questions.forEach((item) => _initSlide2(item, isExercise, processedSlides));
+  slides.push(...processedSlides);
+}
+function _initSlide2(
+  item: SlideInterface,
+  isExercise: boolean,
+  processedSlides: SlideInterface[]
+) {
+  item.isExercise = isExercise;
+  const lides = initSlide(item);
+  processedSlides.push(...(Array.isArray(lides) ? lides : [lides]));
 }

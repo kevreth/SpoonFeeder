@@ -2,7 +2,7 @@ import type {
   AdocVisitorInterface,
   AnswerType,
   SlideInterface,
-} from '../mediator';
+} from '../index';
 export type MarkTypeGap = (corrArr: boolean[], doc: Document) => void;
 export type MarkTypeImap = (
   isCorrect: boolean,

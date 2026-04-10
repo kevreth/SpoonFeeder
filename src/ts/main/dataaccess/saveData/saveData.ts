@@ -1,17 +1,8 @@
-import type { AnswerType, SlideInterface } from '../mediator';
-import {
-  COURSE_NAME,
-  Json,
-  SaveDataDispatcher,
-  dispatch2,
-  explanation,
-  extend,
-  getSaveData,
-  isEqual,
-  last,
-  setSaveData,
-  timestampNow,
-} from '../mediator';
+import { isEqual, last } from 'lodash';
+import type { AnswerType, SlideInterface } from '../../slide/slideInterface';
+import { COURSE_NAME, getSaveData, setSaveData } from '../webstorage/webStorage';
+import { extend } from '../../index';
+import { timestampNow } from './date';
 export class SaveData {
   constructor(
     public readonly txt: string,
@@ -67,15 +58,5 @@ export class SaveData {
     const record1 = new SaveData(record0.txt, record0.result, record0.ts, true);
     SaveData.replace(record1, idx, saves);
   }
-  // Used only in Vue.
-  public static getCurrentSlide() {
-    const slide = getCurrentSlide();
-    slide.res = SaveData.getResults(slide);
-    const exp = explanation(slide);
-    return exp;
-  }
 }
-function getCurrentSlide(): SlideInterface {
-  const ss = new SaveDataDispatcher(Json.get(), SaveData.get());
-  return dispatch2(ss, false);
-}
+

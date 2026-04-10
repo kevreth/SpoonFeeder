@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/dist/Draggable';
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/index';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import type { CreateHtmlTypeSort } from './createHtmlSort';
 export type MakeSlidesTypeSort = (

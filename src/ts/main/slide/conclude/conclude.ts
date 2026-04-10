@@ -1,5 +1,7 @@
-import type { AnswerType, SlideInterface } from '../mediator';
-import { AudioPlayer, continueButton, showExplainIcon } from '../mediator';
+import type { AnswerType, SlideInterface } from '../index';
+import { AudioPlayer } from './audio';
+import { continueButton } from '../../quiz/buttons';
+import { showExplainIcon } from '../../quiz/explainIcon';
 function conclude(
   doc: Document,
   slide: SlideInterface,

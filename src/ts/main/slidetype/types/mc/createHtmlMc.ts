@@ -1,4 +1,4 @@
-import { makeButton } from '../../../quiz/mediator';
+import { makeButton } from '../../../quiz/buttons';
 
 export function createHtmlMc(question: string, options: string[]) {
   const accum = new Array<string>(

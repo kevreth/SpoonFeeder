@@ -1,7 +1,8 @@
-import type { ISummaryLine } from '../../quiz/mediator';
-import { ScoreProcessor, SummaryLine } from '../../quiz/mediator';
-import type { AnswerType, Course, SlideInterface } from '../mediator';
-import { process } from '../mediator';
+import type { ISummaryLine } from '../../quiz/index';
+import { ScoreProcessor } from '../score/scoreProcessor';
+import { SummaryLine } from '../score/summaryLine';
+import type { AnswerType, Course, SlideInterface } from '../index';
+import { process } from '../courseFileProcessor';
 export class Score {
   private static getSummaryLine(_course: Course): ISummaryLine {
     const courseLine: ISummaryLine = new SummaryLine();

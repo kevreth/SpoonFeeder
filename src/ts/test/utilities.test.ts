@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { expect, it } from 'vitest';
-import { difference, intersection, isEqual } from '../main/mediator';
+import { difference, intersection, isEqual } from '../main/index';
 import { getChildIds, remove } from '../main/quiz/utilities';
 const testArr1 = [1, 2];
 const testArr2 = [2, 3];

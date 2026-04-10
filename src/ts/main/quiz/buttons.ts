@@ -1,5 +1,5 @@
-import reloadPage from '../../../vue/composables/startOver';
-import { SaveData, showSlides } from '../dataaccess/mediator';
+import { SaveData } from '../dataaccess/saveData/saveData';
+import { showSlides } from './slideDispatcher';
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
 }
@@ -20,10 +20,4 @@ export function continueButton(doc: Document, txt: string): HTMLElement {
     showSlides(doc);
   });
   return continue_btn;
-}
-export function startOverButton(doc: Document) {
-  const startOverText = makeButton('startOver', 'startOver', 'Start Over');
-  doc.body.insertAdjacentHTML('beforeend', startOverText);
-  const startOver = doc.getElementById('startOver') as HTMLElement;
-  startOver.addEventListener('click', () => reloadPage());
 }

@@ -18,7 +18,7 @@ import MenuBtn from './MenuBtn.vue';
 import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue';
-import { SaveData } from '../../mediator';
+import { getCurrentSlideExplanation } from '../../../ts/main/dataaccess/saveData/currentSlide';
 import SumNavigation from './SumNavigation.vue';
 
 const isMuted = ref(false);
@@ -32,6 +32,6 @@ const content = ref('');
 // handle overlay pages
 function handleExpOverlay() {
   expOverlay.value = !expOverlay.value;
-  content.value = SaveData.getCurrentSlide();
+  content.value = getCurrentSlideExplanation();
 }
 </script>

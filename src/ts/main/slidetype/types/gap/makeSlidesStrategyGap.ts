@@ -1,4 +1,4 @@
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/index';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 import type { CreateHtmlTypeGap } from './createHtmlGap';

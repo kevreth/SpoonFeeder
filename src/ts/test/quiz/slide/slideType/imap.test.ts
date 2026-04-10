@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from 'vitest';
 import type { Slide } from '../../../../main/slide/slide';
-import { AnswerType, IMAP } from '../../../../main/slidetype/mediator';
+import { AnswerType, IMAP } from '../../../../main/slidetype/index';
 import { Imap } from '../../../../main/slidetype/types/imap/slideTypeImap';
 import { SlideTest } from '../../slide.test';
 

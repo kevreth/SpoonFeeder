@@ -1,4 +1,5 @@
-import { append, empty, postRender } from '../../mediator';
+import { postRender } from './postRender';
+import { append, empty } from '../../../index';
 //small file but broken out to solve circular dependencies
 export function createPageContent(html: string, doc: Document): void {
   const element = doc.getElementById('continueBtn') as HTMLElement | null;

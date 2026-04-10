@@ -1,4 +1,4 @@
-import type { AnswerType, SlideInterface } from './mediator';
+import type { AnswerType, SlideInterface } from './index';
 export function explanation(slide: SlideInterface): string {
   const answers = slide.ans as AnswerType;
   const exp = slide.exp;

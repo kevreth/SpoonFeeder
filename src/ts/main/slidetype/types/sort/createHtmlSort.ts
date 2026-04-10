@@ -1,5 +1,7 @@
-import { RANDOM, doneButton, shuffle } from '../../../quiz/mediator';
-import type { AnswerType } from '../../../slide/mediator';
+import { shuffle } from 'lodash';
+import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
+import { doneButton } from '../../../quiz/buttons';
+import type { AnswerType } from '../../../slide/slideInterface';
 
 export function createHtmlSort(inst: string, ans: AnswerType) {
   const retval = inst + '<br>\n';

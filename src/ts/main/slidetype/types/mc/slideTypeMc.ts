@@ -1,6 +1,8 @@
-import { removeListener, shuffle } from '../../../quiz/mediator';
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
-import { RANDOM, Slide } from '../../../slide/mediator';
+import { shuffle } from 'lodash';
+import { removeListener } from '../../../quiz/utilities';
+import type { AnswerType, SlideInterface } from '../../../slide/slideInterface';
+import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
+import { Slide } from '../../../slide/slide';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';

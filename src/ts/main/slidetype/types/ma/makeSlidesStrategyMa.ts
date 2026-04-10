@@ -1,4 +1,4 @@
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import type { AnswerType, SlideInterface } from '../../../slide/index';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import { INDETERMINANT } from '../../misc/markupColors';
 import type { SetWidthTypeSimple } from '../../strategies/setWidthsStrategy/setWidthsStrategy';

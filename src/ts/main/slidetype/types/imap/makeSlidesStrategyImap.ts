@@ -1,6 +1,6 @@
 import { SVGInjector } from '@tanem/svg-injector';
-import { getChildIds } from '../../../quiz/mediator';
-import type { AnswerType, SlideInterface } from '../../../slide/mediator';
+import { getChildIds } from '../../../quiz/utilities';
+import type { AnswerType, SlideInterface } from '../../../slide/index';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import type { CreateHtmlTypeImap } from './createHtmlImap';
 export type MakeSlidesTypeImap = (

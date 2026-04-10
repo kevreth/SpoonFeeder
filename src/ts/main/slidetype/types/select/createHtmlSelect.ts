@@ -1,4 +1,4 @@
-import { doneButton } from '../../../quiz/mediator';
+import { doneButton } from '../../../quiz/buttons';
 
 export function createHtmlSelect(instructions: string, txt: string[]) {
   const accum = new Array<string>(

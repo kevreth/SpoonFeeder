@@ -1,5 +1,5 @@
-import type { SlideInterface } from '../../../slide/mediator';
-import { Slide } from '../../../slide/mediator';
+import type { SlideInterface } from '../../../slide/index';
+import { Slide } from '../../../slide/index';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeSort, SlideType } from '../../misc/slideType';

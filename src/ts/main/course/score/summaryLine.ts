@@ -1,4 +1,4 @@
-import { percentCorrect } from '../../quiz/mediator';
+import { percentCorrect } from '../../quiz/evaluate';
 export interface ISummaryLine {
   name: string;
   score: number;

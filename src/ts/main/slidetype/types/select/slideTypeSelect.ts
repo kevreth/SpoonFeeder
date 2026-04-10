@@ -1,6 +1,6 @@
-import { difference, intersection } from '../../../quiz/mediator';
-import type { SlideInterface } from '../../../slide/mediator';
-import { Slide } from '../../../slide/mediator';
+import { difference, intersection } from 'lodash';
+import type { SlideInterface } from '../../../slide/slideInterface';
+import { Slide } from '../../../slide/slide';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';

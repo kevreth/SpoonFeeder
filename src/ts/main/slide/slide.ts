@@ -6,16 +6,14 @@ import type {
   MakeSlidesType,
   ResultReturnType,
   ResultType,
-} from '../slidetype/mediator';
-import type { SlideInterface } from './mediator';
-import {
-  AudioPlayer,
-  Evaluation,
-  MUTE,
-  SaveData,
-  adoc2html,
-  conclude2,
-} from './mediator';
+} from '../slidetype/index';
+import type { SlideInterface } from './index';
+import { Evaluation } from '../quiz/evaluation';
+import { MUTE } from '../dataaccess/webstorage/webStorage';
+import { SaveData } from '../dataaccess/saveData/saveData';
+import { AudioPlayer } from './conclude/audio';
+import { conclude2 } from './conclude/conclude';
+import { adoc2html } from './adoc2html';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
   txt = '';
