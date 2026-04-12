@@ -12,7 +12,7 @@ Spoony is an AI helper for Spoonfeeder. When students are stuck or have question
 - Make learning more interactive
 
 ### 1.3 Where Does Spoony Live?
-Spoony appears as a robot icon (bot.svg) in the top-left area of the screen, next to the volume/audio icon.
+Spoony appears as a robot icon (src/img/bot.svg) in the top-left area of the screen, next to the volume/audio icon.
 
 ---
 
