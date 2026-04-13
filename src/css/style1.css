@@ -265,6 +265,10 @@ table {
   display: block;
   margin: 0;
 }
+#content table {
+  background-color: rgba(8, 12, 28, 0.85);
+  border-collapse: collapse;
+}
 tbody {
   display: inline-block;
   /* padding: 5px 0 0 15px; */
@@ -286,20 +290,7 @@ tbody th {
   overflow-x: hidden;
   box-sizing: border-box;
 }
-/* .touch {
-  z-index: 2;
-}
-.touch::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  z-index: -1;
-} */
+
 #content {
   text-align: center;
   margin: 0 auto;
