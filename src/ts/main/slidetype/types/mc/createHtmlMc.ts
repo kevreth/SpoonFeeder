@@ -5,7 +5,8 @@ export function createHtmlMc(question: string, options: string[]) {
     `\n${question}<span style="display: block; margin-bottom: .5em;"></span>\n`
   );
   options.forEach((option, i) => {
-    accum.push(makeButton('btn' + i, 'questionBtn', option));
+    const cls = option.includes('<img') ? 'questionBtn imgBtn' : 'questionBtn';
+    accum.push(makeButton('btn' + i, cls, option));
   });
   return accum.join('\n');
 }

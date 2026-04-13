@@ -153,6 +153,12 @@ button {
   cursor: pointer;
 }
 
+button.imgBtn {
+  background: rgba(220, 225, 235, 0.15);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  border-radius: 8px;
+}
+
 .startOver {
   background: rgba(5, 10, 18, 0.95);
   border: 1px solid rgba(0, 191, 255, 0.5);
