@@ -283,6 +283,8 @@ tbody th {
   font-size: 0.9rem;
   overflow: hidden;
   text-align: center;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 /* .touch {
   z-index: 2;
@@ -305,6 +307,15 @@ tbody th {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#content pre,
+#content code {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .summary-wrapper {
