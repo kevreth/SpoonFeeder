@@ -157,6 +157,10 @@ button.imgBtn {
   background: rgba(220, 225, 235, 0.15);
   border: 1px solid rgba(0, 229, 255, 0.4);
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
 }
 
 .startOver {
@@ -271,13 +275,9 @@ table {
   display: block;
   margin: 0;
 }
-/* #content table {
-  background-color: rgba(8, 12, 28, 0.85);
-  border-collapse: collapse;
-} */
+
 tbody {
   display: inline-block;
-  /* padding: 5px 0 0 15px; */
 }
 tbody tr td:first-child {
   text-align: left;
