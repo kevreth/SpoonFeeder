@@ -533,7 +533,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:^10.0.1":
+"@eslint/js@npm:10.0.1":
   version: 10.0.1
   resolution: "@eslint/js@npm:10.0.1"
   peerDependencies:
@@ -675,7 +675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconfu/svg-inject@npm:^2.0.1":
+"@iconfu/svg-inject@npm:2.0.1":
   version: 2.0.1
   resolution: "@iconfu/svg-inject@npm:2.0.1"
   checksum: 10c0/9d1b32fd4c1189ce16bbcaf208239463b1036fc33606cdcc634c343e396ae5ce2c17d94b94dbf0e37a255a960f42a4c6a03e6072fe6bf1e8f98a6491bbadcc8d
@@ -1033,7 +1033,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@intlify/vite-plugin-vue-i18n@npm:^7.0.0":
+"@intlify/vite-plugin-vue-i18n@npm:7.0.0":
   version: 7.0.0
   resolution: "@intlify/vite-plugin-vue-i18n@npm:7.0.0"
   dependencies:
@@ -1555,7 +1555,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quasar/app-vite@npm:^2.6.0":
+"@quasar/app-vite@npm:2.6.0":
   version: 2.6.0
   resolution: "@quasar/app-vite@npm:2.6.0"
   dependencies:
@@ -1627,7 +1627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@quasar/extras@npm:^1.18.0":
+"@quasar/extras@npm:1.18.0":
   version: 1.18.0
   resolution: "@quasar/extras@npm:1.18.0"
   checksum: 10c0/deb795bbca27b2ea0fad47c224af2029459b1896b06fdc3d2d58ef9fe014968508f28005b4f96246461fdbcb1e75ccbfe6fb193095787d473627f9af1c9dabb6
@@ -1798,7 +1798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:^1.16.1":
+"@rushstack/eslint-patch@npm:1.16.1":
   version: 1.16.1
   resolution: "@rushstack/eslint-patch@npm:1.16.1"
   checksum: 10c0/4928bac90e52ed15e3a9a2a5bcd89e69b24141773fc3689aa6f1ee8c4d2576c4f0fe0fb1be080b7989cc44dfef7c52cf0a1940f8ded9e78a464cf4bc76e8cab3
@@ -1812,7 +1812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanem/svg-injector@npm:^11.3.2":
+"@tanem/svg-injector@npm:11.3.2":
   version: 11.3.2
   resolution: "@tanem/svg-injector@npm:11.3.2"
   dependencies:
@@ -1972,21 +1972,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:^4.0.0":
+"@types/jquery@npm:4.0.0":
   version: 4.0.0
   resolution: "@types/jquery@npm:4.0.0"
   checksum: 10c0/3e453accf2786e6ea5a5fb4b7f8c2298f42d3bc22253cc5a14f4d4a1a5ccc461db7af5a5df92a0b0c03c75a1968d2deda06597b63f8118613f88f27452911275
   languageName: node
   linkType: hard
 
-"@types/js-yaml@npm:^4.0.9":
+"@types/js-yaml@npm:4.0.9":
   version: 4.0.9
   resolution: "@types/js-yaml@npm:4.0.9"
   checksum: 10c0/24de857aa8d61526bbfbbaa383aa538283ad17363fcd5bb5148e2c7f604547db36646440e739d78241ed008702a8920665d1add5618687b6743858fae00da211
   languageName: node
   linkType: hard
 
-"@types/jsdom@npm:^28.0.1":
+"@types/jsdom@npm:28.0.1":
   version: 28.0.1
   resolution: "@types/jsdom@npm:28.0.1"
   dependencies:
@@ -2005,14 +2005,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.17.24":
+"@types/lodash@npm:4.17.24":
   version: 4.17.24
   resolution: "@types/lodash@npm:4.17.24"
   checksum: 10c0/b72f60d4daacdad1fa643edb3faba204c02a01eb1ac00a83ff73496a6d236fc55e459c06106e8ced42277dba932d087d8fc090f8de4ef590d3f91e6d6f7ce85a
   languageName: node
   linkType: hard
 
-"@types/marked@npm:^6.0.0":
+"@types/marked@npm:6.0.0":
   version: 6.0.0
   resolution: "@types/marked@npm:6.0.0"
   dependencies:
@@ -2021,7 +2021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mathjax@npm:^0.0.40":
+"@types/mathjax@npm:0.0.40":
   version: 0.0.40
   resolution: "@types/mathjax@npm:0.0.40"
   checksum: 10c0/64cf1f2853298be06149e13fedba0836066d1cd880ac1f968a17fce3aaf36490cf054e408abda885f937a8b1c3f6606c8c0e2b85dbd8a81bbadd4b2e80cba419
@@ -2044,7 +2044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^25.6.0":
+"@types/node@npm:25.6.0":
   version: 25.6.0
   resolution: "@types/node@npm:25.6.0"
   dependencies:
@@ -2155,7 +2155,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:8.58.2, @typescript-eslint/eslint-plugin@npm:^8.58.2":
+"@typescript-eslint/eslint-plugin@npm:8.58.2":
   version: 8.58.2
   resolution: "@typescript-eslint/eslint-plugin@npm:8.58.2"
   dependencies:
@@ -2191,7 +2191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:8.58.2, @typescript-eslint/parser@npm:^8.58.2":
+"@typescript-eslint/parser@npm:8.58.2":
   version: 8.58.2
   resolution: "@typescript-eslint/parser@npm:8.58.2"
   dependencies:
@@ -2685,7 +2685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/eslint-config-prettier@npm:^10.2.0":
+"@vue/eslint-config-prettier@npm:10.2.0":
   version: 10.2.0
   resolution: "@vue/eslint-config-prettier@npm:10.2.0"
   dependencies:
@@ -2698,7 +2698,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/eslint-config-typescript@npm:^14.7.0":
+"@vue/eslint-config-typescript@npm:14.7.0":
   version: 14.7.0
   resolution: "@vue/eslint-config-typescript@npm:14.7.0"
   dependencies:
@@ -2789,7 +2789,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/test-utils@npm:^2.4.6":
+"@vue/test-utils@npm:2.4.6":
   version: 2.4.6
   resolution: "@vue/test-utils@npm:2.4.6"
   dependencies:
@@ -2799,7 +2799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/tsconfig@npm:^0.9.1":
+"@vue/tsconfig@npm:0.9.1":
   version: 0.9.1
   resolution: "@vue/tsconfig@npm:0.9.1"
   peerDependencies:
@@ -3092,7 +3092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"asciidoctor@npm:^3.0.4":
+"asciidoctor@npm:3.0.4":
   version: 3.0.4
   resolution: "asciidoctor@npm:3.0.4"
   dependencies:
@@ -3205,7 +3205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.5.0":
+"autoprefixer@npm:10.5.0":
   version: 10.5.0
   resolution: "autoprefixer@npm:10.5.0"
   dependencies:
@@ -3245,7 +3245,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.15.0":
+"axios@npm:1.15.0, axios@npm:^1.15.0":
   version: 1.15.0
   resolution: "axios@npm:1.15.0"
   dependencies:
@@ -4100,7 +4100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^15.14.0":
+"cypress@npm:15.14.0":
   version: 15.14.0
   resolution: "cypress@npm:15.14.0"
   dependencies:
@@ -4391,7 +4391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"downdoc@npm:^1.1.0-stable":
+"downdoc@npm:1.1.0-stable":
   version: 1.1.0-stable
   resolution: "downdoc@npm:1.1.0-stable"
   bin:
@@ -4400,7 +4400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dpdm@npm:^4.0.1":
+"dpdm@npm:4.0.1":
   version: 4.0.1
   resolution: "dpdm@npm:4.0.1"
   dependencies:
@@ -4825,6 +4825,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-prettier@npm:10.1.8":
+  version: 10.1.8
+  resolution: "eslint-config-prettier@npm:10.1.8"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: 10c0/e1bcfadc9eccd526c240056b1e59c5cd26544fe59feb85f38f4f1f116caed96aea0b3b87868e68b3099e55caaac3f2e5b9f58110f85db893e83a332751192682
+  languageName: node
+  linkType: hard
+
 "eslint-config-prettier@npm:^10.0.1":
   version: 10.1.5
   resolution: "eslint-config-prettier@npm:10.1.5"
@@ -4836,18 +4847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^10.1.8":
-  version: 10.1.8
-  resolution: "eslint-config-prettier@npm:10.1.8"
-  peerDependencies:
-    eslint: ">=7.0.0"
-  bin:
-    eslint-config-prettier: bin/cli.js
-  checksum: 10c0/e1bcfadc9eccd526c240056b1e59c5cd26544fe59feb85f38f4f1f116caed96aea0b3b87868e68b3099e55caaac3f2e5b9f58110f85db893e83a332751192682
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-cypress@npm:^6.3.1":
+"eslint-plugin-cypress@npm:6.3.1":
   version: 6.3.1
   resolution: "eslint-plugin-cypress@npm:6.3.1"
   dependencies:
@@ -4878,7 +4878,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:^10.8.0":
+"eslint-plugin-vue@npm:10.8.0":
   version: 10.8.0
   resolution: "eslint-plugin-vue@npm:10.8.0"
   dependencies:
@@ -4944,7 +4944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.2.0":
+"eslint@npm:10.2.0":
   version: 10.2.0
   resolution: "eslint@npm:10.2.0"
   dependencies:
@@ -5585,7 +5585,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs@npm:^0.0.1-security":
+"fs@npm:0.0.1-security":
   version: 0.0.1-security
   resolution: "fs@npm:0.0.1-security"
   checksum: 10c0/e0c0b585ec6f7483d63d067215d9d6bb2e0dba5912060d32554c8e566a0e22ee65e4c2a2b0567476efbbfb47682554b4711d69cab49950d01f227a3dfa7d671a
@@ -5815,10 +5815,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gsap@npm:^3.15.0":
+"gsap@npm:3.15.0":
   version: 3.15.0
   resolution: "gsap@npm:3.15.0"
   checksum: 10c0/5d86de72cb0bd6b20502c34c329a83a7d679979731bb465164407b7a5225aa61d612beee740eea36258622897c116cd2ca35320d530b7cf68bad62522361fcf7
+  languageName: node
+  linkType: hard
+
+"handlebars@npm:4.7.9":
+  version: 4.7.9
+  resolution: "handlebars@npm:4.7.9"
+  dependencies:
+    minimist: "npm:^1.2.5"
+    neo-async: "npm:^2.6.2"
+    source-map: "npm:^0.6.1"
+    uglify-js: "npm:^3.1.4"
+    wordwrap: "npm:^1.0.0"
+  dependenciesMeta:
+    uglify-js:
+      optional: true
+  bin:
+    handlebars: bin/handlebars
+  checksum: 10c0/22f8105a7e68e81aff2662bb434edf05f757d21d850731d71cec886d69c10cd33d3c43e34b2892968ec62de8241611851d3d0674c8ef324ea3e01dc66262faa9
   languageName: node
   linkType: hard
 
@@ -5837,24 +5855,6 @@ __metadata:
   bin:
     handlebars: bin/handlebars
   checksum: 10c0/7aff423ea38a14bb379316f3857fe0df3c5d66119270944247f155ba1f08e07a92b340c58edaa00cfe985c21508870ee5183e0634dcb53dd405f35c93ef7f10d
-  languageName: node
-  linkType: hard
-
-"handlebars@npm:^4.7.9":
-  version: 4.7.9
-  resolution: "handlebars@npm:4.7.9"
-  dependencies:
-    minimist: "npm:^1.2.5"
-    neo-async: "npm:^2.6.2"
-    source-map: "npm:^0.6.1"
-    uglify-js: "npm:^3.1.4"
-    wordwrap: "npm:^1.0.0"
-  dependenciesMeta:
-    uglify-js:
-      optional: true
-  bin:
-    handlebars: bin/handlebars
-  checksum: 10c0/22f8105a7e68e81aff2662bb434edf05f757d21d850731d71cec886d69c10cd33d3c43e34b2892968ec62de8241611851d3d0674c8ef324ea3e01dc66262faa9
   languageName: node
   linkType: hard
 
@@ -5932,7 +5932,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"highlight.js@npm:^11.11.1":
+"highlight.js@npm:11.11.1":
   version: 11.11.1
   resolution: "highlight.js@npm:11.11.1"
   checksum: 10c0/40f53ac19dac079891fcefd5bd8a21cf2e8931fd47da5bd1dca73b7e4375c1defed0636fc39120c639b9c44119b7d110f7f0c15aa899557a5a1c8910f3c0144c
@@ -6078,7 +6078,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iframe-resizer@npm:^5.5.9":
+"iframe-resizer@npm:5.5.9":
   version: 5.5.9
   resolution: "iframe-resizer@npm:5.5.9"
   dependencies:
@@ -6668,7 +6668,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:^4.0.0":
+"jquery@npm:4.0.0":
   version: 4.0.0
   resolution: "jquery@npm:4.0.0"
   checksum: 10c0/06d8d0f51121af5a691f8b59c74823157bb5b60eea915b30eaa920d6c0ffd91e60ba81e9b97bd8203f331f9dd8d0ec9a4b010935ea314bdd2f15453c29bc780b
@@ -6706,7 +6706,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:^4.1.1":
+"js-yaml@npm:4.1.1":
   version: 4.1.1
   resolution: "js-yaml@npm:4.1.1"
   dependencies:
@@ -6731,7 +6731,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdom@npm:^29.0.2":
+"jsdom@npm:29.0.2":
   version: 29.0.2
   resolution: "jsdom@npm:29.0.2"
   dependencies:
@@ -7102,17 +7102,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash@npm:4.18.1, lodash@npm:^4.17.23, lodash@npm:^4.18.1":
+  version: 4.18.1
+  resolution: "lodash@npm:4.18.1"
+  checksum: 10c0/757228fc68805c59789e82185135cf85f05d0b2d3d54631d680ca79ec21944ec8314d4533639a14b8bcfbd97a517e78960933041a5af17ecb693ec6eecb99a27
+  languageName: node
+  linkType: hard
+
 "lodash@npm:^4.17.15, lodash@npm:^4.17.20":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
-  languageName: node
-  linkType: hard
-
-"lodash@npm:^4.17.23, lodash@npm:^4.18.1":
-  version: 4.18.1
-  resolution: "lodash@npm:4.18.1"
-  checksum: 10c0/757228fc68805c59789e82185135cf85f05d0b2d3d54631d680ca79ec21944ec8314d4533639a14b8bcfbd97a517e78960933041a5af17ecb693ec6eecb99a27
   languageName: node
   linkType: hard
 
@@ -7217,7 +7217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^18.0.0":
+"marked@npm:18.0.0":
   version: 18.0.0
   resolution: "marked@npm:18.0.0"
   bin:
@@ -7233,7 +7233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mathjax-full@npm:^3.2.2":
+"mathjax-full@npm:3.2.2":
   version: 3.2.2
   resolution: "mathjax-full@npm:3.2.2"
   dependencies:
@@ -7539,6 +7539,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mnemonist@npm:0.40.3":
+  version: 0.40.3
+  resolution: "mnemonist@npm:0.40.3"
+  dependencies:
+    obliterator: "npm:^2.0.4"
+  checksum: 10c0/8c061d692dc4c45b04045e710e696f94ce6ea819769ed378636523e021ae2bb397945513e9265757b6f2fd29713b7315bc6bb74452df5508fc270bf49f1d1636
+  languageName: node
+  linkType: hard
+
 "mnemonist@npm:^0.39.2":
   version: 0.39.8
   resolution: "mnemonist@npm:0.39.8"
@@ -7548,16 +7557,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mnemonist@npm:^0.40.3":
-  version: 0.40.3
-  resolution: "mnemonist@npm:0.40.3"
-  dependencies:
-    obliterator: "npm:^2.0.4"
-  checksum: 10c0/8c061d692dc4c45b04045e710e696f94ce6ea819769ed378636523e021ae2bb397945513e9265757b6f2fd29713b7315bc6bb74452df5508fc270bf49f1d1636
-  languageName: node
-  linkType: hard
-
-"mobile-drag-drop@npm:^3.0.0-rc.0":
+"mobile-drag-drop@npm:3.0.0-rc.0":
   version: 3.0.0-rc.0
   resolution: "mobile-drag-drop@npm:3.0.0-rc.0"
   checksum: 10c0/898e42d1d0871a12e4ced3110fec7b1a9365b690971b37b35282f90bd8c74b1c89039e39abf20f48273bf0dc2efe1e2302e9f306b945e385ddfb3eb9f3003a8a
@@ -7730,7 +7730,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize.css@npm:^8.0.1":
+"normalize.css@npm:8.0.1":
   version: 8.0.1
   resolution: "normalize.css@npm:8.0.1"
   checksum: 10c0/4ddf56d1af5ca755fa5e692e718316d8758ecb792aa96e1ad206824b5810a043763d681d6f7697d46573515f5e9690038b4c91a95c1997567128815545fb8cd7
@@ -7747,7 +7747,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all@npm:^4.1.5":
+"npm-run-all@npm:4.1.5":
   version: 4.1.5
   resolution: "npm-run-all@npm:4.1.5"
   dependencies:
@@ -8211,7 +8211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pinia@npm:^3.0.4":
+"pinia@npm:3.0.4":
   version: 3.0.4
   resolution: "pinia@npm:3.0.4"
   dependencies:
@@ -8262,7 +8262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"polyfill-library@npm:^4.8.0":
+"polyfill-library@npm:4.8.0":
   version: 4.8.0
   resolution: "polyfill-library@npm:4.8.0"
   dependencies:
@@ -8302,7 +8302,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.10":
+"postcss@npm:8.5.10":
   version: 8.5.10
   resolution: "postcss@npm:8.5.10"
   dependencies:
@@ -8347,7 +8347,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-organize-imports@npm:^4.3.0":
+"prettier-plugin-organize-imports@npm:4.3.0":
   version: 4.3.0
   resolution: "prettier-plugin-organize-imports@npm:4.3.0"
   peerDependencies:
@@ -8361,7 +8361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.8.3":
+"prettier@npm:3.8.3":
   version: 3.8.3
   resolution: "prettier@npm:3.8.3"
   bin:
@@ -8631,7 +8631,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"quasar-app-extension-qhierarchy@npm:^1.0.15":
+"quasar-app-extension-qhierarchy@npm:1.0.15":
   version: 1.0.15
   resolution: "quasar-app-extension-qhierarchy@npm:1.0.15"
   dependencies:
@@ -8647,7 +8647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"quasar@npm:^2.19.3":
+"quasar@npm:2.19.3":
   version: 2.19.3
   resolution: "quasar@npm:2.19.3"
   checksum: 10c0/575a22741b329b77e1b5d819aa126c02ffe51bee9790627a38cf5dcce4aa4316e73aaf0768bdebbd34ddb21ee8cd11703b82932ae3dd5bf552fdcaa8c8649ec2
@@ -9678,71 +9678,72 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "spoonfeeder@workspace:."
   dependencies:
-    "@eslint/js": "npm:^10.0.1"
-    "@iconfu/svg-inject": "npm:^2.0.1"
-    "@intlify/vite-plugin-vue-i18n": "npm:^7.0.0"
-    "@quasar/app-vite": "npm:^2.6.0"
-    "@quasar/extras": "npm:^1.18.0"
-    "@rushstack/eslint-patch": "npm:^1.16.1"
-    "@tanem/svg-injector": "npm:^11.3.2"
-    "@types/jquery": "npm:^4.0.0"
-    "@types/js-yaml": "npm:^4.0.9"
-    "@types/jsdom": "npm:^28.0.1"
-    "@types/lodash": "npm:^4.17.24"
-    "@types/marked": "npm:^6.0.0"
-    "@types/mathjax": "npm:^0.0.40"
-    "@types/node": "npm:^25.6.0"
-    "@typescript-eslint/eslint-plugin": "npm:^8.58.2"
-    "@typescript-eslint/parser": "npm:^8.58.2"
-    "@vue/eslint-config-prettier": "npm:^10.2.0"
-    "@vue/eslint-config-typescript": "npm:^14.7.0"
-    "@vue/test-utils": "npm:^2.4.6"
-    "@vue/tsconfig": "npm:^0.9.1"
-    asciidoctor: "npm:^3.0.4"
-    autoprefixer: "npm:^10.5.0"
-    axios: "npm:^1.15.0"
-    cypress: "npm:^15.14.0"
-    downdoc: "npm:^1.1.0-stable"
-    dpdm: "npm:^4.0.1"
-    eslint: "npm:^10.2.0"
-    eslint-config-prettier: "npm:^10.1.8"
-    eslint-plugin-cypress: "npm:^6.3.1"
-    eslint-plugin-vue: "npm:^10.8.0"
-    fs: "npm:^0.0.1-security"
-    gsap: "npm:^3.15.0"
-    handlebars: "npm:^4.7.9"
-    highlight.js: "npm:^11.11.1"
-    iframe-resizer: "npm:^5.5.9"
-    jquery: "npm:^4.0.0"
-    js-yaml: "npm:^4.1.1"
-    jsdom: "npm:^29.0.2"
-    lodash: "npm:^4.18.1"
-    marked: "npm:^18.0.0"
-    mathjax-full: "npm:^3.2.2"
-    mnemonist: "npm:^0.40.3"
-    mobile-drag-drop: "npm:^3.0.0-rc.0"
-    normalize.css: "npm:^8.0.1"
+    "@eslint/js": "npm:10.0.1"
+    "@iconfu/svg-inject": "npm:2.0.1"
+    "@intlify/vite-plugin-vue-i18n": "npm:7.0.0"
+    "@quasar/app-vite": "npm:2.6.0"
+    "@quasar/extras": "npm:1.18.0"
+    "@rushstack/eslint-patch": "npm:1.16.1"
+    "@tanem/svg-injector": "npm:11.3.2"
+    "@types/jquery": "npm:4.0.0"
+    "@types/js-yaml": "npm:4.0.9"
+    "@types/jsdom": "npm:28.0.1"
+    "@types/lodash": "npm:4.17.24"
+    "@types/marked": "npm:6.0.0"
+    "@types/mathjax": "npm:0.0.40"
+    "@types/node": "npm:25.6.0"
+    "@typescript-eslint/eslint-plugin": "npm:8.58.2"
+    "@typescript-eslint/parser": "npm:8.58.2"
+    "@vue/eslint-config-prettier": "npm:10.2.0"
+    "@vue/eslint-config-typescript": "npm:14.7.0"
+    "@vue/test-utils": "npm:2.4.6"
+    "@vue/tsconfig": "npm:0.9.1"
+    asciidoctor: "npm:3.0.4"
+    autoprefixer: "npm:10.5.0"
+    axios: "npm:1.15.0"
+    cypress: "npm:15.14.0"
+    downdoc: "npm:1.1.0-stable"
+    dpdm: "npm:4.0.1"
+    eslint: "npm:10.2.0"
+    eslint-config-prettier: "npm:10.1.8"
+    eslint-plugin-cypress: "npm:6.3.1"
+    eslint-plugin-vue: "npm:10.8.0"
+    fs: "npm:0.0.1-security"
+    gsap: "npm:3.15.0"
+    handlebars: "npm:4.7.9"
+    highlight.js: "npm:11.11.1"
+    iframe-resizer: "npm:5.5.9"
+    jquery: "npm:4.0.0"
+    js-yaml: "npm:4.1.1"
+    jsdom: "npm:29.0.2"
+    lodash: "npm:4.18.1"
+    marked: "npm:18.0.0"
+    mathjax-full: "npm:3.2.2"
+    mnemonist: "npm:0.40.3"
+    mobile-drag-drop: "npm:3.0.0-rc.0"
+    normalize.css: "npm:8.0.1"
     npm-check-updates: "npm:21.0.2"
-    npm-run-all: "npm:^4.1.5"
-    pinia: "npm:^3.0.4"
-    polyfill-library: "npm:^4.8.0"
-    postcss: "npm:^8.5.10"
-    prettier: "npm:^3.8.3"
-    prettier-plugin-organize-imports: "npm:^4.3.0"
-    quasar: "npm:^2.19.3"
-    quasar-app-extension-qhierarchy: "npm:^1.0.15"
-    start-server-and-test: "npm:^3.0.2"
-    typed.js: "npm:^3.0.0"
+    npm-run-all: "npm:4.1.5"
+    pinia: "npm:3.0.4"
+    polyfill-library: "npm:4.8.0"
+    postcss: "npm:8.5.10"
+    prettier: "npm:3.8.3"
+    prettier-plugin-organize-imports: "npm:4.3.0"
+    quasar: "npm:2.19.3"
+    quasar-app-extension-qhierarchy: "npm:1.0.15"
+    start-server-and-test: "npm:3.0.2"
+    typed.js: "npm:3.0.0"
     typescript: "npm:6.0.3"
-    typescript-eslint: "npm:^8.58.2"
-    vara: "npm:^1.4.1"
-    vitest: "npm:^4.1.4"
-    vitest-mock-extended: "npm:^4.0.0"
-    vue: "npm:^3.5.32"
-    vue-i18n: "npm:^11.3.2"
-    vue-router: "npm:^5.0.4"
-    vue-tsc: "npm:^3.2.6"
-    vuedraggable: "npm:^4.1.0"
+    typescript-eslint: "npm:8.58.2"
+    vara: "npm:1.4.1"
+    vitest: "npm:4.1.4"
+    vitest-mock-extended: "npm:4.0.0"
+    vue: "npm:3.5.32"
+    vue-eslint-parser: "npm:^10.4.0"
+    vue-i18n: "npm:11.3.2"
+    vue-router: "npm:5.0.4"
+    vue-tsc: "npm:3.2.6"
+    vuedraggable: "npm:4.1.0"
   languageName: unknown
   linkType: soft
 
@@ -9797,7 +9798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"start-server-and-test@npm:^3.0.2":
+"start-server-and-test@npm:3.0.2":
   version: 3.0.2
   resolution: "start-server-and-test@npm:3.0.2"
   dependencies:
@@ -10489,10 +10490,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typed.js@npm:^3.0.0":
+"typed.js@npm:3.0.0":
   version: 3.0.0
   resolution: "typed.js@npm:3.0.0"
   checksum: 10c0/b195f5d215907e8ad9c6c2e524a56e9a093e325cd9ca4af7efaf3d5dd213a46aec424408a5d5bccd57d735eb784f0b7c38059ea7cc4106c8284e3833c31c851a
+  languageName: node
+  linkType: hard
+
+"typescript-eslint@npm:8.58.2":
+  version: 8.58.2
+  resolution: "typescript-eslint@npm:8.58.2"
+  dependencies:
+    "@typescript-eslint/eslint-plugin": "npm:8.58.2"
+    "@typescript-eslint/parser": "npm:8.58.2"
+    "@typescript-eslint/typescript-estree": "npm:8.58.2"
+    "@typescript-eslint/utils": "npm:8.58.2"
+  peerDependencies:
+    eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+    typescript: ">=4.8.4 <6.1.0"
+  checksum: 10c0/6065fe90674e89100b3192716fc641d80de4b586fe244c00e2c97d47923166ab3286f895685bf9570919c8606724f1196486f09e7841ca73bdf05d5df0752945
   languageName: node
   linkType: hard
 
@@ -10508,21 +10524,6 @@ __metadata:
     eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
     typescript: ">=4.8.4 <6.1.0"
   checksum: 10c0/26a71e120e216bdd5c5535043bbbd90c15c23f1d25e130677c3f2007e42501427049b98a874ad6d2c9cb785bf6ce2f2e71458f9db918dcb341f4898d771ff26f
-  languageName: node
-  linkType: hard
-
-"typescript-eslint@npm:^8.58.2":
-  version: 8.58.2
-  resolution: "typescript-eslint@npm:8.58.2"
-  dependencies:
-    "@typescript-eslint/eslint-plugin": "npm:8.58.2"
-    "@typescript-eslint/parser": "npm:8.58.2"
-    "@typescript-eslint/typescript-estree": "npm:8.58.2"
-    "@typescript-eslint/utils": "npm:8.58.2"
-  peerDependencies:
-    eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
-    typescript: ">=4.8.4 <6.1.0"
-  checksum: 10c0/6065fe90674e89100b3192716fc641d80de4b586fe244c00e2c97d47923166ab3286f895685bf9570919c8606724f1196486f09e7841ca73bdf05d5df0752945
   languageName: node
   linkType: hard
 
@@ -10752,7 +10753,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vara@npm:^1.4.1":
+"vara@npm:1.4.1":
   version: 1.4.1
   resolution: "vara@npm:1.4.1"
   checksum: 10c0/3b30398c7bf32f3b1ec6dca89014dc19839f0a7a79b1dae9d12551e52f5cd2ee09a83124b94e07e61045dd6dec427c6cd9e3528ae83ea4268bbe7efed96cda62
@@ -10841,7 +10842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest-mock-extended@npm:^4.0.0":
+"vitest-mock-extended@npm:4.0.0":
   version: 4.0.0
   resolution: "vitest-mock-extended@npm:4.0.0"
   dependencies:
@@ -10853,7 +10854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^4.1.4":
+"vitest@npm:4.1.4":
   version: 4.1.4
   resolution: "vitest@npm:4.1.4"
   dependencies:
@@ -10958,7 +10959,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-i18n@npm:^11.3.2":
+"vue-i18n@npm:11.3.2":
   version: 11.3.2
   resolution: "vue-i18n@npm:11.3.2"
   dependencies:
@@ -10972,7 +10973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-router@npm:^5.0.4":
+"vue-router@npm:5.0.4":
   version: 5.0.4
   resolution: "vue-router@npm:5.0.4"
   dependencies:
@@ -11009,7 +11010,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:^3.2.6":
+"vue-tsc@npm:3.2.6":
   version: 3.2.6
   resolution: "vue-tsc@npm:3.2.6"
   dependencies:
@@ -11023,7 +11024,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:^3.5.32":
+"vue@npm:3.5.32":
   version: 3.5.32
   resolution: "vue@npm:3.5.32"
   dependencies:
@@ -11041,7 +11042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuedraggable@npm:^4.1.0":
+"vuedraggable@npm:4.1.0":
   version: 4.1.0
   resolution: "vuedraggable@npm:4.1.0"
   dependencies:
