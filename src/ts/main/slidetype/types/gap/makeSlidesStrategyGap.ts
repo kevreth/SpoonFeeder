@@ -8,7 +8,7 @@ export type MakeSlidesTypeGap = (
   createHtml: CreateHtmlTypeGap,
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
-  slide: SlideInterface
+  slide: SlideInterface,
 ) => void;
 //===the main divs are
 //fills: the strings to drag into the gaps
@@ -21,7 +21,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
   createHtml,
   maxWidthStrategy,
   doc,
-  slide
+  slide,
 ): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
@@ -33,6 +33,15 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
     setgap(ctr, doc, txt, slide);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
+  const fillEls = doc.querySelectorAll('.fills');
+  let maxWidth = 0;
+  fillEls.forEach((el) => {
+    const w = (el as HTMLElement).offsetWidth;
+    if (w > maxWidth) maxWidth = w;
+  });
+  fillEls.forEach((el) => {
+    (el as HTMLElement).style.width = maxWidth + 'px';
+  });
   setupTouchDnD(doc, slide, txt);
 };
 export function fills(ans: AnswerType): string {
@@ -40,7 +49,7 @@ export function fills(ans: AnswerType): string {
   (ans as string[]).forEach((currentFills, ctr) => {
     const fill_html =
       `\n    <span id="fill${ctr}" ` +
-      `class="fills" draggable="true">${currentFills} &nbsp;&nbsp;</span>`;
+      `class="fills" draggable="true">${currentFills}</span>`;
     fill_accum = fill_accum.concat(fill_html);
   });
   return fill_accum;
@@ -64,11 +73,20 @@ function setgap(
   ctr: number,
   doc: Document,
   txt: string,
-  slide: SlideInterface
+  slide: SlideInterface,
 ): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
-  id.style.display = 'inline-block';
-  id.style.borderBottom = '2px solid';
+  id.style.cssText = `
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    border: 2px dashed rgba(0,191,255,0.3);
+    border-radius: 12px;
+    padding: 0 6px;
+    vertical-align: middle;
+    margin: 0 4px;
+  `;
   id.dataset.number = ctr.toString();
   id.ondragstart = (e) => {
     e.preventDefault();
@@ -97,6 +115,10 @@ function setgap(
     }
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
+    const gapEl = e.target as HTMLElement;
+    gapEl.style.background = '#E6F1FB';
+    gapEl.style.borderColor = '#378ADD';
+    gapEl.style.borderStyle = 'dashed';
   };
 }
 function evaluate(doc: Document): Array<string> {
@@ -112,20 +134,46 @@ function drop(
   doc: Document,
   gapNumber: string,
   fillText: string,
-  fillNumber: string
+  fillNumber: string,
 ) {
   const gap = doc.getElementById('gap' + gapNumber) as HTMLElement;
-  gap.innerHTML = `<span id = "ans${gapNumber}" class="ans">${fillText}</span>`;
+  const previousId = gap.dataset.filledBy;
+  if (previousId) {
+    const prev = doc.getElementById(previousId);
+    if (prev) prev.style.visibility = 'visible';
+  }
+  gap.dataset.filledBy = 'fill' + fillNumber;
+  gap.innerHTML = `<span id="ans${gapNumber}" class="ans">${fillText}</span>`;
+  const ansSpan = doc.getElementById('ans' + gapNumber) as HTMLElement;
+  if (ansSpan) {
+    ansSpan.style.color = '#0C447C';
+    ansSpan.style.fontWeight = '500';
+    ansSpan.style.fontSize = '14px';
+  }
   const fill = doc.getElementById('fill' + fillNumber) as HTMLElement;
-  fill.innerHTML = '&nbsp;';
-  fill.removeAttribute('class');
-  const fillsRemaining = doc.getElementsByClassName('fills').length;
+  fill.style.visibility = 'hidden';
+  const fillsRemaining = Array.from(doc.getElementsByClassName('fills')).filter(
+    (el) => (el as HTMLElement).style.visibility !== 'hidden',
+  ).length;
   const remaining = doc.getElementById('remaining') as HTMLElement;
   remaining.innerHTML = fillsRemaining.toString();
   return fillsRemaining;
 }
 function setfills(ctr: number, currentFills: string, doc: Document): void {
   const id = doc.getElementById('fill' + ctr) as HTMLElement;
+  id.style.cssText = `
+    background: #E6F1FB;
+    border: 1.5px solid #378ADD;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0C447C;
+    cursor: grab;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px
+  `;
   id.dataset.number = ctr.toString();
   id.dataset.text = currentFills;
   id.ondragstart = (e) => {
@@ -135,13 +183,17 @@ function setfills(ctr: number, currentFills: string, doc: Document): void {
     (e.dataTransfer as DataTransfer).setData('text', text);
   };
 }
-function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void {
+function setupTouchDnD(
+  doc: Document,
+  slide: SlideInterface,
+  txt: string,
+): void {
   const fillsDiv = doc.getElementById('fills') as HTMLElement;
   fillsDiv.addEventListener(
     'touchstart',
     (e: TouchEvent) => {
       const fillEl = (e.target as HTMLElement).closest(
-        '[id^="fill"]'
+        '[id^="fill"]',
       ) as HTMLElement | null;
       if (!fillEl?.classList.contains('fills')) return;
       e.preventDefault();
@@ -168,7 +220,10 @@ function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void 
         const t = ev.touches[0];
         ghost.style.left = `${t.clientX - offsetX}px`;
         ghost.style.top = `${t.clientY - offsetY}px`;
-        const el = doc.elementFromPoint(t.clientX, t.clientY) as HTMLElement | null;
+        const el = doc.elementFromPoint(
+          t.clientX,
+          t.clientY,
+        ) as HTMLElement | null;
         const gapEl = el?.closest('[id^="gap"]') as HTMLElement | null;
         if (gapEl !== hoveredGap) {
           if (hoveredGap) hoveredGap.style.removeProperty('background-color');
@@ -185,11 +240,10 @@ function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void 
         doc.removeEventListener('touchend', onEnd);
         doc.removeEventListener('touchcancel', onEnd);
         ghost.style.display = 'none';
-        if (hoveredGap) hoveredGap.style.removeProperty('background-color');
         const t = ev.changedTouches[0];
         const target = doc.elementFromPoint(
           t.clientX,
-          t.clientY
+          t.clientY,
         ) as HTMLElement | null;
         ghost.remove();
         const gapEl = target?.closest('[id^="gap"]') as HTMLElement | null;
@@ -197,9 +251,9 @@ function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void 
         const gapNumber = gapEl.dataset.number as string;
         const fillText = fillEl.dataset.text as string;
         const fillNumber = fillEl.dataset.number as string;
-        gapEl.style.removeProperty('background-color');
         gapEl.ondrop = null;
         const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
+        gapEl.style.backgroundColor = '#E6F1FB';
         if (fillsRemaining === 0) {
           const res = evaluate(doc);
           slide.conclude(doc, res as AnswerType, txt);
@@ -209,6 +263,6 @@ function setupTouchDnD(doc: Document, slide: SlideInterface, txt: string): void 
       doc.addEventListener('touchend', onEnd);
       doc.addEventListener('touchcancel', onEnd);
     },
-    { passive: false }
+    { passive: false },
   );
 }

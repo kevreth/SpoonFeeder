@@ -198,6 +198,11 @@ button.imgBtn {
   top: 0;
   color: white;
   word-wrap: normal;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+  justify-content: center;
 }
 #header {
   text-align: right;
@@ -288,14 +293,14 @@ tbody th {
 
 #slide {
   width: calc(100% - 32px);
-  max-width: 500px;
+  max-width: fit-content;
   margin: 0 auto;
   font-size: 0.9rem;
   overflow: hidden;
   text-align: center;
   overflow-x: hidden;
   box-sizing: border-box;
-  padding-top: 50px;
+  /* padding-top: 50px; */
 }
 
 /* #content {
@@ -323,10 +328,10 @@ tbody th {
   line-height: 1.8;
   box-sizing: border-box;
   width: 100%;
-  max-width: 500px;
+  /* max-width: 500px; */
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 #content pre,

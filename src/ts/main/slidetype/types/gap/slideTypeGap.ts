@@ -50,6 +50,8 @@ export class Gap extends Slide implements SlideType {
       const eAns = doc.getElementById(id) as HTMLElement;
       eAns.style.backgroundColor = color;
       eAns.style.color = 'white';
+      eAns.style.width = '100%';
+      eAns.style.borderRadius = '12px';
     });
   };
 }
