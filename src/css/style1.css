@@ -429,10 +429,15 @@ tbody th {
   font-weight: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  /* color: rgba(255, 255, 255, 0.55); */
   padding: 4px 8px;
   text-align: left;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* background: rgba(0, 0, 0, 1); */
+  background: #0d1b2a;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .summary-table th:nth-child(2),
 .summary-table th:nth-child(3) {
