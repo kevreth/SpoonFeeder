@@ -214,8 +214,8 @@ button.imgBtn {
   position: relative;
   margin: 0 auto;
   width: calc(100% - 32px);
-  min-width: 250px;
   max-width: 500px;
+  min-width: 300px;
   height: 400px;
   padding-bottom: 2px;
 }
@@ -225,9 +225,6 @@ button.imgBtn {
   left: 0;
   height: 90px;
   width: 100%;
-  min-width: 200px;
-  padding: 0 16px;
-  box-sizing: border-box;
   border: 1px solid white;
   color: white;
   line-height: 20px;
@@ -296,25 +293,16 @@ tbody th {
 }
 
 #slide {
-  width: calc(100% - 32px);
-  max-width: fit-content;
+  /* width: calc(100% - 32px); */
+  /* max-width: fit-content; */
   margin: 0 auto;
   font-size: 0.9rem;
-  overflow: visible;
+  overflow: hidden;
   text-align: center;
-  overflow-x: visible;
+  overflow-x: hidden;
   box-sizing: border-box;
   /* padding-top: 50px; */
 }
-
-/* #content {
-  text-align: center;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
 
 #content {
   text-align: center;
@@ -406,6 +394,7 @@ tbody th {
   font-size: 11px;
   display: table;
   table-layout: fixed;
+  background: rgba(0, 0, 0, 0.3);
 }
 .summary-table tbody {
   display: table-row-group;
@@ -548,9 +537,5 @@ td.sum-answer img {
 
   .stat-label {
     font-size: 12px;
-  }
-
-  .summary-table {
-    background: rgba(0, 0, 0, 0.3);
   }
 }

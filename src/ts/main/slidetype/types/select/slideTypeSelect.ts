@@ -48,7 +48,7 @@ export class Select extends Slide implements SlideType {
     diff: string[],
     decoration: string,
     color: string,
-    doc: Document
+    doc: Document,
   ): void {
     length = diff.length;
     for (let i = 0; i < length; i++) {
@@ -56,6 +56,8 @@ export class Select extends Slide implements SlideType {
       const element = doc.getElementById('w' + id.toString()) as HTMLElement;
       element.style.textDecoration = decoration;
       element.style.textDecorationColor = color;
+      element.style.textDecorationThickness = '2px';
+      element.style.textUnderlineOffset = '3px';
       element.style.removeProperty('background-color');
       element.style.color = 'white';
     }
