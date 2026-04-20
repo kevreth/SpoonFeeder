@@ -214,6 +214,7 @@ button.imgBtn {
   position: relative;
   margin: 0 auto;
   width: calc(100% - 32px);
+  min-width: 250px;
   max-width: 500px;
   height: 400px;
   padding-bottom: 2px;
@@ -224,6 +225,9 @@ button.imgBtn {
   left: 0;
   height: 90px;
   width: 100%;
+  min-width: 200px;
+  padding: 0 16px;
+  box-sizing: border-box;
   border: 1px solid white;
   color: white;
   line-height: 20px;
@@ -296,9 +300,9 @@ tbody th {
   max-width: fit-content;
   margin: 0 auto;
   font-size: 0.9rem;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
-  overflow-x: hidden;
+  overflow-x: visible;
   box-sizing: border-box;
   /* padding-top: 50px; */
 }
