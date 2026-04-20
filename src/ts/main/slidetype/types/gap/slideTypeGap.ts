@@ -43,15 +43,24 @@ export class Gap extends Slide implements SlideType {
     const responseElem = doc.getElementById('response') as HTMLElement;
     responseElem.innerHTML = response;
   }
+  // mark: MarkTypeGap = (corrArr, doc) => {
+  //   corrArr.forEach((answer, ctr) => {
+  //     const color = answer ? CORRECT : INCORRECT;
+  //     const id = 'ans' + ctr;
+  //     const eAns = doc.getElementById(id) as HTMLElement;
+  //     eAns.style.backgroundColor = color;
+  //     eAns.style.color = 'white';
+  //   });
+  // };
   mark: MarkTypeGap = (corrArr, doc) => {
     corrArr.forEach((answer, ctr) => {
       const color = answer ? CORRECT : INCORRECT;
-      const id = 'ans' + ctr;
-      const eAns = doc.getElementById(id) as HTMLElement;
-      eAns.style.backgroundColor = color;
+      const eAns = doc.getElementById('ans' + ctr) as HTMLElement | null;
+      if (!eAns) return;
+      const gapEl = eAns.parentElement as HTMLElement;
+      gapEl.style.background = color;
+      eAns.style.backgroundColor = 'transparent';
       eAns.style.color = 'white';
-      eAns.style.width = '100%';
-      eAns.style.borderRadius = '12px';
     });
   };
 }
