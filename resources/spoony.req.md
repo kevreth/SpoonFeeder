@@ -298,12 +298,18 @@ These are nice to have in the future, but not part of this requirements document
 ## 12. Open Questions
 
 1. Should chat history be saved when user closes browser, or start fresh each time?
+
+Start fresh. Even between slides. Each slide is a fresh conversation but uses the course file.
+
 2. Should there be a limit on questions per hour (client-side)?
+
+No but there should be a usage meter.
+
 3. Should Spoony be available on all slide types, or hidden during quizzes?
+
+All slide types.
+
 4. Should we support multiple AI models (user can choose)?
 
----
+Yes but there is a default and the user can change models in the settings.
 
-**Document Version:** 1.0
-**Date:** 2026-04-11
-**Status:** Ready for Review
