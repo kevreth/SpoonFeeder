@@ -31,6 +31,17 @@ export const makeSlidesStrategySort: MakeSlidesTypeSort = function (
     done.remove();
     const res = evaluate(sortables);
     slide.conclude(doc, res as AnswerType, txt);
+    sortables.forEach(s => {
+      s.dragger.disable();
+      s.dragger.kill();
+    });
+    doc.querySelectorAll('.list-item').forEach(el => {
+      el.removeAttribute('draggable');
+      (el as HTMLElement).style.touchAction = 'none';
+      (el as HTMLElement).style.userSelect = 'none';
+      const handle = el.querySelector('.list-item-drag');
+      if (handle) (handle as HTMLElement).style.pointerEvents = 'none';
+    });
   });
   function Sortable(element: Element, index: number) {
     const animation = gsap.to(element, {

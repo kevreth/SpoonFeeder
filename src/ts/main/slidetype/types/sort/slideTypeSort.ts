@@ -3,6 +3,7 @@ import { Slide } from '../../../slide/index';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import type { MarkTypeSort, SlideType } from '../../misc/slideType';
+import { CORRECT, INCORRECT } from '../../misc/markupColors';
 export class Sort extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
     ({ txt: this.txt, ans: this.ans, isExercise: this.isExercise } = props);
@@ -24,7 +25,9 @@ export class Sort extends Slide implements SlideType {
     return isCorrect;
   }
   mark: MarkTypeSort = (isCorrect, doc) => {
-    const msg = isCorrect ? 'correct' : 'incorrect';
+    const msg = isCorrect
+      ? `<span style="color: ${CORRECT}; font-weight: 500;">correct</span>`
+      : `<span style="color: ${INCORRECT}; font-weight: 500;">incorrect</span>`;
     const content = doc.getElementById('content') as HTMLElement;
     content.insertAdjacentHTML('beforeend', msg);
   };

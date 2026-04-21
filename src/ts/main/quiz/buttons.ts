@@ -9,6 +9,7 @@ export function doneButton() {
 export function continueButton(doc: Document, txt: string): HTMLElement {
   const button = makeButton('continueBtn', 'continueBtn', 'continue');
   const slide = doc.getElementById('slide') as HTMLElement;
+  doc.getElementById('continueBtn')?.remove();
   slide.insertAdjacentHTML('beforeend', button);
   const continue_btn = doc.getElementById('continueBtn') as HTMLElement;
   //as an HTMLElement we can assign styles
