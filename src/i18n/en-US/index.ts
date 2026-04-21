@@ -50,5 +50,28 @@ export default {
   },
   savedCourse: {
     saved: 'Saved: '
+  },
+  spoony: {
+    title: 'Ask Spoony',
+    setup_title: 'Set Up Spoony',
+    setup_description: 'Spoony is an AI helper for your course. To use Spoony, you need a free API key from Pollinations.ai.',
+    get_key_link: 'Get your free API key',
+    input_placeholder: 'Type your question...',
+    send_button: 'Send',
+    typing: 'Spoony is typing...',
+    error_off_topic: 'I can only help with questions about this course.',
+    error_no_answer: 'I cannot give you the answer, but here is a hint: ',
+    error_invalid_key: 'Your API key is not valid. Please check and try again.',
+    error_rate_limited: 'You have reached the limit. Please wait or upgrade at pollinations.ai.',
+    error_network: 'Cannot connect to Spoony. Please check your internet.',
+    error_unavailable: 'Spoony is temporarily unavailable. Please try again later.',
+    error_no_course: 'Please start a course before using Spoony.',
+    settings_title: 'Spoony AI',
+    settings_key_saved: 'API key saved',
+    settings_key_not_saved: 'No API key',
+    settings_update_key: 'Update Key',
+    settings_delete_key: 'Delete Key',
+    settings_model: 'AI Model',
+    clear_chat: 'Clear Chat',
   }
 };
