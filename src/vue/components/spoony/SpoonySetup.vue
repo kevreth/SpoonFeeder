@@ -137,34 +137,6 @@ function closeDialog() {
   overflow: hidden;
 }
 
-/* .ss-top-accent {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00e5ff, transparent);
-} */
-/* 
-.ss-bottom-accent {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 229, 255, 0.3),
-    transparent
-  );
-} */
-
-/* Corner brackets — reuse existing .corner-* rules from SettingsOverlay,
-   but re-declare here for correct size since those are 16px */
-/* .ss-card .corner-tl,
-.ss-card .corner-tr,
-.ss-card .corner-bl,
-.ss-card .corner-br {
-  width: 18px;
-  height: 18px;
-  border-color: #00e5ff;
-  border-style: solid;
-} */
-
-/* Header */
 .ss-header {
   padding: 28px 32px 20px;
   text-align: center;
