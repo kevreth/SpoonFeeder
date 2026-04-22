@@ -15,6 +15,8 @@
     <VolumeMute id="volume" :volume="isMuted" @toggle-volume="toggleVolume" />
     <SpoonyIcon @open-spoony="onOpenSpoony" />
   </div>
+
+  <SpoonySetup v-model="showSetup" @saved="onSpoonySaved" />
 </template>
 
 <script setup lang="ts">
@@ -24,8 +26,10 @@ import ExplainIcon from './ExplainIcon.vue';
 import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue';
 import SpoonyIcon from './SpoonyIcon.vue';
+import SpoonySetup from '../spoony/SpoonySetup.vue';
 import { getCurrentSlideExplanation } from '../../../ts/main/dataaccess/saveData/currentSlide';
 import SumNavigation from './SumNavigation.vue';
+import { getSpoonyData } from '../../composables/spoonyData';
 
 const isMuted = ref(false);
 
@@ -34,9 +38,18 @@ function toggleVolume() {
 }
 const expOverlay = ref(false);
 const content = ref('');
+const showSetup = ref(false);
 
 function onOpenSpoony() {
-  console.log('spoony clicked');
+  if (getSpoonyData().isConfigured()) {
+    console.log('open chat');
+  } else {
+    showSetup.value = true;
+  }
+}
+
+function onSpoonySaved() {
+  console.log('API key saved, ready for chat');
 }
 
 // handle overlay pages

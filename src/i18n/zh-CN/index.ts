@@ -54,7 +54,7 @@ export default {
   spoony: {
     title: '问问Spoony',
     setup_title: '设置Spoony',
-    setup_description: 'Spoony是您课程的AI助手。要使用Spoony，您需要从Pollinations.ai获取免费的API密钥。',
+    setup_description: 'Spoony是您课程的AI助手。要使用Spoony，您需要从<span style="color:#00e5ff">Pollinations.ai</span>获取免费的API密钥。',
     get_key_link: '获取您的免费API密钥',
     input_placeholder: '请输入您的问题...',
     send_button: '发送',
