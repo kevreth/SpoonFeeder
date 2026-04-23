@@ -35,7 +35,7 @@
         <!-- Step 1 -->
         <div class="ss-step-row">
           <div class="ss-step-num">1</div>
-          <div>
+          <div style="width: 100%; text-align: left">
             <a
               href="https://enter.pollinations.ai"
               target="_blank"
@@ -44,7 +44,22 @@
               >Go to enter.pollinations.ai ↗</a
             >
             <div class="ss-step-note">
-              Sign in → scroll down to Keys → click '+ API Key' → copy the sk_ key
+              <div class="ss-note-row">
+                <span class="ss-note-n">1.</span
+                ><span>Sign in with Google or GitHub</span>
+              </div>
+              <div class="ss-note-row">
+                <span class="ss-note-n">2.</span
+                ><span>Scroll down to the <strong>Keys</strong> section</span>
+              </div>
+              <div class="ss-note-row">
+                <span class="ss-note-n">3.</span
+                ><span>Click <strong>+ API Key</strong></span>
+              </div>
+              <div class="ss-note-row">
+                <span class="ss-note-n">4.</span
+                ><span>Copy the key starting with <strong>sk_</strong></span>
+              </div>
             </div>
           </div>
         </div>
@@ -133,9 +148,9 @@ function closeDialog() {
 <style>
 .ss-card {
   position: relative;
-  background: rgba(4, 8, 20, 0.98);
+  background: #0d1526;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  border: 1px solid rgba(0, 229, 255, 0.25);
   border-radius: 4px;
   min-width: 340px;
   max-width: 420px;
@@ -160,18 +175,23 @@ function closeDialog() {
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: drop-shadow(0 0 6px rgba(77, 245, 255, 0.3));
 }
 
 .ss-bot-img {
   width: 30px;
   height: 30px;
+  filter: brightness(0) saturate(100%) invert(88%) sepia(61%) saturate(400%)
+    hue-rotate(155deg) brightness(105%);
 }
 
 .ss-title {
   font-size: 15px;
   letter-spacing: 0.2em;
-  /* color: #00e5ff; */
-  font-weight: 500;
+  /* color: #4df5ff; */
+  color: #e8f0ff;
+
+  font-weight: bold;
   text-transform: uppercase;
   font-family: 'Orbitron', sans-serif;
 }
@@ -188,17 +208,17 @@ function closeDialog() {
 }
 
 .ss-desc-box {
-  background: rgba(0, 229, 255, 0.04);
-  border: 1px solid rgba(0, 229, 255, 0.1);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid rgba(0, 229, 255, 0.4);
+  border-radius: 0 4px 4px 0;
   padding: 12px 16px;
   margin-bottom: 20px;
   text-align: left;
 }
 
 .ss-desc-text {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  color: #e8f0ff;
   line-height: 1.6;
 }
 
@@ -213,10 +233,10 @@ function closeDialog() {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(0, 229, 255, 0.15);
-  border: 1px solid rgba(0, 229, 255, 0.4);
+  background: rgba(0, 229, 255, 0.2);
+  border: 1px solid rgba(0, 229, 255, 0.6);
   font-size: 10px;
-  color: #00e5ff;
+  color: #4df5ff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,23 +245,43 @@ function closeDialog() {
 }
 
 .ss-step-note {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   margin-top: 6px;
-  line-height: 1.5;
+}
+
+.ss-note-row {
+  font-size: 12px;
+  color: rgba(200, 220, 255, 0.7);
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.ss-note-n {
+  color: rgba(200, 220, 255, 0.7);
+  font-weight: 600;
+  font-size: 11px;
+  min-width: 14px;
+}
+
+.ss-step-note strong {
+  color: #4df5ff;
+  font-weight: 500;
 }
 
 .ss-link {
   font-size: 13px;
-  color: #00e5ff;
+  color: #4df5ff;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+  border-bottom: 1px solid rgba(77, 245, 255, 0.4);
   line-height: 1.4;
   text-align: left;
 }
 
 .ss-link:hover {
-  border-bottom-color: #00e5ff;
+  border-bottom-color: #4df5ff;
 }
 
 .ss-input-area {
@@ -254,23 +294,24 @@ function closeDialog() {
   display: block;
   width: 100%;
   text-align: left;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 6px;
+  color: #e8f0ff;
 }
 
 .ss-input-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  border-bottom: 1.5px solid rgba(0, 229, 255, 0.4);
+  border-bottom: 1.5px solid rgba(0, 229, 255, 0.5);
 }
 
 .ss-lock-icon {
   width: 13px;
   height: 13px;
-  fill: rgba(0, 229, 255, 0.5);
+  fill: #4df5ff;
   flex-shrink: 0;
 }
 
@@ -280,7 +321,7 @@ function closeDialog() {
 }
 
 .ss-q-input .q-field__native {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #e8f0ff !important;
   font-size: 13px !important;
   padding: 4px 0 !important;
 }
@@ -310,7 +351,7 @@ function closeDialog() {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 3px;
   padding: 8px 20px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(200, 220, 255, 0.5);
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -319,15 +360,15 @@ function closeDialog() {
 
 .ss-btn-cancel:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(200, 220, 255, 0.8);
 }
 
 .ss-btn-activate {
-  background: rgba(0, 229, 255, 0.15);
-  border: 1px solid rgba(0, 229, 255, 0.6);
+  background: rgba(0, 229, 255, 0.2);
+  border: 1px solid rgba(0, 229, 255, 0.8);
   border-radius: 3px;
   padding: 8px 24px;
-  color: #00e5ff;
+  color: #4df5ff;
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -336,6 +377,22 @@ function closeDialog() {
 }
 
 .ss-btn-activate:hover {
-  background: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.3);
+}
+
+@media (min-width: 768px) {
+  .ss-title {
+    font-size: 16px;
+  }
+  .ss-link,
+  .ss-desc-text {
+    font-size: 14px;
+  }
+  .ss-input-label {
+    font-size: 13px;
+  }
+  .ss-step-note {
+    font-size: 12px;
+  }
 }
 </style>

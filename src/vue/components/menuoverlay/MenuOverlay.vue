@@ -17,6 +17,7 @@
   </div>
 
   <SpoonySetup v-model="showSetup" @saved="onSpoonySaved" />
+  <SpoonyChat v-model="showChat" />
 </template>
 
 <script setup lang="ts">
@@ -27,6 +28,7 @@ import ExpTable from './ExpTable.vue';
 import VolumeMute from './VolumeMute.vue';
 import SpoonyIcon from './SpoonyIcon.vue';
 import SpoonySetup from '../spoony/SpoonySetup.vue';
+import SpoonyChat from '../spoony/SpoonyChat.vue';
 import { getCurrentSlideExplanation } from '../../../ts/main/dataaccess/saveData/currentSlide';
 import SumNavigation from './SumNavigation.vue';
 import { getSpoonyData } from '../../composables/spoonyData';
@@ -39,13 +41,13 @@ function toggleVolume() {
 const expOverlay = ref(false);
 const content = ref('');
 const showSetup = ref(false);
+const showChat = ref(false);
 
 function onOpenSpoony() {
-  if (getSpoonyData().isConfigured()) {
-    console.log('open chat');
-  } else {
-    showSetup.value = true;
-  }
+  console.log('onOpenSpoony called');
+  console.log('isConfigured:', getSpoonyData().isConfigured());
+  showChat.value = true;
+  console.log('showChat:', showChat.value);
 }
 
 function onSpoonySaved() {
