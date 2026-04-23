@@ -35,13 +35,18 @@
         <!-- Step 1 -->
         <div class="ss-step-row">
           <div class="ss-step-num">1</div>
-          <a
-            href="https://enter.pollinations.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ss-link"
-            >{{ $t('spoony.get_key_link') }} ↗</a
-          >
+          <div>
+            <a
+              href="https://enter.pollinations.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ss-link"
+              >Go to enter.pollinations.ai ↗</a
+            >
+            <div class="ss-step-note">
+              Sign in → scroll down to Keys → click '+ API Key' → copy the sk_ key
+            </div>
+          </div>
         </div>
 
         <!-- Step 2 -->
@@ -70,7 +75,7 @@
               />
             </div>
             <div class="ss-error">
-              {{ keyError ? 'Key must start with pk_' : '' }}
+              {{ keyError ? 'Key must start with sk_' : '' }}
             </div>
           </div>
         </div>
@@ -111,7 +116,7 @@ watch(apiKey, () => {
 });
 
 function saveKey() {
-  if (!apiKey.value.startsWith('pk_')) {
+  if (!apiKey.value.startsWith('sk_')) {
     keyError.value = true;
     return;
   }
@@ -217,6 +222,13 @@ function closeDialog() {
   justify-content: center;
   flex-shrink: 0;
   margin-top: 1px;
+}
+
+.ss-step-note {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 6px;
+  line-height: 1.5;
 }
 
 .ss-link {
