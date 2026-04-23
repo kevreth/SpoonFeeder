@@ -16,6 +16,7 @@ import { conclude2 } from './conclude/conclude';
 import { adoc2html } from './adoc2html';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
+  idx?: number;
   txt = '';
   cont = false;
   exp = '';
@@ -71,10 +72,10 @@ export abstract class Slide implements SlideInterface {
     const result = this.result() as ResultTypeIntersection;
     return this.evaluateStrategy(txt, ans, res, result);
   }
-  public saveData() {
+  public saveData(idx?: number) {
     const txt = this.txt;
     const res = this.res;
-    SaveData.set(txt, res as AnswerType, false);
+    SaveData.set(txt, res as AnswerType, false, idx);
   }
   public result(): ResultReturnType {
     return this.resultType(this.ans, this.res as AnswerType);

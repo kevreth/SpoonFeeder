@@ -1,7 +1,7 @@
 import type { AnswerType, SlideInterface } from '../index';
-import { AudioPlayer } from './audio';
 import { continueButton } from '../../quiz/buttons';
 import { showExplainIcon } from '../../quiz/explainIcon';
+import { AudioPlayer } from './audio';
 function conclude(
   doc: Document,
   slide: SlideInterface,
@@ -9,18 +9,19 @@ function conclude(
   txt: string,
   audioPlayer: AudioPlayer,
   _showExplainIcon: (exp: string, doc: Document) => void,
-  _continueButton: (doc: Document, txt: string) => void
+  _continueButton: (doc: Document, txt: string, slideIdx?: number) => void
 ) {
   slide.setRes(res);
+  const slideIdx = slide.idx;
   if (!slide.immediateConclusion) {
     const isCorrect = slide.decorate(doc);
     audioPlayer.playAudio(isCorrect);
   }
-  slide.saveData();
+  slide.saveData(slideIdx);
   const done = doc.getElementById('btn');
   if (done !== null) done.remove();
   _showExplainIcon(slide.exp, doc);
-  _continueButton(doc, txt);
+  _continueButton(doc, txt, slideIdx);
 }
 export function conclude2(
   doc: Document,

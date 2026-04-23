@@ -18,7 +18,10 @@ class SlideDispatcher implements StateActions<void> {
   constructor(public doc: Document) {}
   private getSlide(increment: number) {
     const save = SaveData.lastSavedItem();
-    const idx = Json.findMatchingSlide(save.txt);
+    let idx = save.idx;
+    if (idx === undefined) {
+      idx = Json.findMatchingSlide(save.txt);
+    }
     const slide = Json.getMatchingSlide(idx + increment);
     fillMatchingSlide(slide, save);
     return slide;
@@ -34,8 +37,9 @@ class SlideDispatcher implements StateActions<void> {
   decorate(): void {
     const slide = this.getSlide(0);
     slide.makeSlides(this.doc);
-    if (!slide.immediateConclusion)
+    if (!slide.immediateConclusion) {
       slide.conclude(this.doc, slide.res as AnswerType, slide.txt);
+    }
   }
   next(): void {
     const slide = this.getSlide(1);
@@ -44,7 +48,12 @@ class SlideDispatcher implements StateActions<void> {
   }
   end(): void {
     const json = Json.get();
-    this.doc.body.innerHTML = evaluate(json);
+    const content = this.doc.getElementById('content');
+    if (content) {
+      content.innerHTML = evaluate(json);
+    } else {
+      this.doc.body.innerHTML = evaluate(json);
+    }
     startOverButton(this.doc);
   }
 }
