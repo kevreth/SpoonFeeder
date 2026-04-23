@@ -9,7 +9,6 @@ export type AnswerType = string | Array<string> | Array<number>;
 export type ResultReturnType = boolean | Array<boolean>;
 export type ResultType = (ans: AnswerType, res: AnswerType) => ResultReturnType;
 export interface SlideInterface {
-  idx?: number;
   txt: string;
   type: string;
   cont: boolean;
@@ -42,7 +41,7 @@ export interface SlideInterface {
   setRes(res: AnswerType): void;
   getRes(): AnswerType;
   getAns(): AnswerType;
-  saveData(idx?: number): void;
+  saveData(): void;
   decorate(doc: Document): boolean;
   conclude(doc: Document, res: AnswerType, txt: string): void;
 }

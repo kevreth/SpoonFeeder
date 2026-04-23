@@ -8,9 +8,19 @@ export class ProcessJson {
       new JsonProcessor(),
       new Array<SlideInterface>()
     );
-    slides.forEach((slide, index) => {
-      slide.idx = index;
-    });
+    _checkForDuplicateText(slides);
     return slides;
   }
+}
+
+function _checkForDuplicateText(slides: SlideInterface[]) {
+  const seen = new Set<string>();
+  slides.forEach((slide) => {
+    if (slide.txt && seen.has(slide.txt)) {
+      console.warn(
+        `Duplicate slide text detected: "${slide.txt}". This may cause navigation and saving issues.`
+      );
+    }
+    seen.add(slide.txt);
+  });
 }

@@ -6,11 +6,7 @@ export function makeButton(id: string, clazz: string, content: string): string {
 export function doneButton() {
   return makeButton('btn', 'done', 'done');
 }
-export function continueButton(
-  doc: Document,
-  txt: string,
-  slideIdx?: number
-): HTMLElement {
+export function continueButton(doc: Document, txt: string): HTMLElement {
   const button = makeButton('continueBtn', 'continueBtn', 'continue');
   const slide = doc.getElementById('slide') as HTMLElement;
   doc.getElementById('continueBtn')?.remove();
@@ -19,7 +15,7 @@ export function continueButton(
   //as an HTMLElement we can assign styles
   //this wouldn't work when using a stylesheet, not sure why.
   continue_btn?.addEventListener('click', (): void => {
-    SaveData.setContinueTrue(txt, slideIdx);
+    SaveData.setContinueTrue(txt);
     const explain = doc.getElementById('explainIcon') as HTMLElement;
     explain.style.visibility = 'hidden';
     showSlides(doc);

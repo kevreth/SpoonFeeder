@@ -18,10 +18,7 @@ class SlideDispatcher implements StateActions<void> {
   constructor(public doc: Document) {}
   private getSlide(increment: number) {
     const save = SaveData.lastSavedItem();
-    let idx = save.idx;
-    if (idx === undefined) {
-      idx = Json.findMatchingSlide(save.txt);
-    }
+    const idx = Json.findMatchingSlide(save.txt);
     const slide = Json.getMatchingSlide(idx + increment);
     fillMatchingSlide(slide, save);
     return slide;

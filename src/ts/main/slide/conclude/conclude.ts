@@ -9,19 +9,18 @@ function conclude(
   txt: string,
   audioPlayer: AudioPlayer,
   _showExplainIcon: (exp: string, doc: Document) => void,
-  _continueButton: (doc: Document, txt: string, slideIdx?: number) => void
+  _continueButton: (doc: Document, txt: string) => void
 ) {
   slide.setRes(res);
-  const slideIdx = slide.idx;
   if (!slide.immediateConclusion) {
     const isCorrect = slide.decorate(doc);
     audioPlayer.playAudio(isCorrect);
   }
-  slide.saveData(slideIdx);
+  slide.saveData();
   const done = doc.getElementById('btn');
   if (done !== null) done.remove();
   _showExplainIcon(slide.exp, doc);
-  _continueButton(doc, txt, slideIdx);
+  _continueButton(doc, txt);
 }
 export function conclude2(
   doc: Document,
