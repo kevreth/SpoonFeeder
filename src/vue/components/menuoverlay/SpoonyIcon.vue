@@ -1,6 +1,6 @@
 <template>
   <q-btn
-    v-if="data.enabled"
+    v-if="enabled"
     flat
     dense
     class="spoonyIcon q-pt-md"
@@ -11,22 +11,19 @@
 </template>
 
 <script setup lang="ts">
-import { getSpoonyData } from '../../composables/spoonyData';
+import { computed } from 'vue';
+import { SPOONY_API_KEY, SPOONY_ENABLED } from '../../../ts/main/spoony/index';
 import botSvg from 'src/img/bot.svg';
 
-const data = getSpoonyData();
+const enabled = SPOONY_ENABLED.get();
+const isConfigured = computed(() => {
+  const key = SPOONY_API_KEY.get();
+  return key !== null && key.length > 0;
+});
 const emit = defineEmits(['open-spoony']);
 </script>
 
 <style>
-/* .spoonyIcon {
-  position: fixed;
-  left: 40px;
-  top: 0;
-  z-index: -1;
-  border: 1px solid rgba(0, 229, 255, 0.3);
-} */
-
 .spoonyIcon .spoony-img {
   width: 32px;
   height: 32px;
