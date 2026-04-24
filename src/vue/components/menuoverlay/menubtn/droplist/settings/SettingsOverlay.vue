@@ -125,6 +125,7 @@ const currentModelLabel = computed(
 function deleteKey() {
   SPOONY_API_KEY.remove();
   _keyVersion.value++;
+  emit('keyDeleted');
 }
 
 function selectModel(val: string) {
@@ -138,7 +139,7 @@ function onKeySaved() {
   _keyVersion.value++;
 }
 
-const emit = defineEmits(['closeInfo']);
+const emit = defineEmits(['closeInfo', 'keyDeleted']);
 function closeInfo() {
   emit('closeInfo');
   showOverlay.value = false;
