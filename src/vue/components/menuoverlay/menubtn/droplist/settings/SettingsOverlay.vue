@@ -7,10 +7,10 @@
   >
     <!-- <template #body> -->
     <div class="settings fixed-center bg-secondary">
-      <div class="corner-tl"></div>
-      <div class="corner-tr"></div>
-      <div class="corner-bl"></div>
-      <div class="corner-br"></div>
+      <div class="spoony-corner-tl"></div>
+      <div class="spoony-corner-tr"></div>
+      <div class="spoony-corner-bl"></div>
+      <div class="spoony-corner-br"></div>
       <div class="q-pa-sm title-row">{{ $t('settingsContent.title') }}</div>
       <q-separator horizontal class="q-mx-sm bg-white" />
       <div class="lang-row">
@@ -164,37 +164,6 @@ function closeInfo() {
 .settingOverlay .q-dialog__inner {
   overflow: visible !important;
 }
-.corner-tl,
-.corner-tr,
-.corner-bl,
-.corner-br {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-color: #00e5ff;
-  border-style: solid;
-  z-index: 2;
-}
-.corner-tl {
-  top: 2px;
-  left: 2px;
-  border-width: 2px 0 0 2px;
-}
-.corner-tr {
-  top: 2px;
-  right: 2px;
-  border-width: 2px 2px 0 0;
-}
-.corner-bl {
-  bottom: 2px;
-  left: 2px;
-  border-width: 0 0 2px 2px;
-}
-.corner-br {
-  bottom: 2px;
-  right: 2px;
-  border-width: 0 2px 2px 0;
-}
 .settings .title-row {
   text-align: center;
   font-size: 14px;
@@ -224,7 +193,7 @@ function closeInfo() {
 .settings .q-btn {
   background: transparent !important;
   border: 1.5px solid rgba(0, 229, 255, 0.5) !important;
-  color: #00e5ff !important;
+  color: var(--spoony-cyan) !important;
   border-radius: 6px !important;
   letter-spacing: 0.1em;
   text-transform: uppercase;

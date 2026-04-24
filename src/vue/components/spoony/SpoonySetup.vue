@@ -7,11 +7,11 @@
     @click.stop=""
   >
     <div class="ss-card">
-      <div class="ss-top-accent"></div>
-      <div class="corner-tl"></div>
-      <div class="corner-tr"></div>
-      <div class="corner-bl"></div>
-      <div class="corner-br"></div>
+      <div class="spoony-accent-top"></div>
+      <div class="spoony-corner-tl"></div>
+      <div class="spoony-corner-tr"></div>
+      <div class="spoony-corner-bl"></div>
+      <div class="spoony-corner-br"></div>
 
       <!-- Header -->
       <div class="ss-header">
@@ -145,12 +145,12 @@ function closeDialog() {
 }
 </script>
 
-<style>
+<style scoped>
 .ss-card {
   position: relative;
   background: #0d1526;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  border: 1px solid var(--spoony-cyan-dim);
   border-radius: 4px;
   min-width: 340px;
   max-width: 420px;
@@ -189,7 +189,7 @@ function closeDialog() {
   font-size: 15px;
   letter-spacing: 0.2em;
   /* color: #4df5ff; */
-  color: #e8f0ff;
+  color: var(--spoony-text);
 
   font-weight: bold;
   text-transform: uppercase;
@@ -218,7 +218,7 @@ function closeDialog() {
 
 .ss-desc-text {
   font-size: 12px;
-  color: #e8f0ff;
+  color: var(--spoony-text);
   line-height: 1.6;
 }
 
@@ -236,7 +236,7 @@ function closeDialog() {
   background: rgba(0, 229, 255, 0.2);
   border: 1px solid rgba(0, 229, 255, 0.6);
   font-size: 10px;
-  color: #4df5ff;
+  color: var(--spoony-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,13 +267,13 @@ function closeDialog() {
 }
 
 .ss-step-note strong {
-  color: #4df5ff;
+  color: var(--spoony-cyan);
   font-weight: 500;
 }
 
 .ss-link {
   font-size: 13px;
-  color: #4df5ff;
+  color: var(--spoony-cyan);
   text-decoration: none;
   border-bottom: 1px solid rgba(77, 245, 255, 0.4);
   line-height: 1.4;
@@ -298,7 +298,7 @@ function closeDialog() {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 6px;
-  color: #e8f0ff;
+  color: var(--spoony-text);
 }
 
 .ss-input-row {
@@ -320,13 +320,13 @@ function closeDialog() {
   background: transparent !important;
 }
 
-.ss-q-input .q-field__native {
-  color: #e8f0ff !important;
+.ss-q-input :deep(.q-field__native) {
+  color: var(--spoony-text) !important;
   font-size: 13px !important;
   padding: 4px 0 !important;
 }
 
-.ss-q-input .q-field__native::placeholder {
+.ss-q-input :deep(.q-field__native::placeholder) {
   color: rgba(255, 255, 255, 0.2) !important;
   letter-spacing: 0.05em;
 }
@@ -368,7 +368,7 @@ function closeDialog() {
   border: 1px solid rgba(0, 229, 255, 0.8);
   border-radius: 3px;
   padding: 8px 24px;
-  color: #4df5ff;
+  color: var(--spoony-cyan);
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
