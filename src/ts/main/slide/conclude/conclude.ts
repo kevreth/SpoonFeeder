@@ -1,7 +1,7 @@
 import type { AnswerType, SlideInterface } from '../index';
-import { AudioPlayer } from './audio';
 import { continueButton } from '../../quiz/buttons';
 import { showExplainIcon } from '../../quiz/explainIcon';
+import { AudioPlayer } from './audio';
 function conclude(
   doc: Document,
   slide: SlideInterface,
