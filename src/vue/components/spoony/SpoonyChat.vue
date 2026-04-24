@@ -107,11 +107,13 @@ const messages = ref<SpoonyMessage[]>([]);
 const messagesEl = ref<HTMLElement | null>(null);
 
 function getCurrentContext(): SpoonyContext {
+  const get = (sel: string) =>
+    (document.querySelector(sel) as HTMLElement | null)?.innerText;
   const slideText =
-    document.querySelector('.slide-content')?.innerText ||
-    document.querySelector('#slide-content')?.innerText ||
-    document.querySelector('.wrapContent')?.innerText ||
-    document.querySelector('main')?.innerText ||
+    get('.slide-content') ||
+    get('#slide-content') ||
+    get('.wrapContent') ||
+    get('main') ||
     '';
   const context: SpoonyContext = {
     courseName: COURSE_NAME.get() ?? 'Unknown Course',
@@ -198,7 +200,7 @@ function closeDialog() {
 .sc-panel {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 5px;
   width: 300px;
   height: 520px;
   z-index: 9999;

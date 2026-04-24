@@ -44,14 +44,18 @@ const showSetup = ref(false);
 const showChat = ref(false);
 
 function onOpenSpoony() {
-  console.log('onOpenSpoony called');
-  console.log('isConfigured:', getSpoonyData().isConfigured());
-  showChat.value = true;
-  console.log('showChat:', showChat.value);
+  const data = getSpoonyData();
+  if (data.isConfigured()) {
+    showChat.value = true;
+  } else {
+    showChat.value = false;
+    showSetup.value = true;
+  }
 }
 
 function onSpoonySaved() {
-  console.log('API key saved, ready for chat');
+  showSetup.value = false;
+  showChat.value = true;
 }
 
 // handle overlay pages

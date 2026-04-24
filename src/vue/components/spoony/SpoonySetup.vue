@@ -82,7 +82,7 @@
               <q-input
                 v-model="apiKey"
                 type="password"
-                placeholder="pk_················"
+                placeholder="sk_················"
                 borderless
                 dense
                 class="ss-q-input"
