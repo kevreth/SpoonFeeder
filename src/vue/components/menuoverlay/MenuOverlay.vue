@@ -1,7 +1,7 @@
 <template>
   <div class="menu-btn-row">
     <ExplainIcon id="explainIcon" @click="handleExpOverlay" />
-    <MenuBtn id="menuBtn" />
+    <MenuBtn id="menuBtn" @keyDeleted="onKeyDeleted" />
   </div>
   <ExpTable
     id="explainTable"
@@ -51,6 +51,10 @@ function onOpenSpoony() {
     showChat.value = false;
     showSetup.value = true;
   }
+}
+
+function onKeyDeleted() {
+  showChat.value = false;
 }
 
 function onSpoonySaved() {
