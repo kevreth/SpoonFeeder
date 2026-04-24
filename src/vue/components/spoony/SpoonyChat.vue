@@ -1,10 +1,10 @@
 <template>
   <div v-if="modelValue" class="sc-panel">
-    <div class="sc-top-accent"></div>
-    <div class="corner-tl"></div>
-    <div class="corner-tr"></div>
-    <div class="corner-bl"></div>
-    <div class="corner-br"></div>
+    <div class="spoony-accent-top"></div>
+    <div class="spoony-corner-tl"></div>
+    <div class="spoony-corner-tr"></div>
+    <div class="spoony-corner-bl"></div>
+    <div class="spoony-corner-br"></div>
 
     <!-- Header -->
     <div class="sc-header">
@@ -196,7 +196,7 @@ function closeDialog() {
 }
 </script>
 
-<style>
+<style scoped>
 .sc-panel {
   position: fixed;
   bottom: 20px;
@@ -204,7 +204,7 @@ function closeDialog() {
   width: 300px;
   height: 520px;
   z-index: 9999;
-  background: rgba(8, 14, 30, 0.97);
+  background: var(--spoony-bg);
   border: 1px solid rgba(0, 229, 255, 0.25);
   border-radius: 4px;
   display: flex;
@@ -212,43 +212,13 @@ function closeDialog() {
   overflow: hidden;
 }
 
-.sc-top-accent {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00e5ff, transparent);
-  flex-shrink: 0;
-}
-
-/* Corner brackets */
-.sc-panel .corner-tl,
-.sc-panel .corner-tr,
-.sc-panel .corner-bl,
-.sc-panel .corner-br {
-  position: absolute;
+/* Override shared corner size for the larger chat panel */
+.spoony-corner-tl,
+.spoony-corner-tr,
+.spoony-corner-bl,
+.spoony-corner-br {
   width: 22px;
   height: 22px;
-  border-color: #00e5ff;
-  border-style: solid;
-  z-index: 2;
-}
-.sc-panel .corner-tl {
-  top: 2px;
-  left: 2px;
-  border-width: 2px 0 0 2px;
-}
-.sc-panel .corner-tr {
-  top: 2px;
-  right: 2px;
-  border-width: 2px 2px 0 0;
-}
-.sc-panel .corner-bl {
-  bottom: 2px;
-  left: 2px;
-  border-width: 0 0 2px 2px;
-}
-.sc-panel .corner-br {
-  bottom: 2px;
-  right: 2px;
-  border-width: 0 2px 2px 0;
 }
 
 /* Header */
@@ -274,7 +244,7 @@ function closeDialog() {
 
 .sc-title {
   font-size: 13px;
-  color: #00e5ff;
+  color: var(--spoony-cyan);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   font-family: 'Orbitron', sans-serif;
@@ -292,7 +262,7 @@ function closeDialog() {
 }
 
 .sc-icon-btn:hover {
-  color: #00e5ff !important;
+  color: var(--spoony-cyan) !important;
 }
 
 /* Messages */
@@ -386,7 +356,7 @@ function closeDialog() {
   background: transparent;
 }
 
-.sc-q-input .q-field__native {
+.sc-q-input :deep(.q-field__native) {
   color: rgba(255, 255, 255, 0.85);
   font-size: 15px;
   max-height: calc(3 * 1.4em + 8px);
@@ -394,12 +364,12 @@ function closeDialog() {
   resize: none;
 }
 
-.sc-q-input .q-field__native::placeholder {
+.sc-q-input :deep(.q-field__native::placeholder) {
   color: rgba(255, 255, 255, 0.25);
 }
 
 .sc-send-btn {
-  color: #00e5ff !important;
+  color: var(--spoony-cyan) !important;
   flex-shrink: 0;
 }
 
