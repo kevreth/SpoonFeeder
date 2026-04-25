@@ -138,9 +138,9 @@ describe('Cypress Testing', () => {
     elementContains('#remaining', '1');
     dragDrop('#fill2', '#gap2');
     elementContains('#remaining', '0');
-    cy.get('#ans0').parent().invoke('css', 'background-color').should('include', GREEN);
-    cy.get('#ans1').parent().invoke('css', 'background-color').should('include', GREEN);
-    cy.get('#ans2').parent().invoke('css', 'background-color').should('include', GREEN);
+    cy.get('#ans0').should('have.css', 'background-color', GREEN);
+    cy.get('#ans1').should('have.css', 'background-color', GREEN);
+    cy.get('#ans2').should('have.css', 'background-color', GREEN);
     cy.contains('Number correct: 3');
     cy.contains('Number questions: 3');
     cy.contains('100%');
@@ -161,9 +161,9 @@ describe('Cypress Testing', () => {
     elementContains('#remaining', '1');
     dragDrop('#fill1', '#gap2');
     elementContains('#remaining', '0');
-    cy.get('#ans0').parent().invoke('css', 'background-color').should('include', GREEN);
-    cy.get('#ans1').parent().invoke('css', 'background-color').should('include', RED);
-    cy.get('#ans2').parent().invoke('css', 'background-color').should('include', RED);
+    cy.get('#ans0').should('have.css', 'background-color', GREEN);
+    cy.get('#ans1').should('have.css', 'background-color', RED);
+    cy.get('#ans2').should('have.css', 'background-color', RED);
     cy.contains('Number correct: 1');
     cy.contains('Number questions: 3');
     cy.contains('33%');
