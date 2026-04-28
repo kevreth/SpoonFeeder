@@ -167,7 +167,6 @@ function getCurrentContext(): SpoonyContext {
     lessonName: '',
     slideText,
   };
-  console.log('[SpoonyChat] context:', context);
   return context;
 }
 
