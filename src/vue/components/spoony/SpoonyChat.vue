@@ -18,6 +18,7 @@
           dense
           icon="delete_outline"
           class="sc-icon-btn"
+          aria-label="Clear chat history"
           @click="clearChat"
         />
         <q-btn
@@ -25,6 +26,7 @@
           dense
           icon="remove"
           class="sc-icon-btn"
+          aria-label="Minimize chat"
           @click="closeDialog"
         />
       </div>
@@ -86,6 +88,7 @@
         dense
         icon="send"
         class="sc-send-btn"
+        aria-label="Send message"
         :disable="isSendDisabled"
         @click="onSendMessage"
       />
@@ -94,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, nextTick } from 'vue';
+import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import botSvg from 'src/img/bot.svg';
 import type { SpoonyMessage } from '../../../ts/main/spoony/spoony.types';
@@ -256,6 +259,13 @@ function clearChat() {
 function closeDialog() {
   emit('update:modelValue', false);
 }
+
+function onKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') emit('update:modelValue', false);
+}
+
+onMounted(() => document.addEventListener('keydown', onKeydown));
+onUnmounted(() => document.removeEventListener('keydown', onKeydown));
 </script>
 
 <style scoped>
@@ -263,8 +273,11 @@ function closeDialog() {
   position: fixed;
   bottom: 20px;
   right: 5px;
-  width: 300px;
-  height: 520px;
+  width: 380px;
+  min-width: 300px;
+  max-width: 600px;
+  height: 70vh;
+  max-height: 600px;
   z-index: 9999;
   background: var(--spoony-bg);
   border: 1px solid rgba(0, 229, 255, 0.25);
@@ -465,10 +478,4 @@ function closeDialog() {
   padding: 4px 0;
 }
 
-@media (min-width: 768px) {
-  .sc-panel {
-    width: 480px;
-    height: 620px;
-  }
-}
 </style>
