@@ -42,10 +42,19 @@
           </div>
           <div v-else class="sc-spoony-row">
             <div class="sc-sender-label">Spoony</div>
-            <div
-              class="sc-msg-spoony"
-              v-html="renderMarkdown(msg.content)"
-            ></div>
+            <div class="sc-msg-spoony">
+              <div v-html="renderMarkdown(msg.content)"></div>
+              <button
+                v-if="msg.errorType === SpoonyErrorType.NETWORK_ERROR"
+                class="sc-retry-btn"
+                @click="retryLastMessage"
+              >Retry</button>
+              <button
+                v-if="msg.errorType === SpoonyErrorType.UNAVAILABLE"
+                class="sc-close-btn"
+                @click="emit('update:modelValue', false)"
+              >Close</button>
+            </div>
           </div>
         </template>
         <div v-if="isTyping" class="sc-spoony-row">
@@ -57,22 +66,27 @@
 
     <!-- Input -->
     <div class="sc-input-area">
-      <q-input
-        v-model="userInput"
-        borderless
-        dark
-        :placeholder="$t('spoony.input_placeholder')"
-        maxlength="500"
-        autogrow
-        class="sc-q-input"
-        @keydown.enter.exact.prevent="onSendMessage"
-      />
+      <div class="sc-input-wrap">
+        <div v-if="isRateLimited" class="sc-rate-limit-msg">
+          Please wait {{ rateLimitCountdown }}s before sending again
+        </div>
+        <q-input
+          v-model="userInput"
+          borderless
+          dark
+          :placeholder="$t('spoony.input_placeholder')"
+          maxlength="500"
+          autogrow
+          class="sc-q-input"
+          @keydown.enter.exact.prevent="onSendMessage"
+        />
+      </div>
       <q-btn
         flat
         dense
         icon="send"
         class="sc-send-btn"
-        :disable="!userInput.trim() || isTyping"
+        :disable="isSendDisabled"
         @click="onSendMessage"
       />
     </div>
@@ -80,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
 import botSvg from 'src/img/bot.svg';
 import type { SpoonyMessage } from '../../../ts/main/spoony/spoony.types';
@@ -96,15 +110,44 @@ import {
 import type { SpoonyContext } from '../../../ts/main/spoony/spoonyApi';
 import { COURSE_NAME } from '../../../ts/main/dataaccess/index';
 
+type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType }
+
 const props = defineProps<{ modelValue: boolean }>();
-const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>();
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean]
+  'open-setup': []
+}>();
 
 const { t } = useI18n();
 
 const userInput = ref('');
 const isTyping = ref(false);
-const messages = ref<SpoonyMessage[]>([]);
+const messages = ref<ChatMessage[]>([]);
 const messagesEl = ref<HTMLElement | null>(null);
+const lastUserMessage = ref('');
+const rateLimitedUntil = ref<number>(0);
+const rateLimitCountdown = ref(0);
+let rateLimitInterval: ReturnType<typeof setInterval> | null = null;
+
+const isRateLimited = computed(() => rateLimitCountdown.value > 0);
+const isSendDisabled = computed(
+  () => isTyping.value || !userInput.value.trim() || isRateLimited.value,
+);
+
+function startRateLimitCountdown() {
+  rateLimitCountdown.value = Math.ceil((rateLimitedUntil.value - Date.now()) / 1000);
+  if (rateLimitInterval) clearInterval(rateLimitInterval);
+  rateLimitInterval = setInterval(() => {
+    const remaining = Math.ceil((rateLimitedUntil.value - Date.now()) / 1000);
+    if (remaining <= 0) {
+      rateLimitCountdown.value = 0;
+      clearInterval(rateLimitInterval!);
+      rateLimitInterval = null;
+    } else {
+      rateLimitCountdown.value = remaining;
+    }
+  }, 1000);
+}
 
 function getCurrentContext(): SpoonyContext {
   const get = (sel: string) =>
@@ -133,10 +176,7 @@ function scrollToBottom() {
   });
 }
 
-async function onSendMessage() {
-  const text = userInput.value.trim();
-  if (!text || isTyping.value) return;
-
+async function sendText(text: string) {
   if (messages.value.length >= 50) {
     messages.value.splice(0, 2);
   }
@@ -164,7 +204,7 @@ async function onSendMessage() {
       timestamp: Date.now(),
     });
   } else {
-    const errorMap: Record<SpoonyErrorType, string> = {
+    const errorMessages: Record<SpoonyErrorType, string> = {
       [SpoonyErrorType.INVALID_KEY]: t('spoony.error_invalid_key'),
       [SpoonyErrorType.RATE_LIMITED]: t('spoony.error_rate_limited'),
       [SpoonyErrorType.NETWORK_ERROR]: t('spoony.error_network'),
@@ -172,12 +212,34 @@ async function onSendMessage() {
     };
     messages.value.push({
       role: 'assistant',
-      content: errorMap[result.error],
+      content: errorMessages[result.error],
       timestamp: Date.now(),
+      errorType: result.error,
     });
+
+    if (result.error === SpoonyErrorType.INVALID_KEY) {
+      await nextTick();
+      emit('update:modelValue', false);
+      emit('open-setup');
+    } else if (result.error === SpoonyErrorType.RATE_LIMITED) {
+      rateLimitedUntil.value = Date.now() + 60000;
+      startRateLimitCountdown();
+    }
   }
 
   scrollToBottom();
+}
+
+async function onSendMessage() {
+  const text = userInput.value.trim();
+  if (!text || isTyping.value) return;
+  lastUserMessage.value = text;
+  await sendText(text);
+}
+
+async function retryLastMessage() {
+  if (!lastUserMessage.value || isTyping.value) return;
+  await sendText(lastUserMessage.value);
 }
 
 function renderMarkdown(content: string): string {
@@ -351,8 +413,13 @@ function closeDialog() {
   flex-shrink: 0;
 }
 
-.sc-q-input {
+.sc-input-wrap {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sc-q-input {
   background: transparent;
 }
 
@@ -376,6 +443,26 @@ function closeDialog() {
 .sc-send-btn.disabled,
 .sc-send-btn[disabled] {
   color: rgba(0, 229, 255, 0.25) !important;
+}
+
+.sc-retry-btn,
+.sc-close-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  border-radius: 3px;
+  color: #4df5ff;
+  font-size: 11px;
+  padding: 3px 10px;
+  margin-top: 6px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+}
+
+.sc-rate-limit-msg {
+  font-size: 11px;
+  color: rgba(255, 100, 100, 0.7);
+  text-align: center;
+  padding: 4px 0;
 }
 
 @media (min-width: 768px) {

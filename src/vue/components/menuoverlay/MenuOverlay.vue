@@ -17,7 +17,7 @@
   </div>
 
   <SpoonySetup v-model="showSetup" @saved="onSpoonySaved" />
-  <SpoonyChat v-model="showChat" />
+  <SpoonyChat v-model="showChat" @open-setup="showSetup = true" />
 </template>
 
 <script setup lang="ts">
