@@ -18,7 +18,7 @@
         <div class="ss-bot-circle">
           <img :src="botSvg" class="ss-bot-img" alt="Spoony" />
         </div>
-        <div class="ss-title">Activate Spoony</div>
+        <div class="ss-title">{{ $t('spoony.setup_title') }}</div>
         <div class="ss-divider"></div>
       </div>
 
