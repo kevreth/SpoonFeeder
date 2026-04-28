@@ -62,7 +62,7 @@ export default {
     error_off_topic: '我只能帮助解答有关本课程的问题。',
     error_no_answer: '我不能直接给您答案，但这里有一个提示：',
     error_invalid_key: '您的API密钥无效，请检查后重试。',
-    error_rate_limited: '您已达到使用限制，请稍后再试或在pollinations.ai升级。',
+    error_rate_limited: '您已达到使用限制，请稍后再试或在 pollinations.ai 升级。',
     error_network: '无法连接到Spoony，请检查您的网络连接。',
     error_unavailable: 'Spoony暂时不可用，请稍后再试。',
     error_no_course: '请先开始一门课程，然后再使用Spoony。',

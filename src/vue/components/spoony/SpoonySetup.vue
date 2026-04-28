@@ -86,6 +86,7 @@
                 borderless
                 dense
                 class="ss-q-input"
+                aria-label="API key input"
                 @update:model-value="keyError = false"
               />
             </div>
@@ -97,8 +98,8 @@
 
         <!-- Buttons -->
         <div class="ss-actions">
-          <button class="ss-btn-cancel" @click="closeDialog">Cancel</button>
-          <button class="ss-btn-activate" @click="saveKey">Activate ▶</button>
+          <button class="ss-btn-cancel" aria-label="Cancel setup" @click="closeDialog">Cancel</button>
+          <button class="ss-btn-activate" aria-label="Save API key" @click="saveKey">Activate ▶</button>
         </div>
       </div>
 
