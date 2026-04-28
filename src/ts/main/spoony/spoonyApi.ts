@@ -65,6 +65,9 @@ export async function sendMessage(
     { role: 'user', content: userMessage },
   ]
 
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 5000)
+
   let response: Response
   try {
     response = await fetch('https://gen.pollinations.ai/v1/chat/completions', {
@@ -79,9 +82,15 @@ export async function sendMessage(
         temperature: 0.7,
         max_tokens: 500,
       }),
+      signal: controller.signal,
     })
-  } catch {
+  } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      return { success: false, error: SpoonyErrorType.UNAVAILABLE }
+    }
     return { success: false, error: SpoonyErrorType.NETWORK_ERROR }
+  } finally {
+    clearTimeout(timeoutId)
   }
 
   if (!response.ok) {
