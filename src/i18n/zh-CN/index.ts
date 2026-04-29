@@ -73,5 +73,9 @@ export default {
     settings_delete_key: '删除密钥',
     settings_model: 'AI模型',
     clear_chat: '清除对话',
+    oauth_btn: '连接Pollinations',
+    oauth_description: '点击下方授权Spoony。您将被重定向到Pollinations以批准访问。',
+    manual_key_toggle: '或手动输入密钥',
+    oauth_success: 'Spoony已就绪！',
   }
 };

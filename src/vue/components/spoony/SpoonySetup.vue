@@ -26,47 +26,23 @@
       <div class="ss-body">
         <!-- Description box -->
         <div class="ss-desc-box">
-          <span
-            class="ss-desc-text"
-            v-html="$t('spoony.setup_description')"
-          ></span>
+          <span class="ss-desc-text">{{ $t('spoony.oauth_description') }}</span>
         </div>
 
-        <!-- Step 1 -->
-        <div class="ss-step-row">
-          <div class="ss-step-num">1</div>
-          <div style="width: 100%; text-align: left">
-            <a
-              href="https://enter.pollinations.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="ss-link"
-              >Go to enter.pollinations.ai ↗</a
-            >
-            <div class="ss-step-note">
-              <div class="ss-note-row">
-                <span class="ss-note-n">1.</span
-                ><span>Sign in with Google or GitHub</span>
-              </div>
-              <div class="ss-note-row">
-                <span class="ss-note-n">2.</span
-                ><span>Scroll down to the <strong>Keys</strong> section</span>
-              </div>
-              <div class="ss-note-row">
-                <span class="ss-note-n">3.</span
-                ><span>Click <strong>+ API Key</strong></span>
-              </div>
-              <div class="ss-note-row">
-                <span class="ss-note-n">4.</span
-                ><span>Copy the key starting with <strong>sk_</strong></span>
-              </div>
-            </div>
-          </div>
+        <!-- OAuth button -->
+        <button class="ss-btn-oauth" aria-label="Authorize Spoony with Pollinations" @click="redirectToOAuth">
+          {{ $t('spoony.oauth_btn') }} ↗
+        </button>
+
+        <!-- Manual key toggle -->
+        <div class="ss-manual-toggle">
+          <button class="ss-btn-toggle" @click="showManual = !showManual">
+            {{ $t('spoony.manual_key_toggle') }}
+          </button>
         </div>
 
-        <!-- Step 2 -->
-        <div class="ss-step-row">
-          <div class="ss-step-num">2</div>
+        <!-- Manual key input (hidden by default) -->
+        <div v-if="showManual" class="ss-manual-section">
           <div class="ss-input-area">
             <div class="ss-input-label">Paste your key below</div>
             <div class="ss-input-row">
@@ -94,12 +70,15 @@
               {{ keyError ? 'Key must start with sk_' : '' }}
             </div>
           </div>
+          <div class="ss-actions">
+            <button class="ss-btn-cancel" aria-label="Cancel setup" @click="closeDialog">Cancel</button>
+            <button class="ss-btn-activate" aria-label="Save API key" @click="saveKey">Activate ▶</button>
+          </div>
         </div>
 
-        <!-- Buttons -->
-        <div class="ss-actions">
+        <!-- Cancel button when manual section is hidden -->
+        <div v-if="!showManual" class="ss-actions">
           <button class="ss-btn-cancel" aria-label="Cancel setup" @click="closeDialog">Cancel</button>
-          <button class="ss-btn-activate" aria-label="Save API key" @click="saveKey">Activate ▶</button>
         </div>
       </div>
 
@@ -126,10 +105,17 @@ const show = computed({
 
 const apiKey = ref('');
 const keyError = ref(false);
+const showManual = ref(false);
 
 watch(apiKey, () => {
   keyError.value = false;
 });
+
+function redirectToOAuth() {
+  const redirectUri = window.location.origin + window.location.pathname;
+  const authUrl = `https://enter.pollinations.ai/authorize?redirect_uri=${encodeURIComponent(redirectUri)}`;
+  window.location.href = authUrl;
+}
 
 function saveKey() {
   if (!apiKey.value.startsWith('sk_')) {
@@ -221,6 +207,51 @@ function closeDialog() {
   font-size: 12px;
   color: var(--spoony-text);
   line-height: 1.6;
+}
+
+.ss-btn-oauth {
+  width: 100%;
+  background: rgba(0, 229, 255, 0.15);
+  border: 1.5px solid rgba(0, 229, 255, 0.8);
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: var(--spoony-cyan);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background 0.15s;
+}
+
+.ss-btn-oauth:hover {
+  background: rgba(0, 229, 255, 0.25);
+}
+
+.ss-manual-toggle {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.ss-btn-toggle {
+  background: transparent;
+  border: none;
+  color: rgba(200, 220, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+
+.ss-btn-toggle:hover {
+  color: rgba(200, 220, 255, 0.75);
+}
+
+.ss-manual-section {
+  margin-top: 4px;
 }
 
 .ss-step-row {

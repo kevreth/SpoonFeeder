@@ -76,5 +76,9 @@ export default {
     settings_delete_key: 'Delete Key',
     settings_model: 'AI Model',
     clear_chat: 'Clear Chat',
+    oauth_btn: 'Connect with Pollinations',
+    oauth_description: 'Click below to authorize Spoony. You will be redirected to Pollinations to approve access.',
+    manual_key_toggle: 'Or enter key manually',
+    oauth_success: 'Spoony is ready!',
   },
 };
