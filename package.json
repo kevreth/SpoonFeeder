@@ -23,7 +23,7 @@
     "@types/mathjax": "0.0.40",
     "asciidoctor": "3.0.4",
     "axios": "1.15.0",
-    "downdoc": "1.1.0-stable",
+    "downdoc": "^1.1.0-stable",
     "dpdm": "4.0.1",
     "fs": "0.0.1-security",
     "gsap": "3.15.0",

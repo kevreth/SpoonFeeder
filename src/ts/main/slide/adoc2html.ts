@@ -21,7 +21,7 @@ export function adoc2html(str: string): string {
   txt = txt.replace(
     'img src="',
     `img height = 200
-  src="src/courses/${course}/`
+  src="src/courses/${course}/`,
   );
   txt = insertHandlebars(txt);
   txt = processHandlebars(txt);
