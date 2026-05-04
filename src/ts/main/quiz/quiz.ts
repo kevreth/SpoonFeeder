@@ -9,11 +9,8 @@ interface Window {
 declare const window: Window;
 export function switchCourse(courseName: string) {
   clearCourseListing();
-  //===========================================================================
-  // un-comment for TESTING
   RANDOM.clear();
   TRANSITION.clear();
-  //===========================================================================
   COURSE_NAME.set(courseName);
   //make the course path accessible to course files
   window.courseName = courseName;
