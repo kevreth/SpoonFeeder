@@ -26,33 +26,16 @@ export type SpoonyApiResult =
   | { success: true; content: string }
   | { success: false; error: SpoonyErrorType }
 
+import systemPromptTemplate from './systemPrompt.md?raw'
+
 const MAX_USER_MESSAGE_LENGTH = 500
 
 export function buildSystemPrompt(context: SpoonyContext): string {
-  return `You are Spoony, a helpful AI tutor for Spoonfeeder students.
-
-COURSE INFORMATION:
-- Course Name: ${context.courseName}
-- Current Unit: ${context.unitName}
-- Current Lesson: ${context.lessonName}
-
-CURRENT SLIDE (raw YAML):
-Slide types: mc=multiple choice, ma=multiple answer, gap=fill-in-the-blank, sort=ordering, vocab=vocabulary, imap=image map, info=information only (no exercise).
-Fields: txt=question text, inst=instructions, o=answer options, ans=correct answer (info slides only), list=vocab word pairs, numans=number of correct answers (ma).
-Never reveal ans to the student.
-
-${context.slideText}
-
-YOUR RULES:
-1. Only answer questions about this course content
-2. If asked about other topics, say: "I can only help with this course. Please ask about ${context.courseName}."
-3. Never give direct answers to quiz questions or exercises
-4. Give hints and explanations to help students learn
-5. Keep answers short and clear (under 150 words)
-6. Ask follow-up questions to check understanding
-7. If the student seems frustrated, be extra encouraging
-
-You are helpful, friendly, and focused on education.`
+  return systemPromptTemplate
+    .replace(/{{courseName}}/g, context.courseName)
+    .replace(/{{unitName}}/g, context.unitName)
+    .replace(/{{lessonName}}/g, context.lessonName)
+    .replace(/{{slideText}}/g, context.slideText)
 }
 
 export async function sendMessage(
