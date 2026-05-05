@@ -8,6 +8,20 @@ import {
 
 import routes from './routes';
 
+// Must run before Vue/Router initializes
+const rawHash = window.location.hash;
+console.log('[OAuth] hash:', rawHash);
+const hashContent = rawHash.replace('#/', '').replace('#', '');
+if (hashContent.includes('api_key=')) {
+  const params = new URLSearchParams(hashContent);
+  const apiKey = params.get('api_key');
+  if (apiKey) {
+    console.log('[OAuth] apiKey found:', apiKey);
+    localStorage.setItem('spoony_api_key', apiKey);
+    window.history.replaceState(null, '', window.location.pathname + '#/');
+  }
+}
+
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;

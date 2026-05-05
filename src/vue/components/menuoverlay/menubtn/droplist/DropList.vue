@@ -123,6 +123,7 @@
   <SettingsOverlay
     v-model="settingOverlay"
     @closeInfo="settingOverlay = false"
+    @keyDeleted="emit('keyDeleted')"
   />
 </template>
 
@@ -132,6 +133,7 @@ import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
 import SettingsOverlay from './settings/SettingsOverlay.vue';
 
+const emit = defineEmits(['keyDeleted']);
 const isEnable = ref(false);
 const droplist = ref(false);
 const overlay = ref(false);

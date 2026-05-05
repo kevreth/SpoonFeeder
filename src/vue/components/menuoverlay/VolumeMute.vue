@@ -46,13 +46,13 @@ function soundControl() {
 </script>
 
 <style>
-.volumeMute {
+/* .volumeMute {
   position: fixed;
   left: 0;
   top: 0;
   z-index: -1;
-}
-.volumeMute:hover {
+} */
+/* .volumeMute:hover {
   transform: scale(1.2);
-}
+} */
 </style>
