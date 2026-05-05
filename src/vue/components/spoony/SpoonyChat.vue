@@ -50,12 +50,16 @@
                 v-if="msg.errorType === SpoonyErrorType.NETWORK_ERROR"
                 class="sc-retry-btn"
                 @click="retryLastMessage"
-              >Retry</button>
+              >
+                Retry
+              </button>
               <button
                 v-if="msg.errorType === SpoonyErrorType.UNAVAILABLE"
                 class="sc-close-btn"
                 @click="emit('update:modelValue', false)"
-              >Close</button>
+              >
+                Close
+              </button>
             </div>
           </div>
         </template>
@@ -113,12 +117,12 @@ import {
 import type { SpoonyContext } from '../../../ts/main/spoony/spoonyApi';
 import { COURSE_NAME } from '../../../ts/main/dataaccess/index';
 
-type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType }
+type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType };
 
 const props = defineProps<{ modelValue: boolean }>();
 const emit = defineEmits<{
-  'update:modelValue': [value: boolean]
-  'open-setup': []
+  'update:modelValue': [value: boolean];
+  'open-setup': [];
 }>();
 
 const { t } = useI18n();
@@ -138,7 +142,9 @@ const isSendDisabled = computed(
 );
 
 function startRateLimitCountdown() {
-  rateLimitCountdown.value = Math.ceil((rateLimitedUntil.value - Date.now()) / 1000);
+  rateLimitCountdown.value = Math.ceil(
+    (rateLimitedUntil.value - Date.now()) / 1000,
+  );
   if (rateLimitInterval) clearInterval(rateLimitInterval);
   rateLimitInterval = setInterval(() => {
     const remaining = Math.ceil((rateLimitedUntil.value - Date.now()) / 1000);
@@ -153,21 +159,22 @@ function startRateLimitCountdown() {
 }
 
 function getCurrentContext(): SpoonyContext {
-  const get = (sel: string) =>
-    (document.querySelector(sel) as HTMLElement | null)?.innerText;
+  const contentEl = document.querySelector('#content') as HTMLElement | null;
+  const slideEl = document.querySelector('#slide') as HTMLElement | null;
+  const wrapEl = document.querySelector('.wrapContent') as HTMLElement | null;
+
   const slideText =
-    get('.slide-content') ||
-    get('#slide-content') ||
-    get('.wrapContent') ||
-    get('main') ||
+    contentEl?.innerText?.trim() ||
+    slideEl?.innerText?.trim() ||
+    wrapEl?.innerText?.trim() ||
     '';
-  const context: SpoonyContext = {
+
+  return {
     courseName: COURSE_NAME.get() ?? 'Unknown Course',
     unitName: '',
     lessonName: '',
     slideText,
   };
-  return context;
 }
 
 function scrollToBottom() {
@@ -188,7 +195,7 @@ async function sendText(text: string) {
   isTyping.value = true;
   scrollToBottom();
 
-  const history = messages.value.slice(0, -1);
+  const history = messages.value.slice(-5, -1); // last 4 messages before current
   const result = await apiSendMessage({
     apiKey: SPOONY_API_KEY.get() ?? '',
     model: SPOONY_MODEL.get() ?? SPOONY_DEFAULT_MODEL,
@@ -275,8 +282,8 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown));
   width: 380px;
   min-width: 300px;
   max-width: 600px;
-  height: 70vh;
-  max-height: 600px;
+  height: 80vh;
+  /* max-height: 600px; */
   z-index: 9999;
   background: var(--spoony-bg);
   border: 1px solid rgba(0, 229, 255, 0.25);
@@ -476,5 +483,4 @@ onUnmounted(() => document.removeEventListener('keydown', onKeydown));
   text-align: center;
   padding: 4px 0;
 }
-
 </style>
