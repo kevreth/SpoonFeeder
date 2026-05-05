@@ -116,6 +116,9 @@ import {
 } from '../../../ts/main/spoony/spoonyApi';
 import type { SpoonyContext } from '../../../ts/main/spoony/spoonyApi';
 import { COURSE_NAME } from '../../../ts/main/dataaccess/index';
+import { last } from '../../../ts/main/index';
+import { Json } from '../../../ts/main/dataaccess/saveData/saveFile';
+import { SaveData } from '../../../ts/main/dataaccess/saveData/saveData';
 
 type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType };
 
@@ -158,16 +161,45 @@ function startRateLimitCountdown() {
   }, 1000);
 }
 
-function getCurrentContext(): SpoonyContext {
-  const contentEl = document.querySelector('#content') as HTMLElement | null;
-  const slideEl = document.querySelector('#slide') as HTMLElement | null;
-  const wrapEl = document.querySelector('.wrapContent') as HTMLElement | null;
+function getCurrentSlide() {
+  try {
+    const slides = Json.get();
+    const saves = SaveData.get();
+    if (!saves.length) return slides[0] ?? null;
+    const save = last(saves)!;
+    const idx = Json.findMatchingSlide(save.txt);
+    if (save.cont && slides.length === saves.length) return null; // end/score screen
+    if (save.cont) return slides[idx + 1] ?? null; // mirrors showSlides advance=true
+    return slides[idx] ?? null;
+  } catch {
+    return null;
+  }
+}
 
-  const slideText =
-    contentEl?.innerText?.trim() ||
-    slideEl?.innerText?.trim() ||
-    wrapEl?.innerText?.trim() ||
-    '';
+function getCurrentContext(): SpoonyContext {
+  const slide = getCurrentSlide();
+  let slideText = '';
+  if (slide) {
+    const lines: string[] = [`type: ${slide.type}`];
+    if (slide.txt) lines.push(`txt: "${slide.txt}"`);
+    if (slide.inst) lines.push(`inst: "${slide.inst}"`);
+    if (slide.o?.length) {
+      const opts = slide.o.map((s) => {
+        const m = s.match(/<img[^>]+src=["']([^"']+)["']/i);
+        return m ? (m[1].split('/').pop()?.replace(/\.[^.]+$/, '') ?? s) : s;
+      });
+      lines.push(`o: [${opts.map((s) => `"${s}"`).join(', ')}]`);
+    }
+    if (slide.ans !== undefined && slide.ans !== '' && !(Array.isArray(slide.ans) && slide.ans.length === 0)) {
+      if (!slide.isExercise) lines.push(`ans: ${JSON.stringify(slide.ans)}`);
+    }
+    if (slide.list?.size) {
+      lines.push('list:');
+      slide.list.forEach((v, k) => lines.push(`  ${k}: "${v}"`));
+    }
+    if (slide.numans) lines.push(`numans: ${slide.numans}`);
+    slideText = lines.join('\n');
+  }
 
   return {
     courseName: COURSE_NAME.get() ?? 'Unknown Course',
