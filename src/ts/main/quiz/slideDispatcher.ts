@@ -34,9 +34,8 @@ class SlideDispatcher implements StateActions<void> {
   decorate(): void {
     const slide = this.getSlide(0);
     slide.makeSlides(this.doc);
-    if (!slide.immediateConclusion) {
+    if (!slide.immediateConclusion)
       slide.conclude(this.doc, slide.res as AnswerType, slide.txt);
-    }
   }
   next(): void {
     const slide = this.getSlide(1);
@@ -45,12 +44,7 @@ class SlideDispatcher implements StateActions<void> {
   }
   end(): void {
     const json = Json.get();
-    const content = this.doc.getElementById('content');
-    if (content) {
-      content.innerHTML = evaluate(json);
-    } else {
-      this.doc.body.innerHTML = evaluate(json);
-    }
+    this.doc.body.innerHTML = evaluate(json);
     startOverButton(this.doc);
   }
 }
