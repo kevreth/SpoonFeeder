@@ -30,7 +30,11 @@
         </div>
 
         <!-- OAuth button -->
-        <button class="ss-btn-oauth" aria-label="Authorize Spoony with Pollinations" @click="redirectToOAuth">
+        <button
+          class="ss-btn-oauth"
+          aria-label="Authorize Spoony with Pollinations"
+          @click="redirectToOAuth"
+        >
           {{ $t('spoony.oauth_btn') }} ↗
         </button>
 
@@ -43,6 +47,35 @@
 
         <!-- Manual key input (hidden by default) -->
         <div v-if="showManual" class="ss-manual-section">
+          <div class="ss-manual-guide">
+            <div class="ss-note-row">
+              <span class="ss-note-n">1.</span
+              ><span
+                >Go to
+                <a
+                  href="https://enter.pollinations.ai"
+                  target="_blank"
+                  class="ss-link"
+                  >enter.pollinations.ai ↗</a
+                ></span
+              >
+            </div>
+            <div class="ss-note-row">
+              <span class="ss-note-n">2.</span><span>Sign in with GitHub</span>
+            </div>
+            <div class="ss-note-row">
+              <span class="ss-note-n">3.</span
+              ><span>Go to the <strong>Keys</strong> section in the menu</span>
+            </div>
+            <div class="ss-note-row">
+              <span class="ss-note-n">4.</span
+              ><span>Click <strong>+ API Key</strong></span>
+            </div>
+            <div class="ss-note-row">
+              <span class="ss-note-n">5.</span
+              ><span>Copy the key and paste it below</span>
+            </div>
+          </div>
           <div class="ss-input-area">
             <div class="ss-input-label">Paste your key below</div>
             <div class="ss-input-row">
@@ -71,14 +104,32 @@
             </div>
           </div>
           <div class="ss-actions">
-            <button class="ss-btn-cancel" aria-label="Cancel setup" @click="closeDialog">Cancel</button>
-            <button class="ss-btn-activate" aria-label="Save API key" @click="saveKey">Activate ▶</button>
+            <button
+              class="ss-btn-cancel"
+              aria-label="Cancel setup"
+              @click="closeDialog"
+            >
+              Cancel
+            </button>
+            <button
+              class="ss-btn-activate"
+              aria-label="Save API key"
+              @click="saveKey"
+            >
+              Activate ▶
+            </button>
           </div>
         </div>
 
         <!-- Cancel button when manual section is hidden -->
         <div v-if="!showManual" class="ss-actions">
-          <button class="ss-btn-cancel" aria-label="Cancel setup" @click="closeDialog">Cancel</button>
+          <button
+            class="ss-btn-cancel"
+            aria-label="Cancel setup"
+            @click="closeDialog"
+          >
+            Cancel
+          </button>
         </div>
       </div>
 
@@ -292,10 +343,22 @@ function closeDialog() {
 }
 
 .ss-note-n {
-  color: rgba(200, 220, 255, 0.7);
+  color: #4df5ff;
   font-weight: 600;
   font-size: 11px;
   min-width: 14px;
+}
+
+.ss-manual-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.ss-manual-guide strong {
+  color: #4df5ff;
+  font-weight: 500;
 }
 
 .ss-step-note strong {
