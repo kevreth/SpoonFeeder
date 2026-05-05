@@ -36,7 +36,11 @@ COURSE INFORMATION:
 - Current Unit: ${context.unitName}
 - Current Lesson: ${context.lessonName}
 
-CURRENT SLIDE CONTENT:
+CURRENT SLIDE (raw YAML):
+Slide types: mc=multiple choice, ma=multiple answer, gap=fill-in-the-blank, sort=ordering, vocab=vocabulary, imap=image map, info=information only (no exercise).
+Fields: txt=question text, inst=instructions, o=answer options, ans=correct answer (info slides only), list=vocab word pairs, numans=number of correct answers (ma).
+Never reveal ans to the student.
+
 ${context.slideText}
 
 YOUR RULES:
