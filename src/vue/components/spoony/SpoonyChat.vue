@@ -158,7 +158,7 @@ function startRateLimitCountdown() {
   }, 1000);
 }
 
-function getCurrentContext(): SpoonyContext {
+async function getCurrentContext(): Promise<SpoonyContext> {
   const contentEl = document.querySelector('#content') as HTMLElement | null;
   const slideEl = document.querySelector('#slide') as HTMLElement | null;
   const wrapEl = document.querySelector('.wrapContent') as HTMLElement | null;
@@ -170,7 +170,7 @@ function getCurrentContext(): SpoonyContext {
     '';
 
   const allSlides = Json.get();
-  const saves = SaveData.get();
+  const saves = await SaveData.get();
 
   let currentIdx = 0;
   if (saves && saves.length > 0) {
@@ -226,9 +226,9 @@ async function sendText(text: string) {
 
   const history = messages.value.slice(-5, -1); // last 4 messages before current
   const result = await apiSendMessage({
-    apiKey: SPOONY_API_KEY.get() ?? '',
-    model: SPOONY_MODEL.get() ?? SPOONY_DEFAULT_MODEL,
-    context: getCurrentContext(),
+    apiKey: (await SPOONY_API_KEY.get()) ?? '',
+    model: await SPOONY_MODEL.get(),
+    context: await getCurrentContext(),
     history,
     userMessage: text,
   });

@@ -168,12 +168,12 @@ function redirectToOAuth() {
   window.location.href = authUrl;
 }
 
-function saveKey() {
+async function saveKey() {
   if (!apiKey.value.startsWith('sk_')) {
     keyError.value = true;
     return;
   }
-  SPOONY_API_KEY.set(apiKey.value);
+  await SPOONY_API_KEY.set(apiKey.value);
   emit('saved');
   emit('update:modelValue', false);
 }

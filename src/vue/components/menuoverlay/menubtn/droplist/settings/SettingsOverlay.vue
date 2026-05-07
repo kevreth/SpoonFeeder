@@ -89,7 +89,7 @@
 
 <script setup lang="ts">
 import ExitBtn from '../../../../common/ExitBtn.vue';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import SwitchLang from './switchlanguages/SwitchLang.vue';
 import SpoonySetup from '../../../../spoony/SpoonySetup.vue';
 import {
@@ -104,14 +104,13 @@ import {
 const showOverlay = ref(true);
 const showKeySetup = ref(false);
 const showModelMenu = ref(false);
-const _keyVersion = ref(0);
+const apiKeySaved = ref(false);
+const selectedModel = ref(SPOONY_DEFAULT_MODEL);
 
-const apiKeySaved = computed(() => {
-  void _keyVersion.value;
-  return SPOONY_API_KEY.get() !== null;
+onMounted(async () => {
+  apiKeySaved.value = (await SPOONY_API_KEY.get()) !== null;
+  selectedModel.value = await SPOONY_MODEL.get();
 });
-
-const selectedModel = ref(SPOONY_MODEL.get() ?? SPOONY_DEFAULT_MODEL);
 
 const modelOptions = SPOONY_MODELS.map((m) => ({
   label: m.label,
@@ -122,21 +121,21 @@ const currentModelLabel = computed(
   () => modelOptions.find((m) => m.value === selectedModel.value)?.label,
 );
 
-function deleteKey() {
-  SPOONY_API_KEY.remove();
-  _keyVersion.value++;
+async function deleteKey() {
+  await SPOONY_API_KEY.remove();
+  apiKeySaved.value = false;
   emit('keyDeleted');
 }
 
-function selectModel(val: string) {
+async function selectModel(val: string) {
   selectedModel.value = val;
-  SPOONY_MODEL.set(val);
+  await SPOONY_MODEL.set(val);
   showModelMenu.value = false;
 }
 
-function onKeySaved() {
+async function onKeySaved() {
   showKeySetup.value = false;
-  _keyVersion.value++;
+  apiKeySaved.value = (await SPOONY_API_KEY.get()) !== null;
 }
 
 const emit = defineEmits(['closeInfo', 'keyDeleted']);

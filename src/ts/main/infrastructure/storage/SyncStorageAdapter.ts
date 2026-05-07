@@ -1,6 +1,5 @@
 import type { Clock } from '../clocks/Clock';
 import type { TelemetryBus } from '../telemetry/TelemetryBus';
-import type { StorageAdapter } from './StorageAdapter';
 import type { QuotaGuard } from './QuotaGuard';
 import type { SchemaRegistry } from './schemas/Registry';
 
@@ -16,9 +15,14 @@ function isVersionedEnvelope(value: unknown): value is VersionedEnvelope {
   );
 }
 
-export class WebStorageAdapter implements StorageAdapter {
+/**
+ * Synchronous storage wrapper for use with browser Storage APIs (localStorage/sessionStorage).
+ * Provides schema validation, version envelope, quota guard, and telemetry — identically to
+ * WebStorageAdapter — but without the async interface. Suitable only for Web targets where
+ * the underlying Storage API is guaranteed synchronous.
+ */
+export class SyncStorageAdapter {
   readonly platform = 'web' as const;
-  private pending = new Map<string, Promise<void>>();
 
   constructor(
     private target: Storage,
@@ -28,7 +32,7 @@ export class WebStorageAdapter implements StorageAdapter {
     private telemetry: TelemetryBus
   ) {}
 
-  async get<T>(key: string): Promise<T | undefined> {
+  get<T>(key: string): T | undefined {
     const raw = this.target.getItem(key);
     if (raw === null) {
       this.telemetry.emit({
@@ -46,7 +50,7 @@ export class WebStorageAdapter implements StorageAdapter {
     try {
       parsed = JSON.parse(raw);
     } catch {
-      throw new Error(`StorageAdapter: corrupted JSON at key "${key}"`);
+      throw new Error(`SyncStorageAdapter: corrupted JSON at key "${key}"`);
     }
 
     const registeredVersion = this.registry.getVersion(key);
@@ -58,7 +62,7 @@ export class WebStorageAdapter implements StorageAdapter {
         const migrate = this.registry.getMigration(key);
         if (!migrate) {
           throw new Error(
-            `StorageAdapter: missing migration for "${key}" v${parsed.version} → v${registeredVersion}`
+            `SyncStorageAdapter: missing migration for "${key}" v${parsed.version} → v${registeredVersion}`
           );
         }
         data = migrate(parsed.data, parsed.version, registeredVersion);
@@ -86,9 +90,9 @@ export class WebStorageAdapter implements StorageAdapter {
     return data as T;
   }
 
-  async set<T>(key: string, value: T): Promise<void> {
+  set<T>(key: string, value: T): void {
     if (value === null || value === undefined) {
-      throw new Error(`StorageAdapter: null/undefined prohibited at key "${key}"`);
+      throw new Error(`SyncStorageAdapter: null/undefined prohibited at key "${key}"`);
     }
     const schema = this.registry.getSchema(key);
     if (schema) schema.parse(value);
@@ -99,7 +103,9 @@ export class WebStorageAdapter implements StorageAdapter {
       this.target.setItem(key, serialized);
     } catch (e) {
       if (e instanceof DOMException && e.name === 'QuotaExceededError') {
-        throw Object.assign(new Error(`StorageAdapter: quota exceeded for key "${key}"`), { cause: e });
+        throw Object.assign(new Error(`SyncStorageAdapter: quota exceeded for key "${key}"`), {
+          cause: e,
+        });
       }
       throw e;
     }
@@ -113,21 +119,7 @@ export class WebStorageAdapter implements StorageAdapter {
     });
   }
 
-  async update<T>(key: string, fn: (val: T | undefined) => T | Promise<T>): Promise<void> {
-    const previous = this.pending.get(key) ?? Promise.resolve();
-    const operation = previous.then(async () => {
-      const current = await this.get<T>(key);
-      const next = await fn(current);
-      await this.set<T>(key, next);
-    });
-    this.pending.set(key, operation);
-    void operation.finally(() => {
-      if (this.pending.get(key) === operation) this.pending.delete(key);
-    });
-    await operation;
-  }
-
-  async remove(key: string): Promise<void> {
+  remove(key: string): void {
     this.target.removeItem(key);
     this.telemetry.emit({
       traceId: `storage-remove-${key}`,
@@ -139,11 +131,7 @@ export class WebStorageAdapter implements StorageAdapter {
     });
   }
 
-  async keys(): Promise<string[]> {
-    return Array.from({ length: this.target.length }, (_, i) => this.target.key(i) as string);
-  }
-
-  async clear(): Promise<void> {
+  clear(): void {
     this.target.clear();
     this.telemetry.emit({
       traceId: 'storage-clear',

@@ -1,6 +1,5 @@
 import { last } from 'lodash';
 import type { SlideInterface } from './index';
-import { Json } from '../dataaccess/saveData/saveFile';
 import { SaveData } from '../dataaccess/saveData/saveData';
 
 export interface StateActions<T> {
@@ -10,42 +9,43 @@ export interface StateActions<T> {
   next(): T;
   end(): T;
 }
-enum RefreshState {
-  BEGIN,
-  CURRENT,
-  DECORATE,
-  NEXT,
-  END,
-}
-export function dispatch2<T>(actions: StateActions<T>, advance: boolean): T {
-  const slides = Json.get();
-  const saves = SaveData.get();
-  const state = getRefreshState(slides, saves, advance);
-  const retval: T = dispatch(actions, state);
-  return retval;
-}
-function dispatch<T>(actions: StateActions<T>, state: RefreshState) {
-  const actionMap: { [key in RefreshState]: () => T } = {
-    [RefreshState.BEGIN]: actions.begin.bind(actions),
-    [RefreshState.CURRENT]: actions.current.bind(actions),
-    [RefreshState.DECORATE]: actions.decorate.bind(actions),
-    [RefreshState.NEXT]: actions.next.bind(actions),
-    [RefreshState.END]: actions.end.bind(actions),
-  };
-  return actionMap[state]();
-}
-function getRefreshState(
+
+export type QuizState = 'BEGIN' | 'CURRENT' | 'DECORATE' | 'NEXT' | 'END';
+
+/**
+ * Pure dispatch: computes QuizState from pre-loaded slides and saves, then
+ * delegates to the appropriate action. No internal storage reads.
+ */
+export function dispatch2<T>(
+  actions: StateActions<T>,
   slides: SlideInterface[],
   saves: SaveData[],
   advance: boolean
-): RefreshState {
-  let retval = RefreshState.DECORATE;
-  if (saves === undefined || saves.length === 0) retval = RefreshState.BEGIN;
-  else {
-    const save = last(saves) as SaveData;
-    if (save.cont && slides.length === saves.length) retval = RefreshState.END;
-    else if (save.cont && advance) retval = RefreshState.NEXT;
-    else if (save.cont) retval = RefreshState.CURRENT;
-  }
-  return retval;
+): T {
+  const state = getQuizState(slides, saves, advance);
+  return dispatchToAction(actions, state);
+}
+
+function dispatchToAction<T>(actions: StateActions<T>, state: QuizState): T {
+  const actionMap: Record<QuizState, () => T> = {
+    BEGIN: actions.begin.bind(actions),
+    CURRENT: actions.current.bind(actions),
+    DECORATE: actions.decorate.bind(actions),
+    NEXT: actions.next.bind(actions),
+    END: actions.end.bind(actions),
+  };
+  return actionMap[state]();
+}
+
+export function getQuizState(
+  slides: SlideInterface[],
+  saves: SaveData[],
+  advance: boolean
+): QuizState {
+  if (saves === undefined || saves.length === 0) return 'BEGIN';
+  const save = last(saves) as SaveData;
+  if (save.cont && slides.length === saves.length) return 'END';
+  if (save.cont && advance) return 'NEXT';
+  if (save.cont) return 'CURRENT';
+  return 'DECORATE';
 }

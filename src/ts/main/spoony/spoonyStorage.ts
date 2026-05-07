@@ -1,47 +1,43 @@
-import { WebStorageVariable } from '../dataaccess/persistence/webPersistence'
-import { SPOONY_DEFAULT_MODEL } from './spoony.types'
-
-const _apiKey = new WebStorageVariable('spoony_api_key', localStorage)
-const _enabled = new WebStorageVariable('spoony_enabled', localStorage)
-const _model = new WebStorageVariable('spoony_model', localStorage)
+import { localAsync } from '../infrastructure/storage/storageInit';
+import { SPOONY_DEFAULT_MODEL } from './spoony.types';
 
 export const SPOONY_API_KEY = {
-  get(): string | null {
-    return _apiKey.get()
+  async get(): Promise<string | null> {
+    return (await localAsync.get<string>('spoony_api_key')) ?? null;
   },
-  set(val: string) {
-    _apiKey.set(val)
+  async set(val: string): Promise<void> {
+    await localAsync.set('spoony_api_key', val);
   },
-  remove() {
-    _apiKey.remove()
+  async remove(): Promise<void> {
+    await localAsync.remove('spoony_api_key');
   },
-}
+};
 
 export const SPOONY_ENABLED = {
-  get(): boolean {
-    const val = _enabled.get()
-    if (val === null) return true
-    return val === 'true'
+  async get(): Promise<boolean> {
+    const val = await localAsync.get<string>('spoony_enabled');
+    if (val === undefined || val === null) return true;
+    return val === 'true';
   },
-  set(val: boolean) {
-    _enabled.set(String(val))
+  async set(val: boolean): Promise<void> {
+    await localAsync.set('spoony_enabled', String(val) as 'true' | 'false');
   },
-  is(): boolean {
-    return this.get()
+  async is(): Promise<boolean> {
+    return this.get();
   },
-  remove() {
-    _enabled.remove()
+  async remove(): Promise<void> {
+    await localAsync.remove('spoony_enabled');
   },
-}
+};
 
 export const SPOONY_MODEL = {
-  get(): string {
-    return _model.get() ?? SPOONY_DEFAULT_MODEL
+  async get(): Promise<string> {
+    return (await localAsync.get<string>('spoony_model')) ?? SPOONY_DEFAULT_MODEL;
   },
-  set(val: string) {
-    _model.set(val)
+  async set(val: string): Promise<void> {
+    await localAsync.set('spoony_model', val);
   },
-  remove() {
-    _model.remove()
+  async remove(): Promise<void> {
+    await localAsync.remove('spoony_model');
   },
-}
+};

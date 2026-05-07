@@ -71,10 +71,8 @@ export abstract class Slide implements SlideInterface {
     const result = this.result() as ResultTypeIntersection;
     return this.evaluateStrategy(txt, ans, res, result);
   }
-  public saveData() {
-    const txt = this.txt;
-    const res = this.res;
-    SaveData.set(txt, res as AnswerType, false);
+  public async saveData(): Promise<void> {
+    await SaveData.set(this.txt, this.res as AnswerType, false);
   }
   public result(): ResultReturnType {
     return this.resultType(this.ans, this.res as AnswerType);

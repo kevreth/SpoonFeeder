@@ -43,8 +43,8 @@ const content = ref('');
 const showSetup = ref(false);
 const showChat = ref(false);
 
-function onOpenSpoony() {
-  const data = getSpoonyData();
+async function onOpenSpoony() {
+  const data = await getSpoonyData();
   if (data.isConfigured()) {
     showChat.value = true;
   } else {
@@ -63,9 +63,9 @@ function onSpoonySaved() {
 }
 
 // handle overlay pages
-function handleExpOverlay() {
+async function handleExpOverlay() {
   expOverlay.value = !expOverlay.value;
-  content.value = getCurrentSlideExplanation();
+  content.value = await getCurrentSlideExplanation();
 }
 </script>
 

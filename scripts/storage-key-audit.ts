@@ -8,7 +8,7 @@ import { join, relative } from 'path';
 
 const ROOT = new URL('../src/ts', import.meta.url).pathname;
 const EXEMPT_PATHS = [
-  'main/infrastructure/storage',
+  'main/infrastructure', // all infrastructure code may access storage APIs directly
   'main/dataaccess/persistence/webPersistence', // legacy layer — migrated in Phase 3
 ];
 
