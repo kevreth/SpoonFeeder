@@ -35,8 +35,9 @@ export function continueButton(ctr: number) {
 }
 export function getLocalStorageArray() {
   const data = localStorage.getItem('test') as string;
-  const arr = JSON.parse(data);
-  return arr;
+  const parsed = JSON.parse(data);
+  // WebStorageAdapter wraps values in { version, data } — unwrap if present
+  return parsed?.data ?? parsed;
 }
 export function printWebStorage() {
   Cypress.Commands.add('printWebStorage' as any, () => {
