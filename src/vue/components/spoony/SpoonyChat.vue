@@ -115,7 +115,7 @@ import {
   sendMessage as apiSendMessage,
 } from '../../../ts/main/spoony/spoonyApi';
 import type { SpoonyContext } from '../../../ts/main/spoony/spoonyApi';
-import { COURSE_NAME } from '../../../ts/main/dataaccess/index';
+import { COURSE_NAME, Json, SaveData } from '../../../ts/main/dataaccess/index';
 
 type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType };
 
@@ -169,11 +169,40 @@ function getCurrentContext(): SpoonyContext {
     wrapEl?.innerText?.trim() ||
     '';
 
+  const allSlides = Json.get();
+  const saves = SaveData.get();
+
+  let currentIdx = 0;
+  if (saves && saves.length > 0) {
+    const lastSave = saves[saves.length - 1];
+    const idx = Json.findMatchingSlide(lastSave.txt);
+    if (idx >= 0) currentIdx = idx;
+  }
+
+  let moduleName = '';
+  for (let i = currentIdx; i >= 0; i--) {
+    const match = allSlides[i]?.txt?.match(/^Module \d+:<br>(.+)$/);
+    if (match) {
+      moduleName = match[1];
+      break;
+    }
+  }
+
+  const infoSlides: string[] = [];
+  for (let i = 0; i < currentIdx; i++) {
+    const slide = allSlides[i];
+    if (slide?.type === 'info' && !slide.isExercise) {
+      infoSlides.push(slide.txt);
+    }
+  }
+
   return {
     courseName: COURSE_NAME.get() ?? 'Unknown Course',
     unitName: '',
     lessonName: '',
+    moduleName,
     slideText,
+    infoSlides,
   };
 }
 

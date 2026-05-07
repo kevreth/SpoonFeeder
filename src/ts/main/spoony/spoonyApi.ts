@@ -4,7 +4,9 @@ export interface SpoonyContext {
   courseName: string
   unitName: string
   lessonName: string
+  moduleName: string
   slideText: string
+  infoSlides: string[]
 }
 
 export interface SendMessageParams {
@@ -35,8 +37,9 @@ COURSE INFORMATION:
 - Course Name: ${context.courseName}
 - Current Unit: ${context.unitName}
 - Current Lesson: ${context.lessonName}
+- Current Module: ${context.moduleName}
 
-CURRENT SLIDE CONTENT:
+${context.infoSlides.length > 0 ? `Course Background (from info slides):\n${context.infoSlides.map((s) => `- ${s}`).join('\n')}\n\n` : ''}CURRENT SLIDE CONTENT:
 ${context.slideText}
 
 YOUR RULES:
