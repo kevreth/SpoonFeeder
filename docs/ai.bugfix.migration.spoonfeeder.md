@@ -88,13 +88,15 @@ Tracks which modules and storage keys have been migrated from raw `WebStorageVar
 
 ---
 
-## Scan Baseline (Phase 2 output — fill in after running scanners)
+## Scan Baseline (Phase 2 — captured 2026-05-07)
 
 | Scanner | Violations at Baseline | Target (Phase 3/4 gate) |
 |---|---|---|
-| `yarn scan:storage` | TBD | 0 |
-| `yarn scan:sideeffects` | TBD | 0 in migrated subsystems |
-| `yarn scan:security` | TBD | 0 |
-| `yarn scan:clusters` | TBD | Documented and triaged |
-| `yarn scan:deps` (`no-direct-webstorage`) | TBD | 0 |
-| `yarn scan:deps` (`no-circular`) | TBD | 0 |
+| `yarn scan:storage` | 11 (webStorage.ts × 8, spoonyStorage.ts × 3) | 0 |
+| `yarn scan:sideeffects` | 6 (date.ts × 1, TelemetryBus.ts × 1†, makeSlidesStrategyGap.ts × 2, spoonyApi.ts × 2) | 0 in migrated subsystems |
+| `yarn scan:security` | 0 errors, 4 warnings (innerHTML × 4, all low-risk) | 0 errors |
+| `yarn scan:clusters` | 1 (SlideInterface: cont, isExercise, immediateConclusion) | Documented and triaged |
+| `yarn scan:deps` (`no-direct-webstorage`) | 3 | 0 |
+| `yarn scan:deps` (`no-circular`) | 2 (pre-existing cycles through dataaccess/index.ts) | 0 |
+
+† `TelemetryBus.ts` `Date.now()` is an intentional production fallback — Phase 6 self-consistency audit item.

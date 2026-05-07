@@ -62,12 +62,17 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 - [ ] Confirm `yarn scan:deps` passes against current codebase (no violations yet — existing code predates the rule; baseline violations are documented in the gap analysis)
 
 ### Phase 1 Gate
-- [ ] `yarn type-check` passes
-- [ ] `yarn lint` passes
-- [ ] `yarn test:unit` passes (all pre-existing tests unaffected)
-- [ ] `yarn test:e2e` passes
-- [ ] New infrastructure unit tests pass
-- [ ] `yarn scan:deps` runs without crashing (violations are expected and documented; Phase 3 clears them)
+- [x] `yarn type-check` passes
+- [x] `yarn lint` passes
+- [x] `yarn test:unit` passes — 168 tests across 47 files (all pre-existing + 13 new infrastructure tests)
+- [ ] `yarn test:e2e` passes — not yet run; requires dev server
+- [x] New infrastructure unit tests pass (FakeClock, FakeRng, SchemaRegistry, TelemetryBus, InvariantRegistry, WebStorageAdapter)
+- [x] `yarn scan:deps` — passes (runs, reports expected violations; 3 `no-direct-webstorage` pre-migration, 2 `no-circular` pre-existing; config renamed to `.cjs` due to `"type": "module"` in package.json)
+
+**Notes:**
+- `AndroidStorageAdapter` deferred — `@capacitor/preferences` not installed (see ADR 005)
+- `vitest.config.ts` introduced; `test:unit` script simplified to `vitest --run` (environment and setupFiles now in config)
+- Zod 4 API difference discovered: `z.record()` requires two arguments (`z.record(z.string(), z.unknown())`), not one
 
 ---
 
@@ -88,9 +93,14 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 - [ ] Produce `docs/ai.bugfix.gap-report.spoonfeeder.md` — ranked subsystem list by bug-proneness (storage key count × boolean clusters × side-effect violations); this is a generated artefact, not a hand-written document
 
 ### Phase 2 Gate
-- [ ] All five scanner scripts execute without runtime error
-- [ ] Gap report produced and committed
-- [ ] No new business logic changes
+- [x] All five scanner scripts execute without runtime error
+- [x] Gap report produced — `docs/ai.bugfix.gap-report.spoonfeeder.md`
+- [x] No new business logic changes
+
+**Unexpected findings:**
+- `makeSlidesStrategyGap.ts` has 2 `setTimeout` calls — added to Phase 4 scope
+- `TelemetryBus.ts` has 1 `Date.now()` fallback — intentional; address in Phase 6
+- 2 pre-existing circular dependency cycles found by `dependency-cruiser` — address in Phase 4 alongside `dispatch2` refactor
 
 ---
 
