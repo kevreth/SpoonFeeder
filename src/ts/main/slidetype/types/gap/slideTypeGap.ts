@@ -1,11 +1,14 @@
 import { shuffle } from 'lodash';
 import type { AnswerType, SlideInterface } from '../../../slide/slideInterface';
 import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
+import { appClock } from '../../../infrastructure/storage/storageInit';
 import { Slide } from '../../../slide/slide';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
 import { CORRECT, INCORRECT } from '../../misc/markupColors';
 import type { MarkTypeGap, SlideType } from '../../misc/slideType';
+import type { CreateHtmlTypeGap } from './createHtmlGap';
+import type { MakeSlidesTypeGap } from './makeSlidesStrategyGap';
 import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
 export class Gap extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
@@ -18,11 +21,10 @@ export class Gap extends Slide implements SlideType {
   makeSlides(doc: Document): void {
     const txt = this.txt;
     const maxWidthStrategy = SetWidths.TARGETED;
-    const createHtml = this.createHtml;
+    const createHtml = this.createHtml as CreateHtmlTypeGap;
     let ans = this.ans;
     if (RANDOM.is()) ans = shuffle(ans as string[]) as AnswerType;
-    const makeSlidesStrategy = this.makeSlidesStrategy;
-    makeSlidesStrategy(txt, ans, createHtml, maxWidthStrategy, doc, this);
+    (this.makeSlidesStrategy as MakeSlidesTypeGap)(txt, ans, createHtml, maxWidthStrategy, doc, this, appClock);
   }
   getAnswerCount(): number {
     return this.ans.length;

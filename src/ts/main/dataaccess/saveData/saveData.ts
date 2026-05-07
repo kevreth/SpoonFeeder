@@ -1,7 +1,7 @@
 import { isEqual, last } from 'lodash';
 import type { AnswerType, SlideInterface } from '../../slide/slideInterface';
 import { COURSE_NAME } from '../webstorage/webStorage';
-import { localAsync, localSync, appRegistry } from '../../infrastructure/storage/storageInit';
+import { localAsync, localSync, appRegistry, appClock } from '../../infrastructure/storage/storageInit';
 import { registerCourseSchema } from '../../infrastructure/storage/schemas/spoonfeederSchemas';
 import { extend } from '../../index';
 import { timestampNow } from './date';
@@ -34,7 +34,7 @@ export class SaveData {
     if (txt === '') return;
     const saves = await SaveData.get();
     if (SaveData.doesExist(txt, saves)) return;
-    const save = new SaveData(txt, res, timestampNow(), cont);
+    const save = new SaveData(txt, res, timestampNow(appClock), cont);
     saves.push(save);
     const courseName = COURSE_NAME.get() as string;
     ensureCourseRegistered(courseName);

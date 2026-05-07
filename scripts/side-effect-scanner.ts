@@ -17,10 +17,11 @@ const EXEMPT_PATHS = [
 const PATTERNS: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /\bDate\.now\s*\(\)/, label: 'Date.now()' },
   { pattern: /\bMath\.random\s*\(\)/, label: 'Math.random()' },
-  { pattern: /\bsetTimeout\s*\(/, label: 'setTimeout' },
-  { pattern: /\bclearTimeout\s*\(/, label: 'clearTimeout' },
-  { pattern: /\bsetInterval\s*\(/, label: 'setInterval' },
-  { pattern: /\bclearInterval\s*\(/, label: 'clearInterval' },
+  // Match bare setTimeout/clearTimeout/etc. — not preceded by '.' (injected clock calls are exempt)
+  { pattern: /(?<!\.)(?<!\w)\bsetTimeout\s*\(/, label: 'setTimeout' },
+  { pattern: /(?<!\.)(?<!\w)\bclearTimeout\s*\(/, label: 'clearTimeout' },
+  { pattern: /(?<!\.)(?<!\w)\bsetInterval\s*\(/, label: 'setInterval' },
+  { pattern: /(?<!\.)(?<!\w)\bclearInterval\s*\(/, label: 'clearInterval' },
 ];
 
 function isExempt(filePath: string): boolean {

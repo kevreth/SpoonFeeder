@@ -32,7 +32,7 @@ export class SaveDataDispatcher implements StateActions<SlideInterface> {
   }
 
   next(): SlideInterface {
-    throw new Error('SaveDataDispatcher.next() is not implemented.');
+    return this.getSlide(1);
   }
 
   /** Returns the last answered slide. Reached when the course is complete. */
