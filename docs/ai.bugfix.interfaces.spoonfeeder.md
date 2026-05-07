@@ -3,7 +3,7 @@
 ## Purpose
 This document is the single authoritative source for all public interfaces introduced by the bugfixing platform. It is the primary context document given to AI Fixer agents when generating patches. Any code that implements or depends on these interfaces must conform exactly to the signatures here. Changes to any interface require a version bump in this document and a corresponding ADR entry.
 
-## Document Version: 1.0
+## Document Version: 1.1 (Phase 5 — AI Repair Constraints)
 
 ---
 
@@ -203,7 +203,7 @@ export interface Rng {
 
 ```ts
 export class TelemetryBus {
-  constructor(clock?: Clock);
+  constructor(clock: Clock);
 
   /**
    * Validates rawEvent against TelemetryEventSchema and appends to ring buffer.
@@ -384,7 +384,46 @@ export class QuotaGuard {
 
 ---
 
-## 9. Confidence Score Schema
+## 9. PatchValidationReport
+
+Emitted by `scripts/ai-patch-validate.ts` (run via `yarn ai:validate`). Each rule result has a `status` of `'pass'` or `'fail'`.
+
+```ts
+type RuleStatus = 'pass' | 'fail' | 'error';
+
+interface RuleResult {
+  ruleId: string;          // e.g. 'type-check', 'scan:storage'
+  description: string;
+  status: RuleStatus;
+  durationMs: number;
+  output: string;          // trimmed stdout+stderr from the rule command
+}
+
+interface PatchValidationReport {
+  timestamp: number;         // Unix epoch ms
+  passed: boolean;           // true only when all rules pass
+  failedRules: string[];     // ruleIds of failed rules (empty when passed)
+  results: RuleResult[];
+}
+```
+
+**Rules evaluated (in order):**
+
+| Rule ID | Command | Gate |
+|---|---|---|
+| `type-check` | `yarn type-check` | Zero type errors |
+| `lint` | `yarn lint --max-warnings 0` | Zero lint warnings |
+| `scan:storage` | `node scripts/storage-key-audit.ts` | Zero direct storage violations |
+| `scan:sideeffects` | `node scripts/side-effect-scanner.ts` | Zero bare setTimeout/Date.now violations |
+| `scan:security` | `node scripts/security-scan.ts` | Zero security violations |
+| `scan:deps` | `npx dependency-cruiser …` | Zero forbidden dependency crossings |
+| `test:unit` | `yarn test:unit` | All unit + property tests pass |
+
+Auto-merge requires `passed === true`. Any `failedRules` entry routes to human review.
+
+---
+
+## 10. Confidence Score Schema
 
 Emitted by the Risk Agent after every AI patch. All fields are required.
 
@@ -434,3 +473,6 @@ Any failing condition routes to human review. See `docs/ai.bugfix.security.spoon
 | `infrastructure/invariants/types.ts` | `Invariant`, `InvariantViolation`, `InvariantSeverity`, `InvariantSubsystem` |
 | `infrastructure/invariants/InvariantRegistry.ts` | `InvariantRegistry` |
 | `quiz/stateActionDispatcher.ts` | `StateActions`, `QuizState`, `dispatch2` |
+| `scripts/ai-patch-validate.ts` | `PatchValidationReport`, `RuleResult` (runtime types, not exported) |
+| `scripts/differential-replay.ts` | `ReplayReport`, `StorageSnapshot` (runtime types, not exported) |
+| `cypress/support/telemetry-commands.ts` | `cy.snapshotStorage()`, `cy.assertNoConsoleErrors()` |

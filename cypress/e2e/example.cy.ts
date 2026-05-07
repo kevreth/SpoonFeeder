@@ -26,13 +26,15 @@ Cypress.Commands.add('printWebStorage' as any, () => {
     });
   });
 });
-Cypress.on('uncaught:exception', (err, runnable) => {
-  console.log('Error:', err);
-  console.log('Stack trace:', err.stack);
-
-  // returning false here prevents Cypress from
-  // failing the test
-  return false;
+// Targeted suppression: only suppress errors from known third-party libraries.
+// Returning false prevents Cypress from failing the test; returning true (or nothing) lets it fail.
+const KNOWN_UNCAUGHT_PATTERNS: RegExp[] = [
+  /ResizeObserver loop/i,
+  /Non-Error promise rejection/i,
+];
+Cypress.on('uncaught:exception', (err) => {
+  console.log('Uncaught exception:', err.message);
+  return !KNOWN_UNCAUGHT_PATTERNS.some((p) => p.test(err.message));
 });
 describe('Cypress Testing', () => {
   it('visits the app root url', () => {
@@ -204,6 +206,13 @@ describe('Cypress Testing', () => {
     cy.get('#continueBtn', { timeout: 10000 }).should('be.visible');
 
     cy.contains('course 1');
+
+    // Write storage snapshot for differential replay pipeline
+    if (Cypress.env('recordSnapshot')) {
+      cy.snapshotStorage().then((snapshot) => {
+        cy.writeFile('cypress/replay/current-snapshot.json', JSON.stringify(snapshot, null, 2));
+      });
+    }
   });
 });
 export {}; //stops lint warning

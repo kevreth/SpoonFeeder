@@ -8354,6 +8354,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"microdiff@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "microdiff@npm:1.5.0"
+  checksum: 10c0/5f55ca049451d63abf79fd1692808e1052180fbedfc91d9fcab9f02df0dd902aa6a4e30199fd345d1f91982842b12d85ffa86785e38d7dbfb6d59280074f9129
+  languageName: node
+  linkType: hard
+
 "micromatch@npm:^4.0.8":
   version: 4.0.8
   resolution: "micromatch@npm:4.0.8"
@@ -10886,6 +10893,7 @@ __metadata:
     lodash: "npm:4.18.1"
     marked: "npm:18.0.3"
     mathjax-full: "npm:3.2.2"
+    microdiff: "npm:^1.5.0"
     mobile-drag-drop: "npm:3.0.0-rc.0"
     normalize.css: "npm:8.0.1"
     npm-check-updates: "npm:22.1.1"
