@@ -1,0 +1,33 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "src/vue/App.vue",
+    "src/boot/*.ts",
+    "quasar.config.ts"
+  ],
+  "project": [
+    "src/**/*.{ts,vue}"
+  ],
+  "ignoreExportsUsedInFile": {
+    "interface": true,
+    "type": true
+  },
+  "ignore": [
+    "src/vue/**",
+    "src/boot/**",
+    "lib/**",
+    "gulpfile.js",
+    "quasar.config.cjs"
+  ],
+  "ignoreDependencies": [
+    "normalize.css",
+    "polyfill-library",
+    "vite",
+    "@vitejs/plugin-vue",
+    "@types/mathjax"
+  ],
+  "ignoreBinaries": [
+    "vite",
+    "adb"
+  ]
+}
