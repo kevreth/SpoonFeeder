@@ -56,7 +56,7 @@ Register `spoony_api_key` with `sensitive: true` in `SchemaRegistry`. This enabl
 | **Severity** | Medium |
 | **Subsystem** | Test infrastructure (`cypress/e2e/example.cy.ts`) |
 | **Discovery** | Gap analysis |
-| **Status** | Open |
+| **Status** | Resolved (Phase 5) |
 | **Mandatory Human Escalation** | No |
 
 **Description:**
@@ -95,7 +95,7 @@ Cypress.on('uncaught:exception', (err) => {
 | **Severity** | Medium |
 | **Subsystem** | SaveData (`dataaccess/saveData/saveData.ts`) |
 | **Discovery** | Gap analysis / code review |
-| **Status** | Open |
+| **Status** | Resolved (Phase 3) |
 | **Mandatory Human Escalation** | No |
 
 **Description:**
@@ -134,7 +134,7 @@ This is not a security finding in the traditional sense but is listed here becau
 | **Severity** | Medium |
 | **Subsystem** | Quiz state (`dataaccess/saveData/slideDispatcher2.ts`) |
 | **Discovery** | Code review during PRD authoring |
-| **Status** | Open |
+| **Status** | Resolved (Phase 4) |
 | **Mandatory Human Escalation** | No |
 
 **Description:**

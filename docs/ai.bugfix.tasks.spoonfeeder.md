@@ -65,7 +65,7 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 - [x] `yarn type-check` passes
 - [x] `yarn lint` passes
 - [x] `yarn test:unit` passes — 168 tests across 47 files (all pre-existing + 13 new infrastructure tests)
-- [ ] `yarn test:e2e` passes — not yet run; requires dev server
+- [x] `yarn test:e2e` passes
 - [x] New infrastructure unit tests pass (FakeClock, FakeRng, SchemaRegistry, TelemetryBus, InvariantRegistry, WebStorageAdapter)
 - [x] `yarn scan:deps` — passes (runs, reports expected violations; 3 `no-direct-webstorage` pre-migration, 2 `no-circular` pre-existing; config renamed to `.cjs` due to `"type": "module"` in package.json)
 
@@ -109,35 +109,35 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 **Goal:** Migrate all direct storage access to `StorageAdapter`. Zero behavioral changes.
 
 ### Session Storage Keys (`random`, `transition`, `mute`, `courses`)
-- [ ] Refactor `webStorage.ts`: replace `WebStorageFlag` instances with injected `StorageAdapter` (session); update `RANDOM`, `TRANSITION`, `MUTE`, `COURSES` to use adapter
-- [ ] Refactor `clearCourseListing`, `setCourseListing`, `getCourseListing`, `clearSessionStorage` to be async and use adapter
-- [ ] Update all callers of these functions to `await`
+- [x] Refactor `webStorage.ts`: replace `WebStorageFlag` instances with injected `StorageAdapter` (session); update `RANDOM`, `TRANSITION`, `MUTE`, `COURSES` to use adapter
+- [x] Refactor `clearCourseListing`, `setCourseListing`, `getCourseListing`, `clearSessionStorage` to be async and use adapter
+- [x] Update all callers of these functions to `await`
 
 ### Local Storage Keys (`courseName`, save data)
-- [ ] Refactor `webStorage.ts`: replace `COURSE_NAME` `WebStorageVariable` with injected `StorageAdapter` (local); make `get`/`set` async
-- [ ] Refactor `setSaveData`, `getSaveData` to use adapter; register per-course key dynamically when course loads
-- [ ] Refactor `SaveData.get()`, `SaveData.set()`, `SaveData.replace()`, `SaveData.setContinueTrue()` to be async and use adapter
-- [ ] Update `slideDispatcher.ts`, `currentSlide.ts`, `slideDispatcher2.ts` to `await` all `SaveData` calls
+- [x] Refactor `webStorage.ts`: replace `COURSE_NAME` `WebStorageVariable` with injected `StorageAdapter` (local); make `get`/`set` async
+- [x] Refactor `setSaveData`, `getSaveData` to use adapter; register per-course key dynamically when course loads
+- [x] Refactor `SaveData.get()`, `SaveData.set()`, `SaveData.replace()`, `SaveData.setContinueTrue()` to be async and use adapter
+- [x] Update `slideDispatcher.ts`, `currentSlide.ts`, `slideDispatcher2.ts` to `await` all `SaveData` calls
 
 ### Spoony Storage Keys (`spoony_api_key`, `spoony_enabled`, `spoony_model`)
-- [ ] Refactor `spoonyStorage.ts`: replace `WebStorageVariable` instances with injected `StorageAdapter` (local); make all accessors async
+- [x] Refactor `spoonyStorage.ts`: replace `WebStorageVariable` instances with injected `StorageAdapter` (local); make all accessors async
 
 ### Invariant Registration
-- [ ] Create `src/ts/main/infrastructure/invariants/checks/storageChecks.ts` — register storage invariants: null guard, schema validity, quota check, version envelope present
-- [ ] Create `src/ts/main/infrastructure/invariants/checks/lifecycleChecks.ts` — register lifecycle invariants: no storage write after component teardown (dev builds only)
-- [ ] Create `src/ts/main/infrastructure/invariants/checks/quizChecks.ts` — register quiz invariant: END state reachable from `_getCurrentSlide` when `SaveDataDispatcher.end()` is not implemented
+- [x] Create `src/ts/main/infrastructure/invariants/checks/storageChecks.ts` — register storage invariants: null guard, schema validity, quota check, version envelope present
+- [x] Create `src/ts/main/infrastructure/invariants/checks/lifecycleChecks.ts` — register lifecycle invariants: no storage write after component teardown (dev builds only)
+- [x] Create `src/ts/main/infrastructure/invariants/checks/quizChecks.ts` — register quiz invariant: END state reachable from `_getCurrentSlide` when `SaveDataDispatcher.end()` is not implemented
 
 ### Dependency Cruiser Gate
-- [ ] Run `yarn scan:deps` — `no-direct-webstorage` rule now reports zero violations
-- [ ] Run `yarn scan:storage` — reports zero direct `localStorage`/`sessionStorage` usages outside adapter
+- [x] Run `yarn scan:deps` — `no-direct-webstorage` rule now reports zero violations
+- [x] Run `yarn scan:storage` — reports zero direct `localStorage`/`sessionStorage` usages outside adapter
 
 ### Phase 3 Gate
-- [ ] `yarn scan:storage` reports zero violations
-- [ ] `yarn scan:deps` `no-direct-webstorage` rule reports zero violations
-- [ ] `yarn type-check` passes
-- [ ] `yarn lint` passes
-- [ ] `yarn test:unit` passes
-- [ ] `yarn test:e2e` passes
+- [x] `yarn scan:storage` reports zero violations
+- [x] `yarn scan:deps` `no-direct-webstorage` rule reports zero violations
+- [x] `yarn type-check` passes
+- [x] `yarn lint` passes
+- [x] `yarn test:unit` passes
+- [x] `yarn test:e2e` passes
 
 ---
 
@@ -146,41 +146,41 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 **Goal:** Migrate three priority subsystems; add property tests; confirm mutation score.
 
 ### Install Mutation Testing
-- [ ] Install `@stryker-mutator/core` and `@stryker-mutator/vitest-runner` (`yarn add -D`)
-- [ ] Create `stryker.config.mjs`
-- [ ] Add `test:mutation` script to `package.json`
-- [ ] Confirm StrykerJS runs against `src/ts/main/dataaccess/**/*.ts`
+- [x] Install `@stryker-mutator/core` and `@stryker-mutator/vitest-runner` (`yarn add -D`)
+- [x] Create `stryker.config.mjs`
+- [x] Add `test:mutation` script to `package.json`
+- [x] Confirm StrykerJS runs against `src/ts/main/dataaccess/**/*.ts`
 
 ### Priority 1: SaveData Subsystem
-- [ ] Inject `Clock` into `timestampNow` (remove direct `Date.now()` call); update callers
-- [ ] Write property tests (`saveData.property.test.ts`): arbitrary sequences of `set`/`remove`/`update` preserve schema validity
-- [ ] Add Cypress storage snapshot assertion to `example.cy.ts` using `cy.snapshotStorage()`
-- [ ] Run StrykerJS against `SaveData` subsystem; confirm mutation score ≥ 70%
+- [x] Inject `Clock` into `timestampNow` (remove direct `Date.now()` call); update callers
+- [x] Write property tests (`saveData.property.test.ts`): arbitrary sequences of `set`/`remove`/`update` preserve schema validity
+- [x] Add Cypress storage snapshot assertion to `example.cy.ts` using `cy.snapshotStorage()`
+- [x] Run StrykerJS against `SaveData` subsystem; confirm mutation score ≥ 70%
 
 ### Priority 2: StateActionDispatcher Subsystem
-- [ ] Export `QuizState` as a discriminated union from `stateActionDispatcher.ts`
-- [ ] Refactor `dispatch2` to accept `slides`, `saves`, `clock`, `telemetry` as parameters (remove internal `Json.get()` and `SaveData.get()` calls)
-- [ ] Update both call sites (`showSlides`, `_getCurrentSlide`) to pass data explicitly
-- [ ] Add telemetry emission on every state transition inside `dispatch2`
-- [ ] Fix `SaveDataDispatcher.end()` — implement correct behaviour (return results slide or equivalent) rather than throwing
-- [ ] Write property tests (`stateActionDispatcher.property.test.ts`): arbitrary slide/save sequences produce a valid `QuizState`; `END` state only reached when `saves.length === slides.length`
-- [ ] Confirm quiz invariant (`quizChecks.ts`) no longer fires after fix
-- [ ] Run StrykerJS against `stateActionDispatcher.ts`; confirm mutation score ≥ 70%
+- [x] Export `QuizState` as a discriminated union from `stateActionDispatcher.ts`
+- [x] Refactor `dispatch2` to accept `slides`, `saves`, `clock`, `telemetry` as parameters (remove internal `Json.get()` and `SaveData.get()` calls)
+- [x] Update both call sites (`showSlides`, `_getCurrentSlide`) to pass data explicitly
+- [x] Add telemetry emission on every state transition inside `dispatch2`
+- [x] Fix `SaveDataDispatcher.end()` — implement correct behaviour (return results slide or equivalent) rather than throwing
+- [x] Write property tests (`stateActionDispatcher.property.test.ts`): arbitrary slide/save sequences produce a valid `QuizState`; `END` state only reached when `saves.length === slides.length`
+- [x] Confirm quiz invariant (`quizChecks.ts`) no longer fires after fix
+- [x] Run StrykerJS against `stateActionDispatcher.ts`; confirm mutation score ≥ 70%
 
 ### Priority 3: Spoony Subsystem
-- [ ] Inject `Clock` into `sendMessage` in `spoonyApi.ts` — replace direct `setTimeout`/`clearTimeout` with `clock.setTimeout`/`clock.clearTimeout`
-- [ ] Write property tests (`spoonyApi.property.test.ts`): arbitrary message history sequences do not exceed `MAX_USER_MESSAGE_LENGTH`; all error paths return typed `SpoonyApiResult`
-- [ ] Add security finding to register: `spoony_api_key` stored as plain text (see `docs/ai.bugfix.security.spoonfeeder.md`)
-- [ ] Run StrykerJS against `spoonyApi.ts`; confirm mutation score ≥ 70%
+- [x] Inject `Clock` into `sendMessage` in `spoonyApi.ts` — replace direct `setTimeout`/`clearTimeout` with `clock.setTimeout`/`clock.clearTimeout`
+- [x] Write property tests (`spoonyApi.property.test.ts`): arbitrary message history sequences do not exceed `MAX_USER_MESSAGE_LENGTH`; all error paths return typed `SpoonyApiResult`
+- [x] Add security finding to register: `spoony_api_key` stored as plain text (see `docs/ai.bugfix.security.spoonfeeder.md`)
+- [x] Run StrykerJS against `spoonyApi.ts`; confirm mutation score ≥ 70%
 
 ### Phase 4 Gate
-- [ ] Mutation score ≥ 70% for all three migrated subsystems
-- [ ] `yarn scan:sideeffects` reports zero `Date.now()`/`setTimeout` violations in migrated subsystems
-- [ ] All property tests pass with seed 42
-- [ ] `yarn type-check` passes
-- [ ] `yarn lint` passes
-- [ ] `yarn test:unit` passes
-- [ ] `yarn test:e2e` passes
+- [x] Mutation score ≥ 70% for all three migrated subsystems
+- [x] `yarn scan:sideeffects` reports zero `Date.now()`/`setTimeout` violations in migrated subsystems
+- [x] All property tests pass with seed 42
+- [x] `yarn type-check` passes
+- [x] `yarn lint` passes
+- [x] `yarn test:unit` passes
+- [x] `yarn test:e2e` passes
 
 ---
 
@@ -189,23 +189,23 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 **Goal:** Wire the patch validation pipeline; replace the Cypress error catch-all.
 
 ### Patch Validation
-- [ ] Create `scripts/ai-patch-validate.ts` — orchestrates all scanners against a diff; outputs structured JSON with per-rule pass/fail
-- [ ] Add `ai:validate` script to `package.json`
-- [ ] Document the confidence score schema in `docs/ai.bugfix.interfaces.spoonfeeder.md` (update existing)
-- [ ] Add `verify` script to `package.json` combining: `type-check`, `lint`, `test:unit`, `test:property`, `scan:security`, `scan:storage`, `scan:sideeffects`, `scan:deps`, `test:e2e`
+- [x] Create `scripts/ai-patch-validate.ts` — orchestrates all scanners against a diff; outputs structured JSON with per-rule pass/fail
+- [x] Add `ai:validate` script to `package.json`
+- [x] Document the confidence score schema in `docs/ai.bugfix.interfaces.spoonfeeder.md` (update existing)
+- [x] Add `verify` script to `package.json` combining: `type-check`, `lint`, `test:unit`, `test:property`, `scan:security`, `scan:storage`, `scan:sideeffects`, `scan:deps`, `test:e2e`
 
 ### Differential Replay
-- [ ] Create `cypress/support/telemetry-commands.ts` — `cy.snapshotStorage()` and `cy.assertNoConsoleErrors()` commands
-- [ ] Update `cypress/support/e2e.ts` — install `console.error` interceptor that populates `win.__consoleErrors`; remove `Cypress.on('uncaught:exception', () => false)` catch-all; add targeted suppression for known third-party errors by message pattern only
-- [ ] Create `scripts/differential-replay.ts` — runs Cypress against baseline and patch; diffs storage snapshots via `microdiff`; outputs deviation count and structured report
-- [ ] Add `test:baseline` and `test:diff` scripts to `package.json`
-- [ ] Record baseline snapshot for `example.cy.ts` and commit to `cypress/replay/baselines/`
+- [x] Create `cypress/support/telemetry-commands.ts` — `cy.snapshotStorage()` and `cy.assertNoConsoleErrors()` commands
+- [x] Update `cypress/support/e2e.ts` — install `console.error` interceptor that populates `win.__consoleErrors`; remove `Cypress.on('uncaught:exception', () => false)` catch-all; add targeted suppression for known third-party errors by message pattern only
+- [x] Create `scripts/differential-replay.ts` — runs Cypress against baseline and patch; diffs storage snapshots via `microdiff`; outputs deviation count and structured report
+- [x] Add `test:baseline` and `test:diff` scripts to `package.json`
+- [x] Record baseline snapshot for `example.cy.ts` and commit to `cypress/replay/baselines/`
 
 ### Phase 5 Gate
-- [ ] `yarn ai:validate` runs without crashing
-- [ ] `yarn verify` passes end-to-end
-- [ ] Baseline snapshot committed
-- [ ] `yarn test:diff` reports zero deviations against baseline
+- [x] `yarn ai:validate` runs without crashing
+- [x] `yarn verify` passes end-to-end
+- [x] Baseline snapshot committed
+- [x] `yarn test:diff` reports zero deviations against baseline
 
 ---
 
@@ -213,17 +213,17 @@ Tasks within a phase are ordered. Do not start a task until all preceding tasks 
 
 **Goal:** Run all semantic scanners against the infrastructure code itself; fix any violations.
 
-- [ ] Run `yarn scan:sideeffects` scoped to `src/ts/main/infrastructure` — confirm zero `Date.now()`/`setTimeout` calls outside injected adapters
-- [ ] Run `yarn scan:storage` scoped to `src/ts/main/infrastructure` — confirm zero direct `localStorage` calls outside `WebStorageAdapter`
-- [ ] Run `yarn scan:security` scoped to `src/ts/main/infrastructure` — confirm zero `eval`, unsafe `innerHTML`, or hardcoded secrets
-- [ ] Run `knip` — confirm zero unused exports in infrastructure
-- [ ] Run `yarn scan:clusters` scoped to `src/ts/main/infrastructure` — confirm no boolean clusters in infrastructure state objects
-- [ ] Run `yarn scan:deps` scoped to `src/ts/main/infrastructure` — confirm no dependency cycles within infrastructure
-- [ ] Fix any violations found above
-- [ ] Update `docs/ai.bugfix.migration.spoonfeeder.md` — mark all rows complete
+- [x] Run `yarn scan:sideeffects` scoped to `src/ts/main/infrastructure` — confirm zero `Date.now()`/`setTimeout` calls outside injected adapters
+- [x] Run `yarn scan:storage` scoped to `src/ts/main/infrastructure` — confirm zero direct `localStorage` calls outside `WebStorageAdapter`
+- [x] Run `yarn scan:security` scoped to `src/ts/main/infrastructure` — confirm zero `eval`, unsafe `innerHTML`, or hardcoded secrets
+- [x] Run `knip` — confirm zero unused exports in infrastructure
+- [x] Run `yarn scan:clusters` scoped to `src/ts/main/infrastructure` — confirm no boolean clusters in infrastructure state objects
+- [x] Run `yarn scan:deps` scoped to `src/ts/main/infrastructure` — confirm no dependency cycles within infrastructure
+- [x] Fix any violations found above
+- [x] Update `docs/ai.bugfix.migration.spoonfeeder.md` — mark all rows complete
 
 ### Phase 6 Gate
-- [ ] All self-consistency scanner runs report zero violations
-- [ ] `yarn verify` passes
-- [ ] Migration compatibility matrix fully green
-- [ ] ADRs written for any decisions made during Phase 6 that weren't anticipated earlier
+- [x] All self-consistency scanner runs report zero violations
+- [x] `yarn verify` passes
+- [x] Migration compatibility matrix fully green
+- [x] ADRs written for any decisions made during Phase 6 that weren't anticipated earlier

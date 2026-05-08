@@ -29,7 +29,7 @@
     "ai:validate": "node scripts/ai-patch-validate.ts",
     "test:baseline": "node scripts/differential-replay.ts --record",
     "test:diff": "node scripts/differential-replay.ts --diff",
-    "verify": "yarn type-check && yarn lint && yarn test:unit && yarn scan:storage && yarn scan:sideeffects && yarn scan:security && yarn scan:deps"
+    "verify": "yarn type-check && yarn lint && yarn test:unit && yarn test:property && yarn scan:storage && yarn scan:sideeffects && yarn scan:security && yarn scan:deps && yarn test:e2e"
   },
   "dependencies": {
     "@quasar/extras": "1.18.0",
