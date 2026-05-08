@@ -24,6 +24,7 @@
     "scan:sideeffects": "node scripts/side-effect-scanner.ts",
     "scan:clusters": "node scripts/boolean-cluster-scanner.ts",
     "scan:perf": "node scripts/perf-scan.ts",
+    "scan:infra": "node scripts/infra-audit.ts",
     "test:property": "vitest --run --reporter=verbose property",
     "ai:validate": "node scripts/ai-patch-validate.ts",
     "test:baseline": "node scripts/differential-replay.ts --record",
@@ -52,7 +53,8 @@
     "typescript-eslint": "8.59.2",
     "vue": "3.5.34",
     "vue-i18n": "11.4.2",
-    "vue-router": "5.0.6"
+    "vue-router": "5.0.6",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

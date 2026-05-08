@@ -9,6 +9,8 @@ import { WebStorageAdapter } from './WebStorageAdapter';
 import { SyncStorageAdapter } from './SyncStorageAdapter';
 import { SchemaRegistry } from './schemas/Registry';
 import { registerSpoonFeederSchemas } from './schemas/spoonfeederSchemas';
+import { InvariantRegistry } from '../invariants/InvariantRegistry';
+import { registerStorageInvariants } from '../invariants/checks/storageChecks';
 
 export const appRegistry = new SchemaRegistry();
 export const appClock = new RealClock();
@@ -45,3 +47,11 @@ export const localAsync = new WebStorageAdapter(
   appClock,
   appTelemetry
 );
+
+/**
+ * Invariant registry — storage invariants registered here at module load.
+ * Quiz and lifecycle invariants are registered by the app boot layer to avoid
+ * a circular dependency through saveData → webStorage → storageInit.
+ */
+export const appInvariantRegistry = new InvariantRegistry(appClock, 'web', appTelemetry);
+registerStorageInvariants(appInvariantRegistry, appRegistry);

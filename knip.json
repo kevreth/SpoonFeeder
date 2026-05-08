@@ -3,14 +3,17 @@
   "entry": [
     "src/vue/App.vue",
     "src/boot/*.ts",
-    "quasar.config.ts"
+    "quasar.config.ts",
+    "src/ts/main/infrastructure/invariants/registerAppInvariants.ts"
   ],
   "project": [
     "src/**/*.{ts,vue}"
   ],
   "ignoreExportsUsedInFile": {
     "interface": true,
-    "type": true
+    "type": true,
+    "variable": true,
+    "function": true
   },
   "ignore": [
     "src/vue/**",
@@ -18,7 +21,13 @@
     "src/**/index.ts",
     "lib/**",
     "gulpfile.js",
-    "quasar.config.cjs"
+    "quasar.config.cjs",
+    "src/ts/main/infrastructure/random/RealRng.ts",
+    "src/ts/main/infrastructure/storage/factory.ts",
+    "src/ts/main/infrastructure/storage/storageInit.ts",
+    "src/ts/main/infrastructure/storage/schemas/spoonfeederSchemas.ts",
+    "src/ts/main/dataaccess/persistence/webPersistence.ts",
+    "src/ts/test/support/storage-fixtures.ts"
   ],
   "ignoreDependencies": [
     "normalize.css",
