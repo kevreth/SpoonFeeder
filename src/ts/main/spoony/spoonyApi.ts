@@ -1,4 +1,5 @@
 import type { SpoonyMessage } from './spoony.types'
+import systemPromptTemplate from './systemPrompt.md?raw'
 
 export interface SpoonyContext {
   courseName: string
@@ -31,27 +32,18 @@ export type SpoonyApiResult =
 const MAX_USER_MESSAGE_LENGTH = 500
 
 export function buildSystemPrompt(context: SpoonyContext): string {
-  return `You are Spoony, a helpful AI tutor for Spoonfeeder students.
+  const background =
+    context.infoSlides.length > 0
+      ? `Course Background (from info slides):\n${context.infoSlides.map((s) => `- ${s}`).join('\n')}\n\n`
+      : ''
 
-COURSE INFORMATION:
-- Course Name: ${context.courseName}
-- Current Unit: ${context.unitName}
-- Current Lesson: ${context.lessonName}
-- Current Module: ${context.moduleName}
-
-${context.infoSlides.length > 0 ? `Course Background (from info slides):\n${context.infoSlides.map((s) => `- ${s}`).join('\n')}\n\n` : ''}CURRENT SLIDE CONTENT:
-${context.slideText}
-
-YOUR RULES:
-1. Only answer questions about this course content
-2. If asked about other topics, say: "I can only help with this course. Please ask about ${context.courseName}."
-3. Never give direct answers to quiz questions or exercises
-4. Give hints and explanations to help students learn
-5. Keep answers short and clear (under 150 words)
-6. Ask follow-up questions to check understanding
-7. If the student seems frustrated, be extra encouraging
-
-You are helpful, friendly, and focused on education.`
+  return systemPromptTemplate
+    .replace(/\{\{COURSE_NAME\}\}/g, context.courseName)
+    .replace('{{UNIT_NAME}}', context.unitName)
+    .replace('{{LESSON_NAME}}', context.lessonName)
+    .replace('{{MODULE_NAME}}', context.moduleName)
+    .replace('{{BACKGROUND_SECTION}}', background)
+    .replace('{{SLIDE_TEXT}}', context.slideText)
 }
 
 export async function sendMessage(
