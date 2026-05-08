@@ -1,3 +1,5 @@
+import type { Clock } from '../../infrastructure/clocks/Clock';
+
 function convertTwoDigits(dateItem: number) {
   return dateItem.toLocaleString('en-US', {
     minimumIntegerDigits: 2,
@@ -14,6 +16,6 @@ function createTimeStamp(d: Date) {
     convertTwoDigits(d.getUTCSeconds());
   return str;
 }
-export function timestampNow() {
-  return createTimeStamp(new Date(Date.now()));
+export function timestampNow(clock: Clock): string {
+  return createTimeStamp(new Date(clock.now()));
 }

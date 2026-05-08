@@ -72,10 +72,14 @@ describe('WebStorageAdapter', () => {
     await expect(adapter.set('key', undefined)).rejects.toThrow('null/undefined prohibited');
   });
 
-  it('throws on corrupted JSON', async () => {
-    const { adapter } = makeAdapter();
+  it('returns undefined and removes the key on corrupted JSON', async () => {
+    const { adapter, bus } = makeAdapter();
     localStorage.setItem('bad', 'not-json{{{');
-    await expect(adapter.get('bad')).rejects.toThrow('corrupted JSON');
+    await expect(adapter.get('bad')).resolves.toBeUndefined();
+    expect(localStorage.getItem('bad')).toBeNull();
+    const ev = bus.snapshot().find((e) => e.event === 'storage_corruption_detected');
+    expect(ev?.severity).toBe('error');
+    expect(ev?.metadata?.key).toBe('bad');
   });
 
   it('runs migration when stored version is stale', async () => {

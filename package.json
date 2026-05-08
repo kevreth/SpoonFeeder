@@ -9,8 +9,10 @@
     "lint": "eslint src/ts --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-pattern .gitignore",
     "format": "prettier --loglevel=warn --write --single-quote \"src/ts/**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test:unit": "vitest --run",
+    "test:mutation": "stryker run",
     "test:e2e": "npx cypress run -q",
     "test:e2e:open": "npx cypress open",
+    "test:e2e:snapshot": "npx cypress run --spec cypress/e2e/snapshot.cy.ts --config 'excludeSpecPattern=[]'",
     "build-only": "vite build",
     "test:all": "yarn type-check && yarn lint && yarn test:unit && yarn test:e2e",
     "android:build": "quasar build -m capacitor -T android --debug",
@@ -21,7 +23,13 @@
     "scan:security": "node scripts/security-scan.ts",
     "scan:sideeffects": "node scripts/side-effect-scanner.ts",
     "scan:clusters": "node scripts/boolean-cluster-scanner.ts",
-    "verify": "yarn type-check && yarn lint && yarn test:unit && yarn scan:deps"
+    "scan:perf": "node scripts/perf-scan.ts",
+    "scan:infra": "node scripts/infra-audit.ts",
+    "test:property": "vitest --run --reporter=verbose property",
+    "ai:validate": "node scripts/ai-patch-validate.ts",
+    "test:baseline": "node scripts/differential-replay.ts --record",
+    "test:diff": "node scripts/differential-replay.ts --diff",
+    "verify": "yarn type-check && yarn lint && yarn test:unit && yarn scan:storage && yarn scan:sideeffects && yarn scan:security && yarn scan:deps"
   },
   "dependencies": {
     "@quasar/extras": "1.18.0",
@@ -45,13 +53,16 @@
     "typescript-eslint": "8.59.2",
     "vue": "3.5.34",
     "vue-i18n": "11.4.2",
-    "vue-router": "5.0.6"
+    "vue-router": "5.0.6",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@intlify/vite-plugin-vue-i18n": "7.0.0",
     "@quasar/app-vite": "2.6.0",
     "@rushstack/eslint-patch": "1.16.1",
+    "@stryker-mutator/core": "^9.6.1",
+    "@stryker-mutator/vitest-runner": "^9.6.1",
     "@types/jquery": "4.0.0",
     "@types/js-yaml": "4.0.9",
     "@types/jsdom": "28.0.1",
@@ -73,6 +84,7 @@
     "eslint-plugin-vue": "10.9.1",
     "jsdom": "29.1.1",
     "knip": "^6.12.0",
+    "microdiff": "^1.5.0",
     "npm-check-updates": "22.1.1",
     "npm-run-all": "4.1.5",
     "postcss": "8.5.14",

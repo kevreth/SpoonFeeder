@@ -1,3 +1,4 @@
+import type { Clock } from '../infrastructure/clocks/Clock'
 import type { SpoonyMessage } from './spoony.types'
 import systemPromptTemplate from './systemPrompt.md?raw'
 
@@ -47,7 +48,8 @@ export function buildSystemPrompt(context: SpoonyContext): string {
 }
 
 export async function sendMessage(
-  params: SendMessageParams
+  params: SendMessageParams,
+  clock: Clock,
 ): Promise<SpoonyApiResult> {
   const userMessage =
     params.userMessage.length > MAX_USER_MESSAGE_LENGTH
@@ -61,7 +63,7 @@ export async function sendMessage(
   ]
 
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 15000)
+  const timeoutId = clock.setTimeout(() => controller.abort(), 15000)
 
   let response: Response
   try {
@@ -85,7 +87,7 @@ export async function sendMessage(
     }
     return { success: false, error: SpoonyErrorType.NETWORK_ERROR }
   } finally {
-    clearTimeout(timeoutId)
+    clock.clearTimeout(timeoutId)
   }
 
   if (!response.ok) {

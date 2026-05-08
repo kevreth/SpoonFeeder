@@ -9,9 +9,16 @@ Cypress.on('uncaught:exception', (err) => {
   return !KNOWN_UNCAUGHT_PATTERNS.some((p) => p.test(err.message));
 });
 
-describe('Cypress Testing', () => {
-  it('visits the app root url', () => {
+describe('Storage Snapshot', () => {
+  it('runs the full journey and writes a storage snapshot', () => {
     runFullJourney();
+    cy.snapshotStorage().then((snapshot) => {
+      cy.writeFile(
+        'cypress/replay/current-snapshot.json',
+        JSON.stringify(snapshot, null, 2),
+      );
+    });
   });
 });
-export {}; //stops lint warning
+
+export {};

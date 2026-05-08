@@ -68,3 +68,5 @@ diag-graphviz-md5-*.svg
 /src-capacitor/android/
 .codegraph/codegraph.db
 .acis/
+cypress/replay/
+reports/

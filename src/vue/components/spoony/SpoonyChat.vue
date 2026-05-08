@@ -116,6 +116,7 @@ import {
 } from '../../../ts/main/spoony/spoonyApi';
 import type { SpoonyContext } from '../../../ts/main/spoony/spoonyApi';
 import { COURSE_NAME, Json, SaveData } from '../../../ts/main/dataaccess/index';
+import { appClock } from '../../../ts/main/infrastructure/storage/storageInit';
 
 type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType };
 
@@ -231,7 +232,7 @@ async function sendText(text: string) {
     context: await getCurrentContext(),
     history,
     userMessage: text,
-  });
+  }, appClock);
 
   isTyping.value = false;
 

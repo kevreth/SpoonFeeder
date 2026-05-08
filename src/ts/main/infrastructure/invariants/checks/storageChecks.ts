@@ -1,11 +1,16 @@
 import type { InvariantRegistry } from '../InvariantRegistry';
-import { localSync, sessionSync, appRegistry } from '../../storage/storageInit';
+import type { SchemaRegistry } from '../../storage/schemas/Registry';
 
 const SESSION_KEYS = ['random', 'transition', 'mute', 'courses'] as const;
 const LOCAL_KEYS = ['courseName', 'spoony_api_key', 'spoony_enabled', 'spoony_model'] as const;
 const MAX_LOCAL_BYTES = 4 * 1024 * 1024; // 4 MB conservative guard
 
-export function registerStorageInvariants(registry: InvariantRegistry): void {
+function unwrapEnvelope(raw: string): unknown {
+  const parsed = JSON.parse(raw);
+  return parsed && typeof parsed === 'object' && 'data' in parsed ? parsed.data : parsed;
+}
+
+export function registerStorageInvariants(registry: InvariantRegistry, schemaRegistry: SchemaRegistry): void {
   registry.register({
     id: 'storage.schema-valid-session',
     subsystem: 'storage',
@@ -13,14 +18,11 @@ export function registerStorageInvariants(registry: InvariantRegistry): void {
     severity: 'critical',
     check: () => {
       for (const key of SESSION_KEYS) {
-        const schema = appRegistry.getSchema(key);
+        const schema = schemaRegistry.getSchema(key);
         const raw = sessionStorage.getItem(key);
         if (raw === null || schema === undefined) continue;
         try {
-          const parsed = JSON.parse(raw);
-          const data =
-            parsed && typeof parsed === 'object' && 'data' in parsed ? parsed.data : parsed;
-          schema.parse(data);
+          schema.parse(unwrapEnvelope(raw));
         } catch (e) {
           throw Object.assign(new Error(`Session key "${key}" failed schema validation: ${String(e)}`), { cause: e });
         }
@@ -35,14 +37,11 @@ export function registerStorageInvariants(registry: InvariantRegistry): void {
     severity: 'critical',
     check: () => {
       for (const key of LOCAL_KEYS) {
-        const schema = appRegistry.getSchema(key);
+        const schema = schemaRegistry.getSchema(key);
         const raw = localStorage.getItem(key);
         if (raw === null || schema === undefined) continue;
         try {
-          const parsed = JSON.parse(raw);
-          const data =
-            parsed && typeof parsed === 'object' && 'data' in parsed ? parsed.data : parsed;
-          schema.parse(data);
+          schema.parse(unwrapEnvelope(raw));
         } catch (e) {
           throw Object.assign(new Error(`Local key "${key}" failed schema validation: ${String(e)}`), { cause: e });
         }
@@ -84,9 +83,7 @@ export function registerStorageInvariants(registry: InvariantRegistry): void {
         }
       }
       if (total > MAX_LOCAL_BYTES) {
-        throw new Error(
-          `localStorage usage ~${Math.round(total / 1024)} KB exceeds 4 MB guard`
-        );
+        throw new Error(`localStorage usage ~${Math.round(total / 1024)} KB exceeds 4 MB guard`);
       }
     },
   });
@@ -97,12 +94,19 @@ export function registerStorageInvariants(registry: InvariantRegistry): void {
     description: 'spoony_api_key is never stored as an empty string',
     severity: 'high',
     check: () => {
-      const val = localSync.get<string>('spoony_api_key');
-      if (val !== undefined && val.trim() === '') {
-        throw new Error('spoony_api_key is stored as an empty string');
+      // Read raw localStorage directly — invariant checks intentionally bypass the adapter
+      // to inspect storage state without triggering adapter side-effects (telemetry, migration).
+      const raw = localStorage.getItem('spoony_api_key');
+      if (raw === null) return;
+      try {
+        const val = unwrapEnvelope(raw);
+        if (typeof val === 'string' && val.trim() === '') {
+          throw new Error('spoony_api_key is stored as an empty string');
+        }
+      } catch (e) {
+        if (e instanceof Error && e.message.includes('spoony_api_key')) throw e;
+        // corrupted JSON handled by storage_corruption_detected telemetry — not our concern here
       }
     },
   });
-
-  void sessionSync; // referenced for side-effect; adapters emit telemetry on use
 }
