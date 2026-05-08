@@ -10,12 +10,12 @@ export class TelemetryBus {
   private readonly maxSize = 1000;
   private subscribers: ((event: TelemetryEvent) => void)[] = [];
 
-  constructor(private clock?: Clock) {}
+  constructor(private clock: Clock) {}
 
   emit(rawEvent: TelemetryEventInput): void {
     const stamped = {
       ...rawEvent,
-      timestamp: rawEvent.timestamp ?? this.clock?.now() ?? Date.now(),
+      timestamp: rawEvent.timestamp ?? this.clock.now(),
     };
     const parsed = TelemetryEventSchema.safeParse(stamped);
 
