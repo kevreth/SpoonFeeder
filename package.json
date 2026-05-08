@@ -12,6 +12,7 @@
     "test:mutation": "stryker run",
     "test:e2e": "npx cypress run -q",
     "test:e2e:open": "npx cypress open",
+    "test:e2e:snapshot": "npx cypress run --spec cypress/e2e/snapshot.cy.ts --config 'excludeSpecPattern=[]'",
     "build-only": "vite build",
     "test:all": "yarn type-check && yarn lint && yarn test:unit && yarn test:e2e",
     "android:build": "quasar build -m capacitor -T android --debug",
