@@ -47,13 +47,15 @@ export class WebStorageAdapter implements StorageAdapter {
       parsed = JSON.parse(raw);
     } catch {
       this.target.removeItem(key);
+      console.error(`[StorageAdapter] Corrupted JSON at key "${key}" — key cleared, user may need to re-enter data`);
       this.telemetry.emit({
         traceId: `storage-corrupt-${key}`,
         subsystem: 'storage',
-        event: 'storage_read_miss',
+        event: 'storage_corruption_detected',
+        severity: 'error',
         timestamp: this.clock.now(),
         platform: this.platform,
-        metadata: { key, corrupted: true },
+        metadata: { key },
       });
       return undefined;
     }
