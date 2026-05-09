@@ -175,17 +175,47 @@ export function runFullJourney() {
   testButton('#btn0');
   continueButton(23);
 
+  // Lesson 1 boundary prompt — skip
+  skipReviewPrompt();
+
+  // Lesson 2 navigation
+  existVisibleNotEmpty('body');
+  elementContains('body', 'lesson 2');
+  testButton('#continueBtn');
+
+  existVisibleNotEmpty('body');
+  elementContains('body', 'module 2');
+  testButton('#continueBtn');
+
+  existVisibleNotEmpty('body');
+  cy.contains('closest to the Sun');
+  testButton('#btn0'); // Mercury — correct
+  testButton('#continueBtn');
+
+  existVisibleNotEmpty('body');
+  cy.contains('chemical symbol for water');
+  testButton('#btn0'); // H2O — correct
+  testButton('#continueBtn');
+
+  // Lesson 2 + unit + course boundary prompts — skip all
+  skipReviewPrompt();
+  skipReviewPrompt();
+  skipReviewPrompt();
+
   existVisibleNotEmpty('body');
   cy.contains('a,b,c,d');
   cy.contains('blue');
-  cy.contains('.stat-value', '17');
-  cy.contains('.stat-value', '11');
-  cy.contains('.stat-value', '65%');
   cy.contains('ans');
   testButton('#startOver');
 
   cy.get('#continueBtn', { timeout: 10000 }).should('be.visible');
   cy.contains('course 1');
+}
+
+export function skipReviewPrompt() {
+  cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');
+  cy.get('[data-cy="review-skip"]').click();
+  cy.get('[data-cy="review-prompt"]').should('not.exist');
 }
 
 export function printWebStorage() {

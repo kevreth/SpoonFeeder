@@ -1,5 +1,7 @@
 import { SaveData } from '../dataaccess/saveData/saveData';
 import { showSlides } from './slideDispatcher';
+import { Json } from '../dataaccess/saveData/saveFile';
+import { firePreAdvanceHook } from '../review/reviewBridge';
 
 export function makeButton(id: string, clazz: string, content: string): string {
   return `<button id="${id}" class="${clazz}" type="button">${content}</button>`;
@@ -19,6 +21,8 @@ export function continueButton(doc: Document, txt: string): HTMLElement {
     await SaveData.setContinueTrue(txt);
     const explain = doc.getElementById('explainIcon') as HTMLElement;
     explain.style.visibility = 'hidden';
+    const nextSlideIndex = Json.findMatchingSlide(txt) + 1;
+    await firePreAdvanceHook(nextSlideIndex);
     await showSlides(doc);
   });
   return continue_btn;

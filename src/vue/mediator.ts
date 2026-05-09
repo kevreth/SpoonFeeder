@@ -4,4 +4,21 @@ export { COURSE_NAME, SaveData, TRANSITION, getCourseListing, setCourseListing }
 export { Score, switchCourse } from '../ts/main/quiz/index';
 export { AudioPlayer } from '../ts/main/slide/index';
 export { getCourseData } from './composables/courseData';
+export {
+  buildBoundaryMap,
+  extractPool,
+  hasReviewableExercises,
+  countReviewableExercises,
+  sampleExercises,
+  appendReviewRecord,
+  clearDraftState,
+  setPreAdvanceHook,
+  ReviewSessionController,
+} from '../ts/main/review/index';
+export type {
+  ReviewBoundary,
+  ReviewRecord,
+  ReviewType,
+  SlideResult,
+} from '../ts/main/review/index';
 
