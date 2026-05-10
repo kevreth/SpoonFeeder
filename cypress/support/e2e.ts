@@ -12,6 +12,11 @@ const KNOWN_THIRD_PARTY_PATTERNS: RegExp[] = [
   /asciidoctor/i,
 ];
 
+Cypress.on('window:before:load', (win) => {
+  win.sessionStorage.setItem('mute', 'true');
+  win.HTMLMediaElement.prototype.play = () => Promise.resolve();
+});
+
 beforeEach(() => {
   cy.window().then((win) => {
     (win as unknown as { __consoleErrors: string[] }).__consoleErrors = [];
