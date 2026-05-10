@@ -206,6 +206,11 @@ export function runFullJourney() {
   cy.contains('a,b,c,d');
   cy.contains('blue');
   cy.contains('ans');
+  cy.contains('Mercury');
+  cy.contains('H2O');
+  cy.contains('.stat-value', '19');
+  cy.contains('.stat-value', '13');
+  cy.contains('.stat-value', '68%');
   testButton('#startOver');
 
   cy.get('#continueBtn', { timeout: 10000 }).should('be.visible');
@@ -215,7 +220,8 @@ export function runFullJourney() {
 export function skipReviewPrompt() {
   cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');
   cy.get('[data-cy="review-skip"]').click();
-  cy.get('[data-cy="review-prompt"]').should('not.exist');
+  // No not.exist check — when multiple boundaries fire, the next prompt
+  // appears immediately after Vue flushes, so the element is never absent.
 }
 
 export function printWebStorage() {

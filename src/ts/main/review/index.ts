@@ -17,6 +17,8 @@ export {
   saveDraftState,
   getDraftState,
   clearDraftState,
+  getHighestReachedIndex,
+  setHighestReachedIndex,
 } from './reviewStorage';
 export { setPreAdvanceHook, firePreAdvanceHook } from './reviewBridge';
 export { ReviewSessionController } from './reviewSessionController';

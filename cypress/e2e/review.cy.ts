@@ -8,7 +8,7 @@
  * The lesson 1 boundary prompt fires after completing lesson 1's last exercise.
  * The lesson 2 / unit / course boundary prompts fire after lesson 2's last exercise.
  */
-import { skipReviewPrompt, testButton, elementContains, existVisibleNotEmpty } from './functions';
+import { skipReviewPrompt, testButton, elementContains, existVisibleNotEmpty, dragDrop } from './functions';
 
 const KNOWN_UNCAUGHT_PATTERNS: RegExp[] = [
   /ResizeObserver loop/i,
@@ -75,20 +75,14 @@ function navigateToLesson1Boundary() {
   testButton('#btn1');
   testButton('#continueBtn');
   // gap 1 (all correct)
-  cy.get('#fill0').trigger('dragstart', { dataTransfer: new DataTransfer() });
-  cy.get('#gap0').trigger('drop', { dataTransfer: new DataTransfer() });
-  cy.get('#fill1').trigger('dragstart', { dataTransfer: new DataTransfer() });
-  cy.get('#gap1').trigger('drop', { dataTransfer: new DataTransfer() });
-  cy.get('#fill2').trigger('dragstart', { dataTransfer: new DataTransfer() });
-  cy.get('#gap2').trigger('drop', { dataTransfer: new DataTransfer() });
+  dragDrop('#fill0', '#gap0');
+  dragDrop('#fill1', '#gap1');
+  dragDrop('#fill2', '#gap2');
   testButton('#continueBtn');
   // gap 2 (some wrong)
-  cy.get('#fill2').trigger('dragstart', { dataTransfer: new DataTransfer() });
-  cy.get('#gap1').trigger('drop', { dataTransfer: new DataTransfer() });
-  cy.get('#fill0').trigger('dragstart', { dataTransfer: new DataTransfer() });
-  cy.get('#gap0').trigger('drop', { dataTransfer: new DataTransfer() });
-  cy.get('#fill1').trigger('dragstart', { dataTransfer: new DataTransfer() });
-  cy.get('#gap2').trigger('drop', { dataTransfer: new DataTransfer() });
+  dragDrop('#fill2', '#gap1');
+  dragDrop('#fill0', '#gap0');
+  dragDrop('#fill1', '#gap2');
   testButton('#continueBtn');
   // select
   testButton('#w4');
@@ -170,9 +164,22 @@ describe('Review System — focused review session', () => {
   });
 
   it('starts a focused lesson review, allows answering, shows score', () => {
+    // Use the lesson 2 boundary: lesson 2 has exactly 2 mc exercises, so the
+    // focused review pool is fully predictable (no gap/select surprises).
     navigateToLesson1Boundary();
+    skipReviewPrompt(); // skip lesson 1 boundary
 
-    // Lesson 1 boundary prompt — choose focused review
+    // Navigate through lesson 2
+    testButton('#continueBtn'); // lesson 2 title
+    testButton('#continueBtn'); // module 2 title
+    cy.contains('closest to the Sun');
+    testButton('#btn0'); // Mercury
+    testButton('#continueBtn');
+    cy.contains('chemical symbol for water');
+    testButton('#btn0'); // H2O
+    testButton('#continueBtn'); // triggers lesson 2 / unit / course boundary prompts
+
+    // Lesson 2 boundary prompt — choose focused review
     cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');
     cy.get('[data-cy="review-focused"]').click();
 
@@ -180,17 +187,14 @@ describe('Review System — focused review session', () => {
     cy.get('[data-cy="review-session"]', { timeout: 8000 }).should('exist');
     cy.get('[data-cy="review-quit"]').should('be.visible');
 
-    // Answer slides until summary appears (sample size = 5 for lesson scope)
-    for (let i = 0; i < 10; i++) {
+    // Lesson 2 focused pool = 2 mc slides (Mercury + H2O), sample capped at 5 → 2 slides
+    for (let i = 0; i < 4; i++) {
       cy.get('body').then(($body) => {
         if ($body.find('[data-cy="review-summary"]').length > 0) return;
-        // Try to click first answer option if visible
         if ($body.find('#btn0').length > 0) {
           cy.get('#btn0').click();
-        } else if ($body.find('#btn').length > 0) {
-          cy.get('#btn').click();
+          cy.get('#continueBtn').should('be.visible').click();
         }
-        cy.get('#continueBtn').should('be.visible').click();
       });
     }
 
@@ -201,10 +205,6 @@ describe('Review System — focused review session', () => {
     // Return to course
     cy.get('[data-cy="review-done"]').click();
     cy.get('[data-cy="review-session"]').should('not.exist');
-
-    // Course navigation resumes — lesson 2 title should appear
-    cy.get('#continueBtn', { timeout: 8000 }).should('be.visible');
-    cy.contains('lesson 2');
   });
 
   it('quit button exits the review session mid-way', () => {

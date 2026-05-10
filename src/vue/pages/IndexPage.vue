@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import {
   loadCourseListing,
   switchCourse,
@@ -44,8 +44,10 @@ import {
   appendReviewRecord,
   clearDraftState,
   setPreAdvanceHook,
+  setHighestReachedIndex,
 } from '../mediator';
 import type { ReviewBoundary, ReviewRecord, ReviewType } from '../mediator';
+import { reviewLaunchPending } from '../composables/reviewMenuState';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 import ReviewPrompt from '../components/review/ReviewPrompt.vue';
 import ReviewSession from '../components/review/ReviewSession.vue';
@@ -79,9 +81,18 @@ function buildPromptTitle(boundary: ReviewBoundary): string {
   return 'Course complete.';
 }
 
+watch(reviewLaunchPending, async (req) => {
+  if (!req) return;
+  reviewLaunchPending.value = null;
+  await runReviewSession(req.boundary, req.type);
+});
+
 setPreAdvanceHook(async (nextSlideIndex: number) => {
   const course = CourseFile.get();
   if (!course) return;
+
+  const courseName = COURSE_NAME.get();
+  if (courseName) setHighestReachedIndex(nextSlideIndex, courseName);
 
   const bmap = buildBoundaryMap(course);
   const matching = bmap.filter((b) => b.slideIndex === nextSlideIndex);
@@ -103,6 +114,7 @@ setPreAdvanceHook(async (nextSlideIndex: number) => {
     });
 
     showPrompt.value = false;
+    await nextTick();
     if (choice === 'skip') continue;
 
     await runReviewSession(boundary, choice);

@@ -25,7 +25,7 @@
           class="progressBackground"
           style="flex-grow: 1"
         >
-          <ProgressTable style="cursor: auto" />
+          <ProgressTable v-if="props.showOverlay" style="cursor: auto" />
         </div>
       </div>
       <!-- </template> -->

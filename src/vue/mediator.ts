@@ -14,11 +14,16 @@ export {
   clearDraftState,
   setPreAdvanceHook,
   ReviewSessionController,
+  getReviewRecords,
+  getMostRecentRecord,
+  getHighestReachedIndex,
+  setHighestReachedIndex,
 } from '../ts/main/review/index';
 export type {
   ReviewBoundary,
   ReviewRecord,
   ReviewType,
   SlideResult,
+  ScopeType,
 } from '../ts/main/review/index';
 

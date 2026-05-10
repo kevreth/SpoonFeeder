@@ -51,3 +51,15 @@ export async function clearDraftState(courseName: string): Promise<void> {
   ensureReviewRegistered(courseName);
   await localAsync.remove(`review_draft_${courseName}`);
 }
+
+export function getHighestReachedIndex(courseName: string): number {
+  const raw = sessionStorage.getItem(`highest_reached_${courseName}`);
+  return raw !== null ? parseInt(raw, 10) : -1;
+}
+
+export function setHighestReachedIndex(index: number, courseName: string): void {
+  const current = getHighestReachedIndex(courseName);
+  if (index > current) {
+    sessionStorage.setItem(`highest_reached_${courseName}`, String(index));
+  }
+}

@@ -18,6 +18,7 @@
 
   <SpoonySetup v-model="showSetup" @saved="onSpoonySaved" />
   <SpoonyChat v-model="showChat" @open-setup="showSetup = true" />
+  <ReviewMenu v-if="reviewMenuOpen" />
 </template>
 
 <script setup lang="ts">
@@ -32,6 +33,8 @@ import SpoonyChat from '../spoony/SpoonyChat.vue';
 import { getCurrentSlideExplanation } from '../../../ts/main/dataaccess/saveData/currentSlide';
 import SumNavigation from './SumNavigation.vue';
 import { getSpoonyData } from '../../composables/spoonyData';
+import ReviewMenu from '../review/ReviewMenu.vue';
+import { reviewMenuOpen } from '../../composables/reviewMenuState';
 
 const isMuted = ref(false);
 
