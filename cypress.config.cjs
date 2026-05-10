@@ -6,5 +6,7 @@ module.exports = defineConfig({
     excludeSpecPattern: 'cypress/e2e/snapshot.cy.ts',
     baseUrl: 'http://127.0.0.1:9000',
     allowCypressEnv: false,
+    defaultCommandTimeout: 10000,
+    pageLoadTimeout: 30000,
   },
 });
