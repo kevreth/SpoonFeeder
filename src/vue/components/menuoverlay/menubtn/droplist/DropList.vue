@@ -47,6 +47,26 @@
         </span>
         <span>{{ $t('droplist.courses') }}</span>
       </div> -->
+      <div class="dropItem" @click="reviewMenuOpen = true">
+        <span class="dropIcon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M7 2.5A4.5 4.5 0 1 1 2.5 7"
+              stroke="#00bfff"
+              stroke-width="1.2"
+              stroke-linecap="round"
+            />
+            <polyline
+              points="2.5,4.5 2.5,7 5,7"
+              stroke="#00bfff"
+              stroke-width="1.2"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <span>Reviews</span>
+      </div>
       <div class="dropDivider"></div>
       <div class="dropItem" @click="settingOverlay = true">
         <span class="dropIcon">
@@ -123,6 +143,7 @@
   <SettingsOverlay
     v-model="settingOverlay"
     @closeInfo="settingOverlay = false"
+    @keyDeleted="emit('keyDeleted')"
   />
 </template>
 
@@ -131,7 +152,9 @@ import { ref } from 'vue';
 import OverlayTable from './overlaytable/OverlayTable.vue';
 import CourseSelector from './courseselector/CourseSelector.vue';
 import SettingsOverlay from './settings/SettingsOverlay.vue';
+import { reviewMenuOpen } from '../../../../composables/reviewMenuState';
 
+const emit = defineEmits(['keyDeleted']);
 const isEnable = ref(false);
 const droplist = ref(false);
 const overlay = ref(false);

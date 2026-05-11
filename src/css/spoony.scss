@@ -1,0 +1,30 @@
+// Spoony shared design tokens and structural utilities
+
+:root {
+  --spoony-cyan: #00e5ff;
+  --spoony-cyan-dim: rgba(0, 229, 255, 0.3);
+  --spoony-bg: rgba(8, 14, 30, 0.97);
+  --spoony-text: #e8f0ff;
+}
+
+.spoony-corner-tl,
+.spoony-corner-tr,
+.spoony-corner-bl,
+.spoony-corner-br {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--spoony-cyan);
+  border-style: solid;
+  z-index: 2;
+}
+.spoony-corner-tl { top: 2px; left: 2px; border-width: 2px 0 0 2px; }
+.spoony-corner-tr { top: 2px; right: 2px; border-width: 2px 2px 0 0; }
+.spoony-corner-bl { bottom: 2px; left: 2px; border-width: 0 0 2px 2px; }
+.spoony-corner-br { bottom: 2px; right: 2px; border-width: 0 2px 2px 0; }
+
+.spoony-accent-top {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--spoony-cyan), transparent);
+  flex-shrink: 0;
+}

@@ -1,9 +1,13 @@
-import { WebStorageFlag } from '../../dataaccess/persistence/webPersistence';
+export interface MuteFlag {
+  is(): boolean;
+  set(): void;
+  clear(): void;
+}
 
 export class AudioPlayer {
   private readonly INCORRECT: string = 'resources/audio/incorrect.mp3';
   private readonly CORRECT: string = this.INCORRECT.replace('in', '');
-  constructor(public audio: HTMLAudioElement, public mute: WebStorageFlag) {
+  constructor(public audio: HTMLAudioElement, public mute: MuteFlag) {
     if (this.mute.is()) {
       this.audio.muted = true;
     }

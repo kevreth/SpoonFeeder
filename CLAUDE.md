@@ -22,6 +22,7 @@ yarn test:unit                          # Run all Vitest unit tests
 yarn test:unit -- quiz.test.ts         # Run a single test file
 yarn test:e2e                           # Run Cypress E2E (requires dev server on :9000)
 yarn test:e2e:open                      # Open Cypress GUI
+yarn test:e2e:snapshot                  # Run full journey and write cypress/replay/current-snapshot.json
 yarn test:all                           # Full pipeline: type-check + lint + unit + e2e
 ./build.sh                              # Same as test:all with timing output
 
@@ -29,6 +30,18 @@ yarn test:all                           # Full pipeline: type-check + lint + uni
 quasar build                            # Web production build
 quasar build -m capacitor -T android   # Android build
 ```
+
+## Differential Replay Pipeline
+
+After applying a patch, use the storage snapshot to verify the repair didn't silently corrupt user data:
+
+1. **Record a baseline** (on the known-good build): `yarn test:e2e:snapshot`
+   - Writes `cypress/replay/current-snapshot.json` (localStorage + sessionStorage after a full course run)
+2. **Apply your patch**
+3. **Record a post-patch snapshot**: `yarn test:e2e:snapshot` again (overwrites the file)
+4. **Diff the two snapshots** — any deviation in keys or values indicates the patch changed observable storage state
+
+Baseline snapshots for comparison live in `cypress/replay/baselines/`. A patch is safe if the post-patch snapshot matches the relevant baseline.
 
 ## Architecture
 

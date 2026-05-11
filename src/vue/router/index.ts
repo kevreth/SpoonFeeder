@@ -8,6 +8,21 @@ import {
 
 import routes from './routes';
 
+// Must run before Vue/Router initializes
+const rawHash = window.location.hash;
+const hashContent = rawHash.replace('#/', '').replace('#', '');
+if (hashContent.includes('api_key=')) {
+  const params = new URLSearchParams(hashContent);
+  const apiKey = params.get('api_key');
+  if (apiKey) {
+    // WebStorageAdapter expects a versioned envelope — a bare string would fail JSON.parse on read
+    const envelope = JSON.stringify({ version: 1, data: apiKey });
+    localStorage.setItem('spoony_api_key', envelope);
+    console.log('[Spoony OAuth] API key received and persisted to storage');
+    window.history.replaceState(null, '', window.location.pathname + '#/');
+  }
+}
+
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;

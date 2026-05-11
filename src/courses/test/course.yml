@@ -85,4 +85,16 @@ units:
       - type: mc
         txt: If only we ____ have to learn the periodic table of the elements by tomorrow!
         o: [didn't, don't]
+  - name: lesson 2
+    modules:
+    - name: module 2
+      exercises:
+      - type: mc
+        txt: Review lesson — which planet is closest to the Sun?
+        o: [Mercury, Venus, Earth, Mars]
+        exp: Mercury is the closest planet to the Sun.
+      - type: mc
+        txt: Review lesson — what is the chemical symbol for water?
+        o: [H2O, CO2, NaCl, O2]
+        exp: Water is H2O — two hydrogen atoms and one oxygen atom.
 

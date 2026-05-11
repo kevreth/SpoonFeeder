@@ -1,3 +1,4 @@
+import type { Clock } from '../../../infrastructure/clocks/Clock';
 import type { AnswerType, SlideInterface } from '../../../slide/index';
 import { createPageContent } from '../../misc/createPageContent/createPageContent';
 import type { SetWidthTypeComplex } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
@@ -9,6 +10,7 @@ export type MakeSlidesTypeGap = (
   maxWidthStrategy: SetWidthTypeComplex,
   doc: Document,
   slide: SlideInterface,
+  clock: Clock,
 ) => void;
 //===the main divs are
 //fills: the strings to drag into the gaps
@@ -22,6 +24,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
   maxWidthStrategy,
   doc,
   slide,
+  clock,
 ): void {
   const _fills = fills(ans);
   const _gaps = gaps(ans.length, txt);
@@ -38,7 +41,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
   };
   (ans as string[]).forEach((currentFills, ctr) => {
     setfills(ctr, currentFills, doc);
-    setgap(ctr, doc, txt, concludeOnce);
+    setgap(ctr, doc, txt, concludeOnce, clock);
   });
   maxWidthStrategy(ans.length, 'fill', 'gap', doc);
   const fillEls = doc.querySelectorAll('.fills');
@@ -50,7 +53,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
   fillEls.forEach((el) => {
     (el as HTMLElement).style.width = maxWidth + 'px';
   });
-  setupTouchDnD(doc, concludeOnce);
+  setupTouchDnD(doc, concludeOnce, clock);
 };
 export function fills(ans: AnswerType): string {
   let fill_accum = '';
@@ -82,6 +85,7 @@ function setgap(
   doc: Document,
   txt: string,
   concludeOnce: () => void,
+  clock: Clock,
 ): void {
   const id = doc.getElementById('gap' + ctr) as HTMLElement;
   id.style.cssText = `
@@ -117,7 +121,7 @@ function setgap(
     const fillText = (e.dataTransfer as DataTransfer).getData('text');
     const gapNumber = (e.target as HTMLElement).dataset.number as string;
     const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-    if (fillsRemaining === 0) setTimeout(() => concludeOnce(), 0);
+    if (fillsRemaining === 0) clock.setTimeout(() => concludeOnce(), 0);
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
     const gapEl = e.target as HTMLElement;
@@ -191,6 +195,7 @@ function setfills(ctr: number, currentFills: string, doc: Document): void {
 function setupTouchDnD(
   doc: Document,
   concludeOnce: () => void,
+  clock: Clock,
 ): void {
   const fillsDiv = doc.getElementById('fills') as HTMLElement;
   fillsDiv.addEventListener(
@@ -258,7 +263,7 @@ function setupTouchDnD(
         gapEl.ondrop = null;
         const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
         gapEl.style.backgroundColor = '#E6F1FB';
-        if (fillsRemaining === 0) setTimeout(() => concludeOnce(), 0);
+        if (fillsRemaining === 0) clock.setTimeout(() => concludeOnce(), 0);
       };
       doc.addEventListener('touchmove', onMove, { passive: false });
       doc.addEventListener('touchend', onEnd);
