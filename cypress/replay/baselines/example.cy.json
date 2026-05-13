@@ -1,0 +1,11 @@
+{
+  "local": {
+    "test": "{\"version\":1,\"data\":[{\"txt\":\"course 1\",\"result\":\"\",\"ts\":\"20260408080457\",\"cont\":false}]}",
+    "courseName": "{\"version\":1,\"data\":\"test\"}"
+  },
+  "session": {
+    "random": "{\"version\":1,\"data\":\"false\"}",
+    "transition": "{\"version\":1,\"data\":\"false\"}",
+    "mute": "true"
+  }
+}

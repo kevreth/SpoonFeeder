@@ -1,7 +1,8 @@
 import type { AnswerType, SlideInterface } from '../index';
 import { continueButton } from '../../quiz/buttons';
 import { showExplainIcon } from '../../quiz/explainIcon';
-import { AudioPlayer } from './audio';
+import type { AudioPlayer } from './audio';
+
 function conclude(
   doc: Document,
   slide: SlideInterface,
@@ -16,12 +17,15 @@ function conclude(
     const isCorrect = slide.decorate(doc);
     audioPlayer.playAudio(isCorrect);
   }
-  slide.saveData();
+  // fire-and-forget: localStorage writes are synchronous under the hood;
+  // the void cast suppresses the unhandled-promise lint warning.
+  void slide.saveData();
   const done = doc.getElementById('btn');
   if (done !== null) done.remove();
   _showExplainIcon(slide.exp, doc);
   _continueButton(doc, txt);
 }
+
 export function conclude2(
   doc: Document,
   slide: SlideInterface,

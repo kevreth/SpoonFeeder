@@ -41,7 +41,7 @@ export interface SlideInterface {
   setRes(res: AnswerType): void;
   getRes(): AnswerType;
   getAns(): AnswerType;
-  saveData(): void;
+  saveData(): Promise<void>;
   decorate(doc: Document): boolean;
   conclude(doc: Document, res: AnswerType, txt: string): void;
 }

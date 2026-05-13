@@ -10,7 +10,9 @@ describe('buildSystemPrompt', () => {
       courseName: 'Algebra 1',
       unitName: 'Unit 1',
       lessonName: 'Lesson 1',
+      moduleName: 'Module 1',
       slideText: 'This is slide content',
+      infoSlides: [],
     })
     expect(prompt).toContain('Algebra 1')
   })
@@ -19,7 +21,9 @@ describe('buildSystemPrompt', () => {
       courseName: 'Test',
       unitName: '',
       lessonName: '',
+      moduleName: '',
       slideText: 'unique slide content here',
+      infoSlides: [],
     })
     expect(prompt).toContain('unique slide content here')
   })
@@ -28,10 +32,47 @@ describe('buildSystemPrompt', () => {
       courseName: 'Test',
       unitName: '',
       lessonName: '',
+      moduleName: '',
       slideText: '',
+      infoSlides: [],
     })
     expect(prompt).toContain('Never give direct answers')
     expect(prompt).toContain('Only answer questions about this course')
+  })
+  it('includes module name in prompt', () => {
+    const prompt = buildSystemPrompt({
+      courseName: 'Test',
+      unitName: '',
+      lessonName: '',
+      moduleName: 'Algebra Basics',
+      slideText: '',
+      infoSlides: [],
+    })
+    expect(prompt).toContain('Algebra Basics')
+  })
+  it('includes info slides background when present', () => {
+    const prompt = buildSystemPrompt({
+      courseName: 'Test',
+      unitName: '',
+      lessonName: '',
+      moduleName: '',
+      slideText: '',
+      infoSlides: ['First info slide', 'Second info slide'],
+    })
+    expect(prompt).toContain('Course Background (from info slides):')
+    expect(prompt).toContain('- First info slide')
+    expect(prompt).toContain('- Second info slide')
+  })
+  it('omits background section when no info slides', () => {
+    const prompt = buildSystemPrompt({
+      courseName: 'Test',
+      unitName: '',
+      lessonName: '',
+      moduleName: '',
+      slideText: '',
+      infoSlides: [],
+    })
+    expect(prompt).not.toContain('Course Background')
   })
 })
 

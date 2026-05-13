@@ -6,8 +6,11 @@ import { SaveData } from './saveData';
 import { fillMatchingSlide } from '../../quiz/slideDispatcher';
 
 export class SaveDataDispatcher implements StateActions<SlideInterface> {
-  constructor(public slides: SlideInterface[], public saves: SaveData[]) {}
-  //DUPLICATE CODE: slideDispatche.getSlide()
+  constructor(
+    public slides: SlideInterface[],
+    public saves: SaveData[]
+  ) {}
+
   private getSlide(increment: number) {
     const save = last(this.saves) as SaveData;
     const idx = Json.findMatchingSlide(save.txt);
@@ -15,19 +18,25 @@ export class SaveDataDispatcher implements StateActions<SlideInterface> {
     fillMatchingSlide(slide, save);
     return slide;
   }
+
   begin(): SlideInterface {
     return this.slides[0];
   }
+
   current(): SlideInterface {
     return this.getSlide(0);
   }
+
   decorate(): SlideInterface {
     return this.getSlide(0);
   }
+
   next(): SlideInterface {
-    throw new Error('Method not implemented.');
+    return this.getSlide(1);
   }
+
+  /** Returns the last answered slide. Reached when the course is complete. */
   end(): SlideInterface {
-    throw new Error('Method not implemented.');
+    return this.getSlide(0);
   }
 }

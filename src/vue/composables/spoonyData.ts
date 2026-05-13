@@ -11,10 +11,10 @@ export class SpoonyData {
   public model: string
   public messages: SpoonyMessage[]
 
-  constructor() {
-    this.apiKey = SPOONY_API_KEY.get()
-    this.enabled = SPOONY_ENABLED.get()
-    this.model = SPOONY_MODEL.get()
+  constructor(apiKey: string | null = null, enabled: boolean = true, model: string = '') {
+    this.apiKey = apiKey
+    this.enabled = enabled
+    this.model = model
     this.messages = []
   }
 
@@ -31,6 +31,11 @@ export class SpoonyData {
   }
 }
 
-export function getSpoonyData(): SpoonyData {
-  return new SpoonyData()
+export async function getSpoonyData(): Promise<SpoonyData> {
+  const [apiKey, enabled, model] = await Promise.all([
+    SPOONY_API_KEY.get(),
+    SPOONY_ENABLED.get(),
+    SPOONY_MODEL.get(),
+  ])
+  return new SpoonyData(apiKey, enabled, model)
 }

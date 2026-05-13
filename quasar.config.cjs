@@ -124,6 +124,8 @@ module.exports = configure(function (/* ctx */) {
 
       extendViteConf(viteConf) {
         viteConf.plugins = (viteConf.plugins || []).concat(coursesPlugin);
+        viteConf.server = viteConf.server || {};
+        viteConf.server.watch = { usePolling: true };
       },
       // viteVuePluginOptions: {},
     },
@@ -131,7 +133,7 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       // https: true
-      open: true, // opens browser window automatically
+      open: !process.env.CHOKIDAR_USEPOLLING, // suppressed during test:e2e
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework

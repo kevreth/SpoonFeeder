@@ -115,10 +115,9 @@ import {
   sendMessage as apiSendMessage,
 } from '../../../ts/main/spoony/spoonyApi';
 import type { SpoonyContext } from '../../../ts/main/spoony/spoonyApi';
-import { COURSE_NAME } from '../../../ts/main/dataaccess/index';
+import { COURSE_NAME, Json, SaveData } from '../../../ts/main/dataaccess/index';
 import { last } from '../../../ts/main/index';
-import { Json } from '../../../ts/main/dataaccess/saveData/saveFile';
-import { SaveData } from '../../../ts/main/dataaccess/saveData/saveData';
+import { appClock } from '../../../ts/main/infrastructure/storage/storageInit';
 
 type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType };
 
@@ -161,10 +160,10 @@ function startRateLimitCountdown() {
   }, 1000);
 }
 
-function getCurrentSlide() {
+async function getCurrentSlide() {
   try {
     const slides = Json.get();
-    const saves = SaveData.get();
+    const saves = await SaveData.get();
     if (!saves.length) return slides[0] ?? null;
     const save = last(saves)!;
     const idx = Json.findMatchingSlide(save.txt);
@@ -176,8 +175,8 @@ function getCurrentSlide() {
   }
 }
 
-function getCurrentContext(): SpoonyContext {
-  const slide = getCurrentSlide();
+async function getCurrentContext(): Promise<SpoonyContext> {
+  const slide = await getCurrentSlide();
   let slideText = '';
   if (slide) {
     const lines: string[] = [`type: ${slide.type}`];
@@ -200,12 +199,13 @@ function getCurrentContext(): SpoonyContext {
     if (slide.numans) lines.push(`numans: ${slide.numans}`);
     slideText = lines.join('\n');
   }
-
   return {
     courseName: COURSE_NAME.get() ?? 'Unknown Course',
     unitName: '',
     lessonName: '',
+    moduleName: '',
     slideText,
+    infoSlides: [],
   };
 }
 
@@ -229,12 +229,12 @@ async function sendText(text: string) {
 
   const history = messages.value.slice(-5, -1); // last 4 messages before current
   const result = await apiSendMessage({
-    apiKey: SPOONY_API_KEY.get() ?? '',
-    model: SPOONY_MODEL.get() ?? SPOONY_DEFAULT_MODEL,
-    context: getCurrentContext(),
+    apiKey: (await SPOONY_API_KEY.get()) ?? '',
+    model: await SPOONY_MODEL.get(),
+    context: await getCurrentContext(),
     history,
     userMessage: text,
-  });
+  }, appClock);
 
   isTyping.value = false;
 
