@@ -15,7 +15,12 @@ cypress/*
 public/*
 resources/*
 js/*
+lib/*
 favicon.svg
+
+# Minified / vendor files (too large to analyse, no source value)
+*.min.js
+*.min.css
 
 # Docs and markup (not source code)
 *.md
