@@ -1,0 +1,33 @@
+# Harness ignore — files excluded from overnight analysis.
+# Supports glob patterns matched against filename or full path.
+
+# AI tooling artifacts
+.acis/*
+
+# Editor and AI tooling config
+.vscode/*
+.qwen/*
+
+# Tests
+cypress/*
+
+# Static assets
+public/*
+resources/*
+js/*
+favicon.svg
+
+# Docs and markup (not source code)
+*.md
+*.adoc
+*.html
+
+# Config/data files
+*.yml
+*.yaml
+*.json
+*.prettierrc
+*.editorconfig
+*.map
+*.codex
+*.bashrc

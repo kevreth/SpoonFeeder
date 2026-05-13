@@ -18,6 +18,7 @@
 
   <SpoonySetup v-model="showSetup" @saved="onSpoonySaved" />
   <SpoonyChat v-model="showChat" @open-setup="showSetup = true" />
+  <ReviewMenu v-if="reviewMenuOpen" />
 </template>
 
 <script setup lang="ts">
@@ -32,6 +33,8 @@ import SpoonyChat from '../spoony/SpoonyChat.vue';
 import { getCurrentSlideExplanation } from '../../../ts/main/dataaccess/saveData/currentSlide';
 import SumNavigation from './SumNavigation.vue';
 import { getSpoonyData } from '../../composables/spoonyData';
+import ReviewMenu from '../review/ReviewMenu.vue';
+import { reviewMenuOpen } from '../../composables/reviewMenuState';
 
 const isMuted = ref(false);
 
@@ -43,8 +46,8 @@ const content = ref('');
 const showSetup = ref(false);
 const showChat = ref(false);
 
-function onOpenSpoony() {
-  const data = getSpoonyData();
+async function onOpenSpoony() {
+  const data = await getSpoonyData();
   if (data.isConfigured()) {
     showChat.value = true;
   } else {
@@ -63,9 +66,9 @@ function onSpoonySaved() {
 }
 
 // handle overlay pages
-function handleExpOverlay() {
+async function handleExpOverlay() {
   expOverlay.value = !expOverlay.value;
-  content.value = getCurrentSlideExplanation();
+  content.value = await getCurrentSlideExplanation();
 }
 </script>
 
