@@ -73,3 +73,5 @@ cypress/replay/snapshots/
 reports/
 .codegraph/
 dashboard.html
+dashboard.html
+.codegraph/
