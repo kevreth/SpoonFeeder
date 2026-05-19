@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dashboard": "python3 ../../dashboard/tools/project_dashboard.py .",
     "quality": "mkdir -p reports && eslint src/ts --ext .vue,.js,.ts --format json --output-file reports/eslint.json; ESLINT=$?; node ../../dashboard/tools/tsc_json.mjs . vue-tsc --allowJs --noEmit -p tsconfig.typecheck.json --composite false; TSC=$?; npx vitest --run --reporter=json --outputFile=reports/vitest.json --coverage; TEST=$?; npm audit --json > reports/npm-audit.json 2>/dev/null; node ../../dashboard/tools/write_quality_json.mjs . typescript; echo \"Quality: eslint=$ESLINT tsc=$TSC test=$TEST\"; exit $((ESLINT|TSC|TEST))",
     "upgrade": "npx npm-check-updates --interactive",
     "circular": "dpdm --transform --no-warning --no-tree --exit-code circular:1 src/ts/main/quiz/quiz.ts",
