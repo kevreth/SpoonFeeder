@@ -1,3 +1,7 @@
+---
+title: "SpoonFeeder AI Bugfixing Platform — Interface Contract Document"
+---
+
 # SpoonFeeder AI Bugfixing Platform — Interface Contract Document
 
 ## Purpose

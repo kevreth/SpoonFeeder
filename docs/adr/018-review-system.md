@@ -1,7 +1,10 @@
-# ADR 018 — Review System Implementation
+---
+title: "ADR 018 — Review System Implementation"
+status: "Accepted"
+date: "2026-05-10"
+---
 
-**Status:** Accepted  
-**Date:** 2026-05-10
+# ADR 018 — Review System Implementation
 
 ## Context
 

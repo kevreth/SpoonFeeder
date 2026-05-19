@@ -1,3 +1,7 @@
+---
+title: "AI-Native Bug Remediation, Verification & Regression-Containment Platform — SpoonFeeder"
+---
+
 # AI-Native Bug Remediation, Verification & Regression-Containment Platform — SpoonFeeder
 
 ## Document Status

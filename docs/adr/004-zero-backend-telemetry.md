@@ -1,3 +1,7 @@
+---
+title: "ADR 004 — Zero-backend telemetry (in-memory ring buffer, no external service)"
+---
+
 # ADR 004 — Zero-backend telemetry (in-memory ring buffer, no external service)
 
 ## Status

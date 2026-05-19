@@ -1,9 +1,11 @@
+---
+title: "SpoonFeeder AI Bugfixing Platform — Phase 2 Gap Report"
+---
+
 # SpoonFeeder AI Bugfixing Platform — Phase 2 Gap Report
 
 Generated: 2026-05-07  
 Scanner baseline captured after Phase 1 infrastructure installation.
-
----
 
 ## Scanner Results Summary
 

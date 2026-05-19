@@ -1,3 +1,7 @@
+---
+title: "ADR 008 — dispatch2 pure-function lift pulled from Phase 4 into Phase 3"
+---
+
 # ADR 008 — dispatch2 pure-function lift pulled from Phase 4 into Phase 3
 
 ## Status

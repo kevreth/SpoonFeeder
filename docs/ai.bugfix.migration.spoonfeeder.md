@@ -1,3 +1,7 @@
+---
+title: "SpoonFeeder AI Bugfixing Platform — Migration Compatibility Matrix"
+---
+
 # SpoonFeeder AI Bugfixing Platform — Migration Compatibility Matrix
 
 ## Purpose

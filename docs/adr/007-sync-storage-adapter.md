@@ -1,3 +1,7 @@
+---
+title: "ADR 007 — SyncStorageAdapter for synchronous flag and string access"
+---
+
 # ADR 007 — SyncStorageAdapter for synchronous flag and string access
 
 ## Status

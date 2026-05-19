@@ -1,3 +1,7 @@
+---
+title: "ADR 012 — Clock added only to MakeSlidesTypeGap, not the base MakeSlidesType"
+---
+
 # ADR 012 — Clock added only to MakeSlidesTypeGap, not the base MakeSlidesType
 
 ## Status

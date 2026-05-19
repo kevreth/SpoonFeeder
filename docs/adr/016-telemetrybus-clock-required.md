@@ -1,8 +1,11 @@
-# ADR 016 — TelemetryBus Clock Made Required (Phase 5 Acceleration)
+---
+title: "ADR 016 — TelemetryBus Clock Made Required (Phase 5 Acceleration)"
+status: "Accepted"
+phase: "5 — AI Repair Constraints (brought forward from Phase 6)"
+date: "2026-05-07"
+---
 
-**Status:** Accepted  
-**Phase:** 5 — AI Repair Constraints (brought forward from Phase 6)  
-**Date:** 2026-05-07
+# ADR 016 — TelemetryBus Clock Made Required (Phase 5 Acceleration)
 
 ## Context
 

@@ -1,8 +1,11 @@
-# ADR 017 — Phase 6 Self-Consistency Audit Findings and Resolutions
+---
+title: "ADR 017 — Phase 6 Self-Consistency Audit Findings and Resolutions"
+status: "Accepted"
+phase: "6 — Self-Consistency Audit"
+date: "2026-05-08"
+---
 
-**Status:** Accepted  
-**Phase:** 6 — Self-Consistency Audit  
-**Date:** 2026-05-08
+# ADR 017 — Phase 6 Self-Consistency Audit Findings and Resolutions
 
 ## Context
 

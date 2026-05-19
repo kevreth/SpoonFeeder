@@ -1,3 +1,7 @@
+---
+title: "ADR 006 — Zod v4 API differences affecting infrastructure code"
+---
+
 # ADR 006 — Zod v4 API differences affecting infrastructure code
 
 ## Status

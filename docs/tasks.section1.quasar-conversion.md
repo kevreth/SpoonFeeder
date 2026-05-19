@@ -1,8 +1,10 @@
+---
+title: "Task List: Quasar Conversion & Immediate Quality Fixes"
+---
+
 # Task List: Quasar Conversion & Immediate Quality Fixes
 
 Each task is atomic — one branch, one PR. Feed to Claude Code one at a time.
-
----
 
 ## Foundation
 

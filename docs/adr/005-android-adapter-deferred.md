@@ -1,3 +1,7 @@
+---
+title: "ADR 005 — AndroidStorageAdapter deferred; dependency-cruiser install blocked by disk space"
+---
+
 # ADR 005 — AndroidStorageAdapter deferred; dependency-cruiser install blocked by disk space
 
 ## Status
