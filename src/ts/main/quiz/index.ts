@@ -24,6 +24,7 @@ export {
   doneButton,
   makeButton,
 } from './buttons';
+export { setShowContinueHook, setHideContinueHook, fireOnceClickHook } from './continueBridge';
 export { startOverButton } from './startOverButton';
 export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
 export { hideExplainIcon, showExplainIcon } from './explainIcon';

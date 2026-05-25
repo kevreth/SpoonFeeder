@@ -20,7 +20,7 @@ export const makeSlidesStrategyMa: MakeSlidesTypeMa = function (
   slide
 ) {
   const html = createHtml(txt, options);
-  createPageContent(html, doc);
+  createPageContent(html);
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
   options.forEach((_option, optionCtr) => {

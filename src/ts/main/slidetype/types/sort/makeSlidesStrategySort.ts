@@ -18,7 +18,7 @@ export const makeSlidesStrategySort: MakeSlidesTypeSort = function (
   slide
 ): void {
   const html = createHtml(txt, ans);
-  createPageContent(html, doc);
+  createPageContent(html);
   gsap.registerPlugin(Draggable);
   const rowSize = 100; // => container height / number of items
   const container = doc.querySelector('.container');

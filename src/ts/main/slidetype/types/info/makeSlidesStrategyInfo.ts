@@ -14,6 +14,6 @@ export const makeSlidesStrategyInfo: MakeSlidesTypeInfo = function (
   slide
 ) {
   const html = createHtml(txt);
-  createPageContent(html, doc);
+  createPageContent(html);
   slide.conclude(doc, '' as AnswerType, txt);
 };

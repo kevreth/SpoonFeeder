@@ -1,0 +1,17 @@
+:root {
+  --sf-color-primary: #00b4d8;
+  --sf-color-correct: #4caf50;
+  --sf-color-incorrect: #f44336;
+  --sf-color-surface: #1a1a2e;
+  --sf-color-surface-raised: #16213e;
+  --sf-color-on-surface: #e0e0e0;
+  --sf-color-token-bg: #1e3a5f;
+  --sf-color-token-text: #90caf9;
+  --sf-color-token-border: #42a5f5;
+  --sf-transition-feedback: 280ms ease-out;
+  --sf-transition-appear: 1000ms ease-out;
+  --sf-gap-answer: 10px;
+  --sf-radius-button: 8px;
+  --sf-radius-token: 6px;
+  --sf-min-touch: 44px;
+}

@@ -19,7 +19,7 @@ export const makeSlidesStrategyMc: MakeSlidesTypeMc = function (
   slide
 ) {
   const html = createHtml(txt, options);
-  createPageContent(html, doc);
+  createPageContent(html);
   const numOptions = options.length;
   maxWidthStrategy(numOptions, 'btn', doc);
   options.forEach((option, optionCtr) => {

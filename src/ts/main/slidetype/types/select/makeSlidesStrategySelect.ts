@@ -19,7 +19,7 @@ export const makeSlidesStrategySelect: MakeSlidesTypeSelect = function (
 ) {
   const txtarr = txt.split(' ');
   const html = createHtml(inst, txtarr);
-  createPageContent(html, doc);
+  createPageContent(html);
   for (let ctr = 0; ctr < txtarr.length; ctr++) addEventListener1(ctr + 1, doc);
   addEventListener(doc, txtarr, slide, txt);
 };

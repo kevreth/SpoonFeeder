@@ -30,7 +30,7 @@ export const makeSlidesStrategyGap: MakeSlidesTypeGap = function (
   const _gaps = gaps(ans.length, txt);
   const remaining = ans.length.toString();
   const html = createHtml(remaining, _fills, _gaps);
-  createPageContent(html, doc);
+  createPageContent(html);
   let concluded = false;
   const concludeOnce = () => {
     if (!concluded) {

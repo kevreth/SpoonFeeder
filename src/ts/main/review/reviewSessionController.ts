@@ -1,6 +1,6 @@
 import type { AnswerType, SlideInterface } from '../slide/slideInterface';
-import { makeButton } from '../quiz/buttons';
 import { showExplainIcon, hideExplainIcon } from '../quiz/explainIcon';
+import { fireShowContinueHook, fireHideContinueHook, setOnceClickHook } from '../quiz/continueBridge';
 import type { SlideResult } from './reviewTypes';
 
 export class ReviewSessionController {
@@ -36,16 +36,11 @@ export class ReviewSessionController {
   }
 
   private insertReviewContinueButton(
-    doc: Document,
+    _doc: Document,
     slide: SlideInterface,
     txt: string,
   ): void {
-    const button = makeButton('continueBtn', 'continueBtn', 'continue');
-    const slideElem = doc.getElementById('slide') as HTMLElement;
-    doc.getElementById('continueBtn')?.remove();
-    slideElem.insertAdjacentHTML('beforeend', button);
-    const btn = doc.getElementById('continueBtn') as HTMLElement;
-    btn?.addEventListener('click', () => {
+    setOnceClickHook(() => {
       if (this.aborted) return;
       const evaluation = slide.evaluate();
       this.results.push({
@@ -60,6 +55,7 @@ export class ReviewSessionController {
         this.onComplete(this.results);
       }
     });
+    fireShowContinueHook(txt);
   }
 
   private renderCurrent(): void {
@@ -76,5 +72,7 @@ export class ReviewSessionController {
 
   abort(): void {
     this.aborted = true;
+    setOnceClickHook(null);
+    fireHideContinueHook();
   }
 }

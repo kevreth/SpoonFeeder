@@ -24,6 +24,7 @@
   <q-page class="wrapContent row items-center justify-evenly">
     <div id="slide">
       <div id="content"></div>
+      <ContinueButton :visible="continueVisible" @click="onContinue" />
     </div>
   </q-page>
 </template>
@@ -45,7 +46,15 @@ import {
   clearDraftState,
   setPreAdvanceHook,
   setHighestReachedIndex,
+  setShowContinueHook,
+  setHideContinueHook,
+  fireOnceClickHook,
+  Json,
+  hideExplainIcon,
+  showSlides,
+  firePreAdvanceHook,
 } from '../mediator';
+import ContinueButton from '../components/exercise/ContinueButton.vue';
 import type { ReviewBoundary, ReviewRecord, ReviewType } from '../mediator';
 import { reviewLaunchPending } from '../composables/reviewMenuState';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
@@ -56,6 +65,28 @@ import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
 
 const courseList = ref(false);
 const isEnable = ref(false);
+
+const continueVisible = ref(false);
+const continueTxt = ref('');
+
+setShowContinueHook((txt: string) => {
+  continueTxt.value = txt;
+  continueVisible.value = true;
+});
+
+setHideContinueHook(() => {
+  continueVisible.value = false;
+});
+
+async function onContinue(): Promise<void> {
+  continueVisible.value = false;
+  if (fireOnceClickHook()) return;
+  await SaveData.setContinueTrue(continueTxt.value);
+  hideExplainIcon(document);
+  const nextSlideIndex = Json.findMatchingSlide(continueTxt.value) + 1;
+  await firePreAdvanceHook(nextSlideIndex);
+  await showSlides(document);
+}
 
 const showPrompt = ref(false);
 const showSession = ref(false);

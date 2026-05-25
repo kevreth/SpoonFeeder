@@ -18,7 +18,7 @@ export const makeSlidesStrategyImap: MakeSlidesTypeImap = function (
   slide
 ) {
   const html = createHtml(txt, img);
-  createPageContent(html, doc);
+  createPageContent(html);
   const picture = doc.getElementById('imagemap');
   //inject SVG into page so it is part of DOM
   SVGInjector(picture, {
