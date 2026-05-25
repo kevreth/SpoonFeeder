@@ -1,3 +1,7 @@
+---
+title: "AI-Native Bugfixing Platform — Gap Analysis for SpoonFeeder"
+---
+
 # AI-Native Bugfixing Platform — Gap Analysis for SpoonFeeder
 
 ## Document Status

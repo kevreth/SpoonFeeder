@@ -1,3 +1,7 @@
+---
+title: "SpoonFeeder AI Bugfixing Platform — Security Finding Register"
+---
+
 # SpoonFeeder AI Bugfixing Platform — Security Finding Register
 
 ## Purpose

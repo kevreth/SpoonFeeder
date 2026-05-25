@@ -1,3 +1,7 @@
+---
+title: "ADR 011 — Clock injection via explicit parameter threading"
+---
+
 # ADR 011 — Clock injection via explicit parameter threading
 
 ## Status

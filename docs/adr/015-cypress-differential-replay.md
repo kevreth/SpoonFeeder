@@ -1,8 +1,11 @@
-# ADR 015 — Cypress Differential Replay Pipeline
+---
+title: "ADR 015 — Cypress Differential Replay Pipeline"
+status: "Accepted"
+phase: "5 — AI Repair Constraints"
+date: "2026-05-07"
+---
 
-**Status:** Accepted  
-**Phase:** 5 — AI Repair Constraints  
-**Date:** 2026-05-07
+# ADR 015 — Cypress Differential Replay Pipeline
 
 ## Context
 

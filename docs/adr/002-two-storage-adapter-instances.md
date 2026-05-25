@@ -1,3 +1,7 @@
+---
+title: "ADR 002 — Two WebStorageAdapter instances (localStorage + sessionStorage) rather than a single unified adapter"
+---
+
 # ADR 002 — Two WebStorageAdapter instances (localStorage + sessionStorage) rather than a single unified adapter
 
 ## Status

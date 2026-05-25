@@ -1,3 +1,7 @@
+---
+title: "ADR 009 — SaveData.getResults() kept synchronous via localSync"
+---
+
 # ADR 009 — SaveData.getResults() kept synchronous via localSync
 
 ## Status

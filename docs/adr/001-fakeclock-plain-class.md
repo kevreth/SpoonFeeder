@@ -1,3 +1,7 @@
+---
+title: "ADR 001 — FakeClock as a plain TypeScript class rather than @sinonjs/fake-timers"
+---
+
 # ADR 001 — FakeClock as a plain TypeScript class rather than @sinonjs/fake-timers
 
 ## Status

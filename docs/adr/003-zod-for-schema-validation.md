@@ -1,3 +1,7 @@
+---
+title: "ADR 003 — Zod for storage schema validation"
+---
+
 # ADR 003 — Zod for storage schema validation
 
 ## Status

@@ -1,8 +1,11 @@
-# ADR 014 — Patch Validation Pipeline Design
+---
+title: "ADR 014 — Patch Validation Pipeline Design"
+status: "Accepted"
+phase: "5 — AI Repair Constraints"
+date: "2026-05-07"
+---
 
-**Status:** Accepted  
-**Phase:** 5 — AI Repair Constraints  
-**Date:** 2026-05-07
+# ADR 014 — Patch Validation Pipeline Design
 
 ## Context
 

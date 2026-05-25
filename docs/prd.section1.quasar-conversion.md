@@ -1,10 +1,11 @@
-# PRD: Exercise Rendering — Quasar Conversion & Immediate Quality Fixes
-
-**Status:** Draft  
-**Scope:** Sections 1 & 2 of the Gamification PRD (these are inseparable)  
-**Prerequisite for:** All other gamification PRD sections
-
 ---
+title: "PRD: Exercise Rendering — Quasar Conversion & Immediate Quality Fixes"
+status: "Draft"
+scope: "Sections 1 & 2 of the Gamification PRD (these are inseparable)"
+prerequisite_for: "All other gamification PRD sections"
+---
+
+# PRD: Exercise Rendering — Quasar Conversion & Immediate Quality Fixes
 
 ## Background
 

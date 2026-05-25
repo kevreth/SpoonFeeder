@@ -1,3 +1,7 @@
+---
+title: "ADR 010 — Legacy storage data skips schema validation on read"
+---
+
 # ADR 010 — Legacy storage data skips schema validation on read
 
 ## Status
