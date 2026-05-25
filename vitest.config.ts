@@ -5,5 +5,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/ts/test/support/deterministic-setup.ts'],
     reporters: ['default'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'json-summary'],
+      reportsDirectory: 'reports/coverage',
+    },
   },
 });

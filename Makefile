@@ -1,0 +1,10 @@
+.PHONY: coverage
+
+coverage: ## Produce coverage/coverage-summary.json for ACIS (exits 0 even if tests fail)
+	npx vitest run --coverage --coverage.reportsDirectory=coverage || true
+
+# Quality infrastructure (shared fragment)
+SRC_DIR   := src
+TESTS_DIR := tests
+QUALITY_MK := /workspace/dashboard/tools/quality-ts.mk
+include $(QUALITY_MK)

@@ -71,3 +71,7 @@ diag-graphviz-md5-*.svg
 cypress/replay/current-snapshot.json
 cypress/replay/snapshots/
 reports/
+.codegraph/
+dashboard.html
+dashboard.html
+.codegraph/

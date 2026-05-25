@@ -8,7 +8,7 @@ export default {
     'src/ts/main/dataaccess/saveData/**/*.ts',
     '!src/ts/main/dataaccess/saveData/**/*.test.ts',
   ],
-  reporters: ['html', 'clear-text', 'progress'],
+  reporters: ['html', 'clear-text', 'progress', 'json'],
   coverageAnalysis: 'perTest',
   thresholds: {
     high: 80,
