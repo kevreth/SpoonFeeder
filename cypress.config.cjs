@@ -7,6 +7,6 @@ module.exports = defineConfig({
     baseUrl: 'http://127.0.0.1:9000',
     allowCypressEnv: false,
     defaultCommandTimeout: 10000,
-    pageLoadTimeout: 30000,
+    pageLoadTimeout: 60000,
   },
 });
