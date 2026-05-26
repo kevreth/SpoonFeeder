@@ -2,6 +2,7 @@
   <Transition name="continue-fade">
     <button
       v-if="visible"
+      id="continueBtn"
       class="continueBtn"
       type="button"
       @click="$emit('click')"
