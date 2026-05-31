@@ -105,7 +105,6 @@ import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import botSvg from 'src/img/bot.svg';
 import type { SpoonyMessage } from '../../../ts/main/spoony/spoony.types';
-import { SPOONY_DEFAULT_MODEL } from '../../../ts/main/spoony/spoony.types';
 import {
   SPOONY_API_KEY,
   SPOONY_MODEL,
@@ -121,7 +120,7 @@ import { appClock } from '../../../ts/main/infrastructure/storage/storageInit';
 
 type ChatMessage = SpoonyMessage & { errorType?: SpoonyErrorType };
 
-const props = defineProps<{ modelValue: boolean }>();
+defineProps<{ modelValue: boolean }>();
 const emit = defineEmits<{
   'update:modelValue': [value: boolean];
   'open-setup': [];

@@ -8,7 +8,7 @@ function makeSlide(type: string, txt: string, extras: Partial<SlideInterface> = 
 }
 
 function makeVocabSlide(entries: Record<string, string>): SlideInterface {
-  return makeSlide('vocab', '', { list: entries } as Partial<SlideInterface>);
+  return makeSlide('vocab', '', { list: entries } as unknown as Partial<SlideInterface>);
 }
 
 function buildCourse(

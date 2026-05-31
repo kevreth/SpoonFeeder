@@ -25,14 +25,14 @@ function makeSlide(type: string, txt: string, extras: Record<string, unknown> = 
     img: '',
     numans: 0,
     immediateConclusion: false,
-    setRes(r: unknown) { this.res = r as unknown; },
-    getRes() { return this.res as unknown; },
-    getAns() { return this.ans as unknown; },
-    evaluate() {
+    setRes(this: { res: unknown }, r: unknown) { this.res = r; },
+    getRes(this: { res: unknown }) { return this.res; },
+    getAns(this: { ans: unknown }) { return this.ans; },
+    evaluate(this: { ans: unknown; res: unknown; txt: string }) {
       const correct = this.ans === this.res ? 1 : 0;
       return { correct, responses: 1, txt: this.txt };
     },
-    setResults(r: unknown) { this.res = r as unknown; },
+    setResults(this: { res: unknown }, r: unknown) { this.res = r; },
     ...extras,
   } as unknown as SlideInterface;
 }
@@ -119,8 +119,8 @@ describe('sampleExercises', () => {
     ];
 
     // Set responses on slides
-    wrong.setResults('opt-b' as unknown);
-    correct.setResults('opt-a' as unknown);
+    wrong.setResults('opt-b');
+    correct.setResults('opt-a');
 
     const result = sampleExercises([wrong, correct, unanswered], saves, 'course', noShuffle);
 

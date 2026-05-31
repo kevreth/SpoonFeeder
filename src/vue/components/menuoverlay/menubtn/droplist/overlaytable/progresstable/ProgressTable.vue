@@ -133,6 +133,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { Score, CourseFile } from '../../../../../../mediator';
+
+type TableRow = { pctCorrect: string; _level?: number; level?: number; depth?: number };
 import SummaryIcon from './SummaryIcon.vue';
 import SummaryTable from './SummaryTable.vue';
 import InfoIcon from './InfoIcon.vue';
@@ -209,10 +211,10 @@ const classes = ref('bg-secondary');
 const dark = ref(true);
 
 const overallPctComplete = computed(() => {
-  const items = data.value as any[];
+  const items = data.value as TableRow[];
   if (!items?.length) return 0;
   const sum = items.reduce(
-    (acc: number, item: any) => acc + (parseInt(item.pctCorrect) || 0),
+    (acc: number, item: TableRow) => acc + (parseInt(item.pctCorrect) || 0),
     0,
   );
   return Math.round(sum / items.length);
@@ -222,11 +224,11 @@ function handleInfoOverlay() {
   infoOverlay.value = !infoOverlay.value;
 }
 
-function getLevel(item: any): number {
+function getLevel(item: TableRow): number {
   return item._level ?? item.level ?? item.depth ?? 0;
 }
 
-function rowClass(item: any): string {
+function rowClass(item: TableRow): string {
   const level = getLevel(item);
   if (level === 0) return 'row-course';
   if (level === 1) return 'row-unit';
@@ -234,7 +236,7 @@ function rowClass(item: any): string {
   return 'row-slide';
 }
 
-function levelNameClass(item: any): string {
+function levelNameClass(item: TableRow): string {
   const level = getLevel(item);
   if (level === 0) return 'name-course';
   if (level === 1) return 'name-unit';

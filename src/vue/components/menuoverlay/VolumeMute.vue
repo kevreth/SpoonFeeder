@@ -13,7 +13,7 @@ import { ref, onMounted } from 'vue';
 import { MUTE } from '../../../ts/main/dataaccess/index';
 import { AudioPlayer } from '../../mediator';
 
-const props = defineProps({
+defineProps({
   volume: {
     type: Boolean,
     default: false,
