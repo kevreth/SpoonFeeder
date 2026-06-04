@@ -220,4 +220,4 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 - [x] **T-200** _(deferred → epic 003)_ `gsap` is retained for the legacy `sort` renderer (review path). The new `SortExercise.vue` uses no GSAP; verify the new component is GSAP-free, but `gsap` stays in `package.json` until epic 003.
 - [x] **T-210** _(deferred → epic 003)_ npm `jquery`/`@types/jquery` are retained for the review path (ADR-023). Verify no **new** epic-001 code imports `jquery`; full package removal is epic 003. (The global `lib/jquery.min.js` in `index.html` is PRD-002.)
 - [x] **T-220** The **main quiz path** does not render into `#content` (the dispatcher drives the Vue switcher). `#content`/`#slide` remain in `IndexPage.vue` for the review renderer — full `#content` removal is epic 003.
-- [ ] **T-230** Differential replay snapshot matches baseline (see CLAUDE.md — Differential Replay Pipeline)
+- [x] **T-230** Differential replay snapshot matches baseline (see CLAUDE.md — Differential Replay Pipeline)
