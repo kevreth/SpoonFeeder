@@ -1,0 +1,27 @@
+/*
+ * SpoonFeeder design tokens — PRD-001.
+ * Single source of truth for exercise-rendering visual values.
+ * All exercise components reference these custom properties; no hardcoded hex.
+ */
+:root {
+  /* Color */
+  --sf-color-primary: #00b4d8; /* cyan — interactive elements */
+  --sf-color-correct: #4caf50; /* green — correct answer state */
+  --sf-color-incorrect: #f44336; /* red — incorrect answer state */
+  --sf-color-surface: #1a1a2e; /* dark card background */
+  --sf-color-surface-raised: #16213e; /* slightly elevated surface */
+  --sf-color-on-surface: #e0e0e0; /* primary text on dark bg */
+  --sf-color-token-bg: #1e3a5f; /* gap fill token background */
+  --sf-color-token-text: #90caf9; /* gap fill token text */
+  --sf-color-token-border: #42a5f5; /* gap fill token border */
+
+  /* Transitions */
+  --sf-transition-feedback: 280ms ease-out;
+  --sf-transition-appear: 200ms ease-out;
+
+  /* Spacing / sizing */
+  --sf-gap-answer: 10px;
+  --sf-radius-button: 8px;
+  --sf-radius-token: 6px;
+  --sf-min-touch: 44px; /* minimum tap target — accessibility requirement */
+}

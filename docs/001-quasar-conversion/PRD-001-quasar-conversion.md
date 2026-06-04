@@ -26,10 +26,10 @@ These cannot be patched in isolation — they require replacing the rendering sy
 
 ### In scope
 
-- 100% Vue rendering: replace the `#content` div with a dynamic Vue component switcher driven by a Pinia store
+- 100% Vue rendering of the **main quiz path**: drive a dynamic Vue component switcher from a Pinia store (the `#content`/`#slide` divs are retained for the review renderer — see Out of scope / ADR-023)
 - All exercise types: `mc`, `ma`, `bool`, `info`, `select`, `gap`, `sort`, `imap`, `vocab`
-- Eliminate `innerHTML` injection, jQuery, imperative DOM patching, and inline `style` mutation from the exercise path
-- Remove GSAP (used only by `sort`) and the `mobile-drag-drop` polyfill (superseded by SortableJS)
+- Eliminate `innerHTML` injection, jQuery, imperative DOM patching, and inline `style` mutation from the **main quiz exercise path**
+- New `SortExercise.vue` and `GapExercise.vue` use SortableJS (`vue-draggable-plus`) and CSS transitions — no GSAP, no `mobile-drag-drop`. (Removing the `gsap`/`mobile-drag-drop`/`jquery` packages themselves is deferred to PRD-003, since the legacy renderer that the review path still uses depends on them — see Out of scope.)
 - Establish a component pattern for future exercise types
 - Resolve the four immediate quality issues as a natural outcome of the conversion
 
@@ -40,7 +40,8 @@ These cannot be patched in isolation — they require replacing the rendering sy
 - Skinning system and skin file format — Gamification PRD Section 7
 - Vocab spaced repetition — Gamification PRD Section 8.4
 - Accessibility audit — deferred until after conversion
-- **Global jQuery removal** — the npm `jquery` package IS removed by this epic (it backs the exercise-path `append`/`empty` wrappers and a `$.extend` call in `saveData.ts`). The *separate* global `lib/jquery.min.js` loaded in `index.html` and used by course-content inline scripts (`$('#table0').load(...)`) is **not** in scope here — it is deferred to PRD-002 (Global jQuery Removal)
+- **Review-path conversion & legacy-renderer removal** — the review system (ADR-018) still renders through the legacy `makeSlides` → `createPageContent` → jQuery `#content` path. Converting the main quiz path does not free that path for deletion. Converting the review path to the new Vue components, and the subsequent removal of npm `jquery`/`@types/jquery`, `gsap`, `mobile-drag-drop`, the `makeSlidesStrategy*`/`createHtml*`/`createPageContent` files, and the `#content`/`#slide` divs, are **deferred to PRD-003** (see ADR-023)
+- **npm `jquery` removal** — deferred to PRD-003 (review path depends on the `append`/`empty` wrappers via `createPageContent`). The *separate* global `lib/jquery.min.js` in `index.html` (course-content `$('#table0').load(...)`) is PRD-002
 
 ---
 
@@ -233,11 +234,11 @@ Note: `slideTypeVocab.decorate()` throws `Error('Method not implemented.')` — 
 - [ ] Correct/incorrect CSS classes applied reactively
 
 ### All phases
-- [ ] `#content` div replaced — no exercise type uses `innerHTML` injection
-- [ ] jQuery (`$`) absent from all exercise rendering code
-- [ ] npm `jquery` + `@types/jquery` removed from `package.json`; no `import ... 'jquery'` in `src/` (global `lib/jquery.min.js` retained for course content — see Out of scope)
+- [ ] Main quiz path renders via the Vue component switcher — no main-path exercise uses `innerHTML` injection into `#content`
+- [ ] jQuery (`$`) absent from all **new** epic-001 exercise rendering code (the legacy renderer retained for review still uses it — ADR-023)
+- [ ] npm `jquery`/`@types/jquery`, `gsap`, and `mobile-drag-drop` removal is deferred to PRD-003 (review path still depends on them); the new Vue components import none of them
 - [ ] Exercise components expose stable `data-cy` hooks and `cypress/e2e/example.cy.ts` is updated in lockstep per phase
-- [ ] TS quiz/scoring/persistence layer has zero Vue/Quasar imports
+- [ ] TS quiz/scoring/persistence layer has zero Vue/Quasar imports (except the single Pinia bridge import in `SlideDispatcher` — ADR-019)
 - [ ] All visual values reference CSS custom properties
 - [ ] Audio feedback plays on answer (correct and incorrect)
 - [ ] Explain text shown after answering when `slide.exp` is non-empty
