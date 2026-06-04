@@ -186,7 +186,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 6 — Imap
 
-- [ ] **T-170** Create `src/vue/components/exercise/ImapExercise.vue`
+- [x] **T-170** Create `src/vue/components/exercise/ImapExercise.vue`
   - `slide.img` holds the SVG path
   - On `onMounted`: inject SVG via `SVGInjector` into the container ref (or `fetch` + `v-html` — see DEC-001)
   - After injection, discover child element IDs; store as `ref<string[]> shapeIds`
@@ -196,7 +196,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Wire `imap` into component map, remove old rendering path
   - Add `data-cy` hooks to `ImapExercise` (shape/`continue`) and update the `imap` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
-- [ ] **T-175** ✓ `yarn test:all` — 0 failures before proceeding
+- [x] **T-175** ✓ `yarn test:all` — 0 failures before proceeding
 
 ---
 
@@ -206,7 +206,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - **Blocked by the review path (ADR-023):** `append`/`empty` are consumed by `createPageContent.ts`, which the review renderer still calls via `slide.makeSlides()`. The npm `jquery` package therefore cannot be removed in epic 001. The `extend → [...]` swap in `saveData.ts`, the re-export cleanups, and removing `jquery`/`@types/jquery` from `package.json` all move to **PRD-003**.
   - (The *global* `lib/jquery.min.js` for course content remains a separate concern — [PRD-002](../002-global-jquery-removal/PRD-002-global-jquery-removal.md).)
 
-- [ ] **T-190** Retire the **main-path-only** legacy DOM injection
+- [x] **T-190** Retire the **main-path-only** legacy DOM injection
   - Remove the `startOverButton()` DOM injection call from the main path (`SlideDispatcher.end()` no longer injects it — replaced by the Vue end-screen in T-070). The `startOverButton.ts` file may be deleted if nothing else references it.
   - Verify no **main-path** slide type renders via the legacy `makeSlides`/`createPageContent` path (the dispatcher now calls `store.setSlide`).
   - _(deferred → epic 003)_ Do NOT delete `makeSlidesStrategy*.ts`, `createHtml*.ts`, or `createPageContent.ts` — the review renderer still calls `slide.makeSlides()` → these. Their deletion is part of epic 003.
@@ -216,8 +216,8 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Validation
 
-- [ ] **T-195** ✓ `yarn test:all` — 0 failures (final gate)
-- [ ] **T-200** _(deferred → epic 003)_ `gsap` is retained for the legacy `sort` renderer (review path). The new `SortExercise.vue` uses no GSAP; verify the new component is GSAP-free, but `gsap` stays in `package.json` until epic 003.
-- [ ] **T-210** _(deferred → epic 003)_ npm `jquery`/`@types/jquery` are retained for the review path (ADR-023). Verify no **new** epic-001 code imports `jquery`; full package removal is epic 003. (The global `lib/jquery.min.js` in `index.html` is PRD-002.)
-- [ ] **T-220** The **main quiz path** does not render into `#content` (the dispatcher drives the Vue switcher). `#content`/`#slide` remain in `IndexPage.vue` for the review renderer — full `#content` removal is epic 003.
+- [x] **T-195** ✓ `yarn test:all` — 0 failures (final gate)
+- [x] **T-200** _(deferred → epic 003)_ `gsap` is retained for the legacy `sort` renderer (review path). The new `SortExercise.vue` uses no GSAP; verify the new component is GSAP-free, but `gsap` stays in `package.json` until epic 003.
+- [x] **T-210** _(deferred → epic 003)_ npm `jquery`/`@types/jquery` are retained for the review path (ADR-023). Verify no **new** epic-001 code imports `jquery`; full package removal is epic 003. (The global `lib/jquery.min.js` in `index.html` is PRD-002.)
+- [x] **T-220** The **main quiz path** does not render into `#content` (the dispatcher drives the Vue switcher). `#content`/`#slide` remain in `IndexPage.vue` for the review renderer — full `#content` removal is epic 003.
 - [ ] **T-230** Differential replay snapshot matches baseline (see CLAUDE.md — Differential Replay Pipeline)

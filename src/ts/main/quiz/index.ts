@@ -24,7 +24,6 @@ export {
   doneButton,
   makeButton,
 } from './buttons';
-export { startOverButton } from './startOverButton';
 export { Evaluation, evaluate, makeRow, percentCorrect } from './evaluate';
 export { hideExplainIcon, showExplainIcon } from './explainIcon';
 export { switchCourse } from './quiz';

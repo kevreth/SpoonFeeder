@@ -139,10 +139,10 @@ export function runFullJourney() {
   doneCy();
   continueCy();
 
-  // imap 'choose blue' — legacy renderer (converted in Phase 6)
+  // imap 'choose blue' — ImapExercise (Vue); SVG shape ids come from imap.svg
   existVisibleNotEmpty('body');
-  testButton('#blue');
-  testButton('#continueBtn');
+  cy.get('#blue').click();
+  continueCy();
 
   // mc 'Choose the bus' — ChoiceExercise (Vue); click car (option 1)
   existVisibleNotEmpty('body');

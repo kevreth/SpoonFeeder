@@ -59,6 +59,7 @@ export default [
         localStorage: 'readonly',
         HTMLElement: 'readonly',
         HTMLAudioElement: 'readonly',
+        Element: 'readonly',
         KeyboardEvent: 'readonly',
       },
     },

@@ -97,6 +97,7 @@ import InfoExercise from '../components/exercise/InfoExercise.vue';
 import SelectExercise from '../components/exercise/SelectExercise.vue';
 import GapExercise from '../components/exercise/GapExercise.vue';
 import SortExercise from '../components/exercise/SortExercise.vue';
+import ImapExercise from '../components/exercise/ImapExercise.vue';
 
 /* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
  * The Pinia slide store is driven by SlideDispatcher. Converted exercise types
@@ -117,6 +118,7 @@ const EXERCISE_COMPONENTS: Record<string, Component> = {
   select: SelectExercise,
   gap: GapExercise,
   sort: SortExercise,
+  imap: ImapExercise,
 };
 
 const exerciseComponent = computed<Component | null>(() => {

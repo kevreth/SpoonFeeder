@@ -74,9 +74,9 @@ function navigateToLesson1Boundary() {
   // sort — SortExercise (Vue)
   doneCy();
   continueCy();
-  // imap — legacy renderer
-  testButton('#blue');
-  testButton('#continueBtn');
+  // imap — ImapExercise (Vue)
+  cy.get('#blue').click();
+  continueCy();
   // mc bus (click wrong) — ChoiceExercise (Vue)
   chooseOption(1);
   continueCy();
