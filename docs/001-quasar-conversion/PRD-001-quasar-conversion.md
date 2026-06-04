@@ -2,7 +2,7 @@
 title: "PRD-001: Exercise Rendering — Quasar Conversion & Immediate Quality Fixes"
 repo: "spoonfeeder/SpoonFeeder"
 created: "2026-06-05"
-status: "Active"
+status: "Complete (legacy-renderer/dep removal deferred → PRD-003)"
 priority: "1 — prerequisite for all gamification PRD sections"
 ---
 

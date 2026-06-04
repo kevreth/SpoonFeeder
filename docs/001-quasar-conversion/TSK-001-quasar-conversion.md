@@ -2,7 +2,7 @@
 title: "TSK-001: Exercise Rendering — Quasar Conversion & Immediate Quality Fixes"
 prd: "PRD-001-quasar-conversion.md"
 created: "2026-06-05"
-status: "TODO"
+status: "Done (T-180 deferred → epic 003)"
 ---
 
 # TSK-001: Exercise Rendering — Quasar Conversion & Immediate Quality Fixes
