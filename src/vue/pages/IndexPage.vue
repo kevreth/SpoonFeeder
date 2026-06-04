@@ -93,6 +93,7 @@ import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
 import { useSlideStore } from '../stores/slideStore';
 import reloadPage from '../composables/startOver';
 import ChoiceExercise from '../components/exercise/ChoiceExercise.vue';
+import InfoExercise from '../components/exercise/InfoExercise.vue';
 
 /* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
  * The Pinia slide store is driven by SlideDispatcher. Converted exercise types
@@ -109,6 +110,7 @@ const EXERCISE_COMPONENTS: Record<string, Component> = {
   mc: ChoiceExercise,
   bool: ChoiceExercise,
   ma: ChoiceExercise,
+  info: InfoExercise,
 };
 
 const exerciseComponent = computed<Component | null>(() => {
@@ -157,7 +159,9 @@ function handleAnswer({ selected, correct }: { selected: AnswerType; correct: bo
   const slide = currentSlide.value;
   if (!slide) return;
   slide.setRes(selected);
-  audioPlayer?.playAudio(correct);
+  // immediateConclusion slides (info) record a save but play no audio —
+  // mirrors the legacy conclude2 path.
+  if (!slide.immediateConclusion) audioPlayer?.playAudio(correct);
   void slide.saveData();
   showExplain.value = !!slide.exp;
   explainText.value = slide.exp ?? '';

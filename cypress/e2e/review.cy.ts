@@ -35,20 +35,21 @@ function navigateToLesson1Boundary() {
   cy.title().should('eq', 'SpoonFeeder');
   muteAudio();
 
-  cy.get('#continueBtn', { timeout: 20000 }).should('be.visible');
+  // Info/title slides are InfoExercise (Vue) — continue via data-cy
+  cy.get('[data-cy="continue"]', { timeout: 20000 }).should('be.visible');
 
   // Course title
-  testButton('#continueBtn');
+  continueCy();
   // Unit 1
-  testButton('#continueBtn');
+  continueCy();
   // Lesson 1
-  testButton('#continueBtn');
+  continueCy();
   // Module 1
-  testButton('#continueBtn');
+  continueCy();
   // 3 info inst slides
-  testButton('#continueBtn');
-  testButton('#continueBtn');
-  testButton('#continueBtn');
+  continueCy();
+  continueCy();
+  continueCy();
   // bool yes/no/no1 — ChoiceExercise (Vue)
   chooseOption(0);
   continueCy();
@@ -123,8 +124,8 @@ describe('Review System — boundary prompts', () => {
 
     skipReviewPrompt();
 
-    // Lesson 2 title slide should now appear
-    cy.get('#continueBtn', { timeout: 8000 }).should('be.visible');
+    // Lesson 2 title slide should now appear (info, Vue)
+    cy.get('[data-cy="continue"]', { timeout: 8000 }).should('be.visible');
     cy.contains('lesson 2');
   });
 
@@ -132,9 +133,9 @@ describe('Review System — boundary prompts', () => {
     navigateToLesson1Boundary();
     skipReviewPrompt();
 
-    // Navigate through lesson 2
-    testButton('#continueBtn'); // Lesson 2 title (info, legacy)
-    testButton('#continueBtn'); // Module 2 title (info, legacy)
+    // Navigate through lesson 2 (titles are info, Vue)
+    continueCy(); // Lesson 2 title
+    continueCy(); // Module 2 title
     cy.contains('closest to the Sun');
     chooseOption(0); // Mercury (Vue)
     continueCy();
@@ -174,9 +175,9 @@ describe('Review System — focused review session', () => {
     navigateToLesson1Boundary();
     skipReviewPrompt(); // skip lesson 1 boundary
 
-    // Navigate through lesson 2
-    testButton('#continueBtn'); // lesson 2 title (info, legacy)
-    testButton('#continueBtn'); // module 2 title (info, legacy)
+    // Navigate through lesson 2 (titles are info, Vue)
+    continueCy(); // lesson 2 title
+    continueCy(); // module 2 title
     cy.contains('closest to the Sun');
     chooseOption(0); // Mercury (Vue)
     continueCy();
@@ -225,8 +226,8 @@ describe('Review System — focused review session', () => {
 
     cy.get('[data-cy="review-session"]').should('not.exist');
 
-    // Course navigation resumes
-    cy.get('#continueBtn', { timeout: 8000 }).should('be.visible');
+    // Course navigation resumes — lesson 2 title (info, Vue)
+    cy.get('[data-cy="continue"]', { timeout: 8000 }).should('be.visible');
     cy.contains('lesson 2');
   });
 });

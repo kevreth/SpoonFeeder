@@ -69,27 +69,28 @@ export function runFullJourney() {
   cy.title().should('eq', 'SpoonFeeder');
   sessionStorage.setItem('mute', 'true');
 
-  cy.get('#continueBtn', { timeout: 20000 }).should('be.visible');
+  // Info/title slides are InfoExercise (Vue) — continue via data-cy
+  cy.get('[data-cy="continue"]', { timeout: 20000 }).should('be.visible');
 
   existVisibleNotEmpty('body');
   elementContains('body', 'course 1');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'unit 1');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'lesson 1');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'module 1');
-  testButton('#continueBtn');
+  continueCy();
 
-  testButton('#continueBtn'); //Mathjax
-  testButton('#continueBtn'); //code
-  testButton('#continueBtn'); //table
+  continueCy(); //Mathjax (info)
+  continueCy(); //code (info)
+  continueCy(); //table (info)
 
   // bool 'yes' (ans yes) — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
@@ -209,14 +210,14 @@ export function runFullJourney() {
   // Lesson 1 boundary prompt — skip
   skipReviewPrompt();
 
-  // Lesson 2 navigation
+  // Lesson 2 navigation (info, Vue)
   existVisibleNotEmpty('body');
   elementContains('body', 'lesson 2');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'module 2');
-  testButton('#continueBtn');
+  continueCy();
 
   // mc Mercury — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
@@ -244,9 +245,10 @@ export function runFullJourney() {
   cy.contains('.stat-value', '19');
   cy.contains('.stat-value', '13');
   cy.contains('.stat-value', '68%');
-  testButton('#startOver');
+  cy.get('[data-cy="start-over"]').should('be.visible').click();
 
-  cy.get('#continueBtn', { timeout: 10000 }).should('be.visible');
+  // After restart, the first slide is the course title (info, Vue)
+  cy.get('[data-cy="continue"]', { timeout: 10000 }).should('be.visible');
   cy.contains('course 1');
 }
 

@@ -109,16 +109,17 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 2 — Info
 
-- [ ] **T-110** Create `src/vue/components/exercise/InfoExercise.vue` and retire `conclude.ts` DOM injection
+- [x] **T-110** Create `src/vue/components/exercise/InfoExercise.vue`
   - AsciiDoc `v-html` output wrapped in `QCard` (`--sf-color-surface`)
   - `ContinueButton` always visible (info slides: no answer required)
-  - On mount: call `handleAnswer({ selected: '', correct: true })` to trigger audio/saveData path correctly for `immediateConclusion` slides
+  - On mount: emit `answer({ selected: '', correct: true })` to record the save for `immediateConclusion` slides. The host suppresses audio for `immediateConclusion` (matches the legacy `conclude2` path — info plays no audio)
+  - Re-executes any embedded `<script>` from `v-html` so course-content `html=` tables still load (global jQuery; PRD-002)
   - Calls `postRender(document)` in `onMounted`
-  - Remove `continueButton()` and `showExplainIcon()` DOM injection from `conclude.ts` — replaced by reactive `ContinueButton.vue` and `showExplain` state in `IndexPage.vue`
-  - Wire `info` into component map, remove old rendering path
-  - Add `data-cy` hooks to `InfoExercise` (`continue`) and update the `info` assertions in `cypress/e2e/example.cy.ts` (lockstep)
+  - Wire `info` into component map (also covers auto-generated title/nav slides, which are `INFO()` instances). The legacy `info` path is retained for review (ADR-023)
+  - _(deferred → epic 003)_ Do NOT remove `continueButton()`/`showExplainIcon()` from `conclude.ts` — the retained legacy renderer (sort/imap/gap/select fallback + review) still uses them; their removal is part of epic 003
+  - Added `data-cy` hooks to `InfoExercise` (`continue`) and updated the `info`/title-slide assertions in `functions.ts` (`example.cy.ts` journey) AND `review.cy.ts` nav from `#continueBtn` to `[data-cy="continue"]` (lockstep)
 
-- [ ] **T-115** ✓ `yarn test:all` — 0 failures before proceeding
+- [x] **T-115** ✓ `yarn test:all` — 0 failures before proceeding
 
 ---
 
