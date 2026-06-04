@@ -8,7 +8,14 @@
  * The lesson 1 boundary prompt fires after completing lesson 1's last exercise.
  * The lesson 2 / unit / course boundary prompts fire after lesson 2's last exercise.
  */
-import { skipReviewPrompt, testButton, elementContains, existVisibleNotEmpty, dragDrop } from './functions';
+import {
+  skipReviewPrompt,
+  testButton,
+  dragDrop,
+  chooseOption,
+  doneCy,
+  continueCy,
+} from './functions';
 
 const KNOWN_UNCAUGHT_PATTERNS: RegExp[] = [
   /ResizeObserver loop/i,
@@ -42,38 +49,36 @@ function navigateToLesson1Boundary() {
   testButton('#continueBtn');
   testButton('#continueBtn');
   testButton('#continueBtn');
-  // bool yes (correct)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  // bool no (incorrect)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  // bool no1 (incorrect)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  // ma — done then continue
+  // bool yes/no/no1 — ChoiceExercise (Vue)
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  // ma — done then continue (Vue)
+  doneCy();
+  continueCy();
+  // vocab slides (5 MC slides) — ChoiceExercise (Vue)
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  chooseOption(2);
+  continueCy();
+  chooseOption(3);
+  continueCy();
+  // sort — legacy renderer
   testButton('#btn');
   testButton('#continueBtn');
-  // vocab slides (5 MC slides)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  testButton('#continueBtn');
-  testButton('#btn2');
-  testButton('#continueBtn');
-  testButton('#btn3');
-  testButton('#continueBtn');
-  // sort
-  testButton('#btn');
-  testButton('#continueBtn');
-  // imap
+  // imap — legacy renderer
   testButton('#blue');
   testButton('#continueBtn');
-  // mc bus (click wrong)
-  testButton('#btn1');
-  testButton('#continueBtn');
+  // mc bus (click wrong) — ChoiceExercise (Vue)
+  chooseOption(1);
+  continueCy();
   // gap 1 (all correct)
   dragDrop('#fill0', '#gap0');
   dragDrop('#fill1', '#gap1');
@@ -89,11 +94,11 @@ function navigateToLesson1Boundary() {
   testButton('#w6');
   testButton('#btn');
   testButton('#continueBtn');
-  // mc periodic table — answers first option
+  // mc periodic table — ChoiceExercise (Vue); answers first option
   cy.contains('learn the periodic table');
-  testButton('#btn0');
-  // Click continue — this triggers the lesson 1 boundary prompt
-  testButton('#continueBtn');
+  chooseOption(0);
+  // Continue triggers the lesson 1 boundary prompt
+  continueCy();
 }
 
 describe('Review System — boundary prompts', () => {
@@ -128,14 +133,14 @@ describe('Review System — boundary prompts', () => {
     skipReviewPrompt();
 
     // Navigate through lesson 2
-    testButton('#continueBtn'); // Lesson 2 title
-    testButton('#continueBtn'); // Module 2 title
+    testButton('#continueBtn'); // Lesson 2 title (info, legacy)
+    testButton('#continueBtn'); // Module 2 title (info, legacy)
     cy.contains('closest to the Sun');
-    testButton('#btn0'); // Mercury
-    testButton('#continueBtn');
+    chooseOption(0); // Mercury (Vue)
+    continueCy();
     cy.contains('chemical symbol for water');
-    testButton('#btn0'); // H2O
-    testButton('#continueBtn'); // triggers boundary
+    chooseOption(0); // H2O (Vue)
+    continueCy(); // triggers boundary
 
     // Lesson 2 boundary prompt
     cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');
@@ -170,14 +175,14 @@ describe('Review System — focused review session', () => {
     skipReviewPrompt(); // skip lesson 1 boundary
 
     // Navigate through lesson 2
-    testButton('#continueBtn'); // lesson 2 title
-    testButton('#continueBtn'); // module 2 title
+    testButton('#continueBtn'); // lesson 2 title (info, legacy)
+    testButton('#continueBtn'); // module 2 title (info, legacy)
     cy.contains('closest to the Sun');
-    testButton('#btn0'); // Mercury
-    testButton('#continueBtn');
+    chooseOption(0); // Mercury (Vue)
+    continueCy();
     cy.contains('chemical symbol for water');
-    testButton('#btn0'); // H2O
-    testButton('#continueBtn'); // triggers lesson 2 / unit / course boundary prompts
+    chooseOption(0); // H2O (Vue)
+    continueCy(); // triggers lesson 2 / unit / course boundary prompts
 
     // Lesson 2 boundary prompt — choose focused review
     cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');

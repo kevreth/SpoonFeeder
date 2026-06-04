@@ -44,7 +44,9 @@
       <component
         :is="exerciseComponent"
         v-if="exerciseComponent && currentSlide && !showSession && !showPrompt"
+        :key="currentSlide.txt"
         :slide="currentSlide"
+        :multiple="currentSlideType === 'ma'"
         :restored="restored"
         @answer="handleAnswer"
         @continue="handleContinue"
@@ -90,6 +92,7 @@ import type { SlideInterface } from '../../ts/main/slide/slideInterface';
 import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
 import { useSlideStore } from '../stores/slideStore';
 import reloadPage from '../composables/startOver';
+import ChoiceExercise from '../components/exercise/ChoiceExercise.vue';
 
 /* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
  * The Pinia slide store is driven by SlideDispatcher. Converted exercise types
@@ -100,9 +103,13 @@ import reloadPage from '../composables/startOver';
 const slideStore = useSlideStore();
 const { currentSlide, currentSlideType, quizComplete, restored } = storeToRefs(slideStore);
 
-// Type → Vue component. Empty until phase tasks wire real components; any type
-// not present here renders via the legacy makeSlides fallback below.
-const EXERCISE_COMPONENTS: Record<string, Component> = {};
+// Type → Vue component. Types not present here render via the legacy makeSlides
+// fallback below. Phase tasks add entries as each type is converted.
+const EXERCISE_COMPONENTS: Record<string, Component> = {
+  mc: ChoiceExercise,
+  bool: ChoiceExercise,
+  ma: ChoiceExercise,
+};
 
 const exerciseComponent = computed<Component | null>(() => {
   const type = currentSlideType.value;

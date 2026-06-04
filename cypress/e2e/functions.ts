@@ -39,6 +39,28 @@ export function getLocalStorageArray() {
   // WebStorageAdapter wraps values in { version, data } — unwrap if present
   return parsed?.data ?? parsed;
 }
+
+// ── Vue exercise (data-cy) helpers — converted types: mc, bool, ma (PRD-001) ──
+export function chooseOption(i: number) {
+  cy.get(`[data-cy="option-${i}"]`).should('be.visible').click();
+}
+export function optionState(i: number, state: 'correct' | 'incorrect' | 'dimmed') {
+  cy.get(`[data-cy="option-${i}"]`).should('have.class', `sf-option--${state}`);
+}
+export function doneCy() {
+  cy.get('[data-cy="done"]').should('be.visible').click();
+}
+export function continueCy() {
+  cy.get('[data-cy="continue"]').should('be.visible').click();
+}
+export function continueCyCount(ctr: number) {
+  cy.get('[data-cy="continue"]')
+    .should('be.visible')
+    .click()
+    .should(() => {
+      expect(getLocalStorageArray().length).to.eq(ctr);
+    });
+}
 const GREEN = 'rgb(0, 128, 0)';
 const RED = 'rgb(255, 0, 0)';
 
@@ -69,53 +91,61 @@ export function runFullJourney() {
   testButton('#continueBtn'); //code
   testButton('#continueBtn'); //table
 
+  // bool 'yes' (ans yes) — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   elementContains('body', 'yes');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', GREEN);
-  testButton('#continueBtn');
+  chooseOption(0);
+  optionState(0, 'correct');
+  continueCy();
 
+  // bool 'no' (ans no) — option 0 is 'yes' → incorrect
   existVisibleNotEmpty('body');
   elementContains('body', 'no');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', RED);
-  testButton('#continueBtn');
+  chooseOption(0);
+  optionState(0, 'incorrect');
+  continueCy();
 
+  // bool 'no1' (ans no) — option 0 is 'yes' → incorrect
   existVisibleNotEmpty('body');
   elementContains('body', 'no1');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', RED);
-  testButton('#continueBtn');
+  chooseOption(0);
+  optionState(0, 'incorrect');
+  continueCy();
 
+  // ma 'Choose A and C' — submit with nothing selected (Vue Done button)
+  existVisibleNotEmpty('body');
+  doneCy();
+  continueCy();
+
+  // vocab → 5 mc children (ChoiceExercise)
+  chooseOption(0);
+  existVisibleNotEmpty('body');
+  continueCy();
+  chooseOption(0);
+  optionState(0, 'incorrect');
+  continueCy();
+  chooseOption(2);
+  continueCy();
+  chooseOption(3);
+  continueCy();
+  chooseOption(0);
+  continueCyCount(16);
+
+  // sort 'sort' — legacy renderer (converted in Phase 5)
   existVisibleNotEmpty('body');
   testButton('#btn'); //done
   testButton('#continueBtn');
 
-  testButton('#btn0');
-  existVisibleNotEmpty('body');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', RED);
-  testButton('#continueBtn');
-  testButton('#btn2');
-  testButton('#continueBtn');
-  testButton('#btn3');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  continueButton(16);
-
-  existVisibleNotEmpty('body');
-  testButton('#btn'); //done
-  testButton('#continueBtn');
-
+  // imap 'choose blue' — legacy renderer (converted in Phase 6)
   existVisibleNotEmpty('body');
   testButton('#blue');
   testButton('#continueBtn');
 
+  // mc 'Choose the bus' — ChoiceExercise (Vue); click car (option 1)
   existVisibleNotEmpty('body');
   cy.contains('bus');
-  testButton('#btn1');
-  testButton('#continueBtn');
+  chooseOption(1);
+  continueCy();
 
   existVisibleNotEmpty('body');
   existAndVisible('#fill0');
@@ -170,10 +200,11 @@ export function runFullJourney() {
   cy.get('#w6').should('have.css', 'text-decoration-color', GREEN);
   testButton('#continueBtn');
 
+  // mc 'periodic table' — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   cy.contains('learn the periodic table');
-  testButton('#btn0');
-  continueButton(23);
+  chooseOption(0);
+  continueCyCount(23);
 
   // Lesson 1 boundary prompt — skip
   skipReviewPrompt();
@@ -187,15 +218,17 @@ export function runFullJourney() {
   elementContains('body', 'module 2');
   testButton('#continueBtn');
 
+  // mc Mercury — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   cy.contains('closest to the Sun');
-  testButton('#btn0'); // Mercury — correct
-  testButton('#continueBtn');
+  chooseOption(0); // Mercury — correct
+  continueCy();
 
+  // mc water — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   cy.contains('chemical symbol for water');
-  testButton('#btn0'); // H2O — correct
-  testButton('#continueBtn');
+  chooseOption(0); // H2O — correct
+  continueCy();
 
   // Lesson 2 + unit + course boundary prompts — skip all
   skipReviewPrompt();

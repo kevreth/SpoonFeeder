@@ -76,7 +76,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 1 — MC / MA / Bool
 
-- [ ] **T-080** Create `src/vue/components/exercise/ChoiceExercise.vue`
+- [x] **T-080** Create `src/vue/components/exercise/ChoiceExercise.vue`
   - Props: `slide: SlideInterface`, `multiple: boolean`
   - Emits: `answer({ selected: string | string[], correct: boolean })`, `continue`
   - Use `processOptions()` (T-040) to render options
@@ -90,20 +90,20 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Determines correctness via `evaluateAnswer(slide, selected)` helper (see T-060 for extraction)
   - Standalone — not wired to store yet
 
-- [ ] **T-090** Wire `mc` and `bool` into `exerciseComponent` map in `IndexPage.vue`
+- [x] **T-090** Wire `mc` and `bool` into `exerciseComponent` map in `IndexPage.vue`
   - `mc` → `ChoiceExercise` with `:multiple="false"`
   - `bool` → `ChoiceExercise` with `:multiple="false"`
   - Old `mc` and `bool` rendering paths removed (or marked dead — cleaned up in T-190)
   - Add `data-cy` hooks to `ChoiceExercise` (`option-N`, `continue`, `done`) and update the `mc`/`bool` assertions in `cypress/e2e/example.cy.ts` from `#btn0`/`#continueBtn` to the new hooks (lockstep — see Conventions)
   - Regression: answer correctly, answer incorrectly, continue advances slide for both types
 
-- [ ] **T-100** Wire `ma` into `exerciseComponent` map
+- [x] **T-100** Wire `ma` into `exerciseComponent` map
   - `ma` → `ChoiceExercise` with `:multiple="true"`
   - Verify multi-select, Done button, correct/incorrect states
   - Old `ma` rendering path removed
   - Update the `ma` assertions in `cypress/e2e/example.cy.ts` to the `ChoiceExercise` `data-cy` hooks (lockstep)
 
-- [ ] **T-105** ✓ `yarn test:all` — 0 failures before proceeding
+- [x] **T-105** ✓ `yarn test:all` — 0 failures before proceeding
 
 ---
 
