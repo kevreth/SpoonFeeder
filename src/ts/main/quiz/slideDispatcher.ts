@@ -1,12 +1,10 @@
 import { last } from 'lodash';
-import type { AnswerType, SlideInterface } from '../slide/slideInterface';
+import type { SlideInterface } from '../slide/slideInterface';
 import type { StateActions } from './stateActionDispatcher';
 import { Json } from '../dataaccess/saveData/saveFile';
 import { SaveData } from '../dataaccess/saveData/saveData';
 import { dispatch2 } from './stateActionDispatcher';
-import { evaluate } from './evaluate';
-import { hideExplainIcon } from './explainIcon';
-import { startOverButton } from './startOverButton';
+import { useSlideStore } from '../../../vue/stores/slideStore';
 
 export async function showSlides(doc: Document): Promise<void> {
   const slides = Json.get();
@@ -20,6 +18,16 @@ export function fillMatchingSlide(slide: SlideInterface, last: SaveData) {
   slide.res = last.result;
 }
 
+/**
+ * Drives quiz flow by pushing the active slide into the Pinia slide store
+ * (ADR-019); the Vue layer renders reactively from the store. This class no
+ * longer touches the DOM — the legacy DOM-injection path (`slide.makeSlides`,
+ * `conclude`, `startOverButton`) is retained only for the review renderer
+ * (ADR-023) and is not invoked here.
+ *
+ * `doc` is retained on the signature for caller compatibility (legacy callers
+ * still pass it) but is unused by the store-driven flow.
+ */
 class SlideDispatcher implements StateActions<void> {
   constructor(
     public doc: Document,
@@ -36,8 +44,7 @@ class SlideDispatcher implements StateActions<void> {
 
   begin(): void {
     const slide = Json.getFirstSlide();
-    slide.makeSlides(this.doc);
-    hideExplainIcon(this.doc);
+    useSlideStore().setSlide(slide, slide.type);
   }
 
   current(): void {
@@ -45,21 +52,18 @@ class SlideDispatcher implements StateActions<void> {
   }
 
   decorate(): void {
+    // Reload mid-slide (answered, not yet continued): restore the answered
+    // state. `restored = true` tells the component to render from slide.res.
     const slide = this.getSlide(0);
-    slide.makeSlides(this.doc);
-    if (!slide.immediateConclusion)
-      slide.conclude(this.doc, slide.res as AnswerType, slide.txt);
+    useSlideStore().setSlide(slide, slide.type, true);
   }
 
   next(): void {
     const slide = this.getSlide(1);
-    slide.makeSlides(this.doc);
-    hideExplainIcon(this.doc);
+    useSlideStore().setSlide(slide, slide.type);
   }
 
   end(): void {
-    const json = Json.get();
-    this.doc.body.innerHTML = evaluate(json);
-    startOverButton(this.doc);
+    useSlideStore().setQuizComplete();
   }
 }

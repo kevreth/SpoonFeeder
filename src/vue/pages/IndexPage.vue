@@ -22,14 +22,41 @@
     @quit="onSessionQuit"
   />
   <q-page class="wrapContent row items-center justify-evenly">
-    <div id="slide">
+    <!-- Hidden audio element for answer feedback (replaces per-conclude Audio()) -->
+    <audio ref="audioEl" data-cy="answer-audio" style="display: none"></audio>
+
+    <!-- Main quiz end screen (replaces legacy doc.body.innerHTML = evaluate(...) + startOverButton) -->
+    <div v-if="quizComplete" class="sf-end-screen" data-cy="end-screen">
+      <div v-html="endScreenHtml"></div>
+      <button id="startOver" class="startOver" type="button" data-cy="start-over" @click="reloadPage">
+        Start Over
+      </button>
+    </div>
+
+    <!--
+      Main quiz slide surface. Converted exercise types render through the Vue
+      <component> switcher; un-converted types fall back to the legacy
+      makeSlides() renderer, which injects into #slide/#content (ADR-023 keeps
+      these divs for the review renderer too). The switcher is hidden while a
+      review session/prompt is active so the two renderers never overlap.
+    -->
+    <div v-show="!quizComplete" id="slide">
+      <component
+        :is="exerciseComponent"
+        v-if="exerciseComponent && currentSlide && !showSession && !showPrompt"
+        :slide="currentSlide"
+        :restored="restored"
+        @answer="handleAnswer"
+        @continue="handleContinue"
+      />
       <div id="content"></div>
     </div>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
+import { ref, watch, nextTick, computed, onMounted, type Component } from 'vue';
+import { storeToRefs } from 'pinia';
 import {
   loadCourseListing,
   switchCourse,
@@ -45,14 +72,105 @@ import {
   clearDraftState,
   setPreAdvanceHook,
   setHighestReachedIndex,
+  showSlides,
+  Json,
+  evaluate,
+  postRender,
+  hideExplainIcon,
+  firePreAdvanceHook,
+  AudioPlayer,
+  MUTE,
 } from '../mediator';
-import type { ReviewBoundary, ReviewRecord, ReviewType } from '../mediator';
+import type { ReviewBoundary, ReviewRecord, ReviewType, AnswerType } from '../mediator';
 import { reviewLaunchPending } from '../composables/reviewMenuState';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 import ReviewPrompt from '../components/review/ReviewPrompt.vue';
 import ReviewSession from '../components/review/ReviewSession.vue';
 import type { SlideInterface } from '../../ts/main/slide/slideInterface';
 import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
+import { useSlideStore } from '../stores/slideStore';
+import reloadPage from '../composables/startOver';
+
+/* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
+ * The Pinia slide store is driven by SlideDispatcher. Converted exercise types
+ * render through the <component :is="exerciseComponent"> switcher; un-converted
+ * types fall back to the legacy makeSlides() DOM renderer (ADR-023) until their
+ * phase converts them. Phase tasks add entries to EXERCISE_COMPONENTS.
+ */
+const slideStore = useSlideStore();
+const { currentSlide, currentSlideType, quizComplete, restored } = storeToRefs(slideStore);
+
+// Type → Vue component. Empty until phase tasks wire real components; any type
+// not present here renders via the legacy makeSlides fallback below.
+const EXERCISE_COMPONENTS: Record<string, Component> = {};
+
+const exerciseComponent = computed<Component | null>(() => {
+  const type = currentSlideType.value;
+  return type ? (EXERCISE_COMPONENTS[type] ?? null) : null;
+});
+
+const audioEl = ref<HTMLAudioElement | null>(null);
+let audioPlayer: AudioPlayer | null = null;
+
+const showExplain = ref(false);
+const explainText = ref('');
+const endScreenHtml = computed(() => (quizComplete.value ? evaluate(Json.get()) : ''));
+
+function clearLegacyContent(): void {
+  const content = document.getElementById('content');
+  if (content) content.innerHTML = '';
+}
+
+// Render the active slide. Converted types are rendered by the Vue switcher
+// (we just clear any stale legacy DOM); un-converted types use makeSlides,
+// reproducing the legacy dispatcher's begin/next (hideExplainIcon) and
+// decorate (restore answered state via conclude) behaviour.
+function renderCurrent(slide: SlideInterface | null): void {
+  if (!slide) return;
+  if (exerciseComponent.value) {
+    clearLegacyContent();
+    return;
+  }
+  slide.makeSlides(document);
+  if (restored.value && !slide.immediateConclusion) {
+    slide.conclude(document, slide.res as AnswerType, slide.txt);
+  } else {
+    hideExplainIcon(document);
+  }
+}
+
+watch(currentSlide, (slide) => void nextTick(() => renderCurrent(slide)), { immediate: true });
+
+// MathJax/highlight after the Vue end screen renders.
+watch(quizComplete, (done) => {
+  if (done) void nextTick(() => postRender(document));
+});
+
+function handleAnswer({ selected, correct }: { selected: AnswerType; correct: boolean }): void {
+  const slide = currentSlide.value;
+  if (!slide) return;
+  slide.setRes(selected);
+  audioPlayer?.playAudio(correct);
+  void slide.saveData();
+  showExplain.value = !!slide.exp;
+  explainText.value = slide.exp ?? '';
+}
+
+async function handleContinue(): Promise<void> {
+  const slide = currentSlide.value;
+  if (!slide) return;
+  const txt = slide.txt;
+  showExplain.value = false;
+  explainText.value = '';
+  await SaveData.setContinueTrue(txt);
+  const nextSlideIndex = Json.findMatchingSlide(txt) + 1;
+  await firePreAdvanceHook(nextSlideIndex);
+  await showSlides(document);
+}
+
+onMounted(() => {
+  if (audioEl.value) audioPlayer = new AudioPlayer(audioEl.value, MUTE);
+});
 
 const courseList = ref(false);
 const isEnable = ref(false);

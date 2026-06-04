@@ -16,11 +16,18 @@ export const useSlideStore = defineStore('slide', () => {
   const currentSlide = shallowRef<SlideInterface | null>(null);
   const currentSlideType = ref<string | null>(null);
   const quizComplete = ref(false);
+  // `restored` is true only on the DECORATE path — the slide was already
+  // answered (page reload before "continue"). Exercise components use it to
+  // render the post-answer state from `slide.res` instead of a fresh question.
+  // It must NOT be inferred from `slide.res` alone: the NEXT path taints the
+  // next slide's res/cont via fillMatchingSlide (see slideDispatcher.getSlide).
+  const restored = ref(false);
 
-  function setSlide(slide: SlideInterface, type: string): void {
+  function setSlide(slide: SlideInterface, type: string, wasRestored = false): void {
     currentSlide.value = slide;
     currentSlideType.value = type;
     quizComplete.value = false;
+    restored.value = wasRestored;
   }
 
   function setQuizComplete(): void {
@@ -31,7 +38,16 @@ export const useSlideStore = defineStore('slide', () => {
     currentSlide.value = null;
     currentSlideType.value = null;
     quizComplete.value = false;
+    restored.value = false;
   }
 
-  return { currentSlide, currentSlideType, quizComplete, setSlide, setQuizComplete, reset };
+  return {
+    currentSlide,
+    currentSlideType,
+    quizComplete,
+    restored,
+    setSlide,
+    setQuizComplete,
+    reset,
+  };
 });

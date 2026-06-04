@@ -171,7 +171,7 @@ module.exports = configure(function (/* ctx */) {
     sourceFiles: {
       rootComponent: './src/vue/App.vue',
       router: './src/vue/router/index',
-      store: './src/vue/store/index',
+      store: './src/vue/stores/index',
       //   registerServiceWorker: 'src-pwa/register-service-worker',
       //   serviceWorker: 'src-pwa/custom-service-worker',
       //   pwaManifestFile: 'src-pwa/manifest.json',

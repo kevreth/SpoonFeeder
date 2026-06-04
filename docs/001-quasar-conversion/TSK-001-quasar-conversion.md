@@ -52,14 +52,14 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Core Architecture
 
-- [ ] **T-060** Refactor `src/ts/main/quiz/slideDispatcher.ts`
+- [x] **T-060** Refactor `src/ts/main/quiz/slideDispatcher.ts`
   - `begin()`, `next()`, `decorate()` call `store.setSlide(slide, slide.type)` instead of `slide.makeSlides(doc)`
   - `end()` sets a `quizComplete` flag on the store instead of `doc.body.innerHTML`
   - `hideExplainIcon(doc)` calls removed (explain state is now reactive)
   - `doc: Document` constructor param retained only if still needed by remaining code; remove if not
   - Existing unit tests must still pass
 
-- [ ] **T-070** Refactor `IndexPage.vue` — render the main quiz path via Vue (do **not** delete `#content`)
+- [x] **T-070** Refactor `IndexPage.vue` — render the main quiz path via Vue (do **not** delete `#content`)
   - Add `<audio ref="audioEl" />` (hidden) to template
   - Add `showExplain: ref(false)`, `explainText: ref('')`, `quizComplete: ref(false)` state (read `quizComplete`/`currentSlide`/`currentSlideType` from `useSlideStore`)
   - Add the main-path switcher as a sibling of (not a replacement for) `#content`: `<component v-if="!showSession && currentSlide" :is="exerciseComponent" :slide="currentSlide" @answer="handleAnswer" @continue="handleContinue" />`. **Keep `<div id="slide"><div id="content"></div></div>` in the template** — the review controller renders into it (ADR-023). The main switcher is hidden while a review session/prompt is active so the two renderers never overlap.
@@ -70,7 +70,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Instantiate `AudioPlayer` with `audioEl` ref
   - The **main quiz path** must not render into `#content` after this task (the review path still does — retained per ADR-023)
 
-- [ ] **T-075** ✓ `yarn test:all` — 0 failures before proceeding
+- [x] **T-075** ✓ `yarn test:all` — 0 failures before proceeding
 
 ---
 
