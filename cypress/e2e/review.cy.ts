@@ -11,10 +11,10 @@
 import {
   skipReviewPrompt,
   testButton,
-  dragDrop,
   chooseOption,
   doneCy,
   continueCy,
+  placeToken,
 } from './functions';
 
 const KNOWN_UNCAUGHT_PATTERNS: RegExp[] = [
@@ -71,25 +71,25 @@ function navigateToLesson1Boundary() {
   continueCy();
   chooseOption(3);
   continueCy();
-  // sort — legacy renderer
-  testButton('#btn');
-  testButton('#continueBtn');
+  // sort — SortExercise (Vue)
+  doneCy();
+  continueCy();
   // imap — legacy renderer
   testButton('#blue');
   testButton('#continueBtn');
   // mc bus (click wrong) — ChoiceExercise (Vue)
   chooseOption(1);
   continueCy();
-  // gap 1 (all correct)
-  dragDrop('#fill0', '#gap0');
-  dragDrop('#fill1', '#gap1');
-  dragDrop('#fill2', '#gap2');
-  testButton('#continueBtn');
-  // gap 2 (some wrong)
-  dragDrop('#fill2', '#gap1');
-  dragDrop('#fill0', '#gap0');
-  dragDrop('#fill1', '#gap2');
-  testButton('#continueBtn');
+  // gap 1 — GapExercise (Vue), click-to-place
+  placeToken(0, 0);
+  placeToken(1, 1);
+  placeToken(2, 2);
+  continueCy();
+  // gap 2 — GapExercise (Vue)
+  placeToken(0, 0);
+  placeToken(1, 1);
+  placeToken(2, 2);
+  continueCy();
   // select — SelectExercise (Vue)
   cy.get('[data-cy="word-4"]').click();
   cy.get('[data-cy="word-6"]').click();

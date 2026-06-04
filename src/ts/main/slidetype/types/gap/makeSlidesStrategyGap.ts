@@ -125,7 +125,7 @@ function setgap(
     id.ondrop = null;
     (e.target as HTMLElement).style.removeProperty('background-color');
     const gapEl = e.target as HTMLElement;
-    gapEl.style.background = '#E6F1FB';
+    gapEl.style.background = 'var(--sf-color-token-bg)';
     gapEl.style.borderColor = '#378ADD';
     gapEl.style.borderStyle = 'dashed';
   };
@@ -155,7 +155,7 @@ function drop(
   gap.innerHTML = `<span id="ans${gapNumber}" class="ans">${fillText}</span>`;
   const ansSpan = doc.getElementById('ans' + gapNumber) as HTMLElement;
   if (ansSpan) {
-    ansSpan.style.color = '#0C447C';
+    ansSpan.style.color = 'var(--sf-color-token-text)';
     ansSpan.style.fontWeight = '500';
     ansSpan.style.fontSize = '14px';
   }
@@ -171,12 +171,12 @@ function drop(
 function setfills(ctr: number, currentFills: string, doc: Document): void {
   const id = doc.getElementById('fill' + ctr) as HTMLElement;
   id.style.cssText = `
-    background: #E6F1FB;
+    background: var(--sf-color-token-bg);
     border: 1.5px solid #378ADD;
     border-radius: 12px;
     font-size: 14px;
     font-weight: 500;
-    color: #0C447C;
+    color: var(--sf-color-token-text);
     cursor: grab;
     display: inline-flex;
     align-items: center;
@@ -262,7 +262,7 @@ function setupTouchDnD(
         const fillNumber = fillEl.dataset.number as string;
         gapEl.ondrop = null;
         const fillsRemaining = drop(doc, gapNumber, fillText, fillNumber);
-        gapEl.style.backgroundColor = '#E6F1FB';
+        gapEl.style.backgroundColor = 'var(--sf-color-token-bg)';
         if (fillsRemaining === 0) clock.setTimeout(() => concludeOnce(), 0);
       };
       doc.addEventListener('touchmove', onMove, { passive: false });

@@ -50,6 +50,11 @@ export function optionState(i: number, state: 'correct' | 'incorrect' | 'dimmed'
 export function doneCy() {
   cy.get('[data-cy="done"]').should('be.visible').click();
 }
+// GapExercise click-to-place: pick a pool token, then drop it in a gap slot.
+export function placeToken(token: number, slot: number) {
+  cy.get(`[data-cy="token-${token}"]`).click();
+  cy.get(`[data-cy="slot-${slot}"]`).click();
+}
 export function continueCy() {
   cy.get('[data-cy="continue"]').should('be.visible').click();
 }
@@ -61,9 +66,6 @@ export function continueCyCount(ctr: number) {
       expect(getLocalStorageArray().length).to.eq(ctr);
     });
 }
-const GREEN = 'rgb(0, 128, 0)';
-const RED = 'rgb(255, 0, 0)';
-
 export function runFullJourney() {
   cy.visit('/');
   cy.title().should('eq', 'SpoonFeeder');
@@ -132,10 +134,10 @@ export function runFullJourney() {
   chooseOption(0);
   continueCyCount(16);
 
-  // sort 'sort' — legacy renderer (converted in Phase 5)
+  // sort 'sort' — SortExercise (Vue); submit current order
   existVisibleNotEmpty('body');
-  testButton('#btn'); //done
-  testButton('#continueBtn');
+  doneCy();
+  continueCy();
 
   // imap 'choose blue' — legacy renderer (converted in Phase 6)
   existVisibleNotEmpty('body');
@@ -148,49 +150,43 @@ export function runFullJourney() {
   chooseOption(1);
   continueCy();
 
+  // gap 1 (all correct) — GapExercise (Vue), click-to-place
   existVisibleNotEmpty('body');
-  existAndVisible('#fill0');
-  existAndVisible('#fill1');
-  existAndVisible('#fill2');
-  existAndVisible('#gap0');
-  existAndVisible('#gap1');
-  existAndVisible('#gap2');
-  elementContains('#remaining', '3');
-  dragDrop('#fill0', '#gap0');
-  elementContains('#remaining', '2');
-  dragDrop('#fill1', '#gap1');
-  elementContains('#remaining', '1');
-  dragDrop('#fill2', '#gap2');
-  elementContains('#remaining', '0');
-  cy.get('#ans0').parent().should('have.css', 'background-color', GREEN);
-  cy.get('#ans1').parent().should('have.css', 'background-color', GREEN);
-  cy.get('#ans2').parent().should('have.css', 'background-color', GREEN);
+  existAndVisible('[data-cy="token-0"]');
+  existAndVisible('[data-cy="token-1"]');
+  existAndVisible('[data-cy="token-2"]');
+  existAndVisible('[data-cy="slot-0"]');
+  existAndVisible('[data-cy="slot-1"]');
+  existAndVisible('[data-cy="slot-2"]');
+  elementContains('[data-cy="remaining"]', '3');
+  placeToken(0, 0);
+  elementContains('[data-cy="remaining"]', '2');
+  placeToken(1, 1);
+  elementContains('[data-cy="remaining"]', '1');
+  placeToken(2, 2);
+  elementContains('[data-cy="remaining"]', '0');
+  cy.get('[data-cy="slot-0"]').should('have.class', 'sf-gap-slot--correct');
+  cy.get('[data-cy="slot-1"]').should('have.class', 'sf-gap-slot--correct');
+  cy.get('[data-cy="slot-2"]').should('have.class', 'sf-gap-slot--correct');
   cy.contains('Number correct: 3');
   cy.contains('Number questions: 3');
   cy.contains('100%');
-  testButton('#continueBtn');
+  continueCy();
 
+  // gap 2 (some wrong) — token-2→slot-1, token-1→slot-2 are misplaced
   existVisibleNotEmpty('body');
-  existAndVisible('#fill0');
-  existAndVisible('#fill1');
-  existAndVisible('#fill2');
-  existAndVisible('#gap0');
-  existAndVisible('#gap1');
-  existAndVisible('#gap2');
-  elementContains('#remaining', '3');
-  dragDrop('#fill2', '#gap1');
-  elementContains('#remaining', '2');
-  dragDrop('#fill0', '#gap0');
-  elementContains('#remaining', '1');
-  dragDrop('#fill1', '#gap2');
-  elementContains('#remaining', '0');
-  cy.get('#ans0').parent().should('have.css', 'background-color', GREEN);
-  cy.get('#ans1').parent().should('have.css', 'background-color', RED);
-  cy.get('#ans2').parent().should('have.css', 'background-color', RED);
+  elementContains('[data-cy="remaining"]', '3');
+  placeToken(0, 0);
+  placeToken(2, 1);
+  placeToken(1, 2);
+  elementContains('[data-cy="remaining"]', '0');
+  cy.get('[data-cy="slot-0"]').should('have.class', 'sf-gap-slot--correct');
+  cy.get('[data-cy="slot-1"]').should('have.class', 'sf-gap-slot--incorrect');
+  cy.get('[data-cy="slot-2"]').should('have.class', 'sf-gap-slot--incorrect');
   cy.contains('Number correct: 1');
   cy.contains('Number questions: 3');
   cy.contains('33%');
-  testButton('#continueBtn');
+  continueCy();
 
   // select — SelectExercise (Vue); ans=[5,6], choose 4 and 6
   existVisibleNotEmpty('body');

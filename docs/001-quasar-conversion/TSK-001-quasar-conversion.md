@@ -153,11 +153,11 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 5 — Gap / Sort
 
-- [ ] **T-140** Gap token theme fix (safe isolated patch — can be applied any time before T-150)
+- [x] **T-140** Gap token theme fix (safe isolated patch — can be applied any time before T-150)
   - In existing gap rendering code, replace `background: #E6F1FB` and `color: #0C447C` with `var(--sf-color-token-bg)` and `var(--sf-color-token-text)`
   - Style change only — no structural change
 
-- [ ] **T-150** Create `src/vue/components/exercise/GapExercise.vue`
+- [x] **T-150** Create `src/vue/components/exercise/GapExercise.vue`
   - Install `vue-draggable-plus` (used by sort too — install once here)
   - Token pool and gap slots as two `<VueDraggable>` lists with `group` option for cross-list DnD
   - Each gap slot accepts at most one token
@@ -169,7 +169,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Wire `gap` into component map, remove old rendering path
   - Add `data-cy` hooks to `GapExercise` (token/slot/`done`/`continue`) and update the `gap` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
-- [ ] **T-160** Create `src/vue/components/exercise/SortExercise.vue` + remove GSAP
+- [x] **T-160** Create `src/vue/components/exercise/SortExercise.vue` + remove GSAP
   - `<VueDraggable>` reorderable list with `animation: 200` (replaces `gsap.to(el, { y })`)
   - Vue `<Transition>` on mount for fade-in (replaces `gsap.to(container, { autoAlpha: 1 })`)
   - CSS class `.sf-sort-dragging` on dragged item: `transform: scale(1.05); box-shadow: …` (replaces GSAP drag shadow)
@@ -180,7 +180,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Wire `sort` into component map, remove old rendering path
   - Add `data-cy` hooks to `SortExercise` (item/`done`/`continue`) and update the `sort` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
-- [ ] **T-165** ✓ `yarn test:all` — 0 failures before proceeding
+- [x] **T-165** ✓ `yarn test:all` — 0 failures before proceeding
 
 ---
 
