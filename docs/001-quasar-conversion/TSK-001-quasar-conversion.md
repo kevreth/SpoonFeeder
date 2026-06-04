@@ -125,7 +125,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 3 — Select
 
-- [ ] **T-120** Create `src/vue/components/exercise/SelectExercise.vue`
+- [x] **T-120** Create `src/vue/components/exercise/SelectExercise.vue`
   - `slide.txt` split into word tokens; each rendered as a clickable `<span>` (or `QChip`)
   - `ref<Set<number>>` tracks selected word indices; words toggle on/off
   - Done button collects selected indices → emits `answer`
@@ -137,13 +137,13 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Wire `select` into component map, remove old rendering path
   - Add `data-cy` hooks to `SelectExercise` (`word-N`, `done`, `continue`) and update the `select` assertions in `cypress/e2e/example.cy.ts` (replaces `#w4`/`#w5`/`#w6`) (lockstep)
 
-- [ ] **T-125** ✓ `yarn test:all` — 0 failures before proceeding
+- [x] **T-125** ✓ `yarn test:all` — 0 failures before proceeding
 
 ---
 
 ## Phase 4 — Vocab
 
-- [ ] **T-130** Verify vocab works end-to-end via `ChoiceExercise`
+- [x] **T-130** Verify vocab works end-to-end via `ChoiceExercise`
   - Run through a vocab exercise in the test course (or a course with vocab slides)
   - Confirm all MC children render, answer, and save correctly
   - Confirm `slideTypeVocab.decorate()` is never called — add a comment to that method noting it is unreachable in the Vue rendering path

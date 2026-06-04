@@ -90,11 +90,11 @@ function navigateToLesson1Boundary() {
   dragDrop('#fill0', '#gap0');
   dragDrop('#fill1', '#gap2');
   testButton('#continueBtn');
-  // select
-  testButton('#w4');
-  testButton('#w6');
-  testButton('#btn');
-  testButton('#continueBtn');
+  // select — SelectExercise (Vue)
+  cy.get('[data-cy="word-4"]').click();
+  cy.get('[data-cy="word-6"]').click();
+  doneCy();
+  continueCy();
   // mc periodic table — ChoiceExercise (Vue); answers first option
   cy.contains('learn the periodic table');
   chooseOption(0);

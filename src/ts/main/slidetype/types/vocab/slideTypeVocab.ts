@@ -41,6 +41,10 @@ export class Vocab extends Slide implements SlideType {
   getAnswerCount(): number {
     return this.list.size;
   }
+  // Unreachable in the Vue rendering path (PRD-001): `initSlide` flattens a
+  // vocab slide into its `set` of `mc` child slides, so only the children enter
+  // the slide sequence and render via ChoiceExercise. The vocab parent is never
+  // dispatched, so neither `makeSlides()` nor `decorate()` is ever called on it.
   decorate(doc: Document): boolean {
     this.getAns();
     doc.getRootNode();

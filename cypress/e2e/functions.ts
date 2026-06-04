@@ -192,14 +192,15 @@ export function runFullJourney() {
   cy.contains('33%');
   testButton('#continueBtn');
 
+  // select — SelectExercise (Vue); ans=[5,6], choose 4 and 6
   existVisibleNotEmpty('body');
-  testButton('#w4');
-  testButton('#w6');
-  testButton('#btn'); //done
-  cy.get('#w4').should('have.css', 'text-decoration-color', RED);
-  cy.get('#w5').should('have.css', 'text-decoration-color', RED);
-  cy.get('#w6').should('have.css', 'text-decoration-color', GREEN);
-  testButton('#continueBtn');
+  cy.get('[data-cy="word-4"]').click();
+  cy.get('[data-cy="word-6"]').click();
+  doneCy();
+  cy.get('[data-cy="word-4"]').should('have.class', 'sf-word--incorrect');
+  cy.get('[data-cy="word-5"]').should('have.class', 'sf-word--missed');
+  cy.get('[data-cy="word-6"]').should('have.class', 'sf-word--correct');
+  continueCy();
 
   // mc 'periodic table' — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
