@@ -1,2 +1,4 @@
 .backup/
 course.adoc
+
+.venv/

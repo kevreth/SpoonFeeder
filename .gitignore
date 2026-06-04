@@ -75,3 +75,5 @@ reports/
 dashboard.html
 dashboard.html
 .codegraph/
+
+.venv/

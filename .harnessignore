@@ -36,3 +36,5 @@ favicon.svg
 *.map
 *.codex
 *.bashrc
+
+.venv/
