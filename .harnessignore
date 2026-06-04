@@ -8,16 +8,6 @@ favicon.svg
 # Minified / vendor files (too large to analyse, no source value)
 *.min.js
 *.min.css
-
-# Docs and markup (not source code)
-*.md
-*.adoc
-*.html
-
-# Config/data files
-*.yml
-*.yaml
-*.json
 *.prettierrc
 *.editorconfig
 *.map
