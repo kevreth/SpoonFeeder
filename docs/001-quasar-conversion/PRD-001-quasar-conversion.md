@@ -40,6 +40,7 @@ These cannot be patched in isolation — they require replacing the rendering sy
 - Skinning system and skin file format — Gamification PRD Section 7
 - Vocab spaced repetition — Gamification PRD Section 8.4
 - Accessibility audit — deferred until after conversion
+- **Global jQuery removal** — the npm `jquery` package IS removed by this epic (it backs the exercise-path `append`/`empty` wrappers and a `$.extend` call in `saveData.ts`). The *separate* global `lib/jquery.min.js` loaded in `index.html` and used by course-content inline scripts (`$('#table0').load(...)`) is **not** in scope here — it is deferred to PRD-002 (Global jQuery Removal)
 
 ---
 
@@ -234,6 +235,8 @@ Note: `slideTypeVocab.decorate()` throws `Error('Method not implemented.')` — 
 ### All phases
 - [ ] `#content` div replaced — no exercise type uses `innerHTML` injection
 - [ ] jQuery (`$`) absent from all exercise rendering code
+- [ ] npm `jquery` + `@types/jquery` removed from `package.json`; no `import ... 'jquery'` in `src/` (global `lib/jquery.min.js` retained for course content — see Out of scope)
+- [ ] Exercise components expose stable `data-cy` hooks and `cypress/e2e/example.cy.ts` is updated in lockstep per phase
 - [ ] TS quiz/scoring/persistence layer has zero Vue/Quasar imports
 - [ ] All visual values reference CSS custom properties
 - [ ] Audio feedback plays on answer (correct and incorrect)
@@ -246,7 +249,8 @@ Note: `slideTypeVocab.decorate()` throws `Error('Method not implemented.')` — 
 ## Testing
 
 - **Unit tests** required for `processOptions` (TASK-04) and the Pinia slide store (TASK-05)
-- **E2E tests** (Cypress) must cover the full answer → feedback → continue flow for each exercise type; the existing test suite exercises this via the test course
+- **E2E tests** (Cypress) must cover the full answer → feedback → continue flow for each exercise type. The existing `example.cy.ts` asserts against the legacy DOM (`#btn0`, `#continueBtn`, `#ans0`, `#w4`, `startOver`) that this conversion removes; each phase therefore adds `data-cy` hooks to the new component and **updates `example.cy.ts` in lockstep** so the per-phase `yarn test:all` gate stays green (see ADR-022). `review.cy.ts` already uses `data-cy` and is unaffected.
+- **Cypress prerequisite:** `yarn test:all` includes `test:e2e`, which needs the Cypress binary installed and executable. In containerized sessions, run `yarn cypress install` and ensure the cached binary has execute permission (`chmod -R u+x .../Cypress`) before the first gate.
 - **Differential replay** (see CLAUDE.md): record a baseline snapshot before conversion, re-run after each phase, diff against baseline to confirm no silent save-data regressions
 
 ---

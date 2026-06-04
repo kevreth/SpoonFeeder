@@ -12,17 +12,25 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ---
 
+## Conventions
+
+- **Component location:** exercise components live under `src/vue/components/exercise/` (the repo's Vue presentation layer per `CLAUDE.md`). Framework-agnostic helpers (e.g. `processOptions`) live under `src/ts/main/` / `src/ts/utils/`.
+- **E2E selector lockstep:** converting an exercise type to a Vue component replaces the legacy DOM that `cypress/e2e/example.cy.ts` asserts against (`#btn0`, `#continueBtn`, `#ans0`, `#w4`, `startOver`, `#content`). To keep each phase's `yarn test:all` gate green, **every new exercise component exposes stable `data-cy` hooks** (e.g. `data-cy="option-N"`, `data-cy="continue"`, `data-cy="done"`, `data-cy="word-N"`, `data-cy="end-screen"`), and the wiring task for each phase **updates `example.cy.ts` to target those hooks in lockstep**. See [ADR-022](../adr/022-e2e-selector-lockstep.md). `review.cy.ts` already uses `data-cy` and needs no change.
+- **Cypress prerequisite (containerized runs):** the e2e gate needs the Cypress binary installed and executable. If `yarn cypress verify` fails with "executable not found" / missing execute permission, run `yarn cypress install` then `chmod -R u+x "$(yarn cypress cache path 2>/dev/null || echo ~/.cache/Cypress)"/*/Cypress` before the first `yarn test:all`.
+
+---
+
 ## Foundation
 
 - [ ] **T-010** Create `src/css/tokens.css` with all design token CSS custom properties from PRD-001 (colors, transitions, spacing). Import in `src/css/app.scss`. No component changes.
 
-- [ ] **T-020** Create `src/components/exercise/ContinueButton.vue`
+- [ ] **T-020** Create `src/vue/components/exercise/ContinueButton.vue`
   - `visible: boolean` prop; `display: none` when false
   - Appears with `--sf-transition-appear` CSS transition
   - `--sf-color-primary` fill; emits `click`
   - Standalone only — not wired up yet
 
-- [ ] **T-030** Create `src/components/exercise/FeedbackStatement.vue`
+- [ ] **T-030** Create `src/vue/components/exercise/FeedbackStatement.vue`
   - Props: `state: 'idle' | 'correct' | 'incorrect'`, `intensity: 'low' | 'medium' | 'high'` (default `'medium'`)
   - Randomised positive messages on correct; encouraging messages on incorrect; nothing on idle
   - Text color: `--sf-color-correct` / `--sf-color-incorrect`
@@ -67,7 +75,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 1 — MC / MA / Bool
 
-- [ ] **T-080** Create `src/components/exercise/ChoiceExercise.vue`
+- [ ] **T-080** Create `src/vue/components/exercise/ChoiceExercise.vue`
   - Props: `slide: SlideInterface`, `multiple: boolean`
   - Emits: `answer({ selected: string | string[], correct: boolean })`, `continue`
   - Use `processOptions()` (T-040) to render options
@@ -85,12 +93,14 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - `mc` → `ChoiceExercise` with `:multiple="false"`
   - `bool` → `ChoiceExercise` with `:multiple="false"`
   - Old `mc` and `bool` rendering paths removed (or marked dead — cleaned up in T-190)
+  - Add `data-cy` hooks to `ChoiceExercise` (`option-N`, `continue`, `done`) and update the `mc`/`bool` assertions in `cypress/e2e/example.cy.ts` from `#btn0`/`#continueBtn` to the new hooks (lockstep — see Conventions)
   - Regression: answer correctly, answer incorrectly, continue advances slide for both types
 
 - [ ] **T-100** Wire `ma` into `exerciseComponent` map
   - `ma` → `ChoiceExercise` with `:multiple="true"`
   - Verify multi-select, Done button, correct/incorrect states
   - Old `ma` rendering path removed
+  - Update the `ma` assertions in `cypress/e2e/example.cy.ts` to the `ChoiceExercise` `data-cy` hooks (lockstep)
 
 - [ ] **T-105** ✓ `yarn test:all` — 0 failures before proceeding
 
@@ -98,13 +108,14 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 2 — Info
 
-- [ ] **T-110** Create `src/components/exercise/InfoExercise.vue` and retire `conclude.ts` DOM injection
+- [ ] **T-110** Create `src/vue/components/exercise/InfoExercise.vue` and retire `conclude.ts` DOM injection
   - AsciiDoc `v-html` output wrapped in `QCard` (`--sf-color-surface`)
   - `ContinueButton` always visible (info slides: no answer required)
   - On mount: call `handleAnswer({ selected: '', correct: true })` to trigger audio/saveData path correctly for `immediateConclusion` slides
   - Calls `postRender(document)` in `onMounted`
   - Remove `continueButton()` and `showExplainIcon()` DOM injection from `conclude.ts` — replaced by reactive `ContinueButton.vue` and `showExplain` state in `IndexPage.vue`
   - Wire `info` into component map, remove old rendering path
+  - Add `data-cy` hooks to `InfoExercise` (`continue`) and update the `info` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
 - [ ] **T-115** ✓ `yarn test:all` — 0 failures before proceeding
 
@@ -112,7 +123,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 3 — Select
 
-- [ ] **T-120** Create `src/components/exercise/SelectExercise.vue`
+- [ ] **T-120** Create `src/vue/components/exercise/SelectExercise.vue`
   - `slide.txt` split into word tokens; each rendered as a clickable `<span>` (or `QChip`)
   - `ref<Set<number>>` tracks selected word indices; words toggle on/off
   - Done button collects selected indices → emits `answer`
@@ -122,6 +133,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
     - `.sf-word-missed` — not selected but should be: `text-decoration: underline`, color `--sf-color-correct`
   - Includes `ContinueButton` and `FeedbackStatement`
   - Wire `select` into component map, remove old rendering path
+  - Add `data-cy` hooks to `SelectExercise` (`word-N`, `done`, `continue`) and update the `select` assertions in `cypress/e2e/example.cy.ts` (replaces `#w4`/`#w5`/`#w6`) (lockstep)
 
 - [ ] **T-125** ✓ `yarn test:all` — 0 failures before proceeding
 
@@ -143,7 +155,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - In existing gap rendering code, replace `background: #E6F1FB` and `color: #0C447C` with `var(--sf-color-token-bg)` and `var(--sf-color-token-text)`
   - Style change only — no structural change
 
-- [ ] **T-150** Create `src/components/exercise/GapExercise.vue`
+- [ ] **T-150** Create `src/vue/components/exercise/GapExercise.vue`
   - Install `vue-draggable-plus` (used by sort too — install once here)
   - Token pool and gap slots as two `<VueDraggable>` lists with `group` option for cross-list DnD
   - Each gap slot accepts at most one token
@@ -153,8 +165,9 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Remove `mobile-drag-drop` from `package.json` after wiring
   - Includes `ContinueButton` and `FeedbackStatement`
   - Wire `gap` into component map, remove old rendering path
+  - Add `data-cy` hooks to `GapExercise` (token/slot/`done`/`continue`) and update the `gap` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
-- [ ] **T-160** Create `src/components/exercise/SortExercise.vue` + remove GSAP
+- [ ] **T-160** Create `src/vue/components/exercise/SortExercise.vue` + remove GSAP
   - `<VueDraggable>` reorderable list with `animation: 200` (replaces `gsap.to(el, { y })`)
   - Vue `<Transition>` on mount for fade-in (replaces `gsap.to(container, { autoAlpha: 1 })`)
   - CSS class `.sf-sort-dragging` on dragged item: `transform: scale(1.05); box-shadow: …` (replaces GSAP drag shadow)
@@ -163,6 +176,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Remove `gsap` from `package.json`
   - Includes `ContinueButton` and `FeedbackStatement`
   - Wire `sort` into component map, remove old rendering path
+  - Add `data-cy` hooks to `SortExercise` (item/`done`/`continue`) and update the `sort` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
 - [ ] **T-165** ✓ `yarn test:all` — 0 failures before proceeding
 
@@ -170,7 +184,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Phase 6 — Imap
 
-- [ ] **T-170** Create `src/components/exercise/ImapExercise.vue`
+- [ ] **T-170** Create `src/vue/components/exercise/ImapExercise.vue`
   - `slide.img` holds the SVG path
   - On `onMounted`: inject SVG via `SVGInjector` into the container ref (or `fetch` + `v-html` — see DEC-001)
   - After injection, discover child element IDs; store as `ref<string[]> shapeIds`
@@ -178,6 +192,7 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
   - Post-answer: toggle CSS classes `.shape_correct` / `.shape_incorrect`, remove `.shape`
   - Includes `ContinueButton`
   - Wire `imap` into component map, remove old rendering path
+  - Add `data-cy` hooks to `ImapExercise` (shape/`continue`) and update the `imap` assertions in `cypress/e2e/example.cy.ts` (lockstep)
 
 - [ ] **T-175** ✓ `yarn test:all` — 0 failures before proceeding
 
@@ -185,10 +200,14 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 ## Cleanup
 
-- [ ] **T-180** Remove jQuery from exercise rendering path
-  - Remove `append()` / `empty()` jQuery wrappers from all `makeSlidesStrategy*` files (or remove the files entirely if superseded)
-  - Verify `jquery` is not imported in any file under `src/ts/main/slidetype/`
-  - Remove `jquery` from `package.json` if no remaining usages elsewhere
+- [ ] **T-180** Remove the npm `jquery` package entirely
+  - The only `jquery` import is `src/ts/main/index.ts`, which exports three wrappers: `append`, `empty`, `extend`
+  - `append` / `empty` are used only by `createPageContent.ts` (the rendering path) — they disappear with T-190
+  - `extend` is used only by `src/ts/main/dataaccess/saveData/saveData.ts` (lines ~30, ~71): `extend<Array<SaveData>>(new Array<SaveData>(), raw)` is a shallow array copy. Replace each with `[...(raw as SaveData[])]` (do **not** use `Object.assign` — it skips the non-enumerable `length`). Covered by `saveData.property.test.ts`
+  - Remove the `extend` re-export from `src/ts/main/dataaccess/index.ts` and the `append`/`empty` re-exports from `src/ts/main/slidetype/index.ts`
+  - Delete the `import $ from 'jquery'` and the three wrappers from `src/ts/main/index.ts`
+  - Remove `jquery` **and** `@types/jquery` from `package.json`
+  - **Out of scope (deferred to epic 002):** the global `lib/jquery.min.js` loaded in `index.html` is a *separate* jQuery used by course-content inline scripts (`$('#table0').load(...)` in ~9 `course.yml` files + test-course HTML). It is NOT the npm package and stays in this epic. See [PRD-002](../002-global-jquery-removal/PRD-002-global-jquery-removal.md)
 
 - [ ] **T-190** Remove old rendering infrastructure
   - Remove `makeSlidesStrategy*.ts` files (DOM injection layer — no longer called)
@@ -204,6 +223,6 @@ Each item is atomic — one branch, one PR. Execute top-to-bottom.
 
 - [ ] **T-195** ✓ `yarn test:all` — 0 failures (final gate)
 - [ ] **T-200** `gsap` absent from `package.json` and all source imports
-- [ ] **T-210** `jquery` absent from `package.json` (or confirmed unused by exercise path)
+- [ ] **T-210** `jquery` and `@types/jquery` absent from `package.json`; no `import ... 'jquery'` anywhere in `src/`. (The global `lib/jquery.min.js` in `index.html` remains — deferred to epic 002.)
 - [ ] **T-220** `#content` not referenced in any source file
 - [ ] **T-230** Differential replay snapshot matches baseline (see CLAUDE.md — Differential Replay Pipeline)
