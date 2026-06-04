@@ -66,14 +66,11 @@ course.html
 
 diag-graphviz-md5-*.svg
 /src-capacitor/android/
-.codegraph/codegraph.db
 .acis/
-cypress/replay/current-snapshot.json
-cypress/replay/snapshots/
+cypress/*
 reports/
 .codegraph/
 dashboard.html
-dashboard.html
-.codegraph/
-
 .venv/
+.qwen/*
+*.codex
