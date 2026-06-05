@@ -1,13 +1,10 @@
 import { shuffle } from 'lodash';
-import { removeListener } from '../../../quiz/utilities';
 import type { AnswerType, SlideInterface } from '../../../slide/slideInterface';
 import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
 import { Slide } from '../../../slide/slide';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
-import { CORRECT, INCORRECT } from '../../misc/markupColors';
-import type { MarkTypeMa, SlideType } from '../../misc/slideType';
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { SlideType } from '../../misc/slideType';
 export class Ma extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
     ({
@@ -34,39 +31,4 @@ export class Ma extends Slide implements SlideType {
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitMa(this);
   }
-  makeSlides(doc: Document): void {
-    const createHtml = this.createHtml;
-    const maxWidthStrategy = SetWidths.SIMPLE;
-    const txt = this.txt;
-    const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy;
-    makeSlidesStrategy(
-      txt,
-      options as string[],
-      createHtml,
-      maxWidthStrategy,
-      doc,
-      this
-    );
-  }
-  decorate(doc: Document) {
-    const options = this.o as string[];
-    for (let i = 0; i < options.length; i++) {
-      removeListener(doc.getElementById('btn' + i) as HTMLElement);
-      const option = options[i];
-      let isKey = false;
-      let selected = false;
-      if ((this.ans as string[]).includes(option)) isKey = true;
-      if ((this.res as string[]).includes(option)) selected = true;
-      const btn = doc.getElementById('btn' + i) as HTMLElement;
-      this.mark(isKey, selected, btn);
-    }
-    return this.result() as boolean;
-  }
-  mark: MarkTypeMa = (isKey, selected, btn) => {
-    btn.style.border = 'none';
-    if (isKey && selected) btn.style.backgroundColor = CORRECT;
-    else if (!isKey && selected) btn.style.backgroundColor = INCORRECT;
-    else if (isKey && !selected) btn.style.border = `1px solid ${INCORRECT}`;
-  };
 }

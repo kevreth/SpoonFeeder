@@ -1,4 +1,3 @@
-import { JSDOM } from 'jsdom';
 import { expect, it, vi } from 'vitest';
 import type { Slide } from '../../main/slide/slide';
 // import { MC, VOCAB } from '../../main/slide/slideType/slideFactory';
@@ -27,13 +26,6 @@ export abstract class SlideTest
     expect(sv.result).not.toBeNull();
     expect(sv.result).not.toBeNull();
     expect(sv.result).not.toBeNull();
-  }
-  public makeSlides(): void {
-    const testable = this.getTestable();
-    const spy = vi.spyOn(testable, 'makeSlidesStrategy');
-    const dom = new JSDOM();
-    testable.makeSlides(dom.window.document);
-    expect(spy).toHaveBeenCalled();
   }
 }
 it('getMaxWidth', () => {

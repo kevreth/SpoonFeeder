@@ -292,42 +292,17 @@ tbody th {
   padding: 10px;
 }
 
-#slide {
-  /* width: calc(100% - 32px); */
-  /* max-width: fit-content; */
+.sf-slide-surface {
+  width: 100%;
   margin: 0 auto;
   font-size: 0.9rem;
-  overflow: hidden;
   text-align: center;
   overflow-x: hidden;
   box-sizing: border-box;
-  /* padding-top: 50px; */
 }
 
-#content {
-  text-align: center;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(4, 8, 20, 0.82);
-  border: 1px solid rgba(0, 229, 255, 0.25);
-  border-radius: 10px;
-  padding: 20px;
-  /* font-size: 19px; */
-  color: rgba(255, 255, 255, 0.92);
-  line-height: 1.8;
-  box-sizing: border-box;
-  width: 100%;
-  /* max-width: 500px; */
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
-  /* margin-top: 50px; */
-}
-
-#content pre,
-#content code {
+.sf-slide-surface pre,
+.sf-slide-surface code {
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-word;
@@ -526,7 +501,7 @@ td.sum-answer img {
   button {
     padding: 0.1em 0.3em;
   }
-  #slide {
+  .sf-slide-surface {
     font-size: 1rem;
   }
 

@@ -34,13 +34,11 @@
     </div>
 
     <!--
-      Main quiz slide surface. Converted exercise types render through the Vue
-      <component> switcher; un-converted types fall back to the legacy
-      makeSlides() renderer, which injects into #slide/#content (ADR-023 keeps
-      these divs for the review renderer too). The switcher is hidden while a
-      review session/prompt is active so the two renderers never overlap.
+      Main quiz slide surface. All exercise types render through the Vue
+      <component> switcher (PRD-001/003). The switcher is hidden while a review
+      session/prompt is active so the two surfaces never overlap.
     -->
-    <div v-show="!quizComplete" id="slide">
+    <div v-show="!quizComplete" class="sf-slide-surface">
       <component
         :is="exerciseComponent"
         v-if="exerciseComponent && currentSlide && !showSession && !showPrompt"
@@ -51,7 +49,6 @@
         @answer="handleAnswer"
         @continue="handleContinue"
       />
-      <div id="content"></div>
     </div>
   </q-page>
 </template>
@@ -78,7 +75,6 @@ import {
   Json,
   evaluate,
   postRender,
-  hideExplainIcon,
   firePreAdvanceHook,
   AudioPlayer,
   MUTE,
@@ -92,34 +88,16 @@ import type { SlideInterface } from '../../ts/main/slide/slideInterface';
 import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
 import { useSlideStore } from '../stores/slideStore';
 import reloadPage from '../composables/startOver';
-import ChoiceExercise from '../components/exercise/ChoiceExercise.vue';
-import InfoExercise from '../components/exercise/InfoExercise.vue';
-import SelectExercise from '../components/exercise/SelectExercise.vue';
-import GapExercise from '../components/exercise/GapExercise.vue';
-import SortExercise from '../components/exercise/SortExercise.vue';
-import ImapExercise from '../components/exercise/ImapExercise.vue';
+import { EXERCISE_COMPONENTS } from '../components/exercise/exerciseComponents';
 
 /* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
- * The Pinia slide store is driven by SlideDispatcher. Converted exercise types
- * render through the <component :is="exerciseComponent"> switcher; un-converted
- * types fall back to the legacy makeSlides() DOM renderer (ADR-023) until their
- * phase converts them. Phase tasks add entries to EXERCISE_COMPONENTS.
+ * The Pinia slide store is driven by SlideDispatcher. Every exercise type
+ * renders through the <component :is="exerciseComponent"> switcher, keyed off
+ * the slide type via the shared EXERCISE_COMPONENTS map (also used by the
+ * review path — PRD-003).
  */
 const slideStore = useSlideStore();
 const { currentSlide, currentSlideType, quizComplete, restored } = storeToRefs(slideStore);
-
-// Type → Vue component. Types not present here render via the legacy makeSlides
-// fallback below. Phase tasks add entries as each type is converted.
-const EXERCISE_COMPONENTS: Record<string, Component> = {
-  mc: ChoiceExercise,
-  bool: ChoiceExercise,
-  ma: ChoiceExercise,
-  info: InfoExercise,
-  select: SelectExercise,
-  gap: GapExercise,
-  sort: SortExercise,
-  imap: ImapExercise,
-};
 
 const exerciseComponent = computed<Component | null>(() => {
   const type = currentSlideType.value;
@@ -132,31 +110,6 @@ let audioPlayer: AudioPlayer | null = null;
 const showExplain = ref(false);
 const explainText = ref('');
 const endScreenHtml = computed(() => (quizComplete.value ? evaluate(Json.get()) : ''));
-
-function clearLegacyContent(): void {
-  const content = document.getElementById('content');
-  if (content) content.innerHTML = '';
-}
-
-// Render the active slide. Converted types are rendered by the Vue switcher
-// (we just clear any stale legacy DOM); un-converted types use makeSlides,
-// reproducing the legacy dispatcher's begin/next (hideExplainIcon) and
-// decorate (restore answered state via conclude) behaviour.
-function renderCurrent(slide: SlideInterface | null): void {
-  if (!slide) return;
-  if (exerciseComponent.value) {
-    clearLegacyContent();
-    return;
-  }
-  slide.makeSlides(document);
-  if (restored.value && !slide.immediateConclusion) {
-    slide.conclude(document, slide.res as AnswerType, slide.txt);
-  } else {
-    hideExplainIcon(document);
-  }
-}
-
-watch(currentSlide, (slide) => void nextTick(() => renderCurrent(slide)), { immediate: true });
 
 // MathJax/highlight after the Vue end screen renders.
 watch(quizComplete, (done) => {

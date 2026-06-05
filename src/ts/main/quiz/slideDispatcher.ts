@@ -20,13 +20,11 @@ export function fillMatchingSlide(slide: SlideInterface, last: SaveData) {
 
 /**
  * Drives quiz flow by pushing the active slide into the Pinia slide store
- * (ADR-019); the Vue layer renders reactively from the store. This class no
- * longer touches the DOM — the legacy DOM-injection path (`slide.makeSlides`,
- * `conclude`, `startOverButton`) is retained only for the review renderer
- * (ADR-023) and is not invoked here.
+ * (ADR-019); the Vue layer renders reactively from the store. This class does
+ * not touch the DOM — the legacy imperative renderer was removed in PRD-003.
  *
- * `doc` is retained on the signature for caller compatibility (legacy callers
- * still pass it) but is unused by the store-driven flow.
+ * `doc` is retained on the signature for caller compatibility (callers still
+ * pass it) but is unused by the store-driven flow.
  */
 class SlideDispatcher implements StateActions<void> {
   constructor(

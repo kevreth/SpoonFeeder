@@ -1,10 +1,6 @@
 import type { SlideInterface } from '../../../slide/index';
 import { SlideInitializer } from '../../misc/slideInitializer';
-import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
-import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
-import type { MakeSlidesType } from '../../strategies/makeSlidesStrategy';
-import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
 import { Ma } from './slideTypeMa';
 
@@ -13,13 +9,7 @@ export class MaFactory extends SlideInitializer {
     super('ma');
   }
   public instance(): SlideInterface {
-    return new Ma(
-      this.type,
-      CreateHtml.MA as CreateHtmlType,
-      MakeSlidesStrategy.MA as MakeSlidesType,
-      Evaluate.SIMPLE,
-      Result.SIMPLE
-    );
+    return new Ma(this.type, Evaluate.SIMPLE, Result.SIMPLE);
   }
 }
 export const MA = () => new MaFactory().instance() as Ma;

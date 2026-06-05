@@ -2,7 +2,7 @@
 title: "PRD-003: Review-Path Vue Conversion & Legacy-Renderer Removal"
 repo: "spoonfeeder/SpoonFeeder"
 created: "2026-06-05"
-status: "Deferred"
+status: "Complete"
 priority: "After PRD-001"
 ---
 
@@ -45,13 +45,13 @@ PRD-001 Vue components, then remove the legacy renderer entirely. See ADR-023.
 - Any new review features beyond rendering parity
 
 ## Success Criteria
-- [ ] Review sessions render via the PRD-001 Vue components; `review.cy.ts` passes
-- [ ] `slide.makeSlides`/`decorate` and the `makeSlidesStrategy*`/`createHtml*`/
+- [x] Review sessions render via the PRD-001 Vue components; `review.cy.ts` passes
+- [x] `slide.makeSlides`/`decorate` and the `makeSlidesStrategy*`/`createHtml*`/
       `createPageContent` files are deleted; no source references them
-- [ ] npm `jquery` + `@types/jquery`, `gsap`, and `mobile-drag-drop` absent from
+- [x] npm `jquery` + `@types/jquery`, `gsap`, and `mobile-drag-drop` absent from
       `package.json`; no `import ... 'jquery'/'gsap'/'mobile-drag-drop'` in `src/`
-- [ ] `#content` not referenced in any source file
-- [ ] `yarn test:all` passes; differential replay snapshot unchanged
+- [x] `#content` not referenced in any source file
+- [x] `yarn test:all` passes; differential replay snapshot unchanged (modulo `ts`)
 
 ## Testing
 - E2E (`review.cy.ts`) must cover the full review flow (prompt → session →

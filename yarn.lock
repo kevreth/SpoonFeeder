@@ -2911,13 +2911,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:4.0.0":
-  version: 4.0.0
-  resolution: "@types/jquery@npm:4.0.0"
-  checksum: 10c0/3e453accf2786e6ea5a5fb4b7f8c2298f42d3bc22253cc5a14f4d4a1a5ccc461db7af5a5df92a0b0c03c75a1968d2deda06597b63f8118613f88f27452911275
-  languageName: node
-  linkType: hard
-
 "@types/js-yaml@npm:4.0.9":
   version: 4.0.9
   resolution: "@types/js-yaml@npm:4.0.9"
@@ -6858,13 +6851,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gsap@npm:3.15.0":
-  version: 3.15.0
-  resolution: "gsap@npm:3.15.0"
-  checksum: 10c0/5d86de72cb0bd6b20502c34c329a83a7d679979731bb465164407b7a5225aa61d612beee740eea36258622897c116cd2ca35320d530b7cf68bad62522361fcf7
-  languageName: node
-  linkType: hard
-
 "handlebars@npm:4.7.9":
   version: 4.7.9
   resolution: "handlebars@npm:4.7.9"
@@ -7764,13 +7750,6 @@ __metadata:
     "@hapi/topo": "npm:^6.0.2"
     "@standard-schema/spec": "npm:^1.1.0"
   checksum: 10c0/d74f8b382de107f8bcc376ed3a2206971760176e167c7b69ff5b1dfe47a0de01e4a171f07bf4783f9bd240fb1e75f7b2d514eed175f3326e681c3572c0990ecc
-  languageName: node
-  linkType: hard
-
-"jquery@npm:4.0.0":
-  version: 4.0.0
-  resolution: "jquery@npm:4.0.0"
-  checksum: 10c0/06d8d0f51121af5a691f8b59c74823157bb5b60eea915b30eaa920d6c0ffd91e60ba81e9b97bd8203f331f9dd8d0ec9a4b010935ea314bdd2f15453c29bc780b
   languageName: node
   linkType: hard
 
@@ -8745,13 +8724,6 @@ __metadata:
   dependencies:
     obliterator: "npm:^2.0.1"
   checksum: 10c0/fa810768d290919c4ecd3f8ba5c8458bc45df08d1c72fac8f3897721cd90ab42ee1c642cc5208cfd649d40222998dc011127702117c0ca676f243cc80f42cc11
-  languageName: node
-  linkType: hard
-
-"mobile-drag-drop@npm:3.0.0-rc.0":
-  version: 3.0.0-rc.0
-  resolution: "mobile-drag-drop@npm:3.0.0-rc.0"
-  checksum: 10c0/898e42d1d0871a12e4ced3110fec7b1a9365b690971b37b35282f90bd8c74b1c89039e39abf20f48273bf0dc2efe1e2302e9f306b945e385ddfb3eb9f3003a8a
   languageName: node
   linkType: hard
 
@@ -11012,7 +10984,6 @@ __metadata:
     "@stryker-mutator/core": "npm:^9.6.1"
     "@stryker-mutator/vitest-runner": "npm:^9.6.1"
     "@tanem/svg-injector": "npm:11.3.2"
-    "@types/jquery": "npm:4.0.0"
     "@types/js-yaml": "npm:4.0.9"
     "@types/jsdom": "npm:28.0.3"
     "@types/lodash": "npm:4.17.24"
@@ -11036,10 +11007,8 @@ __metadata:
     eslint-config-prettier: "npm:10.1.8"
     eslint-plugin-cypress: "npm:6.4.1"
     eslint-plugin-vue: "npm:10.9.1"
-    gsap: "npm:3.15.0"
     handlebars: "npm:4.7.9"
     highlight.js: "npm:11.11.1"
-    jquery: "npm:4.0.0"
     js-yaml: "npm:4.1.1"
     jsdom: "npm:29.1.1"
     knip: "npm:^6.14.2"
@@ -11047,7 +11016,6 @@ __metadata:
     marked: "npm:18.0.4"
     mathjax-full: "npm:3.2.2"
     microdiff: "npm:^1.5.0"
-    mobile-drag-drop: "npm:3.0.0-rc.0"
     normalize.css: "npm:8.0.1"
     npm-check-updates: "npm:22.2.1"
     npm-run-all: "npm:4.1.5"

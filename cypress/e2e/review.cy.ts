@@ -193,13 +193,15 @@ describe('Review System — focused review session', () => {
     cy.get('[data-cy="review-session"]', { timeout: 8000 }).should('exist');
     cy.get('[data-cy="review-quit"]').should('be.visible');
 
-    // Lesson 2 focused pool = 2 mc slides (Mercury + H2O), sample capped at 5 → 2 slides
+    // Lesson 2 focused pool = 2 mc slides (Mercury + H2O), sample capped at 5 →
+    // 2 slides. Each renders as a Vue ChoiceExercise inside the review overlay;
+    // answer via option-0 + continue (scoped to the review slide surface).
     for (let i = 0; i < 4; i++) {
       cy.get('body').then(($body) => {
         if ($body.find('[data-cy="review-summary"]').length > 0) return;
-        if ($body.find('#btn0').length > 0) {
-          cy.get('#btn0').click();
-          cy.get('#continueBtn').should('be.visible').click();
+        if ($body.find('[data-cy="review-slide"] [data-cy="option-0"]').length > 0) {
+          cy.get('[data-cy="review-slide"] [data-cy="option-0"]').click();
+          cy.get('[data-cy="review-slide"] [data-cy="continue"]').should('be.visible').click();
         }
       });
     }
