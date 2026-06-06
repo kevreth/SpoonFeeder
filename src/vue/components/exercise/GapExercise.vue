@@ -1,5 +1,19 @@
 <template>
-  <div class="sf-gap" data-cy="gap-exercise">
+  <div ref="rootEl" class="sf-gap" data-cy="gap-exercise">
+    <!-- Token pool — above the sentence, matching the legacy sticky #fills layout -->
+    <VueDraggable v-model="pool" :group="poolGroup" :disabled="answered" class="sf-gap-pool">
+      <span
+        v-for="tok in pool"
+        :key="tok.id"
+        class="sf-token"
+        :class="{ 'sf-token--picked': picked === tok.id }"
+        :style="tokenWidth ? { width: tokenWidth, justifyContent: 'center' } : undefined"
+        :data-cy="`token-${tok.id}`"
+        @click="onTokenClick(tok.id)"
+        >{{ tok.text }}</span
+      >
+    </VueDraggable>
+
     <!-- Sentence with inline gap slots -->
     <p class="sf-gap-text">
       <template v-for="(part, j) in textParts" :key="j">
@@ -11,6 +25,7 @@
           :disabled="answered"
           class="sf-gap-slot"
           :class="answered ? `sf-gap-slot--${corr[j] ? 'correct' : 'incorrect'}` : ''"
+          :style="tokenWidth ? { minWidth: tokenWidth } : undefined"
           :data-cy="`slot-${j}`"
           @click="onSlotClick(j)"
         >
@@ -18,25 +33,13 @@
             v-for="tok in slotLists[j]"
             :key="tok.id"
             class="sf-token"
+            :style="tokenWidth ? { width: tokenWidth, justifyContent: 'center' } : undefined"
             :data-cy="`token-${tok.id}`"
             >{{ tok.text }}</span
           >
         </VueDraggable>
       </template>
     </p>
-
-    <!-- Token pool -->
-    <VueDraggable v-model="pool" :group="poolGroup" :disabled="answered" class="sf-gap-pool">
-      <span
-        v-for="tok in pool"
-        :key="tok.id"
-        class="sf-token"
-        :class="{ 'sf-token--picked': picked === tok.id }"
-        :data-cy="`token-${tok.id}`"
-        @click="onTokenClick(tok.id)"
-        >{{ tok.text }}</span
-      >
-    </VueDraggable>
 
     <div class="sf-gap-remaining">Remaining: <span data-cy="remaining">{{ remaining }}</span></div>
     <div v-if="answered" class="sf-gap-summary" data-cy="gap-summary" v-html="summaryHtml"></div>
@@ -47,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import { isEqual } from 'lodash';
 import ContinueButton from './ContinueButton.vue';
@@ -75,6 +78,8 @@ const answers = computed<string[]>(() => (props.slide.ans as string[]) ?? []);
 // Sentence split on the (N) gap markers — one slot between each pair of parts.
 const textParts = computed<string[]>(() => (props.slide.txt ?? '').split(/\(\d+\)/));
 
+const rootEl = ref<HTMLElement | null>(null);
+const tokenWidth = ref<string | null>(null);
 const pool = ref<Token[]>([]);
 const slotLists = ref<Token[][]>([]);
 const picked = ref<number | null>(null);
@@ -162,9 +167,17 @@ function restore(): void {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   init();
   if (props.restored) restore();
+  await nextTick();
+  if (rootEl.value) {
+    const tokens = Array.from(rootEl.value.querySelectorAll<HTMLElement>('.sf-token'));
+    if (tokens.length > 0) {
+      const maxW = Math.max(...tokens.map((t) => t.offsetWidth));
+      if (maxW > 0) tokenWidth.value = `${maxW}px`;
+    }
+  }
 });
 </script>
 
@@ -201,9 +214,13 @@ onMounted(() => {
   border-style: solid;
 }
 .sf-gap-pool {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--sf-gap-answer);
+  padding: 8px;
   min-height: var(--sf-min-touch);
 }
 .sf-token {

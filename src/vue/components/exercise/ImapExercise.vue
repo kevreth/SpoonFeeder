@@ -89,16 +89,31 @@ onMounted(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--sf-gap-answer);
   color: var(--sf-color-on-surface);
+}
+.sf-imap-svg :deep(svg) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 .sf-imap-svg :deep(.shape) {
   cursor: pointer;
 }
+.sf-imap-svg :deep(.shape:hover) {
+  opacity: 0.5;
+}
+.sf-imap-svg :deep(.shape_locked) {
+  opacity: 0.5;
+}
 .sf-imap-svg :deep(.shape_correct) {
   fill: var(--sf-color-correct);
+  opacity: 0.5;
 }
 .sf-imap-svg :deep(.shape_incorrect) {
   fill: var(--sf-color-incorrect);
+  opacity: 0.5;
 }
 </style>

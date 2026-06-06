@@ -25,9 +25,14 @@ const emit = defineEmits<{
 
 <style scoped>
 .sf-continue-btn {
+  position: sticky;
+  bottom: 0;
   background: var(--sf-color-primary);
   color: var(--sf-color-surface);
   border-radius: var(--sf-radius-button);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1em;
+  letter-spacing: 0.4em;
   font-weight: bold;
   min-height: var(--sf-min-touch);
   opacity: 1;

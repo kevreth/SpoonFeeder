@@ -151,6 +151,6 @@ onMounted(() => {
   border-radius: var(--sf-radius-button);
   min-height: var(--sf-min-touch);
   font-weight: bold;
-  align-self: flex-start;
+  align-self: center;
 }
 </style>

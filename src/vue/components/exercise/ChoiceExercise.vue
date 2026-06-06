@@ -11,7 +11,7 @@
         :data-cy="`option-${i}`"
         no-caps
         unelevated
-        align="left"
+        :align="opt.type === 'image' ? 'center' : 'left'"
         :disable="answered && !multiple"
         @click="onOption(i)"
       >
@@ -78,8 +78,10 @@ function isKeyOption(opt: string): boolean {
 
 // Per-option visual state. Mirrors the legacy decorate(): the chosen option is
 // green/red, correct answers are revealed green, the rest dim.
-function optionState(i: number): 'idle' | 'correct' | 'incorrect' | 'dimmed' {
-  if (!answered.value) return 'idle';
+function optionState(i: number): 'idle' | 'selected' | 'correct' | 'incorrect' | 'dimmed' {
+  if (!answered.value) {
+    return props.multiple && selected.value.has(i) ? 'selected' : 'idle';
+  }
   const key = isKeyOption(options.value[i] as string);
   const sel = selected.value.has(i);
   if (key) return 'correct';
@@ -146,12 +148,12 @@ onMounted(() => {
   margin-bottom: var(--sf-gap-answer);
 }
 .sf-options {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: var(--sf-gap-answer);
+  align-self: center;
 }
 .sf-option {
-  width: 100%;
   min-height: var(--sf-min-touch);
   border-radius: var(--sf-radius-button);
   background: var(--sf-color-surface-raised);
@@ -164,6 +166,11 @@ onMounted(() => {
 .sf-option-img {
   max-height: 120px;
   max-width: 100%;
+}
+.sf-option--selected {
+  background: var(--sf-color-primary);
+  color: var(--sf-color-surface);
+  border-color: var(--sf-color-primary);
 }
 .sf-option--correct {
   background: var(--sf-color-correct);

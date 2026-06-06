@@ -1,5 +1,5 @@
 <template>
-  <div class="sf-sort" data-cy="sort-exercise">
+  <div ref="rootEl" class="sf-sort" data-cy="sort-exercise">
     <p v-if="slide.txt" class="sf-sort-prompt" v-html="slide.txt"></p>
 
     <VueDraggable
@@ -7,6 +7,7 @@
       :animation="200"
       :disabled="answered"
       class="sf-sort-list"
+      :class="{ 'sf-sort-list--answered': answered }"
       ghost-class="sf-sort-ghost"
       chosen-class="sf-sort-dragging"
     >
@@ -14,8 +15,12 @@
         v-for="item in items"
         :key="item.id"
         class="sf-sort-item"
+        :style="itemWidth ? { width: itemWidth } : undefined"
         :data-cy="`sort-item-${item.id}`"
       >
+        <span class="sf-sort-handle" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
         {{ item.text }}
       </div>
     </VueDraggable>
@@ -35,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import ContinueButton from './ContinueButton.vue';
 import FeedbackStatement from './FeedbackStatement.vue';
@@ -58,9 +63,12 @@ const emit = defineEmits<{
 }>();
 
 const answersArr = computed<string[]>(() => (props.slide.ans as string[]) ?? []);
-const items = ref<Item[]>([]);
+// Initialize synchronously so VueDraggable mounts with items already populated.
+const items = ref<Item[]>(answersArr.value.map((text, id) => ({ id, text })));
 const answered = ref(false);
 const correct = ref(false);
+const rootEl = ref<HTMLElement | null>(null);
+const itemWidth = ref<string | null>(null);
 
 const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
   answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
@@ -74,14 +82,20 @@ function onDone(): void {
   emit('answer', { selected: res as AnswerType, correct: correct.value });
 }
 
-onMounted(() => {
-  // Stable ids by answer value so order changes are tracked by identity.
-  items.value = answersArr.value.map((text, id) => ({ id, text }));
+onMounted(async () => {
   if (props.restored && Array.isArray(props.slide.res) && (props.slide.res as string[]).length > 0) {
     const res = props.slide.res as string[];
     items.value = res.map((text) => ({ id: answersArr.value.indexOf(text), text }));
     correct.value = evaluateAnswer(props.slide, props.slide.res as AnswerType);
     answered.value = true;
+  }
+  await nextTick();
+  if (rootEl.value) {
+    const els = Array.from(rootEl.value.querySelectorAll<HTMLElement>('.sf-sort-item'));
+    if (els.length > 0) {
+      const maxW = Math.max(...els.map((el) => el.offsetWidth));
+      if (maxW > 0) itemWidth.value = `${maxW}px`;
+    }
   }
 });
 </script>
@@ -91,6 +105,7 @@ onMounted(() => {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--sf-gap-answer);
   color: var(--sf-color-on-surface);
 }
@@ -99,16 +114,41 @@ onMounted(() => {
   flex-direction: column;
   gap: var(--sf-gap-answer);
 }
+.sf-sort-list--answered {
+  pointer-events: none;
+}
 .sf-sort-item {
+  position: relative;
   background: var(--sf-color-surface-raised);
   border: 1px solid var(--sf-color-primary);
   border-radius: var(--sf-radius-button);
-  padding: 0 12px;
+  padding: 0 12px 0 36px;
   min-height: var(--sf-min-touch);
   display: flex;
   align-items: center;
+  font-size: 14px;
   cursor: grab;
-  will-change: transform;
+  box-sizing: border-box;
+}
+.sf-sort-list--answered .sf-sort-item {
+  cursor: default;
+  padding-left: 12px;
+}
+.sf-sort-handle {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sf-sort-handle span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: rgba(0, 191, 255, 0.5);
+  border-radius: 2px;
 }
 .sf-sort-dragging {
   transform: scale(1.05);
@@ -123,6 +163,5 @@ onMounted(() => {
   border-radius: var(--sf-radius-button);
   min-height: var(--sf-min-touch);
   font-weight: bold;
-  align-self: flex-start;
 }
 </style>
