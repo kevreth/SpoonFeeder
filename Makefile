@@ -12,4 +12,4 @@ include $(QUALITY_MK)
 include $(CHECKS_MK)
 
 test:
-  yarn test:all
+	yarn test:all
