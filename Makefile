@@ -13,3 +13,6 @@ include $(CHECKS_MK)
 
 test:
 	yarn test:all
+
+serve:
+	quasar dev
