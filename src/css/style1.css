@@ -113,7 +113,7 @@ ul {
   display: inline-block;
   text-align: left;
 }
-button:not(.q-btn) {
+button {
   display: inline-block;
   margin: 0.1em 0.1em 4px 0;
   box-sizing: border-box;
@@ -152,12 +152,12 @@ button.imgBtn {
   border-color: #00bfff;
 }
 
-@media all and (max-width: 10em) {
+/* @media all and (max-width: 10em) {
   button:not(.q-btn) {
     display: block;
     margin: 0.2em auto;
   }
-}
+} */
 iframe {
   border: 0;
   width: 1px;
@@ -408,9 +408,9 @@ td.sum-answer img {
     padding: 10px 20px;
     font-size: 1em;
   }
-  button:not(.q-btn) {
+  /* button:not(.q-btn) {
     padding: 0.1em 0.3em;
-  }
+  } */
   .sf-slide-surface {
     font-size: 1rem;
   }
