@@ -134,6 +134,9 @@ onMounted(async () => {
   cursor: default;
   padding-left: 12px;
 }
+.sf-sort-list--answered .sf-sort-handle {
+  display: none;
+}
 .sf-sort-handle {
   position: absolute;
   left: 12px;
