@@ -70,7 +70,7 @@ export class Evaluate {
   //                             simple
   /////////////////////////////////////////////////////////////////////////////
   // one question -> one response
-  //Used by IMAP, MC, SELECT, SORT
+  //Used by IMAP, MC, SORT
   public static readonly SIMPLE: EvaluateTypeSimple = function evaluate(
     txt,
     ans,
@@ -80,6 +80,28 @@ export class Evaluate {
     let correctCtr = 0;
     if (result) correctCtr++;
     const text = makeRow(txt, res, ans, result);
+    const count = res == null ? 0 : 1;
+    return new Evaluation(count, correctCtr, text);
+  };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             select
+  /////////////////////////////////////////////////////////////////////////////
+  // SELECT stores 1-based word indices in res/ans. Convert them to the actual
+  // words from txt so the summary shows "of underlining." instead of "5,6".
+  public static readonly SELECT: EvaluateTypeSimple = function evaluate(
+    txt,
+    ans,
+    res,
+    result
+  ) {
+    const words = typeof txt === 'string' ? txt.split(' ') : [];
+    const toWords = (indices: AnswerType): string => {
+      if (!Array.isArray(indices)) return String(indices ?? '');
+      return (indices as number[]).map((i) => words[i - 1] ?? String(i)).join(', ');
+    };
+    let correctCtr = 0;
+    if (result) correctCtr++;
+    const text = makeRow(txt, toWords(res), toWords(ans), result);
     const count = res == null ? 0 : 1;
     return new Evaluation(count, correctCtr, text);
   };
