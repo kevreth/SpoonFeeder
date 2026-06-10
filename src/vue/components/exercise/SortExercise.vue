@@ -18,9 +18,6 @@
         :style="itemWidth ? { width: itemWidth } : undefined"
         :data-cy="`sort-item-${item.id}`"
       >
-        <span class="sf-sort-handle" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
         {{ item.text }}
       </div>
     </VueDraggable>
@@ -118,40 +115,20 @@ onMounted(async () => {
   pointer-events: none;
 }
 .sf-sort-item {
-  position: relative;
   background: var(--sf-color-surface-raised);
   border: 1px solid var(--sf-color-primary);
   border-radius: var(--sf-radius-button);
-  padding: 0 12px 0 36px;
+  padding: 0 12px;
   min-height: var(--sf-min-touch);
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 14px;
   cursor: grab;
   box-sizing: border-box;
 }
 .sf-sort-list--answered .sf-sort-item {
   cursor: default;
-  padding-left: 12px;
-}
-.sf-sort-list--answered .sf-sort-handle {
-  display: none;
-}
-.sf-sort-handle {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.sf-sort-handle span {
-  display: block;
-  width: 16px;
-  height: 2px;
-  background: rgba(0, 191, 255, 0.5);
-  border-radius: 2px;
 }
 .sf-sort-dragging {
   transform: scale(1.05);
