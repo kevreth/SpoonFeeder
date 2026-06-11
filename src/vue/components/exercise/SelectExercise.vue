@@ -41,7 +41,7 @@ const props = withDefaults(
     slide: SlideInterface;
     restored?: boolean;
   }>(),
-  { restored: false }
+  { restored: false },
 );
 
 const emit = defineEmits<{
@@ -58,7 +58,7 @@ const correct = ref(false);
 const selected = ref<Set<number>>(new Set());
 
 const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
+  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle',
 );
 
 function ansIndices(): number[] {
@@ -121,13 +121,15 @@ onMounted(() => {
 }
 .sf-word {
   cursor: pointer;
-  padding: 0 2px;
+  padding: 2px;
   margin-right: 3px;
   border-radius: 4px;
 }
 .sf-word--selected {
-  background: var(--sf-color-primary);
-  color: var(--sf-color-surface);
+  /* background: var(--sf-color-primary); */
+  background: blue;
+  color: white;
+  /* color: var(--sf-color-surface); */
 }
 .sf-word--correct {
   text-decoration: underline;

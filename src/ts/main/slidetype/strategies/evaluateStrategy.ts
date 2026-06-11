@@ -86,8 +86,10 @@ export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //                             select
   /////////////////////////////////////////////////////////////////////////////
-  // SELECT stores 1-based word indices in res/ans. Convert them to the actual
-  // words from txt so the summary shows "of underlining." instead of "5,6".
+  // SELECT stores 1-based word indices in res/ans. Render the sentence twice
+  // with inline <span> highlighting: response sentence shows wrong picks
+  // (in res but not ans) as sf-select-wrong and correct picks as
+  // sf-select-correct; correct sentence marks ans words as sf-select-correct.
   public static readonly SELECT: EvaluateTypeSimple = function evaluate(
     txt,
     ans,
@@ -95,13 +97,31 @@ export class Evaluate {
     result
   ) {
     const words = typeof txt === 'string' ? txt.split(' ') : [];
-    const toWords = (indices: AnswerType): string => {
-      if (!Array.isArray(indices)) return String(indices ?? '');
-      return (indices as number[]).map((i) => words[i - 1] ?? String(i)).join(', ');
-    };
+    const ansSet = new Set<number>(Array.isArray(ans) ? (ans as number[]) : []);
+    const resSet = new Set<number>(Array.isArray(res) ? (res as number[]) : []);
+
+    const buildSentence = (classFor: (i: number) => string): string =>
+      words
+        .map((w, idx) => {
+          const cls = classFor(idx + 1);
+          return cls ? `<span class="${cls}">${w}</span>` : w;
+        })
+        .join(' ');
+
+    const resSentence = buildSentence((i) => {
+      if (resSet.has(i) && !ansSet.has(i)) return 'sf-select-wrong';
+      if (resSet.has(i) && ansSet.has(i)) return 'sf-select-correct';
+      return '';
+    });
+
+    const ansSentence = buildSentence((i) => (ansSet.has(i) ? 'sf-select-correct' : ''));
+
+    const status =
+      result === true ? 'row-correct' : result === false ? 'row-wrong' : 'row-unanswered';
+    const text = `<tr class="${status}"><td>${txt}</td><td class="sum-response">${resSentence}</td><td class="sum-answer">${ansSentence}</td></tr>`;
+
     let correctCtr = 0;
     if (result) correctCtr++;
-    const text = makeRow(txt, toWords(res), toWords(ans), result);
     const count = res == null ? 0 : 1;
     return new Evaluation(count, correctCtr, text);
   };

@@ -295,8 +295,8 @@ tbody th {
 .summary-table th {
   display: table-cell;
   background: transparent;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  /* overflow-wrap: break-word;
+  word-break: break-word; */
 }
 .summary-table th:nth-child(1),
 .summary-table td:nth-child(1) {
@@ -401,6 +401,17 @@ td.sum-answer img {
 .row-list .sum-response,
 .row-list .sum-answer {
   font-size: 12px;
+}
+.sf-select-correct {
+  text-decoration: underline;
+  text-decoration-color: var(--sf-color-correct);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.sf-select-wrong {
+  text-decoration: line-through;
+  text-decoration-color: var(--sf-color-incorrect);
+  text-decoration-thickness: 2px;
 }
 
 @media (min-width: 768px) {
