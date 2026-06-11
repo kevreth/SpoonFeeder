@@ -122,6 +122,7 @@ onMounted(() => {
 .sf-word {
   cursor: pointer;
   padding: 0 2px;
+  margin-right: 3px;
   border-radius: 4px;
 }
 .sf-word--selected {
