@@ -15,15 +15,13 @@
     </div>
 
     <q-btn
-      v-if="!answered"
       class="sf-done"
+      :class="{ 'sf-done--hidden': answered }"
       data-cy="done"
       no-caps
       label="Done"
       @click="onDone"
     />
-
-    <FeedbackStatement :state="feedbackState" />
 
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
@@ -32,7 +30,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
@@ -155,5 +152,9 @@ onMounted(() => {
   min-height: var(--sf-min-touch);
   font-weight: bold;
   align-self: center;
+}
+.sf-done--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

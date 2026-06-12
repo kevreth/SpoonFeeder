@@ -12,9 +12,10 @@
       chosen-class="sf-sort-dragging"
     >
       <div
-        v-for="item in items"
+        v-for="(item, i) in items"
         :key="item.id"
         class="sf-sort-item"
+        :class="answered ? (item.id === i ? 'sf-sort-item--correct' : 'sf-sort-item--incorrect') : ''"
         :style="itemWidth ? { width: itemWidth } : undefined"
         :data-cy="`sort-item-${item.id}`"
       >
@@ -23,15 +24,14 @@
     </VueDraggable>
 
     <q-btn
-      v-if="!answered"
       class="sf-done"
+      :class="{ 'sf-done--hidden': answered }"
       data-cy="done"
       no-caps
       label="Done"
       @click="onDone"
     />
 
-    <FeedbackStatement :state="feedbackState" />
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
 </template>
@@ -40,7 +40,6 @@
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
@@ -130,6 +129,12 @@ onMounted(async () => {
 .sf-sort-list--answered .sf-sort-item {
   cursor: default;
 }
+.sf-sort-item--correct {
+  border-color: var(--sf-color-correct);
+}
+.sf-sort-item--incorrect {
+  border-color: var(--sf-color-incorrect);
+}
 .sf-sort-dragging {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -143,5 +148,9 @@ onMounted(async () => {
   border-radius: var(--sf-radius-button);
   min-height: var(--sf-min-touch);
   font-weight: bold;
+}
+.sf-done--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

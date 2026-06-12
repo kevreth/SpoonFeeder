@@ -60,13 +60,12 @@
       Remaining: <span data-cy="remaining">{{ remaining }}</span>
     </div>
     <div
-      v-if="answered"
       class="sf-gap-summary"
+      :class="{ 'sf-gap-summary--hidden': !answered }"
       data-cy="gap-summary"
       v-html="summaryHtml"
     ></div>
 
-    <FeedbackStatement :state="feedbackState" />
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
 </template>
@@ -76,7 +75,6 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import { isEqual } from 'lodash';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
@@ -284,5 +282,9 @@ onMounted(async () => {
 }
 .sf-token--picked {
   outline: 2px solid var(--sf-color-primary);
+}
+.sf-gap-summary--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

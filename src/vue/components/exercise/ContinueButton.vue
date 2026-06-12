@@ -39,9 +39,8 @@ const emit = defineEmits<{
   transition: opacity var(--sf-transition-appear);
 }
 
-/* Hidden state: not interactive, faded out. Use display:none-equivalent
-   collapse so it does not occupy layout while invisible. */
 .sf-continue-btn--hidden {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

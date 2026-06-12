@@ -21,15 +21,14 @@
     </div>
 
     <q-btn
-      v-if="multiple && !answered"
+      v-if="multiple"
       class="sf-done"
+      :class="{ 'sf-done--hidden': answered }"
       data-cy="done"
       no-caps
       :label="'Done'"
       @click="onDone"
     />
-
-    <FeedbackStatement :state="feedbackState" />
 
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
@@ -39,7 +38,6 @@
 import { ref, computed, onMounted } from 'vue';
 import { isEqual } from 'lodash';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { processOptions } from '../../../ts/utils/processOptions';
 import { evaluateAnswer, postRender } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
@@ -191,5 +189,9 @@ onMounted(() => {
   border-radius: var(--sf-radius-button);
   min-height: var(--sf-min-touch);
   font-weight: bold;
+}
+.sf-done--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

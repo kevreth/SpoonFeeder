@@ -4,7 +4,6 @@
     <div class="sf-imap-svg">
       <div ref="container" :data-src="slide.img" data-cy="imap"></div>
     </div>
-    <FeedbackStatement :state="feedbackState" />
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
 </template>
@@ -13,7 +12,6 @@
 import { ref, computed, onMounted } from 'vue';
 import { SVGInjector } from '@tanem/svg-injector';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 

@@ -1,6 +1,6 @@
 <template>
-  <p v-if="message" class="sf-feedback" :class="`sf-feedback--${state}`" data-cy="feedback-statement">
-    {{ message }}
+  <p class="sf-feedback" :class="[`sf-feedback--${state}`, { 'sf-feedback--idle': state === 'idle' }]" data-cy="feedback-statement">
+    {{ message || ' ' }}
   </p>
 </template>
 
@@ -42,6 +42,10 @@ const message = computed(() => {
   font-weight: bold;
   margin: var(--sf-gap-answer) 0;
   transition: color var(--sf-transition-feedback);
+  min-height: 1lh;
+}
+.sf-feedback--idle {
+  visibility: hidden;
 }
 .sf-feedback--correct {
   color: var(--sf-color-correct);
