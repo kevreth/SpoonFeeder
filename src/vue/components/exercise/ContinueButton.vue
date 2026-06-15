@@ -27,14 +27,20 @@ const emit = defineEmits<{
 .sf-continue-btn {
   position: sticky;
   bottom: 0;
-  background: var(--sf-color-primary);
-  color: var(--sf-color-surface);
+  background: var(--sf-color-surface);
+  color: var(--sf-color-on-surface);
+  border: 1px solid var(--sf-color-primary);
   border-radius: var(--sf-radius-button);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.15);
   font-family: 'Orbitron', sans-serif;
   font-size: 1em;
   letter-spacing: 0.4em;
   font-weight: bold;
+  align-self: center;
   min-height: var(--sf-min-touch);
+  padding: 0 24px;
   opacity: 1;
   transition: opacity var(--sf-transition-appear);
 }
