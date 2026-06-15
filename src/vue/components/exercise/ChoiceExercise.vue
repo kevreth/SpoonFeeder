@@ -65,9 +65,7 @@ const answered = ref(false);
 const correct = ref(false);
 const selected = ref<Set<number>>(new Set());
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
-);
+
 
 function isKeyOption(opt: string): boolean {
   const ans = props.slide.ans;

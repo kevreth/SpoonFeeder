@@ -116,9 +116,7 @@ function init(): void {
 
 const remaining = computed(() => pool.value.length);
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle',
-);
+
 
 const summaryHtml = computed(() => {
   const numCorrect = corr.value.filter(Boolean).length;

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { SVGInjector } from '@tanem/svg-injector';
 import ContinueButton from './ContinueButton.vue';
 import { evaluateAnswer } from '../../mediator';
@@ -33,9 +33,7 @@ const answered = ref(false);
 const correct = ref(false);
 const selected = ref<string>('');
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
-);
+
 
 function shapes(): HTMLElement[] {
   return svgEl ? Array.from(svgEl.querySelectorAll<HTMLElement>('.shape')) : [];

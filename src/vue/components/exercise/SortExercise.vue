@@ -66,9 +66,7 @@ const correct = ref(false);
 const rootEl = ref<HTMLElement | null>(null);
 const itemWidth = ref<string | null>(null);
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
-);
+
 
 function onDone(): void {
   if (answered.value) return;
