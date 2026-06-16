@@ -3,7 +3,7 @@
     v-if="enabled"
     flat
     dense
-    class="spoonyIcon q-pt-md"
+    class="spoonyIcon q-mt-sm"
     aria-label="Open Spoony AI tutor"
     @click="emit('open-spoony')"
   >

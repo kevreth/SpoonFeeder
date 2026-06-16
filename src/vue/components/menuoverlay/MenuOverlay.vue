@@ -73,19 +73,22 @@ async function handleExpOverlay() {
 </script>
 
 <style>
+.left-header-row,
 .menu-btn-row {
   position: fixed;
   top: 0;
+}
+.menu-btn-row {
   right: 0;
 
-  z-index: 100;
+  /* z-index: 100; */
 }
 
 .left-header-row {
-  position: fixed;
+  /* position: fixed;
+  top: 0; */
   left: 0;
-  top: 0;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .menu-btn-row,
@@ -93,7 +96,7 @@ async function handleExpOverlay() {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 .spoonyIcon:hover,
