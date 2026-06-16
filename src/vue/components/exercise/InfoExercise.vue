@@ -18,7 +18,7 @@ const props = withDefaults(
     slide: SlideInterface;
     restored?: boolean;
   }>(),
-  { restored: false }
+  { restored: false },
 );
 
 const emit = defineEmits<{
@@ -36,7 +36,8 @@ const contentEl = ref<{ $el: HTMLElement } | null>(null);
 function runEmbeddedScripts(root: HTMLElement): void {
   root.querySelectorAll('script').forEach((old) => {
     const script = document.createElement('script');
-    for (const attr of Array.from(old.attributes)) script.setAttribute(attr.name, attr.value);
+    for (const attr of Array.from(old.attributes))
+      script.setAttribute(attr.name, attr.value);
     script.textContent = old.textContent;
     old.replaceWith(script);
   });
@@ -49,7 +50,8 @@ onMounted(() => {
   // Info slides require no answer (immediateConclusion). Emit on mount so the
   // host records the save (cont=false) exactly as the legacy conclude path did.
   // Audio is suppressed in the host for immediateConclusion slides.
-  if (!props.restored) emit('answer', { selected: '' as AnswerType, correct: true });
+  if (!props.restored)
+    emit('answer', { selected: '' as AnswerType, correct: true });
 });
 </script>
 
@@ -63,6 +65,6 @@ onMounted(() => {
 .sf-info-card {
   background: var(--sf-color-surface);
   color: var(--sf-color-on-surface);
-  padding: var(--sf-gap-answer);
+  /* padding: var(--sf-gap-answer); */
 }
 </style>
