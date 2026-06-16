@@ -15,7 +15,12 @@
         :disable="answered && !multiple"
         @click="onOption(i)"
       >
-        <img v-if="opt.type === 'image'" :src="opt.src" :alt="opt.label" class="sf-option-img" />
+        <img
+          v-if="opt.type === 'image'"
+          :src="opt.src"
+          :alt="opt.label"
+          class="sf-option-img"
+        />
         <span v-else>{{ opt.label }}</span>
       </q-btn>
     </div>
@@ -48,7 +53,7 @@ const props = withDefaults(
     multiple: boolean;
     restored?: boolean;
   }>(),
-  { restored: false }
+  { restored: false },
 );
 
 const emit = defineEmits<{
@@ -65,8 +70,6 @@ const answered = ref(false);
 const correct = ref(false);
 const selected = ref<Set<number>>(new Set());
 
-
-
 function isKeyOption(opt: string): boolean {
   const ans = props.slide.ans;
   return Array.isArray(ans) ? (ans as unknown[]).includes(opt) : ans === opt;
@@ -74,7 +77,9 @@ function isKeyOption(opt: string): boolean {
 
 // Per-option visual state. Mirrors the legacy decorate(): the chosen option is
 // green/red, correct answers are revealed green, the rest dim.
-function optionState(i: number): 'idle' | 'selected' | 'correct' | 'incorrect' | 'dimmed' {
+function optionState(
+  i: number,
+): 'idle' | 'selected' | 'correct' | 'incorrect' | 'dimmed' {
   if (!answered.value) {
     return props.multiple && selected.value.has(i) ? 'selected' : 'idle';
   }
@@ -106,14 +111,17 @@ function onOption(i: number): void {
 
 function onDone(): void {
   if (answered.value) return;
-  const chosen = [...selected.value].map((i) => options.value[i] as string).sort();
+  const chosen = [...selected.value]
+    .map((i) => options.value[i] as string)
+    .sort();
   finalize(chosen as AnswerType, new Set(selected.value));
 }
 
 // Restore the answered state after a reload mid-slide (DECORATE path).
 function restore(): void {
   const res = props.slide.res;
-  const isEmpty = res == null || res === '' || (Array.isArray(res) && res.length === 0);
+  const isEmpty =
+    res == null || res === '' || (Array.isArray(res) && res.length === 0);
   if (!isEmpty) {
     const chosen = Array.isArray(res) ? (res as string[]) : [res as string];
     const indices = new Set<number>();
@@ -141,7 +149,7 @@ onMounted(() => {
 }
 .sf-question {
   color: var(--sf-color-on-surface);
-  margin-bottom: var(--sf-gap-answer);
+  /* margin-bottom: var(--sf-gap-answer); */
 }
 .sf-options {
   display: inline-flex;
