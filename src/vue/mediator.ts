@@ -1,7 +1,9 @@
 export { loadCourseListing } from '../ts/main/course/courseData/loadCourse';
 export { CourseFile } from '../ts/main/course/index';
 export { COURSE_NAME, SaveData, TRANSITION, getCourseListing, setCourseListing } from '../ts/main/dataaccess/index';
-export { Score, switchCourse } from '../ts/main/quiz/index';
+export { Score, switchCourse, Json, MUTE, evaluate, showSlides } from '../ts/main/quiz/index';
+export { evaluateAnswer } from '../ts/main/quiz/evaluateAnswer';
+export { postRender } from '../ts/main/slidetype/index';
 export { AudioPlayer } from '../ts/main/slide/index';
 export { getCourseData } from './composables/courseData';
 export {
@@ -13,12 +15,13 @@ export {
   appendReviewRecord,
   clearDraftState,
   setPreAdvanceHook,
-  ReviewSessionController,
+  firePreAdvanceHook,
   getReviewRecords,
   getMostRecentRecord,
   getHighestReachedIndex,
   setHighestReachedIndex,
 } from '../ts/main/review/index';
+export type { AnswerType, SlideInterface } from '../ts/main/quiz/index';
 export type {
   ReviewBoundary,
   ReviewRecord,

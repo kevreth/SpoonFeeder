@@ -4,14 +4,13 @@ import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
 import { Slide } from '../../../slide/slide';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
-import type { MarkType, SlideType } from '../../misc/slideType';
+import type { SlideType } from '../../misc/slideType';
 import { McFactory } from '../mc/factoryMc';
 const CHOICES = 4;
 type vocabTuplesType = [txt: string, ans: string, options: Array<string>][];
 //Vocab is different than the other slide types because it concisely
 //represents a group of mc questions.
 export class Vocab extends Slide implements SlideType {
-  mark!: MarkType;
   list = new Map<string, string>();
   set = new Array<SlideInterface>();
   setProperties(props: SlideInterface): void {
@@ -35,16 +34,8 @@ export class Vocab extends Slide implements SlideType {
   getSlideSet(): SlideInterface[] {
     return this.set;
   }
-  makeSlides(): void {
-    return;
-  }
   getAnswerCount(): number {
     return this.list.size;
-  }
-  decorate(doc: Document): boolean {
-    this.getAns();
-    doc.getRootNode();
-    throw new Error('Method not implemented.');
   }
 }
 export function generateQuestions(map: Map<string, string>) {

@@ -58,6 +58,8 @@ export default [
         Audio: 'readonly',
         localStorage: 'readonly',
         HTMLElement: 'readonly',
+        HTMLAudioElement: 'readonly',
+        Element: 'readonly',
         KeyboardEvent: 'readonly',
       },
     },

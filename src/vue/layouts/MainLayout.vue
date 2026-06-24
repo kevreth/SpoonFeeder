@@ -1,6 +1,6 @@
 <template>
   <q-layout>
-    <q-card class="iconHamburger">
+    <q-card v-if="!quizComplete" class="iconHamburger">
       <MenuOverlay />
     </q-card>
 
@@ -14,8 +14,11 @@
 import MenuOverlay from '../components/menuoverlay/MenuOverlay.vue';
 import { onBeforeUnmount, onMounted } from 'vue';
 import { useQuasar } from 'quasar';
+import { storeToRefs } from 'pinia';
+import { useSlideStore } from '../stores/slideStore';
 
-// loading page
+const { quizComplete } = storeToRefs(useSlideStore());
+
 const $q = useQuasar();
 let timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -27,7 +30,6 @@ onBeforeUnmount(() => {
 });
 onMounted(() => {
   $q.loading.show();
-  // hiding in 1s
   timer = setTimeout(() => {
     $q.loading.hide();
     timer = void 0;

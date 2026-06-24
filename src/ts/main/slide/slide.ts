@@ -1,18 +1,13 @@
 import type {
   AdocVisitorInterface,
   AnswerType,
-  CreateHtmlType,
   EvaluateType,
-  MakeSlidesType,
   ResultReturnType,
   ResultType,
 } from '../slidetype/index';
 import type { SlideInterface } from './index';
 import { Evaluation } from '../quiz/evaluation';
-import { MUTE } from '../dataaccess/webstorage/webStorage';
 import { SaveData } from '../dataaccess/saveData/saveData';
-import { AudioPlayer } from './conclude/audio';
-import { conclude2 } from './conclude/conclude';
 import { adoc2html } from './adoc2html';
 type ResultTypeIntersection = boolean & boolean[];
 export abstract class Slide implements SlideInterface {
@@ -32,18 +27,11 @@ export abstract class Slide implements SlideInterface {
   set: Array<SlideInterface> = [];
   constructor(
     public readonly type: string,
-    public readonly createHtml: CreateHtmlType,
-    public readonly makeSlidesStrategy: MakeSlidesType,
     public readonly evaluateStrategy: EvaluateType,
     public readonly resultType: ResultType
   ) {}
-  conclude(doc: Document, res: AnswerType, txt: string): void {
-    conclude2(doc, this, res, txt, new AudioPlayer(new Audio(), MUTE));
-  }
   abstract accept(visitor: AdocVisitorInterface): void;
-  abstract decorate(doc: Document): boolean;
   abstract setProperties(properties: SlideInterface): void;
-  abstract makeSlides(doc: Document): void;
   //currently unused, awaiting removal of adocVisitor
   applyAdoc(): void {
     this.txt = adoc2html(this.txt);

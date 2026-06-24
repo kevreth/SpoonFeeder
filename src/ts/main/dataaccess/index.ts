@@ -1,5 +1,5 @@
 //datalayer mediator;
-export { extend, isEqual, last } from '../index';
+export { isEqual, last } from '../index';
 export { dispatch2, getQuizState } from '../quiz/stateActionDispatcher';
 export { explanation } from '../slide/explanation';
 export { fillMatchingSlide, showSlides } from '../quiz/slideDispatcher';

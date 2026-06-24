@@ -39,163 +39,194 @@ export function getLocalStorageArray() {
   // WebStorageAdapter wraps values in { version, data } — unwrap if present
   return parsed?.data ?? parsed;
 }
-const GREEN = 'rgb(0, 128, 0)';
-const RED = 'rgb(255, 0, 0)';
 
+// ── Vue exercise (data-cy) helpers — converted types: mc, bool, ma (PRD-001) ──
+export function chooseOption(i: number) {
+  cy.get(`[data-cy="option-${i}"]`).should('be.visible').click();
+}
+export function optionState(i: number, state: 'correct' | 'incorrect' | 'dimmed') {
+  cy.get(`[data-cy="option-${i}"]`).should('have.class', `sf-option--${state}`);
+}
+export function doneCy() {
+  cy.get('[data-cy="done"]').should('be.visible').click();
+}
+// GapExercise click-to-place: pick a pool token, then drop it in a gap slot.
+export function placeToken(token: number, slot: number) {
+  cy.get(`[data-cy="token-${token}"]`).click();
+  cy.get(`[data-cy="slot-${slot}"]`).click();
+}
+export function continueCy() {
+  cy.get('[data-cy="continue"]').should('be.visible').click();
+}
+export function continueCyCount(ctr: number) {
+  cy.get('[data-cy="continue"]')
+    .should('be.visible')
+    .click()
+    .should(() => {
+      expect(getLocalStorageArray().length).to.eq(ctr);
+    });
+}
 export function runFullJourney() {
   cy.visit('/');
   cy.title().should('eq', 'SpoonFeeder');
   sessionStorage.setItem('mute', 'true');
 
-  cy.get('#continueBtn', { timeout: 20000 }).should('be.visible');
+  // Info/title slides are InfoExercise (Vue) — continue via data-cy
+  cy.get('[data-cy="continue"]', { timeout: 20000 }).should('be.visible');
 
   existVisibleNotEmpty('body');
   elementContains('body', 'course 1');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'unit 1');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'lesson 1');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'module 1');
-  testButton('#continueBtn');
+  continueCy();
 
-  testButton('#continueBtn'); //Mathjax
-  testButton('#continueBtn'); //code
-  testButton('#continueBtn'); //table
+  continueCy(); //Mathjax (info)
+  continueCy(); //code (info)
+  continueCy(); //table (info)
 
+  // bool 'yes' (ans yes) — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   elementContains('body', 'yes');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', GREEN);
-  testButton('#continueBtn');
+  chooseOption(0);
+  optionState(0, 'correct');
+  continueCy();
 
+  // bool 'no' (ans no) — option 0 is 'yes' → incorrect
   existVisibleNotEmpty('body');
   elementContains('body', 'no');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', RED);
-  testButton('#continueBtn');
+  chooseOption(0);
+  optionState(0, 'incorrect');
+  continueCy();
 
+  // bool 'no1' (ans no) — option 0 is 'yes' → incorrect
   existVisibleNotEmpty('body');
   elementContains('body', 'no1');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', RED);
-  testButton('#continueBtn');
+  chooseOption(0);
+  optionState(0, 'incorrect');
+  continueCy();
 
+  // ma 'Choose A and C' — submit with nothing selected (Vue Done button)
   existVisibleNotEmpty('body');
-  testButton('#btn'); //done
-  testButton('#continueBtn');
+  doneCy();
+  continueCy();
 
-  testButton('#btn0');
+  // vocab → 5 mc children (ChoiceExercise)
+  chooseOption(0);
   existVisibleNotEmpty('body');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  cy.get('#btn0').should('have.css', 'background-color', RED);
-  testButton('#continueBtn');
-  testButton('#btn2');
-  testButton('#continueBtn');
-  testButton('#btn3');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  continueButton(16);
+  continueCy();
+  chooseOption(0);
+  optionState(0, 'incorrect');
+  continueCy();
+  chooseOption(2);
+  continueCy();
+  chooseOption(3);
+  continueCy();
+  chooseOption(0);
+  continueCyCount(16);
 
+  // sort 'sort' — SortExercise (Vue); submit current order
   existVisibleNotEmpty('body');
-  testButton('#btn'); //done
-  testButton('#continueBtn');
+  doneCy();
+  continueCy();
 
+  // imap 'choose blue' — ImapExercise (Vue); SVG shape ids come from imap.svg
   existVisibleNotEmpty('body');
-  testButton('#blue');
-  testButton('#continueBtn');
+  cy.get('#blue').click();
+  continueCy();
 
+  // mc 'Choose the bus' — ChoiceExercise (Vue); click car (option 1)
   existVisibleNotEmpty('body');
   cy.contains('bus');
-  testButton('#btn1');
-  testButton('#continueBtn');
+  chooseOption(1);
+  continueCy();
 
+  // gap 1 (all correct) — GapExercise (Vue), click-to-place
   existVisibleNotEmpty('body');
-  existAndVisible('#fill0');
-  existAndVisible('#fill1');
-  existAndVisible('#fill2');
-  existAndVisible('#gap0');
-  existAndVisible('#gap1');
-  existAndVisible('#gap2');
-  elementContains('#remaining', '3');
-  dragDrop('#fill0', '#gap0');
-  elementContains('#remaining', '2');
-  dragDrop('#fill1', '#gap1');
-  elementContains('#remaining', '1');
-  dragDrop('#fill2', '#gap2');
-  elementContains('#remaining', '0');
-  cy.get('#ans0').parent().should('have.css', 'background-color', GREEN);
-  cy.get('#ans1').parent().should('have.css', 'background-color', GREEN);
-  cy.get('#ans2').parent().should('have.css', 'background-color', GREEN);
+  existAndVisible('[data-cy="token-0"]');
+  existAndVisible('[data-cy="token-1"]');
+  existAndVisible('[data-cy="token-2"]');
+  existAndVisible('[data-cy="slot-0"]');
+  existAndVisible('[data-cy="slot-1"]');
+  existAndVisible('[data-cy="slot-2"]');
+  elementContains('[data-cy="remaining"]', '3');
+  placeToken(0, 0);
+  elementContains('[data-cy="remaining"]', '2');
+  placeToken(1, 1);
+  elementContains('[data-cy="remaining"]', '1');
+  placeToken(2, 2);
+  elementContains('[data-cy="remaining"]', '0');
+  cy.get('[data-cy="slot-0"]').should('have.class', 'sf-gap-slot--correct');
+  cy.get('[data-cy="slot-1"]').should('have.class', 'sf-gap-slot--correct');
+  cy.get('[data-cy="slot-2"]').should('have.class', 'sf-gap-slot--correct');
   cy.contains('Number correct: 3');
   cy.contains('Number questions: 3');
   cy.contains('100%');
-  testButton('#continueBtn');
+  continueCy();
 
+  // gap 2 (some wrong) — token-2→slot-1, token-1→slot-2 are misplaced
   existVisibleNotEmpty('body');
-  existAndVisible('#fill0');
-  existAndVisible('#fill1');
-  existAndVisible('#fill2');
-  existAndVisible('#gap0');
-  existAndVisible('#gap1');
-  existAndVisible('#gap2');
-  elementContains('#remaining', '3');
-  dragDrop('#fill2', '#gap1');
-  elementContains('#remaining', '2');
-  dragDrop('#fill0', '#gap0');
-  elementContains('#remaining', '1');
-  dragDrop('#fill1', '#gap2');
-  elementContains('#remaining', '0');
-  cy.get('#ans0').parent().should('have.css', 'background-color', GREEN);
-  cy.get('#ans1').parent().should('have.css', 'background-color', RED);
-  cy.get('#ans2').parent().should('have.css', 'background-color', RED);
+  elementContains('[data-cy="remaining"]', '3');
+  placeToken(0, 0);
+  placeToken(2, 1);
+  placeToken(1, 2);
+  elementContains('[data-cy="remaining"]', '0');
+  cy.get('[data-cy="slot-0"]').should('have.class', 'sf-gap-slot--correct');
+  cy.get('[data-cy="slot-1"]').should('have.class', 'sf-gap-slot--incorrect');
+  cy.get('[data-cy="slot-2"]').should('have.class', 'sf-gap-slot--incorrect');
   cy.contains('Number correct: 1');
   cy.contains('Number questions: 3');
   cy.contains('33%');
-  testButton('#continueBtn');
+  continueCy();
 
+  // select — SelectExercise (Vue); ans=[5,6], choose 4 and 6
   existVisibleNotEmpty('body');
-  testButton('#w4');
-  testButton('#w6');
-  testButton('#btn'); //done
-  cy.get('#w4').should('have.css', 'text-decoration-color', RED);
-  cy.get('#w5').should('have.css', 'text-decoration-color', RED);
-  cy.get('#w6').should('have.css', 'text-decoration-color', GREEN);
-  testButton('#continueBtn');
+  cy.get('[data-cy="word-4"]').click();
+  cy.get('[data-cy="word-6"]').click();
+  doneCy();
+  cy.get('[data-cy="word-4"]').should('have.class', 'sf-word--incorrect');
+  cy.get('[data-cy="word-5"]').should('have.class', 'sf-word--missed');
+  cy.get('[data-cy="word-6"]').should('have.class', 'sf-word--correct');
+  continueCy();
 
+  // mc 'periodic table' — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   cy.contains('learn the periodic table');
-  testButton('#btn0');
-  continueButton(23);
+  chooseOption(0);
+  continueCyCount(23);
 
   // Lesson 1 boundary prompt — skip
   skipReviewPrompt();
 
-  // Lesson 2 navigation
+  // Lesson 2 navigation (info, Vue)
   existVisibleNotEmpty('body');
   elementContains('body', 'lesson 2');
-  testButton('#continueBtn');
+  continueCy();
 
   existVisibleNotEmpty('body');
   elementContains('body', 'module 2');
-  testButton('#continueBtn');
+  continueCy();
 
+  // mc Mercury — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   cy.contains('closest to the Sun');
-  testButton('#btn0'); // Mercury — correct
-  testButton('#continueBtn');
+  chooseOption(0); // Mercury — correct
+  continueCy();
 
+  // mc water — ChoiceExercise (Vue)
   existVisibleNotEmpty('body');
   cy.contains('chemical symbol for water');
-  testButton('#btn0'); // H2O — correct
-  testButton('#continueBtn');
+  chooseOption(0); // H2O — correct
+  continueCy();
 
   // Lesson 2 + unit + course boundary prompts — skip all
   skipReviewPrompt();
@@ -211,9 +242,10 @@ export function runFullJourney() {
   cy.contains('.stat-value', '19');
   cy.contains('.stat-value', '13');
   cy.contains('.stat-value', '68%');
-  testButton('#startOver');
+  cy.get('[data-cy="start-over"]').should('be.visible').click();
 
-  cy.get('#continueBtn', { timeout: 10000 }).should('be.visible');
+  // After restart, the first slide is the course title (info, Vue)
+  cy.get('[data-cy="continue"]', { timeout: 10000 }).should('be.visible');
   cy.contains('course 1');
 }
 

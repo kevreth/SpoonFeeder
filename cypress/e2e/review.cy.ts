@@ -8,7 +8,14 @@
  * The lesson 1 boundary prompt fires after completing lesson 1's last exercise.
  * The lesson 2 / unit / course boundary prompts fire after lesson 2's last exercise.
  */
-import { skipReviewPrompt, testButton, elementContains, existVisibleNotEmpty, dragDrop } from './functions';
+import {
+  skipReviewPrompt,
+  testButton,
+  chooseOption,
+  doneCy,
+  continueCy,
+  placeToken,
+} from './functions';
 
 const KNOWN_UNCAUGHT_PATTERNS: RegExp[] = [
   /ResizeObserver loop/i,
@@ -28,72 +35,71 @@ function navigateToLesson1Boundary() {
   cy.title().should('eq', 'SpoonFeeder');
   muteAudio();
 
-  cy.get('#continueBtn', { timeout: 20000 }).should('be.visible');
+  // Info/title slides are InfoExercise (Vue) — continue via data-cy
+  cy.get('[data-cy="continue"]', { timeout: 20000 }).should('be.visible');
 
   // Course title
-  testButton('#continueBtn');
+  continueCy();
   // Unit 1
-  testButton('#continueBtn');
+  continueCy();
   // Lesson 1
-  testButton('#continueBtn');
+  continueCy();
   // Module 1
-  testButton('#continueBtn');
+  continueCy();
   // 3 info inst slides
-  testButton('#continueBtn');
-  testButton('#continueBtn');
-  testButton('#continueBtn');
-  // bool yes (correct)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  // bool no (incorrect)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  // bool no1 (incorrect)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  // ma — done then continue
-  testButton('#btn');
-  testButton('#continueBtn');
-  // vocab slides (5 MC slides)
-  testButton('#btn0');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  testButton('#continueBtn');
-  testButton('#btn0');
-  testButton('#continueBtn');
-  testButton('#btn2');
-  testButton('#continueBtn');
-  testButton('#btn3');
-  testButton('#continueBtn');
-  // sort
-  testButton('#btn');
-  testButton('#continueBtn');
-  // imap
-  testButton('#blue');
-  testButton('#continueBtn');
-  // mc bus (click wrong)
-  testButton('#btn1');
-  testButton('#continueBtn');
-  // gap 1 (all correct)
-  dragDrop('#fill0', '#gap0');
-  dragDrop('#fill1', '#gap1');
-  dragDrop('#fill2', '#gap2');
-  testButton('#continueBtn');
-  // gap 2 (some wrong)
-  dragDrop('#fill2', '#gap1');
-  dragDrop('#fill0', '#gap0');
-  dragDrop('#fill1', '#gap2');
-  testButton('#continueBtn');
-  // select
-  testButton('#w4');
-  testButton('#w6');
-  testButton('#btn');
-  testButton('#continueBtn');
-  // mc periodic table — answers first option
+  continueCy();
+  continueCy();
+  continueCy();
+  // bool yes/no/no1 — ChoiceExercise (Vue)
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  // ma — done then continue (Vue)
+  doneCy();
+  continueCy();
+  // vocab slides (5 MC slides) — ChoiceExercise (Vue)
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  chooseOption(0);
+  continueCy();
+  chooseOption(2);
+  continueCy();
+  chooseOption(3);
+  continueCy();
+  // sort — SortExercise (Vue)
+  doneCy();
+  continueCy();
+  // imap — ImapExercise (Vue)
+  cy.get('#blue').click();
+  continueCy();
+  // mc bus (click wrong) — ChoiceExercise (Vue)
+  chooseOption(1);
+  continueCy();
+  // gap 1 — GapExercise (Vue), click-to-place
+  placeToken(0, 0);
+  placeToken(1, 1);
+  placeToken(2, 2);
+  continueCy();
+  // gap 2 — GapExercise (Vue)
+  placeToken(0, 0);
+  placeToken(1, 1);
+  placeToken(2, 2);
+  continueCy();
+  // select — SelectExercise (Vue)
+  cy.get('[data-cy="word-4"]').click();
+  cy.get('[data-cy="word-6"]').click();
+  doneCy();
+  continueCy();
+  // mc periodic table — ChoiceExercise (Vue); answers first option
   cy.contains('learn the periodic table');
-  testButton('#btn0');
-  // Click continue — this triggers the lesson 1 boundary prompt
-  testButton('#continueBtn');
+  chooseOption(0);
+  // Continue triggers the lesson 1 boundary prompt
+  continueCy();
 }
 
 describe('Review System — boundary prompts', () => {
@@ -118,8 +124,8 @@ describe('Review System — boundary prompts', () => {
 
     skipReviewPrompt();
 
-    // Lesson 2 title slide should now appear
-    cy.get('#continueBtn', { timeout: 8000 }).should('be.visible');
+    // Lesson 2 title slide should now appear (info, Vue)
+    cy.get('[data-cy="continue"]', { timeout: 8000 }).should('be.visible');
     cy.contains('lesson 2');
   });
 
@@ -127,15 +133,15 @@ describe('Review System — boundary prompts', () => {
     navigateToLesson1Boundary();
     skipReviewPrompt();
 
-    // Navigate through lesson 2
-    testButton('#continueBtn'); // Lesson 2 title
-    testButton('#continueBtn'); // Module 2 title
+    // Navigate through lesson 2 (titles are info, Vue)
+    continueCy(); // Lesson 2 title
+    continueCy(); // Module 2 title
     cy.contains('closest to the Sun');
-    testButton('#btn0'); // Mercury
-    testButton('#continueBtn');
+    chooseOption(0); // Mercury (Vue)
+    continueCy();
     cy.contains('chemical symbol for water');
-    testButton('#btn0'); // H2O
-    testButton('#continueBtn'); // triggers boundary
+    chooseOption(0); // H2O (Vue)
+    continueCy(); // triggers boundary
 
     // Lesson 2 boundary prompt
     cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');
@@ -169,15 +175,15 @@ describe('Review System — focused review session', () => {
     navigateToLesson1Boundary();
     skipReviewPrompt(); // skip lesson 1 boundary
 
-    // Navigate through lesson 2
-    testButton('#continueBtn'); // lesson 2 title
-    testButton('#continueBtn'); // module 2 title
+    // Navigate through lesson 2 (titles are info, Vue)
+    continueCy(); // lesson 2 title
+    continueCy(); // module 2 title
     cy.contains('closest to the Sun');
-    testButton('#btn0'); // Mercury
-    testButton('#continueBtn');
+    chooseOption(0); // Mercury (Vue)
+    continueCy();
     cy.contains('chemical symbol for water');
-    testButton('#btn0'); // H2O
-    testButton('#continueBtn'); // triggers lesson 2 / unit / course boundary prompts
+    chooseOption(0); // H2O (Vue)
+    continueCy(); // triggers lesson 2 / unit / course boundary prompts
 
     // Lesson 2 boundary prompt — choose focused review
     cy.get('[data-cy="review-prompt"]', { timeout: 8000 }).should('be.visible');
@@ -187,13 +193,15 @@ describe('Review System — focused review session', () => {
     cy.get('[data-cy="review-session"]', { timeout: 8000 }).should('exist');
     cy.get('[data-cy="review-quit"]').should('be.visible');
 
-    // Lesson 2 focused pool = 2 mc slides (Mercury + H2O), sample capped at 5 → 2 slides
+    // Lesson 2 focused pool = 2 mc slides (Mercury + H2O), sample capped at 5 →
+    // 2 slides. Each renders as a Vue ChoiceExercise inside the review overlay;
+    // answer via option-0 + continue (scoped to the review slide surface).
     for (let i = 0; i < 4; i++) {
       cy.get('body').then(($body) => {
         if ($body.find('[data-cy="review-summary"]').length > 0) return;
-        if ($body.find('#btn0').length > 0) {
-          cy.get('#btn0').click();
-          cy.get('#continueBtn').should('be.visible').click();
+        if ($body.find('[data-cy="review-slide"] [data-cy="option-0"]').length > 0) {
+          cy.get('[data-cy="review-slide"] [data-cy="option-0"]').click();
+          cy.get('[data-cy="review-slide"] [data-cy="continue"]').should('be.visible').click();
         }
       });
     }
@@ -220,8 +228,8 @@ describe('Review System — focused review session', () => {
 
     cy.get('[data-cy="review-session"]').should('not.exist');
 
-    // Course navigation resumes
-    cy.get('#continueBtn', { timeout: 8000 }).should('be.visible');
+    // Course navigation resumes — lesson 2 title (info, Vue)
+    cy.get('[data-cy="continue"]', { timeout: 8000 }).should('be.visible');
     cy.contains('lesson 2');
   });
 });

@@ -17,11 +17,9 @@ class Test extends SlideTest {
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide {
-    const createHtml = vi.fn();
-    const makeSlides = vi.fn();
     const evaluate = vi.fn();
     const result = vi.fn();
-    return new Bool(this.type, createHtml, makeSlides, evaluate, result);
+    return new Bool(this.type, evaluate, result);
   }
 }
 const test = new Test();
@@ -33,9 +31,6 @@ it('processJson', () => {
 });
 it('getSetValues', () => {
   test.getSetValues();
-});
-it('makeSlides', () => {
-  test.makeSlides();
 });
 it('result', () => {
   test.result();

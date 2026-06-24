@@ -8,21 +8,34 @@
         Return to course
       </button>
     </div>
-    <div v-else class="review-quit-bar">
-      <button id="review-quit-btn" data-cy="review-quit" class="review-quit-btn" @click="handleQuit">
-        Quit review
-      </button>
+    <div v-else class="review-active">
+      <div class="review-quit-bar">
+        <button id="review-quit-btn" data-cy="review-quit" class="review-quit-btn" @click="handleQuit">
+          Quit review
+        </button>
+      </div>
+      <div class="review-slide" data-cy="review-slide">
+        <component
+          :is="exerciseComponent"
+          v-if="exerciseComponent && currentSlide"
+          :key="currentIndex"
+          :slide="currentSlide"
+          :multiple="currentSlide.type === 'ma'"
+          :restored="false"
+          @continue="handleContinue"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, type Component } from 'vue';
 import type { SlideInterface } from '../../../ts/main/slide/slideInterface';
 import type { ReviewBoundary, ReviewRecord, ReviewType, SlideResult } from '../../../ts/main/review/reviewTypes';
-import { ReviewSessionController } from '../../../ts/main/review/reviewSessionController';
 import { computeSlideResults } from '../../../ts/main/review/reviewSelector';
 import { appClock } from '../../../ts/main/infrastructure/storage/storageInit';
+import { EXERCISE_COMPONENTS } from '../exercise/exerciseComponents';
 
 const props = defineProps<{
   slides: SlideInterface[];
@@ -35,6 +48,11 @@ const emit = defineEmits<{
   quit: [];
 }>();
 
+// Review drives the same exercise components as the main quiz path, but holds
+// its own slide index and result tally. Unlike the main path, review never
+// calls slide.saveData() — answers must not mutate course progress (ADR-023).
+const currentIndex = ref(0);
+const results = ref<SlideResult[]>([]);
 const summaryVisible = ref(false);
 const correctCount = ref(0);
 const totalCount = ref(0);
@@ -42,17 +60,34 @@ const pct = computed(() =>
   totalCount.value > 0 ? Math.round((correctCount.value / totalCount.value) * 100) : 0,
 );
 
-let controller: ReviewSessionController | null = null;
+const currentSlide = computed<SlideInterface | null>(() => props.slides[currentIndex.value] ?? null);
 
-onMounted(() => {
-  controller = new ReviewSessionController(props.slides, (results: SlideResult[]) => {
-    const { correct, total } = computeSlideResults(results);
+const exerciseComponent = computed<Component | null>(() => {
+  const type = currentSlide.value?.type;
+  return type ? (EXERCISE_COMPONENTS[type] ?? null) : null;
+});
+
+// The exercise component has already called evaluateAnswer() (setting slide.res)
+// by the time Continue fires, so slide.evaluate() reflects the user's response.
+function handleContinue(): void {
+  const slide = currentSlide.value;
+  if (slide) {
+    const evaluation = slide.evaluate();
+    results.value.push({
+      slideTxt: slide.txt,
+      correct: evaluation.correct,
+      total: evaluation.responses,
+    });
+  }
+  if (currentIndex.value < props.slides.length - 1) {
+    currentIndex.value++;
+  } else {
+    const { correct, total } = computeSlideResults(results.value);
     correctCount.value = correct;
     totalCount.value = total;
     summaryVisible.value = true;
-  });
-  controller.start(document);
-});
+  }
+}
 
 function handleDone(): void {
   const record: ReviewRecord = {
@@ -71,7 +106,6 @@ function handleDone(): void {
 }
 
 function handleQuit(): void {
-  controller?.abort();
   emit('quit');
 }
 </script>
@@ -81,14 +115,20 @@ function handleQuit(): void {
   position: fixed;
   inset: 0;
   z-index: 900;
-  pointer-events: none;
+}
+
+.review-active {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--sf-color-surface);
+  pointer-events: all;
 }
 
 .review-quit-bar {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  pointer-events: all;
+  align-self: flex-end;
+  padding: 1rem;
 }
 
 .review-quit-btn {
@@ -98,6 +138,19 @@ function handleQuit(): void {
   background: #fff3f3;
   cursor: pointer;
   font-size: 0.85rem;
+}
+
+.review-slide {
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .review-summary {

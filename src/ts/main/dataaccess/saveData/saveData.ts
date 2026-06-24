@@ -3,7 +3,6 @@ import type { AnswerType, SlideInterface } from '../../slide/slideInterface';
 import { COURSE_NAME } from '../webstorage/webStorage';
 import { localAsync, localSync, appRegistry, appClock } from '../../infrastructure/storage/storageInit';
 import { registerCourseSchema } from '../../infrastructure/storage/schemas/spoonfeederSchemas';
-import { extend } from '../../index';
 import { timestampNow } from './date';
 
 function ensureCourseRegistered(courseName: string): void {
@@ -26,8 +25,7 @@ export class SaveData {
     ensureCourseRegistered(courseName);
     const raw = await localAsync.get<unknown[]>(courseName);
     if (!raw) return [];
-    const arr1 = new Array<SaveData>();
-    return extend<Array<SaveData>>(arr1, raw);
+    return [...(raw as SaveData[])];
   }
 
   public static async set(txt: string, res: AnswerType, cont: boolean): Promise<void> {
@@ -67,8 +65,7 @@ export class SaveData {
     ensureCourseRegistered(courseName);
     const raw = localSync.get<unknown[]>(courseName);
     if (!raw) return '' as AnswerType;
-    const arr1 = new Array<SaveData>();
-    const saves = extend<Array<SaveData>>(arr1, raw);
+    const saves = [...(raw as SaveData[])];
     return SaveData.getResultsFromSaves(slide, saves);
   }
 

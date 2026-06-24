@@ -22,14 +22,40 @@
     @quit="onSessionQuit"
   />
   <q-page class="wrapContent row items-center justify-evenly">
-    <div id="slide">
-      <div id="content"></div>
+    <!-- Hidden audio element for answer feedback (replaces per-conclude Audio()) -->
+    <audio ref="audioEl" data-cy="answer-audio" style="display: none"></audio>
+
+    <!-- Main quiz end screen (replaces legacy doc.body.innerHTML = evaluate(...) + startOverButton) -->
+    <div v-if="quizComplete" class="sf-end-screen" data-cy="end-screen">
+      <div v-html="endScreenHtml"></div>
+      <button id="startOver" class="startOver" type="button" data-cy="start-over" @click="reloadPage">
+        Start Over
+      </button>
+    </div>
+
+    <!--
+      Main quiz slide surface. All exercise types render through the Vue
+      <component> switcher (PRD-001/003). The switcher is hidden while a review
+      session/prompt is active so the two surfaces never overlap.
+    -->
+    <div v-show="!quizComplete" class="sf-slide-surface">
+      <component
+        :is="exerciseComponent"
+        v-if="exerciseComponent && currentSlide && !showSession && !showPrompt"
+        :key="currentSlide.txt"
+        :slide="currentSlide"
+        :multiple="currentSlideType === 'ma'"
+        :restored="restored"
+        @answer="handleAnswer"
+        @continue="handleContinue"
+      />
     </div>
   </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
+import { ref, watch, nextTick, computed, onMounted, type Component } from 'vue';
+import { storeToRefs } from 'pinia';
 import {
   loadCourseListing,
   switchCourse,
@@ -45,14 +71,78 @@ import {
   clearDraftState,
   setPreAdvanceHook,
   setHighestReachedIndex,
+  showSlides,
+  Json,
+  evaluate,
+  postRender,
+  firePreAdvanceHook,
+  AudioPlayer,
+  MUTE,
 } from '../mediator';
-import type { ReviewBoundary, ReviewRecord, ReviewType } from '../mediator';
+import type { ReviewBoundary, ReviewRecord, ReviewType, AnswerType } from '../mediator';
 import { reviewLaunchPending } from '../composables/reviewMenuState';
 import CourseSelector from '../components/menuoverlay/menubtn/droplist/courseselector/CourseSelector.vue';
 import ReviewPrompt from '../components/review/ReviewPrompt.vue';
 import ReviewSession from '../components/review/ReviewSession.vue';
 import type { SlideInterface } from '../../ts/main/slide/slideInterface';
 import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
+import { useSlideStore } from '../stores/slideStore';
+import reloadPage from '../composables/startOver';
+import { EXERCISE_COMPONENTS } from '../components/exercise/exerciseComponents';
+
+/* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
+ * The Pinia slide store is driven by SlideDispatcher. Every exercise type
+ * renders through the <component :is="exerciseComponent"> switcher, keyed off
+ * the slide type via the shared EXERCISE_COMPONENTS map (also used by the
+ * review path — PRD-003).
+ */
+const slideStore = useSlideStore();
+const { currentSlide, currentSlideType, quizComplete, restored } = storeToRefs(slideStore);
+
+const exerciseComponent = computed<Component | null>(() => {
+  const type = currentSlideType.value;
+  return type ? (EXERCISE_COMPONENTS[type] ?? null) : null;
+});
+
+const audioEl = ref<HTMLAudioElement | null>(null);
+let audioPlayer: AudioPlayer | null = null;
+
+const showExplain = ref(false);
+const explainText = ref('');
+const endScreenHtml = computed(() => (quizComplete.value ? evaluate(Json.get()) : ''));
+
+// MathJax/highlight after the Vue end screen renders.
+watch(quizComplete, (done) => {
+  if (done) void nextTick(() => postRender(document));
+});
+
+function handleAnswer({ selected, correct }: { selected: AnswerType; correct: boolean }): void {
+  const slide = currentSlide.value;
+  if (!slide) return;
+  slide.setRes(selected);
+  // immediateConclusion slides (info) record a save but play no audio —
+  // mirrors the legacy conclude2 path.
+  if (!slide.immediateConclusion) audioPlayer?.playAudio(correct);
+  void slide.saveData();
+  showExplain.value = !!slide.exp;
+  explainText.value = slide.exp ?? '';
+}
+
+async function handleContinue(): Promise<void> {
+  const slide = currentSlide.value;
+  if (!slide) return;
+  const txt = slide.txt;
+  showExplain.value = false;
+  explainText.value = '';
+  await SaveData.setContinueTrue(txt);
+  const nextSlideIndex = Json.findMatchingSlide(txt) + 1;
+  await firePreAdvanceHook(nextSlideIndex);
+  await showSlides(document);
+}
+
+onMounted(() => {
+  if (audioEl.value) audioPlayer = new AudioPlayer(audioEl.value, MUTE);
+});
 
 const courseList = ref(false);
 const isEnable = ref(false);

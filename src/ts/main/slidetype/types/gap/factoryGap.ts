@@ -1,10 +1,6 @@
 import type { SlideInterface } from '../../../slide/index';
 import { SlideInitializer } from '../../misc/slideInitializer';
-import type { CreateHtmlType } from '../../strategies/createHtmlStrategy';
-import { CreateHtml } from '../../strategies/createHtmlStrategy';
 import { Evaluate } from '../../strategies/evaluateStrategy';
-import type { MakeSlidesType } from '../../strategies/makeSlidesStrategy';
-import { MakeSlidesStrategy } from '../../strategies/makeSlidesStrategy';
 import { Result } from '../../strategies/resultStrategy';
 import { Gap } from './slideTypeGap';
 
@@ -13,13 +9,7 @@ export class GapFactory extends SlideInitializer {
     super('gap');
   }
   public instance(): SlideInterface {
-    return new Gap(
-      this.type,
-      CreateHtml.GAP as CreateHtmlType,
-      MakeSlidesStrategy.GAP as MakeSlidesType,
-      Evaluate.GAP,
-      Result.CORRELATED
-    );
+    return new Gap(this.type, Evaluate.GAP, Result.CORRELATED);
   }
 }
 export const GAP = () => new GapFactory().instance() as Gap;

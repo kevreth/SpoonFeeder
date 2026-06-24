@@ -20,11 +20,9 @@ class Test extends SlideTest {
     expect(testable.isExercise).toEqual(param.isExercise);
   }
   protected factory(): Slide {
-    const createHtml = vi.fn();
-    const makeSlides = vi.fn();
     const evaluate = vi.fn();
     const result = vi.fn();
-    return new Vocab(this.type, createHtml, makeSlides, evaluate, result);
+    return new Vocab(this.type, evaluate, result);
   }
 }
 const test = new Test();

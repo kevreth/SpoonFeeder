@@ -26,7 +26,7 @@
 .transitions-zoom-leave-active {
   transition: all 1s ease;
 }
-
+/* 
 .q-layout {
   box-shadow:
     0 0 15px #0ff,
@@ -39,7 +39,7 @@
   bottom: 0;
   background-color: transparent;
   z-index: 1;
-}
+} */
 
 @media (min-width: 768px) {
   .q-dialog__inner--minimized > div {

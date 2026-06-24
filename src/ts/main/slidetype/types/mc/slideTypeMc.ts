@@ -1,13 +1,10 @@
 import { shuffle } from 'lodash';
-import { removeListener } from '../../../quiz/utilities';
 import type { AnswerType, SlideInterface } from '../../../slide/slideInterface';
 import { RANDOM } from '../../../dataaccess/webstorage/webStorage';
 import { Slide } from '../../../slide/slide';
 import type { AdocVisitorInterface } from '../../misc/adocVisitor';
 import { AdocVisitor } from '../../misc/adocVisitor';
-import { CORRECT, INCORRECT } from '../../misc/markupColors';
-import type { MarkTypeMc, SlideType } from '../../misc/slideType';
-import { SetWidths } from '../../strategies/setWidthsStrategy/setWidthsStrategy';
+import type { SlideType } from '../../misc/slideType';
 export class Mc extends Slide implements SlideType {
   o: string[] = [];
   setProperties(props: SlideInterface): void {
@@ -26,37 +23,4 @@ export class Mc extends Slide implements SlideType {
   accept(visitor: AdocVisitorInterface): void {
     visitor.visitMc(this);
   }
-  makeSlides(doc: Document): void {
-    const createHtml = this.createHtml;
-    const maxWidthStrategy = SetWidths.SIMPLE;
-    const txt = this.txt;
-    const options = this.o;
-    const makeSlidesStrategy = this.makeSlidesStrategy;
-    makeSlidesStrategy(txt, options, createHtml, maxWidthStrategy, doc, this);
-  }
-  decorate(doc: Document) {
-    const options = this.o;
-    for (let i = 0; i < options.length; i++) {
-      const btn = doc.getElementById('btn' + i) as HTMLElement;
-      removeListener(btn);
-      btn.style.border = 'none';
-    }
-    const isCorrect = this.result() as boolean;
-    const response = this.getRes() as string;
-    const answer = this.ans as string;
-    const responseOption = options.indexOf(response);
-    const answerOption = options.indexOf(answer);
-    const responseButton = doc.getElementById(
-      'btn' + responseOption
-    ) as HTMLElement;
-    const answerButton = doc.getElementById(
-      'btn' + answerOption
-    ) as HTMLElement;
-    this.mark(isCorrect, responseButton, answerButton);
-    return isCorrect;
-  }
-  mark: MarkTypeMc = (isCorrect, responseButton, answerButton) => {
-    const color = isCorrect ? CORRECT : (answerButton.style.border = `1px solid ${INCORRECT}`, INCORRECT);
-    responseButton.style.backgroundColor = color;
-  };
 }
