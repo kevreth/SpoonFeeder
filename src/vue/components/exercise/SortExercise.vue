@@ -12,29 +12,26 @@
       chosen-class="sf-sort-dragging"
     >
       <div
-        v-for="item in items"
+        v-for="(item, i) in items"
         :key="item.id"
         class="sf-sort-item"
+        :class="answered ? (item.id === i ? 'sf-sort-item--correct' : 'sf-sort-item--incorrect') : ''"
         :style="itemWidth ? { width: itemWidth } : undefined"
         :data-cy="`sort-item-${item.id}`"
       >
-        <span class="sf-sort-handle" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
         {{ item.text }}
       </div>
     </VueDraggable>
 
     <q-btn
-      v-if="!answered"
       class="sf-done"
+      :class="{ 'sf-done--hidden': answered }"
       data-cy="done"
       no-caps
       label="Done"
       @click="onDone"
     />
 
-    <FeedbackStatement :state="feedbackState" />
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
 </template>
@@ -43,7 +40,6 @@
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
@@ -70,9 +66,7 @@ const correct = ref(false);
 const rootEl = ref<HTMLElement | null>(null);
 const itemWidth = ref<string | null>(null);
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
-);
+
 
 function onDone(): void {
   if (answered.value) return;
@@ -118,37 +112,26 @@ onMounted(async () => {
   pointer-events: none;
 }
 .sf-sort-item {
-  position: relative;
   background: var(--sf-color-surface-raised);
   border: 1px solid var(--sf-color-primary);
   border-radius: var(--sf-radius-button);
-  padding: 0 12px 0 36px;
+  padding: 0 12px;
   min-height: var(--sf-min-touch);
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 14px;
   cursor: grab;
   box-sizing: border-box;
 }
 .sf-sort-list--answered .sf-sort-item {
   cursor: default;
-  padding-left: 12px;
 }
-.sf-sort-handle {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.sf-sort-item--correct {
+  border-color: var(--sf-color-correct);
 }
-.sf-sort-handle span {
-  display: block;
-  width: 16px;
-  height: 2px;
-  background: rgba(0, 191, 255, 0.5);
-  border-radius: 2px;
+.sf-sort-item--incorrect {
+  border-color: var(--sf-color-incorrect);
 }
 .sf-sort-dragging {
   transform: scale(1.05);
@@ -163,5 +146,9 @@ onMounted(async () => {
   border-radius: var(--sf-radius-button);
   min-height: var(--sf-min-touch);
   font-weight: bold;
+}
+.sf-done--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

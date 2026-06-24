@@ -9,7 +9,7 @@ export class SelectFactory extends SlideInitializer {
     super('select');
   }
   public instance(): SlideInterface {
-    return new Select(this.type, Evaluate.SIMPLE, Result.SIMPLE);
+    return new Select(this.type, Evaluate.SELECT, Result.SIMPLE);
   }
 }
 export const SELECT = () => new SelectFactory().instance() as Select;

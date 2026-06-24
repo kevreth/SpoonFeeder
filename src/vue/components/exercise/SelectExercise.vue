@@ -15,15 +15,13 @@
     </div>
 
     <q-btn
-      v-if="!answered"
       class="sf-done"
+      :class="{ 'sf-done--hidden': answered }"
       data-cy="done"
       no-caps
       label="Done"
       @click="onDone"
     />
-
-    <FeedbackStatement :state="feedbackState" />
 
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
@@ -32,7 +30,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
@@ -41,7 +38,7 @@ const props = withDefaults(
     slide: SlideInterface;
     restored?: boolean;
   }>(),
-  { restored: false }
+  { restored: false },
 );
 
 const emit = defineEmits<{
@@ -57,9 +54,7 @@ const answered = ref(false);
 const correct = ref(false);
 const selected = ref<Set<number>>(new Set());
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
-);
+
 
 function ansIndices(): number[] {
   return (props.slide.ans as number[]) ?? [];
@@ -121,12 +116,15 @@ onMounted(() => {
 }
 .sf-word {
   cursor: pointer;
-  padding: 0 2px;
+  padding: 2px;
+  margin-right: 3px;
   border-radius: 4px;
 }
 .sf-word--selected {
-  background: var(--sf-color-primary);
-  color: var(--sf-color-surface);
+  /* background: var(--sf-color-primary); */
+  background: blue;
+  color: white;
+  /* color: var(--sf-color-surface); */
 }
 .sf-word--correct {
   text-decoration: underline;
@@ -152,5 +150,9 @@ onMounted(() => {
   min-height: var(--sf-min-touch);
   font-weight: bold;
   align-self: center;
+}
+.sf-done--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 </style>

@@ -3,7 +3,7 @@
     v-if="enabled"
     flat
     dense
-    class="spoonyIcon q-pt-md"
+    class="spoonyIcon q-mt-sm"
     aria-label="Open Spoony AI tutor"
     @click="emit('open-spoony')"
   >
@@ -23,6 +23,6 @@ const emit = defineEmits(['open-spoony']);
 .spoonyIcon .spoony-img {
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  /* border: 1px solid rgba(0, 229, 255, 0.3); */
 }
 </style>

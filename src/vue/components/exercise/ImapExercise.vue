@@ -4,16 +4,14 @@
     <div class="sf-imap-svg">
       <div ref="container" :data-src="slide.img" data-cy="imap"></div>
     </div>
-    <FeedbackStatement :state="feedbackState" />
     <ContinueButton :visible="answered" @click="emit('continue')" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { SVGInjector } from '@tanem/svg-injector';
 import ContinueButton from './ContinueButton.vue';
-import FeedbackStatement from './FeedbackStatement.vue';
 import { evaluateAnswer } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
@@ -35,9 +33,7 @@ const answered = ref(false);
 const correct = ref(false);
 const selected = ref<string>('');
 
-const feedbackState = computed<'idle' | 'correct' | 'incorrect'>(() =>
-  answered.value ? (correct.value ? 'correct' : 'incorrect') : 'idle'
-);
+
 
 function shapes(): HTMLElement[] {
   return svgEl ? Array.from(svgEl.querySelectorAll<HTMLElement>('.shape')) : [];

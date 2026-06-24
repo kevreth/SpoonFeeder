@@ -113,7 +113,7 @@ ul {
   display: inline-block;
   text-align: left;
 }
-button:not(.q-btn) {
+button {
   display: inline-block;
   margin: 0.1em 0.1em 4px 0;
   box-sizing: border-box;
@@ -152,12 +152,12 @@ button.imgBtn {
   border-color: #00bfff;
 }
 
-@media all and (max-width: 10em) {
+/* @media all and (max-width: 10em) {
   button:not(.q-btn) {
     display: block;
     margin: 0.2em auto;
   }
-}
+} */
 iframe {
   border: 0;
   width: 1px;
@@ -195,11 +195,13 @@ tbody th {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
+
   background: rgba(4, 8, 20, 0.82);
   border: 1px solid rgba(0, 229, 255, 0.25);
   border-radius: 10px;
-  padding: 20px;
+  padding: 5px;
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.8;
   max-height: calc(100vh - 80px);
@@ -295,8 +297,8 @@ tbody th {
 .summary-table th {
   display: table-cell;
   background: transparent;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  /* overflow-wrap: break-word;
+  word-break: break-word; */
 }
 .summary-table th:nth-child(1),
 .summary-table td:nth-child(1) {
@@ -402,15 +404,26 @@ td.sum-answer img {
 .row-list .sum-answer {
   font-size: 12px;
 }
+.sf-select-correct {
+  text-decoration: underline;
+  text-decoration-color: var(--sf-color-correct);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.sf-select-wrong {
+  text-decoration: line-through;
+  text-decoration-color: var(--sf-color-incorrect);
+  text-decoration-thickness: 2px;
+}
 
 @media (min-width: 768px) {
   .q-item {
     padding: 10px 20px;
     font-size: 1em;
   }
-  button:not(.q-btn) {
+  /* button:not(.q-btn) {
     padding: 0.1em 0.3em;
-  }
+  } */
   .sf-slide-surface {
     font-size: 1rem;
   }

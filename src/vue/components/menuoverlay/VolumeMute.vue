@@ -3,7 +3,7 @@
     flat
     dense
     :icon="isMuted ? 'volume_off' : 'volume_up'"
-    class="volumeMute q-ml-sm q-pt-md"
+    class="volumeMute q-ml-sm q-mt-sm"
     @click="toggleVolume"
   />
 </template>
