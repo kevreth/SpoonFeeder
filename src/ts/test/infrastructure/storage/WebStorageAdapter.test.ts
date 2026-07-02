@@ -54,12 +54,16 @@ describe('WebStorageAdapter', () => {
     await expect(adapter.set('typed', 'not a number' as unknown as number)).rejects.toThrow();
   });
 
-  it('validates schema on read', async () => {
-    const { adapter, registry } = makeAdapter();
+  it('returns undefined and clears the key when schema validation fails on read', async () => {
+    const { adapter, registry, bus } = makeAdapter();
     // Write raw invalid data directly to bypass adapter
     localStorage.setItem('typed', JSON.stringify({ version: 1, data: 'wrong' }));
     registry.register({ key: 'typed', version: 1, schema: z.number() });
-    await expect(adapter.get('typed')).rejects.toThrow();
+    await expect(adapter.get('typed')).resolves.toBeUndefined();
+    expect(localStorage.getItem('typed')).toBeNull();
+    const ev = bus.snapshot().find((e) => e.event === 'storage_corruption_detected');
+    expect(ev?.severity).toBe('error');
+    expect(ev?.metadata?.key).toBe('typed');
   });
 
   it('throws on set of null', async () => {
@@ -94,11 +98,14 @@ describe('WebStorageAdapter', () => {
     expect(stored.version).toBe(2);
   });
 
-  it('throws if migration is missing for stale version', async () => {
-    const { adapter, registry } = makeAdapter();
+  it('returns undefined and clears the key when migration is missing for stale version', async () => {
+    const { adapter, registry, bus } = makeAdapter();
     registry.register({ key: 'migrated', version: 2, schema: z.string() });
     localStorage.setItem('migrated', JSON.stringify({ version: 1, data: 'old' }));
-    await expect(adapter.get('migrated')).rejects.toThrow('missing migration');
+    await expect(adapter.get('migrated')).resolves.toBeUndefined();
+    expect(localStorage.getItem('migrated')).toBeNull();
+    const ev = bus.snapshot().find((e) => e.event === 'storage_corruption_detected');
+    expect(ev?.metadata?.reason).toContain('missing migration');
   });
 
   it('reads legacy unwrapped values without error', async () => {

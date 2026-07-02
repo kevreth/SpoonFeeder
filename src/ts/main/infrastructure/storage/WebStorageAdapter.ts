@@ -46,17 +46,7 @@ export class WebStorageAdapter implements StorageAdapter {
     try {
       parsed = JSON.parse(raw);
     } catch {
-      this.target.removeItem(key);
-      console.error(`[StorageAdapter] Corrupted JSON at key "${key}" — key cleared, user may need to re-enter data`);
-      this.telemetry.emit({
-        traceId: `storage-corrupt-${key}`,
-        subsystem: 'storage',
-        event: 'storage_corruption_detected',
-        severity: 'error',
-        timestamp: this.clock.now(),
-        platform: this.platform,
-        metadata: { key },
-      });
+      this.reportCorruption(key, 'corrupted JSON');
       return undefined;
     }
 
@@ -64,26 +54,31 @@ export class WebStorageAdapter implements StorageAdapter {
     const schema = this.registry.getSchema(key);
     let data: unknown;
 
-    if (isVersionedEnvelope(parsed)) {
-      if (parsed.version !== registeredVersion) {
-        const migrate = this.registry.getMigration(key);
-        if (!migrate) {
-          throw new Error(
-            `StorageAdapter: missing migration for "${key}" v${parsed.version} → v${registeredVersion}`
-          );
+    try {
+      if (isVersionedEnvelope(parsed)) {
+        if (parsed.version !== registeredVersion) {
+          const migrate = this.registry.getMigration(key);
+          if (!migrate) {
+            throw new Error(
+              `missing migration v${parsed.version} → v${registeredVersion}`
+            );
+          }
+          data = migrate(parsed.data, parsed.version, registeredVersion);
+          if (schema) schema.parse(data);
+          this.target.setItem(key, JSON.stringify({ version: registeredVersion, data }));
+        } else {
+          data = parsed.data;
+          if (schema) schema.parse(data);
         }
-        data = migrate(parsed.data, parsed.version, registeredVersion);
-        if (schema) schema.parse(data);
-        this.target.setItem(key, JSON.stringify({ version: registeredVersion, data }));
       } else {
-        data = parsed.data;
-        if (schema) schema.parse(data);
+        // Legacy value written before the adapter was introduced — no version envelope.
+        // Schema validation is skipped: pre-migration data cannot be guaranteed to match.
+        // It will be validated on the next write through the adapter.
+        data = parsed;
       }
-    } else {
-      // Legacy value written before the adapter was introduced — no version envelope.
-      // Schema validation is skipped: pre-migration data cannot be guaranteed to match.
-      // It will be validated on the next write through the adapter.
-      data = parsed;
+    } catch (e) {
+      this.reportCorruption(key, e instanceof Error ? e.message : String(e));
+      return undefined;
     }
 
     this.telemetry.emit({
@@ -95,6 +90,22 @@ export class WebStorageAdapter implements StorageAdapter {
       metadata: { key },
     });
     return data as T;
+  }
+
+  private reportCorruption(key: string, reason: string): void {
+    this.target.removeItem(key);
+    console.error(
+      `[StorageAdapter] ${reason} at key "${key}" — key cleared, user may need to re-enter data`
+    );
+    this.telemetry.emit({
+      traceId: `storage-corrupt-${key}`,
+      subsystem: 'storage',
+      event: 'storage_corruption_detected',
+      severity: 'error',
+      timestamp: this.clock.now(),
+      platform: this.platform,
+      metadata: { key, reason },
+    });
   }
 
   async set<T>(key: string, value: T): Promise<void> {
