@@ -77,18 +77,14 @@ async function handleExpOverlay() {
 .menu-btn-row {
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 .menu-btn-row {
   right: 0;
-
-  /* z-index: 100; */
 }
 
 .left-header-row {
-  /* position: fixed;
-  top: 0; */
   left: 0;
-  /* z-index: -1; */
 }
 
 .menu-btn-row,

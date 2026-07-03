@@ -442,3 +442,28 @@ td.sum-answer img {
     font-size: 12px;
   }
 }
+
+/* Mobile-only: on real mobile browsers, 100vh is measured against the
+   largest viewport (as if the address bar were hidden), which is taller
+   than the actually-visible area while the address bar is showing. That
+   let slide content, vertically centered against the inflated 100vh box,
+   render underneath the fixed header (.menu-btn-row/.left-header-row in
+   MenuOverlay.vue). 100dvh tracks the real visible viewport instead, and
+   padding-top reserves room for the fixed header regardless. Scoped to
+   <768px (matching this file's existing desktop breakpoint above) so
+   desktop keeps its exact current 100vh sizing and never gains a scrollbar
+   it didn't already have. */
+@media (max-width: 767px) {
+  #q-app {
+    min-height: 100dvh;
+  }
+
+  .wrapContent {
+    min-height: 100dvh;
+    padding-top: 56px;
+  }
+
+  .sf-slide-surface {
+    max-height: calc(100dvh - 80px);
+  }
+}
