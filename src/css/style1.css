@@ -466,4 +466,13 @@ td.sum-answer img {
   .sf-slide-surface {
     max-height: calc(100dvh - 80px);
   }
+
+  /* MenuOverlay (the fixed header) unmounts entirely once the quiz is
+     complete (v-if="!quizComplete" in MainLayout.vue) — the summary
+     screen (.sf-end-screen, only in the DOM while quizComplete) has no
+     header to avoid. Undo the reserved padding-top for that case so the
+     end screen isn't shifted down for a header that isn't there. */
+  .wrapContent:has(.sf-end-screen) {
+    padding-top: 0;
+  }
 }
