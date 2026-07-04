@@ -113,7 +113,10 @@ onMounted(async () => {
 }
 .sf-sort-item {
   background: var(--sf-color-surface-raised);
-  border: 1px solid var(--sf-color-primary);
+  /* Translucent resting border — see ChoiceExercise.vue .sf-option for why:
+     same cyan family as --sf-color-primary, dialed down so it reads as
+     "container" rather than competing with opaque cyan CTAs. */
+  border: 1px solid rgba(0, 180, 216, 0.35);
   border-radius: var(--sf-radius-button);
   padding: 0 12px;
   min-height: var(--sf-min-touch);

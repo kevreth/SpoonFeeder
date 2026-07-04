@@ -162,7 +162,11 @@ onMounted(() => {
   border-radius: var(--sf-radius-button);
   background: var(--sf-color-surface-raised);
   color: var(--sf-color-on-surface);
-  border: 1px solid var(--sf-color-primary);
+  /* Translucent resting border — kept in the same cyan family as
+     --sf-color-primary, but dialed down so it reads as "container" rather
+     than competing with fully-opaque cyan CTAs like ContinueButton.
+     Selected/correct/incorrect states below stay fully opaque on purpose. */
+  border: 1px solid rgba(0, 180, 216, 0.35);
   transition:
     background-color var(--sf-transition-feedback),
     opacity var(--sf-transition-feedback);
