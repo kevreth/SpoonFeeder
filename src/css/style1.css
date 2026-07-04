@@ -448,11 +448,14 @@ td.sum-answer img {
    than the actually-visible area while the address bar is showing. That
    let slide content, vertically centered against the inflated 100vh box,
    render underneath the fixed header (.menu-btn-row/.left-header-row in
-   MenuOverlay.vue). 100dvh tracks the real visible viewport instead, and
-   padding-top reserves room for the fixed header regardless. Scoped to
-   <768px (matching this file's existing desktop breakpoint above) so
-   desktop keeps its exact current 100vh sizing and never gains a scrollbar
-   it didn't already have. */
+   MenuOverlay.vue). 100dvh tracks the real visible viewport instead.
+   Header clearance comes from .sf-slide-surface's own max-height, reserving
+   56px on both edges — since .wrapContent still centers with align-items,
+   a symmetric cap keeps the true vertical center instead of a one-sided
+   padding-top shifting content down. Scoped to <768px (matching this
+   file's existing desktop breakpoint above) so desktop keeps its exact
+   current 100vh sizing and never gains a scrollbar it didn't already
+   have. */
 @media (max-width: 767px) {
   #q-app {
     min-height: 100dvh;
@@ -460,19 +463,9 @@ td.sum-answer img {
 
   .wrapContent {
     min-height: 100dvh;
-    padding-top: 56px;
   }
 
   .sf-slide-surface {
-    max-height: calc(100dvh - 80px);
-  }
-
-  /* MenuOverlay (the fixed header) unmounts entirely once the quiz is
-     complete (v-if="!quizComplete" in MainLayout.vue) — the summary
-     screen (.sf-end-screen, only in the DOM while quizComplete) has no
-     header to avoid. Undo the reserved padding-top for that case so the
-     end screen isn't shifted down for a header that isn't there. */
-  .wrapContent:has(.sf-end-screen) {
-    padding-top: 0;
+    max-height: calc(100dvh - 112px);
   }
 }
