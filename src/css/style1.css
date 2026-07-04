@@ -462,7 +462,15 @@ td.sum-answer img {
   }
 
   .wrapContent {
-    min-height: 100dvh;
+    /* Quasar's QPage sets an inline min-height computed from $q.screen.height
+       (JS, only refreshed on window resize — see node_modules/quasar/src/
+       components/page/QPage.js). Inline styles beat any non-!important CSS
+       rule, so without !important this dvh value is inert and the box can
+       go stale relative to the real viewport (e.g. after a mobile browser's
+       address bar auto-hides without firing resize), leaving short slides
+       centered inside a too-short box. !important forces the live-tracking
+       CSS unit to win instead. */
+    min-height: 100dvh !important;
   }
 
   .sf-slide-surface {
