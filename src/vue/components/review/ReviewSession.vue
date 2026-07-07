@@ -1,9 +1,8 @@
 <template>
   <div class="review-session-overlay" data-cy="review-session">
     <div v-if="summaryVisible" class="review-summary" data-cy="review-summary">
-      <p class="review-summary-score">
-        {{ correctCount }} / {{ totalCount }} correct ({{ pct }}%)
-      </p>
+      <p class="review-summary-score">{{ correctCount }} / {{ totalCount }} correct</p>
+      <p class="review-summary-pct">{{ pct }}%</p>
       <button id="review-done-btn" data-cy="review-done" class="review-summary-btn" @click="handleDone">
         Return to course
       </button>
@@ -11,6 +10,7 @@
     <div v-else class="review-active">
       <div class="review-quit-bar">
         <button id="review-quit-btn" data-cy="review-quit" class="review-quit-btn" @click="handleQuit">
+          <q-icon name="close" size="14px" />
           Quit review
         </button>
       </div>
@@ -132,12 +132,16 @@ function handleQuit(): void {
 }
 
 .review-quit-btn {
-  padding: 0.4rem 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff3f3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 8px 16px;
+  border: 0.5px solid rgba(125, 211, 252, 0.35);
+  border-radius: 8px;
+  background: transparent;
+  color: #9fd8f5;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 13px;
 }
 
 .review-slide {
@@ -160,27 +164,35 @@ function handleQuit(): void {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--sf-color-surface);
   pointer-events: all;
 }
 
 .review-summary-score {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  color: #e7edf7;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.review-summary-pct {
+  color: #6d7f9e;
+  font-size: 13px;
+  margin: 0.25rem 0 1.5rem;
 }
 
 .review-summary-btn {
-  padding: 0.6rem 1.4rem;
+  padding: 12px 32px;
   border: none;
-  border-radius: 4px;
-  background: #4a90e2;
-  color: white;
+  border-radius: 10px;
+  background: var(--sf-color-primary);
+  color: var(--sf-color-surface);
   cursor: pointer;
   font-size: 1rem;
 }
 
 .review-summary-btn:hover {
-  background: #357abd;
+  background: var(--sf-color-primary);
+  opacity: 0.85;
 }
 </style>
