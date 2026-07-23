@@ -11,7 +11,7 @@
         :data-cy="`option-${i}`"
         no-caps
         unelevated
-        :align="opt.type === 'image' ? 'center' : 'left'"
+        align="center"
         :disable="answered && !multiple"
         @click="onOption(i)"
       >
