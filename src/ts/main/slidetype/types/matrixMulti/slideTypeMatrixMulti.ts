@@ -6,12 +6,14 @@ import type { SlideType } from '../../misc/slideType';
 // Matrix/grid — multiple response. Rows (`o`) x shared columns (`cols`);
 // each row can pick more than one column. AnswerType has no string[][]
 // variant for per-row multi-selection, so ans/res are string[] of
-// canonical, sorted comma-joined column-index lists per row (e.g. "0,2").
+// canonical, sorted comma-joined column NAME lists per row (e.g.
+// "Cardiovascular,Renal") — names rather than indices so the summary/review
+// row (which renders raw String(res)/String(ans)) stays readable.
 // Evaluated the same way as Gap: N independent per-row judgments
 // (Evaluate.GAP/Result.CORRELATED) — the canonical encoding makes row
 // equality a plain string comparison.
-export function canonicalizeColumnIndices(indices: number[]): string {
-  return [...indices].sort((a, b) => a - b).join(',');
+export function canonicalizeColumns(names: string[]): string {
+  return [...names].sort().join(',');
 }
 export class MatrixMulti extends Slide implements SlideType {
   setProperties(props: SlideInterface): void {
@@ -22,7 +24,7 @@ export class MatrixMulti extends Slide implements SlideType {
       isExercise: this.isExercise,
     } = props);
     this.ans = (props.ans as string[]).map((row) =>
-      canonicalizeColumnIndices(row.split(',').map(Number)),
+      canonicalizeColumns(row.split(',').map((name) => name.trim())),
     );
     this.accept(new AdocVisitor());
   }

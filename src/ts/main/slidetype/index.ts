@@ -51,7 +51,7 @@ export { Info } from './types/info/slideTypeInfo';
 export { MaFactory } from './types/ma/factoryMa';
 export { Ma } from './types/ma/slideTypeMa';
 export { MATRIX_MULTI, MatrixMultiFactory } from './types/matrixMulti/factoryMatrixMulti';
-export { MatrixMulti, canonicalizeColumnIndices } from './types/matrixMulti/slideTypeMatrixMulti';
+export { MatrixMulti, canonicalizeColumns } from './types/matrixMulti/slideTypeMatrixMulti';
 export { MATRIX_SINGLE, MatrixSingleFactory } from './types/matrixSingle/factoryMatrixSingle';
 export { MatrixSingle } from './types/matrixSingle/slideTypeMatrixSingle';
 export { MC, McFactory } from './types/mc/factoryMc';

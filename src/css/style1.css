@@ -169,21 +169,6 @@ iframe {
 pre {
   text-align: left;
 }
-table {
-  display: block;
-  margin: 0;
-}
-
-tbody {
-  display: inline-block;
-}
-tbody tr td:first-child {
-  text-align: left;
-}
-tbody th {
-  padding: 10px;
-}
-
 .sf-slide-surface {
   width: 100%;
   max-width: 500px;
@@ -385,7 +370,9 @@ td.sum-answer img {
   padding: 4px 12px;
   display: inline-block;
   margin: 0 auto;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 .row-correct .ans-pill {
   background: rgba(78, 204, 163, 0.15);

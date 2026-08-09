@@ -88,7 +88,9 @@ const emit = defineEmits<{
 
 const items = computed<string[]>(() => (props.slide.o ?? []) as string[]);
 const binLabels = computed<string[]>(() => (props.slide.bins ?? []) as string[]);
-const ans = computed<number[]>(() => (props.slide.ans as number[]) ?? []);
+// ans/res are the bin LABEL per item (not an index) — readable directly in
+// the summary/review row (Evaluate.GAP renders raw String(res)/String(ans)).
+const ans = computed<string[]>(() => (props.slide.ans as string[]) ?? []);
 
 const groupName = 'bins';
 const pool = ref<Token[]>([]);
@@ -148,11 +150,11 @@ function onBinClick(b: number): void {
   picked.value = null;
 }
 
-function computeRes(): number[] {
-  const res = new Array<number>(items.value.length).fill(-1);
+function computeRes(): string[] {
+  const res = new Array<string>(items.value.length).fill('');
   binLists.value.forEach((list, b) => {
     list.forEach((tok) => {
-      res[tok.id] = b;
+      res[tok.id] = binLabels.value[b] as string;
     });
   });
   return res;
@@ -160,10 +162,10 @@ function computeRes(): number[] {
 
 function finalize(): void {
   const res = computeRes();
-  correct.value = evaluateAnswer(props.slide, res as unknown as AnswerType);
+  correct.value = evaluateAnswer(props.slide, res as AnswerType);
   itemCorrect.value = items.value.map((_, id) => ans.value[id] === res[id]);
   answered.value = true;
-  emit('answer', { selected: res as unknown as AnswerType, correct: correct.value });
+  emit('answer', { selected: res as AnswerType, correct: correct.value });
 }
 
 // Finalize once every item has been placed into a bin — mirrors Gap's
@@ -182,15 +184,16 @@ function restore(): void {
   const res = props.slide.res;
   if (Array.isArray(res) && res.length > 0) {
     init();
-    (res as number[]).forEach((binIdx, id) => {
-      if (binIdx < 0 || binIdx >= binLists.value.length) return;
+    (res as string[]).forEach((binLabel, id) => {
+      const binIdx = binLabels.value.indexOf(binLabel);
+      if (binIdx < 0) return;
       const idx = pool.value.findIndex((t) => t.id === id);
       if (idx < 0) return;
       const [tok] = pool.value.splice(idx, 1);
       binLists.value[binIdx]!.push(tok as Token);
     });
     correct.value = evaluateAnswer(props.slide, res as AnswerType);
-    itemCorrect.value = items.value.map((_, id) => ans.value[id] === (res as number[])[id]);
+    itemCorrect.value = items.value.map((_, id) => ans.value[id] === (res as string[])[id]);
     answered.value = true;
   }
 }

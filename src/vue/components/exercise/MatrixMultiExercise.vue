@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import ContinueButton from './ContinueButton.vue';
-import { evaluateAnswer, canonicalizeColumnIndices } from '../../mediator';
+import { evaluateAnswer, canonicalizeColumns } from '../../mediator';
 import type { SlideInterface, AnswerType } from '../../mediator';
 
 interface MatrixSlide extends SlideInterface {
@@ -69,11 +69,11 @@ const emit = defineEmits<{
 
 const rows = computed<string[]>(() => (props.slide.o ?? []) as string[]);
 const cols = computed<string[]>(() => (props.slide as MatrixSlide).cols ?? []);
+// ans/res rows are canonical comma-joined column NAMES (not indices) — see
+// canonicalizeColumns — so the summary/review row stays readable.
 const ansRows = computed<string[]>(() => (props.slide.ans as string[]) ?? []);
-const ansSets = computed<Set<number>[]>(() =>
-  ansRows.value.map(
-    (row) => new Set(row === '' ? [] : row.split(',').map(Number)),
-  ),
+const ansSets = computed<Set<string>[]>(() =>
+  ansRows.value.map((row) => new Set(row === '' ? [] : row.split(','))),
 );
 
 const selections = ref<Set<number>[]>([]);
@@ -97,13 +97,13 @@ function toggle(r: number, c: number): void {
 }
 
 function cellCorrect(r: number, c: number): boolean {
-  return ansSets.value[r]!.has(c) === selections.value[r]!.has(c);
+  return ansSets.value[r]!.has(cols.value[c] as string) === selections.value[r]!.has(c);
 }
 
 function finalize(): void {
   if (answered.value) return;
   const res = selections.value.map((set) =>
-    canonicalizeColumnIndices([...set]),
+    canonicalizeColumns([...set].map((c) => cols.value[c] as string)),
   );
   correct.value = evaluateAnswer(props.slide, res as AnswerType);
   corr.value = res.map((r, i) => r === ansRows.value[i]);
@@ -116,7 +116,15 @@ function restore(): void {
   if (Array.isArray(res) && res.length > 0) {
     const rowsRes = res as string[];
     selections.value = rowsRes.map(
-      (row) => new Set(row === '' ? [] : row.split(',').map(Number)),
+      (row) =>
+        new Set(
+          row === ''
+            ? []
+            : row
+                .split(',')
+                .map((name) => cols.value.indexOf(name))
+                .filter((i) => i >= 0),
+        ),
     );
     correct.value = evaluateAnswer(props.slide, res as AnswerType);
     corr.value = rowsRes.map((r, i) => r === ansRows.value[i]);

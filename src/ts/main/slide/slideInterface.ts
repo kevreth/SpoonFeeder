@@ -25,7 +25,9 @@ export interface SlideInterface {
   list: Map<string, string>;
   set: Array<SlideInterface>;
   // Bin/category labels for extended drag-and-drop (bins). ans/res are
-  // number[] — one bin index per item in `o`, in `o`'s order.
+  // string[] — the bin LABEL (not index) per item in `o`, in `o`'s order —
+  // kept as labels rather than indices so the summary/review row (which
+  // renders raw String(res)/String(ans)) stays readable.
   bins: string[];
   // Per-blank dropdown option lists for cloze (dropdown-in-text/table).
   // ans/res are string[] — one choice per blank, parallel to `choices`.
@@ -33,8 +35,9 @@ export interface SlideInterface {
   // Shared column headers for matrix/grid types. Rows come from `o`. For
   // matrix-single, ans/res are string[] (one correct column per row). For
   // matrix-multi, ans/res are string[] of canonical, sorted comma-joined
-  // column-index lists per row (e.g. "0,2") since AnswerType has no
-  // string[][] variant for per-row multi-selection.
+  // column NAME lists per row (e.g. "Cardiovascular,Renal") — names rather
+  // than indices, both because AnswerType has no string[][] variant for
+  // per-row multi-selection and so the summary/review row stays readable.
   cols: string[];
   // Bowtie: left/right branch option pools. Center node reuses `o`. ans/res
   // are a fixed 5-slot string[]: [condition, action1, action2, monitor1,

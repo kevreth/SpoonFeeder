@@ -9,7 +9,7 @@ class Test extends SlideTest {
     param.txt = 'Categorize each finding.';
     param.o = ['fever', 'normal pulse', 'high fever', 'low bp'];
     param.bins = ['Expected', 'Report to Provider'];
-    param.ans = [1, 0, 1, 1] as AnswerType;
+    param.ans = ['Report to Provider', 'Expected', 'Report to Provider', 'Report to Provider'] as AnswerType;
     param.isExercise = true;
     const testable = test.getTestable() as Bins;
     testable.setProperties(param);
@@ -40,6 +40,6 @@ it('result', () => {
 });
 it('getAnswerCount reflects the number of items', () => {
   const slide = BINS();
-  slide.ans = [1, 0, 1, 1] as AnswerType;
+  slide.ans = ['a', 'b', 'a', 'a'] as AnswerType;
   expect(slide.getAnswerCount()).toEqual(4);
 });
