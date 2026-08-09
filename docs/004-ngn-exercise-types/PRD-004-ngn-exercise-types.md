@@ -2,7 +2,7 @@
 title: "PRD-004: NGN Exercise Types — Aggregate & Linked-Group Question Formats"
 repo: "spoonfeeder/SpoonFeeder"
 created: "2026-08-06"
-status: "Active"
+status: "Complete"
 priority: "High — blocks the NGN Item Formats unit (PRD-005) and practice-exam simulation (PRD-006)"
 ---
 

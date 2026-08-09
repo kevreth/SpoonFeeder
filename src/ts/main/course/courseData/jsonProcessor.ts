@@ -126,6 +126,45 @@ function _initSlide2(
   processedSlides: SlideInterface[]
 ) {
   item.isExercise = isExercise;
+  if (item.type === 'cluster') {
+    _expandCluster(item, isExercise, processedSlides);
+    return;
+  }
   const lides = initSlide(item);
   processedSlides.push(...(Array.isArray(lides) ? lides : [lides]));
+}
+
+let _clusterCounter = 0;
+// Case-study/trend item cluster: `item.set` holds ordinary slide-YAML blocks
+// (any existing type), each optionally carrying `groupContext` (only
+// specified when the shared scenario text changes — "trending") and
+// `groupTag` (e.g. a CJMM step label). Unlike Vocab's getSlideSet(), which
+// flattens and forgets, each child here is run back through the normal
+// initSlide() machinery and the result is stamped with shared group
+// metadata so sibling slides stay correlated (and their shared/evolving
+// context is preserved) once spliced into the flat slide list.
+function _expandCluster(
+  item: SlideInterface,
+  isExercise: boolean,
+  processedSlides: SlideInterface[]
+) {
+  const groupId = `cluster-${_clusterCounter++}`;
+  const children = item.set ?? [];
+  const total = children.length;
+  let context = item.txt ?? '';
+  children.forEach((child, idx) => {
+    child.isExercise = isExercise;
+    context = child.groupContext || context;
+    const tag = child.groupTag ?? '';
+    const lides = initSlide(child);
+    const slidesArr = Array.isArray(lides) ? lides : [lides];
+    slidesArr.forEach((s) => {
+      s.groupId = groupId;
+      s.groupContext = context;
+      s.groupTag = tag;
+      s.groupIndex = idx + 1;
+      s.groupTotal = total;
+    });
+    processedSlides.push(...slidesArr);
+  });
 }

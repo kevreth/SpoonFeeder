@@ -1,19 +1,45 @@
 import type { SlideInterface } from '../../slide/slideInterface';
 import { adoc2html } from '../../slide/adoc2html';
 export interface AdocVisitorInterface {
+  visitBins(clazz: SlideInterface): void;
   visitBool(clazz: SlideInterface): void;
+  visitBowtie(clazz: SlideInterface): void;
+  visitClozeTable(clazz: SlideInterface): void;
+  visitClozeText(clazz: SlideInterface): void;
+  visitEma(clazz: SlideInterface): void;
   visitGap(clazz: SlideInterface): void;
   visitImap(clazz: SlideInterface): void;
   visitInfo(clazz: SlideInterface): void;
   visitMa(clazz: SlideInterface): void;
+  visitMatrixMulti(clazz: SlideInterface): void;
+  visitMatrixSingle(clazz: SlideInterface): void;
   visitMc(clazz: SlideInterface): void;
   visitSelect(clazz: SlideInterface): void;
   visitSort(clazz: SlideInterface): void;
   visitVocab(clazz: SlideInterface): void;
 }
 export class AdocVisitor implements AdocVisitorInterface {
+  visitBins(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
+  }
   visitBool(clazz: SlideInterface): void {
     stdReplacement(clazz);
+  }
+  visitBowtie(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
+  }
+  visitClozeTable(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
+  }
+  visitClozeText(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+  }
+  visitEma(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
   }
   visitGap(clazz: SlideInterface): void {
     stdReplacement(clazz);
@@ -25,6 +51,14 @@ export class AdocVisitor implements AdocVisitorInterface {
     stdReplacement(clazz);
   }
   visitMa(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
+  }
+  visitMatrixMulti(clazz: SlideInterface): void {
+    stdReplacement(clazz);
+    clazz.o = optionsReplacement(clazz.o);
+  }
+  visitMatrixSingle(clazz: SlideInterface): void {
     stdReplacement(clazz);
     clazz.o = optionsReplacement(clazz.o);
   }

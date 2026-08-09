@@ -9,7 +9,7 @@ import type { SlideInterface } from './index';
 import { Evaluation } from '../quiz/evaluation';
 import { SaveData } from '../dataaccess/saveData/saveData';
 import { adoc2html } from './adoc2html';
-type ResultTypeIntersection = boolean & boolean[];
+type ResultTypeIntersection = boolean & boolean[] & number;
 export abstract class Slide implements SlideInterface {
   txt = '';
   cont = false;
@@ -25,6 +25,16 @@ export abstract class Slide implements SlideInterface {
   numans = 0;
   list: Map<string, string> = new Map<string, string>();
   set: Array<SlideInterface> = [];
+  bins: string[] = [];
+  choices: string[][] = [];
+  cols: string[] = [];
+  bowtieActions: string[] = [];
+  bowtieMonitors: string[] = [];
+  groupId = '';
+  groupContext = '';
+  groupTag = '';
+  groupIndex = 0;
+  groupTotal = 0;
   constructor(
     public readonly type: string,
     public readonly evaluateStrategy: EvaluateType,

@@ -176,6 +176,30 @@ describe('buildBoundaryMap', () => {
     // 1 course + 1 unit + 1 lesson + 1 module + 5 vocab-expanded = 9
     expect(lesson.slideIndex).toBe(9);
   });
+
+  it('cluster items are counted by their child count, not as one slide', () => {
+    // `cluster` is not a registered SlideType — initSlide() would otherwise
+    // fall back to treating it as a single info slide (PRD-004 regression).
+    const cluster = makeSlide('cluster', 'case study', {
+      set: [makeSlide('mc', 'child 1'), makeSlide('ma', 'child 2')],
+    } as unknown as Partial<SlideInterface>);
+    const course = buildCourse([
+      {
+        name: 'u1',
+        lessons: [
+          {
+            name: 'l1',
+            modules: [{ name: 'm1', exercises: [cluster] }],
+          },
+        ],
+      },
+    ]);
+
+    const map = buildBoundaryMap(course);
+    const lesson = map.find((b) => b.scopeType === 'lesson')!;
+    // 1 course + 1 unit + 1 lesson + 1 module + 2 cluster children = 6
+    expect(lesson.slideIndex).toBe(6);
+  });
 });
 
 describe('extractPool', () => {
@@ -287,6 +311,23 @@ describe('extractPool', () => {
     const pool = extractPool(course, boundary, 'focused');
     expect(pool).toHaveLength(1);
     expect(pool[0].txt).toBe('exercise');
+  });
+
+  it('cluster items contribute their children individually to the pool', () => {
+    const cluster = makeSlide('cluster', 'case study', {
+      set: [makeSlide('mc', 'child 1'), makeSlide('ma', 'child 2')],
+    } as unknown as Partial<SlideInterface>);
+    const course = buildCourse([
+      {
+        name: 'u1',
+        lessons: [{ name: 'l1', modules: [{ name: 'm1', exercises: [cluster] }] }],
+      },
+    ]);
+
+    const boundary = buildBoundaryMap(course).find((b) => b.scopeType === 'lesson')!;
+    const pool = extractPool(course, boundary, 'focused');
+    expect(pool).toHaveLength(2);
+    expect(pool.map((s) => s.txt)).toEqual(['child 1', 'child 2']);
   });
 });
 

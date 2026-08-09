@@ -39,12 +39,16 @@
       session/prompt is active so the two surfaces never overlap.
     -->
     <div v-show="!quizComplete" class="sf-slide-surface">
+      <GroupContextBanner
+        v-if="currentSlide && currentSlide.groupId && !showSession && !showPrompt"
+        :slide="currentSlide"
+      />
       <component
         :is="exerciseComponent"
         v-if="exerciseComponent && currentSlide && !showSession && !showPrompt"
         :key="currentSlide.txt"
         :slide="currentSlide"
-        :multiple="currentSlideType === 'ma'"
+        :multiple="currentSlideType === 'ma' || currentSlideType === 'ema'"
         :restored="restored"
         @answer="handleAnswer"
         @continue="handleContinue"
@@ -89,6 +93,7 @@ import { SAMPLE_SIZES } from '../../ts/main/review/reviewTypes';
 import { useSlideStore } from '../stores/slideStore';
 import reloadPage from '../composables/startOver';
 import { EXERCISE_COMPONENTS } from '../components/exercise/exerciseComponents';
+import GroupContextBanner from '../components/exercise/GroupContextBanner.vue';
 
 /* ── Main quiz rendering (PRD-001, ADR-019) ─────────────────────────────────
  * The Pinia slide store is driven by SlideDispatcher. Every exercise type

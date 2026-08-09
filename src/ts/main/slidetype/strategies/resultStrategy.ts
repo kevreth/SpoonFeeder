@@ -37,4 +37,19 @@ export class Result {
     }
     return retval;
   };
+  /////////////////////////////////////////////////////////////////////////////
+  //                            PARTIAL
+  /////////////////////////////////////////////////////////////////////////////
+  // Fractional (0..1) credit for "select N" questions with a fixed option
+  // pool: one point per correct selection, minus one point per incorrect
+  // selection, floored at 0, normalized by the number of correct answers.
+  // used with: extended (partial-credit) multiple response
+  public static readonly PARTIAL: ResultType = function (ans, res) {
+    const ansArr = (ans ?? []) as Array<string>;
+    const resArr = (res ?? []) as Array<string>;
+    if (ansArr.length === 0) return 0;
+    const correctCount = resArr.filter((r) => ansArr.includes(r)).length;
+    const incorrectCount = resArr.filter((r) => !ansArr.includes(r)).length;
+    return Math.max(0, correctCount - incorrectCount) / ansArr.length;
+  };
 }

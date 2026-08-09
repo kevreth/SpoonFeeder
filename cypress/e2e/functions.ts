@@ -202,7 +202,9 @@ export function runFullJourney() {
   existVisibleNotEmpty('body');
   cy.contains('learn the periodic table');
   chooseOption(0);
-  continueCyCount(23);
+  continueCy();
+
+  answerNgnTypes();
 
   // Lesson 1 boundary prompt — skip
   skipReviewPrompt();
@@ -239,14 +241,95 @@ export function runFullJourney() {
   cy.contains('ans');
   cy.contains('Mercury');
   cy.contains('H2O');
-  cy.contains('.stat-value', '19');
-  cy.contains('.stat-value', '13');
-  cy.contains('.stat-value', '68%');
+  cy.contains('.stat-value', '39');
+  cy.contains('.stat-value', '33');
+  cy.contains('.stat-value', '85%');
   cy.get('[data-cy="start-over"]').should('be.visible').click();
 
   // After restart, the first slide is the course title (info, Vue)
   cy.get('[data-cy="continue"]', { timeout: 10000 }).should('be.visible');
   cy.contains('course 1');
+}
+
+// Answers the 8 NGN-format exercises appended after the periodic-table mc
+// (ema, bins, cloze-text, cloze-table, matrix-single, matrix-multi, bowtie,
+// and a 2-item cluster) — every response is correct, contributing 9 saved
+// entries (7 single-answer types + 2 cluster children) and 20 responses/20
+// correct to the final course-summary stats (PRD-004).
+export function answerNgnTypes() {
+  // ema — extended multiple response (ChoiceExercise, multiple=true)
+  existVisibleNotEmpty('body');
+  chooseOption(0);
+  chooseOption(1);
+  doneCy();
+  optionState(0, 'correct');
+  optionState(1, 'correct');
+  continueCy();
+
+  // bins — extended drag-and-drop (click pool token, then destination bin)
+  existVisibleNotEmpty('body');
+  cy.get('[data-cy="token-0"]').click();
+  cy.get('[data-cy="bin-0"]').click();
+  cy.get('[data-cy="token-1"]').click();
+  cy.get('[data-cy="bin-1"]').click();
+  cy.get('[data-cy="token-2"]').click();
+  cy.get('[data-cy="bin-0"]').click();
+  cy.get('[data-cy="token-3"]').click();
+  cy.get('[data-cy="bin-1"]').click();
+  continueCy();
+
+  // cloze-text — dropdown inline in prose
+  existVisibleNotEmpty('body');
+  cy.get('[data-cy="dropdown-0"]').click();
+  cy.get('[data-cy="dropdown-0-option-0"]').click();
+  cy.get('[data-cy="dropdown-1"]').click();
+  cy.get('[data-cy="dropdown-1-option-0"]').click();
+  continueCy();
+
+  // cloze-table — dropdown per table row
+  existVisibleNotEmpty('body');
+  cy.get('[data-cy="dropdown-0"]').click();
+  cy.get('[data-cy="dropdown-0-option-0"]').click();
+  cy.get('[data-cy="dropdown-1"]').click();
+  cy.get('[data-cy="dropdown-1-option-1"]').click();
+  continueCy();
+
+  // matrix-single — one radio cell per row
+  existVisibleNotEmpty('body');
+  cy.get('[data-cy="cell-0-0"]').click();
+  cy.get('[data-cy="cell-1-1"]').click();
+  continueCy();
+
+  // matrix-multi — checkbox cells, submitted via Done
+  existVisibleNotEmpty('body');
+  cy.get('[data-cy="cell-0-0"]').click();
+  cy.get('[data-cy="cell-1-1"]').click();
+  doneCy();
+  continueCy();
+
+  // bowtie — condition + 2 actions + 2 monitors, single screen
+  existVisibleNotEmpty('body');
+  cy.get('[data-cy="condition-0"]').click();
+  cy.get('[data-cy="action-0"]').click();
+  cy.get('[data-cy="action-1"]').click();
+  cy.get('[data-cy="monitor-0"]').click();
+  cy.get('[data-cy="monitor-1"]').click();
+  continueCy();
+
+  // cluster — 2 linked items sharing a GroupContextBanner
+  existVisibleNotEmpty('body');
+  elementContains('[data-cy="group-progress"]', 'Item 1 of 2');
+  elementContains('[data-cy="group-tag"]', 'Analyze Cues');
+  chooseOption(0);
+  continueCy();
+
+  existVisibleNotEmpty('body');
+  elementContains('[data-cy="group-progress"]', 'Item 2 of 2');
+  elementContains('[data-cy="group-tag"]', 'Take Actions');
+  chooseOption(0);
+  chooseOption(1);
+  doneCy();
+  continueCyCount(32);
 }
 
 export function skipReviewPrompt() {

@@ -85,6 +85,57 @@ units:
       - type: mc
         txt: If only we ____ have to learn the periodic table of the elements by tomorrow!
         o: [didn't, don't]
+      - type: ema
+        txt: Select 2 findings that indicate improvement.
+        o: [better, better2, worse, same]
+        numans: 2
+      - type: bins
+        txt: Categorize each item.
+        o: [apple, carrot, banana, potato]
+        bins: [Fruit, Vegetable]
+        ans: [0, 1, 0, 1]
+      - type: cloze-text
+        txt: The client is most likely experiencing (1). Priority action is (2).
+        choices:
+        - [infection, dehydration]
+        - [administer fluids, apply oxygen]
+        ans: [infection, administer fluids]
+      - type: cloze-table
+        txt: For each finding, select the interpretation.
+        o: [Fundus firm at umbilicus, Fundus boggy displaced right]
+        choices:
+        - [Expected, Unexpected]
+        - [Expected, Unexpected]
+        ans: [Expected, Unexpected]
+      - type: matrix-single
+        txt: For each action, select the category.
+        o: [Prepare for cardioversion, Restrict all oral fluids]
+        cols: [Indicated, Contraindicated]
+        ans: [Indicated, Contraindicated]
+      - type: matrix-multi
+        txt: Select all systems each finding may affect.
+        o: [Blood pressure 168/112, Hyperreflexia with clonus]
+        cols: [Cardiovascular, Neurological]
+        ans: ['0', '1']
+      - type: bowtie
+        txt: Complete the diagram for this client.
+        o: [Sepsis, Hypovolemia]
+        bowtieActions: [Obtain blood cultures, Increase IV fluids, Discontinue IV]
+        bowtieMonitors: [Serum lactate, Urine output, Deep tendon reflexes]
+        ans: [Sepsis, Obtain blood cultures, Increase IV fluids, Serum lactate, Urine output]
+      - type: cluster
+        txt: Case study — post-op day 1.
+        set:
+        - type: mc
+          txt: Which finding is most concerning?
+          o: [Rising temperature, Normal appetite]
+          groupContext: 'Vitals: T 38.7C, HR 112, BP 98/58'
+          groupTag: Analyze Cues
+        - type: ma
+          txt: Select 2 priority actions.
+          o: [Notify provider, Obtain blood cultures, Discontinue diet, Apply warm blanket]
+          numans: 2
+          groupTag: Take Actions
   - name: lesson 2
     modules:
     - name: module 2

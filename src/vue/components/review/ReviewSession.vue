@@ -20,7 +20,7 @@
           v-if="exerciseComponent && currentSlide"
           :key="currentIndex"
           :slide="currentSlide"
-          :multiple="currentSlide.type === 'ma'"
+          :multiple="currentSlide.type === 'ma' || currentSlide.type === 'ema'"
           :restored="false"
           @continue="handleContinue"
         />

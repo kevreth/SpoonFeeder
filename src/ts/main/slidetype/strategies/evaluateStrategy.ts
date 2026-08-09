@@ -41,11 +41,17 @@ type EvaluateTypeGap = (
   ans: AnswerType,
   result: Array<boolean>
 ) => Evaluation;
+type EvaluateTypePartial = (
+  txt: string,
+  ans: AnswerType,
+  res: AnswerType,
+  result: number
+) => Evaluation;
 ///////////////////////////////////////////////////////////////////////////////
 // Unification of all evaluation strategy types. Necessary for polymorphically
 // referring to any evaluation strategy.
 ///////////////////////////////////////////////////////////////////////////////
-export type EvaluateType = EvaluateTypeSimple | EvaluateTypeGap;
+export type EvaluateType = EvaluateTypeSimple | EvaluateTypeGap | EvaluateTypePartial;
 export class Evaluate {
   /////////////////////////////////////////////////////////////////////////////
   //
@@ -140,6 +146,21 @@ export class Evaluate {
   ) {
     const rowFunction: FunctionType = Evaluate.gapRow;
     return Evaluate.multiAnswerStrategy(ans, res, txt, result, rowFunction);
+  };
+  /////////////////////////////////////////////////////////////////////////////
+  //                             partial
+  /////////////////////////////////////////////////////////////////////////////
+  // one question -> a fractional (0..1) score, not all-or-nothing.
+  // Used by extended (partial-credit) multiple response.
+  public static readonly PARTIAL: EvaluateTypePartial = function evaluate(
+    txt,
+    ans,
+    res,
+    result
+  ) {
+    const text = makeRow(txt, res, ans, result === 1);
+    const count = res == null ? 0 : 1;
+    return new Evaluation(count, result, text);
   };
   /////////////////////////////////////////////////////////////////////////////
   //                 The strategy functions end here.

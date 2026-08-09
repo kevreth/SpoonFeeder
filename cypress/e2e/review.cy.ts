@@ -2,7 +2,10 @@
  * E2E tests for the Review System.
  *
  * Uses the "test" course which has two lessons:
- *   Lesson 1 — the original exercises (bool, ma, vocab, sort, imap, mc, gap, select, mc)
+ *   Lesson 1 — the original exercises (bool, ma, vocab, sort, imap, mc, gap,
+ *     select, mc), plus the NGN-format exercises appended for PRD-004 (ema,
+ *     bins, cloze-text, cloze-table, matrix-single, matrix-multi, bowtie,
+ *     and a 2-item cluster) — see answerNgnTypes() in functions.ts.
  *   Lesson 2 — two simple MC exercises (closest planet, water symbol)
  *
  * The lesson 1 boundary prompt fires after completing lesson 1's last exercise.
@@ -15,6 +18,7 @@ import {
   doneCy,
   continueCy,
   placeToken,
+  answerNgnTypes,
 } from './functions';
 
 const KNOWN_UNCAUGHT_PATTERNS: RegExp[] = [
@@ -98,8 +102,13 @@ function navigateToLesson1Boundary() {
   // mc periodic table — ChoiceExercise (Vue); answers first option
   cy.contains('learn the periodic table');
   chooseOption(0);
-  // Continue triggers the lesson 1 boundary prompt
   continueCy();
+
+  // NGN-format exercises appended for PRD-004 (ema, bins, cloze-text,
+  // cloze-table, matrix-single, matrix-multi, bowtie, cluster)
+  answerNgnTypes();
+  // Continue (inside answerNgnTypes, for the cluster's last item) triggers
+  // the lesson 1 boundary prompt
 }
 
 describe('Review System — boundary prompts', () => {

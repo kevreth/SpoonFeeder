@@ -60,6 +60,22 @@ export class ScoreProcessor
     _retval: SummaryLine,
     parent: ISummaryLine
   ): ISummaryLine {
+    // Cluster items expand into their `set` children (jsonProcessor.ts
+    // _expandCluster) rather than through initSlide()/getSlideSet() —
+    // `cluster` isn't a registered SlideType, so scoring it directly would
+    // treat it as a single (fallback info) slide instead of its real children.
+    if (slide.type === 'cluster') {
+      (slide.set ?? []).forEach((child) => {
+        const exerciseLine = ScoreProcessor.exercise(
+          child,
+          this.getResults,
+          initSlide,
+          ScoreProcessor.createLine
+        );
+        parent.add(exerciseLine);
+      });
+      return parent;
+    }
     const exerciseLine = ScoreProcessor.exercise(
       slide,
       this.getResults,

@@ -42,6 +42,17 @@ class BoundaryMapBuilder implements DivisionProcessor<void, ScopeCtx, ReviewBoun
   }
 
   exercises(slide: SlideInterface, ctr: number, retval: ReviewBoundary[], parent: ScopeCtx): ReviewBoundary[] {
+    // Cluster items expand into their `set` children (jsonProcessor.ts
+    // _expandCluster) rather than through initSlide()/getSlideSet() —
+    // `cluster` isn't a registered SlideType, so counting it directly would
+    // undercount it as a single (fallback info) slide.
+    if (slide.type === 'cluster') {
+      (slide.set ?? []).forEach((child) => {
+        const s = initSlide(child);
+        this.slideCount += Array.isArray(s) ? s.length : 1;
+      });
+      return retval;
+    }
     const s = initSlide(slide);
     this.slideCount += Array.isArray(s) ? s.length : 1;
     return retval;
@@ -132,7 +143,14 @@ class PoolExtractor implements DivisionProcessor<void, PoolCtx, SlideInterface[]
   }
 
   exercises(slide: SlideInterface, ctr: number, retval: SlideInterface[], parent: PoolCtx): SlideInterface[] {
-    if (this.shouldCollect(parent)) retval.push(slide);
+    if (!this.shouldCollect(parent)) return retval;
+    // Cluster items contribute their `set` children individually — each is
+    // an ordinary, independently reviewable exercise (see exercises() above).
+    if (slide.type === 'cluster') {
+      (slide.set ?? []).forEach((child) => retval.push(child));
+      return retval;
+    }
+    retval.push(slide);
     return retval;
   }
 

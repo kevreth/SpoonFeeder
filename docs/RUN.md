@@ -76,3 +76,57 @@ PRD-001 Vue components and removed the legacy imperative renderer entirely.
 resolve `dashboard/audit.json`.
 
 ---
+
+## 2026-08-09 | SpoonFeeder feat/004-ngn-exercise-types | 004-ngn-exercise-types
+
+**What changed:** Implemented epic 004 — the 8 new Next Generation NCLEX
+exercise types plus the underlying framework changes they needed.
+
+- Core widening: `ResultReturnType`/`EvaluateType` widened to carry a
+  fractional (0..1) score alongside the existing `boolean`/`boolean[]`
+  shapes; added `Result.PARTIAL`/`Evaluate.PARTIAL`. Characterization tests
+  written first to lock existing SIMPLE/CORRELATED/GAP/SELECT behavior
+  before touching the shared call sites (`Slide.evaluate()`,
+  `evaluateAnswer.ts`).
+- New aggregate types (single slide, existing GAP/CORRELATED evaluation
+  pattern reused throughout): `ema` (extended multiple response — reuses
+  `ChoiceExercise.vue` unchanged, only `Result.PARTIAL` is new), `bins`
+  (extended drag-and-drop, generalizes `gap`'s multi-zone `VueDraggable`
+  pattern to N-capacity bins), `cloze-text`/`cloze-table` (dropdown-based
+  cloze, new inline/table dropdown UI), `matrix-single`/`matrix-multi`
+  (radio/checkbox grids), `bowtie` (built as a self-contained aggregate
+  type rather than a linked group — real NCLEX bowtie items are one screen,
+  not sequential; see DEC-004.jsonl).
+- Case-study/trend cluster: implemented as a `type: cluster` special case
+  in `jsonProcessor.ts` (`_expandCluster`) rather than a registered
+  `SlideType`, avoiding a circular import back through `slideFactory.ts`.
+  Each child is run through the normal `initSlide()` machinery and stamped
+  with shared `groupId`/`groupContext`/`groupTag`/`groupIndex`/`groupTotal`
+  metadata; renders via each child's own existing exercise component with a
+  new shared `GroupContextBanner.vue` on top (no monolithic cluster
+  component). This special-casing had a blind spot: `reviewExtractor.ts`
+  and `scoreProcessor.ts` called `initSlide()` directly on cluster items
+  and undercounted them — fixed with matching special cases + regression
+  tests, caught by the full Cypress e2e run against `review.cy.ts`.
+- Found and fixed a real bug via the e2e run (not caught by unit tests):
+  five new Vue components initialized state inside `onMounted()`, but the
+  template's first render happens before `onMounted` fires — crashed
+  outright for `MatrixMultiExercise` (`.has()` on `undefined`). Fixed by
+  initializing synchronously in `<script setup>` across all five.
+- Test course (`src/courses/test/course.yml`) extended with one slide per
+  new type plus a 2-item cluster; `cypress/e2e/functions.ts`'s
+  `runFullJourney()` and `review.cy.ts`'s `navigateToLesson1Boundary()`
+  extended via a shared `answerNgnTypes()` helper; hardcoded slide-count
+  assertions updated (23→32 exercises); snapshot baseline regenerated.
+
+**Gates:** `yarn type-check`, `yarn lint`, `yarn circular` clean; `yarn
+test:unit` 363 tests / 0 failures (up from 310); `yarn test:e2e` 6/6
+passing; differential replay (`test:e2e:snapshot` → `test:baseline` →
+`test:diff`) 0 deviations.
+
+**Deferred:** PRD-005 (NCLEX-RN course content) and PRD-006 (practice exam
+simulation) — both were blocked on this epic's types.
+
+**Not pushed yet this session.**
+
+---

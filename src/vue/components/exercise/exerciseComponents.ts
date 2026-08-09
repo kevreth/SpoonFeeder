@@ -5,6 +5,12 @@ import SelectExercise from './SelectExercise.vue';
 import GapExercise from './GapExercise.vue';
 import SortExercise from './SortExercise.vue';
 import ImapExercise from './ImapExercise.vue';
+import BinsExercise from './BinsExercise.vue';
+import ClozeTextExercise from './ClozeTextExercise.vue';
+import ClozeTableExercise from './ClozeTableExercise.vue';
+import MatrixSingleExercise from './MatrixSingleExercise.vue';
+import MatrixMultiExercise from './MatrixMultiExercise.vue';
+import BowtieLayout from './BowtieLayout.vue';
 
 /**
  * Slide-type → Vue exercise component. Shared by the main quiz path
@@ -16,9 +22,16 @@ export const EXERCISE_COMPONENTS: Record<string, Component> = {
   mc: ChoiceExercise,
   bool: ChoiceExercise,
   ma: ChoiceExercise,
+  ema: ChoiceExercise,
   info: InfoExercise,
   select: SelectExercise,
   gap: GapExercise,
   sort: SortExercise,
   imap: ImapExercise,
+  bins: BinsExercise,
+  'cloze-text': ClozeTextExercise,
+  'cloze-table': ClozeTableExercise,
+  'matrix-single': MatrixSingleExercise,
+  'matrix-multi': MatrixMultiExercise,
+  bowtie: BowtieLayout,
 };
