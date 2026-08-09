@@ -172,16 +172,17 @@ onMounted(() => {
 .sf-cloze-dd-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 10;
   list-style: none;
   margin: 4px 0 0;
   padding: 4px 0;
   min-width: 100%;
+  max-width: min(240px, 80vw);
   background: var(--sf-color-surface-raised);
   border: 1px solid var(--sf-color-primary);
   border-radius: var(--sf-radius-token);
-  white-space: nowrap;
+  white-space: normal;
 }
 .sf-cloze-dd-menu li {
   padding: 6px 10px;
