@@ -16,4 +16,5 @@ it('src/courses/nclex-rn/course.yml loads without throwing and produces exercise
   const slides = ProcessJson.processJson(doc);
   expect(slides.length).toBeGreaterThan(0);
   expect(slides.some((s) => s.isExercise)).toBe(true);
-});
+  // Processes the whole course; exceeds vitest's 5s default under coverage instrumentation.
+}, 60_000);
