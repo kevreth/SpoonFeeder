@@ -1,15 +1,14 @@
 .PHONY: coverage test check lint typecheck unit
 
-# Quality infrastructure (shared fragments).
-# checks.mk is Python-oriented (ruff/mypy/pytest) and defines lint, typecheck,
-# coverage and check; this is a TypeScript project, so those targets are
-# redefined below, AFTER the includes, so the TypeScript recipes win.
+# Quality infrastructure (shared fragment). This is a TypeScript project, so it
+# includes quality-ts.mk only; checks.mk is the Python developer-check fragment
+# (ruff/mypy/pytest) and does not apply. lint, typecheck and check are defined
+# below with the TypeScript recipes.
 SRC_DIR   := src
 TESTS_DIR := tests
+SERVE_DEFINED := 1
 QUALITY_MK := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))tools/quality-ts.mk
-CHECKS_MK  := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))tools/checks.mk
 include $(QUALITY_MK)
-include $(CHECKS_MK)
 
 # Plain `make` runs lint, type-check and unit tests (no e2e; see `make test`).
 .DEFAULT_GOAL := check
