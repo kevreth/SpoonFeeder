@@ -4,6 +4,8 @@ title: "SpoonFeeder Review System — PRD"
 
 # SpoonFeeder Review System — PRD
 
+> Spaced-repetition scheduling and per-exercise history, listed as non-goals below, are specified in [PRD-007](007-spaced-review/PRD-007-spaced-review.md).
+
 ## 1. Overview
 
 A review system that automatically generates quiz sessions from existing course exercises at lesson, unit, and course boundaries. Reviews can also be launched on demand at any time. The system samples exercises with priority toward previously wrong answers, persists only aggregate scores, and requires no changes to course YAML files.

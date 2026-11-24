@@ -8,3 +8,4 @@
 | [004-ngn-exercise-types/PRD-004-ngn-exercise-types.md](004-ngn-exercise-types/PRD-004-ngn-exercise-types.md) | PRD-004: NGN Exercise Types — Aggregate & Linked-Group Question Formats | Complete |
 | [005-nclex-rn-course-content/PRD-005-nclex-rn-course-content.md](005-nclex-rn-course-content/PRD-005-nclex-rn-course-content.md) | PRD-005: NCLEX-RN Course — Primary Learning Content & NGN Format Unit | Active |
 | [006-nclex-exam-simulation/PRD-006-nclex-exam-simulation.md](006-nclex-exam-simulation/PRD-006-nclex-exam-simulation.md) | PRD-006: NCLEX-RN Practice Exam & Timed Simulation Mode | Active |
+| [007-spaced-review/PRD-007-spaced-review.md](007-spaced-review/PRD-007-spaced-review.md) | PRD-007: Spaced Review — Per-Exercise Scheduling & Due Reviews | Active |
